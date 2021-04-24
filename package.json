@@ -1,0 +1,24 @@
+{
+  "name": "To-be-named",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrperrytpx/To-be-named.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mrperrytpx/To-be-named/issues"
+  },
+  "homepage": "https://github.com/mrperrytpx/To-be-named#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1"
+  }
+}
