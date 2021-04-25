@@ -1,0 +1,6 @@
+@use "./abs/" as a;
+
+* {
+    color: a.$red;
+    background-color: a.$bg-color;
+}
