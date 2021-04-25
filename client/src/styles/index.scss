@@ -1,6 +1,7 @@
-@use "./abs/" as a;
-
-* {
-    color: a.$red;
-    background-color: a.$bg-color;
+.search-bar {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

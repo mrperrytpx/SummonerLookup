@@ -1,6 +1,10 @@
+import SearchBar from "./SearchBar"
+
 const App = () => {
   return (
-    <div className="App">Sup</div>
+    <div className="App">
+      <SearchBar />
+    </div>
   );
 }
 
