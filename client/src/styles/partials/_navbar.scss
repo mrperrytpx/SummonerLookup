@@ -7,7 +7,7 @@
   justify-content: space-evenly;
   width: 100%;
   min-width: 17.5rem;
-  height: 10vh;
+  height: max(50px, 10vh);
   font-family: "Poppins", sans-serif;
   border-bottom: 3px solid rgba(255, 255, 255, 0.486);
   .logo {

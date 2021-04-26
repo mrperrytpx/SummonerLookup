@@ -13,7 +13,7 @@
           justify-content: space-evenly;
   width: 100%;
   min-width: 17.5rem;
-  height: 10vh;
+  height: max(50px, 10vh);
   font-family: "Poppins", sans-serif;
   border-bottom: 3px solid rgba(255, 255, 255, 0.486);
 }
@@ -33,7 +33,7 @@
 }
 
 .search-bar {
-  margin: 10vh auto;
+  margin: 80px auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -44,7 +44,6 @@
 }
 .search-bar form {
   width: 95vw;
-  min-width: 15rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -69,7 +68,8 @@
   font-size: 1rem;
   border-left: 1px solid black;
   border-right: 1px solid black;
-  width: clamp(13rem, 450px, 500px);
+  width: min(500px, 95%);
+  max-width: 600px;
 }
 
 * {
