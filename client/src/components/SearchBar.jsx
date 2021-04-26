@@ -4,16 +4,13 @@ import { FaArrowRight } from "react-icons/fa";
 const SearchBar = () => {
   const [server, setServer] = useState("eun1");
   const [summonerName, setSummonerName] = useState("");
-  const [result, setResult] = useState("");
 
   const handleSearch = async (e) => {
     e.preventDefault();
     try {
       const summonerData = await fetch(`/search/${summonerName}/${server}`)
       const responseData = await summonerData.json();
-      setResult(responseData);
       } catch(err) {
-        setResult("");
         console.log(err);
       }
     }
@@ -48,7 +45,6 @@ const SearchBar = () => {
 
           <button><FaArrowRight /></button>
 
-          {result && <div>{result}</div>}
       </form>
     </div>
     );
