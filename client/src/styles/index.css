@@ -1,17 +1,85 @@
-.search-bar {
-  height: 100vh;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+.nav {
+  margin: 0 auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  width: 100%;
+  min-width: 17.5rem;
+  height: 10vh;
+  font-family: "Poppins", sans-serif;
+  border-bottom: 3px solid rgba(255, 255, 255, 0.486);
+}
+.nav .logo {
+  font-size: clamp(1.2rem, 2.1vw, 2rem);
+  color: white;
+  font-weight: 600;
+}
+.nav a {
+  text-decoration: none;
+}
+.nav a > p {
+  color: white;
+  padding: 0.5rem clamp(0.5rem, 0.8rem, 1rem);
+  font-size: clamp(1.2rem, 2vw, 2rem);
+  font-weight: 600;
+}
+
+.search-bar {
+  margin: 10vh auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+}
+.search-bar form {
+  width: 95vw;
+  min-width: 15rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+.search-bar select {
+  height: 3rem;
+  border: none;
+  border-radius: 5px 0 0 5px;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.25rem;
+}
+.search-bar input {
+  padding: 0 0.5em;
+  height: 3rem;
+  border: none;
+  font-size: 1rem;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  width: clamp(13rem, 450px, 500px);
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: #225e6d;
 }
 /*# sourceMappingURL=index.css.map */

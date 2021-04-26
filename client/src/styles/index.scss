@@ -1,7 +1,12 @@
-.search-bar {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+@use "./partials/navbar";
+@use "./partials/search-bar";
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: hsl(192, 52%, 28%);
 }

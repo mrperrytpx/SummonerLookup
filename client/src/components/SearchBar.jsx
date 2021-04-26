@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FaArrowRight } from "react-icons/fa";
+import { FaAngleDoubleRight } from "react-icons/fa";
 
 const SearchBar = () => {
   const [server, setServer] = useState("eun1");
@@ -7,13 +7,14 @@ const SearchBar = () => {
 
   const handleSearch = async (e) => {
     e.preventDefault();
-    try {
-      const summonerData = await fetch(`/search/${summonerName}/${server}`)
-      const responseData = await summonerData.json();
-      } catch(err) {
-        console.log(err);
-      }
-    }
+  }
+
+  const style = {
+    backgroundColor: "white",
+    fontSize: "3rem",
+    borderRadius: "0 5px 5px 0",
+    minWidth: "3rem"
+  };
 
   return (
     <div className="search-bar">
@@ -22,7 +23,6 @@ const SearchBar = () => {
         <select 
           value={server}
           onChange={(e) => {
-            console.log(e.target.value);
             setServer(e.target.value);
           }}
         >
@@ -38,12 +38,11 @@ const SearchBar = () => {
           placeholder="Enter a summoner name..."
           value={summonerName}
           onChange={(e) => {
-            console.log(e.target.value);
             setSummonerName(e.target.value);
           }}
           />
 
-          <button><FaArrowRight /></button>
+          <FaAngleDoubleRight style={style} />
 
       </form>
     </div>
