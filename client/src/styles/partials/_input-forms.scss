@@ -4,6 +4,7 @@
   height: 100vh;
   width: 100vw;
   color: white;
+
   form {
     padding: 0.7rem 1rem;
     display: flex;
@@ -11,30 +12,36 @@
     align-items: center;
     justify-content: space-around;
   }
+
   input,
   label {
     width: min(350px, 90vw);
     height: 40px;
     font-size: clamp(1.2rem, 1vw, 2rem);
   }
+
   label {
     display: flex;
     align-items: center;
     font-weight: 500;
   }
+
   input {
     padding: 0 0.5rem;
   }
+
   button {
     height: 40px;
     width: 150px;
     font-size: clamp(1.2rem, 1vw, 2rem);
     margin: 1.2rem 0;
   }
+
   a {
     text-decoration: none;
     color: rgb(255, 255, 255);
   }
+
   a > h3 {
     width: min(500px, 100%);
     text-align: center;
@@ -44,9 +51,11 @@
     border-bottom: 1px solid white;
     color: white;
   }
+
   .password-field {
     position: relative;
   }
+
   .show-password {
     position: absolute;
     top: 0;
@@ -59,6 +68,7 @@
     border: none;
     color: hsl(192, 78%, 39%)
   }
+  
   input,
   button {
     border-radius: 0.2rem;

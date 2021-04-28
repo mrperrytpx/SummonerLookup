@@ -32,27 +32,29 @@ const Login = () => {
 
         <label htmlFor="username">Username:</label>
         <input
-        required
-        id="username" 
-        name="username" 
-        type="text"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
+          autoComplete="true"
+          required
+          id="username" 
+          name="username" 
+          type="text"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
         />
         
         <label htmlFor="password">Password:</label>
         <div className="password-field">
           <input 
-          id="password"
-          required
-          name="password" 
-          type={passwordField}
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+            autoComplete="true"
+            id="password"
+            required
+            name="password" 
+            type={passwordField}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
           <button 
-          className="show-password"
-          onClick={handleVisibility}
+            className="show-password"
+            onClick={handleVisibility}
           >{isVisible ? <AiFillEye /> : <AiFillEyeInvisible />}</button>
         </div>
 
