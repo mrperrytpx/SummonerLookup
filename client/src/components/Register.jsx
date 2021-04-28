@@ -62,7 +62,7 @@ const Register = () => {
           onChange={(e) => setPassword(e.target.value)}
           />
           <button
-          tabindex="-1"
+          tabIndex="-1"
           className="show-password"
           onClick={handleVisibility}
           >{isVisible ? <AiFillEye /> : <AiFillEyeInvisible />}</button>

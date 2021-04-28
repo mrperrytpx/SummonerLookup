@@ -131,7 +131,6 @@
 }
 .login-section .password-field {
   position: relative;
-  background-color: red;
 }
 .login-section .show-password {
   position: absolute;
@@ -144,6 +143,12 @@
   place-items: center;
   background: none;
   border: none;
+}
+.login-section input,
+.login-section button {
+  border-radius: 0.2rem;
+  border: none;
+  border: 2px solid rgba(0, 0, 0, 0.39);
 }
 
 * {
