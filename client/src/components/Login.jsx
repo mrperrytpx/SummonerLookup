@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { AiFillEyeInvisible, AiFillEye }from "react-icons/ai";
+import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -13,6 +13,7 @@ const Login = () => {
   }
 
   const handleVisibility = (e) => {
+    e.preventDefault();
     setIsVisible(!isVisible);
     if (isVisible === false) {
       setPasswordField("text");
@@ -24,45 +25,45 @@ const Login = () => {
   }
 
   return ( 
-      <section className="login-section">
-        <form onSubmit={handleLogin}>
+    <section className="input-section">
+      <form onSubmit={handleLogin}>
 
-          <Link to="/"><h3>SummonerLookup™</h3></Link>
+        <Link to="/"><h3>SummonerLookup™</h3></Link>
 
-          <label htmlFor="username">Username:</label>
-          <input
+        <label htmlFor="username">Username:</label>
+        <input
+        required
+        id="username" 
+        name="username" 
+        type="text"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+        />
+        
+        <label htmlFor="password">Password:</label>
+        <div className="password-field">
+          <input 
+          id="password"
           required
-          id="username" 
-          name="username" 
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          name="password" 
+          type={passwordField}
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
           />
-          
-          <label htmlFor="password">Password:</label>
-          <div className="password-field">
-            <input 
-            id="password"
-            required
-            name="password" 
-            type={passwordField}
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            />
-            <button 
-            className="show-password"
-            onClick={handleVisibility}
-            >{isVisible ? <AiFillEye /> : <AiFillEyeInvisible />}</button>
-          </div>
+          <button 
+          className="show-password"
+          onClick={handleVisibility}
+          >{isVisible ? <AiFillEye /> : <AiFillEyeInvisible />}</button>
+        </div>
 
-          <button className="login-button">Log In</button>
+        <button className="login-button">Log In</button>
 
-          <Link to="/register">
-            <p className="register-link">Don't have an account?</p>
-          </Link>
-        </form>
-      </section>
-      );
+        <Link to="/register">
+          <p className="register-link">Don't have an account?</p>
+        </Link>
+      </form>
+    </section>
+    );
   }
  
 export default Login;

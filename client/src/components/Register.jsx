@@ -15,6 +15,7 @@ const Register = () => {
   }
   
   const handleVisibility = (e) => {
+    e.preventDefault();
     setIsVisible(!isVisible);
     if (isVisible === false) {
       setPasswordField("text");
@@ -26,7 +27,7 @@ const Register = () => {
   }
 
   return ( 
-    <section className="login-section">
+    <section className="input-section">
       <form onSubmit={handleLogin}>
 
         <Link to="/"><h3>SummonerLookup™</h3></Link>
