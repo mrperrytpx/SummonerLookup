@@ -1,0 +1,61 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+.login-section {
+  width: min(500px, 95%);
+  font-family: "Poppins", sans-serif;
+  height: 100vh;
+  width: 100vw;
+  color: white;
+  form {
+    padding: 0.7rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+  }
+  input,
+  label {
+    width: min(400px, 90vw);
+    height: 40px;
+    font-size: clamp(1.2rem, 1vw, 2rem);
+  }
+  label {
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+  }
+  button {
+    height: 40px;
+    width: 150px;
+    font-size: clamp(1.2rem, 1vw, 2rem);
+    margin: 1.2rem 0;
+  }
+  a {
+    text-decoration: none;
+    color: #222;
+  }
+  a > h3 {
+    width: min(500px, 100%);
+    text-align: center;
+    margin: 1rem 0;
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    font-weight: 600;
+    border-bottom: 1px solid white;
+    color: white;
+  }
+  .password-field {
+    position: relative;
+    background-color: red;
+  }
+  .show-password {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translateY(-50%);
+    width: 50px;
+    display: grid;
+    place-items: center;
+    background: none;
+    border: none;
+  }
+}

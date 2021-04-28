@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
 .nav {
   margin: 0 auto;
   display: -webkit-box;
@@ -70,6 +71,79 @@
   border-right: 1px solid black;
   width: min(500px, 95%);
   max-width: 600px;
+}
+
+.login-section {
+  width: min(500px, 95%);
+  font-family: "Poppins", sans-serif;
+  height: 100vh;
+  width: 100vw;
+  color: white;
+}
+.login-section form {
+  padding: 0.7rem 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+.login-section input,
+.login-section label {
+  width: min(400px, 90vw);
+  height: 40px;
+  font-size: clamp(1.2rem, 1vw, 2rem);
+}
+.login-section label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-weight: 500;
+}
+.login-section button {
+  height: 40px;
+  width: 150px;
+  font-size: clamp(1.2rem, 1vw, 2rem);
+  margin: 1.2rem 0;
+}
+.login-section a {
+  text-decoration: none;
+  color: #222;
+}
+.login-section a > h3 {
+  width: min(500px, 100%);
+  text-align: center;
+  margin: 1rem 0;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 600;
+  border-bottom: 1px solid white;
+  color: white;
+}
+.login-section .password-field {
+  position: relative;
+  background-color: red;
+}
+.login-section .show-password {
+  position: absolute;
+  top: 0;
+  right: 0;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  width: 50px;
+  display: grid;
+  place-items: center;
+  background: none;
+  border: none;
 }
 
 * {
