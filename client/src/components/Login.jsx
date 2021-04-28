@@ -11,7 +11,7 @@ const Login = () => {
   const handleLogin = (e) => {
     e.preventDefault();
   }
-  
+
   const handleVisibility = (e) => {
     setIsVisible(!isVisible);
     if (isVisible === false) {
@@ -30,7 +30,8 @@ const Login = () => {
           <Link to="/"><h3>SummonerLookup™</h3></Link>
 
           <label htmlFor="username">Username:</label>
-          <input 
+          <input
+          required
           id="username" 
           name="username" 
           type="text"
@@ -39,16 +40,17 @@ const Login = () => {
           />
           
           <label htmlFor="password">Password:</label>
-          <div class="password-field">
+          <div className="password-field">
             <input 
-            id="password" 
+            id="password"
+            required
             name="password" 
             type={passwordField}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             />
             <button 
-            class="show-password"
+            className="show-password"
             onClick={handleVisibility}
             >{isVisible ? <AiFillEye /> : <AiFillEyeInvisible />}</button>
           </div>

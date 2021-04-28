@@ -52,7 +52,7 @@ const Register = () => {
         />
         
         <label htmlFor="password">Password:</label>
-        <div class="password-field">
+        <div className="password-field">
           <input 
           required
           id="password" 
@@ -63,7 +63,7 @@ const Register = () => {
           />
           <button
           tabindex="-1"
-          class="show-password"
+          className="show-password"
           onClick={handleVisibility}
           >{isVisible ? <AiFillEye /> : <AiFillEyeInvisible />}</button>
         </div>
