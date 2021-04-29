@@ -17,7 +17,8 @@ const userSchema = new mongoose.Schema({
         min: 8
     },
     following: {
-        type: Array
+        type: Array,
+        default: []
     },
     date: {
         type: Date,

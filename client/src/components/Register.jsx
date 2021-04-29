@@ -10,8 +10,24 @@ const Register = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [passwordField, setPasswordField] = useState("password");
 
-  const handleLogin = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
+    const info = {
+      email,
+      username,
+      password,
+    }
+    try {
+      const register = await fetch(`/register/`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(info)
+      });
+      const returnData = await register.json();
+      console.log(returnData);
+    } catch(err) {
+      console.log(err);
+    }
   }
   
   const handleVisibility = (e) => {
@@ -28,7 +44,7 @@ const Register = () => {
 
   return ( 
     <section className="input-section">
-      <form onSubmit={handleLogin}>
+      <form onSubmit={handleRegister}>
 
         <Link to="/"><h3>SummonerLookup™</h3></Link>
 

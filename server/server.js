@@ -17,10 +17,19 @@ mongoose.connect(
 
 app.use(express.json());
 
-app.post("/search/:summName/:server", (req, res) => {
-  let name = req.params;
-  console.log(name);
-  // res.json(name);
+app.post("/register/", async (req, res) => {
+  console.log(req.body);
+  const user = new User({
+    email: req.body.email,
+    username: req.body.username,
+    password: req.body.password,
+  });
+  try {
+    const savedUser = await user.save();
+    res.send(savedUser);
+  } catch(err) {
+    console.log(err);
+  }
 });
 
 app.listen(PORT, () => {
