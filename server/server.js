@@ -1,16 +1,26 @@
 const express = require("express");
-const fetch = require('node-fetch');
+const mongoose = require("mongoose");
 require('dotenv').config();
 
 const PORT = process.env.PORT ?? 3001;
-const RIOT_API = process.env.RIOT_API;
+const MONGO_CONNECT = process.env.MONGO_CONNECT;
+
+const User = require("./model/User");
 
 const app = express();
 
-app.get("/search/:summName/:server", (req, res) => {
-    let name = req.params;
-    console.log(name);
-    // res.json(name);
+mongoose.connect(
+  MONGO_CONNECT,
+  { useNewUrlParser: true, useUnifiedTopology: true },
+  () => console.log("Connected to Cluster0")
+);
+
+app.use(express.json());
+
+app.post("/search/:summName/:server", (req, res) => {
+  let name = req.params;
+  console.log(name);
+  // res.json(name);
 });
 
 app.listen(PORT, () => {
