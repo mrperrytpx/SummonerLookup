@@ -1,0 +1,5 @@
+TASKS FOR FUTURE ME WHEN ITS FUNCTIONAL (VIP)
+
+- Prettier Login/Register forms
+- Refactor front-end validation
+- Send email validation

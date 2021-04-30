@@ -16,21 +16,25 @@ const Register = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
 
-    if (password !== repeatPassword) {
+    if (password.toString() !== repeatPassword.toString()) {
       setIsPasswordsMatching(false);
       return;
     }
+    if (password.toString().length < 8) {
+      setError("Password must be at least 8 characters long");
+      return;
+    }
     const usernameRegex = /^[a-zA-z0-9_-]+/;
-    if (usernameRegex.test(username) === false) {
+    if (usernameRegex.test(username.toString()) === false) {
       setError("Username must only contain letters (a-z), numbers(0-9) or a dash(-) or underscore(_)");
       return;
     }
-    if (username.length < 3) {
+    if (username.toString().length < 3) {
       setError("Username must be at least 3 characters long");
       return;
     }
-    
     setError("");
+
     const info = {
       email,
       username,

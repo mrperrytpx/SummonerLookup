@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
 // Validation import for the register form
 const registerValidation = require("../validations/registerValidation");
@@ -19,7 +20,7 @@ router.post("/", async (req, res) => {
     if (emailExists) return res.status(400).json("Email already exists");
 
     // Hashing the password
-    const passwordSalt = await bcrypt.genSalt(10);
+    const passwordSalt = await bcrypt.genSalt(12);
     const hashedPassword = await bcrypt.hash(req.body.password, passwordSalt);
 
     // Creating the user model
