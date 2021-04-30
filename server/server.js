@@ -5,6 +5,7 @@ require('dotenv').config();
 
 //  Import Routes
 const registerRoute = require("./routes/register");
+const loginRoute = require("./routes/login");
 
 // Environment variables
 const PORT = process.env.PORT ?? 3001;
@@ -24,6 +25,7 @@ app.use(express.json());
 
 //Route middlewares
 app.use("/register", registerRoute);
+app.use("/login", loginRoute);
 
 
 // Start server

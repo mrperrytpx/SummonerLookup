@@ -8,8 +8,25 @@ const Login = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [passwordField, setPasswordField] = useState("password");
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
+
+    const info = {
+      username,
+      password,
+    }
+
+    try {
+      const login = await fetch(`/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(info)
+      });
+      const returnData = await login.json();
+      console.log(returnData);
+    } catch(err) {
+      console.log(err);
+    }
   }
 
   const handleVisibility = (e) => {

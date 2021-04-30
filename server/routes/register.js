@@ -1,21 +1,39 @@
 const router = require("express").Router();
+const bcrypt = require("bcryptjs");
+
+// Validation import for the register form
+const registerValidation = require("../validations/registerValidation");
 
 // MongoDB User schema
 const User = require("../model/User");
 
 router.post("/", async (req, res) => {
-    console.log(req.body);
+    // Validating info
+    const { error } = registerValidation(req.body);
+    if (error) return res.status(400).json(error.details[0].message);
+
+    // Check if the user already exists in the DB
+    const emailExists = await User.findOne({
+        email: req.body.email
+    });
+    if (emailExists) return res.status(400).json("Email already exists");
+
+    // Hashing the password
+    const passwordSalt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(req.body.password, passwordSalt);
+
+    // Creating the user model
     const user = new User({
         email: req.body.email,
         username: req.body.username,
-        password: req.body.password,
+        password: hashedPassword,
     });
+
     try {
         const savedUser = await user.save();
         res.send(savedUser);
-        console.log("Saved");
     } catch (err) {
-        console.log(err);
+        res.status(400).send(err);
     }
 });
 
