@@ -9,9 +9,28 @@ const Register = () => {
   const [repeatPassword, setRepeatPassword] = useState("");
   const [isVisible, setIsVisible] = useState(false);
   const [passwordField, setPasswordField] = useState("password");
+  
+  const [isPasswordsMatching, setIsPasswordsMatching] = useState(true);
+  const [error, setError] = useState("");
 
   const handleRegister = async (e) => {
     e.preventDefault();
+
+    if (password !== repeatPassword) {
+      setIsPasswordsMatching(false);
+      return;
+    }
+    const usernameRegex = /^[a-zA-z0-9_-]+/;
+    if (usernameRegex.test(username) === false) {
+      setError("Username must only contain letters (a-z), numbers(0-9) or a dash(-) or underscore(_)");
+      return;
+    }
+    if (username.length < 3) {
+      setError("Username must be at least 3 characters long");
+      return;
+    }
+    
+    setError("");
     const info = {
       email,
       username,
@@ -100,6 +119,9 @@ const Register = () => {
           value={repeatPassword}
           onChange={(e) => setRepeatPassword(e.target.value)}
         />
+
+        {!isPasswordsMatching && <p>Passwords aren't matching</p>}
+        {error && <p>{error}</p>}
 
         <button className="login-button">Register</button>
 
