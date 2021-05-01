@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 const Me = () => {
     const [following, setFollowing] = useState([])
-    const [username, setUsername] = useState("");
     const [forbidden, setForbidden] = useState("");
 
     useEffect(() => {
@@ -28,7 +27,6 @@ const Me = () => {
             console.log(data);
             if (data?.following?.length) {
                 setFollowing(data.following)
-                setUsername(data.username);
             } else {
                 setFollowing(["You're not following anyone"]);
             }
@@ -55,8 +53,6 @@ const Me = () => {
             }}>Click me</button>
 
             {forbidden && <p>{forbidden}</p>}
-
-            {username && <p>{username}</p>}
 
             {following && following.map((summoner) => (
                 <div >{summoner}</div>
