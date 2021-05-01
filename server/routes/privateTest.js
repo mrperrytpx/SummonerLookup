@@ -1,5 +1,4 @@
 const router = require("express").Router();
-const jwt = require("jsonwebtoken");
 const User = require("../model/User");
 
 const verify = require("../verifytoken");
