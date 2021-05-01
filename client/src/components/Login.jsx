@@ -1,12 +1,14 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
+import { setAccessToken } from "../accessToken";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isVisible, setIsVisible] = useState(false);
   const [passwordField, setPasswordField] = useState("password");
+  const history = useHistory();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -22,8 +24,14 @@ const Login = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(info)
       });
+
       const returnData = await login.json();
-      console.log(returnData);
+
+      if (returnData) {
+        setAccessToken(returnData);
+      }
+
+      history.push("/");
     } catch(err) {
       console.log(err);
     }
