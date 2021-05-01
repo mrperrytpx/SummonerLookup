@@ -28,6 +28,7 @@ router.post("/", async (req, res) => {
         email: req.body.email,
         username: req.body.username,
         password: hashedPassword,
+        following: ["Siprak", "Tomislav"]
     });
 
     try {

@@ -2,15 +2,15 @@ const router = require("express").Router();
 const jwt = require("jsonwebtoken");
 const User = require("../model/User");
 
-router.get("/", async (req, res) => {
+const verify = require("../verifytoken");
 
-    const token = req.headers.authorization.split(" ")[1];
-    const { _id } = jwt.verify(token, process.env.JWT_ACCESS_SECRET)
+router.get("/", verify, async (req, res) => {
+    const { _id } = req.user;
 
     const user = await User.findOne({
         _id: _id
     })
-    
+
     res.json(user);
 })
 

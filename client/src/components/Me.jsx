@@ -1,8 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Me = () => {
     const [following, setFollowing] = useState([])
     const [username, setUsername] = useState("");
+    const [forbidden, setForbidden] = useState("");
+
+    useEffect(() => {
+        if(!localStorage.getItem("slup")) {
+            setForbidden("You're not supposed to be here >:(");
+        }
+    }, [])
 
     const handleSummoners = async (e, user) => {
         e.preventDefault();
@@ -18,20 +26,35 @@ const Me = () => {
             })
             const data = await following.json();
             console.log(data);
-            setFollowing(data.following)
-            setUsername(data.username);
-        }catch(err) {
+            if (data?.following?.length) {
+                setFollowing(data.following)
+                setUsername(data.username);
+            } else {
+                setFollowing(["You're not following anyone"]);
+            }
+            
+            
+        } catch(err) {
             console.log(err);
         }
     }
 
     return ( 
         <div>
+            <Link to="/login">
+                <p style={{
+                    fontSize: "1rem",
+                    margin: "1rem",
+                    color: "white"
+                }}>Go to Login</p>
+            </Link>
             <button onClick={handleSummoners} style={{
                 width: "200px",
                 height: "100px",
                 fontSize: "2rem"
             }}>Click me</button>
+
+            {forbidden && <p>{forbidden}</p>}
 
             {username && <p>{username}</p>}
 

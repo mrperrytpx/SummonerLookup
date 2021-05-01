@@ -16,6 +16,8 @@ const MONGO_CONNECT = process.env.MONGO_CONNECT;
 
 const app = express();
 
+const verifyToken = require("./verifytoken");
+
 // Connect with Mongo Atlas
 mongoose.connect(
   MONGO_CONNECT,
