@@ -1,11 +1,12 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./Home";
 import Login from "./Login";
+import Me from "./Me";
 import Register from "./Register";
 
 const App = () => {
-  const [loading, setLoading] = useState(true)
+  /* const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     fetch("/refresh_token", { method: "POST", credentials: "include" })
@@ -18,7 +19,7 @@ const App = () => {
 
   if (loading) {
     return <div>Loading...</div>
-  }
+  } */
 
   return (
     <Router>
@@ -28,6 +29,7 @@ const App = () => {
             <Route exact path="/"><Home /></Route>
             <Route path="/login"><Login /></Route>
             <Route path="/register"><Register /></Route>
+            <Route path="/me"><Me /></Route>
           </Switch>
         </div>
       </div>

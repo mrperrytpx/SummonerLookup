@@ -27,11 +27,9 @@ router.post("/", async (req, res) => {
     if (!validPass) return res.status(400).json("Invalid Password");
 
     // Create a JWT
-    const accessToken = jwt.sign({_id: user._id}, process.env.JWT_ACCESS_SECRET, {
-        expiresIn: "15m"
-    });
+    const accessToken = jwt.sign({_id: user._id}, process.env.JWT_ACCESS_SECRET);
 
-    res.cookie("slup", accessToken).json(accessToken);
+    res.json(accessToken);
 })
 
 module.exports = router;

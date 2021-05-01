@@ -1,14 +1,13 @@
 import { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
-import { setAccessToken } from "../accessToken";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isVisible, setIsVisible] = useState(false);
   const [passwordField, setPasswordField] = useState("password");
-  const history = useHistory();
+  // const history = useHistory();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -28,10 +27,11 @@ const Login = () => {
       const returnData = await login.json();
 
       if (returnData) {
-        setAccessToken(returnData);
+        localStorage.setItem("slup", returnData);
+        console.log(returnData);
       }
 
-      history.push("/");
+      // history.push("/");
     } catch(err) {
       console.log(err);
     }
@@ -87,6 +87,9 @@ const Login = () => {
 
         <Link to="/register">
           <p className="register-link">Don't have an account?</p>
+        </Link>
+        <Link to="/me">
+          <p className="register-link">Check data</p>
         </Link>
       </form>
     </section>
