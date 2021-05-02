@@ -20,7 +20,7 @@ const userSchema = new mongoose.Schema({
         type: Array,
         default: []
     },
-    token: {
+    refreshToken: {
         type: String
     },
     confirmed: {

@@ -5,7 +5,7 @@ const createAccessToken = (userId) => {
         { _id: userId },
         process.env.JWT_ACCESS_SECRET,
         { expiresIn: "15m" }
-    )
+    );
 }
 
 const createRefreshToken = (userId) => {
@@ -13,7 +13,7 @@ const createRefreshToken = (userId) => {
         { _id: userId },
         process.env.JWT_REFRESH_SECRET,
         { expiresIn: "7d" }
-    )
+    );
 }
 
 const sendAccessToken = (res, token) => {

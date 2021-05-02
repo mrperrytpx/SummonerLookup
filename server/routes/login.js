@@ -28,7 +28,7 @@ router.post("/", async (req, res) => {
         // if (!user.confirmed) return res.status(400).json("Please confirm your email to login");
 
         // Check if the password is correct
-        const valid = await compare(req.body.password, user.password)
+        const valid = await compare(req.body.password, user.password);
         if (!valid) throw new Error("Invalid Password");
 
         // Create a refresh and an access token
@@ -37,7 +37,7 @@ router.post("/", async (req, res) => {
 
         await User.findOneAndUpdate({ _id: user._id }, { refreshToken: refreshToken });
 
-        sendRefreshToken(res, refreshToken);
+        sendRefreshToken(res, refreshToken); // WHY ARE YOU AN OBJECT
         sendAccessToken(res, accessToken);
 
     } catch (err) {
