@@ -20,6 +20,9 @@ const userSchema = new mongoose.Schema({
         type: Array,
         default: []
     },
+    token: {
+        type: String
+    },
     confirmed: {
         type: Boolean,
         default: false

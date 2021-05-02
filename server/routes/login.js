@@ -1,35 +1,51 @@
 const router = require("express").Router();
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
+const { compare } = require("bcryptjs");
+const { createAccessToken,
+    createRefreshToken,
+    sendAccessToken,
+    sendRefreshToken
+} = require("../tokens/tokens");
 
 // Validation import for the register form
-const loginValidation = require("../validations/loginValidation");
+const loginValidation = require("../user_validations/loginValidation");
 
 // MongoDB User schema
 const User = require("../model/User");
 
 router.post("/", async (req, res) => {
     // Validating info
-    const { error } = loginValidation(req.body);
-    if (error) return res.status(400).json(error.details[0].message);
+    try {
+        const { error } = loginValidation(req.body);
+        if (error) throw new Error(`${error.details[0].message}`);
 
-    // Fetch the user if it exists in the DB
-    const user = await User.findOne({
-        username: req.body.username
-    });
-    if (!user) return res.status(400).json("Invalid Username"); 
-    
-    // CONFIRM BY EMAIL - TBD
-    // if (!user.confirmed) return res.status(400).json("Please confirm your email to login");
+        // Fetch the user if it exists in the DB
+        const user = await User.findOne({
+            username: req.body.username
+        });
+        if (!user) throw new Error("Invalid Username");
 
-    // Check if the password is correct
-    const validPass = await bcrypt.compare(req.body.password, user.password)
-    if (!validPass) return res.status(400).json("Invalid Password");
+        // CONFIRM BY EMAIL - TBD
+        // if (!user.confirmed) return res.status(400).json("Please confirm your email to login");
 
-    // Create a JWT
-    const accessToken = jwt.sign({_id: user._id}, process.env.JWT_ACCESS_SECRET);
+        // Check if the password is correct
+        const valid = await compare(req.body.password, user.password)
+        if (!valid) throw new Error("Invalid Password");
 
-    res.json(accessToken);
+        // Create a refresh and an access token
+        const accessToken = createAccessToken(user._id);
+        const refreshToken = createRefreshToken(user._id);
+
+        await User.findOneAndUpdate({ _id: user._id }, { refreshToken: refreshToken });
+
+        sendRefreshToken(res, refreshToken);
+        sendAccessToken(res, accessToken);
+
+    } catch (err) {
+        res.send({
+            error: `${err.message}`
+        });
+    }
+
 })
 
 module.exports = router;
