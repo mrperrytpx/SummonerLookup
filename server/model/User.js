@@ -16,10 +16,22 @@ const userSchema = new mongoose.Schema({
         required: true,
         min: 8
     },
-    following: {
-        type: Array,
-        default: []
-    },
+    following: [
+        {
+            server: {
+                type: String,
+                required: true,
+            },
+            summonerName: {
+                type: String,
+                required: true
+            },
+            summonerID: {
+                type: Number,
+                required: true
+            }
+        },
+    ],
     refreshToken: {
         type: String
     },

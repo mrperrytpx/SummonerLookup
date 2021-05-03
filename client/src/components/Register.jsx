@@ -1,6 +1,7 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useHistory } from "react-router-dom";
 import { AiFillEyeInvisible, AiFillEye }from "react-icons/ai";
+import { getAccessToken } from "../accessToken";
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -9,9 +10,15 @@ const Register = () => {
   const [repeatPassword, setRepeatPassword] = useState("");
   const [isVisible, setIsVisible] = useState(false);
   const [passwordField, setPasswordField] = useState("password");
+  const history = useHistory();
   
   const [isPasswordsMatching, setIsPasswordsMatching] = useState(true);
   const [error, setError] = useState("");
+
+  useEffect(() => {
+    const user = getAccessToken();
+    if (user) history.push("/");
+  }, [history])
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -24,12 +31,12 @@ const Register = () => {
       setError("Password must be at least 8 characters long");
       return;
     }
-    const usernameRegex = /^[a-zA-z0-9_-]+/;
-    if (usernameRegex.test(username.toString()) === false) {
+    const usernameRegex = /^[a-zA-z0-9_-]+/g;
+    if (!usernameRegex.test(username)) {
       setError("Username must only contain letters (a-z), numbers(0-9) or a dash(-) or underscore(_)");
       return;
     }
-    if (username.toString().length < 3) {
+    if (username.length < 3) {
       setError("Username must be at least 3 characters long");
       return;
     }

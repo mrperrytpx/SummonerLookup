@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./Home";
 import Login from "./Login";
 import Register from "./Register";
-// import { setAccessToken } from "../"
+import { setAccessToken } from "../accessToken"
 
 const App = () => {
   const [loading, setLoading] = useState(true)
@@ -12,7 +12,8 @@ const App = () => {
     fetch("/refresh_token", { method: "POST", credentials: "include" })
     .then(async x => {
       const { accessToken } = await x.json();
-      console.log(accessToken);
+      //console.log(accessToken);
+      setAccessToken(accessToken);
       setLoading(false);
     });
   }, [])

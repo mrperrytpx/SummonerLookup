@@ -24,17 +24,18 @@ router.post('/', async (req, res) => {
       _id: payload._id
     });
 
-    console.log(user);
-    console.log(token);
-
+    // If there isn't a user
     if(!user) return res.send({ accesstoken: '' });
+
+    // If the user doesn't have the same refresh token as the recieved token
     if (user.refreshToken !== token) return res.send({ accesstoken: '' });
 
     // Send tokens to the user
     const accessToken = createAccessToken(user._id);
     const refreshToken = createRefreshToken(user._id);
 
-    await User.findOneAndUpdate({ _id: user._id }, { refreshToken: refreshToken });
+    // Update users refresh token in the DB
+    await User.updateOne({ _id: user._id }, {"$set": { refreshToken: refreshToken }});
 
     sendRefreshToken(res, refreshToken);
     return res.send({ accessToken });
