@@ -8,6 +8,7 @@ const cookieParser = require("cookie-parser");
 //  Import Routes
 const registerRoute = require("./routes/register");
 const loginRoute = require("./routes/login");
+const refreshTokenRoute = require("./routes/refresh_tokens");
 
 // Environment variables
 const PORT = process.env.PORT ?? 3001;
@@ -30,6 +31,7 @@ app.use(cors({ origin: "http://localhost:3000", credentials: true }))
 //Route middlewares
 app.use("/register", registerRoute);
 app.use("/login", loginRoute);
+app.use("/refresh_token", refreshTokenRoute)
 
 // Start server
 app.listen(PORT, () => {
