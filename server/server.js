@@ -12,6 +12,7 @@ const refreshTokenRoute = require("./routes/refresh_tokens");
 const myProfileRoute = require("./routes/myprofile");
 const logoutRoute = require("./routes/logout");
 
+// Authorization middleware
 const authorize = require("./tokens/authorize");
 
 // Environment variables
@@ -36,8 +37,8 @@ app.use(cors({ origin: "http://localhost:3000", credentials: true }))
 app.use("/register", registerRoute);
 app.use("/login", loginRoute);
 app.use("/refresh_token", refreshTokenRoute)
-app.use("/me", authorize, myProfileRoute);
 app.use("/logout", authorize, logoutRoute);
+app.use("/me", authorize, myProfileRoute);
 
 // Start server
 app.listen(PORT, () => {

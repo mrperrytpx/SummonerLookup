@@ -12,6 +12,11 @@ const Me = () => {
     useEffect(() => {
         (async function verifyUser() {
             const token = getAccessToken();
+            if (!token) {
+                setAllowed("Access Denied");
+                history.push("/login");
+                return;
+            }
             const { following } = await(await fetch("/me", {
                 method: "GET",
                 headers: { 
@@ -23,10 +28,6 @@ const Me = () => {
             if (following) {
                 setSummoners(following);
                 setAllowed("");
-            } else {
-                setSummoners(null);
-                setAllowed("Access Denied");
-                history.push("/login");
             }
         })();
     }, [])
@@ -35,10 +36,10 @@ const Me = () => {
         <div>
             <Link to="/"><p>GO BACK HOME</p></Link>
             {allowed && <p>{allowed}</p>}
-            {summoners && summoners.map(summoner => (<Summoner key={summoner._id} summoner={summoner}/>))}
-        </div>
-        
-        
+            {summoners && summoners.map(summoner => (
+                <Summoner key={summoner._id} summoner={summoner}/>
+                ))}
+        </div> 
      );
 }
  
