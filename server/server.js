@@ -9,6 +9,10 @@ const cookieParser = require("cookie-parser");
 const registerRoute = require("./routes/register");
 const loginRoute = require("./routes/login");
 const refreshTokenRoute = require("./routes/refresh_tokens");
+const verifyTokenRoute = require("./routes/verify_token");
+const logoutRoute = require("./routes/logout");
+
+const authorize = require("./tokens/authorize");
 
 // Environment variables
 const PORT = process.env.PORT ?? 3001;
@@ -32,6 +36,8 @@ app.use(cors({ origin: "http://localhost:3000", credentials: true }))
 app.use("/register", registerRoute);
 app.use("/login", loginRoute);
 app.use("/refresh_token", refreshTokenRoute)
+app.use("/verify_token", authorize, verifyTokenRoute);
+app.use("/logout", authorize, logoutRoute);
 
 // Start server
 app.listen(PORT, () => {

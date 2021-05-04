@@ -35,7 +35,7 @@ router.post("/", async (req, res) => {
         const accessToken = createAccessToken(user._id);
         const refreshToken = createRefreshToken(user._id);
 
-        await User.findOneAndUpdate({ _id: user._id }, { refreshToken: refreshToken });
+        await User.updateOne({ _id: user._id }, {"$set" : { refreshToken: refreshToken }});
 
         sendRefreshToken(res, refreshToken); // WHY ARE YOU AN OBJECT
         sendAccessToken(res, accessToken);
