@@ -7,21 +7,20 @@ const { createAccessToken,
 const User = require("../model/User");
 
 router.post('/', async (req, res) => {
-
     const token = req.cookies.slup;
     // If we don't have a token in our request
     if (!token) return res.send({ accesstoken: '' });
     // Verify the refresh token
     let payload = null;
     try {
-      payload = verify(token, process.env.JWT_REFRESH_SECRET);
+    	payload = verify(token, process.env.JWT_REFRESH_SECRET);
     } catch (err) {
-      return res.send({ accesstoken: '' });
+    	return res.send({ accesstoken: '' });
     }
 
     // Find a user with the refresh token ID
     const user = await User.findOne({
-      _id: payload._id
+    	_id: payload._id
     });
 
     // If there isn't a user
@@ -39,6 +38,6 @@ router.post('/', async (req, res) => {
 
     sendRefreshToken(res, refreshToken);
     return res.send({ accessToken });
-  });
+});
 
 module.exports = router;
