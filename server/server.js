@@ -9,7 +9,7 @@ const cookieParser = require("cookie-parser");
 const registerRoute = require("./routes/register");
 const loginRoute = require("./routes/login");
 const refreshTokenRoute = require("./routes/refresh_tokens");
-const verifyTokenRoute = require("./routes/verify_token");
+const myProfileRoute = require("./routes/myprofile");
 const logoutRoute = require("./routes/logout");
 
 const authorize = require("./tokens/authorize");
@@ -36,7 +36,7 @@ app.use(cors({ origin: "http://localhost:3000", credentials: true }))
 app.use("/register", registerRoute);
 app.use("/login", loginRoute);
 app.use("/refresh_token", refreshTokenRoute)
-app.use("/verify_token", authorize, verifyTokenRoute);
+app.use("/me", authorize, myProfileRoute);
 app.use("/logout", authorize, logoutRoute);
 
 // Start server

@@ -90,9 +90,6 @@ const Login = () => {
         <Link to="/register">
           <p className="register-link">Don't have an account?</p>
         </Link>
-        <Link to="/me">
-          <p className="register-link">Check data</p>
-        </Link>
       </form>
     </section>
     );

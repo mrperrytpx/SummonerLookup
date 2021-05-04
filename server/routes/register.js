@@ -28,6 +28,23 @@ router.post("/", async (req, res) => {
             email: req.body.email,
             username: req.body.username,
             password: hashedPassword,
+            following: [
+                {
+                    server: "KR",
+                    summonerName: "Dick", 
+                    summonerID: 2931200921
+                },
+                {
+                    server: "TR",
+                    summonerName: "Perky", 
+                    summonerID: 23890123021
+                },
+                {
+                    server: "EUW",
+                    summonerName: "HELLO YO", 
+                    summonerID: 87947214821
+                },
+            ]
         });
 
         // Insert the user into the DB
