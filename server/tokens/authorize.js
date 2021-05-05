@@ -6,6 +6,8 @@ module.exports = function (req, res, next) {
         if (!token) throw new Error("Access Denied");
 
         const verified = verify(token, process.env.JWT_ACCESS_SECRET);
+        if (!verified) throw new Error("Access Denied");
+
         req.user = verified;
         next();
     } catch(err) {

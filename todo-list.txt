@@ -4,3 +4,4 @@ TASKS FOR FUTURE ME WHEN ITS FUNCTIONAL (VIP)
 - Refactor front-end validation
 - Send email validation
 - Refactor isLoggedIn check where called
+- Make pages for Unauthorized and Already logged in cases

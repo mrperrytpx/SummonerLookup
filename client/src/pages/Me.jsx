@@ -33,6 +33,7 @@ const Me = () => {
 		<div>
 			<Link to="/"><p>GO BACK HOME</p></Link>
 			{allowed && <p>{allowed}</p>}
+			<Link to="/me/delete"><p>Want to delete your account?</p></Link>
 			{summoners && summoners.map(summoner => (
 				<Summoner key={summoner._id} summoner={summoner}/>
 				))}

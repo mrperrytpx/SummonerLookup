@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Me from "./pages/Me";
+import DeleteUser from "./pages/DeleteUser";
 
 const App = () => {
   const [loading, setLoading] = useState(true)
@@ -29,9 +30,10 @@ const App = () => {
         <div className="content">
           <Switch>
             <Route exact path="/"><Home /></Route>
-            <Route path="/login"><Login /></Route>
-            <Route path="/register"><Register /></Route>
+            <Route exact path="/login"><Login /></Route>
+            <Route exact path="/register"><Register /></Route>
             <Route exact path="/me"><Me /></Route>
+            <Route exact path="/me/delete"><DeleteUser /></Route>
           </Switch>
         </div>
       </div>
