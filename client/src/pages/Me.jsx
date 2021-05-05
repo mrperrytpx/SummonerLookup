@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { getAccessToken } from "../accessToken";
-import Summoner from "./Summoner";
+import Summoner from "../components/Summoner";
 
 
 const Me = () => {
@@ -12,11 +12,6 @@ const Me = () => {
 	useEffect(() => {
 		;(async function verifyUser() {
 			const token = getAccessToken();
-			if (!token) {
-				setAllowed("Access Denied");
-				history.push("/login");
-				return;
-			}
 			const { following } = await(await fetch("/me", {
 				method: "GET",
 				headers: { 
@@ -28,9 +23,11 @@ const Me = () => {
 			if (following) {
 				setSummoners(following);
 				setAllowed("");
+			} else {
+				setAllowed("Access Denied");
 			}
 		})();
-	}, [])
+	}, [history])
 
 	return ( 
 		<div>

@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { setAccessToken } from "../accessToken"
-import Home from "./Home";
-import Login from "./Login";
-import Register from "./Register";
-import Me from "./Me";
+import { setAccessToken } from "./accessToken"
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Me from "./pages/Me";
 
 const App = () => {
   const [loading, setLoading] = useState(true)

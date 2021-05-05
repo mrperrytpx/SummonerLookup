@@ -8,13 +8,30 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [isVisible, setIsVisible] = useState(false);
   const [passwordField, setPasswordField] = useState("password");
+
   const history = useHistory();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
-    const user = getAccessToken();
-    console.log(user);
-    if (user) history.push("/");
-  }, [history])
+		;(async function verifyUser() {
+			const token = getAccessToken();
+      console.log(token);
+			const { message } = await(await fetch("/is_logged_in", {
+				method: "POST",
+				headers: { 
+					"Content-Type": "application/json",
+					credentials: "include",
+					authorization: `Bearer ${token}`
+				}
+			})).json()
+      console.log(message);
+			if (message) {
+				setIsLoggedIn(true);
+			} else {
+        setIsLoggedIn(false);
+      }
+		})();
+	}, [history])
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -38,6 +55,8 @@ const Login = () => {
       console.log(err);
     }
   }
+
+  if (isLoggedIn) return (<div>Already logged in</div> )
 
   const handleVisibility = (e) => {
     e.preventDefault();

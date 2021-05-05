@@ -1,0 +1,12 @@
+.logout-button {
+    color: white;
+    border: none;
+    border-radius: 3px;
+    padding: 0.5rem clamp(0.5rem, 0.8rem, 1rem);
+    font-size: clamp(1.2rem, 2vw, 2rem);
+    font-weight: 600;
+    font-family: "Poppins", sans-serif;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    background: none;
+}

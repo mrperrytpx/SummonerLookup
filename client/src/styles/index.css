@@ -154,6 +154,19 @@
   border: 2px solid rgba(0, 90, 194, 0.39);
 }
 
+.logout-button {
+  color: white;
+  border: none;
+  border-radius: 3px;
+  padding: 0.5rem clamp(0.5rem, 0.8rem, 1rem);
+  font-size: clamp(1.2rem, 2vw, 2rem);
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  background: none;
+}
+
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;

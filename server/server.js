@@ -11,6 +11,7 @@ const loginRoute = require("./routes/login");
 const refreshTokenRoute = require("./routes/refresh_tokens");
 const myProfileRoute = require("./routes/myprofile");
 const logoutRoute = require("./routes/logout");
+const isLoggedInRoute = require("./routes/isLoggedIn");
 
 // Authorization middleware
 const authorize = require("./tokens/authorize");
@@ -34,6 +35,7 @@ app.use(express.json());
 app.use(cors({ origin: "http://localhost:3000", credentials: true }))
 
 //Route middlewares
+app.use("/is_logged_in", isLoggedInRoute);
 app.use("/register", registerRoute);
 app.use("/login", loginRoute);
 app.use("/refresh_token", refreshTokenRoute)
