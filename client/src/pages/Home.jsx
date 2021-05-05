@@ -1,6 +1,6 @@
 import Navbar from "../components/Navbar";
 import SearchBar from "../components/SearchBar";
-import { getAccessToken, setAccessToken } from "../accessToken";
+import { getAccessToken } from "../accessToken";
 import { useEffect, useState } from "react";
 
 const Home = () => {
