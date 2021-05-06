@@ -9,6 +9,8 @@ const Login = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [passwordField, setPasswordField] = useState("password");
 
+  const [error, setError] = useState("");
+
   const history = useHistory();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -47,10 +49,15 @@ const Login = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(info)
       });
-
       const { accessToken } = await login.json();
-      setAccessToken(accessToken);
-      history.push("/");
+      if (accessToken) {
+        setError("");
+        setAccessToken(accessToken);
+        history.push("/");
+      } else {
+        setError("Invalid username or password");
+      }
+      
     } catch(err) {
       console.log(err);
     }
@@ -103,6 +110,8 @@ const Login = () => {
             onClick={handleVisibility}
           >{isVisible ? <AiFillEye /> : <AiFillEyeInvisible />}</button>
         </div>
+
+        {error && <p>{error}</p>}
 
         <button className="login-button">Log In</button>
 

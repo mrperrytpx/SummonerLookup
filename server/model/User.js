@@ -16,6 +16,7 @@ const userSchema = new mongoose.Schema({
         required: true,
         min: 8
     },
+    // Who the user follows
     following: [
         {
             server: {
@@ -32,13 +33,16 @@ const userSchema = new mongoose.Schema({
             }
         },
     ],
+    // refresh token that's stored in the cookie
     refreshToken: {
         type: String
     },
+    // email confirmed or not, TBI
     confirmed: {
         type: Boolean,
         default: false
     },
+    // when the user registered
     date: {
         type: Date,
         default: Date.now

@@ -15,7 +15,9 @@ const User = require("../model/User");
 router.post("/", async (req, res) => {
     // Validating info
     try {
+        // Destructure the error from the loginValidationf unction
         const { error } = loginValidation(req.body);
+        // If there's an error, throw the error message
         if (error) throw new Error(`${error.details[0].message}`);
 
         // Fetch the user if it exists in the DB
@@ -35,11 +37,12 @@ router.post("/", async (req, res) => {
         const accessToken = createAccessToken(user._id);
         const refreshToken = createRefreshToken(user._id);
 
+        // Update the user's document with a refresh token
         await User.updateOne({ _id: user._id }, {"$set" : { refreshToken: refreshToken }});
 
-        sendRefreshToken(res, refreshToken); // WHY ARE YOU AN OBJECT
+        // Send the refresh token as a cookie, and access token as a response
+        sendRefreshToken(res, refreshToken);
         sendAccessToken(res, accessToken);
-
     } catch (err) {
         res.send({
             error: `${err.message}`

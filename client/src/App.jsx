@@ -10,6 +10,7 @@ import DeleteUser from "./pages/DeleteUser";
 const App = () => {
   const [loading, setLoading] = useState(true)
 
+  // Give the user a new access token if there's a refresh token stored in cookies
   useEffect(() => {
     fetch("/refresh_token", { method: "POST", credentials: "include" })
     .then(async x => {

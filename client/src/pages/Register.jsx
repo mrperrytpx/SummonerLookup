@@ -15,33 +15,54 @@ const Register = () => {
   const [isPasswordsMatching, setIsPasswordsMatching] = useState(true);
   const [error, setError] = useState("");
 
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  // Verify if the user is allowed to go to the path by checking if there's a valid access token stored
   useEffect(() => {
-    const user = getAccessToken();
-    if (user) history.push("/");
-  }, [history])
+		;(async function verifyUser() {
+			const token = getAccessToken();
+			const { message } = await(await fetch("/is_logged_in", {
+				method: "POST",
+				headers: { 
+					"Content-Type": "application/json",
+					credentials: "include",
+					authorization: `Bearer ${token}`
+				}
+			})).json()
+			if (message) {
+				setIsLoggedIn(true);
+			} else {
+        setIsLoggedIn(false);
+      }
+		})();
+	}, [history])
 
   const handleRegister = async (e) => {
     e.preventDefault();
-
+    // Check if the password match in both fields
     if (password.toString() !== repeatPassword.toString()) {
       setIsPasswordsMatching(false);
       return;
     }
+    //Check if the password is at least 8 characters long
     if (password.toString().length < 8) {
       setError("Password must be at least 8 characters long");
       return;
     }
+    // Check if the username field passed the regex test ( Doesn't work properly for some reason )
     const usernameRegex = /^[a-zA-z0-9_-]+/g;
     if (!usernameRegex.test(username)) {
       setError("Username must only contain letters (a-z), numbers(0-9) or a dash(-) or underscore(_)");
       return;
     }
+    // Check if the username is at least 3 characters long
     if (username.length < 3) {
       setError("Username must be at least 3 characters long");
       return;
     }
     setError("");
 
+    // If all the info is validated, send the info to the /register path to create a user
     const info = {
       email,
       username,
@@ -54,12 +75,14 @@ const Register = () => {
         body: JSON.stringify(info)
       });
       const returnData = await register.json();
+      // SETUP ROUTING TO /LOGIN EVENTUALLY
       console.log(returnData);
     } catch(err) {
       console.log(err);
     }
   }
   
+  // Toggle type for password field to "hide/show"
   const handleVisibility = (e) => {
     e.preventDefault();
     setIsVisible(!isVisible);
@@ -71,6 +94,9 @@ const Register = () => {
       setIsVisible(false);
     }
   }
+
+  // If user is logged in, the register form isn't displayed
+  if (isLoggedIn) return (<div>Already logged in</div> )
 
   return ( 
     <section className="input-section">

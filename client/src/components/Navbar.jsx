@@ -3,6 +3,7 @@ import LogoutButton from "./LogoutButton";
 
 const Navbar = ({isLoggedIn}) => {
 
+  // display different links depending if the user is logged in or not
   return ( 
     <nav className="nav">
       <div className="logo">SummonerLookup™</div>

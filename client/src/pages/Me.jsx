@@ -6,9 +6,10 @@ import Summoner from "../components/Summoner";
 
 const Me = () => {
   const history = useHistory();
-  const [summoners, setSummoners] = useState(null);
+  const [summoners, setSummoners] = useState([]);
   const [allowed, setAllowed] = useState("");
 
+  // Check if the access token is valid, let the user to the page depending if it is not not
   useEffect(() => {
     ;(async function verifyUser() {
       const token = getAccessToken();
@@ -24,11 +25,13 @@ const Me = () => {
           setSummoners(following);
           setAllowed("");
         } else {
+          setSummoners([]);
           setAllowed("Access Denied");
         }
     })();
   }, [history])
 
+  // render the list of followers, not following or access denied
   return ( 
     <div>
       <Link to="/"><p>GO BACK HOME</p></Link>
@@ -37,6 +40,8 @@ const Me = () => {
       {summoners && summoners.map(summoner => (
         <Summoner key={summoner._id} summoner={summoner}/>
         ))}
+      {summoners.length === 0 && <p>You're not following anyone</p>}
+      
     </div> 
   );
 }

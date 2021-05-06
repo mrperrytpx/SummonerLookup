@@ -2,6 +2,8 @@ TASKS FOR FUTURE ME WHEN ITS FUNCTIONAL (VIP)
 
 - Prettier Login/Register forms
 - Refactor front-end validation
+- Register Validation check on unfocus instead of on submit
+- Fix /me page to not display both not following and not allowed
 - Send email validation
 - Refactor isLoggedIn check where called
 - Make pages for Unauthorized and Already logged in cases

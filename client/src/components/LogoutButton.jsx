@@ -6,8 +6,10 @@ const LogoutButton = () => {
 
   const handleLogout = async (e) =>{
     e.preventDefault();
+    // get the access token
     const token = getAccessToken();
-    console.log(token);
+
+    // Fetch to the /logout path, destructure the message from the response
     const { message } = await(await fetch("/logout", {
       method: "POST", 
       headers: { 
@@ -16,6 +18,7 @@ const LogoutButton = () => {
         authorization: `Bearer ${token}`
       }
     })).json();
+    // If the response contains a message, clear the access token and refresh the page
     if (message) {
       setAccessToken("");
       history.go(0);

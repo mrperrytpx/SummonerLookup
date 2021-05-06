@@ -20,6 +20,7 @@ const authorize = require("./tokens/authorize");
 // Environment variables
 const PORT = process.env.PORT ?? 3001;
 
+// Initialize express
 const app = express();
 
 // Connect with Mongo Atlas
@@ -35,13 +36,13 @@ app.use(express.json());
 app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 
 //Route middlewares
-app.use("/is_logged_in", isLoggedInRoute);
-app.use("/register", registerRoute);
-app.use("/login", loginRoute);
-app.use("/refresh_token", refreshTokenRoute);
-app.use("/logout", authorize, logoutRoute);
-app.use("/me", authorize, myProfileRoute);
-app.use("/delete", authorize, deleteUserRoute);
+app.use("/is_logged_in", isLoggedInRoute); // Checks if the user is logged in
+app.use("/register", registerRoute); // Send info to make a new user in database
+app.use("/login", loginRoute); // Check if user exists in the database
+app.use("/refresh_token", refreshTokenRoute); // Refresh a token
+app.use("/logout", authorize, logoutRoute); // Delete a refresh token and clear the access token, has to be authorized with a proper access token 
+app.use("/me", authorize, myProfileRoute); // Get user info, has to be authorized with a proper access token 
+app.use("/delete", authorize, deleteUserRoute); // Delete a user from the database, has to be authorized with a proper access token 
 
 // Start server
 app.listen(PORT, () => {

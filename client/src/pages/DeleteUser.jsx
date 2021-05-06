@@ -1,4 +1,4 @@
-import { getAccessToken, setAccessToken } from "../accessToken";
+import { getAccessToken } from "../accessToken";
 import { useState, useEffect } from "react";
 
 const DeleteUser = () => {
