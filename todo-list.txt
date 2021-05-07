@@ -3,7 +3,10 @@ TASKS FOR FUTURE ME WHEN ITS FUNCTIONAL (VIP)
 - Prettier Login/Register forms
 - Refactor front-end validation
 - Register Validation check on unfocus instead of on submit
-- Fix /me page to not display both not following and not allowed
+- Fix /me page to not display both not following and not allowed - make Loading component that's mounted until server responds?
 - Send email validation
-- Refactor isLoggedIn check where called
+- Refactor isLoggedIn check where called into a custom hook
 - Make pages for Unauthorized and Already logged in cases
+- store refresh token versions instead of actual refresh tokens in DB
+- make server responses actual http statusc odes instead of random shit 
+- convert global variables to context lol
