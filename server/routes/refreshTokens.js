@@ -16,6 +16,7 @@ router.post('/', async (req, res) => {
     let payload = null;
     try {
     	payload = verify(token, process.env.JWT_REFRESH_SECRET);
+        if (!payload) throw new Error("Invalid Refresh token");
     } catch (err) {
         // If the refresh token isn't verified, set the access token to nothing
     	return res.send({ accesstoken: '' });
