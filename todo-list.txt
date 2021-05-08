@@ -10,3 +10,4 @@ TASKS FOR FUTURE ME WHEN ITS FUNCTIONAL (VIP)
 - store refresh token versions instead of actual refresh tokens in DB
 - make server responses actual http status codes instead of random shit 
 - convert global variables to contextAPI
+- make front end requests a try/cathc block lol
