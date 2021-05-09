@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Me from "./pages/Me";
 import DeleteUser from "./pages/DeleteUser";
+import Players from "./pages/Players";
 
 const App = () => {
   const [loading, setLoading] = useState(true)
@@ -35,6 +36,7 @@ const App = () => {
             <Route exact path="/register"><Register /></Route>
             <Route exact path="/me"><Me /></Route>
             <Route exact path="/me/delete"><DeleteUser /></Route>
+            <Route exact path="/search/:region/:server/:summonerName"><Players /></Route>
           </Switch>
         </div>
       </div>

@@ -13,6 +13,7 @@ const myProfileRoute = require("./routes/myProfile");
 const logoutRoute = require("./routes/logout");
 const isLoggedInRoute = require("./routes/isLoggedIn");
 const deleteUserRoute = require("./routes/deleteUser")
+const searchUserRoute = require("./routes/searchPlayers");
 
 // Authorization middleware
 const authorize = require("./tokens/authorize");
@@ -43,6 +44,7 @@ app.use("/refresh_token", refreshTokenRoute); // Refresh a token
 app.use("/logout", authorize, logoutRoute); // Delete a refresh token and clear the access token, has to be authorized with a proper access token 
 app.use("/me", authorize, myProfileRoute); // Get user info, has to be authorized with a proper access token 
 app.use("/delete", authorize, deleteUserRoute); // Delete a user from the database, has to be authorized with a proper access token 
+app.use("/search", searchUserRoute); // Search for a league of legends summoner
 
 // Start server
 app.listen(PORT, () => {

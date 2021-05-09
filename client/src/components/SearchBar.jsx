@@ -1,13 +1,11 @@
 import { useState } from "react";
+import { Link }  from "react-router-dom";
 import { FaAngleDoubleRight } from "react-icons/fa";
 
 const SearchBar = () => {
   const [server, setServer] = useState("eun1");
   const [summonerName, setSummonerName] = useState("");
-
-  const handleSearch = async (e) => {
-    e.preventDefault();
-  }
+  const [region, setRegion]= useState("europe");
 
   const style = {
     backgroundColor: "white",
@@ -18,18 +16,19 @@ const SearchBar = () => {
 
   return (
     <div className="search-bar">
-      <form onSubmit={handleSearch}>
+      <form>
 
         <select 
           value={server}
           onChange={(e) => {
+            setRegion(e.target.selectedOptions[0].dataset.region);
             setServer(e.target.value);
           }}
         >
-          <option value="eun1">EUNE</option>
-          <option value="euw1">EUW</option>
-          <option value="na1">NA</option>
-          <option value="kr">KR</option>
+          <option data-region="europe" value="eun1">EUNE</option>
+          <option data-region="europe"  value="euw1">EUW</option>
+          <option data-region="americas" value="na1">NA</option>
+          <option data-region="asia" value="kr">KR</option>
         </select>
 
         <input 
@@ -42,8 +41,7 @@ const SearchBar = () => {
           }}
           />
 
-          <FaAngleDoubleRight style={style} />
-
+          <Link to={`/search/${region}/${server}/${summonerName}`}><FaAngleDoubleRight style={style} /></Link>
       </form>
     </div>
     );
