@@ -14,7 +14,7 @@ router.get("/:region/:server/:summonerName/", async (req, res) => {
         const gameId = matchesData.data.matches[0].gameId;
         const gameUrl = `https://${region}.api.riotgames.com/lol/match/v5/matches/${server.toUpperCase()}_${gameId}?api_key=${process.env.RIOT_API}`;
         const gameData = await axios.get(gameUrl);
-        console.log(gameData.data);
+        res.status(200).send({when: gameData.data.info.gameCreation})
     } catch (err) {
         console.log(err);
     }
