@@ -39,7 +39,7 @@ const SearchBar = () => {
           onChange={(e) => {
             setSummonerName(e.target.value);
           }}
-          />
+        />
 
           <Link to={`/search/${region}/${server}/${summonerName}`}><FaAngleDoubleRight style={style} /></Link>
       </form>

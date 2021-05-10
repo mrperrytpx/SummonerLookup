@@ -17,7 +17,6 @@ const Login = () => {
   useEffect(() => {
 		;(async function verifyUser() {
 			const token = getAccessToken();
-      console.log(token);
 			const { message } = await(await fetch("/is_logged_in", {
 				method: "POST",
 				headers: { 
@@ -26,7 +25,6 @@ const Login = () => {
 					authorization: `Bearer ${token}`
 				}
 			})).json()
-      console.log(message);
 			if (message) {
 				setIsLoggedIn(true);
 			} else {
