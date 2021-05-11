@@ -1,0 +1,196 @@
+.container {
+  padding: 1rem;
+  width: min(1100px, 90%);
+  background-color: yellow;
+  height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  .player-stats {
+    background-color: purple;
+    flex: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .rank,
+  .best-champions,
+  .player-card {
+    height: 100%;
+    flex: 3;
+    width: 100%;
+  }
+
+  .player-card {
+    background-color: pink;
+    flex: 2;
+    display: grid;
+    grid-template:
+      "a a a b"
+      "a a a c";
+  }
+  .player-icon {
+    place-self: center;
+    background-color: red;
+    grid-area: a;
+    width: min(70%, 150px);
+    height: min(70%, 150px);
+  }
+
+  .player-name {
+    background-color: tan;
+    grid-area: b;
+    place-self: center;
+  }
+  .follow {
+    grid-area: c;
+    height: 50%;
+    width: 50%;
+    place-self: center;
+  }
+
+  .rank {
+    background-color: green;
+    display: grid;
+    grid-template:
+      "x x x x"
+      "a a a b"
+      "a a a b"
+      "a a a b"
+      "a a a b"
+      "a a a c"
+      "a a a c"
+      "a a a c"
+      "a a a c";
+  }
+  .rank-image {
+    place-self: center;
+    background-color: red;
+    grid-area: a;
+    width: min(70%, 150px);
+    height: min(70%, 150px);
+  }
+  .rank-elo {
+    background-color: tan;
+    grid-area: b;
+    place-self: center;
+  }
+  .rank-winrate {
+    grid-area: c;
+    height: 50%;
+    width: 50%;
+    place-self: center;
+  }
+  .rank-header {
+    grid-area: x;
+    background-color: white;
+  }
+
+  .best-champions {
+    background-color: grey;
+    display: flex;
+    flex-direction: column;
+  }
+  .best-champions-header,
+  .rank-header {
+    text-align: center;
+    width: 100%;
+    font-size: 1rem;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+  }
+  .best-champions-wrap {
+    margin-bottom: 5px;
+    border-bottom: 1px solid purple;
+    background-color: blue;
+    display: flex;
+    height: 50px;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .matches {
+    flex: 3;
+    background-color: red;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .match-wrap {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100px;
+    width: 95%;
+    margin-bottom: 10px;
+    border-bottom: 1px solid purple;
+    background-color: lightblue;
+    margin: 0 auto;
+  }
+  .match-champion {
+    display: grid;
+    grid-template:
+      "a a b c"
+      "a a d e";
+    background-color: black;
+    gap: 2px;
+  }
+  .match-champion-icon {
+    grid-area: a;
+    background-color: coral;
+    height: 50px;
+    width: 50px;
+    place-self: center;
+  }
+  .match-champion-summoner1 {
+    grid-area: b;
+    background-color: coral;
+    height: 40px;
+    width: 40px;
+  }
+  .match-champion-summoner2 {
+    grid-area: c;
+    background-color: coral;
+    height: 40px;
+    width: 40px;
+  }
+  .match-champion-keystone {
+    grid-area: d;
+    background-color: coral;
+    height: 40px;
+    width: 40px;
+  }
+  .match-champion-secondary {
+    grid-area: e;
+    background-color: coral;
+    height: 40px;
+    width: 40px;
+  }
+  .match-champion-score {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: orange;
+  }
+  .match-champion-build {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+  }
+  .match-item1,
+  .match-item2,
+  .match-item3,
+  .match-item4,
+  .match-item5,
+  .match-item6,
+  .match-item7 {
+    height: 40px;
+    width: 40px;
+    background-color: purple;
+  }
+}
