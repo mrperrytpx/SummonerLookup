@@ -1,9 +1,9 @@
 .container {
-  width: min(95%, 900px);
+  width: min(98%, 900px);
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  padding: 1rem;
+  padding: 0.2rem;
   background-color: yellow;
 }
 
@@ -50,7 +50,7 @@
     line-height: 1.3rem;
     padding: 1rem 0;
     color: #ddd;
-    font-size: clamp(2vh, 1.2rem, 1.5rem);
+    font-size: 1.2rem;
   }
   .follow {
     background-color: black;
@@ -61,5 +61,44 @@
     border-radius: 5px;
     cursor: pointer;
     font-size: 1rem;
+  }
+}
+
+.profile-navbar {
+  width: 100%;
+  background-color: coral;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  border-bottom: 1px solid black;
+  margin: 0 0 2rem 0;
+  position: relative;
+
+  .profile-navbar-wrapper {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    overflow-x: auto;
+  }
+
+  a {
+    white-space: nowrap;
+    text-align: left;
+    text-decoration: none;
+    font-size: 1rem;
+    color: white;
+    flex-flow: row nowrap;
+    padding: 0 0.5em;
+    border-right: 2px solid white;
+    &:focus {
+      text-decoration: underline;
+    }
   }
 }
