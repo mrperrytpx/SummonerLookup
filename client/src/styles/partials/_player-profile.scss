@@ -1,8 +1,65 @@
 .container {
-  width: min(95%, 1000px);
+  width: min(95%, 900px);
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   padding: 1rem;
   background-color: yellow;
+}
+
+.summoner {
+  width: 100%;
+  background-color: red;
+  min-height: 150px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid black;
+  margin: 1rem 0 2rem 0;
+
+  .summoner-icon {
+    flex: 0 0 98px;
+    height: 98px;
+    margin-left: 1rem;
+  }
+  .player-summoner-icon {
+    width: 98px;
+    aspect-ratio: 1 / 1;
+  }
+
+  .name-wrapper {
+    margin-left: 1rem;
+    width: 100%;
+    min-height: 98px;
+    background-color: purple;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+  }
+  .player-name,
+  .follow-summoner {
+    display: grid;
+    place-items: start;
+    width: 100%;
+  }
+  .summoner-name {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Poppins", sans-serif;
+    line-height: 1.3rem;
+    padding: 1rem 0;
+    color: #ddd;
+    font-size: clamp(2vh, 1.2rem, 1.5rem);
+  }
+  .follow {
+    background-color: black;
+    color: white;
+    border: none;
+    border: 2px solid lightblue;
+    padding: 0.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
 }
