@@ -1,3 +1,10 @@
+@mixin font-style {
+  font-size: 0.8rem;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  color: white;
+}
+
 .container {
   width: min(98%, 900px);
   margin: 0 auto;
@@ -44,9 +51,7 @@
     width: 100%;
   }
   .summoner-name {
-    font-size: 1.5rem;
-    font-weight: 600;
-    font-family: "Poppins", sans-serif;
+    @include font-style;
     line-height: 1.3rem;
     padding: 1rem 0;
     color: #ddd;
@@ -100,5 +105,93 @@
     &:focus {
       text-decoration: underline;
     }
+  }
+}
+
+.wrapper {
+  background-color: green;
+  display: flex;
+  flex-flow: column wrap;
+}
+
+.best-champions {
+  min-height: 250px;
+  background: lightblue;
+  border: 1px solid black;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  .best-champions-header {
+    @include font-style;
+    margin-bottom: 1rem;
+  }
+  .best-champions-box {
+    padding: 0.5rem 0;
+    display: flex;
+    flex-flow: column nowrap;
+    width: 100%;
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+  }
+  .best-champions-wrapper {
+    margin: 0 auto;
+    background-color: blue;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .best-champion-score,
+  .best-champion-look,
+  .best-champion-games {
+    width: 100%;
+  }
+
+  .best-champion-look {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  .best-champion-icon {
+    flex: 0 0 44px;
+    height: 44px;
+  }
+  .champion-icon {
+    width: 44px;
+    aspect-ratio: 1 / 1;
+  }
+  .best-champion-name {
+    @include font-style;
+  }
+  .best-champion-score {
+    display: flex;
+    flex-flow: column wrap;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    @include font-style;
+  }
+  .best-champion-games {
+    display: flex;
+    flex-flow: column wrap;
+    width: 100%;
+    height: 100%;
+    align-items: flex-end;
+    justify-content: center;
+    @include font-style;
+  }
+}
+
+.rank {
+  width: 100%;
+}
+
+@media screen and (min-width: 600px) {
+  .wrapper {
+    flex-flow: row nowrap;
   }
 }

@@ -8,8 +8,10 @@ const PlayerStats = () => {
     <div className="player-stats">
       <PlayerCard />
       <PlayerNav />
-      <PlayerRank />
-      <PlayerChampions />
+      <div className="wrapper">
+        <PlayerChampions />
+        <PlayerRank />
+      </div>
     </div>
   );
 }
