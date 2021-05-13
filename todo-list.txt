@@ -1,13 +1,14 @@
-TASKS FOR FUTURE ME WHEN ITS FUNCTIONAL (VIP)
+TASKS FOR FUTURE ME WHEN ITS FUNCTIONAL (WIP)
 
 - Prettier Login/Register forms
-- Refactor front-end validation - fix Regex
+- Refactor front-end validation - fix Regex - with Formik / Yup ?
 - Register Validation check on unfocus instead of on submit
 - Fix /me page to not display both not following and not allowed - make Loading component that's mounted until server responds?
 - Send email validation
-- Refactor isLoggedIn check where called into a custom hook
+- Refactor isLoggedIn check where called into a custom hook - add the abort controller
 - Make pages for Unauthorized and Already logged in cases
 - store refresh token versions instead of actual refresh tokens in DB
 - make server responses actual http status codes instead of random shit 
 - convert global variables to contextAPI
-- make front end requests a try/cathc block lol
+- make front end requests a try/catch block
+- split SCSS files - 1 for colors, 1 for fonts etc
