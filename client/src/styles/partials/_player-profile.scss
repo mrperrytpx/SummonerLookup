@@ -112,6 +112,7 @@
   background-color: green;
   display: flex;
   flex-flow: column wrap;
+  margin-bottom: 2rem;
 }
 
 .best-champions {
@@ -123,6 +124,7 @@
   align-items: center;
   justify-content: flex-start;
   width: 100%;
+  margin: 1rem 0;
   .best-champions-header {
     @include font-style;
     margin-bottom: 1rem;
@@ -187,12 +189,14 @@
 }
 
 .rank {
+  background-color: lightseagreen;
   width: 100%;
   min-height: 250px;
   display: flex;
-  flex-flow: column nowrap;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 1rem;
   .rank-header {
     @include font-style;
     width: 100%;
@@ -226,6 +230,35 @@
   }
   .rank-elo {
     border-bottom: 1px solid black;
+  }
+}
+
+.matches {
+  background-color: grey;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  .matches-header {
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding-left: 1rem;
+    border-bottom: 2px solid black;
+  }
+  .games-wrapper {
+    width: 100%;
+    border-bottom: 1px solid black;
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+  }
+  .game-champ-icon {
+    width: 58px;
+    height: 58px;
   }
 }
 
