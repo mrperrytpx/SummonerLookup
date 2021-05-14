@@ -188,6 +188,45 @@
 
 .rank {
   width: 100%;
+  min-height: 250px;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: space-between;
+  .rank-header {
+    @include font-style;
+    width: 100%;
+    text-align: center;
+  }
+  .rank-stats-wrap {
+    background-color: red;
+    height: 213px;
+    width: 90%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .rank-image {
+    flex: 0 0 128px;
+    height: 128px;
+    place-self: center;
+  }
+  .rank-icon {
+    width: 128px;
+    aspect-ratio: 1 / 1;
+  }
+  .rank-points {
+    place-self: center start;
+    width: 100%;
+    @include font-style;
+    font-size: 1rem;
+  }
+  .rank-elo,
+  .rank-winrate {
+    padding: 0.8em 0;
+  }
+  .rank-elo {
+    border-bottom: 1px solid black;
+  }
 }
 
 @media screen and (min-width: 600px) {
