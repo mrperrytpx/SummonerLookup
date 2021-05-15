@@ -12,3 +12,4 @@ TASKS FOR FUTURE ME WHEN ITS FUNCTIONAL (WIP)
 - convert global variables to contextAPI
 - make front end requests a try/catch block
 - split SCSS files - 1 for colors, 1 for fonts etc
+- add light/dark mode switching
