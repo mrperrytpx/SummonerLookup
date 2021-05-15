@@ -109,7 +109,6 @@
 
 .best-champions {
   min-height: 250px;
-  background: lightblue;
   border: 1px solid black;
   display: flex;
   flex-flow: column wrap;
@@ -187,6 +186,7 @@
   align-items: center;
   justify-content: space-between;
   margin: 1rem 0;
+  border: 1px solid black;
   .rank-header {
     @include font-style;
     width: 100%;
