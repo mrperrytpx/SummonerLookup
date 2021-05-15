@@ -11,12 +11,10 @@
   display: flex;
   flex-direction: column;
   padding: 0.2rem;
-  background-color: yellow;
 }
 
 .summoner {
   width: 100%;
-  background-color: red;
   min-height: 150px;
   display: flex;
   align-items: center;
@@ -37,7 +35,6 @@
     margin-left: 1rem;
     width: 100%;
     min-height: 98px;
-    background-color: purple;
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
@@ -58,7 +55,6 @@
     font-size: 1.2rem;
   }
   .follow {
-    background-color: black;
     color: white;
     border: none;
     border: 2px solid lightblue;
@@ -71,7 +67,6 @@
 
 .profile-navbar {
   width: 100%;
-  background-color: coral;
   min-height: 50px;
   display: flex;
   align-items: center;
@@ -86,7 +81,6 @@
     left: 0;
     top: 0;
     height: 100%;
-    background-color: black;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -109,9 +103,7 @@
 }
 
 .wrapper {
-  background-color: green;
   display: flex;
-  flex-flow: column wrap;
   margin-bottom: 2rem;
 }
 
@@ -139,7 +131,6 @@
   }
   .best-champions-wrapper {
     margin: 0 auto;
-    background-color: blue;
     width: 90%;
     display: flex;
     align-items: center;
@@ -189,21 +180,19 @@
 }
 
 .rank {
-  background-color: lightseagreen;
   width: 100%;
   min-height: 250px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 1rem;
+  margin: 1rem 0;
   .rank-header {
     @include font-style;
     width: 100%;
     text-align: center;
   }
   .rank-stats-wrap {
-    background-color: red;
     height: 213px;
     width: 90%;
     display: grid;
@@ -231,10 +220,12 @@
   .rank-elo {
     border-bottom: 1px solid black;
   }
+  .rank-winrate {
+    font-size: 0.9rem;
+  }
 }
 
 .matches {
-  background-color: grey;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -249,21 +240,126 @@
     justify-content: center;
     padding-left: 1rem;
     border-bottom: 2px solid black;
+    @include font-style;
   }
-  .games-wrapper {
+  .games-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: flex-start;
+    width: 98%;
+  }
+  .game-wrapper {
+    margin-top: 1rem;
     width: 100%;
+    height: 100%;
     border-bottom: 1px solid black;
     display: grid;
-    grid-template-columns: 1fr 4fr;
+    grid-template-columns: 25% 75%;
+  }
+  .game-champ-setup {
+    padding: 0.5rem 0.4rem;
+    width: 100%;
+    min-width: 120px;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: 1fr;
+  }
+  .game-champ-summs {
+    grid-area: 1 / 2 / 1 / 4;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 26px 26px;
+    grid-template-rows: 26px 26px;
+    place-self: center;
+  }
+  .summoner1, .summoner2, .keystone, .secondary {
+
+    width: 26px;
+    height: 26px;
+  }
+  .small {
+    width: 26px;
+    height: 26px;
   }
   .game-champ-icon {
-    width: 58px;
-    height: 58px;
+    display: grid;
+  }
+  .ch {
+    width: 40px;
+    height: 40px;
+    place-self: center;
+  }
+  .game-build-wrapper {
+    display: flex;
+    height: 100%;
+  }
+  .game-champ-score {
+    width: 33%;
+    text-align: center;
+    line-height: 1.4rem;
+    min-width: 100px;
+    padding: 0.8rem 0.4rem;
+    @include font-style;
+    font-size: 0.95rem;
+  }
+  .game-champ-build {
+    display: flex;
+    width: 67%;
+    align-items: center;
+    justify-content: center;
+  }
+  .item {
+    width: 40px;
+    height: 40px;
+  }
+  .item-image {
+    flex: 0 0 40px;
+    height: 40px;
+    border: 1px solid black;
   }
 }
 
-@media screen and (min-width: 600px) {
+@media only screen and (max-width: 600px) {
   .wrapper {
-    flex-flow: row nowrap;
+    flex-flow: column nowrap;
   }
+  .matches {
+    .game-wrapper {
+      grid-template-columns: 1fr 1fr;
+    }
+    .game-champ-score {
+      padding: 0;
+      display: flex;
+      width: 100%;
+      align-content: flex-end;
+      justify-content: space-evenly;
+      font-size: 12px;
+      height: 100%;
+    }
+    .score-header, .calculated-kda, .game-score {
+      width: 100%;
+      height: 100%;
+      display: grid;
+      place-items: end center;
+    }
+    .game-champ-build {
+      width: 100%;
+      height: 100%;
+      align-items: flex-start;
+    }
+    .item {
+      width: 25px;
+      height: 25px;
+    }
+    .item-image {
+      flex: 0 0 25px;
+      height: 25px;
+    }
+  }
+  .game-build-wrapper {
+    flex-direction: column;
+
+  }
+  
 }
