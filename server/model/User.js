@@ -19,6 +19,10 @@ const userSchema = new mongoose.Schema({
     // Who the user follows
     following: [
         {
+            region: {
+                type: String,
+                required: true
+            },
             server: {
                 type: String,
                 required: true,
@@ -28,7 +32,11 @@ const userSchema = new mongoose.Schema({
                 required: true
             },
             summonerID: {
-                type: Number,
+                type: String,
+                required: true
+            },
+            puuid: {
+                type: String,
                 required: true
             }
         },
