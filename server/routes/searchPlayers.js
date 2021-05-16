@@ -10,6 +10,7 @@ router.get("/:region/:server/:summonerName/", async (req, res) => {
         const accountData = await(await fetch(accountUrl)).json();
         if (!accountData) throw new Error("Account not found");
 
+        // Set the necessary account data into the payload
         payload.accountData = {
             puuid: accountData.puuid,
             summonerId: accountData.id,
@@ -24,11 +25,13 @@ router.get("/:region/:server/:summonerName/", async (req, res) => {
         const matchesData = await(await fetch(matchesUrl)).json();
         if (!matchesData) throw new Error("No matches on the account");
 
+        // Fetch each match and find which player the requested summonerName is
         for (let match of matchesData) {
             const gameUrl = `https://${region}.api.riotgames.com/lol/match/v5/matches/${match}?api_key=${process.env.RIOT_API}`;
             const gameData = await(await fetch(gameUrl)).json();
             for (let summoner of gameData.info.participants) {
                 if (summoner.summonerName.toLowerCase() === summonerName.toLowerCase()) {
+                    // Set the game data(s) into the payload
                     let game = {
                         matchId: match,
                         championName: summoner.championName,
@@ -54,11 +57,14 @@ router.get("/:region/:server/:summonerName/", async (req, res) => {
             }
         }
 
+        // Fetch summoner's ranked stats
         const rankedUrl = `https://${server}.api.riotgames.com/lol/league/v4/entries/by-summoner/${accountData.id}?api_key=${process.env.RIOT_API}`;
         const rankedStats = await(await fetch(rankedUrl)).json();
+        // If it returns an empty array, set the payload.ranked to be empty
         if (rankedStats.length === 0) {
             payload.ranked = {};
         } else {
+            // Set the ranked stats data into the payload
             payload.ranked = {
                 tier: rankedStats[0].tier,
                 division: rankedStats[0].rank,
@@ -67,10 +73,11 @@ router.get("/:region/:server/:summonerName/", async (req, res) => {
                 losses: rankedStats[0].losses,
             };
         }
-        
+        // Send the payload
         res.status(200).json(payload);
 
     } catch (err) {
+        // Catch errors and send it as Not Found
         res.status(404).json(err.message);
     }
 });

@@ -19,26 +19,26 @@ const userSchema = new mongoose.Schema({
     // Who the user follows
     following: [
         {
-            region: {
+            region: { // Player's region
                 type: String,
                 required: true
             },
-            server: {
+            server: { // Player's server
                 type: String,
                 required: true,
             },
-            summonerName: {
+            summonerName: { // Player's summoner name
                 type: String,
                 required: true
             },
-            summonerID: {
+            summonerID: { // Player's summoner ID
                 type: String,
                 required: true
             },
-            puuid: {
+            puuid: { // Player's puuid
                 type: String,
                 required: true
-            },
+            }, // Just a number to fetch a single match for player cards
             matches: {
                 type: Number,
                 required: true,

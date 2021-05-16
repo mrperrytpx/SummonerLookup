@@ -15,7 +15,7 @@ const Register = () => {
   const [isPasswordsMatching, setIsPasswordsMatching] = useState(true);
   const [error, setError] = useState("");
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [checkLoggedIn, setcheckLoggedIn] = useState(false);
 
   // Verify if the user is allowed to go to the path by checking if there's a valid access token stored
   useEffect(() => {
@@ -30,9 +30,9 @@ const Register = () => {
 				}
 			})).json()
 			if (message) {
-				setIsLoggedIn(true);
+				setcheckLoggedIn(true);
 			} else {
-        setIsLoggedIn(false);
+        setcheckLoggedIn(false);
       }
 		})();
 	}, [history])
@@ -96,7 +96,7 @@ const Register = () => {
   }
 
   // If user is logged in, the register form isn't displayed
-  if (isLoggedIn) return (<div>Already logged in</div> )
+  if (checkLoggedIn) return (<div>Already logged in</div> )
 
   return ( 
     <section className="input-section">

@@ -26,9 +26,11 @@ const Login = () => {
 					authorization: `Bearer ${token}`
 				}
 			})).json()
+      // If there's a message, set the user logged in flag to true
 			if (message) {
 				setCheckLoggedIn(true);
 			} else {
+        // set user logged in flag to false
         setCheckLoggedIn(false);
       }
 		})();

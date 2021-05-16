@@ -19,6 +19,7 @@ const App = () => {
     fetch("/refresh_token", { method: "POST", credentials: "include" })
     .then(async x => {
       const { accessToken } = await x.json();
+      // If there's an access token, set the login to true for a different Navbar
       if (accessToken) {
         setLoggedIn(true);   
       } 
@@ -26,7 +27,7 @@ const App = () => {
       setLoading(false);
       
     });
-  }, [])
+  }, [setLoggedIn])
 
   if (loading) {
     return <div>Loading...</div>
