@@ -1,6 +1,21 @@
-import { createContext } from 'react';
+import { useState, createContext } from 'react';
 
-const LoggedInContext = createContext({});
+export const LoggedInContext = createContext();
 
-export const LoggedInProvider = LoggedInContext.Provider;
-export default LoggedInContext;
+function LoggedInContextProvider(props) {
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    function setLoggedIn(bool) {
+        setIsLoggedIn(bool);
+    }
+
+    const value = { isLoggedIn, setLoggedIn };
+
+    return(
+        <LoggedInContext.Provider value={value}>
+            {props.children}
+        </LoggedInContext.Provider>
+    )
+}
+
+export default LoggedInContextProvider;

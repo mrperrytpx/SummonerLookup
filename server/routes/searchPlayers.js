@@ -10,11 +10,13 @@ router.get("/:region/:server/:summonerName/", async (req, res) => {
         const accountData = await(await fetch(accountUrl)).json();
         if (!accountData) throw new Error("Account not found");
 
-        payload.accountData = {};
-        payload.accountData.summonerId = accountData.id;
-        payload.accountData.name = accountData.name;
-        payload.accountData.summonerLevel = accountData.summonerLevel;
-        payload.accountData.profileIconId = accountData.profileIconId;
+        payload.accountData = {
+            puuid: accountData.puuid,
+            summonerId: accountData.id,
+            summonerName: accountData.name,
+            summonerLevel: accountData.summonerLevel,
+            profileIconId: accountData.profileIconId
+        };
         payload.games = [];
 
         // Fetch the match IDs
@@ -65,6 +67,8 @@ router.get("/:region/:server/:summonerName/", async (req, res) => {
                 losses: rankedStats[0].losses,
             };
         }
+        
+        res.status(200).json(payload);
 
     } catch (err) {
         res.status(404).json(err.message);

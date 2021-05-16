@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { setAccessToken } from "./accessToken"
 import Home from "./pages/Home";
@@ -7,18 +7,24 @@ import Register from "./pages/Register";
 import Me from "./pages/Me";
 import DeleteUser from "./pages/DeleteUser";
 import Players from "./pages/Players";
+import Navbar from "./components/Navbar";
+import { LoggedInContext } from "./contexts/LoggedInContext";
 
 const App = () => {
   const [loading, setLoading] = useState(true)
+  const { setLoggedIn } = useContext(LoggedInContext);
 
   // Give the user a new access token if there's a refresh token stored in cookies
   useEffect(() => {
     fetch("/refresh_token", { method: "POST", credentials: "include" })
     .then(async x => {
       const { accessToken } = await x.json();
-      //console.log(accessToken);
+      if (accessToken) {
+        setLoggedIn(true);   
+      } 
       setAccessToken(accessToken);
       setLoading(false);
+      
     });
   }, [])
 
@@ -28,18 +34,19 @@ const App = () => {
 
   return (
     <Router>
-      <div className="App">
-        <div className="content">
-          <Switch>
-            <Route exact path="/"><Home /></Route>
-            <Route exact path="/login"><Login /></Route>
-            <Route exact path="/register"><Register /></Route>
-            <Route exact path="/me"><Me /></Route>
-            <Route exact path="/me/delete"><DeleteUser /></Route>
-            <Route exact path="/search/:region/:server/:summonerName"><Players /></Route>
-          </Switch>
-        </div>
-      </div>
+        <div className="App">
+          <Navbar />
+          <div className="content">
+            <Switch>
+              <Route exact path="/"><Home /></Route>
+              <Route exact path="/login"><Login /></Route>
+              <Route exact path="/register"><Register /></Route>
+              <Route exact path="/me"><Me /></Route>
+              <Route exact path="/me/delete"><DeleteUser /></Route>
+              <Route exact path="/search/:region/:server/:summonerName"><Players /></Route>
+            </Switch>
+          </div>
+        </div>  
     </Router>
   );
 }

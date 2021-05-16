@@ -38,6 +38,11 @@ const userSchema = new mongoose.Schema({
             puuid: {
                 type: String,
                 required: true
+            },
+            matches: {
+                type: Number,
+                required: true,
+                default: 1
             }
         },
     ],

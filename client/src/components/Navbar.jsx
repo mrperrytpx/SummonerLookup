@@ -1,7 +1,11 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import LogoutButton from "./LogoutButton";
+import { LoggedInContext } from "../contexts/LoggedInContext";
 
-const Navbar = ({ isLoggedIn }) => {
+const Navbar = () => {
+  const { isLoggedIn } = useContext(LoggedInContext);
+  console.log(isLoggedIn);
 
   // display different links depending if the user is logged in or not
   return ( 

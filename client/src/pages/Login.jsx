@@ -1,7 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import { getAccessToken, setAccessToken } from "../accessToken";
+import { LoggedInContext } from "../contexts/LoggedInContext";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -10,9 +11,9 @@ const Login = () => {
   const [passwordField, setPasswordField] = useState("password");
 
   const [error, setError] = useState("");
-
+  const { setLoggedIn } = useContext(LoggedInContext);
   const history = useHistory();
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [checkLoggedIn, setCheckLoggedIn] = useState(false);
 
   useEffect(() => {
 		;(async function verifyUser() {
@@ -26,9 +27,9 @@ const Login = () => {
 				}
 			})).json()
 			if (message) {
-				setIsLoggedIn(true);
+				setCheckLoggedIn(true);
 			} else {
-        setIsLoggedIn(false);
+        setCheckLoggedIn(false);
       }
 		})();
 	}, [history])
@@ -51,17 +52,17 @@ const Login = () => {
       if (accessToken) {
         setError("");
         setAccessToken(accessToken);
+        setLoggedIn(true);
         history.push("/");
       } else {
         setError("Invalid username or password");
       }
-      
     } catch(err) {
       console.log(err);
     }
   }
 
-  if (isLoggedIn) return (<div>Already logged in</div> )
+  if (checkLoggedIn) return (<div>Already logged in</div> )
 
   const handleVisibility = (e) => {
     e.preventDefault();
