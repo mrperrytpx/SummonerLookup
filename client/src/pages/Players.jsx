@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useParams } from "react-router"
 import Matches from "../components/Matches";
 import PlayerStats from "../components/PlayerStats";
+import PlayerContextProvider from "./contexts/LoggedInContext";
 
 const Players = () => {
   const { region, server, summonerName } = useParams();
@@ -17,8 +18,10 @@ const Players = () => {
 
   return ( 
     <div className="container">
-      <PlayerStats />
-      <Matches />
+      <PlayerContextProvider>
+        <PlayerStats />
+        <Matches />
+      </PlayerContextProvider>
   </div>
   );
 }
