@@ -44,7 +44,6 @@ const SearchBar = () => {
           value={summonerName}
           onChange={(e) => {
             setSummonerName(e.target.value);
-            console.log(e.target.value);
           }}
         />
 
