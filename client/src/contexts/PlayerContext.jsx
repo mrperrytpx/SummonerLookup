@@ -5,11 +5,7 @@ export const PlayerContext = createContext();
 function PlayerContextProvider(props) {
   const [playerData, setPlayerData] = useState();
 
-  function setPlayer(object) {
-    setPlayerData(object);
-  }
-
-  const value = { playerData, setPlayer };
+  const value = { playerData, setPlayerData };
 
   return(
     <PlayerContext.Provider value={value}>
