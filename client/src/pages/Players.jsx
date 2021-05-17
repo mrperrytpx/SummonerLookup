@@ -5,22 +5,21 @@ import PlayerStats from "../components/PlayerStats";
 import { PlayerContext } from "../contexts/PlayerContext";
 
 const Players = () => {
-  const { region, server, name } = useParams();
+  const { region, server, summonerName } = useParams();
   const { setPlayer } = useContext(PlayerContext);
 
   // Fetch the search players data on page load
   useEffect(() => {
-    const getPlayer = async () => {
-      const response = await fetch(`/search/${region}/${server}/${name}`);
+    ;(async function getPlayer() {
+      const response = await fetch(`/search/${region}/${server}/${summonerName}`);
       if (response.status !== 200) {
-        console.log("Player not found");
+        console.log(response);
         return;
       }
       const data = await response.json();
       setPlayer(data);
-    }
-    getPlayer();
-  }, [region, server, name, setPlayer]);
+    })();
+  }, [region, server, summonerName, setPlayer]);
 
   return ( 
     <div className="container">

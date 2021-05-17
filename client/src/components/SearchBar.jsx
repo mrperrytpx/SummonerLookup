@@ -17,7 +17,6 @@ const SearchBar = () => {
   return (
     <div className="search-bar">
       <form>
-
         <select 
           value={server}
           onChange={(e) => {
@@ -27,8 +26,15 @@ const SearchBar = () => {
         >
           <option data-region="europe" value="eun1">EUNE</option>
           <option data-region="europe"  value="euw1">EUW</option>
+          <option data-region="europe"  value="tr1">TR</option>
+          <option data-region="europe"  value="ru">RU</option>
           <option data-region="americas" value="na1">NA</option>
+          <option data-region="americas" value="oc1">OCE</option>
+          <option data-region="americas" value="la1">LAN</option>
+          <option data-region="americas" value="la2">LAS</option>
+          <option data-region="americas" value="br1">BR</option>
           <option data-region="asia" value="kr">KR</option>
+          <option data-region="asia" value="jp1">JP</option>
         </select>
 
         <input 
@@ -38,6 +44,7 @@ const SearchBar = () => {
           value={summonerName}
           onChange={(e) => {
             setSummonerName(e.target.value);
+            console.log(e.target.value);
           }}
         />
 
