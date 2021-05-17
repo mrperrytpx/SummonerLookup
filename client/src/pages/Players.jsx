@@ -6,7 +6,7 @@ import { PlayerContext } from "../contexts/PlayerContext";
 
 const Players = () => {
   const { region, server, name } = useParams();
-  const { setPlayerData } = useContext(PlayerContext);
+  const { setPlayer } = useContext(PlayerContext);
 
   // Fetch the search players data on page load
   useEffect(() => {
@@ -17,10 +17,10 @@ const Players = () => {
         return;
       }
       const data = await response.json();
-      setPlayerData(data);
+      setPlayer(data);
     }
     getPlayer();
-  }, [region, server, name, setPlayerData]);
+  }, [region, server, name, setPlayer]);
 
   return ( 
     <div className="container">
