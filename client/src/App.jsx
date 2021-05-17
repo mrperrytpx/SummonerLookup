@@ -9,6 +9,7 @@ import DeleteUser from "./pages/DeleteUser";
 import Players from "./pages/Players";
 import Navbar from "./components/Navbar";
 import { LoggedInContext } from "./contexts/LoggedInContext";
+import PlayerContextProvider from "./contexts/PlayerContext";
 
 const App = () => {
   const [loading, setLoading] = useState(true)
@@ -44,7 +45,11 @@ const App = () => {
               <Route exact path="/register"><Register /></Route>
               <Route exact path="/me"><Me /></Route>
               <Route exact path="/me/delete"><DeleteUser /></Route>
-              <Route exact path="/search/:region/:server/:summonerName"><Players /></Route>
+              <Route exact path="/search/:region/:server/:summonerName">
+                <PlayerContextProvider>
+                  <Players />
+                </PlayerContextProvider>
+              </Route>
             </Switch>
           </div>
         </div>  

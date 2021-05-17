@@ -1,9 +1,15 @@
-import { createContext } from 'react';
+import { createContext, useState } from 'react';
 
 export const PlayerContext = createContext();
 
 function PlayerContextProvider(props) {
-  const value = {};
+  const [playerData, setPlayerData] = useState();
+
+  function setPlayer(object) {
+    setPlayerData(object);
+  }
+
+  const value = { playerData, setPlayer };
 
   return(
     <PlayerContext.Provider value={value}>
