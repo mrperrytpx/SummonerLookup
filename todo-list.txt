@@ -14,3 +14,4 @@ TASKS FOR FUTURE ME WHEN ITS FUNCTIONAL (WIP)
 - split SCSS files - 1 for colors, 1 for fonts etc
 - add light/dark mode switching
 - split player profile fetch into multiple fetches to get payload sooner?
+- make your own picture library for icons so it doesn't run out of date randomly

@@ -1,5 +1,7 @@
 const router = require("express").Router();
 const fetch = require("node-fetch");
+const summonerSpells = require("../runes and summoners/summonerSpellIDs");
+const runes = require("../runes and summoners/runeIDs");
 
 router.get("/:region/:server/:summonerName/", async (req, res) => {
     const { region, server, summonerName } = req.params;
@@ -26,6 +28,8 @@ router.get("/:region/:server/:summonerName/", async (req, res) => {
         const matchesData = await(await fetch(matchesUrl)).json();
         if (!matchesData) throw new Error("No matches on the account");
 
+        console.log(matchesData);
+
         // Fetch each match and find which player the requested summonerName is
         for (let match of matchesData) {
             const gameUrl = `https://${region}.api.riotgames.com/lol/match/v5/matches/${match}?api_key=${process.env.RIOT_API}`;
@@ -35,14 +39,15 @@ router.get("/:region/:server/:summonerName/", async (req, res) => {
             for (let summoner of gameData?.info?.participants) {
                 if (summoner?.summonerName?.toLowerCase() === summonerName.toLowerCase()) {
                     // Set the game data(s) into the payload
+                    
                     let game = {
                         matchId: match,
                         championName: summoner.championName,
                         championId: summoner.championId,
-                        summoner1: summoner.summoner1Id,
-                        summoner2: summoner.summoner2Id,
-                        keystone: summoner.perks.styles[0].selections[0].perk,
-                        secondary: summoner.perks.styles[1].style,
+                        summoner1: summonerSpells[summoner.summoner1Id],
+                        summoner2: summonerSpells[summoner.summoner2Id],
+                        keystone: runes[summoner.perks.styles[0].selections[0].perk],
+                        secondary: runes[summoner.perks.styles[1].style],
                         item0: summoner.item0,
                         item1: summoner.item1,
                         item2: summoner.item2,

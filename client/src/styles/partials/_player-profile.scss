@@ -64,7 +64,6 @@
     @include font-style;
     line-height: 1.3rem;
     padding: 1rem 0;
-    color: #ddd;
     font-size: 1.2rem;
   }
   .follow {
@@ -105,8 +104,8 @@
     white-space: nowrap;
     text-align: left;
     text-decoration: none;
+    @include font-style;
     font-size: 1rem;
-    color: white;
     flex-flow: row nowrap;
     padding: 0 0.5em;
     border-right: 2px solid white;
@@ -251,6 +250,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 12rem;
   .matches-header {
     width: 100%;
     height: 50px;
@@ -296,7 +296,7 @@
     place-self: center;
   }
   .summoner1, .summoner2, .keystone, .secondary {
-
+    background-color: rgba(0, 32, 70, 0.493);
     width: 26px;
     height: 26px;
   }
@@ -308,12 +308,12 @@
     display: grid;
   }
   .ch {
-    width: 40px;
-    height: 40px;
+    width: 52px;
+    height: 52px;
     place-self: center;
   }
   .game-build-wrapper {
-    display: flex;
+    display: flex;  
     height: 100%;
   }
   .game-champ-score {
@@ -334,12 +334,22 @@
   .item {
     width: 40px;
     height: 40px;
+    background-color: #222;
+    border-right: 1px solid black;
   }
   .item-image {
     flex: 0 0 40px;
     height: 40px;
     border: 1px solid black;
   }
+}
+
+.loser {
+  background: linear-gradient(to right, #e66465, rgb(95, 20, 20));
+}
+
+.winner {
+  background: linear-gradient(to right, #2f8524, rgb(30, 75, 18));
 }
 
 @media only screen and (max-width: 600px) {
@@ -377,6 +387,10 @@
     .item-image {
       flex: 0 0 25px;
       height: 25px;
+    }
+    .ch {
+      width: 42px;
+      height: 42px;
     }
   }
   .game-build-wrapper {
