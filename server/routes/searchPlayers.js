@@ -22,7 +22,7 @@ router.get("/:region/:server/:summonerName/", async (req, res) => {
         payload.games = [];
 
         // Fetch the match IDs
-        const matchesUrl = `https://${region}.api.riotgames.com/lol/match/v5/matches/by-puuid/${accountData.puuid}/ids?start=0&count=10&api_key=${process.env.RIOT_API}`;
+        const matchesUrl = `https://${region}.api.riotgames.com/lol/match/v5/matches/by-puuid/${accountData.puuid}/ids?start=0&count=5&api_key=${process.env.RIOT_API}`;
         const matchesData = await(await fetch(matchesUrl)).json();
         if (!matchesData) throw new Error("No matches on the account");
 

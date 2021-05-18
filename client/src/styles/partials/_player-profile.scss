@@ -25,10 +25,23 @@
     flex: 0 0 98px;
     height: 98px;
     margin-left: 1rem;
+    position: relative;
   }
   .player-summoner-icon {
     width: 98px;
     aspect-ratio: 1 / 1;
+  }
+  .player-account-level {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    border: 1px solid hsl(0, 0, 50);  
+    padding: 0 0.2rem;
+    @include font-style;
+    font-size: 1rem;
+    background-color: white;
+    color: black;
+    border-radius: 15px;
   }
 
   .name-wrapper {
@@ -55,13 +68,14 @@
     font-size: 1.2rem;
   }
   .follow {
-    color: white;
     border: none;
     border: 2px solid lightblue;
     padding: 0.5rem;
     border-radius: 5px;
     cursor: pointer;
+    @include font-style;
     font-size: 1rem;
+    color: #222;
   }
 }
 
