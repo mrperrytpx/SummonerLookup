@@ -1,7 +1,7 @@
 import PlayerCard from "./PlayerCard";
 import PlayerChampions from "./PlayerChampions";
 import PlayerNav from "./PlayerNav";
-import PlayerRank from "./PlayerRank";
+import PlayerStanding from "./PlayerStanding";
 
 const PlayerStats = () => {
   return ( 
@@ -10,7 +10,7 @@ const PlayerStats = () => {
       <PlayerNav />
       <div className="wrapper">
         <PlayerChampions />
-        <PlayerRank />
+        <PlayerStanding />
       </div>
     </div>
   );

@@ -2,17 +2,16 @@ import { useState, useContext, useEffect } from "react";
 import { PlayerContext } from "../contexts/PlayerContext";
 
 const PlayerCard = () => {
-  const { playerData } = useContext(PlayerContext);
+  const { playerData: {accountData} } = useContext(PlayerContext);
   const [summonerName, setSummonerName] = useState("");
   const [summonerIcon, setSummonerIcon] = useState("");
   const [summonerLevel, setSummonerLevel] = useState("");
 
   useEffect(() =>{
-    setSummonerName(playerData?.accountData?.summonerName);
-    setSummonerIcon(`https://ddragon.leagueoflegends.com/cdn/11.10.1/img/profileicon/${playerData?.accountData?.profileIconId}.png`);
-    setSummonerLevel(playerData?.accountData?.summonerLevel)
-    console.log(playerData);
-  }, [playerData]);
+    setSummonerName(accountData?.summonerName);
+    setSummonerIcon(`https://ddragon.leagueoflegends.com/cdn/11.10.1/img/profileicon/${accountData?.profileIconId}.png`);
+    setSummonerLevel(accountData?.summonerLevel)
+  }, [accountData]);
 
   return ( 
     <div className="summoner">
