@@ -44,7 +44,7 @@ app.use("/refresh_token", refreshTokenRoute); // Refresh a token
 app.use("/logout", authorize, logoutRoute); // Delete a refresh token and clear the access token, has to be authorized with a proper access token 
 app.use("/me", authorize, myProfileRoute); // Get user info, has to be authorized with a proper access token 
 app.use("/delete", authorize, deleteUserRoute); // Delete a user from the database, has to be authorized with a proper access token 
-app.use("/search", searchUserRoute); // Search for a league of legends summoner
+app.use("/search", searchUserRoute); // Search for league of legends account info
 
 // Start server
 app.listen(PORT, () => {
