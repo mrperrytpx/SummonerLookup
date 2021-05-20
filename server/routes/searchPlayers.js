@@ -15,6 +15,7 @@ router.get("/:region/:server/:summonerName/", async (req, res) => {
         
         // Set the necessary account data into the payload
         payload.accountData = {
+            region: region,
             puuid: accountData.puuid,
             summonerId: accountData.id,
             summonerName: accountData.name,
@@ -27,8 +28,6 @@ router.get("/:region/:server/:summonerName/", async (req, res) => {
         const matchesUrl = `https://${region}.api.riotgames.com/lol/match/v5/matches/by-puuid/${accountData.puuid}/ids?start=0&count=5&api_key=${process.env.RIOT_API}`;
         const matchesData = await(await fetch(matchesUrl)).json();
         if (!matchesData) throw new Error("No matches on the account");
-
-        console.log(matchesData);
 
         // Fetch each match and find which player the requested summonerName is
         for (let match of matchesData) {

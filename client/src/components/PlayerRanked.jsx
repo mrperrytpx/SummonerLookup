@@ -14,7 +14,7 @@ const PlayerRanked = ({ ranked }) => {
       setRankTier(ranked?.tier);
       setRankDivision(ranked?.division);
       setRankPoints(ranked?.LP);
-      setRankWinrate(Math.round((ranked?.wins / ranked?.losses) * 100));
+      setRankWinrate(+(ranked?.wins / (ranked?.wins + ranked?.losses) * 100).toFixed(2));
       setRankWins(ranked?.wins);
       setRankLosses(ranked?.losses);
     }, [ranked]);

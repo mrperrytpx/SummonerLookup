@@ -9,7 +9,7 @@ const Matches = () => {
     <div className="matches">
       <p className="matches-header">MATCH HISTORY</p>
       {games.map(game => (
-        <Match game={game} key={game.matchId} />
+        <Match game={game} key={game?.matchId} />
       ))}
     </div>
   );
