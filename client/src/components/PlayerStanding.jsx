@@ -17,9 +17,9 @@ const PlayerStanding = () => {
     <div className="rank">
       <p className="rank-header">RANK</p>
       {isRanked ? 
-        <PlayerRanked ranked={ranked}/>
-      : <PlayerUnranked />
-    }
+        <PlayerRanked ranked={ranked}/> :
+        <PlayerUnranked />
+      }
     </div>
   );
 }

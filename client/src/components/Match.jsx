@@ -88,7 +88,7 @@ const Match = ( { game } ) => {
         </div>
 
       </div>
-      { isClicked && <MatchDetails win={game?.win} id={game?.matchId} /> }
+      { isClicked && <MatchDetails id={game?.matchId} /> }
     </div>
    );
 }

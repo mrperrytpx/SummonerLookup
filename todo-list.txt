@@ -15,3 +15,4 @@ TASKS FOR FUTURE ME WHEN ITS FUNCTIONAL (WIP)
 - add light/dark mode switching
 - split player profile fetch into multiple fetches to get payload sooner?
 - make your own picture library for icons so it doesn't run out of date randomly
+- set up abort controllers

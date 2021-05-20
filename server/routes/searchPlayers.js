@@ -23,6 +23,7 @@ router.get("/:region/:server/:summonerName/", async (req, res) => {
             profileIconId: accountData.profileIconId
         };
         payload.games = [];
+        console.log(accountData);
 
         // Fetch the match IDs
         const matchesUrl = `https://${region}.api.riotgames.com/lol/match/v5/matches/by-puuid/${accountData.puuid}/ids?start=0&count=5&api_key=${process.env.RIOT_API}`;
