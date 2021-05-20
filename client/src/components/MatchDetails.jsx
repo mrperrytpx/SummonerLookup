@@ -24,7 +24,7 @@ const MatchDetials = ({ id, win }) => {
 
     return ( 
         <div className="match-details">
-            <p></p>
+            <p>Yo</p>
         </div>
      );
 }

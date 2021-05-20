@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import MatchDetails from "./MatchDetails";
 
-const Match = ( {game, id} ) => {
+const Match = ( { game } ) => {
 
   const [isClicked, setIsClicked] = useState(false);
   const [assists, setAssists] = useState("");
@@ -46,15 +46,15 @@ const Match = ( {game, id} ) => {
     setSpell2(`https://ddragon.leagueoflegends.com/cdn/11.10.1/img/spell/${game?.summoner2}.png`);
     setKeystone(`https://ddragon.leagueoflegends.com/cdn/img/${game?.keystone}`);
     setSecondary(`https://ddragon.leagueoflegends.com/cdn/img/${game?.secondary}`);
-  }, [game, id]);
+  }, [game]);
 
 
   return ( 
     <div 
       onClick={() => setIsClicked(() => !isClicked)} 
-      className="games-wrapper">
+      className={`games-wrapper ${win ? "winner" : "loser"}` }>
 
-      <div className={`game-wrapper ${win ? "winner" : "loser"}`}>
+      <div className="game-wrapper">
 
         <div className="game-champ-setup">
           <div className="game-champ-icon">
