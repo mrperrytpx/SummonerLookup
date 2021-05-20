@@ -2,31 +2,31 @@ import { useEffect, useContext, useState } from "react";
 import { PlayerContext } from "../contexts/PlayerContext";
 
 const MatchDetials = ({ id, win }) => {
-    const {playerData: {accountData: {region}}} = useContext(PlayerContext);
-    const [matchData, setMatchData] = useState("");
+  const {playerData: {accountData: {region}}} = useContext(PlayerContext);
+  const [matchData, setMatchData] = useState("");
 
-    useEffect(() => {
-        ;(async function matchDetails() {
-            try {
-                const matchResponse = await fetch(`/match/${region}/${id}`);
+  useEffect(() => {
+    ;(async function matchDetails() {
+      try {
+        const matchResponse = await fetch(`/match/${region}/${id}`);
 
-                if (!matchResponse.ok) throw new Error("Couldn't fetch that match");
-                const matchDetails = await matchResponse.json();
-                if (!matchDetails) throw new Error("Invalid Match");
+        if (!matchResponse.ok) throw new Error("Couldn't fetch that match");
+        const matchDetails = await matchResponse.json();
+        if (!matchDetails) throw new Error("Invalid Match");
 
-                console.log(matchDetails);
-                setMatchData(matchDetails);
-            } catch (err) {
-                console.log(err);
-            }
-        })();
-    }, [id, win, region]);
+        console.log(matchDetails);
+        setMatchData(matchDetails);
+    } catch (err) {
+        console.log(err);
+      }
+    })();
+  }, [id, win, region]);
 
-    return ( 
-        <div className="match-details">
-            <p>Yo</p>
-        </div>
-     );
+  return ( 
+    <div className="match-details">
+      <p>Yo</p>
+    </div>
+  );
 }
  
 export default MatchDetials;
