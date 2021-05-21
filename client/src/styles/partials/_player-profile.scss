@@ -147,7 +147,7 @@
   }
   .best-champions-wrapper {
     margin: 0 auto;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0rem;
     width: 90%;
     display: flex;
     align-items: center;
@@ -357,6 +357,16 @@
   background: linear-gradient(to right, #2f8524, rgb(30, 75, 18));
 }
 
+@media only screen and (max-width: 700px) {
+  .best-champions {
+    .best-champion-look {
+      width: 60%;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+}
+
 @media only screen and (max-width: 600px) {
   .wrapper {
     flex-flow: column nowrap;
@@ -404,10 +414,6 @@
   }
 
   .best-champions {
-    .best-champion-look {
-      flex-direction: column;
-      align-items: flex-start;
-    }
     .best-champion-games {
       width: 100%;
     }
@@ -421,7 +427,6 @@
   .follow {
     place-self: center;
   }
-
-
-  
 }
+
+

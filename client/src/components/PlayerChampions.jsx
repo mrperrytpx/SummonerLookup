@@ -9,7 +9,7 @@ const PlayerChampions = () => {
 
   useEffect(() => {
     (async function champions() {
-      const champions = await(await fetch("http://ddragon.leagueoflegends.com/cdn/11.10.1/data/en_US/champion.json")).json();
+      const champions = await(await fetch("https://ddragon.leagueoflegends.com/cdn/11.10.1/data/en_US/champion.json")).json();
       setChampions(champions);
     })();
   }, [champions, stats])
