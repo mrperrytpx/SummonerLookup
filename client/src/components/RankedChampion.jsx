@@ -1,4 +1,10 @@
-const RankedChampion = () => {
+import { useEffect } from "react";
+
+const RankedChampion = ({ stats, championId }) => {
+  useEffect(() => {
+    console.log(championId, stats);
+  });
+
   return (  
     <div className="best-champions-wrapper">
 
