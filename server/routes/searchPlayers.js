@@ -81,6 +81,8 @@ router.get("/:region/:server/:summonerName/", async (req, res) => {
                 losses: rankedStats[0].losses,
             };
         }
+        /* const test = await(await fetch("https://red.op.lol/stats/single/1/eune/Xod8R7Uop4jsQTXnwEWsmCJN1snMgLnXPSuijdXKv0OLEA/")).json();
+        console.log(test["90"]["420"]); */
         // Send the payload
         res.status(200).json(payload);
 

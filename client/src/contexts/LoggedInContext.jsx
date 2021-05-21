@@ -1,13 +1,13 @@
-import { useState, createContext } from 'react';
+import { useState, createContext, useCallback } from 'react';
 
 export const LoggedInContext = createContext();
 
 function LoggedInContextProvider(props) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  function setLoggedIn(bool) {
+  const setLoggedIn = useCallback((bool) => {
     setIsLoggedIn(bool);
-  }
+  }, [setIsLoggedIn]);
 
   const value = { isLoggedIn, setLoggedIn };
 
