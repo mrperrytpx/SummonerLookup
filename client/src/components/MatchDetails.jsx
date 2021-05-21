@@ -21,7 +21,7 @@ const MatchDetials = ({ id }) => {
         console.log(err);
       }
     })();
-  }, [id, win, region]);
+  }, [id, region]);
 
   return ( 
     <div className="match-details">
