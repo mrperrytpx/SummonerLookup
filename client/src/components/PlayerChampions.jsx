@@ -1,10 +1,18 @@
 import RankedChampion from "./RankedChampion";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { PlayerContext } from "../contexts/PlayerContext";
 
 const PlayerChampions = () => {
 
+  const [champions, setChampions] = useState("")
   const { playerData: {stats} } = useContext(PlayerContext);
+
+  useEffect(() => {
+    (async function champions() {
+      const champions = await(await fetch("http://ddragon.leagueoflegends.com/cdn/11.10.1/data/en_US/champion.json")).json();
+      setChampions(champions);
+    })();
+  }, [champions, stats])
   
 
   return ( 
@@ -12,9 +20,9 @@ const PlayerChampions = () => {
       <p className="best-champions-header">TOP 3 PLAYED CHAMPIONS</p>
       <div className="best-champions-box">
       {
-        (Object.keys(stats).map(key => (
-          <RankedChampion stats={stats[key].n} championId={key} key={key} />
-        )))
+        (Object.keys(stats).map(key => {
+          return (<RankedChampion champions={champions} championId={key} stats={stats[key]} key={key} />)
+        }))
       }
       </div>
         

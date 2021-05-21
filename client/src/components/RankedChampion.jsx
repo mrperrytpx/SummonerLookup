@@ -1,9 +1,14 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
-const RankedChampion = ({ stats, championId }) => {
+const RankedChampion = ({ champions, championId, stats }) => {
+  const [championName, setChampionName] = useState("");
+
   useEffect(() => {
-    console.log(championId, stats);
-  });
+    for (let name in champions.data) {
+      if (champions?.data[name]?.key === championId) setChampionName(champions?.data[name]?.id)
+    }
+    console.log(championName);
+  }, [champions, stats, championId, championName]); 
 
   return (  
     <div className="best-champions-wrapper">
@@ -12,21 +17,28 @@ const RankedChampion = ({ stats, championId }) => {
         <div className="best-champion-icon">
           <img 
             className="champion-icon" 
-            src="https://static.u.gg/assets/lol/riot_static/11.9.1/img/champion/Tryndamere.png" 
-            alt="" 
+            src={`https://static.u.gg/assets/lol/riot_static/11.10.1/img/champion/${championName}.png` }
+            alt="Champion" 
           />
         </div>
-        <p className="best-champion-name">PYKE</p>
+        <p className="best-champion-name">{championName}</p>
       </div>
 
       <div className="best-champion-score">
-        <p className="best-kda">3.06KDA</p>
-        <p className="best-avg">11 / 6 / 8</p>
+        <p className="best-kda">
+          {stats.d === 0 ? stats.k + stats.a : +((stats.k + stats.a) / stats.d).toFixed(2)} KDA
+        </p>
+        <p className="best-avg">
+          {Math.round(stats.k / stats.n)} / {Math.round(stats.d / stats.n)} / {Math.round(stats.a / stats.n)}
+        </p>
+        <p className="best-avg">
+          {Math.round(stats.cs / stats.n)} CS ({+(stats.cs / (stats.t / 60)).toFixed(1)})
+        </p>
       </div>
 
       <div className="best-champion-games">
-        <p className="winrate">50%</p>
-        <p className="games">16 games</p>
+        <p className="winrate">{+((stats.w / stats.n) * 100).toFixed(2)}%</p>
+        <p className="games">{stats.n} games</p>
       </div>
     
     </div>
