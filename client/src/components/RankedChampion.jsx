@@ -7,7 +7,6 @@ const RankedChampion = ({ champions, championId, stats }) => {
     for (let name in champions.data) {
       if (champions?.data[name]?.key === championId) setChampionName(champions?.data[name]?.id)
     }
-    console.log(championName);
   }, [champions, stats, championId, championName]); 
 
   return (  
