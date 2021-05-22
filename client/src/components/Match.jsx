@@ -1,10 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import MatchDetails from "./MatchDetails";
 
 const Match = ( { game } ) => {
   const [isClicked, setIsClicked] = useState(false);
-
-  useEffect(() => console.log(game), [])
 
   return ( 
     <div 

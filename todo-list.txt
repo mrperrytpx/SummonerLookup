@@ -16,3 +16,4 @@ TASKS FOR FUTURE ME WHEN ITS FUNCTIONAL (WIP)
 - split player profile fetch into multiple fetches to get payload sooner?
 - make your own picture library for icons so it doesn't run out of date randomly
 - set up abort controllers
+- add server choice to local storage

@@ -35,7 +35,7 @@ router.get("/:region/:server/:summonerName/", async (req, res) => {
         for (let match of matchesData) {
             const gameUrl = `https://${region}.api.riotgames.com/lol/match/v5/matches/${match}?api_key=${process.env.RIOT_API}`;
             const gameData = await(await fetch(gameUrl)).json();
-            console.log(gameData);
+
             if (gameData?.status?.status_code === 404) continue;
             for (let summoner of gameData?.info?.participants) {
                 if (summoner?.summonerName?.toLowerCase() === summonerName.toLowerCase()) {

@@ -2,17 +2,46 @@ import RankedChampion from "./RankedChampion";
 import { useContext, useEffect, useState } from "react";
 import { PlayerContext } from "../contexts/PlayerContext";
 
+const handleChampions = (stats) => {
+  const resultArr = [];
+    for (let id in stats) {
+      let member = {
+          id,
+          ...stats[id]
+      }
+      resultArr.push(member)
+    }
+
+    const topThree = []
+    for (let j = 0; j < 3; j++) {
+      let n = 0;
+      let id;
+      for (let i = 0; i < resultArr.length; i++) {
+        if (resultArr[i].n >= n) {
+          n = resultArr[i].n
+          id = resultArr[i].id
+        }
+      }
+      topThree.push(resultArr.find(member => member.n === n && member.id === id));
+      resultArr.splice(resultArr.findIndex(member => member.n === n && member.id === id), 1);
+    }
+    return topThree;
+}
+
 const PlayerChampions = () => {
 
   const [champions, setChampions] = useState("")
   const { playerData: {stats} } = useContext(PlayerContext);
 
   useEffect(() => {
-    (async function champions() {
+    (async function () {
+      console.log(handleChampions(stats));
       const champions = await(await fetch("https://ddragon.leagueoflegends.com/cdn/11.10.1/data/en_US/champion.json")).json();
       setChampions(champions);
     })();
-  }, [champions, stats])
+  }, [])
+
+  
   
 
   return ( 
@@ -20,9 +49,9 @@ const PlayerChampions = () => {
       <p className="best-champions-header">TOP 3 PLAYED CHAMPIONS</p>
       <div className="best-champions-box">
       {
-        (Object.keys(stats).map(key => {
-          return (<RankedChampion champions={champions} championId={key} stats={stats[key]} key={key} />)
-        }))
+        handleChampions(stats).map(champion => (
+          <RankedChampion champions={champions} championId={champion.id} stats={champion} />
+        ))
       }
       </div>
         
