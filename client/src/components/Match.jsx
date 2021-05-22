@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import MatchDetails from "./MatchDetails";
 
 const Match = ( { game } ) => {
   const [isClicked, setIsClicked] = useState(false);
+
+  useEffect(() => console.log(game), [])
 
   return ( 
     <div 
@@ -62,26 +64,32 @@ const Match = ( { game } ) => {
           </div>
 
           <div className="game-champ-build">
-            <div className="item1 item">
-              {game?.item0 ? <img className="item-image" src={`https://ddragon.leagueoflegends.com/cdn/11.10.1/img/item/${game?.item0}.png`} alt="Item slot 1"/> : <div></div> }            
+            <div className="game-champ-build-wrapper">
+              <div className="item1 item">
+                {game?.item0 ? <img className="item-image" src={`https://ddragon.leagueoflegends.com/cdn/11.10.1/img/item/${game?.item0}.png`} alt="Item slot 1"/> : <div></div> }            
+              </div>
+              <div className="item2 item">
+                {game?.item1 ? <img className="item-image" src={`https://ddragon.leagueoflegends.com/cdn/11.10.1/img/item/${game?.item1}.png`} alt="Item slot 2"/> : <div></div> }            
+              </div>
+              <div className="item3 item">
+                {game?.item2 ? <img className="item-image" src={`https://ddragon.leagueoflegends.com/cdn/11.10.1/img/item/${game?.item2}.png`} alt="Item slot 3"/> : <div></div> }            
+              </div>
+              <div className="item4 item">
+                {game?.item3 ? <img className="item-image" src={`https://ddragon.leagueoflegends.com/cdn/11.10.1/img/item/${game?.item3}.png`} alt="Item slot 4"/> : <div></div> }            
+              </div>
+              <div className="item5 item">
+                {game?.item4 ? <img className="item-image" src={`https://ddragon.leagueoflegends.com/cdn/11.10.1/img/item/${game?.item4}.png`} alt="Item slot 5"/> : <div></div> }            
+              </div>
+              <div className="item6 item">
+                {game?.item5 ? <img className="item-image" src={`https://ddragon.leagueoflegends.com/cdn/11.10.1/img/item/${game?.item5}.png`} alt="Item slot 6"/> : <div></div> }
+              </div>
+              <div className="item7 item">
+                {game?.item6 ? <img className="item-image" src={`https://ddragon.leagueoflegends.com/cdn/11.10.1/img/item/${game?.item6}.png`} alt="Trinket slot"/> : <div></div> }            
+              </div>
             </div>
-            <div className="item2 item">
-              {game?.item1 ? <img className="item-image" src={`https://ddragon.leagueoflegends.com/cdn/11.10.1/img/item/${game?.item1}.png`} alt="Item slot 2"/> : <div></div> }            
-            </div>
-            <div className="item3 item">
-              {game?.item2 ? <img className="item-image" src={`https://ddragon.leagueoflegends.com/cdn/11.10.1/img/item/${game?.item2}.png`} alt="Item slot 3"/> : <div></div> }            
-            </div>
-            <div className="item4 item">
-              {game?.item3 ? <img className="item-image" src={`https://ddragon.leagueoflegends.com/cdn/11.10.1/img/item/${game?.item3}.png`} alt="Item slot 4"/> : <div></div> }            
-            </div>
-            <div className="item5 item">
-              {game?.item4 ? <img className="item-image" src={`https://ddragon.leagueoflegends.com/cdn/11.10.1/img/item/${game?.item4}.png`} alt="Item slot 5"/> : <div></div> }            
-            </div>
-            <div className="item6 item">
-              {game?.item5 ? <img className="item-image" src={`https://ddragon.leagueoflegends.com/cdn/11.10.1/img/item/${game?.item5}.png`} alt="Item slot 6"/> : <div></div> }
-            </div>
-            <div className="item7 item">
-              {game?.item6 ? <img className="item-image" src={`https://ddragon.leagueoflegends.com/cdn/11.10.1/img/item/${game?.item6}.png`} alt="Trinket slot"/> : <div></div> }            
+            <div className="duration">
+              <p>Duration:</p>
+              <p>{Math.floor(game?.duration / 60000)}m {((game?.duration % 60000) / 1000).toFixed(0)}s</p>
             </div>
           </div>
           

@@ -6,7 +6,7 @@
 }
 
 .container {
-  width: min(98%, 900px);
+  width: min(98%, 1000px);
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -161,7 +161,7 @@
   }
 
   .best-champion-look {
-    width: 110%;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -196,6 +196,7 @@
     justify-content: center;
     @include font-style;
   }
+  
 }
 
 .rank {
@@ -266,7 +267,7 @@
     border-bottom: 2px solid black;
     @include font-style;
   }
-  .games-wrapper{
+  .games-wrapper {
     display: flex;
     flex-direction: column;
     align-content: center;
@@ -280,7 +281,7 @@
 
     width: 100%;
     height: 100%;
-
+    border-bottom: 1px solid black;
     display: grid;
     grid-template-columns: 25% 75%;
   }
@@ -289,7 +290,7 @@
     width: 100%;
     min-width: 120px;
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-columns: 2fr 2fr;
     grid-template-rows: 1fr;
   }
   .game-champ-summs {
@@ -318,12 +319,13 @@
     place-self: center;
   }
   .game-build-wrapper {
-    display: flex;  
-    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
   }
   .game-champ-score {
     width: 33%;
-    text-align: center;
+    text-align: start;
     line-height: 1.4rem;
     min-width: 100px;
     padding: 0.8rem 0.4rem;
@@ -332,10 +334,17 @@
   }
   .game-champ-build {
     display: flex;
-    width: 67%;
+    width: 100%;
     align-items: center;
     justify-content: center;
   }
+  .game-champ-build-wrapper {
+    width: 150%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
   .item {
     width: 40px;
     height: 40px;
@@ -347,6 +356,11 @@
     height: 40px;
     border: 1px solid black;
   }
+  .duration {
+    width: 50%;
+    text-align: center;
+    @include font-style;
+  }
 }
 
 .loser {
@@ -357,12 +371,25 @@
   background: linear-gradient(to right, #2f8524, rgb(30, 75, 18));
 }
 
+@media only screen and (max-width: 800px) {
+  .rank {
+    .rank-winrate {
+      font-size: 0.85rem;
+    }
+  }
+}
+
 @media only screen and (max-width: 700px) {
   .best-champions {
     .best-champion-look {
       width: 60%;
       flex-direction: column;
       align-items: flex-start;
+    }
+  }
+  .matches {
+    .duration {
+      display: none;
     }
   }
 }
@@ -381,8 +408,7 @@
       width: 100%;
       align-content: flex-end;
       justify-content: space-evenly;
-      font-size: 12px;
-      height: 100%;
+      font-size: 13px;
     }
     .score-header, .calculated-kda, .game-score {
       width: 100%;
@@ -392,8 +418,8 @@
     }
     .game-champ-build {
       width: 100%;
-      height: 100%;
       align-items: flex-start;
+      margin-right: 8px;
     }
     .item {
       width: 25px;
@@ -406,6 +432,9 @@
     .ch {
       width: 42px;
       height: 42px;
+    }
+    .game-champ-setup {
+      padding: 0.5rem 0;
     }
   }
   .game-build-wrapper {
@@ -426,6 +455,12 @@
 
   .follow {
     place-self: center;
+  }
+
+  .rank {
+    .rank-winrate {
+      font-size: 0.9rem;
+    }
   }
 }
 
