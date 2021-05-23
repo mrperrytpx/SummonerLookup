@@ -5,7 +5,7 @@ const RankedChampion = ({ champions, championId, stats }) => {
 
   useEffect(() => {
     for (let name in champions.data) {
-      if (champions?.data[name]?.key === championId) setChampionName(champions?.data[name]?.id)
+      if (champions?.data[name]?.key === championId.toString()) setChampionName(champions?.data[name]?.id)
     }
   }, [champions, stats, championId, championName]); 
 
@@ -25,19 +25,19 @@ const RankedChampion = ({ champions, championId, stats }) => {
 
       <div className="best-champion-score">
         <p className="best-kda">
-          {stats.d === 0 ? stats.k + stats.a : +((stats.k + stats.a) / stats.d).toFixed(2)} KDA
+          {stats.deaths === 0 ? stats.kills + stats.assists : +((stats.kills + stats.assists) / stats.deaths).toFixed(2)} KDA
         </p>
         <p className="best-avg">
-          {Math.round(stats.k / stats.n)} / {Math.round(stats.d / stats.n)} / {Math.round(stats.a / stats.n)}
+          {(stats.kills / stats.totalMatches).toFixed(1)} / {(stats.deaths / stats.totalMatches).toFixed(1)} / {(stats.assists / stats.totalMatches).toFixed(1)}
         </p>
         <p className="best-avg">
-          {Math.round(stats.cs / stats.n)} CS ({+(stats.cs / (stats.t / 60)).toFixed(1)})
+          {Math.round(stats.cs / stats.totalMatches)} CS
         </p>
       </div>
 
       <div className="best-champion-games">
-        <p className="winrate">{+((stats.w / stats.n) * 100).toFixed(2)}%</p>
-        <p className="games">{stats.n} games</p>
+        <p className="winrate">{+((stats.wins / stats.totalMatches) * 100).toFixed(2)}%</p>
+        <p className="games">{stats.totalMatches} games</p>
       </div>
     
     </div>

@@ -82,19 +82,58 @@ router.get("/:region/:server/:summonerName/", async (req, res) => {
                 losses: rankedStanding[0].losses,
             };
         }
-        const profileResponse = await fetch(`https://red.op.lol/summoner/4/${servers[server]}/${summonerName.split(" ").join("")}`);
-        if (!profileResponse.status === 200) throw new Error("Couldn't fetch hat profile");
-        const { aid } = await profileResponse.json();
-
-        const gamesResponse = await fetch(`https://red.op.lol/stats/single/1/${servers[server]}/${aid}/`);
-        if (!gamesResponse.status === 200) throw new Error("Couldn't fetch ranked stats for that profile");
-        const gamesStats = await gamesResponse.json();
-
-        payload.stats = {};
-
-        if (gamesStats["90"].hasOwnProperty("420")) {
-            payload.stats = gamesStats["90"]["420"]?.champions.ALL;
-        }
+        const test = await fetch("https://u.gg/api", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                query: `
+                query getPlayerStats($queueType: [Int!], $regionId: String!, $role: Int!, $seasonId: Int!, $summonerName: String!) {
+                    fetchPlayerStatistics(queueType: $queueType, summonerName: $summonerName, regionId: $regionId, role: $role, seasonId: $seasonId) {
+                      basicChampionPerformances {
+                        assists
+                        championId
+                        cs
+                        damage
+                        damageTaken
+                        deaths
+                        doubleKills
+                        gold
+                        kills
+                        maxDeaths
+                        maxKills
+                        pentaKills
+                        quadraKills
+                        totalMatches
+                        tripleKills
+                        wins
+                        lpAvg
+                        __typename
+                      }
+                      exodiaUuid
+                      puuid
+                      queueType
+                      regionId
+                      role
+                      seasonId
+                      __typename
+                    }
+                  }`,
+                variables: {
+                    "summonerName": `${summonerName}`,
+                    "regionId": `${server}`,
+                    "role": 7,
+                    "seasonId": 16,
+                    "queueType": [
+                      420,
+                    ]
+                  }
+            })
+        })
+        if (test.status !== 200) throw new Error("U.GG Might be having issues");
+        const dataTest = await test.json();
+        payload.stats = dataTest.data.fetchPlayerStatistics[0].basicChampionPerformances;
 
         res.status(200).json(payload);
 

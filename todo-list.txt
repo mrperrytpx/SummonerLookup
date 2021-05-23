@@ -17,3 +17,4 @@ TASKS FOR FUTURE ME WHEN ITS FUNCTIONAL (WIP)
 - make your own picture library for icons so it doesn't run out of date randomly
 - set up abort controllers
 - add server choice to local storage
+- give credit to u.gg
