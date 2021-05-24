@@ -1,5 +1,5 @@
 import { useEffect, useState, useContext } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
 // Pages
 import Home from "./pages/Home";
@@ -18,8 +18,8 @@ const queryClient = new QueryClient();
 
 const App = () => {
   const [loading, setLoading] = useState(true)
-  const { setLoggedIn } = useContext(LoggedInContext);
-  const { token, setNewToken } = useContext(TokenContext);
+  const { isLoggedIn, setLoggedIn } = useContext(LoggedInContext);
+  const { setNewToken } = useContext(TokenContext);
 
   // Give the user a new access token if there's a refresh token stored in cookies
   useEffect(() => {
@@ -40,7 +40,7 @@ const App = () => {
       setLoading(false);
     });
     return () => abortCont.abort();
-  }, [setLoggedIn, token, setNewToken])
+  }, [setLoggedIn, setNewToken])
 
   if (loading) {
     return <div>Loading...</div>
@@ -54,10 +54,18 @@ const App = () => {
           <div className="content">
             <Switch>
               <Route exact path="/"><Home /></Route>
-              <Route exact path="/login"><Login /></Route>
-              <Route exact path="/register"><Register /></Route>
-              <Route exact path="/me"><Me /></Route>
-              <Route exact path="/me/delete"><DeleteUser /></Route>
+              <Route exact path="/login">
+                {isLoggedIn ? <Redirect to="/" /> : <Login />}
+              </Route>
+              <Route exact path="/register">
+                {isLoggedIn ? <Redirect to="/" /> : <Register />}
+              </Route>
+              <Route exact path="/me">
+                {!isLoggedIn ? <Redirect to="/login" /> : <Me />}
+              </Route>
+              <Route exact path="/me/delete">
+                {!isLoggedIn ? <Redirect to="/login" /> : <DeleteUser />}
+              </Route>
               <Route exact path="/search/:region/:server/:summonerName">
                 <PlayerContextProvider>
                   <Players />

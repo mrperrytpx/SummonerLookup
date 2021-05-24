@@ -1,7 +1,6 @@
-import { useState, useEffect, useContext } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import { AiFillEyeInvisible, AiFillEye }from "react-icons/ai";
-import { TokenContext } from "../contexts/TokenContext";
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -10,33 +9,9 @@ const Register = () => {
   const [repeatPassword, setRepeatPassword] = useState("");
   const [isVisible, setIsVisible] = useState(false);
   const [passwordField, setPasswordField] = useState("password");
-  const history = useHistory();
-
-  const { token } = useContext(TokenContext);
   
   const [isPasswordsMatching, setIsPasswordsMatching] = useState(true);
   const [error, setError] = useState("");
-
-  const [checkLoggedIn, setcheckLoggedIn] = useState(false);
-
-  // Verify if the user is allowed to go to the path by checking if there's a valid access token stored
-  useEffect(() => {
-		;(async function verifyUser() {
-			const { message } = await(await fetch("/is_logged_in", {
-				method: "POST",
-				headers: { 
-					"Content-Type": "application/json",
-					credentials: "include",
-					authorization: `Bearer ${token}`
-				}
-			})).json()
-			if (message) {
-				setcheckLoggedIn(true);
-			} else {
-        setcheckLoggedIn(false);
-      }
-		})();
-	}, [history, token])
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -95,9 +70,6 @@ const Register = () => {
       setIsVisible(false);
     }
   }
-
-  // If user is logged in, the register form isn't displayed
-  if (checkLoggedIn) return (<div>Already logged in</div> )
 
   return ( 
     <section className="input-section">

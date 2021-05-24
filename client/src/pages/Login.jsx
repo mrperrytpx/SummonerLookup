@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import { LoggedInContext } from "../contexts/LoggedInContext";
@@ -12,32 +12,8 @@ const Login = () => {
 
   const [error, setError] = useState("");
   const { setLoggedIn } = useContext(LoggedInContext);
-  const { token, setNewToken } = useContext(TokenContext);
+  const { setNewToken } = useContext(TokenContext);
   const history = useHistory();
-  const [checkLoggedIn, setCheckLoggedIn] = useState(false);
-
-  useEffect(() => {
-    const abortCont = new AbortController();
-		;(async function verifyUser() {
-			const { message } = await(await fetch("/is_logged_in", {
-				method: "POST",
-				headers: { 
-					"Content-Type": "application/json",
-					credentials: "include",
-					authorization: `Bearer ${token}`,
-          signal: abortCont.signal
-				}
-			})).json()
-      // If there's a message, set the user logged in flag to true
-			if (message) {
-				setCheckLoggedIn(true);
-			} else {
-        // set user logged in flag to false
-        setCheckLoggedIn(false);
-      }
-		})();
-    return () => abortCont.abort();
-	}, [])
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -72,8 +48,6 @@ const Login = () => {
       setIsVisible(false);
     }
   }
-
-  if (checkLoggedIn) return (<div>Already logged in</div> )
 
   return ( 
     <section className="input-section">
