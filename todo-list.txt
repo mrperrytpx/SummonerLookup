@@ -18,3 +18,5 @@ TASKS FOR FUTURE ME WHEN ITS FUNCTIONAL (WIP)
 - set up abort controllers
 - add server choice to local storage
 - give credit to u.gg
+- switch all useEffect fetchers into useQuery
+- add rate limiting
