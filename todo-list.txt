@@ -4,7 +4,6 @@ TASKS FOR FUTURE ME WHEN ITS FUNCTIONAL (WIP)
 - Refactor front-end validation - fix Regex - with Formik / Yup ?
 - Register Validation check on unfocus instead of on submit
 - Send email validation
-- Refactor isLoggedIn check where called into a custom hook - add the abort controller (???)
 - Make pages for Unauthorized and Already logged in cases
 - store refresh token versions instead of actual refresh tokens in DB
 - make server responses actual http status codes instead of random shit 
@@ -18,4 +17,3 @@ TASKS FOR FUTURE ME WHEN ITS FUNCTIONAL (WIP)
 - give credit to u.gg
 - switch all useEffect fetchers into useQuery (where it makes sense);
 - add rate limiting
-- lift ghetto rerouting from useEffect to the Router components
