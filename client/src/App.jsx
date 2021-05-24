@@ -1,6 +1,7 @@
 import { useEffect, useState, useContext } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { setAccessToken } from "./accessToken"
+import { QueryClient, QueryClientProvider } from "react-query";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -10,6 +11,8 @@ import Players from "./pages/Players";
 import Navbar from "./components/Navbar";
 import { LoggedInContext } from "./contexts/LoggedInContext";
 import PlayerContextProvider from "./contexts/PlayerContext";
+
+const queryClient = new QueryClient();
 
 const App = () => {
   const [loading, setLoading] = useState(true)
@@ -35,7 +38,8 @@ const App = () => {
   }
 
   return (
-    <Router>
+    <QueryClientProvider client={queryClient}>
+      <Router>
         <div className="App">
           <Navbar />
           <div className="content">
@@ -53,7 +57,8 @@ const App = () => {
             </Switch>
           </div>
         </div>  
-    </Router>
+      </Router>
+    </QueryClientProvider>
   );
 }
 

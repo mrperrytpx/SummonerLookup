@@ -8,23 +8,20 @@ const object = {
 
 const resultArr = [];
 for (let id in object) {
-    let member = {
-        id,
-        ...object[id]
-    }
-    resultArr.push(member)
+    resultArr.push({ id, ...object[id] });
 }
 
 const topThree = []
 for (let j = 0; j < 3; j++) {
-    let n = 0;
-    let id;
-    for (let i = 0; i < resultArr.length; i++) {
-        if (resultArr[i].n >= n) {
-            n = resultArr[i].n
-            id = resultArr[i].id
+    let n = 0, id;
+    resultArr.forEach(champ => {
+        if (champ.n >= n) {
+            n = champ.n;
+            id = champ.id;
         }
-    }
+    })
     topThree.push(resultArr.find(member => member.n === n && member.id === id));
     resultArr.splice(resultArr.findIndex(member => member.n === n && member.id === id), 1);
 }
+
+console.log(topThree);
