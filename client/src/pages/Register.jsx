@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { AiFillEyeInvisible, AiFillEye }from "react-icons/ai";
-import { getAccessToken } from "../accessToken";
+import { TokenContext } from "../contexts/TokenContext";
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -11,6 +11,8 @@ const Register = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [passwordField, setPasswordField] = useState("password");
   const history = useHistory();
+
+  const { token } = useContext(TokenContext);
   
   const [isPasswordsMatching, setIsPasswordsMatching] = useState(true);
   const [error, setError] = useState("");
@@ -20,7 +22,6 @@ const Register = () => {
   // Verify if the user is allowed to go to the path by checking if there's a valid access token stored
   useEffect(() => {
 		;(async function verifyUser() {
-			const token = getAccessToken();
 			const { message } = await(await fetch("/is_logged_in", {
 				method: "POST",
 				headers: { 
@@ -35,7 +36,7 @@ const Register = () => {
         setcheckLoggedIn(false);
       }
 		})();
-	}, [history])
+	}, [history, token])
 
   const handleRegister = async (e) => {
     e.preventDefault();

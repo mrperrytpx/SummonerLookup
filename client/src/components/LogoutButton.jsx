@@ -1,14 +1,13 @@
-import { getAccessToken, setAccessToken } from "../accessToken";
+import { useContext } from "react";
 import { useHistory } from "react-router-dom";
+import { TokenContext } from "../contexts/TokenContext";
 
 const LogoutButton = () => {
   const history = useHistory();
+  const { token, setNewToken } = useContext(TokenContext);
 
   const handleLogout = async (e) =>{
     e.preventDefault();
-    // get the access token
-    const token = getAccessToken();
-
     // Fetch to the /logout path, destructure the message from the response
     const { message } = await(await fetch("/logout", {
       method: "POST", 
@@ -20,7 +19,7 @@ const LogoutButton = () => {
     })).json();
     // If the response contains a message, clear the access token and refresh the page
     if (message) {
-      setAccessToken("");
+      setNewToken("");
       history.go(0);
     }
   }

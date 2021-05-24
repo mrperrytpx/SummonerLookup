@@ -1,13 +1,18 @@
-import { getAccessToken } from "../accessToken";
-import { useState, useEffect } from "react";
+import { TokenContext } from "../contexts/TokenContext";
+import { LoggedInContext } from "../contexts/LoggedInContext";
+import { useState, useEffect, useContext } from "react";
+import { useHistory } from "react-router-dom"; 
 
 const DeleteUser = () => {
   const [allowed, setAllowed] = useState(false);
-  const [deleted, setDeleted] = useState(false);
+
+  const { token, setNewToken } = useContext(TokenContext);
+  const { setLoggedIn } = useContext(LoggedInContext);
+
+  const history = useHistory();
 
   useEffect(() => {
   ;(async function verifyUser() {
-    const token = getAccessToken();
     const { message } = await(await fetch("/is_logged_in", {
       method: "POST",
       headers: { 
@@ -25,8 +30,6 @@ const DeleteUser = () => {
 }, [])
 
   const handleDelete = async (e) => {
-    e.preventDefault();
-    const token = getAccessToken();
     const { message } = await(await fetch("/delete", {
       method: "DELETE", 
       headers: {
@@ -35,7 +38,11 @@ const DeleteUser = () => {
         authorization: `Bearer ${token}`
       }, 
     })).json();
-    if (message) setDeleted(true);
+    if (message) {
+      setLoggedIn(() => false);
+      setNewToken("");
+      history.push("/");
+    }
   }
   
   if (!allowed) return (<div>Not Authorized</div> )
@@ -46,7 +53,6 @@ const DeleteUser = () => {
       <div>
         <button onClick={handleDelete}>YES</button>
       </div>
-      {deleted && <p>User successfully deleted</p>}
     </div>
   );
 }
