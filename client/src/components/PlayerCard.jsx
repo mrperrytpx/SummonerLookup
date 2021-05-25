@@ -1,8 +1,36 @@
 import { useContext } from "react";
 import { PlayerContext } from "../contexts/PlayerContext";
+import { LoggedInContext } from "../contexts/LoggedInContext";
 
 const PlayerCard = () => {
   const { playerData: {accountData} } = useContext(PlayerContext);
+  const { isLoggedIn } = useContext(LoggedInContext);
+
+  const handleFollow = async () => {
+    const abortCont = new AbortController();
+    const payload = {
+      summonerName: accountData?.summonerName,
+      region: accountData?.region,
+      server: accountData?.server,
+      puuid: accountData?.puuid,
+      summonerId: accountData?.summonerId
+    }
+    console.log(payload);
+
+    try {
+      const response = await fetch(`/add/`, {
+        method: "POST",
+        credentials: "include",
+        signal: abortCont.signal,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      })
+    } catch(err) {
+      console.log(err);
+    }
+
+    return () => abortCont.abort();
+  }
 
   return ( 
     <div className="summoner">
@@ -19,7 +47,7 @@ const PlayerCard = () => {
         </div> 
 
         <div className="follow-summoner"> 
-          <button className="follow">FOLLOW</button>  
+          <button disabled={!isLoggedIn} onClick={handleFollow} className="follow">FOLLOW</button>  
         </div>
         
       </div>  

@@ -17,6 +17,7 @@ router.get("/:region/:server/:summonerName/", async (req, res) => {
         
         // Set the necessary account data into the payload
         payload.accountData = {
+            server: server,
             region: region,
             puuid: accountData.puuid,
             summonerId: accountData.id,

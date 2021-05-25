@@ -28,7 +28,7 @@ const Login = () => {
       if (accessToken) {
         setLoggedIn(() => true);
         setNewToken(() => accessToken);
-        history.push("/");
+        history.go(-1);
       } else {
         setError("Invalid username or password");
       }

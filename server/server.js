@@ -15,6 +15,7 @@ const isLoggedInRoute = require("./routes/isLoggedIn");
 const deleteUserRoute = require("./routes/deleteUser")
 const searchUserRoute = require("./routes/searchPlayers");
 const matchDetailsRouter = require("./routes/matchDetails");
+const addPlayerRoute = require("./routes/addPlayer");
 
 // Authorization middleware
 const authorize = require("./tokens/authorize");
@@ -47,6 +48,7 @@ app.use("/me", authorize, myProfileRoute); // Get user info, has to be authorize
 app.use("/delete", authorize, deleteUserRoute); // Delete a user from the database, has to be authorized with a proper access token 
 app.use("/search", searchUserRoute); // Search for league of legends account info
 app.use("/match", matchDetailsRouter); // Get metch details for a single game
+app.use("/add", addPlayerRoute); // Add player to following list
 
 // Start server
 app.listen(PORT, () => {
