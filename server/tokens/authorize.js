@@ -16,8 +16,6 @@ module.exports = function (req, res, next) {
         req.user = verified;
         next();
     } catch(err) {
-        res.send({
-            error: `${err.message}`
-        })
+        res.status(403).json();
     }
 }

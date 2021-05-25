@@ -140,7 +140,7 @@ router.get("/:region/:server/:summonerName/", async (req, res) => {
 
     } catch (err) {
         // Catch errors and send it as Not Found
-        res.status(404).json(err.message);
+        res.sendStatus(404);
     }
 });
 

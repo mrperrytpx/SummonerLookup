@@ -11,8 +11,11 @@ const Players = () => {
 
   // Fetch the search players data on page load
   useEffect(() => {
+    const abortCont = new AbortController();
     ;(async function getPlayer() {
-      const response = await fetch(`/search/${region}/${server}/${summonerName}`);
+      const response = await fetch(`/search/${region}/${server}/${summonerName}`, {
+        signal: abortCont.signal
+      });
       if (response.status !== 200) {
         console.log(response);
         return;
@@ -21,6 +24,7 @@ const Players = () => {
       setPlayer(data);
       setLoading(false);
     })();
+    return () => abortCont.abort();
   }, [region, server, summonerName, setPlayer]);
 
   if (loading) return (<div>Loading...</div>)

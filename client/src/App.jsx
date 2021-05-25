@@ -24,21 +24,18 @@ const App = () => {
   // Give the user a new access token if there's a refresh token stored in cookies
   useEffect(() => {
     const abortCont = new AbortController();
-    
-    fetch("/refresh_token", { 
-      method: "POST",
-      credentials: "include",
-      signal: abortCont.signal
+    (async () => {
+      const response = await fetch("/refresh_token", {
+        method: "POST",
+        credentials: "include",
+        signal: abortCont.signal
       })
-    .then(async x => {
-      const { accessToken } = await x.json();
-      // If there's an access token, set the login to true for a different Navbar
-      if (accessToken) {
-        setLoggedIn(true);   
-      } 
+      if (!response.ok) throw new Error("Couldn't fetch refresh token");
+      const { accessToken } = await response.json();
+      if (accessToken) setLoggedIn(true);
       setNewToken(accessToken);
       setLoading(false);
-    });
+    })();
     return () => abortCont.abort();
   }, [setLoggedIn, setNewToken])
 

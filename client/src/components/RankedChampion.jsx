@@ -16,7 +16,7 @@ const RankedChampion = ({ champions, championId, stats }) => {
         <div className="best-champion-icon">
           <img 
             className="champion-icon" 
-            src={`https://static.u.gg/assets/lol/riot_static/11.10.1/img/champion/${championName}.png` }
+            src={`https://static.u.gg/assets/lol/riot_static/11.11.1/img/champion/${championName}.png` }
             alt="Champion" 
           />
         </div>

@@ -31,7 +31,7 @@ const userSchema = new mongoose.Schema({
                 type: String,
                 required: true
             },
-            summonerID: { // Player's summoner ID
+            summonerId: { // Player's summoner ID
                 type: String,
                 required: true
             },

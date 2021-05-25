@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { AiFillEyeInvisible, AiFillEye }from "react-icons/ai";
 
 const Register = () => {
@@ -12,6 +12,8 @@ const Register = () => {
   
   const [isPasswordsMatching, setIsPasswordsMatching] = useState(true);
   const [error, setError] = useState("");
+
+  const history = useHistory();
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -45,14 +47,15 @@ const Register = () => {
       password,
     }
     try {
-      const register = await fetch(`/register/`, {
+      const response = await fetch(`/register/`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(info)
       });
-      const returnData = await register.json();
+      const data = await response.json();
       // SETUP ROUTING TO /LOGIN EVENTUALLY
-      console.log(returnData);
+      console.log(data);
+      history.push("/login");
     } catch(err) {
       console.log(err);
     }

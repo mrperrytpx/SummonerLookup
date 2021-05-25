@@ -1,10 +1,12 @@
 import { useContext } from "react";
 import { PlayerContext } from "../contexts/PlayerContext";
 import { LoggedInContext } from "../contexts/LoggedInContext";
+import { TokenContext } from "../contexts/TokenContext";
 
 const PlayerCard = () => {
   const { playerData: {accountData} } = useContext(PlayerContext);
   const { isLoggedIn } = useContext(LoggedInContext);
+  const { token } = useContext(TokenContext);
 
   const handleFollow = async () => {
     const abortCont = new AbortController();
@@ -15,16 +17,19 @@ const PlayerCard = () => {
       puuid: accountData?.puuid,
       summonerId: accountData?.summonerId
     }
-    console.log(payload);
 
     try {
-      const response = await fetch(`/add/`, {
+      const response = await fetch(`/add`, {
         method: "POST",
-        credentials: "include",
         signal: abortCont.signal,
-        headers: { "Content-Type": "application/json" },
+        headers: { 
+          "Content-Type": "application/json",
+          authorization: `Bearer ${token}`,
+        }, 
         body: JSON.stringify(payload),
       })
+      if (!response.ok) throw new Error("Couldn't follow player");
+      
     } catch(err) {
       console.log(err);
     }
@@ -36,7 +41,7 @@ const PlayerCard = () => {
     <div className="summoner">
 
       <div className="summoner-icon">
-        <img className="player-summoner-icon" src={`https://ddragon.leagueoflegends.com/cdn/11.10.1/img/profileicon/${accountData?.profileIconId}.png`} alt="Summoner's icon" />
+        <img className="player-summoner-icon" src={`https://ddragon.leagueoflegends.com/cdn/11.11.1/img/profileicon/${accountData?.profileIconId}.png`} alt="Summoner's icon" />
         <div className="player-account-level">{accountData?.summonerLevel}</div>
       </div>
 
@@ -47,7 +52,7 @@ const PlayerCard = () => {
         </div> 
 
         <div className="follow-summoner"> 
-          <button disabled={!isLoggedIn} onClick={handleFollow} className="follow">FOLLOW</button>  
+          <button disabled={!isLoggedIn} onClick={handleFollow} className="follow">FOLLOW</button>
         </div>
         
       </div>  

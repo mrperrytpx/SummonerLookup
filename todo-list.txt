@@ -17,3 +17,4 @@ TASKS FOR FUTURE ME WHEN ITS FUNCTIONAL (WIP)
 - give credit to u.gg
 - switch all useEffect fetchers into useQuery (where it makes sense);
 - add rate limiting
+- add search on enter press
