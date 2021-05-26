@@ -36,10 +36,12 @@ const Me = () => {
   return ( 
     <div className="following">
       <Link to="/me/delete"><p>Want to delete your account?</p></Link>
-      {summoners && summoners.map(summoner => (
-          <Summoner key={summoner._id} summoner={summoner}/>
-          ))
-      }
+      <div className="followed-players">
+        {summoners && summoners.map(summoner => (
+            <Summoner key={summoner._id} summoner={summoner}/>
+            ))
+        }
+      </div>
       {!summoners && <p>You're not following anyone</p>}  
     </div> 
   );

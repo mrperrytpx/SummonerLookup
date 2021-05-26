@@ -6,10 +6,50 @@
 }
 
 .following {
-  width: min(98%, 1000px);
+  width: min(98%, 1100px);
   margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  padding: 0.2rem;
   background-color: red;
+  .followed-players {
+    width: 100%;
+    background-color: blue;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, min(100%, 545px));
+    grid-gap: 10px;
+  }
+  .followed-player {
+    background-color: yellow;
+    border-radius: 10px;
+    padding: 1rem 0;
+    margin: 0 auto;
+    width: 100%;
+    min-width: 310px;
+    border: 2px solid black;
+  }
+  .followed-player-summary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color:lightblue;
+    min-height: 200px;
+    height: 100%;
+  }
+  .followed-player-profile, .followed-player-rank {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+  }
+
+  .followed-player-icon {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    background-color: black;
+  }
+  .followed-icon {
+    width: 100px;
+    aspect-ratio: 1 / 1;
+  }
 }
