@@ -28,7 +28,7 @@ const Summoner = ({ summoner }) => {
 
           <div className="followed-player-icon">
             <img className="followed-icon" src="" alt="Followed player display" />
-            <div className="level"> 123q</div>
+            <div className="level"> 123 </div>
           </div>
 
           <div className="followed-player-name">
@@ -44,8 +44,8 @@ const Summoner = ({ summoner }) => {
           </div>
 
           <div className="followed-player-division">
-            <p className="division-and-lp"></p>
-            <p className="win-loss"></p>
+            <p className="division-and-lp">Diamond X - 48 LP</p>
+            <p className="win-loss">43% WR (403W-202L)</p>
           </div>
 
         </div>

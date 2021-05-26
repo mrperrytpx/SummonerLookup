@@ -18,6 +18,8 @@
   }
   .followed-player {
     background-color: yellow;
+    display: flex;
+    flex-direction: column;
     border-radius: 10px;
     padding: 1rem 0;
     margin: 0 auto;
@@ -26,7 +28,8 @@
     border: 2px solid black;
   }
   .followed-player-summary {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     align-items: center;
     justify-content: center;
     background-color:lightblue;
@@ -37,19 +40,42 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
     width: 100%;
     height: 100%;
+    border: 1px solid black;
   }
 
-  .followed-player-icon {
+  .followed-player-name {
+    @include font-style;
+  }
+
+  .followed-player-icon, .followed-player-tier {
     width: 100px;
     height: 100px;
     position: relative;
     background-color: black;
   }
-  .followed-icon {
+  .followed-icon, .followed-rank {
     width: 100px;
     aspect-ratio: 1 / 1;
+  }
+  .level {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    @include font-style;
+    border-color: white;
+    border-style: solid;
+    border-width: 1px 1px 0 1px;
+    padding: 3px 8px;
+  }
+  .followed-player-division {
+    @include font-style;
+    text-align: center;
+  }
+  .win-loss {
+    margin-top: 0.5rem;
   }
 }
