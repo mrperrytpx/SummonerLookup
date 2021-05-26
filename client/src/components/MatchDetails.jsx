@@ -3,7 +3,7 @@ import { PlayerContext } from "../contexts/PlayerContext";
 import { useQuery } from "react-query";
 
 const getMatchDetails = async ({ queryKey }) => {
-  const region = queryKey[0], id = queryKey[1]
+  const region = queryKey[0], id = queryKey[1];
   const response = await fetch(`/match/${region}/${id}`);
   if (!response.ok) throw new Error("Couldn't fetch that match");
 
@@ -23,13 +23,11 @@ const MatchDetials = ({ id }) => {
   });
 
   return ( 
-    <>
-      <div className="match-details">
-        {data && <p>{JSON.stringify(data?.metadata, null, 2)}</p>}
-        {status && <p>{status}</p>}
-        {error && <p>{error.message}</p>  }
-      </div>
-    </>
+    <div className="match-details">
+      {data && <p>{JSON.stringify(data?.metadata, null, 2)}</p>}
+      {status && <p>{status}</p>}
+      {error && <p>{error.message}</p>  }
+    </div>
   );
 }
  

@@ -5,13 +5,11 @@ export const TokenContext = createContext();
 function TokenContextProvider(props) {
   const [token, setToken] = useState("");
 
-  const newToken = useCallback(() => token, [token])
-
   const setNewToken = useCallback((string) => {
     setToken(string);
   }, [setToken]);
 
-  const value = { token, newToken, setNewToken };
+  const value = { token, setNewToken };
 
   return(
     <TokenContext.Provider value={value}>

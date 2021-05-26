@@ -1,0 +1,15 @@
+@mixin font-style {
+  font-size: 0.8rem;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  color: white;
+}
+
+.following {
+  width: min(98%, 1000px);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  padding: 0.2rem;
+  background-color: red;
+}
