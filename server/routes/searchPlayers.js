@@ -2,7 +2,6 @@ const router = require("express").Router();
 const fetch = require("node-fetch");
 const summonerSpells = require("../static/summonerSpellIDs");
 const runes = require("../static/runeIDs");
-const servers = require("../static/servers");
 
 router.get("/:region/:server/:summonerName/", async (req, res) => {
     const { region, server, summonerName } = req.params;

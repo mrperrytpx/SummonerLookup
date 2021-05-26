@@ -18,3 +18,5 @@ TASKS FOR FUTURE ME WHEN ITS FUNCTIONAL (WIP)
 - switch all useEffect fetchers into useQuery (where it makes sense);
 - add rate limiting
 - add search on enter press
+- pre-fetch following data on app load if user is logged in
+- rename everything because it makes no sense

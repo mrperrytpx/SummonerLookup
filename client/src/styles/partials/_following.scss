@@ -48,6 +48,7 @@
 
   .followed-player-name {
     @include font-style;
+    font-size: 1rem;
   }
 
   .followed-player-icon, .followed-player-tier {
@@ -73,9 +74,7 @@
   }
   .followed-player-division {
     @include font-style;
+    font-size: 0.9rem;
     text-align: center;
-  }
-  .win-loss {
-    margin-top: 0.5rem;
   }
 }
