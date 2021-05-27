@@ -8,8 +8,7 @@ TASKS FOR FUTURE ME WHEN ITS FUNCTIONAL (WIP)
 - store refresh token versions instead of actual refresh tokens in DB
 - make server responses actual http status codes instead of random shit 
 - make front end requests a try/catch block
-- split SCSS files - 1 for colors, 1 for fonts etc
-- add light/dark mode switching
+- split SCSS files - 1 for colors, 1 for fonts etc - use utility classes11
 - split player profile fetch into multiple fetches to get payload sooner?
 - make your own picture library for icons so it doesn't run out of date randomly
 - set up abort controllers
