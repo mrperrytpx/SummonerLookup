@@ -38,11 +38,6 @@ const userSchema = new mongoose.Schema({
             puuid: { // Player's puuid
                 type: String,
                 required: true
-            }, // Just a number to fetch a single match for player cards
-            matches: {
-                type: Number,
-                required: true,
-                default: 1
             }
         },
     ],
