@@ -1,14 +1,14 @@
 import { useEffect, useState, useContext } from "react";
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
+import Navbar from "./components/Navbar";
 // Pages
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Me from "./pages/Me";
 import DeleteUser from "./pages/DeleteUser";
-import Players from "./pages/Players";
-import Navbar from "./components/Navbar";
+import Players from "./pages/Players"; 
 // Contexts
 import { TokenContext } from "./contexts/TokenContext";
 import { LoggedInContext } from "./contexts/LoggedInContext";
