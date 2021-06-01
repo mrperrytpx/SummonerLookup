@@ -38,9 +38,8 @@ const Me = () => {
       <Link to="/me/delete"><p>Want to delete your account?</p></Link>
       <div className="followed-players">
         {summoners && summoners.map(summoner => (
-            <Summoner key={summoner._id} summoner={summoner}/>
-            ))
-        }
+          <Summoner key={summoner._id} summoner={summoner}/>
+        ))}
       </div>
       {!summoners && <p>You're not following anyone</p>}  
     </div> 

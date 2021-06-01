@@ -300,7 +300,6 @@
   grid-template-rows: 1fr;
 }
 .game-champ-summs {
-  grid-area: 1 / 2 / 1 / 4;
   width: 100%;
   display: grid;
   grid-template-columns: 26px 26px;
@@ -399,7 +398,7 @@
 
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 550px) {
   .wrapper {
     flex-flow: column nowrap;
   }

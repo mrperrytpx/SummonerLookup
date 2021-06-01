@@ -1,5 +1,6 @@
 import Match from "./Match";
 import { useQuery } from "react-query";
+import FollowedLatestMatch from "./FollowedLatestMatch";
 
 const servers =  {
   eun1: "EUNE",
@@ -51,7 +52,7 @@ const Summoner = ({ summoner }) => {
         </div>
 
       </div>
-      <Match />
+      <FollowedLatestMatch />
     </div>
   );
 }
