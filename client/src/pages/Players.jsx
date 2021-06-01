@@ -13,7 +13,7 @@ const Players = () => {
   useEffect(() => {
     const abortCont = new AbortController();
     ;(async function getPlayer() {
-      const response = await fetch(`/search/${region}/${server}/${summonerName}`, {
+      const response = await fetch(`/api/search/${region}/${server}/${summonerName}`, {
         signal: abortCont.signal
       });
       if (response.status !== 200) {

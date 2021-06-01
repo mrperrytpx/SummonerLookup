@@ -19,7 +19,7 @@ const PlayerCard = () => {
     }
 
     try {
-      const response = await fetch(`/add`, {
+      const response = await fetch(`/api/add`, {
         method: "POST",
         signal: abortCont.signal,
         headers: { 

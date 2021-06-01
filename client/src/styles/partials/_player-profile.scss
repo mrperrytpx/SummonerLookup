@@ -33,15 +33,15 @@
   }
   .player-account-level {
     position: absolute;
-    left: 0;
-    bottom: 0;
+    left: 50%;
+    bottom: -10%;
+    transform: translateX(-50%);
     border: 1px solid hsl(0, 0, 50);  
     padding: 0 0.2rem;
     @include font-style;
     font-size: 1rem;
     background-color: white;
     color: black;
-    border-radius: 15px;
   }
 
   .name-wrapper {

@@ -18,7 +18,7 @@ const matchDetailsRouter = require("./routes/matchDetails");
 const addToFollowingRoute = require("./routes/addToFollowing");
 
 // Authorization middleware
-const authorize = require("./tokens/authorize");
+const authorizeMiddleware = require("./tokens/authorizeMiddleware");
 
 // Environment variables
 const PORT = process.env.PORT ?? 3001;
@@ -39,16 +39,16 @@ app.use(express.json());
 app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 
 //Route middlewares
-app.use("/is_logged_in", isLoggedInRoute); // Checks if the user is logged in
-app.use("/register", registerRoute); // Send info to make a new user in database
-app.use("/login", loginRoute); // Check if user exists in the database
-app.use("/refresh_token", refreshTokenRoute); // Refresh a token
-app.use("/logout", authorize, logoutRoute); // Delete a refresh token and clear the access token, has to be authorized with a proper access token 
-app.use("/me", authorize, myProfileRoute); // Get user info, has to be authorized with a proper access token 
-app.use("/delete", authorize, deleteUserRoute); // Delete a user from the database, has to be authorized with a proper access token 
-app.use("/search", searchUserRoute); // Search for league of legends account info
-app.use("/match", matchDetailsRouter); // Get metch details for a single game
-app.use("/add", authorize, addToFollowingRoute); // Add player to following list
+app.use("/api/is_logged_in", isLoggedInRoute); // Checks if the user is logged in
+app.use("/api/register", registerRoute); // Send info to make a new user in database
+app.use("/api/login", loginRoute); // Check if user exists in the database
+app.use("/api/refresh_token", refreshTokenRoute); // Refresh a token
+app.use("/api/search", searchUserRoute); // Search for league of legends account info
+app.use("/api/match", matchDetailsRouter); // Get metch details for a single game
+app.use("/api/logout", authorizeMiddleware, logoutRoute); // Delete a refresh token and clear the access token, has to be authorized with a proper access token 
+app.use("/api/me", authorizeMiddleware, myProfileRoute); // Get user info, has to be authorized with a proper access token 
+app.use("/api/delete", authorizeMiddleware, deleteUserRoute); // Delete a user from the database, has to be authorized with a proper access token 
+app.use("/api/add", authorizeMiddleware, addToFollowingRoute); // Add player to following list
 
 // Start server
 app.listen(PORT, () => {

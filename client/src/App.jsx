@@ -25,7 +25,7 @@ const App = () => {
   useEffect(() => {
     const abortCont = new AbortController();
     (async () => {
-      const response = await fetch("/refresh_token", {
+      const response = await fetch("/api/refresh_token", {
         method: "POST",
         credentials: "include",
         signal: abortCont.signal

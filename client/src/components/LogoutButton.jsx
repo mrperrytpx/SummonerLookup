@@ -9,7 +9,7 @@ const LogoutButton = () => {
   const handleLogout = async (e) =>{
     e.preventDefault();
     // Fetch to the /logout path, destructure the message from the response
-    const { message } = await(await fetch("/logout", {
+    const { message } = await(await fetch("/api/logout", {
       method: "POST", 
       headers: { 
         "Content-Type": "application/json",

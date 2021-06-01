@@ -4,7 +4,7 @@ import { useQuery } from "react-query";
 
 const getMatchDetails = async ({ queryKey }) => {
   const region = queryKey[0], id = queryKey[1];
-  const response = await fetch(`/match/${region}/${id}`);
+  const response = await fetch(`/api/match/${region}/${id}`);
   if (!response.ok) throw new Error("Couldn't fetch that match");
 
   const data = await response.json();

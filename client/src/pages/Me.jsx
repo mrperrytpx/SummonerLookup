@@ -11,7 +11,7 @@ const Me = () => {
   useEffect(() => {
     ;(async () => {
         try {
-          const response = await fetch("/me", {
+          const response = await fetch("/api/me", {
             method: "GET",
             headers: { 
               "Content-Type": "application/json",

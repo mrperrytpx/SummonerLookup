@@ -10,7 +10,7 @@ const DeleteUser = () => {
   const history = useHistory();
 
   const handleDelete = async (e) => {
-    const { message } = await(await fetch("/delete", {
+    const { message } = await(await fetch("/api/delete", {
       method: "DELETE", 
       headers: {
         "Content-Type": "application/json",
