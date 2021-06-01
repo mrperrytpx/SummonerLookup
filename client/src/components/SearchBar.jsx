@@ -47,7 +47,7 @@ const SearchBar = () => {
           }}
         />
 
-          <Link to={`/search/${region}/${server}/${summonerName}`}><FaAngleDoubleRight style={style} /></Link>
+          <Link to={`/${region}/${server}/${summonerName}`}><FaAngleDoubleRight style={style} /></Link>
       </form>
     </div>
     );

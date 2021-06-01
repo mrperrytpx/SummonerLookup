@@ -43,7 +43,7 @@ app.use("/api/is_logged_in", isLoggedInRoute); // Checks if the user is logged i
 app.use("/api/register", registerRoute); // Send info to make a new user in database
 app.use("/api/login", loginRoute); // Check if user exists in the database
 app.use("/api/refresh_token", refreshTokenRoute); // Refresh a token
-app.use("/api/search", searchUserRoute); // Search for league of legends account info
+app.use("/api/", searchUserRoute); // Search for league of legends account info
 app.use("/api/match", matchDetailsRouter); // Get metch details for a single game
 app.use("/api/logout", authorizeMiddleware, logoutRoute); // Delete a refresh token and clear the access token, has to be authorized with a proper access token 
 app.use("/api/me", authorizeMiddleware, myProfileRoute); // Get user info, has to be authorized with a proper access token 

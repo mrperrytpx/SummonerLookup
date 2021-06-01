@@ -1,16 +1,20 @@
+import { Link, useParams } from "react-router-dom";
+
 const PlayerNav = () => {
+  const { region, server, summonerName } = useParams();
+
   return ( 
       <nav className="profile-navbar">
         <div className="profile-navbar-wrapper">
-          <a href="s" className="overview">
+          <Link to={`/${region}/${server}/${summonerName}`} className="overview">
             <p>OVERVIEW</p>
-          </a>
-          <a href="s" className="champions">
+          </Link>
+          <Link to={`/${region}/${server}/${summonerName}/stats`} className="champions">
             <p>CHAMPION STATS</p>
-          </a>
-          <a href="s" className="live-game">
+          </Link>
+          <Link to={`/${region}/${server}/${summonerName}/live-game`} className="live-game">
             <p>LIVE GAME</p>
-          </a>
+          </Link>
         </div>
       </nav>
     );
