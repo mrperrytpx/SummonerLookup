@@ -16,7 +16,7 @@ router.post("/", async (req, res) => {
         });
     }
     // clear the cookie with the refresh token
-    res.clearCookie('slup', { path: '/refresh_token' });
+    res.clearCookie('slup', { path: '/api/refresh_token' });
     return res.send({
       message: 'Logged out',
     });

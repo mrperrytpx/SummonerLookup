@@ -9,6 +9,7 @@ const User = require("../model/User");
 router.post('/', async (req, res) => {
     // get the token from the cookie
     const token = req.cookies.slup;
+    console.log(token);
     // If we don't have a token in our request, set the access token to nothing
     if (!token) return res.send({ accesstoken: '' });
 

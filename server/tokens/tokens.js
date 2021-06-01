@@ -27,7 +27,7 @@ const sendRefreshToken = (res, token) => {
     // send the refresh token as a cookie
     res.cookie("slup", token, {
         httpOnly: true,
-        path: "/refresh_token"
+        path: "/api/refresh_token"
     });
 }
 
