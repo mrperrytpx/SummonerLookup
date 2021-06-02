@@ -35,6 +35,10 @@ const Me = () => {
     retry: 1,
   });
 
+  const [overviewIsClicked, setOverviewIsClicked] = useState(true);
+  const [statsIsClicked, setStatsIsClicked] = useState(false);
+  const [liveIsClicked, setLiveIsClicked] = useState(false);
+
   // render the list of followers, not following or access denied
   return ( 
     <div className="following">
