@@ -8,16 +8,17 @@ TASKS FOR FUTURE ME WHEN ITS FUNCTIONAL (WIP)
 - store refresh token versions instead of actual refresh tokens in DB
 - make server responses actual http status codes instead of random shit 
 - make front end requests a try/catch block
-- split SCSS files - 1 for colors, 1 for fonts etc - use utility classes11
+- split SCSS files - decide on the approach (utility classes or something else)
 - split player profile fetch into multiple fetches to get payload sooner?
 - make your own picture library for icons so it doesn't run out of date randomly
 - set up abort controllers - set up returns from useEffect
 - add server choice to local storage
-- give credit to u.gg
+- give credit to u.gg and riot disclaimer to the footer - make a footer
 - switch all useEffect fetchers into useQuery (where it makes sense);
 - add rate limiting - cloudflare?
-- add search on enter press
+- add search on enter press - make it a form? 
 - pre-fetch following data on app load if user is logged in
 - rename everything because it makes no sense
 - accessibility concerns
-- handle errors so user knows
+- handle errors so user knows - use fireship try/catch thingie from that one video
+- I'm so fkin burnts it's not even funny, 3 weeks now
