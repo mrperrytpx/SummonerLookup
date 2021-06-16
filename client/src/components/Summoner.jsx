@@ -1,5 +1,3 @@
-import Match from "./Match";
-import { useQuery } from "react-query";
 import FollowedLatestMatch from "./FollowedLatestMatch";
 
 const servers =  {
@@ -17,8 +15,6 @@ const servers =  {
 }
 
 const Summoner = ({ summoner }) => {
-
-  // const { data } = useQuery();
 
   return ( 
     <div className="followed-player">

@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { TokenContext } from "../contexts/TokenContext";
 import Summoner from "../components/Summoner";
@@ -30,7 +30,7 @@ const Me = () => {
   const { token } = useContext(TokenContext);
 
   // Get who user follows
-  const { data, status, error } = useQuery(["me", token], getFollowing, {
+  const { data } = useQuery(["me", token], getFollowing, {
     refetchOnWindowFocus: false,
     retry: 1,
   });

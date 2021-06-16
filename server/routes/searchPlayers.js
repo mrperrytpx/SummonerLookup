@@ -5,7 +5,6 @@ const runes = require("../static/runeIDs");
 
 router.get("/:region/:server/:summonerName/", async (req, res) => {
     const { region, server, summonerName } = req.params;
-    console.log(req.params)
     const notSpacedSummoner = summonerName.split(" ").join("%20");
     let payload = {};
 

@@ -9,7 +9,6 @@ import Register from "./pages/Register";
 import Me from "./pages/Me";
 import DeleteUser from "./pages/DeleteUser";
 import Player from "./pages/Player"; 
-import PlayerChampionStats from "./pages/PlayerChampionStats.jsx";
 // Contexts
 import { TokenContext } from "./contexts/TokenContext";
 import { LoggedInContext } from "./contexts/LoggedInContext";
@@ -67,9 +66,6 @@ const App = () => {
               <PlayerContextProvider>
                 <Route exact path="/:region/:server/:summonerName">
                   <Player />
-                </Route>
-                <Route exact path="/:region/:server/:summonerName/stats">
-                  <PlayerChampionStats />
                 </Route>
               </PlayerContextProvider>
             </Switch>
