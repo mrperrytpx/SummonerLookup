@@ -391,10 +391,19 @@
       align-items: flex-start;
     }
   }
-
-    .duration {
-      display: none;
+  .rank {
+    .rank-stats-wrap {
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(2, 1fr);
+      margin-bottom: 0;
     }
+    .rank-elo, .rank-winrate {
+      text-align: center;
+    }
+  }
+  .duration {
+    display: none;
+  }
 
 }
 

@@ -3,8 +3,8 @@ import { PlayerContext } from "../contexts/PlayerContext";
 import { useQuery } from "react-query";
 
 const getMatchDetails = async ({ queryKey }) => {
-  const region = queryKey[0], id = queryKey[1];
-  console.log(region, id);
+  const region = queryKey[1], id = queryKey[2];
+  
   const response = await fetch(`/api/match/${region}/${id}`);
   if (!response.ok) throw new Error("Couldn't fetch that match");
 
@@ -18,7 +18,7 @@ const getMatchDetails = async ({ queryKey }) => {
 const MatchDetials = ({ id }) => {
   const {playerData: {accountData: {region}}} = useContext(PlayerContext);
 
-  const {data, status, error} = useQuery([region, id], getMatchDetails, {
+  const {data, status, error} = useQuery(["details", region, id], getMatchDetails, {
     refetchOnWindowFocus: false,
     retry: 1,
     staleTime: 30000000
