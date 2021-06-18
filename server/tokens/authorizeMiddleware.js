@@ -15,7 +15,7 @@ module.exports = function (req, res, next) {
         // If the access token is verified, set the request.user to the verified user
         req.user = verified;
         next();
-    } catch(err) {
+    } catch (err) {
         res.status(403).json();
     }
 }

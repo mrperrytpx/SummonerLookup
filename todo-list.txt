@@ -22,3 +22,4 @@ TASKS FOR FUTURE ME WHEN ITS FUNCTIONAL (WIP)
 - accessibility concerns
 - handle errors so user knows - use fireship try/catch thingie from that one video
 - I'm so fkin burnts it's not even funny, 3 weeks now
+- Add react-router site map for SEO

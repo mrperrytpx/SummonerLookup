@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { Link }  from "react-router-dom";
+import { Link } from "react-router-dom";
 import { FaAngleDoubleRight } from "react-icons/fa";
 
 const SearchBar = () => {
   const [server, setServer] = useState("eun1");
   const [summonerName, setSummonerName] = useState("");
-  const [region, setRegion]= useState("europe");
+  const [region, setRegion] = useState("europe");
 
   const style = {
     backgroundColor: "white",
@@ -17,7 +17,7 @@ const SearchBar = () => {
   return (
     <div className="search-bar">
       <form>
-        <select 
+        <select
           value={server}
           onChange={(e) => {
             setRegion(e.target.selectedOptions[0].dataset.region);
@@ -25,9 +25,9 @@ const SearchBar = () => {
           }}
         >
           <option data-region="europe" value="eun1">EUNE</option>
-          <option data-region="europe"  value="euw1">EUW</option>
-          <option data-region="europe"  value="tr1">TR</option>
-          <option data-region="europe"  value="ru">RU</option>
+          <option data-region="europe" value="euw1">EUW</option>
+          <option data-region="europe" value="tr1">TR</option>
+          <option data-region="europe" value="ru">RU</option>
           <option data-region="americas" value="na1">NA</option>
           <option data-region="americas" value="oc1">OCE</option>
           <option data-region="americas" value="la1">LAN</option>
@@ -37,8 +37,8 @@ const SearchBar = () => {
           <option data-region="asia" value="jp1">JP</option>
         </select>
 
-        <input 
-          type="text" 
+        <input
+          type="text"
           required
           placeholder="Enter a summoner name..."
           value={summonerName}
@@ -47,10 +47,10 @@ const SearchBar = () => {
           }}
         />
 
-          <Link to={`/${region}/${server}/${summonerName}`}><FaAngleDoubleRight style={style} /></Link>
+        <Link to={`/${region}/${server}/${summonerName}`}><FaAngleDoubleRight style={style} /></Link>
       </form>
     </div>
-    );
+  );
 }
- 
+
 export default SearchBar;

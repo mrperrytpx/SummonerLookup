@@ -32,7 +32,7 @@ const Login = () => {
       } else {
         setError("Invalid username or password");
       }
-    } catch(err) {
+    } catch (err) {
       console.log(err);
     }
   }
@@ -49,7 +49,7 @@ const Login = () => {
     }
   }
 
-  return ( 
+  return (
     <section className="input-section">
       <form onSubmit={handleLogin}>
 
@@ -59,25 +59,25 @@ const Login = () => {
         <input
           autoComplete="true"
           required
-          id="username" 
-          name="username" 
+          id="username"
+          name="username"
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
-        
+
         <label htmlFor="password">Password:</label>
         <div className="password-field">
-          <input 
+          <input
             autoComplete="true"
             id="password"
             required
-            name="password" 
+            name="password"
             type={passwordField}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button 
+          <button
             className="show-password"
             onClick={handleVisibility}
           >{isVisible ? <AiFillEye /> : <AiFillEyeInvisible />}</button>
@@ -92,7 +92,7 @@ const Login = () => {
         </Link>
       </form>
     </section>
-    );
-  }
- 
+  );
+}
+
 export default Login;

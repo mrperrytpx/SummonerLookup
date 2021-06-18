@@ -4,7 +4,7 @@ import PlayerRanked from "./PlayerRanked";
 import PlayerUnranked from "./PlayerUnranked";
 
 const PlayerStanding = () => {
-  const { playerData: {ranked} } = useContext(PlayerContext);
+  const { playerData: { ranked } } = useContext(PlayerContext);
   const [isRanked, setIsRanked] = useState(false);
 
   useEffect(() => {
@@ -12,16 +12,16 @@ const PlayerStanding = () => {
       setIsRanked(true);
     }
   }, [ranked])
-  
-  return ( 
+
+  return (
     <div className="rank">
       <p className="rank-header">RANK</p>
-      {isRanked ? 
-        <PlayerRanked ranked={ranked}/> :
+      {isRanked ?
+        <PlayerRanked ranked={ranked} /> :
         <PlayerUnranked />
       }
     </div>
   );
 }
- 
+
 export default PlayerStanding;

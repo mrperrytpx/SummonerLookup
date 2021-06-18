@@ -1,7 +1,7 @@
 import { TokenContext } from "../contexts/TokenContext";
 import { LoggedInContext } from "../contexts/LoggedInContext";
 import { useContext } from "react";
-import { useHistory } from "react-router-dom"; 
+import { useHistory } from "react-router-dom";
 
 const DeleteUser = () => {
   const { token, setNewToken } = useContext(TokenContext);
@@ -10,13 +10,13 @@ const DeleteUser = () => {
   const history = useHistory();
 
   const handleDelete = async (e) => {
-    const { message } = await(await fetch("/api/delete", {
-      method: "DELETE", 
+    const { message } = await (await fetch("/api/delete", {
+      method: "DELETE",
       headers: {
         "Content-Type": "application/json",
         credentials: "include",
         authorization: `Bearer ${token}`
-      }, 
+      },
     })).json();
     if (message) {
       setLoggedIn(() => false);
@@ -34,5 +34,5 @@ const DeleteUser = () => {
     </div>
   );
 }
- 
+
 export default DeleteUser;

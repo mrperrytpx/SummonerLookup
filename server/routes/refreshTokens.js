@@ -16,20 +16,20 @@ router.post('/', async (req, res) => {
     // Verify the refresh token
     let payload = null;
     try {
-    	payload = verify(token, process.env.JWT_REFRESH_SECRET);
+        payload = verify(token, process.env.JWT_REFRESH_SECRET);
         if (!payload) throw new Error("Invalid Refresh token");
     } catch (err) {
         // If the refresh token isn't verified, set the access token to nothing
-    	return res.send({ accesstoken: '' });
+        return res.send({ accesstoken: '' });
     }
 
     // Find a user with the refresh token ID
     const user = await User.findOne({
-    	_id: payload._id
+        _id: payload._id
     });
 
     // If there isn't a user, set the access token to nothing
-    if(!user) return res.send({ accesstoken: '' });
+    if (!user) return res.send({ accesstoken: '' });
     // If the user document doesn't have the same refresh token as the recieved refresh token
     if (user.refreshToken !== token) return res.send({ accesstoken: '' });
 
@@ -37,7 +37,7 @@ router.post('/', async (req, res) => {
     const accessToken = createAccessToken(user._id);
     const refreshToken = createRefreshToken(user._id);
     // Update users refresh token in the DB with a new refresh token 
-    await User.updateOne({ _id: user._id }, {"$set": { refreshToken: refreshToken }});
+    await User.updateOne({ _id: user._id }, { "$set": { refreshToken: refreshToken } });
     // Send both tokens to the front-end
     sendRefreshToken(res, refreshToken);
     return res.send({ accessToken });

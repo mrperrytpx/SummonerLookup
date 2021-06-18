@@ -9,7 +9,7 @@ const getFollowing = async ({ queryKey }) => {
   try {
     const response = await fetch("/api/me", {
       method: "GET",
-      headers: { 
+      headers: {
         "Content-Type": "application/json",
         credentials: "include",
         authorization: `Bearer ${token}`
@@ -23,7 +23,7 @@ const getFollowing = async ({ queryKey }) => {
 
     console.log(data);
     return data;
-  } catch (err) {}
+  } catch (err) { }
 }
 
 const Me = () => {
@@ -40,17 +40,17 @@ const Me = () => {
   const [liveIsClicked, setLiveIsClicked] = useState(false);
 
   // render the list of followers, not following or access denied
-  return ( 
+  return (
     <div className="following">
       <Link to="/me/delete"><p>Want to delete your account?</p></Link>
       <div className="followed-players">
         {data && data.map(summoner => (
-          <Summoner key={summoner._id} summoner={summoner}/>
+          <Summoner key={summoner._id} summoner={summoner} />
         ))}
       </div>
-      {!data && <p>You're not following anyone</p>}  
-    </div> 
+      {!data && <p>You're not following anyone</p>}
+    </div>
   );
 }
- 
+
 export default Me;

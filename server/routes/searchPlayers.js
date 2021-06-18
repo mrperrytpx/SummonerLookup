@@ -11,9 +11,9 @@ router.get("/:region/:server/:summonerName/", async (req, res) => {
     try {
         // Fetch account data to get the account ID
         const accountUrl = `https://${server}.api.riotgames.com/lol/summoner/v4/summoners/by-name/${notSpacedSummoner}?api_key=${process.env.RIOT_API}`;
-        const accountData = await(await fetch(accountUrl)).json();
+        const accountData = await (await fetch(accountUrl)).json();
         if (!accountData) throw new Error("Account not found");
-        
+
         // Set the necessary account data into the payload
         payload.accountData = {
             server: server,
@@ -28,13 +28,13 @@ router.get("/:region/:server/:summonerName/", async (req, res) => {
 
         // Fetch the match IDs
         const matchesUrl = `https://${region}.api.riotgames.com/lol/match/v5/matches/by-puuid/${accountData.puuid}/ids?start=0&count=5&api_key=${process.env.RIOT_API}`;
-        const matchesData = await(await fetch(matchesUrl)).json();
+        const matchesData = await (await fetch(matchesUrl)).json();
         if (!matchesData) throw new Error("No matches on the account");
 
         // Fetch each match and find which player the requested summonerName is
         for (let match of matchesData) {
             const gameUrl = `https://${region}.api.riotgames.com/lol/match/v5/matches/${match}?api_key=${process.env.RIOT_API}`;
-            const gameData = await(await fetch(gameUrl)).json();
+            const gameData = await (await fetch(gameUrl)).json();
 
             if (gameData?.status?.status_code === 404) continue;
             for (let summoner of gameData?.info?.participants) {
@@ -68,7 +68,7 @@ router.get("/:region/:server/:summonerName/", async (req, res) => {
 
         // Fetch summoner's ranked stats
         const rankedUrl = `https://${server}.api.riotgames.com/lol/league/v4/entries/by-summoner/${accountData.id}?api_key=${process.env.RIOT_API}`;
-        const rankedStanding = await(await fetch(rankedUrl)).json();
+        const rankedStanding = await (await fetch(rankedUrl)).json();
         // If it returns an empty array, set the payload.ranked to be empty
         if (rankedStanding.length === 0) {
             payload.ranked = {};
@@ -124,9 +124,9 @@ router.get("/:region/:server/:summonerName/", async (req, res) => {
                     "role": 7,
                     "seasonId": 16,
                     "queueType": [
-                      420,
+                        420,
                     ]
-                  }
+                }
             })
         })
         if (test.status !== 200) throw new Error("U.GG Might be having issues");

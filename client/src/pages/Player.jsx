@@ -15,7 +15,7 @@ const Players = () => {
   // Fetch the search players data on page load
   useEffect(() => {
     const abortCont = new AbortController();
-    ;(async function getPlayer() {
+    ; (async function getPlayer() {
       const response = await fetch(`/api/${region}/${server}/${summonerName}`, {
         signal: abortCont.signal
       });
@@ -32,7 +32,7 @@ const Players = () => {
 
   if (loading) return (<div>Loading...</div>)
 
-  return ( 
+  return (
     <div className="container">
       <PlayerCard />
       <PlayerNav />
@@ -41,5 +41,5 @@ const Players = () => {
     </div>
   );
 }
- 
+
 export default Players;

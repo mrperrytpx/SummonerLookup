@@ -7,7 +7,7 @@ const Navbar = () => {
   const { isLoggedIn } = useContext(LoggedInContext);
 
   // display different links depending if the user is logged in or not
-  return ( 
+  return (
     <nav className="nav">
       <Link to="/"><div className="logo">SummonerLookup™</div></Link>
       {!isLoggedIn && <Link to="/login"><p>Log In</p></Link>}
@@ -16,5 +16,5 @@ const Navbar = () => {
     </nav>
   );
 }
- 
+
 export default Navbar;

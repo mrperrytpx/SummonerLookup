@@ -11,7 +11,7 @@ function TokenContextProvider(props) {
 
   const value = { token, setNewToken };
 
-  return(
+  return (
     <TokenContext.Provider value={value}>
       {props.children}
     </TokenContext.Provider>

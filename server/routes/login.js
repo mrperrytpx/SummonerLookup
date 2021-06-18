@@ -38,7 +38,7 @@ router.post("/", async (req, res) => {
         const refreshToken = createRefreshToken(user._id);
 
         // Update the user's document with a refresh token
-        await User.updateOne({ _id: user._id }, {"$set" : { refreshToken: refreshToken }});
+        await User.updateOne({ _id: user._id }, { "$set": { refreshToken: refreshToken } });
 
         // Send the refresh token as a cookie, and access token as a response
         sendRefreshToken(res, refreshToken);

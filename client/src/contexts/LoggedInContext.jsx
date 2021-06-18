@@ -11,7 +11,7 @@ function LoggedInContextProvider(props) {
 
   const value = { isLoggedIn, setLoggedIn };
 
-  return(
+  return (
     <LoggedInContext.Provider value={value}>
       {props.children}
     </LoggedInContext.Provider>

@@ -11,7 +11,7 @@ function PlayerContextProvider(props) {
 
   const value = { playerData, setPlayer };
 
-  return(
+  return (
     <PlayerContext.Provider value={value}>
       {props.children}
     </PlayerContext.Provider>

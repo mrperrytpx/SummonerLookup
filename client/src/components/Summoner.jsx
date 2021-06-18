@@ -1,6 +1,6 @@
 import FollowedLatestMatch from "./FollowedLatestMatch";
 
-const servers =  {
+const servers = {
   eun1: "EUNE",
   euw1: "EIW",
   tr1: "TR",
@@ -16,7 +16,7 @@ const servers =  {
 
 const Summoner = ({ summoner }) => {
 
-  return ( 
+  return (
     <div className="followed-player">
 
       <div className="followed-player-summary">
@@ -53,4 +53,4 @@ const Summoner = ({ summoner }) => {
   );
 }
 
-export default Summoner;  
+export default Summoner;

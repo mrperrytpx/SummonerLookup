@@ -15,7 +15,7 @@ router.post("/", (req, res) => {
         if (!verified) throw new Error("Allowed");
 
         // If token is verified, user is logged in so we don't allow
-        res.send({message: "Already logged in"}); 
+        res.send({ message: "Already logged in" });
     } catch (err) {
         // Send the error
         res.send({

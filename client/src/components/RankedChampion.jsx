@@ -7,17 +7,17 @@ const RankedChampion = ({ champions, championId, stats }) => {
     for (let name in champions.data) {
       if (champions?.data[name]?.key === championId.toString()) setChampionName(champions?.data[name]?.id)
     }
-  }, [champions, stats, championId, championName]); 
+  }, [champions, stats, championId, championName]);
 
-  return (  
+  return (
     <div className="best-champions-wrapper">
 
       <div className="best-champion-look">
         <div className="best-champion-icon">
-          <img 
-            className="champion-icon" 
-            src={`https://static.u.gg/assets/lol/riot_static/11.11.1/img/champion/${championName}.png` }
-            alt="Champion" 
+          <img
+            className="champion-icon"
+            src={`https://static.u.gg/assets/lol/riot_static/11.11.1/img/champion/${championName}.png`}
+            alt="Champion"
           />
         </div>
         <p className="best-champion-name">{championName}</p>
@@ -39,9 +39,9 @@ const RankedChampion = ({ champions, championId, stats }) => {
         <p className="winrate">{+((stats.wins / stats.totalMatches) * 100).toFixed(2)}%</p>
         <p className="games">{stats.totalMatches} games</p>
       </div>
-    
+
     </div>
   );
 }
- 
+
 export default RankedChampion;

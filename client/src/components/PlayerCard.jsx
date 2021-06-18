@@ -4,7 +4,7 @@ import { LoggedInContext } from "../contexts/LoggedInContext";
 import { TokenContext } from "../contexts/TokenContext";
 
 const PlayerCard = () => {
-  const { playerData: {accountData} } = useContext(PlayerContext);
+  const { playerData: { accountData } } = useContext(PlayerContext);
   const { isLoggedIn } = useContext(LoggedInContext);
   const { token } = useContext(TokenContext);
 
@@ -22,22 +22,22 @@ const PlayerCard = () => {
       const response = await fetch(`/api/add`, {
         method: "POST",
         signal: abortCont.signal,
-        headers: { 
+        headers: {
           "Content-Type": "application/json",
           authorization: `Bearer ${token}`,
-        }, 
+        },
         body: JSON.stringify(payload),
       })
       if (!response.ok) throw new Error("Couldn't follow player");
-      
-    } catch(err) {
+
+    } catch (err) {
       console.log(err);
     }
 
     return () => abortCont.abort();
   }
 
-  return ( 
+  return (
     <div className="summoner">
 
       <div className="summoner-icon">
@@ -49,15 +49,15 @@ const PlayerCard = () => {
 
         <div className="player-name">
           <p className="summoner-name">{accountData?.summonerName}</p>
-        </div> 
+        </div>
 
-        <div className="follow-summoner"> 
+        <div className="follow-summoner">
           <button disabled={!isLoggedIn} onClick={handleFollow} className="follow">FOLLOW</button>
         </div>
-        
-      </div>  
+
+      </div>
     </div>
-    );
+  );
 }
- 
+
 export default PlayerCard;

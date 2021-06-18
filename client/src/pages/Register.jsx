@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { AiFillEyeInvisible, AiFillEye }from "react-icons/ai";
+import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -9,7 +9,7 @@ const Register = () => {
   const [repeatPassword, setRepeatPassword] = useState("");
   const [isVisible, setIsVisible] = useState(false);
   const [passwordField, setPasswordField] = useState("password");
-  
+
   const [isPasswordsMatching, setIsPasswordsMatching] = useState(true);
   const [error, setError] = useState("");
 
@@ -56,11 +56,11 @@ const Register = () => {
       // SETUP ROUTING TO /LOGIN EVENTUALLY
       console.log(data);
       history.push("/login");
-    } catch(err) {
+    } catch (err) {
       console.log(err);
     }
   }
-  
+
   // Toggle type for password field to "hide/show"
   const handleVisibility = (e) => {
     e.preventDefault();
@@ -74,7 +74,7 @@ const Register = () => {
     }
   }
 
-  return ( 
+  return (
     <section className="input-section">
       <form onSubmit={handleRegister}>
 
@@ -84,8 +84,8 @@ const Register = () => {
         <input
           autoComplete="true"
           required
-          id="email" 
-          name="email" 
+          id="email"
+          name="email"
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -95,22 +95,22 @@ const Register = () => {
         <input
           autoComplete="true"
           required
-          id="username" 
-          name="username" 
+          id="username"
+          name="username"
           type="text"
           value={username}
           onChange={(e) => {
             setUsername(e.target.value);
           }}
         />
-        
+
         <label htmlFor="password">Password:</label>
         <div className="password-field">
-          <input 
+          <input
             autoComplete="true"
             required
-            id="password" 
-            name="password" 
+            id="password"
+            name="password"
             type={passwordField}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -126,8 +126,8 @@ const Register = () => {
         <input
           autoComplete="true"
           required
-          id="repeat-password" 
-          name="repeat-password" 
+          id="repeat-password"
+          name="repeat-password"
           type={passwordField}
           value={repeatPassword}
           onChange={(e) => setRepeatPassword(e.target.value)}
@@ -143,7 +143,7 @@ const Register = () => {
         </Link>
       </form>
     </section>
-    );
-  }
- 
+  );
+}
+
 export default Register;
