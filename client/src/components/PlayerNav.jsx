@@ -11,11 +11,13 @@ const initialState = {
 const stateReducer = (state, action) => {
   switch (action.type) {
     case "OVERVIEW":
-      return { ...state, isOverviewActive: true, isStatsActive: false, isLiveActive: false }
+      return { isOverviewActive: true, isStatsActive: false, isLiveActive: false }
     case "STATS":
-      return { ...state, isOverviewActive: false, isStatsActive: true, isLiveActive: false }
+      return { isOverviewActive: false, isStatsActive: true, isLiveActive: false }
     case "LIVE":
-      return { ...state, isOverviewActive: false, isStatsActive: false, isLiveActive: true }
+      return { isOverviewActive: false, isStatsActive: false, isLiveActive: true }
+    default:
+      return state;
   }
 }
 
@@ -31,8 +33,14 @@ const PlayerNav = () => {
           <button type="button" onClick={() => dispatch({ type: "LIVE" })}>LIVE</button>
         </div>
       </nav>
-      {state.isOverviewActive && <><PlayerStats />
-        <Matches /></>}
+
+      {state.isOverviewActive &&
+        <>
+          <PlayerStats />
+          <Matches />
+        </>
+      }
+
     </>
   );
 }
