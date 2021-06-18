@@ -1,10 +1,8 @@
 import { useContext } from "react";
 import { PlayerContext } from "../contexts/PlayerContext";
-import { useQuery } from "react-query";
+import { useQuery, useQueryClient } from "react-query";
 
-const getMatchDetails = async ({ queryKey }) => {
-  const region = queryKey[1], id = queryKey[2];
-  
+const getMatchDetails = async (id, region) => {  
   const response = await fetch(`/api/match/${region}/${id}`);
   if (!response.ok) throw new Error("Couldn't fetch that match");
 
@@ -17,12 +15,19 @@ const getMatchDetails = async ({ queryKey }) => {
 
 const MatchDetials = ({ id }) => {
   const {playerData: {accountData: {region}}} = useContext(PlayerContext);
+  
+  const { queryCache } = useQueryClient();
+  console.log(queryCache?.queriesMap[`["${id}","${region}"]`]?.cacheTime);
 
-  const {data, status, error} = useQuery(["details", region, id], getMatchDetails, {
-    refetchOnWindowFocus: false,
-    retry: 1,
-    staleTime: 30000000
-  });
+  const {data, status, error} = useQuery(
+    [id, region], 
+    () => getMatchDetails(id, region), 
+    {
+      refetchOnWindowFocus: false,
+      retry: 1,
+      staleTime: 30000000
+    }
+  );
 
   return ( 
     <div className="match-details">

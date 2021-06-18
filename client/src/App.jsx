@@ -1,6 +1,6 @@
 import { useEffect, useState, useContext } from "react";
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
-import { QueryClient, QueryClientProvider } from "react-query";
+import { QueryClient, QueryClientProvider, QueryCache } from "react-query";
 import Navbar from "./components/Navbar";
 // Pages
 import Home from "./pages/Home";
@@ -14,7 +14,8 @@ import { TokenContext } from "./contexts/TokenContext";
 import { LoggedInContext } from "./contexts/LoggedInContext";
 import PlayerContextProvider from "./contexts/PlayerContext";
 
-const queryClient = new QueryClient();
+const queryCache = new QueryCache();
+const queryClient = new QueryClient({ queryCache });
 
 const App = () => {
   const [loading, setLoading] = useState(true)
