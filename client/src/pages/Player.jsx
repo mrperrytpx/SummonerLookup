@@ -36,8 +36,6 @@ const Players = () => {
     <div className="container">
       <PlayerCard />
       <PlayerNav />
-      <PlayerStats />
-      <Matches />
     </div>
   );
 }

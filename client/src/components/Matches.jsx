@@ -1,6 +1,6 @@
 import Match from "./Match"
 import { PlayerContext } from "../contexts/PlayerContext";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 
 const Matches = () => {
   const { playerData: { games } } = useContext(PlayerContext);
