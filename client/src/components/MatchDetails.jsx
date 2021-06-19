@@ -1,6 +1,5 @@
-import { useContext } from "react";
-import { PlayerContext } from "../contexts/PlayerContext";
 import { useQuery } from "react-query";
+import { useParams } from "react-router-dom";
 
 const getMatchDetails = async (id, region) => {
   const response = await fetch(`/api/match/${region}/${id}`);
@@ -14,10 +13,7 @@ const getMatchDetails = async (id, region) => {
 }
 
 const MatchDetials = ({ id }) => {
-  const { playerData: { accountData: { region } } } = useContext(PlayerContext);
-
-  // const { queryCache } = useQueryClient();
-  // console.log(queryCache?.queriesMap[`["${id}","${region}"]`]?.cacheTime);
+  const { region } = useParams();
 
   const { data, status, error } = useQuery(
     ['match-details', id, region],

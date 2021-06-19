@@ -13,6 +13,7 @@ import { TokenContext } from "./contexts/TokenContext";
 import { LoggedInContext } from "./contexts/LoggedInContext";
 import PlayerContextProvider from "./contexts/PlayerContext";
 
+
 const App = () => {
   const [loading, setLoading] = useState(true)
   const { isLoggedIn, setLoggedIn } = useContext(LoggedInContext);

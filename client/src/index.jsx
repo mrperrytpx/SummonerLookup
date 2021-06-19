@@ -9,6 +9,7 @@ import App from './App';
 import LoggedInContextProvider from "./contexts/LoggedInContext";
 import TokenContextProvider from "./contexts/TokenContext";
 
+
 const queryCache = new QueryCache();
 const queryClient = new QueryClient({ queryCache });
 

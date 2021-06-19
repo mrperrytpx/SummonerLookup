@@ -1,23 +1,26 @@
 import { useState, useContext, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { PlayerContext } from "../contexts/PlayerContext";
 import PlayerRanked from "./PlayerRanked";
 import PlayerUnranked from "./PlayerUnranked";
 
 const PlayerStanding = () => {
-  const { playerData: { ranked } } = useContext(PlayerContext);
+  const { region, server, summonerName } = useParams();
+  const { playerData } = useContext(PlayerContext);
+  const player = `${region.toLowerCase()}-${server.toLowerCase()}-${summonerName.toLowerCase()}`;
   const [isRanked, setIsRanked] = useState(false);
 
   useEffect(() => {
-    if (ranked.tier) {
+    if (playerData[player]?.ranked?.tier) {
       setIsRanked(true);
     }
-  }, [ranked])
+  }, [playerData, player])
 
   return (
     <div className="rank">
       <p className="rank-header">RANK</p>
       {isRanked ?
-        <PlayerRanked ranked={ranked} /> :
+        <PlayerRanked ranked={playerData[player]?.ranked} /> :
         <PlayerUnranked />
       }
     </div>

@@ -1,11 +1,16 @@
 import RankedChampion from "./RankedChampion";
 import { useContext, useEffect, useState } from "react";
 import { PlayerContext } from "../contexts/PlayerContext";
+import { useParams } from "react-router-dom";
 
 const PlayerChampions = () => {
 
   const [champions, setChampions] = useState("")
-  const { playerData: { stats } } = useContext(PlayerContext);
+
+  const { region, server, summonerName } = useParams();
+  const { playerData } = useContext(PlayerContext);
+  const player = `${region.toLowerCase()}-${server.toLowerCase()}-${summonerName.toLowerCase()}`;
+
 
   useEffect(() => {
     console.log("rendered");
@@ -20,7 +25,7 @@ const PlayerChampions = () => {
       <p className="best-champions-header">TOP 3 PLAYED CHAMPIONS</p>
       <div className="best-champions-box">
         {
-          stats.slice(0, 3).map(champion => (
+          playerData[player]?.stats?.slice(0, 3).map(champion => (
             <RankedChampion
               key={champion.championId}
               champions={champions}

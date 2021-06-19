@@ -1,16 +1,19 @@
 import Match from "./Match"
 import { PlayerContext } from "../contexts/PlayerContext";
 import { useContext } from "react";
+import { useParams } from "react-router-dom";
 
 const Matches = () => {
-  const { playerData: { games } } = useContext(PlayerContext);
+  const { region, server, summonerName } = useParams();
+  const { playerData } = useContext(PlayerContext);
+  const player = `${region.toLowerCase()}-${server.toLowerCase()}-${summonerName.toLowerCase()}`;
 
   return (
     <div className="matches">
       <p className="matches-header">MATCH HISTORY</p>
 
       {
-        games.map(game => (
+        playerData[player]?.games?.map(game => (
           <Match game={game} key={game?.matchId} />
         ))
       }
