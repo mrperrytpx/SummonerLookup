@@ -11,9 +11,7 @@ const PlayerChampions = () => {
   const { playerData } = useContext(PlayerContext);
   const player = `${region.toLowerCase()}-${server.toLowerCase()}-${summonerName.toLowerCase()}`;
 
-
   useEffect(() => {
-    console.log("rendered");
     (async function () {
       const champions = await (await fetch("https://ddragon.leagueoflegends.com/cdn/11.11.1/data/en_US/champion.json")).json();
       setChampions(champions);
