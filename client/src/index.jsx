@@ -8,6 +8,7 @@ import './styles/index.css';
 import App from './App';
 import LoggedInContextProvider from "./contexts/LoggedInContext";
 import TokenContextProvider from "./contexts/TokenContext";
+import PlayerContextProvider from "./contexts/PlayerContext";
 
 
 const queryCache = new QueryCache();
@@ -18,7 +19,9 @@ ReactDOM.render(
     <QueryClientProvider client={queryClient}>
       <LoggedInContextProvider>
         <TokenContextProvider >
-          <App />
+          <PlayerContextProvider>
+            <App />
+          </PlayerContextProvider>
         </TokenContextProvider>
       </LoggedInContextProvider>
     </QueryClientProvider>

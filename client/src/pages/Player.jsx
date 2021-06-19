@@ -22,14 +22,14 @@ const Players = () => {
     () => fetchPlayer(region, server, summonerName),
     {
       onError: () => {
-        setPlayer({ ...playerData, [`${region.toLowerCase()}-${server.toLowerCase()}-${summonerName.toLowerCase()}`]: null })
+        setPlayer({ ...playerData, [`${server.toLowerCase()}-${summonerName.toLowerCase()}`]: null })
       },
       onSuccess: (data) => {
-        setPlayer({ ...playerData, [`${region.toLowerCase()}-${server.toLowerCase()}-${summonerName.toLowerCase()}`]: data });
+        setPlayer({ ...playerData, [`${server.toLowerCase()}-${summonerName.toLowerCase()}`]: data });
       },
       refetchOnWindowFocus: false,
       retry: 1,
-      staleTime: 10000
+      staleTime: 30000
     }
   );
 

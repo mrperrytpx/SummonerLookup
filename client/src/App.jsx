@@ -11,7 +11,6 @@ import Player from "./pages/Player";
 // Contexts
 import { TokenContext } from "./contexts/TokenContext";
 import { LoggedInContext } from "./contexts/LoggedInContext";
-import PlayerContextProvider from "./contexts/PlayerContext";
 
 
 const App = () => {
@@ -60,11 +59,9 @@ const App = () => {
             <Route exact path="/me/delete">
               {!isLoggedIn ? <Redirect to="/login" /> : <DeleteUser />}
             </Route>
-            <PlayerContextProvider>
-              <Route exact path="/:region/:server/:summonerName">
-                <Player />
-              </Route>
-            </PlayerContextProvider>
+            <Route exact path="/:region/:server/:summonerName">
+              <Player />
+            </Route>
           </Switch>
         </div>
       </div>

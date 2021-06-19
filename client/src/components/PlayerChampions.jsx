@@ -7,9 +7,9 @@ const PlayerChampions = () => {
 
   const [champions, setChampions] = useState("")
 
-  const { region, server, summonerName } = useParams();
+  const { server, summonerName } = useParams();
   const { playerData } = useContext(PlayerContext);
-  const player = `${region.toLowerCase()}-${server.toLowerCase()}-${summonerName.toLowerCase()}`;
+  const player = `${server.toLowerCase()}-${summonerName.toLowerCase()}`;
 
   useEffect(() => {
     (async function () {

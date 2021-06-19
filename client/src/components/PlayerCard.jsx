@@ -1,15 +1,17 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { PlayerContext } from "../contexts/PlayerContext";
 import { LoggedInContext } from "../contexts/LoggedInContext";
 import { TokenContext } from "../contexts/TokenContext";
 import { useParams } from "react-router-dom";
 
 const PlayerCard = () => {
-  const { region, server, summonerName } = useParams();
+  const { server, summonerName } = useParams();
   const { playerData } = useContext(PlayerContext);
   const { isLoggedIn } = useContext(LoggedInContext);
   const { token } = useContext(TokenContext);
-  const player = `${region.toLowerCase()}-${server.toLowerCase()}-${summonerName.toLowerCase()}`;
+  const player = `${server.toLowerCase()}-${summonerName.toLowerCase()}`;
+
+
 
   const handleFollow = async () => {
     const abortCont = new AbortController();
