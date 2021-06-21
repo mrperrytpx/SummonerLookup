@@ -7,20 +7,21 @@ import PlayerUnranked from "./PlayerUnranked";
 const PlayerStanding = () => {
   const { server, summonerName } = useParams();
   const { playerData } = useContext(PlayerContext);
-  const player = `${server.toLowerCase()}-${summonerName.toLowerCase()}`;
   const [isRanked, setIsRanked] = useState(false);
 
+  const player = playerData[`${server.toLowerCase()}-${summonerName.toLowerCase()}`];
+
   useEffect(() => {
-    if (playerData[player]?.ranked?.tier) {
+    if (player?.ranked?.tier) {
       setIsRanked(true);
     }
-  }, [playerData, player])
+  }, [player])
 
   return (
     <div className="rank">
       <p className="rank-header">RANK</p>
       {isRanked ?
-        <PlayerRanked ranked={playerData[player]?.ranked} /> :
+        <PlayerRanked ranked={player?.ranked} /> :
         <PlayerUnranked />
       }
     </div>

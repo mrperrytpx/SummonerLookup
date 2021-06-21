@@ -9,7 +9,7 @@ const PlayerChampions = () => {
 
   const { server, summonerName } = useParams();
   const { playerData } = useContext(PlayerContext);
-  const player = `${server.toLowerCase()}-${summonerName.toLowerCase()}`;
+  const player = playerData[`${server.toLowerCase()}-${summonerName.toLowerCase()}`];
 
   useEffect(() => {
     (async function () {
@@ -23,7 +23,7 @@ const PlayerChampions = () => {
       <p className="best-champions-header">TOP 3 PLAYED CHAMPIONS</p>
       <div className="best-champions-box">
         {
-          playerData[player]?.stats?.slice(0, 3).map(champion => (
+          player?.stats?.slice(0, 3).map(champion => (
             <RankedChampion
               key={champion.championId}
               champions={champions}

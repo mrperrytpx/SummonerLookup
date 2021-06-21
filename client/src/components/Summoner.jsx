@@ -1,6 +1,6 @@
 import FollowedLatestMatch from "./FollowedLatestMatch";
 
-const servers = {
+const SERVERS = {
   eun1: "EUNE",
   euw1: "EIW",
   tr1: "TR",
@@ -29,7 +29,7 @@ const Summoner = ({ summoner }) => {
           </div>
 
           <div className="followed-player-name">
-            {summoner.summonerName}, {servers[summoner.server]}
+            {summoner.summonerName}, {SERVERS[summoner.server]}
           </div>
 
         </div>
