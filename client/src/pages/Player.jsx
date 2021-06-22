@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { useParams } from "react-router"
 import { useQuery, useQueryClient } from "react-query";
 // Contexts
