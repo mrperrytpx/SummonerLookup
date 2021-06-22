@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { useHistory } from "react-router-dom";
+// Contexts
 import { TokenContext } from "../contexts/TokenContext";
 
 const LogoutButton = () => {

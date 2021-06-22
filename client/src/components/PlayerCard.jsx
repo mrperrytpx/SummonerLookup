@@ -1,15 +1,20 @@
 import { useContext } from "react";
+import { useParams } from "react-router-dom";
+// Contexts
 import { PlayerContext } from "../contexts/PlayerContext";
 import { LoggedInContext } from "../contexts/LoggedInContext";
 import { TokenContext } from "../contexts/TokenContext";
-import { useParams } from "react-router-dom";
+import { LeagueVersionContext } from "../contexts/LeagueVersionContext";
 
 const PlayerCard = () => {
   const { server, summonerName } = useParams();
+
   const { playerData } = useContext(PlayerContext);
   const { isLoggedIn } = useContext(LoggedInContext);
   const { token } = useContext(TokenContext);
+  const { version } = useContext(LeagueVersionContext);
 
+  // Correct player from context
   const player = playerData[`${server.toLowerCase()}-${summonerName.toLowerCase()}`];
 
   const handleFollow = async () => {
@@ -21,7 +26,6 @@ const PlayerCard = () => {
       puuid: player?.accountData?.puuid,
       summonerId: player?.accountData?.summonerId
     }
-
     try {
       const response = await fetch(`/api/add`, {
         method: "POST",
@@ -35,9 +39,8 @@ const PlayerCard = () => {
       if (!response.ok) throw new Error("Couldn't follow player");
 
     } catch (err) {
-      console.log(err);
+      err.name === "AbortError" ? console.log("Fetch aborted") : console.log(err);
     }
-
     return () => abortCont.abort();
   }
 
@@ -47,8 +50,8 @@ const PlayerCard = () => {
       <div className="summoner-icon">
         <img
           className="player-summoner-icon"
-          src={`https://ddragon.leagueoflegends.com/cdn/11.11.1/img/profileicon/${player.accountData?.profileIconId}.png`} alt="Summoner's icon" />
-        <div className="player-account-level">{player.accountData?.summonerLevel}</div>
+          src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/profileicon/${player.accountData?.profileIconId}.png`} alt="Summoner's icon" />
+        <div className="player-account-level">{player?.accountData?.summonerLevel}</div>
       </div>
 
       <div className="name-wrapper">

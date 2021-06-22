@@ -1,13 +1,17 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { TokenContext } from "../contexts/TokenContext";
-import Summoner from "../components/Summoner";
 import { useQuery } from "react-query";
+// Contexts
+import { TokenContext } from "../contexts/TokenContext";
+// Components
+import Summoner from "../components/Summoner";
 
 const getFollowing = async (token) => {
+  const abortCont = new AbortController();
   try {
     const response = await fetch("/api/me", {
       method: "GET",
+      signal: abortCont.signal,
       headers: {
         "Content-Type": "application/json",
         credentials: "include",
@@ -20,6 +24,7 @@ const getFollowing = async (token) => {
     const data = await response.json();
     return data;
   } catch (err) { }
+  return () => abortCont.abort();
 }
 
 const Me = () => {

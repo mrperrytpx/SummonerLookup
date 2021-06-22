@@ -11,17 +11,19 @@ import Player from "./pages/Player";
 // Contexts
 import { TokenContext } from "./contexts/TokenContext";
 import { LoggedInContext } from "./contexts/LoggedInContext";
-
+import { LeagueVersionContext } from "./contexts/LeagueVersionContext";
 
 const App = () => {
   const [loading, setLoading] = useState(true)
+
   const { isLoggedIn, setLoggedIn } = useContext(LoggedInContext);
   const { setNewToken } = useContext(TokenContext);
+  const { setLeagueVersion } = useContext(LeagueVersionContext);
 
   // Give the user a new access token if there's a refresh token stored in cookies
   useEffect(() => {
     const abortCont = new AbortController();
-    (async () => {
+    ; (async () => {
       const response = await fetch("/api/refresh_token", {
         method: "POST",
         credentials: "include",
@@ -35,6 +37,17 @@ const App = () => {
     })();
     return () => abortCont.abort();
   }, [setLoggedIn, setNewToken])
+
+  // Fetch latest game version so it's not hardcoded in
+  useEffect(() => {
+    ; (async () => {
+      const response = await fetch("http://ddragon.leagueoflegends.com/api/versions.json");
+      if (!response.ok) throw new Error("test");
+      const data = await response.json();
+      setLeagueVersion(data[0]);
+      console.log(data[0]);
+    })();
+  }, [setLeagueVersion])
 
   if (loading) {
     return <div>Loading...</div>

@@ -1,4 +1,10 @@
+import { useContext } from "react";
+// Contexts
+import { LeagueVersionContext } from "../contexts/LeagueVersionContext";
+
 const FollowedLatestMatch = ({ game }) => {
+  const { version } = useContext(LeagueVersionContext);
+
   return (
     <div className="latest-game-wrapper">
 
@@ -6,7 +12,7 @@ const FollowedLatestMatch = ({ game }) => {
         <div className="latest-champ-icon">
           <img
             className="latest-champ"
-            src={`https://ddragon.leagueoflegends.com/cdn/11.11.1/img/champion/Jhin.png`}
+            src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/Jhin.png`}
             alt="Champion"
           />
         </div>
@@ -14,28 +20,28 @@ const FollowedLatestMatch = ({ game }) => {
           <div className="latest-summoner1">
             <img
               className="latest-small"
-              src={`https://ddragon.leagueoflegends.com/cdn/11.11.1/img/spell/SummonerHeal.png`}
+              src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/spell/SummonerHeal.png`}
               alt="s"
             />
           </div>
           <div className="latest-summoner2">
             <img
               className="latest-small"
-              src={`https://ddragon.leagueoflegends.com/cdn/11.11.1/img/spell/SummonerHeal.png`}
+              src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/spell/SummonerHeal.png`}
               alt="s"
             />
           </div>
           <div className="latest-keystone">
             <img
               className="latest-small"
-              src={`https://ddragon.leagueoflegends.com/cdn/11.11.1/img/spell/SummonerHeal.png`}
+              src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/spell/SummonerHeal.png`}
               alt="s"
             />
           </div>
           <div className="latest-secondary">
             <img
               className="latest-small"
-              src={`https://ddragon.leagueoflegends.com/cdn/11.11.1/img/spell/SummonerHeal.png`}
+              src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/spell/SummonerHeal.png`}
               alt="s"
             />
           </div>
@@ -53,25 +59,25 @@ const FollowedLatestMatch = ({ game }) => {
 
         <div className="latest-build">
           <div className="latest-item">
-            {game?.item0 ? <img className="latest-item-image" src={`https://ddragon.leagueoflegends.com/cdn/11.11.1/img/item/${game?.item0}.png`} alt="Item slot 1" /> : <div></div>}
+            {game?.item0 ? <img className="latest-item-image" src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/item/${game?.item0}.png`} alt="Item slot 1" /> : <div></div>}
           </div>
           <div className="latest-item">
-            {game?.item1 ? <img className="latest-item-image" src={`https://ddragon.leagueoflegends.com/cdn/11.11.1/img/item/${game?.item1}.png`} alt="Item slot 2" /> : <div></div>}
+            {game?.item1 ? <img className="latest-item-image" src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/item/${game?.item1}.png`} alt="Item slot 2" /> : <div></div>}
           </div>
           <div className="latest-item">
-            {game?.item2 ? <img className="latest-item-image" src={`https://ddragon.leagueoflegends.com/cdn/11.11.1/img/item/${game?.item2}.png`} alt="Item slot 3" /> : <div></div>}
+            {game?.item2 ? <img className="latest-item-image" src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/item/${game?.item2}.png`} alt="Item slot 3" /> : <div></div>}
           </div>
           <div className="latest-item">
-            {game?.item3 ? <img className="latest-item-image" src={`https://ddragon.leagueoflegends.com/cdn/11.11.1/img/item/${game?.item3}.png`} alt="Item slot 4" /> : <div></div>}
+            {game?.item3 ? <img className="latest-item-image" src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/item/${game?.item3}.png`} alt="Item slot 4" /> : <div></div>}
           </div>
           <div className="latest-item">
-            {game?.item4 ? <img className="latest-item-image" src={`https://ddragon.leagueoflegends.com/cdn/11.11.1/img/item/${game?.item4}.png`} alt="Item slot 5" /> : <div></div>}
+            {game?.item4 ? <img className="latest-item-image" src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/item/${game?.item4}.png`} alt="Item slot 5" /> : <div></div>}
           </div>
           <div className="latest-item">
-            {game?.item5 ? <img className="latest-item-image" src={`https://ddragon.leagueoflegends.com/cdn/11.11.1/img/item/${game?.item5}.png`} alt="Item slot 6" /> : <div></div>}
+            {game?.item5 ? <img className="latest-item-image" src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/item/${game?.item5}.png`} alt="Item slot 6" /> : <div></div>}
           </div>
           <div className="latest-item">
-            {game?.item6 ? <img className="latest-item-image" src={`https://ddragon.leagueoflegends.com/cdn/11.11.1/img/item/${game?.item6}.png`} alt="Trinket slot" /> : <div></div>}
+            {game?.item6 ? <img className="latest-item-image" src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/item/${game?.item6}.png`} alt="Trinket slot" /> : <div></div>}
           </div>
         </div>
 

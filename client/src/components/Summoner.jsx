@@ -1,6 +1,6 @@
 import FollowedLatestMatch from "./FollowedLatestMatch";
 
-const SERVERS = {
+const SERVERS = Object.freeze({
   eun1: "EUNE",
   euw1: "EIW",
   tr1: "TR",
@@ -12,7 +12,7 @@ const SERVERS = {
   br1: "NR",
   kr: "KR",
   jp1: "JP"
-}
+});
 
 const Summoner = ({ summoner }) => {
 

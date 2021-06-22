@@ -1,7 +1,9 @@
-import Match from "./Match"
-import { PlayerContext } from "../contexts/PlayerContext";
 import { useContext } from "react";
 import { useParams } from "react-router-dom";
+// Context
+import { PlayerContext } from "../contexts/PlayerContext";
+// Component
+import Match from "./Match"
 
 const Matches = () => {
   const { server, summonerName } = useParams();

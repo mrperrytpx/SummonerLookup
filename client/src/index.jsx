@@ -1,15 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import './styles/index.css';
 
 import { QueryClient, QueryClientProvider, QueryCache } from "react-query";
 
-import './styles/index.css';
-
 import App from './App';
+
+// Context providers
 import LoggedInContextProvider from "./contexts/LoggedInContext";
 import TokenContextProvider from "./contexts/TokenContext";
 import PlayerContextProvider from "./contexts/PlayerContext";
-
+import LeagueVersionContextProvider from './contexts/LeagueVersionContext';
 
 const queryCache = new QueryCache();
 const queryClient = new QueryClient({ queryCache });
@@ -20,7 +21,9 @@ ReactDOM.render(
       <LoggedInContextProvider>
         <TokenContextProvider >
           <PlayerContextProvider>
-            <App />
+            <LeagueVersionContextProvider>
+              <App />
+            </LeagueVersionContextProvider>
           </PlayerContextProvider>
         </TokenContextProvider>
       </LoggedInContextProvider>

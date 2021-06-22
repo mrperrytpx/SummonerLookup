@@ -1,7 +1,9 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-import LogoutButton from "./LogoutButton";
+// Contexts
 import { LoggedInContext } from "../contexts/LoggedInContext";
+// Components
+import LogoutButton from "./LogoutButton";
 
 const Navbar = () => {
   const { isLoggedIn } = useContext(LoggedInContext);

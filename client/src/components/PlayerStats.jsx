@@ -1,3 +1,4 @@
+// Components
 import PlayerChampions from "./PlayerChampions";
 import PlayerStanding from "./PlayerStanding";
 

@@ -1,6 +1,8 @@
 import { useState, useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
+// Contexts
 import { PlayerContext } from "../contexts/PlayerContext";
+// Components
 import PlayerRanked from "./PlayerRanked";
 import PlayerUnranked from "./PlayerUnranked";
 

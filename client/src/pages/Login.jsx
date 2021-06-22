@@ -1,6 +1,7 @@
 import { useState, useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
+// Contexts
 import { LoggedInContext } from "../contexts/LoggedInContext";
 import { TokenContext } from "../contexts/TokenContext";
 

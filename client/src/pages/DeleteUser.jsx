@@ -1,7 +1,8 @@
-import { TokenContext } from "../contexts/TokenContext";
-import { LoggedInContext } from "../contexts/LoggedInContext";
 import { useContext } from "react";
 import { useHistory } from "react-router-dom";
+// Contexts
+import { TokenContext } from "../contexts/TokenContext";
+import { LoggedInContext } from "../contexts/LoggedInContext";
 
 const DeleteUser = () => {
   const { token, setNewToken } = useContext(TokenContext);

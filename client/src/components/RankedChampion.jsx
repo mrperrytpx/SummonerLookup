@@ -1,8 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+//Contexts
+import { LeagueVersionContext } from "../contexts/LeagueVersionContext";
 
 const RankedChampion = ({ champions, championId, stats }) => {
   const [championName, setChampionName] = useState("");
+  const { version } = useContext(LeagueVersionContext);
 
+  // Get the specific champion name
   useEffect(() => {
     for (let name in champions.data) {
       if (champions?.data[name]?.key === championId.toString()) setChampionName(champions?.data[name]?.id)
@@ -16,7 +20,7 @@ const RankedChampion = ({ champions, championId, stats }) => {
         <div className="best-champion-icon">
           <img
             className="champion-icon"
-            src={`https://static.u.gg/assets/lol/riot_static/11.11.1/img/champion/${championName}.png`}
+            src={championName && `https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${championName}.png`}
             alt="Champion"
           />
         </div>

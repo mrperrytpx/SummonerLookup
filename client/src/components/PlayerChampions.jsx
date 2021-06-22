@@ -1,26 +1,36 @@
-import RankedChampion from "./RankedChampion";
 import { useContext, useEffect, useState } from "react";
-import { PlayerContext } from "../contexts/PlayerContext";
 import { useParams } from "react-router-dom";
+// Contexts
+import { PlayerContext } from "../contexts/PlayerContext";
+import { LeagueVersionContext } from "../contexts/LeagueVersionContext";
+// Components
+import RankedChampion from "./RankedChampion";
 
 const PlayerChampions = () => {
-
   const [champions, setChampions] = useState("")
-
   const { server, summonerName } = useParams();
+
+  const { version } = useContext(LeagueVersionContext);
   const { playerData } = useContext(PlayerContext);
+
+  // Correct player from context
   const player = playerData[`${server.toLowerCase()}-${summonerName.toLowerCase()}`];
 
+  // Fetch all champions' data
   useEffect(() => {
     (async function () {
-      const champions = await (await fetch("https://ddragon.leagueoflegends.com/cdn/11.11.1/data/en_US/champion.json")).json();
-      setChampions(champions);
+      const response = await fetch(`https://ddragon.leagueoflegends.com/cdn/${version}/data/en_US/champion.json`);
+      if (!response.ok) throw new Error("Error fetching champions");
+      const data = await response.json();
+      setChampions(data);
     })();
-  }, [])
+  }, [version]);
 
   return (
     <div className="best-champions">
+
       <p className="best-champions-header">TOP 3 PLAYED CHAMPIONS</p>
+
       <div className="best-champions-box">
         {
           player?.stats?.slice(0, 3).map(champion => (
@@ -35,10 +45,9 @@ const PlayerChampions = () => {
       </div>
 
       <div className="goto-stats">
-        <a href="/stats">
-          <p>SEE ALL CHAMPIONS</p>
-        </a>
+        <p>SEE ALL CHAMPIONS</p>
       </div>
+
     </div>
   );
 }
