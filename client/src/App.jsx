@@ -1,5 +1,6 @@
 import { useEffect, useState, useContext } from "react";
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
+// Components
 import Navbar from "./components/Navbar";
 // Pages
 import Home from "./pages/Home";
@@ -14,7 +15,7 @@ import { LoggedInContext } from "./contexts/LoggedInContext";
 import { LeagueVersionContext } from "./contexts/LeagueVersionContext";
 
 const App = () => {
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(true);
 
   const { isLoggedIn, setLoggedIn } = useContext(LoggedInContext);
   const { setNewToken } = useContext(TokenContext);
@@ -22,32 +23,38 @@ const App = () => {
 
   // Give the user a new access token if there's a refresh token stored in cookies
   useEffect(() => {
-    const abortCont = new AbortController();
-    ; (async () => {
+    const controller = new AbortController();
+    const fetchToken = async () => {
       const response = await fetch("/api/refresh_token", {
         method: "POST",
         credentials: "include",
-        signal: abortCont.signal
-      })
-      if (!response.ok) throw new Error("Couldn't fetch refresh token");
+        signal: controller.signal
+      });
+      if (!response.ok) setNewToken("");
       const { accessToken } = await response.json();
       if (accessToken) setLoggedIn(true);
       setNewToken(accessToken);
       setLoading(false);
-    })();
-    return () => abortCont.abort();
-  }, [setLoggedIn, setNewToken])
+    }
+    fetchToken();
+    return () => controller.abort();
+  }, [setLoggedIn, setNewToken]);
 
   // Fetch latest game version so it's not hardcoded in
   useEffect(() => {
-    ; (async () => {
-      const response = await fetch("http://ddragon.leagueoflegends.com/api/versions.json");
+    const controller = new AbortController();
+    const fetchGameVersion = async () => {
+      const response = await fetch("http://ddragon.leagueoflegends.com/api/versions.json", {
+        method: "GET",
+        signal: controller.signal
+      });
       if (!response.ok) throw new Error("test");
       const data = await response.json();
       setLeagueVersion(data[0]);
-      console.log(data[0]);
-    })();
-  }, [setLeagueVersion])
+    }
+    fetchGameVersion();
+    return () => controller.abort();
+  }, [setLeagueVersion]);
 
   if (loading) {
     return <div>Loading...</div>
