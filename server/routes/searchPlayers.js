@@ -92,24 +92,19 @@ router.get("/:region/:server/:summonerName/", async (req, res) => {
                 query getPlayerStats($queueType: [Int!], $regionId: String!, $role: Int!, $seasonId: Int!, $summonerName: String!) {
                     fetchPlayerStatistics(queueType: $queueType, summonerName: $summonerName, regionId: $regionId, role: $role, seasonId: $seasonId) {
                       basicChampionPerformances {
-                        assists
                         championId
+                        kills
+                        assists
+                        deaths
                         cs
                         damage
-                        damageTaken
-                        deaths
                         doubleKills
-                        gold
-                        kills
-                        maxDeaths
-                        maxKills
-                        pentaKills
-                        quadraKills
-                        totalMatches
                         tripleKills
+                        quadraKills
+                        pentaKills
+                        gold
                         wins
-                        lpAvg
-                        __typename
+                        totalMatches
                       }
                       queueType
                       regionId
