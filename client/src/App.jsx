@@ -24,7 +24,7 @@ const App = () => {
   // Give the user a new access token if there's a refresh token stored in cookies
   useEffect(() => {
     const controller = new AbortController();
-    const fetchToken = async () => {
+    (async () => {
       const response = await fetch("/api/refresh_token", {
         method: "POST",
         credentials: "include",
@@ -35,15 +35,14 @@ const App = () => {
       if (accessToken) setLoggedIn(true);
       setNewToken(accessToken);
       setLoading(false);
-    }
-    fetchToken();
+    })();
     return () => controller.abort();
   }, [setLoggedIn, setNewToken]);
 
   // Fetch latest game version so it's not hardcoded in
   useEffect(() => {
     const controller = new AbortController();
-    const fetchGameVersion = async () => {
+    (async () => {
       const response = await fetch("http://ddragon.leagueoflegends.com/api/versions.json", {
         method: "GET",
         signal: controller.signal
@@ -51,8 +50,7 @@ const App = () => {
       if (!response.ok) throw new Error("test");
       const data = await response.json();
       setLeagueVersion(data[0]);
-    }
-    fetchGameVersion();
+    })();
     return () => controller.abort();
   }, [setLeagueVersion]);
 
