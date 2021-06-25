@@ -10,19 +10,25 @@ const DeleteUser = () => {
 
   const history = useHistory();
 
-  const handleDelete = async (e) => {
-    const { message } = await (await fetch("/api/delete", {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-        credentials: "include",
-        authorization: `Bearer ${token}`
-      },
-    })).json();
-    if (message) {
-      setLoggedIn(() => false);
-      setNewToken("");
-      history.push("/");
+  const handleDelete = async (token) => {
+    try {
+      const response = await fetch("/api/delete_account", {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          credentials: "include",
+          authorization: `Bearer ${token}`
+        },
+      });
+      if (!response.ok) throw new Error("Something went wrong");
+
+      if (response.status === 204) {
+        setLoggedIn(() => false);
+        setNewToken("");
+        history.push("/");
+      }
+    } catch (error) {
+      console.log(error.message);
     }
   }
 
@@ -30,7 +36,8 @@ const DeleteUser = () => {
     <div>
       <h2>Are you sure you want to delete your account?</h2>
       <div>
-        <button onClick={handleDelete}>YES</button>
+        <button onClick={() => handleDelete(token)}>YES</button>
+        <button onClick={() => history.push("/")}>HOME</button>
       </div>
     </div>
   );

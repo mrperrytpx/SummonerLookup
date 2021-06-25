@@ -47,7 +47,7 @@ app.use("/api/match/", matchDetailsRouter); // Get metch details for a single ga
 app.use("/api/", searchUserRoute); // Search for league of legends account info
 app.use("/api/logout", authorizeMiddleware, logoutRoute); // Delete a refresh token and clear the access token, has to be authorized with a proper access token 
 app.use("/api/me", authorizeMiddleware, myProfileRoute); // Get user info, has to be authorized with a proper access token 
-app.use("/api/delete", authorizeMiddleware, deleteUserRoute); // Delete a user from the database, has to be authorized with a proper access token 
+app.use("/api/delete_account", authorizeMiddleware, deleteUserRoute); // Delete a user from the database, has to be authorized with a proper access token 
 app.use("/api/add", authorizeMiddleware, addToFollowingRoute); // Add player to following list
 
 // Start server

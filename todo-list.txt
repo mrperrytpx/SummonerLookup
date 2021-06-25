@@ -17,7 +17,7 @@ TASKS FOR FUTURE ME WHEN ITS FUNCTIONAL (WIP)
 - switch all useEffect fetchers into useQuery - full send it
 - add rate limiting - cloudflare?
 - add search on enter press - make it a form? 
-- pre-fetch following data on app load if user is logged in
+- pre-fetch "following" data on app load if user is logged in
 - rename everything because it makes no sense
 - accessibility concerns
 - handle errors so user knows - use fireship try/catch thingie from that one video
