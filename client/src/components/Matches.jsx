@@ -4,8 +4,9 @@ import { useQueryClient } from "react-query";
 import Match from "./Match"
 
 const Matches = () => {
-  const { region, server, summonerName } = useParams();
   const queryClient = useQueryClient();
+  const { region, server, summonerName } = useParams();
+
   const { games } = queryClient.getQueryData(["player", region, server, summonerName]);
 
   return (

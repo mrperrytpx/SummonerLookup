@@ -7,9 +7,9 @@ import { LeagueVersionContext } from "../contexts/LeagueVersionContext";
 import RankedChampion from "./RankedChampion";
 
 const PlayerChampions = () => {
+  const queryClient = useQueryClient();
   const [champions, setChampions] = useState("")
   const { region, server, summonerName } = useParams();
-  const queryClient = useQueryClient();
   const { version } = useContext(LeagueVersionContext);
 
   const { stats } = queryClient.getQueryData(["player", region, server, summonerName]);

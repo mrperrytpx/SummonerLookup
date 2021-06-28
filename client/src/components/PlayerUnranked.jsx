@@ -5,7 +5,8 @@ const PlayerUnranked = () => {
       <div className="rank-image">
         <img className="rank-icon"
           src="https://static.u.gg/assets/lol/ranks/2d/unranked.svg"
-          alt="Player is unranked" />
+          alt="Player is unranked"
+        />
       </div>
 
       <div className="rank-points">

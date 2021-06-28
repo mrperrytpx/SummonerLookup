@@ -9,10 +9,7 @@ import { LeagueVersionContext } from "../contexts/LeagueVersionContext";
 const PlayerCard = () => {
   const queryClient = useQueryClient();
   const { region, server, summonerName } = useParams();
-
   const { accountData } = queryClient.getQueryData(["player", region, server, summonerName]);
-
-  console.log(queryClient.getQueryData(["player", region, server, summonerName]));
 
   const { isLoggedIn } = useContext(LoggedInContext);
   const { token } = useContext(TokenContext);
