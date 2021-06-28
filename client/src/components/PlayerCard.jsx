@@ -1,35 +1,36 @@
 import { useContext } from "react";
 import { useParams } from "react-router-dom";
+import { useQueryClient } from "react-query";
 // Contexts
-import { PlayerContext } from "../contexts/PlayerContext";
 import { LoggedInContext } from "../contexts/LoggedInContext";
 import { TokenContext } from "../contexts/TokenContext";
 import { LeagueVersionContext } from "../contexts/LeagueVersionContext";
 
 const PlayerCard = () => {
-  const { server, summonerName } = useParams();
+  const queryClient = useQueryClient();
+  const { region, server, summonerName } = useParams();
 
-  const { playerData } = useContext(PlayerContext);
+  const { accountData } = queryClient.getQueryData(["player", region, server, summonerName]);
+
+  console.log(queryClient.getQueryData(["player", region, server, summonerName]));
+
   const { isLoggedIn } = useContext(LoggedInContext);
   const { token } = useContext(TokenContext);
   const { version } = useContext(LeagueVersionContext);
 
-  // Correct player from context
-  const player = playerData[`${server.toLowerCase()}-${summonerName.toLowerCase()}`];
-
   const handleFollow = async () => {
-    const abortCont = new AbortController();
+    const controller = new AbortController();
     const payload = {
-      summonerName: player?.accountData?.summonerName,
-      region: player?.accountData?.region,
-      server: player?.accountData?.server,
-      puuid: player?.accountData?.puuid,
-      summonerId: player?.accountData?.summonerId
+      summonerName: accountData?.summonerName,
+      region: accountData?.region,
+      server: accountData?.server,
+      puuid: accountData?.puuid,
+      summonerId: accountData?.summonerId
     }
     try {
       const response = await fetch(`/api/add`, {
         method: "POST",
-        signal: abortCont.signal,
+        signal: controller.signal,
         headers: {
           "Content-Type": "application/json",
           authorization: `Bearer ${token}`,
@@ -41,7 +42,7 @@ const PlayerCard = () => {
     } catch (err) {
       err.name === "AbortError" ? console.log("Fetch aborted") : console.log(err);
     }
-    return () => abortCont.abort();
+    return () => controller.abort();
   }
 
   return (
@@ -50,14 +51,16 @@ const PlayerCard = () => {
       <div className="summoner-icon">
         <img
           className="player-summoner-icon"
-          src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/profileicon/${player.accountData?.profileIconId}.png`} alt="Summoner's icon" />
-        <div className="player-account-level">{player?.accountData?.summonerLevel}</div>
+          src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/profileicon/${accountData?.profileIconId}.png`}
+          alt="Summoner's icon"
+        />
+        <div className="player-account-level">{accountData?.summonerLevel}</div>
       </div>
 
       <div className="name-wrapper">
 
         <div className="player-name">
-          <p className="summoner-name">{player?.accountData?.summonerName}</p>
+          <p className="summoner-name">{accountData?.summonerName}</p>
         </div>
 
         <div className="follow-summoner">

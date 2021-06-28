@@ -15,7 +15,7 @@ const getMatchDetails = async (id, region) => {
 const MatchDetials = ({ id }) => {
   const { region } = useParams();
 
-  const { data, status, error } = useQuery(
+  const { data, error } = useQuery(
     ['match-details', id, region],
     () => getMatchDetails(id, region),
     {
@@ -28,7 +28,6 @@ const MatchDetials = ({ id }) => {
   return (
     <div className="match-details">
       {data && <p>{JSON.stringify(data?.metadata, null, 2)}</p>}
-      {status && <p>{status}</p>}
       {error && <p>{error.message}</p>}
     </div>
   );

@@ -1,29 +1,29 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useQueryClient } from "react-query";
 // Contexts
-import { PlayerContext } from "../contexts/PlayerContext";
 // Components
 import PlayerRanked from "./PlayerRanked";
 import PlayerUnranked from "./PlayerUnranked";
 
 const PlayerStanding = () => {
-  const { server, summonerName } = useParams();
-  const { playerData } = useContext(PlayerContext);
+  const queryClient = useQueryClient();
+  const { region, server, summonerName } = useParams();
   const [isRanked, setIsRanked] = useState(false);
 
-  const player = playerData[`${server.toLowerCase()}-${summonerName.toLowerCase()}`];
+  const { ranked } = queryClient.getQueryData(["player", region, server, summonerName]);
 
   useEffect(() => {
-    if (player?.ranked?.tier) {
+    if (ranked?.tier) {
       setIsRanked(true);
     }
-  }, [player])
+  }, [ranked])
 
   return (
     <div className="rank">
       <p className="rank-header">RANK</p>
       {isRanked ?
-        <PlayerRanked ranked={player?.ranked} /> :
+        <PlayerRanked ranked={ranked} /> :
         <PlayerUnranked />
       }
     </div>

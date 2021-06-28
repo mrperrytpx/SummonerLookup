@@ -9,9 +9,9 @@ import App from './App';
 // Context providers
 import LoggedInContextProvider from "./contexts/LoggedInContext";
 import TokenContextProvider from "./contexts/TokenContext";
-import PlayerContextProvider from "./contexts/PlayerContext";
 import LeagueVersionContextProvider from './contexts/LeagueVersionContext';
 
+// React-query Cache
 const queryCache = new QueryCache();
 const queryClient = new QueryClient({ queryCache });
 
@@ -20,11 +20,9 @@ ReactDOM.render(
     <QueryClientProvider client={queryClient}>
       <LoggedInContextProvider>
         <TokenContextProvider >
-          <PlayerContextProvider>
-            <LeagueVersionContextProvider>
-              <App />
-            </LeagueVersionContextProvider>
-          </PlayerContextProvider>
+          <LeagueVersionContextProvider>
+            <App />
+          </LeagueVersionContextProvider>
         </TokenContextProvider>
       </LoggedInContextProvider>
     </QueryClientProvider>

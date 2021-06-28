@@ -1,20 +1,18 @@
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useQueryClient } from "react-query";
 // Contexts
-import { PlayerContext } from "../contexts/PlayerContext";
 import { LeagueVersionContext } from "../contexts/LeagueVersionContext";
 // Components
 import RankedChampion from "./RankedChampion";
 
 const PlayerChampions = () => {
   const [champions, setChampions] = useState("")
-  const { server, summonerName } = useParams();
-
+  const { region, server, summonerName } = useParams();
+  const queryClient = useQueryClient();
   const { version } = useContext(LeagueVersionContext);
-  const { playerData } = useContext(PlayerContext);
 
-  // Correct player from context
-  const player = playerData[`${server.toLowerCase()}-${summonerName.toLowerCase()}`];
+  const { stats } = queryClient.getQueryData(["player", region, server, summonerName]);
 
   // Fetch all champions' data
   useEffect(() => {
@@ -33,7 +31,7 @@ const PlayerChampions = () => {
 
       <div className="best-champions-box">
         {
-          player?.stats?.slice(0, 3).map(champion => (
+          stats?.slice(0, 3).map(champion => (
             <RankedChampion
               key={champion.championId}
               champions={champions}
