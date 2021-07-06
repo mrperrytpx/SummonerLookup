@@ -36,6 +36,9 @@ const Players = () => {
       onError: () => {
         queryClient.cancelQueries("player");
       },
+      onSuccess: (data) => {
+        console.log(data);
+      },
       refetchOnWindowFocus: false,
       retry: 1,
       staleTime: 30000

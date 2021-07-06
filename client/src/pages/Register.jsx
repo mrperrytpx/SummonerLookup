@@ -119,7 +119,9 @@ const Register = () => {
             tabIndex="-1"
             className="show-password"
             onClick={handleVisibility}
-          >{isVisible ? <AiFillEye /> : <AiFillEyeInvisible />}</button>
+          >
+            {isVisible ? <AiFillEye /> : <AiFillEyeInvisible />}
+          </button>
         </div>
 
         <label htmlFor="repeat-password">Repeat password:</label>
