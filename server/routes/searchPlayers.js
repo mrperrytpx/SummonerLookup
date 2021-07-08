@@ -70,9 +70,7 @@ router.get("/:region/:server/:summonerName/", async (req, res) => {
         const rankedUrl = `https://${server}.api.riotgames.com/lol/league/v4/entries/by-summoner/${accountData.id}?api_key=${process.env.RIOT_API}`;
         const rankedStanding = await (await fetch(rankedUrl)).json();
         // If it returns an empty array, set the payload.ranked to be empty
-        if (rankedStanding.length === 0) {
-            payload.ranked = {};
-        } else {
+        if (rankedStanding.length) {
             // Set the ranked stats data into the payload
             payload.ranked = {
                 tier: rankedStanding[0].tier,
