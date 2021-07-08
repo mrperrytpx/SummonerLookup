@@ -39,7 +39,8 @@ router.get("/:region/:server/:summonerName/", async (req, res) => {
         matchResponses = matchResponses.filter(match => match.status === "fulfilled")
 
         const gameData = await Promise.allSettled(matchResponses.map(res => res.value.json()))
-        for (let game of gameData) {
+        for (let { value: game } of gameData) {
+            console.log(game);
             if (game?.status?.status_code === 404) continue;
             for (let summoner of game?.info?.participants) {
                 if (summoner?.summonerName?.toLowerCase() === summonerName.toLowerCase()) {
