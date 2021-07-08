@@ -65,7 +65,7 @@ const Players = () => {
         console.log(data);
       },
       refetchOnWindowFocus: false,
-      retry: 1,
+      retry: 0,
       staleTime: 30000
     }
   );

@@ -32,17 +32,19 @@ router.get("/:region/:server/:summonerName/", async (req, res) => {
         if (!matchesData) throw new Error("No matches on the account");
 
         // Fetch each match and find which player the requested summonerName is
-        for (let match of matchesData) {
-            const gameUrl = `https://${region}.api.riotgames.com/lol/match/v5/matches/${match}?api_key=${process.env.RIOT_API}`;
-            const gameData = await (await fetch(gameUrl)).json();
-
-            if (gameData?.status?.status_code === 404) continue;
-            for (let summoner of gameData?.info?.participants) {
+        const matchResponses = await Promise.allSettled(matchesData.map(game => {
+            const gameUrl = `https://${region}.api.riotgames.com/lol/match/v5/matches/${game}?api_key=${process.env.RIOT_API}`;
+            return fetch(gameUrl);
+        }))
+        const gameData = await Promise.all(matchResponses.map(res => res.value.json()))
+        for (let game of gameData) {
+            if (game?.status?.status_code === 404) continue;
+            for (let summoner of game?.info?.participants) {
                 if (summoner?.summonerName?.toLowerCase() === summonerName.toLowerCase()) {
-                    // Set the game data(s) into the payload
-                    let game = {
-                        duration: gameData.info.gameDuration,
-                        matchId: match,
+                    console.log
+                    let gameDetails = {
+                        duration: game?.info?.gameDuration,
+                        matchId: game?.metadata?.matchId,
                         championName: summoner.championName,
                         championId: summoner.championId,
                         summoner1: summonerSpells[summoner.summoner1Id],
@@ -61,7 +63,7 @@ router.get("/:region/:server/:summonerName/", async (req, res) => {
                         deaths: summoner.deaths,
                         win: summoner.win
                     };
-                    payload.games.push(game);
+                    payload.games.push(gameDetails);
                 }
             }
         }
