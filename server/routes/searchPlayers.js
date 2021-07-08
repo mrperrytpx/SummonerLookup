@@ -11,8 +11,9 @@ router.get("/:region/:server/:summonerName/", async (req, res) => {
     try {
         // Fetch account data to get the account ID
         const accountUrl = `https://${server}.api.riotgames.com/lol/summoner/v4/summoners/by-name/${notSpacedSummoner}?api_key=${process.env.RIOT_API}`;
-        const accountData = await (await fetch(accountUrl)).json();
-        if (!accountData) throw new Error("Account not found");
+        const accountResponse = await fetch(accountUrl);
+        if (!accountResponse.ok) throw new Error("Account not found");
+        const accountData = await accountResponse.json();
 
         // Set the necessary account data into the payload
         payload.accountData = {
@@ -28,8 +29,9 @@ router.get("/:region/:server/:summonerName/", async (req, res) => {
 
         // Fetch the match IDs
         const matchesUrl = `https://${region}.api.riotgames.com/lol/match/v5/matches/by-puuid/${accountData.puuid}/ids?start=0&count=5&api_key=${process.env.RIOT_API}`;
-        const matchesData = await (await fetch(matchesUrl)).json();
-        if (!matchesData) throw new Error("No matches on the account");
+        const matchesResponse = await fetch(matchesUrl);
+        if (!matchesResponse.ok) throw new Error("No matches on the account");
+        const matchesData = await matchesResponse.json();
         // Fetch each match and find which player the requested summonerName is
         let matchResponses = await Promise.allSettled(matchesData.map(game => {
             const gameUrl = `https://${region}.api.riotgames.com/lol/match/v5/matches/${game}?api_key=${process.env.RIOT_API}`;
@@ -85,7 +87,7 @@ router.get("/:region/:server/:summonerName/", async (req, res) => {
                 losses: rankedStanding[0].losses,
             };
         }
-        const test = await fetch("https://u.gg/api", {
+        const statsResponse = await fetch("https://u.gg/api", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
@@ -127,9 +129,9 @@ router.get("/:region/:server/:summonerName/", async (req, res) => {
                 }
             })
         })
-        if (test.status !== 200) throw new Error("U.GG Might be having issues");
-        const dataTest = await test.json();
-        payload.stats = dataTest.data.fetchPlayerStatistics[0].basicChampionPerformances;
+        if (!statsResponse.ok) throw new Error("U.GG Might be having issues");
+        const statsData = await statsResponse.json();
+        payload.stats = statsData.data.fetchPlayerStatistics[0].basicChampionPerformances;
 
         res.status(200).json(payload);
 
