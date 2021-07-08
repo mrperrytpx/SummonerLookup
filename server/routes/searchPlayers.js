@@ -30,13 +30,15 @@ router.get("/:region/:server/:summonerName/", async (req, res) => {
         const matchesUrl = `https://${region}.api.riotgames.com/lol/match/v5/matches/by-puuid/${accountData.puuid}/ids?start=0&count=5&api_key=${process.env.RIOT_API}`;
         const matchesData = await (await fetch(matchesUrl)).json();
         if (!matchesData) throw new Error("No matches on the account");
-
         // Fetch each match and find which player the requested summonerName is
-        const matchResponses = await Promise.allSettled(matchesData.map(game => {
+        let matchResponses = await Promise.allSettled(matchesData.map(game => {
             const gameUrl = `https://${region}.api.riotgames.com/lol/match/v5/matches/${game}?api_key=${process.env.RIOT_API}`;
             return fetch(gameUrl);
-        }))
-        const gameData = await Promise.all(matchResponses.map(res => res.value.json()))
+        }));
+        // Filter out rejects
+        matchResponses = matchResponses.filter(match => match.status === "fulfilled")
+
+        const gameData = await Promise.allSettled(matchResponses.map(res => res.value.json()))
         for (let game of gameData) {
             if (game?.status?.status_code === 404) continue;
             for (let summoner of game?.info?.participants) {
