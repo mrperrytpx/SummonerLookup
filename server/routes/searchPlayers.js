@@ -32,21 +32,21 @@ router.get("/:region/:server/:summonerName/", async (req, res) => {
         const matchesResponse = await fetch(matchesUrl);
         if (!matchesResponse.ok) throw new Error("No matches on the account");
         const matchesData = await matchesResponse.json();
-        // Fetch each match and find which player the requested summonerName is
+        // Fetch each match
         let matchResponses = await Promise.allSettled(matchesData.map(game => {
             const gameUrl = `https://${region}.api.riotgames.com/lol/match/v5/matches/${game}?api_key=${process.env.RIOT_API}`;
             return fetch(gameUrl);
         }));
         // Filter out rejects
         matchResponses = matchResponses.filter(match => match.status === "fulfilled")
-
+        // Convert each match to json data
         const gameData = await Promise.allSettled(matchResponses.map(res => res.value.json()))
         for (let { value: game } of gameData) {
             console.log(game);
             if (game?.status?.status_code === 404) continue;
             for (let summoner of game?.info?.participants) {
+                // If the summoner is the same as requested summoner, set the summoner's data into the payload
                 if (summoner?.summonerName?.toLowerCase() === summonerName.toLowerCase()) {
-                    console.log
                     let gameDetails = {
                         duration: game?.info?.gameDuration,
                         matchId: game?.metadata?.matchId,
@@ -75,8 +75,11 @@ router.get("/:region/:server/:summonerName/", async (req, res) => {
 
         // Fetch summoner's ranked stats
         const rankedUrl = `https://${server}.api.riotgames.com/lol/league/v4/entries/by-summoner/${accountData.id}?api_key=${process.env.RIOT_API}`;
-        const rankedStanding = await (await fetch(rankedUrl)).json();
-        // If it returns an empty array, set the payload.ranked to be empty
+        const rankedStandingResponse = await fetch(rankedUrl);
+        if (!rankedStandingResponse.ok) throw new Erorr("Uhh riot's having issues it seems");
+        const rankedStanding = await rankedStandingResponse.json();
+        // If it doesn't return an empty array, set the ranked property
+        // otherwise there won't be a .ranked property on the payload object
         if (rankedStanding.length) {
             // Set the ranked stats data into the payload
             payload.ranked = {
