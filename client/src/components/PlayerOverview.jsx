@@ -13,10 +13,7 @@ const PlayerOverview = () => {
   return (
     <div className="wrapper">
       <PlayerTopThreeChampions />
-      <div className="rank">
-        <p className="rank-header">RANK</p>
-        <PlayerRankedStandings ranked={ranked} />
-      </div>
+      <PlayerRankedStandings ranked={ranked} />
     </div>
   );
 }
