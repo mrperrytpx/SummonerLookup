@@ -1,5 +1,4 @@
 // Contexts
-import LeagueVersionContextProvider from "./LeagueVersionContext";
 import LoggedInContextProvider from "./LoggedInContext";
 import TokenContextProvider from "./TokenContext";
 
@@ -14,9 +13,7 @@ export default function ContextProviders({ children }) {
         <QueryClientProvider client={queryClient}>
             <LoggedInContextProvider>
                 <TokenContextProvider >
-                    <LeagueVersionContextProvider>
-                        {children}
-                    </LeagueVersionContextProvider>
+                    {children}
                 </TokenContextProvider>
             </LoggedInContextProvider>
         </QueryClientProvider>

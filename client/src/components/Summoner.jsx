@@ -24,7 +24,11 @@ const Summoner = ({ summoner }) => {
         <div className="followed-player-profile">
 
           <div className="followed-player-icon">
-            <img className="followed-icon" src="" alt="Followed player display" />
+            <img
+              className="followed-icon"
+              src=""
+              alt="Followed player display"
+            />
             <div className="level"> 123 </div>
           </div>
 
@@ -36,8 +40,13 @@ const Summoner = ({ summoner }) => {
 
         <div className="followed-player-rank">
 
+          {/* REFACTOR THIS SO IT USES <PlayerRankedStanding /> */}
           <div className="followed-player-tier">
-            <img className="followed-rank" src="" alt="Ranked tier" />
+            <img
+              className="followed-rank"
+              src="https://static.u.gg/assets/lol/ranks/2d/unranked.svg"
+              alt="Ranked tier"
+            />
           </div>
 
           <div className="followed-player-division">

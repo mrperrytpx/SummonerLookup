@@ -1,13 +1,16 @@
-import { useState, useContext } from "react";
-// Contexts
-import { LeagueVersionContext } from "../contexts/LeagueVersionContext";
+import { useEffect, useState } from "react";
+import { useQueryClient } from "react-query";
 // Components
 import MatchDetails from "./MatchDetails";
+import Item from "./Item";
 
 const Match = ({ game }) => {
+  const queryClient = useQueryClient();
   const [isClicked, setIsClicked] = useState(false);
 
-  const { version } = useContext(LeagueVersionContext);
+  const version = queryClient.getQueryData(["version"]);
+
+  useEffect(() => console.log(game), [game])
 
   return (
     <div
@@ -68,27 +71,9 @@ const Match = ({ game }) => {
 
           <div className="game-champ-build">
             <div className="game-champ-build-wrapper">
-              <div className="item1 item">
-                {game?.item0 ? <img className="item-image" src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/item/${game?.item0}.png`} alt="Item slot 1" /> : <div></div>}
-              </div>
-              <div className="item2 item">
-                {game?.item1 ? <img className="item-image" src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/item/${game?.item1}.png`} alt="Item slot 2" /> : <div></div>}
-              </div>
-              <div className="item3 item">
-                {game?.item2 ? <img className="item-image" src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/item/${game?.item2}.png`} alt="Item slot 3" /> : <div></div>}
-              </div>
-              <div className="item4 item">
-                {game?.item3 ? <img className="item-image" src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/item/${game?.item3}.png`} alt="Item slot 4" /> : <div></div>}
-              </div>
-              <div className="item5 item">
-                {game?.item4 ? <img className="item-image" src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/item/${game?.item4}.png`} alt="Item slot 5" /> : <div></div>}
-              </div>
-              <div className="item6 item">
-                {game?.item5 ? <img className="item-image" src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/item/${game?.item5}.png`} alt="Item slot 6" /> : <div></div>}
-              </div>
-              <div className="item7 item">
-                {game?.item6 ? <img className="item-image" src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/item/${game?.item6}.png`} alt="Trinket slot" /> : <div></div>}
-              </div>
+              {game?.items.map(item => (
+                <Item key={item} item={item} version={version} />
+              ))}
             </div>
             <div className="duration">
               <p>Duration:</p>

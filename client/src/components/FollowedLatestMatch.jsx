@@ -1,9 +1,8 @@
-import { useContext } from "react";
-// Contexts
-import { LeagueVersionContext } from "../contexts/LeagueVersionContext";
+import { useQueryClient } from "react-query";
 
 const FollowedLatestMatch = ({ game }) => {
-  const { version } = useContext(LeagueVersionContext);
+  const queryClient = useQueryClient();
+  const { version } = queryClient.getQueryData("version")
 
   return (
     <div className="latest-game-wrapper">

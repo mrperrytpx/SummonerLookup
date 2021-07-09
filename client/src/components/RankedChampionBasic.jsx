@@ -1,10 +1,11 @@
-import { useEffect, useState, useContext } from "react";
-//Contexts
-import { LeagueVersionContext } from "../contexts/LeagueVersionContext";
+import { useEffect, useState } from "react";
+import { useQueryClient } from "react-query";
 
-const RankedChampion = ({ champions, championId, stats }) => {
+const RankedChampionBasic = ({ championId, stats }) => {
+  const queryClient = useQueryClient();
+  const version = queryClient.getQueryData(["version"]);
+  const champions = queryClient.getQueryData(["champions"])
   const [championName, setChampionName] = useState("");
-  const { version } = useContext(LeagueVersionContext);
 
   // Get the specific champion name
   useEffect(() => {
@@ -48,4 +49,4 @@ const RankedChampion = ({ champions, championId, stats }) => {
   );
 }
 
-export default RankedChampion;
+export default RankedChampionBasic;

@@ -25,8 +25,7 @@ const PlayerRankedStandings = ({ ranked }) => {
 							{+(ranked?.wins / (ranked?.wins + ranked?.losses) * 100).toFixed(2)}% ({ranked?.wins}W - {ranked?.losses}L)
 						</p>
 					</>
-					:
-					<div className="unranked">Player isn't currently ranked</div>
+					: <div className="unranked">Player isn't currently ranked</div>
 				}
 			</div>
 

@@ -12,14 +12,51 @@ import Player from "./pages/Player";
 // Contexts
 import { TokenContext } from "./contexts/TokenContext";
 import { LoggedInContext } from "./contexts/LoggedInContext";
-import { LeagueVersionContext } from "./contexts/LeagueVersionContext";
+import { useQuery } from "react-query";
+
+const fetchAllChampions = async (version) => {
+  const controller = new AbortController();
+  const promise = new Promise(async (resolve, reject) => {
+    try {
+      const response = await fetch(`https://ddragon.leagueoflegends.com/cdn/${version}/data/en_US/champion.json`, {
+        method: "GET",
+        signal: controller.signal
+      });
+      if (!response.ok) reject(new Error("Problem fetching data"));
+      const data = await response.json();
+      resolve(data);
+    } catch (error) {
+      if (error?.name === "AbortError") reject(new Error("Request aborted"));
+    }
+  });
+  promise.cancel = () => controller.abort();
+  return promise;
+}
+
+const fetchVersion = async () => {
+  const controller = new AbortController();
+  const promise = new Promise(async (resolve, reject) => {
+    try {
+      const response = await fetch("http://ddragon.leagueoflegends.com/api/versions.json", {
+        method: "GET",
+        signal: controller.signal
+      });
+      if (!response.ok) reject(new Error("Problem fetching data"));
+      const data = await response.json();
+      resolve(data[0]);
+    } catch (error) {
+      if (error?.name === "AbortError") reject(new Error("Request aborted"));
+    }
+  });
+  promise.cancel = () => controller.abort();
+  return promise;
+}
 
 const App = () => {
   const [loading, setLoading] = useState(true);
 
   const { isLoggedIn, setLoggedIn } = useContext(LoggedInContext);
   const { setNewToken } = useContext(TokenContext);
-  const { setLeagueVersion } = useContext(LeagueVersionContext);
 
   // Give the user a new access token if there's a refresh token stored in cookies
   useEffect(() => {
@@ -39,20 +76,22 @@ const App = () => {
     return () => controller.abort();
   }, [setLoggedIn, setNewToken]);
 
-  // Fetch latest game version so it's not hardcoded in
-  useEffect(() => {
-    const controller = new AbortController();
-    (async () => {
-      const response = await fetch("http://ddragon.leagueoflegends.com/api/versions.json", {
-        method: "GET",
-        signal: controller.signal
-      });
-      if (!response.ok) throw new Error("test");
-      const data = await response.json();
-      setLeagueVersion(data[0]);
-    })();
-    return () => controller.abort();
-  }, [setLeagueVersion]);
+  const { data } = useQuery(["version"], () => fetchVersion(), {
+    staleTime: 900000,
+    retry: 1,
+    refetchOnWindowFocus: false
+  });
+
+  useQuery(["champions"], () => fetchAllChampions(data), {
+    enabled: !!data,
+    // onSettled: (data) => {
+    //   queryClient.setQueryData("champions", data);
+    // },
+    staleTime: 900000,
+    retry: 1,
+    refetchOnWindowFocus: false
+  });
+
 
   if (loading) {
     return <div>Loading...</div>

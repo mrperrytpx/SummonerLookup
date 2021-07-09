@@ -4,16 +4,16 @@ import { useQueryClient } from "react-query";
 // Contexts
 import { LoggedInContext } from "../contexts/LoggedInContext";
 import { TokenContext } from "../contexts/TokenContext";
-import { LeagueVersionContext } from "../contexts/LeagueVersionContext";
 
 const PlayerCard = () => {
   const queryClient = useQueryClient();
   const { region, server, summonerName } = useParams();
   const { accountData } = queryClient.getQueryData(["player", region, server, summonerName]);
+  const version = queryClient.getQueryData(["version"]);
 
   const { isLoggedIn } = useContext(LoggedInContext);
   const { token } = useContext(TokenContext);
-  const { version } = useContext(LeagueVersionContext);
+
 
   const handleFollow = async () => {
     const controller = new AbortController();

@@ -42,7 +42,6 @@ router.get("/:region/:server/:summonerName/", async (req, res) => {
         // Convert each match to json data
         const gameData = await Promise.allSettled(matchResponses.map(res => res.value.json()))
         for (let { value: game } of gameData) {
-            console.log(game);
             if (game?.status?.status_code === 404) continue;
             for (let summoner of game?.info?.participants) {
                 // If the summoner is the same as requested summoner, set the summoner's data into the payload
@@ -56,13 +55,7 @@ router.get("/:region/:server/:summonerName/", async (req, res) => {
                         summoner2: summonerSpells[summoner.summoner2Id],
                         keystone: runes[summoner.perks.styles[0].selections[0].perk],
                         secondary: runes[summoner.perks.styles[1].style],
-                        item0: summoner.item0,
-                        item1: summoner.item1,
-                        item2: summoner.item2,
-                        item3: summoner.item3,
-                        item4: summoner.item4,
-                        item5: summoner.item5,
-                        item6: summoner.item6,
+                        items: [summoner.item0, summoner.item1, summoner.item2, summoner.item3, summoner.item4, summoner.item5, summoner.item6],
                         kills: summoner.kills,
                         assists: summoner.assists,
                         deaths: summoner.deaths,

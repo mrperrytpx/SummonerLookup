@@ -1,29 +1,13 @@
-import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useQueryClient } from "react-query";
-// Contexts
-import { LeagueVersionContext } from "../contexts/LeagueVersionContext";
 // Components
-import RankedChampion from "./RankedChampion";
+import RankedChampionBasic from "./RankedChampionBasic";
 
 const PlayerChampions = () => {
   const queryClient = useQueryClient();
-  const [champions, setChampions] = useState("")
   const { region, server, summonerName } = useParams();
-  const { version } = useContext(LeagueVersionContext);
 
   const { stats } = queryClient.getQueryData(["player", region, server, summonerName]);
-
-  // Fetch all champions' data
-  useEffect(() => {
-    (async function () {
-      const response = await fetch(`https://ddragon.leagueoflegends.com/cdn/${version}/data/en_US/champion.json`);
-      if (!response.ok) throw new Error("Error fetching champions");
-      const data = await response.json();
-      setChampions(data);
-    })();
-  }, [version]);
-
   return (
     <div className="best-champions">
 
@@ -32,9 +16,8 @@ const PlayerChampions = () => {
       <div className="best-champions-box">
         {
           stats?.slice(0, 3).map(champion => (
-            <RankedChampion
+            <RankedChampionBasic
               key={champion.championId}
-              champions={champions}
               championId={champion.championId}
               stats={champion}
             />
