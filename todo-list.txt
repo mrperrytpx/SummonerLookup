@@ -21,5 +21,7 @@ TASKS FOR FUTURE ME WHEN ITS FUNCTIONAL (WIP)
 - rename everything because it makes no sense
 - accessibility concerns
 - handle errors so user knows - use fireship try/catch thingie from that one video
-- Add react-router site map for SEO
+- Add react-router site map and React Helmet for SEO
 - sortable Champion stats (ascending, descending)
+- wrap 3 requests needed for all Player data into parallel fetch
+- make all player names lowercase when searching for better caching since casing doesnt matter to the API
