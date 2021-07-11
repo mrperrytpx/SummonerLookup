@@ -1,4 +1,4 @@
-import FollowedLatestMatch from "./FollowedLatestMatch";
+import UnfollowButton from "./UnfollowButton";
 
 const SERVERS = Object.freeze({
   eun1: "EUNE",
@@ -57,7 +57,7 @@ const Summoner = ({ summoner }) => {
         </div>
 
       </div>
-      <FollowedLatestMatch />
+      <UnfollowButton summoner={summoner} />
     </div>
   );
 }

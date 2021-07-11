@@ -10,7 +10,6 @@ import PlayerRankedStats from "../components/PlayerRankedStats";
 import PlayerLive from "../components/PlayerLive";
 
 const fetchPlayer = (region, server, summonerName) => {
-
   const controller = new AbortController();
   // Only way I found how to properly cancel a react-query fetch request
   const promise = new Promise(async (resolve, reject) => {
