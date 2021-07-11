@@ -1,9 +1,10 @@
 const PlayerRankedStandings = ({ ranked }) => {
 	return (
-
 		<div className="rank">
 			<p className="rank-header">RANK</p>
+
 			<div className="rank-stats-wrap">
+
 				<div className="rank-image">
 					<img
 						className="rank-icon"
@@ -32,8 +33,8 @@ const PlayerRankedStandings = ({ ranked }) => {
 				</div>
 
 			</div>
-		</div>
 
+		</div>
 	);
 }
 

@@ -6,7 +6,15 @@ import TokenContextProvider from "./TokenContext";
 import { QueryClient, QueryClientProvider, QueryCache } from "react-query";
 
 const queryCache = new QueryCache();
-const queryClient = new QueryClient({ queryCache });
+const queryClient = new QueryClient({
+    queryCache,
+    defaultOptions: {
+        queries: {
+            refetchOnWindowFocus: false,
+            retry: 1,
+        },
+    },
+});
 
 export default function ContextProviders({ children }) {
     return (

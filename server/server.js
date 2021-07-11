@@ -16,6 +16,7 @@ const deleteUserRoute = require("./routes/deleteUser")
 const searchUserRoute = require("./routes/searchPlayers");
 const matchDetailsRouter = require("./routes/matchDetails");
 const addToFollowingRoute = require("./routes/addToFollowing");
+const isPlayerLiveRoute = require("./routes/isPlayerLive");
 
 // Authorization middleware
 const authorizeMiddleware = require("./tokens/authorizeMiddleware");
@@ -44,11 +45,12 @@ app.use("/api/register", registerRoute); // Send info to make a new user in data
 app.use("/api/login", loginRoute); // Check if user exists in the database
 app.use("/api/refresh_token", refreshTokenRoute); // Refresh a token
 app.use("/api/match/", matchDetailsRouter); // Get metch details for a single game
-app.use("/api/", searchUserRoute); // Search for league of legends account info
 app.use("/api/logout", authorizeMiddleware, logoutRoute); // Delete a refresh token and clear the access token, has to be authorized with a proper access token 
 app.use("/api/me", authorizeMiddleware, myProfileRoute); // Get user info, has to be authorized with a proper access token 
 app.use("/api/delete_account", authorizeMiddleware, deleteUserRoute); // Delete a user from the database, has to be authorized with a proper access token 
 app.use("/api/add", authorizeMiddleware, addToFollowingRoute); // Add player to following list
+app.use("/api/live/", isPlayerLiveRoute)
+app.use("/api/", searchUserRoute); // Search for league of legends account info
 
 // Start server
 app.listen(PORT, () => {

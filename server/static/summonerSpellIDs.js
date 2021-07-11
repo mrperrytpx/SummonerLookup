@@ -12,7 +12,8 @@ const summonerSpells = {
     11: "SummonerSmite",
     39: "SummonerSnowURFSnowball_Mark",
     32: "SummonerSnowball",
-    12: "SummonerTeleport"
+    12: "SummonerTeleport",
+    54: "Summoner_UltBook_Placeholder"
 }
 
 module.exports = summonerSpells;

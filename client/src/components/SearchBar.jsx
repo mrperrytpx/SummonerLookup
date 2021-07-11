@@ -42,12 +42,10 @@ const SearchBar = () => {
           required
           placeholder="Enter a summoner name..."
           value={summonerName}
-          onChange={(e) => {
-            setSummonerName(e.target.value);
-          }}
+          onChange={(e) => setSummonerName(e.target.value)}
         />
 
-        <Link to={`/${region}/${server}/${summonerName}`}><FaAngleDoubleRight style={style} /></Link>
+        <Link to={`/${region}/${server}/${summonerName.toLowerCase()}`}><FaAngleDoubleRight style={style} /></Link>
       </form>
     </div>
   );
