@@ -8,9 +8,8 @@ router.patch("/", async (req, res) => {
         const { following } = await User.findOne({
             _id: req?.user?._id
         });
-        following.map(player => console.log(player._id, id, player._id === id));
-        // console.log("-----------------------------------------------------")
-        // console.log(updatedFollowing);
+        const updatedFollowing = following.filter(player => player._id.toString() !== id);
+        console.log(updatedFollowing)
 
     } catch (error) {
         res.json({ message: "yo" })
