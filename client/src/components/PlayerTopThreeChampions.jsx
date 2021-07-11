@@ -7,7 +7,7 @@ const PlayerChampions = () => {
   const queryClient = useQueryClient();
   const { region, server, summonerName } = useParams();
 
-  const { stats } = queryClient.getQueryData(["player", region, server, summonerName]);
+  const { stats } = queryClient.getQueryData(["player", region, server, summonerName.toLowerCase()]);
   return (
     <div className="best-champions">
 

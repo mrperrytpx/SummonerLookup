@@ -8,7 +8,7 @@ const PlayerOverview = () => {
   const queryClient = useQueryClient();
   const { region, server, summonerName } = useParams();
 
-  const { ranked } = queryClient.getQueryData(["player", region, server, summonerName]);
+  const { ranked } = queryClient.getQueryData(["player", region, server, summonerName.toLowerCase()]);
 
   return (
     <div className="wrapper">

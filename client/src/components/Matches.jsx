@@ -7,7 +7,7 @@ const Matches = () => {
   const queryClient = useQueryClient();
   const { region, server, summonerName } = useParams();
 
-  const { games } = queryClient.getQueryData(["player", region, server, summonerName]);
+  const { games } = queryClient.getQueryData(["player", region, server, summonerName.toLowerCase()]);
 
   return (
     <div className="matches">

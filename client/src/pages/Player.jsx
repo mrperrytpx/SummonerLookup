@@ -15,7 +15,7 @@ const fetchPlayer = (region, server, summonerName) => {
   // Only way I found how to properly cancel a react-query fetch request
   const promise = new Promise(async (resolve, reject) => {
     try {
-      const response = await fetch(`/api/${region}/${server}/${summonerName}`, {
+      const response = await fetch(`/api/${region}/${server}/${summonerName.toLowerCase()}`, {
         method: "GET",
         signal: controller.signal
       });
@@ -55,7 +55,7 @@ const Players = () => {
   const [state, dispatch] = useReducer(stateReducer, initialState);
 
   const { isLoading, isError } = useQuery(
-    ["player", region, server, summonerName],
+    ["player", region, server, summonerName.toLowerCase()],
     () => fetchPlayer(region, server, summonerName),
     {
       onError: () => {

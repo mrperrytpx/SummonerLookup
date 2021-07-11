@@ -22,10 +22,7 @@ const fetchLiveGame = async (server, summonerName) => {
 
 
 const PlayerLive = () => {
-
     const { server, summonerName } = useParams();
-
-
 
     const { data, error, isError, isLoading } = useQuery(
         ["live-game", server, summonerName],

@@ -5,7 +5,7 @@ import RankedChampionFull from "./RankedChampionFull";
 const PlayerRankedStats = () => {
 	const queryClient = useQueryClient();
 	const { region, server, summonerName } = useParams();
-	const { stats } = queryClient.getQueryData(["player", region, server, summonerName])
+	const { stats } = queryClient.getQueryData(["player", region, server, summonerName.toLowerCase()])
 
 	return (
 		<div className="ranked-stats-wrapper">

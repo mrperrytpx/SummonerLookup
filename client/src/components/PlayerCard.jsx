@@ -8,7 +8,7 @@ import { TokenContext } from "../contexts/TokenContext";
 const PlayerCard = () => {
   const queryClient = useQueryClient();
   const { region, server, summonerName } = useParams();
-  const { accountData } = queryClient.getQueryData(["player", region, server, summonerName]);
+  const { accountData } = queryClient.getQueryData(["player", region, server, summonerName.toLowerCase()]);
   const version = queryClient.getQueryData(["version"]);
 
   const { isLoggedIn } = useContext(LoggedInContext);
