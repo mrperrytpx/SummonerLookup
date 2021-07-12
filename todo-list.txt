@@ -25,3 +25,5 @@ TASKS FOR FUTURE ME WHEN ITS FUNCTIONAL (WIP)
 - sortable Champion stats (ascending, descending)
 - wrap 3 requests needed for all Player data into parallel fetch
 - make all player names lowercase when searching for better caching since casing doesnt matter to the API
+- error boundries component wrapper
+- look how to have phones go to login/register pages, but hsvr it be popup on the PC
