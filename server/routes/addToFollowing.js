@@ -9,13 +9,15 @@ router.post("/", async (req, res) => {
             _id: req?.user?._id
         });
         // If the user is already 'following' a summoner, throw an error so it doesn't 'follow' agian
-        if (user.following.find(summoner => summoner.puuid === req.body.puuid)) throw new Error("already following");
+        if (user.following.find(summoner => summoner.puuid === req.body.puuid)) {
+            throw new Error("Already following");
+        }
         // Update user's following list with the summoner information
         await User.updateOne({ _id: user._id }, { "$push": { following: req.body } })
 
-        res.sendStatus(200);
-    } catch (err) {
-        res.sendStatus(404);
+        res.sendStatus(204);
+    } catch (error) {
+        res.status(404).json(error);
     }
 })
 

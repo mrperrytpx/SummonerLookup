@@ -3,16 +3,22 @@ const router = require("express").Router();
 const User = require("../model/User");
 
 router.patch("/", async (req, res) => {
+    // Get the ID from request body
     const { id } = req.body;
     try {
-        const { following } = await User.findOne({
+        // try to find a user which was put into req.user in the authorization middleware
+        const user = await User.findOne({
             _id: req?.user?._id
         });
-        const updatedFollowing = following.filter(player => player._id.toString() !== id);
-        console.log(updatedFollowing)
-
+        // If the player isn't following, throw an error
+        if (!user.following.find(summoner => summoner._id.toString() == id)) {
+            throw new Error("Not following that player")
+        }
+        // Update the following array to remove the player with the same document ID
+        await User.updateOne({ _id: user._id }, { "$pull": { following: { _id: id } } })
+        res.sendStatus(204);
     } catch (error) {
-        res.json({ message: "yo" })
+        res.status(400).json(error);
     }
 })
 

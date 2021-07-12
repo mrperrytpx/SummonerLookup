@@ -46,7 +46,6 @@ router.get("/:region/:server/:summonerName/", async (req, res) => {
             for (let summoner of game?.info?.participants) {
                 // If the summoner is the same as requested summoner, set the summoner's data into the payload
                 if (summoner?.summonerName?.toLowerCase() === summonerName.toLowerCase()) {
-                    console.log(summoner.summoner2Id)
                     let gameDetails = {
                         duration: game?.info?.gameDuration,
                         matchId: game?.metadata?.matchId,
