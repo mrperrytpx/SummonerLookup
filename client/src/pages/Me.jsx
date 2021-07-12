@@ -32,7 +32,7 @@ const Me = () => {
 
   // Get who user follows
   const { data } = useQuery(
-    ["me", token],
+    ["me"],
     () => getFollowing(token),
     {
       refetchOnWindowFocus: false,
