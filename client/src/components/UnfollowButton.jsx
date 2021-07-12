@@ -4,7 +4,7 @@ import { useMutation, useQueryClient } from "react-query";
 import { TokenContext } from "../contexts/TokenContext";
 
 const unfollowPlayer = async ({ id, token }) => {
-	const response = await fetch(`/api/ussnfollow/`, {
+	const response = await fetch(`/api/unfollow/`, {
 		method: "PATCH",
 		headers: {
 			"Content-Type": "application/json",
