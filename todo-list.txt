@@ -11,7 +11,6 @@ TASKS FOR FUTURE ME WHEN ITS FUNCTIONAL (WIP)
 - split SCSS files - decide on the approach (utility classes or something else)
 - split player profile fetch into multiple fetches to get payload sooner?
 - make your own picture library for icons so it doesn't run out of date randomly
-- set up abort controllers - set up returns from useEffect
 - add server choice to local storage
 - give credit to u.gg and riot disclaimer to the footer - make a footer
 - switch all useEffect fetchers into useQuery - full send it
@@ -20,10 +19,10 @@ TASKS FOR FUTURE ME WHEN ITS FUNCTIONAL (WIP)
 - pre-fetch "following" data on app load if user is logged in
 - rename everything because it makes no sense
 - accessibility concerns
-- handle errors so user knows - use fireship try/catch thingie from that one video
 - Add react-router site map and React Helmet for SEO
 - sortable Champion stats (ascending, descending)
 - wrap 3 requests needed for all Player data into parallel fetch
-- make all player names lowercase when searching for better caching since casing doesnt matter to the API
 - error boundries component wrapper
+- make a ProtectedRoute component with render prop
+- make AuthProvider component
 - look how to have phones go to login/register pages, but hsvr it be popup on the PC
