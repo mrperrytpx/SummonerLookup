@@ -25,6 +25,7 @@ router.get("/:region/:server/:summonerName/", async (req, res) => {
             summonerLevel: accountData.summonerLevel,
             profileIconId: accountData.profileIconId
         };
+
         payload.games = [];
 
         // Fetch the match IDs

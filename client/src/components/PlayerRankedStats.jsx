@@ -26,7 +26,7 @@ const PlayerRankedStats = () => {
 				<RankedChampionFull
 					idx={idx}
 					key={champ.championId}
-					champ={champ}
+					stats={champ}
 				/>
 			))}
 		</div >

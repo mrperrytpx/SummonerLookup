@@ -12,7 +12,7 @@ import Player from "./pages/Player";
 // Contexts
 import { TokenContext } from "./contexts/TokenContext";
 import { LoggedInContext } from "./contexts/LoggedInContext";
-import { useQuery, useQueryClient } from "react-query";
+import { useQuery } from "react-query";
 
 const fetchAllChampions = async (version) => {
   const controller = new AbortController();
@@ -24,7 +24,11 @@ const fetchAllChampions = async (version) => {
       });
       if (!response.ok) reject(new Error("Problem fetching data"));
       const data = await response.json();
-      resolve(data);
+      let map = new Map();
+      for (let name in data.data) {
+        map.set(data.data[name].key, name);
+      }
+      resolve(map);
     } catch (error) {
       if (error?.name === "AbortError") reject(new Error("Request aborted"));
     }
@@ -87,12 +91,6 @@ const App = () => {
     staleTime: 900000,
     retry: 1,
     refetchOnWindowFocus: false,
-    onSuccess: (data) => {
-      let map = new Map();
-      for (let name in data.data) {
-        map.set(data.data[name].key, name);
-      }
-    }
   });
 
 

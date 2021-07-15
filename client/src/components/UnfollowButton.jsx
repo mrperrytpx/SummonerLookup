@@ -30,8 +30,7 @@ const UnfollowButton = ({ summoner }) => {
 					(old) => old.filter((summ) => summ._id !== id));
 				return { previousFollowing };
 			},
-			onError: (err, _player, context) => {
-				console.log(err);
+			onError: (_err, _player, context) => {
 				queryClient.setQueryData(["me"], context.previousFollowing);
 			}
 		});

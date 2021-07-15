@@ -26,3 +26,4 @@ TASKS FOR FUTURE ME WHEN ITS FUNCTIONAL (WIP)
 - make a ProtectedRoute component with render prop
 - make AuthProvider component
 - look how to have phones go to login/register pages, but hsvr it be popup on the PC
+- make custom hooks to SOC components

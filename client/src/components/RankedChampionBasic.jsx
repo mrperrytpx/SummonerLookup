@@ -1,20 +1,9 @@
-import { useEffect, useState } from "react";
 import { useQueryClient } from "react-query";
 
 const RankedChampionBasic = ({ championId, stats }) => {
   const queryClient = useQueryClient();
   const version = queryClient.getQueryData(["version"]);
   const champions = queryClient.getQueryData(["champions"])
-  const [championName, setChampionName] = useState("");
-
-
-  // Get the specific champion name
-  useEffect(() => {
-    console.log(champions);
-    // for (let name in champions.data) {
-    //   if (champions?.data[name]?.key === championId.toString()) setChampionName(champions?.data[name]?.id)
-    // }
-  }, [champions]);
 
   return (
     <div className="best-champions-wrapper">
@@ -23,11 +12,11 @@ const RankedChampionBasic = ({ championId, stats }) => {
         <div className="best-champion-icon">
           <img
             className="champion-icon"
-            src={championName && `https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${championName}.png`}
+            src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${champions.get(`${championId}`)}.png`}
             alt="Champion"
           />
         </div>
-        <p className="best-champion-name">{championName}</p>
+        <p className="best-champion-name">{champions.get(`${championId}`)}</p>
       </div>
 
       <div className="best-champion-score">
