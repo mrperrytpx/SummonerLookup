@@ -7,13 +7,14 @@ const RankedChampionBasic = ({ championId, stats }) => {
   const champions = queryClient.getQueryData(["champions"])
   const [championName, setChampionName] = useState("");
 
+
   // Get the specific champion name
   useEffect(() => {
-    // console.log(queryClient.getQueryData(["champions"]));
+    console.log(champions);
     // for (let name in champions.data) {
     //   if (champions?.data[name]?.key === championId.toString()) setChampionName(champions?.data[name]?.id)
     // }
-  }, []);
+  }, [champions]);
 
   return (
     <div className="best-champions-wrapper">

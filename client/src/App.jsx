@@ -53,7 +53,6 @@ const fetchVersion = async () => {
 }
 
 const App = () => {
-  const queryClient = useQueryClient();
   const [loading, setLoading] = useState(true);
 
   const { isLoggedIn, setLoggedIn } = useContext(LoggedInContext);
@@ -93,8 +92,6 @@ const App = () => {
       for (let name in data.data) {
         map.set(data.data[name].key, name);
       }
-      console.log(map);
-      // queryClient.setQueryData(["champions"], map)
     }
   });
 
