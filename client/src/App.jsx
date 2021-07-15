@@ -12,7 +12,7 @@ import Player from "./pages/Player";
 // Contexts
 import { TokenContext } from "./contexts/TokenContext";
 import { LoggedInContext } from "./contexts/LoggedInContext";
-import { useQuery } from "react-query";
+import { useQuery, useQueryClient } from "react-query";
 
 const fetchAllChampions = async (version) => {
   const controller = new AbortController();
@@ -53,6 +53,7 @@ const fetchVersion = async () => {
 }
 
 const App = () => {
+  const queryClient = useQueryClient();
   const [loading, setLoading] = useState(true);
 
   const { isLoggedIn, setLoggedIn } = useContext(LoggedInContext);
@@ -84,12 +85,17 @@ const App = () => {
 
   useQuery(["champions"], () => fetchAllChampions(data), {
     enabled: !!data,
-    // onSettled: (data) => {
-    //   queryClient.setQueryData("champions", data);
-    // },
     staleTime: 900000,
     retry: 1,
-    refetchOnWindowFocus: false
+    refetchOnWindowFocus: false,
+    onSuccess: (data) => {
+      let map = new Map();
+      for (let name in data.data) {
+        map.set(data.data[name].key, name);
+      }
+      console.log(map);
+      // queryClient.setQueryData(["champions"], map)
+    }
   });
 
 
