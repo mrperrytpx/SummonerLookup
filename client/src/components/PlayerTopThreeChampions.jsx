@@ -17,7 +17,7 @@ const PlayerChampions = () => {
         {
           stats?.slice(0, 3).map(champion => (
             <RankedChampionBasic
-              key={champion.championId}
+              key={champion.damage}
               championId={champion.championId}
               stats={champion}
             />

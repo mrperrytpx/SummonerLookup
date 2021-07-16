@@ -71,8 +71,8 @@ const Match = ({ game }) => {
 
           <div className="game-champ-build">
             <div className="game-champ-build-wrapper">
-              {game?.items.map(item => (
-                <Item key={item} item={item} version={version} />
+              {game?.items.map((item, idx) => (
+                <Item key={item ? item : idx + 1} item={item} idx={idx} version={version} />
               ))}
             </div>
             <div className="duration">

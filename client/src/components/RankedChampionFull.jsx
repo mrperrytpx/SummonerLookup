@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useQueryClient } from "react-query";
 
 const RankedChampionFull = ({ stats, idx }) => {
@@ -8,7 +7,6 @@ const RankedChampionFull = ({ stats, idx }) => {
   const { championId } = stats;
   const championName = champions.get(`${championId}`);
 
-  useEffect(() => console.log(stats), [stats])
   return (
     <div className="champ-stats">
       <p>{idx + 1}</p>
