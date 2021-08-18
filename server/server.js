@@ -12,7 +12,6 @@ const loginRoute = require("./routes/login");
 const refreshTokenRoute = require("./routes/refreshTokens");
 const myProfileRoute = require("./routes/myProfile");
 const logoutRoute = require("./routes/logout");
-const isLoggedInRoute = require("./routes/isLoggedIn");
 const deleteUserRoute = require("./routes/deleteUser")
 const searchUserRoute = require("./routes/searchPlayers");
 const matchDetailsRouter = require("./routes/matchDetails");
@@ -43,7 +42,6 @@ app.use(express.json());
 app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 
 //Route middlewares
-app.use("/api/is_logged_in", isLoggedInRoute); // Checks if the user is logged in
 app.use("/api/register", registerRoute); // Send info to make a new user in database
 app.use("/api/login", loginRoute); // Check if user exists in the database
 app.use("/api/refresh_token", refreshTokenRoute); // Refresh a token
