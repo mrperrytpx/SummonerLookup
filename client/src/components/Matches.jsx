@@ -4,23 +4,23 @@ import { useQueryClient } from "react-query";
 import Match from "./Match"
 
 const Matches = () => {
-  const queryClient = useQueryClient();
-  const { region, server, summonerName } = useParams();
+	const queryClient = useQueryClient();
+	const { region, server, summonerName } = useParams();
 
-  const { games } = queryClient.getQueryData(["player", region, server, summonerName.toLowerCase()]);
+	const { games } = queryClient.getQueryData(["player", region, server, summonerName.toLowerCase()]);
 
-  return (
-    <div className="matches">
-      <p className="matches-header">MATCH HISTORY</p>
+	return (
+		<div className="matches">
+			<p className="matches-header">MATCH HISTORY</p>
 
-      {
-        games?.map(game => (
-          <Match game={game} key={game?.matchId} />
-        ))
-      }
+			{
+				games?.map(game => (
+					<Match game={game} key={game?.matchId} />
+				))
+			}
 
-    </div>
-  );
+		</div>
+	);
 }
 
 export default Matches;

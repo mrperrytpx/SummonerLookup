@@ -6,68 +6,68 @@ import { LoggedInContext } from "../contexts/LoggedInContext";
 import { TokenContext } from "../contexts/TokenContext";
 
 const PlayerCard = () => {
-  const queryClient = useQueryClient();
-  const { region, server, summonerName } = useParams();
-  const { accountData } = queryClient.getQueryData(["player", region, server, summonerName.toLowerCase()]);
-  const version = queryClient.getQueryData(["version"]);
+	const queryClient = useQueryClient();
+	const { region, server, summonerName } = useParams();
+	const { accountData } = queryClient.getQueryData(["player", region, server, summonerName.toLowerCase()]);
+	const version = queryClient.getQueryData(["version"]);
 
-  const { isLoggedIn } = useContext(LoggedInContext);
-  const { token } = useContext(TokenContext);
+	const { isLoggedIn } = useContext(LoggedInContext);
+	const { token } = useContext(TokenContext);
 
 
-  const handleFollow = async () => {
-    const controller = new AbortController();
-    const payload = {
-      summonerName: accountData?.summonerName,
-      region: accountData?.region,
-      server: accountData?.server,
-      puuid: accountData?.puuid,
-      summonerId: accountData?.summonerId
-    }
-    try {
-      const response = await fetch(`/api/add`, {
-        method: "POST",
-        signal: controller.signal,
-        headers: {
-          "Content-Type": "application/json",
-          authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(payload),
-      })
-      if (!response.ok) throw new Error("Couldn't follow player");
+	const handleFollow = async () => {
+		const controller = new AbortController();
+		const payload = {
+			summonerName: accountData?.summonerName,
+			region: accountData?.region,
+			server: accountData?.server,
+			puuid: accountData?.puuid,
+			summonerId: accountData?.summonerId
+		}
+		try {
+			const response = await fetch(`/api/add`, {
+				method: "POST",
+				signal: controller.signal,
+				headers: {
+					"Content-Type": "application/json",
+					authorization: `Bearer ${token}`,
+				},
+				body: JSON.stringify(payload),
+			})
+			if (!response.ok) throw new Error("Couldn't follow player");
 
-    } catch (err) {
-      err.name === "AbortError" ? console.log("Fetch aborted") : console.log(err);
-    }
-    return () => controller.abort();
-  }
+		} catch (err) {
+			err.name === "AbortError" ? console.log("Fetch aborted") : console.log(err);
+		}
+		return () => controller.abort();
+	}
 
-  return (
-    <div className="summoner">
+	return (
+		<div className="summoner">
 
-      <div className="summoner-icon">
-        <img
-          className="player-summoner-icon"
-          src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/profileicon/${accountData?.profileIconId}.png`}
-          alt="Summoner's icon"
-        />
-        <div className="player-account-level">{accountData?.summonerLevel}</div>
-      </div>
+			<div className="summoner-icon">
+				<img
+					className="player-summoner-icon"
+					src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/profileicon/${accountData?.profileIconId}.png`}
+					alt="Summoner's icon"
+				/>
+				<div className="player-account-level">{accountData?.summonerLevel}</div>
+			</div>
 
-      <div className="name-wrapper">
+			<div className="name-wrapper">
 
-        <div className="player-name">
-          <p className="summoner-name">{accountData?.summonerName}</p>
-        </div>
+				<div className="player-name">
+					<p className="summoner-name">{accountData?.summonerName}</p>
+				</div>
 
-        <div className="follow-summoner">
-          <button disabled={!isLoggedIn} onClick={() => handleFollow()} className="follow">FOLLOW</button>
-        </div>
+				<div className="follow-summoner">
+					<button disabled={!isLoggedIn} onClick={() => handleFollow()} className="follow">FOLLOW</button>
+				</div>
 
-      </div>
+			</div>
 
-    </div>
-  );
+		</div>
+	);
 }
 
 export default PlayerCard;

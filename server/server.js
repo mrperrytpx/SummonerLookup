@@ -30,9 +30,9 @@ const app = express();
 
 // Connect with Mongo Atlas
 mongoose.connect(
-  process.env.MONGO_CONNECT,
-  { useNewUrlParser: true, useUnifiedTopology: true },
-  () => console.log("Connected to Cluster0")
+	process.env.MONGO_CONNECT,
+	{ useNewUrlParser: true, useUnifiedTopology: true },
+	() => console.log("Connected to Cluster0")
 );
 
 // Middlewares
@@ -56,5 +56,5 @@ app.use("/api/", searchUserRoute); // Search for league of legends account info
 
 // Start server
 app.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}`);
+	console.log(`Server listening on port ${PORT}`);
 });

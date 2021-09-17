@@ -4,19 +4,19 @@ const router = require("express").Router();
 const User = require("../model/User");
 
 router.get("/", async (req, res) => {
-    // destructure _id from request.user
-    const { _id } = req.user;
-    try {
-        // get the array of followers the user follows from the DB
-        const { following } = await User.findOne({ _id: _id });
+	// destructure _id from request.user
+	const { _id } = req.user;
+	try {
+		// get the array of followers the user follows from the DB
+		const { following } = await User.findOne({ _id: _id });
 
-        // send the array to the frontend
-        res.json(following);
-    } catch (err) {
-        res.send({
-            error: `${err.message}`
-        });
-    }
+		// send the array to the frontend
+		res.json(following);
+	} catch (err) {
+		res.send({
+			error: `${err.message}`
+		});
+	}
 })
 
 module.exports = router;
