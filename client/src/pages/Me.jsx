@@ -37,6 +37,7 @@ const Me = () => {
 		{
 			refetchOnWindowFocus: false,
 			retry: 1,
+			onSuccess: data => console.log(data)
 		}
 	);
 

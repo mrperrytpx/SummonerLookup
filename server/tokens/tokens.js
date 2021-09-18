@@ -1,26 +1,54 @@
 const { sign } = require("jsonwebtoken");
 
-const createAccessToken = (userId) => {
+const createAccessToken = (userId, username) => {
 	// Sign (create) a JWT access token with the user._id, signed with the access_secret .env
-	return sign(
-		{ _id: userId },
-		process.env.JWT_ACCESS_SECRET,
-		{ expiresIn: "15m" }
-	);
+	const payload = { _id: userId };
+
+	const iss = "Summoner Lookup";
+	const sub = username;
+	const aud = process.env.WEBSITE_URL;
+	const exp = "15m";
+
+	const signOptions = {
+		issuer: iss,
+		audience: aud,
+		subject: sub,
+		expiresIn: exp,
+		algorithm: 'RS256'
+	};
+
+	const KEY = process.env.JWT_ACCESS_PRIVATE.replace(/\\n/gm, '');
+
+	const accessToken = sign(payload, KEY, signOptions);
+	return accessToken;
 }
 
-const createRefreshToken = (userId) => {
+const createRefreshToken = (userId, username) => {
 	// Sign (create) a JWT refresh token with the user._id, signed with the refresh_secret .env
-	return sign(
-		{ _id: userId },
-		process.env.JWT_REFRESH_SECRET,
-		{ expiresIn: "7d" }
-	);
+	const payload = { _id: userId };
+
+	const iss = "Summoner Lookup";
+	const sub = username;
+	const aud = process.env.WEBSITE_URL;
+	const exp = "7d";
+
+	const signOptions = {
+		issuer: iss,
+		audience: aud,
+		subject: sub,
+		expiresIn: exp,
+		algorithm: 'RS256'
+	};
+
+	const KEY = process.env.JWT_REFRESH_PRIVATE.replace(/\\n/gm, '');
+
+	const refreshToken = sign(payload, KEY, signOptions);
+	return refreshToken;
 }
 
 const sendAccessToken = (res, token) => {
 	// Send the access token as a response
-	res.send({ accessToken: token });
+	res.json({ accessToken: token });
 }
 
 const sendRefreshToken = (res, token) => {

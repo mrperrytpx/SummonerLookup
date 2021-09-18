@@ -2,7 +2,8 @@ const router = require("express").Router();
 const { verify } = require("jsonwebtoken");
 const { createAccessToken,
 	createRefreshToken,
-	sendRefreshToken
+	sendRefreshToken,
+	sendAccessToken
 } = require("../tokens/tokens");
 const User = require("../model/User");
 
@@ -14,9 +15,11 @@ router.post('/', async (req, res) => {
 	if (!token) return res.send({ accesstoken: '' });
 
 	// Verify the refresh token
+	const KEY = process.env.JWT_REFRESH_PUBLIC.replace(/\\n/gm, '');
+
 	let payload = null;
 	try {
-		payload = verify(token, process.env.JWT_REFRESH_SECRET);
+		payload = verify(token, KEY);
 		if (!payload) throw new Error("Invalid Refresh token");
 	} catch (err) {
 		// If the refresh token isn't verified, set the access token to nothing
@@ -24,9 +27,7 @@ router.post('/', async (req, res) => {
 	}
 
 	// Find a user with the refresh token ID
-	const user = await User.findOne({
-		_id: payload._id
-	});
+	const user = await User.findOne({ _id: payload._id });
 
 	// If there isn't a user, set the access token to nothing
 	if (!user) return res.send({ accesstoken: '' });
@@ -34,13 +35,14 @@ router.post('/', async (req, res) => {
 	if (user.refreshToken !== token) return res.send({ accesstoken: '' });
 
 	// create access and refresh tokens
-	const accessToken = createAccessToken(user._id);
-	const refreshToken = createRefreshToken(user._id);
+	const accessToken = createAccessToken(user._id, payload.sub);
+	const refreshToken = createRefreshToken(user._id, payload.sub);
 	// Update users refresh token in the DB with a new refresh token 
 	await User.updateOne({ _id: user._id }, { "$set": { refreshToken: refreshToken } });
 	// Send both tokens to the front-end
 	sendRefreshToken(res, refreshToken);
-	return res.send({ accessToken });
+	sendAccessToken(res, accessToken);
+
 });
 
 module.exports = router;
