@@ -15,7 +15,7 @@ router.post('/', async (req, res) => {
 	if (!token) return res.send({ accesstoken: '' });
 
 	// Verify the refresh token
-	const KEY = process.env.JWT_REFRESH_PUBLIC.replace(/\\n/gm, '');
+	const KEY = process.env.JWT_REFRESH_TOKEN_PUBLIC_KEY;
 
 	let payload = null;
 	try {

@@ -7,7 +7,7 @@ module.exports = function (req, res, next) {
 		// If there isn't a token, deny access
 		if (!token) throw new Error("Access Denied");
 
-		const KEY = process.env.JWT_ACCESS_PUBLIC.replace(/\\n/gm, "");
+		const KEY = process.env.JWT_ACCESS_TOKEN_PUBLIC_KEY;
 		// Verify the recieved access token
 		const verified = verify(token, KEY);
 

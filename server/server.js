@@ -32,7 +32,7 @@ const app = express();
 mongoose.connect(
 	process.env.MONGO_CONNECT,
 	{ useNewUrlParser: true, useUnifiedTopology: true },
-	() => console.log("Connected to Cluster0")
+	(err) => err ? console.log(err) : console.log("Connected to Cluster0")
 );
 
 // Middlewares

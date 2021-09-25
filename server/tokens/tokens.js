@@ -17,7 +17,7 @@ const createAccessToken = (userId, username) => {
 		algorithm: 'RS256'
 	};
 
-	const KEY = process.env.JWT_ACCESS_PRIVATE.replace(/\\n/gm, '');
+	const KEY = process.env.JWT_ACCESS_TOKEN_PRIVATE_KEY;
 
 	const accessToken = sign(payload, KEY, signOptions);
 	return accessToken;
@@ -40,7 +40,7 @@ const createRefreshToken = (userId, username) => {
 		algorithm: 'RS256'
 	};
 
-	const KEY = process.env.JWT_REFRESH_PRIVATE.replace(/\\n/gm, '');
+	const KEY = process.env.JWT_REFRESH_TOKEN_PRIVATE_KEY;
 
 	const refreshToken = sign(payload, KEY, signOptions);
 	return refreshToken;
