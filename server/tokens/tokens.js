@@ -55,7 +55,11 @@ const sendRefreshToken = (res, token) => {
 	// send the refresh token as a cookie
 	res.cookie("slup", token, {
 		httpOnly: true,
-		path: "/api/refresh_token"
+		path: "/api/refresh_token",
+		signed: true,
+		maxAge: 60 * 60 * 24 * 7,
+		sameSite: true,
+
 	});
 }
 

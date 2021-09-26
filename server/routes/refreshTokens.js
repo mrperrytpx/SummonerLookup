@@ -9,7 +9,7 @@ const User = require("../model/User");
 
 router.post('/', async (req, res) => {
 	// get the token from the cookie
-	const token = req.cookies.slup;
+	const token = req.signedCookies.slup;
 
 	// If we don't have a token in our request, set the access token to nothing
 	if (!token) return res.send({ accesstoken: '' });
@@ -37,6 +37,7 @@ router.post('/', async (req, res) => {
 	// create access and refresh tokens
 	const accessToken = createAccessToken(user._id, payload.sub);
 	const refreshToken = createRefreshToken(user._id, payload.sub);
+
 	// Update users refresh token in the DB with a new refresh token 
 	await User.updateOne({ _id: user._id }, { "$set": { refreshToken: refreshToken } });
 	// Send both tokens to the front-end
