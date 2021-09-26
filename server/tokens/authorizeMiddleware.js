@@ -1,5 +1,6 @@
 const { verify } = require("jsonwebtoken");
 const verifyOptions = require("./verifyOptions");
+const use = require("../utils/errorController");
 
 module.exports = function (req, res, next) {
 	try {
@@ -19,6 +20,6 @@ module.exports = function (req, res, next) {
 		req.user = verified;
 		next();
 	} catch (err) {
-		res.status(403).json();
+		next({ status: 401, message: err.message });
 	}
 }

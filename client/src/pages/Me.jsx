@@ -18,12 +18,18 @@ const getFollowing = async (token) => {
 				authorization: `Bearer ${token}`
 			}
 		});
+		console.log("Response: ", response);
 
-		if (!response.ok) throw new Error("Couldn't fetch following list");
-
+		if (!response.ok) {
+			const { message } = await response.json();
+			throw new Error(message);
+		}
 		const data = await response.json();
+		console.log("Data: ", data);
 		return data;
-	} catch (err) { }
+	} catch (err) {
+		console.log(err);
+	}
 	return () => abortCont.abort();
 }
 

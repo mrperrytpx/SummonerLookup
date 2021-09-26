@@ -6,6 +6,9 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const helmet = require("helmet");
 
+const { defaultErrorHandler, errorHandler } = require("./utils/errorHandler");
+const errorController = require("./utils/errorController");
+
 //  Import Routes
 const registerRoute = require("./routes/register");
 const loginRoute = require("./routes/login");
@@ -53,6 +56,9 @@ app.use("/api/add", authorizeMiddleware, addToFollowingRoute); // Add player to 
 app.use("/api/live/", isPlayerLiveRoute) // Search for live game data
 app.use("/api/unfollow/", authorizeMiddleware, unfollowPlayerRouter) // Unfollow a player
 app.use("/api/", searchUserRoute); // Search for league of legends account info
+
+app.use(defaultErrorHandler);
+app.use(errorHandler);
 
 // Start server
 app.listen(PORT, () => {
