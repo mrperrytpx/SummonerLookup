@@ -1,4 +1,5 @@
 const { verify } = require("jsonwebtoken");
+const verifyOptions = require("./verifyOptions");
 
 module.exports = function (req, res, next) {
 	try {
@@ -9,7 +10,7 @@ module.exports = function (req, res, next) {
 
 		const KEY = process.env.JWT_ACCESS_TOKEN_PUBLIC_KEY;
 		// Verify the recieved access token
-		const verified = verify(token, KEY);
+		const verified = verify(token, KEY, verifyOptions);
 
 		// If the token can't be verified, deny access
 		if (!verified) throw new Error("Access Denied");

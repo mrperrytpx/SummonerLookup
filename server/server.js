@@ -37,15 +37,9 @@ mongoose.connect(
 
 // Middlewares
 app.use(helmet());
-app.use(cookieParser("TestSigning"));
+app.use(cookieParser(process.env.COOKIE_SIGNATURE));
 app.use(express.json());
 app.use(cors({ origin: "http://localhost:3000", credentials: true }));
-
-app.get("/", (req, res) => {
-	console.log(req.signedCookies);
-	console.log(req.cookies);
-	res.sendStatus(200);
-})
 
 //Route middlewares
 app.use("/api/register", registerRoute); // Send info to make a new user in database

@@ -1,11 +1,12 @@
 const router = require("express").Router();
-const { verify } = require("jsonwebtoken");
+const { verify, decode } = require("jsonwebtoken");
 const { createAccessToken,
 	createRefreshToken,
 	sendRefreshToken,
 	sendAccessToken
 } = require("../tokens/tokens");
 const User = require("../model/User");
+const verifyOptions = require("../tokens/verifyOptions");
 
 router.post('/', async (req, res) => {
 	// get the token from the cookie
@@ -19,7 +20,7 @@ router.post('/', async (req, res) => {
 
 	let payload = null;
 	try {
-		payload = verify(token, KEY);
+		payload = verify(token, KEY, verifyOptions);
 		if (!payload) throw new Error("Invalid Refresh token");
 	} catch (err) {
 		// If the refresh token isn't verified, set the access token to nothing
