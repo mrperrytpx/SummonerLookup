@@ -7,7 +7,7 @@ const createAccessToken = (userId, username) => {
 	const iss = "Summoner Lookup";
 	const sub = username;
 	const aud = process.env.WEBSITE_URL;
-	const exp = "15s";
+	const exp = "15m";
 
 	const signOptions = {
 		issuer: iss,

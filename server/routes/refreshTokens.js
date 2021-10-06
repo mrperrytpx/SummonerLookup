@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { verify, decode } = require("jsonwebtoken");
+const { verify } = require("jsonwebtoken");
 const { createAccessToken,
 	createRefreshToken,
 	sendRefreshToken,

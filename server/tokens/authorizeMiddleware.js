@@ -1,8 +1,7 @@
 const { verify } = require("jsonwebtoken");
 const verifyOptions = require("./verifyOptions");
-const use = require("../utils/errorController");
 
-module.exports = function (req, res, next) {
+module.exports = function (req, _res, next) {
 	try {
 		// Check if an access token exists in request headers
 		const token = req.headers?.authorization.split(" ")[1];
