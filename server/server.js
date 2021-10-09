@@ -15,7 +15,7 @@ const loginRoute = require("./routes/login");
 const refreshTokenRoute = require("./routes/refreshTokens");
 const myProfileRoute = require("./routes/myProfile");
 const logoutRoute = require("./routes/logout");
-const deleteUserRoute = require("./routes/deleteUser")
+const deleteUserRoute = require("./routes/deleteUser");
 const searchUserRoute = require("./routes/searchPlayers");
 const matchDetailsRouter = require("./routes/matchDetails");
 const addToFollowingRoute = require("./routes/addToFollowing");
@@ -53,8 +53,8 @@ app.use("/api/logout", authorizeMiddleware, logoutRoute); // Delete a refresh to
 app.use("/api/me", authorizeMiddleware, myProfileRoute); // Get user info, has to be authorized with a proper access token 
 app.use("/api/delete_account", authorizeMiddleware, deleteUserRoute); // Delete a user from the database, has to be authorized with a proper access token 
 app.use("/api/add", authorizeMiddleware, addToFollowingRoute); // Add player to following list
-app.use("/api/live/", isPlayerLiveRoute) // Search for live game data
-app.use("/api/unfollow/", authorizeMiddleware, unfollowPlayerRouter) // Unfollow a player
+app.use("/api/live/", isPlayerLiveRoute); // Search for live game data
+app.use("/api/unfollow/", authorizeMiddleware, unfollowPlayerRouter); // Unfollow a player
 app.use("/api/", searchUserRoute); // Search for league of legends account info
 
 app.use(defaultErrorHandler);

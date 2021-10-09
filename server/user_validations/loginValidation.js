@@ -6,8 +6,6 @@ const loginValidation = (data) => {
 		username: Joi.string().min(3).required().pattern(new RegExp("^[a-zA-z0-9_-]+")),
 		// password is a string, at least 8 character length
 		password: Joi.string().min(8).required()
-	})
+	});
 	return validationSchema.validate(data);
-}
-
-module.exports = loginValidation;
+};

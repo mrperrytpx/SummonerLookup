@@ -14,6 +14,6 @@ const summonerSpells = {
 	32: "SummonerSnowball",
 	12: "SummonerTeleport",
 	54: "Summoner_UltBook_Placeholder"
-}
+};
 
 module.exports = summonerSpells;

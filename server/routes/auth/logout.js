@@ -1,7 +1,7 @@
 const router = require("express").Router();
 
 // MongoDB User schema
-const User = require("../model/User");
+const User = require("../../model/User");
 
 router.post("/", async (req, res) => {
 	try {

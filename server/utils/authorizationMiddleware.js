@@ -1,5 +1,5 @@
 const { verify } = require("jsonwebtoken");
-const verifyOptions = require("./verifyOptions");
+const verifyOptions = require("../tokens/verifyOptions");
 
 module.exports = function (req, _res, next) {
 	try {

@@ -26,6 +26,6 @@ const runesIDs = {
 	8000: "perk-images/Styles/7201_Precision.png",
 	8400: "perk-images/Styles/7204_Resolve.png",
 	8200: "perk-images/Styles/7202_Sorcery.png"
-}
+};
 
 module.exports = runesIDs;
