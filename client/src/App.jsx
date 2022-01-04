@@ -35,7 +35,7 @@ const fetchAllChampions = async (version) => {
 	});
 	promise.cancel = () => controller.abort();
 	return promise;
-}
+};
 
 const fetchVersion = async () => {
 	const controller = new AbortController();
@@ -54,7 +54,7 @@ const fetchVersion = async () => {
 	});
 	promise.cancel = () => controller.abort();
 	return promise;
-}
+};
 
 const App = () => {
 	const [loading, setLoading] = useState(true);
@@ -94,9 +94,7 @@ const App = () => {
 	});
 
 
-	if (loading) {
-		return <div>Loading...</div>
-	}
+	if (loading) return <div>Loading...</div>;
 
 	return (
 		<Router>
@@ -125,6 +123,6 @@ const App = () => {
 			</div>
 		</Router>
 	);
-}
+};
 
 export default App;
