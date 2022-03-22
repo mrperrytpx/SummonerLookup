@@ -2,7 +2,7 @@ const router = require("express").Router();
 const { hash, genSalt } = require("bcryptjs");
 
 // Validation import for the register form
-const registerValidation = require("../../user_validations/registerValidation");
+const { registerValidation } = require("../../user_validations/");
 
 // MongoDB User schema
 const User = require("../../model/User");

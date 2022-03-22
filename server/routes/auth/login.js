@@ -7,7 +7,7 @@ const { createAccessToken,
 } = require("../../tokens/tokens");
 
 // Validation import for the register form
-const loginValidation = require("../../user_validations/loginValidation");
+const { loginValidation } = require("../../user_validations/");
 
 // MongoDB User schema
 const User = require("../../model/User");
@@ -47,6 +47,6 @@ router.post("/", async (req, res) => {
 		});
 	}
 
-})
+});
 
 module.exports = router;

@@ -6,27 +6,24 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const helmet = require("helmet");
 
-const { defaultErrorHandler, errorHandler } = require("./utils/errorHandler");
-const errorController = require("./utils/errorController");
+const { defaultErrorHandler, errorHandler, errorController } = require("./utils/");
 
-//  Import Routes
-const registerRoute = require("./routes/register");
-const loginRoute = require("./routes/login");
-const refreshTokenRoute = require("./routes/refreshTokens");
-const myProfileRoute = require("./routes/myProfile");
-const logoutRoute = require("./routes/logout");
-const deleteUserRoute = require("./routes/deleteUser");
-const searchUserRoute = require("./routes/searchPlayers");
-const matchDetailsRouter = require("./routes/matchDetails");
-const addToFollowingRoute = require("./routes/addToFollowing");
-const isPlayerLiveRoute = require("./routes/isPlayerLive");
-const unfollowPlayerRouter = require("./routes/unfollowPlayer");
+//  Import Routes - lmao 
+const { registerRoute } = require("./routes/auth/");
+const { loginRoute } = require("./routes/auth/");
+const { freshTokensRoute } = require("./routes/auth/");
+const { logoutRoute } = require("./routes/auth/");
+
+// const myProfileRoute = require("./routes/myProfile");
+// const deleteUserRoute = require("./routes/deleteUser");
+// const searchUserRoute = require("./routes/searchPlayers");
+// const matchDetailsRouter = require("./routes/matchDetails");
+// const addToFollowingRoute = require("./routes/addToFollowing");
+// const isPlayerLiveRoute = require("./routes/isPlayerLive");
+// const unfollowPlayerRouter = require("./routes/unfollowPlayer");
 
 // Authorization middleware
-const authorizeMiddleware = require("./tokens/authorizeMiddleware");
-
-// Environment variables
-const PORT = process.env.PORT ?? 3001;
+const { authorizationMiddleware } = require("./utils/");
 
 // Initialize express
 const app = express();
@@ -44,23 +41,22 @@ app.use(cookieParser(process.env.COOKIE_SIGNATURE));
 app.use(express.json());
 app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 
-//Route middlewares
-app.use("/api/register", registerRoute); // Send info to make a new user in database
-app.use("/api/login", loginRoute); // Check if user exists in the database
-app.use("/api/refresh_token", refreshTokenRoute); // Refresh a token
-app.use("/api/match/", matchDetailsRouter); // Get metch details for a single game
-app.use("/api/logout", authorizeMiddleware, logoutRoute); // Delete a refresh token and clear the access token, has to be authorized with a proper access token 
-app.use("/api/me", authorizeMiddleware, myProfileRoute); // Get user info, has to be authorized with a proper access token 
-app.use("/api/delete_account", authorizeMiddleware, deleteUserRoute); // Delete a user from the database, has to be authorized with a proper access token 
-app.use("/api/add", authorizeMiddleware, addToFollowingRoute); // Add player to following list
-app.use("/api/live/", isPlayerLiveRoute); // Search for live game data
-app.use("/api/unfollow/", authorizeMiddleware, unfollowPlayerRouter); // Unfollow a player
-app.use("/api/", searchUserRoute); // Search for league of legends account info
+// Route middlewares
+app.use("/api/refresh_token", errorController(freshTokensRoute)); // Refresh a token
+app.use("/api/register", errorController(registerRoute)); // Send info to make a new user in database
+app.use("/api/login", errorController(loginRoute)); // Check if user exists in the database
+app.use("/api/logout", authorizationMiddleware, errorController(logoutRoute)); // Delete a refresh token and clear the access token, has to be authorized with a proper access token 
+
+// app.use("/api/match/", matchDetailsRouter); // Get metch details for a single game
+// app.use("/api/me", authorizeMiddleware, myProfileRoute); // Get user info, has to be authorized with a proper access token 
+// app.use("/api/delete_account", authorizeMiddleware, deleteUserRoute); // Delete a user from the database, has to be authorized with a proper access token 
+// app.use("/api/add", authorizeMiddleware, addToFollowingRoute); // Add player to following list
+// app.use("/api/live/", isPlayerLiveRoute); // Search for live game data
+// app.use("/api/unfollow/", authorizeMiddleware, unfollowPlayerRouter); // Unfollow a player
+// app.use("/api/", searchUserRoute); // Search for league of legends account info
 
 app.use(defaultErrorHandler);
 app.use(errorHandler);
 
 // Start server
-app.listen(PORT, () => {
-	console.log(`Server listening on port ${PORT}`);
-});
+app.listen(process.env.PORT, () => console.log(`Server listening on port ${process.env.PORT ?? 3001}`));

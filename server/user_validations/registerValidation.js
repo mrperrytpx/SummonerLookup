@@ -11,3 +11,5 @@ const registerValidation = (data) => {
 	});
 	return validationSchema.validate(data);
 };
+
+module.exports = registerValidation;

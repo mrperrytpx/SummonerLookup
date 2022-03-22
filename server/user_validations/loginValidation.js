@@ -9,3 +9,5 @@ const loginValidation = (data) => {
 	});
 	return validationSchema.validate(data);
 };
+
+module.exports = loginValidation;

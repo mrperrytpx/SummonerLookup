@@ -1,5 +1,5 @@
 const { verify } = require("jsonwebtoken");
-const verifyOptions = require("../tokens/verifyOptions");
+const { verifyOptions } = require("../tokens/");
 
 module.exports = function (req, _res, next) {
 	try {
@@ -21,4 +21,4 @@ module.exports = function (req, _res, next) {
 	} catch (err) {
 		next({ status: 401, message: err.message });
 	}
-}
+};

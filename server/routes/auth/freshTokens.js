@@ -4,9 +4,9 @@ const { createAccessToken,
 	createRefreshToken,
 	sendRefreshToken,
 	sendAccessToken
-} = require("../tokens/tokens");
-const User = require("../model/User");
-const verifyOptions = require("../tokens/verifyOptions");
+} = require("../../tokens");
+const User = require("../../model/User");
+const { verifyOptions } = require("../../tokens");
 
 router.post('/', async (req, res) => {
 	// get the token from the cookie

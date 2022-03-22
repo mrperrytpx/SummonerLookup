@@ -3,4 +3,4 @@ module.exports = {
     logoutRoute: require("./logout"),
     registerRoute: require("./register"),
     freshTokensRoute: require("./freshTokens")
-}
+};

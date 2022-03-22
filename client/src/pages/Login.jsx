@@ -25,7 +25,10 @@ const Login = () => {
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify(info),
 			});
-			const { accessToken } = await login.json();
+			const data = await login.json();
+			console.log(data);
+
+			const { accessToken } = data;
 			if (accessToken) {
 				setLoggedIn(() => true);
 				setNewToken(() => accessToken);
@@ -36,19 +39,19 @@ const Login = () => {
 		} catch (err) {
 			console.log(err);
 		}
-	}
+	};
 
 	const handleVisibility = (e) => {
 		e.preventDefault();
 		setIsVisible(!isVisible);
 		if (isVisible === false) {
 			setPasswordField("text");
-			setIsVisible(true)
+			setIsVisible(true);
 		} else {
 			setPasswordField("password");
 			setIsVisible(false);
 		}
-	}
+	};
 
 	return (
 		<section className="input-section">
@@ -94,6 +97,6 @@ const Login = () => {
 			</form>
 		</section>
 	);
-}
+};
 
 export default Login;
