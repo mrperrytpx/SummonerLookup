@@ -6,13 +6,14 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const helmet = require("helmet");
 
-const { defaultErrorHandler, errorHandler, errorController } = require("./utils/");
+const { defaultErrorHandler, errorHandler, asyncHandler } = require("./utils/");
 
 //  Import Routes - lmao 
-const { registerRoute } = require("./routes/auth/");
-const { loginRoute } = require("./routes/auth/");
-const { freshTokensRoute } = require("./routes/auth/");
-const { logoutRoute } = require("./routes/auth/");
+const { registerRoute,
+	loginRoute,
+	freshTokensRoute,
+	logoutRoute
+} = require("./routes/auth/");
 
 // const myProfileRoute = require("./routes/myProfile");
 // const deleteUserRoute = require("./routes/deleteUser");
@@ -42,10 +43,10 @@ app.use(express.json());
 app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 
 // Route middlewares
-app.use("/api/refresh_token", errorController(freshTokensRoute)); // Refresh a token
-app.use("/api/register", errorController(registerRoute)); // Send info to make a new user in database
-app.use("/api/login", errorController(loginRoute)); // Check if user exists in the database
-app.use("/api/logout", authorizationMiddleware, errorController(logoutRoute)); // Delete a refresh token and clear the access token, has to be authorized with a proper access token 
+app.use("/api/refresh_token", freshTokensRoute); // Refresh a token
+app.use("/api/register", registerRoute); // Send info to make a new user in database
+app.use("/api/login", loginRoute); // Check if user exists in the database
+app.use("/api/logout", authorizationMiddleware, logoutRoute); // Delete a refresh token and clear the access token, has to be authorized with a proper access token 
 
 // app.use("/api/match/", matchDetailsRouter); // Get metch details for a single game
 // app.use("/api/me", authorizeMiddleware, myProfileRoute); // Get user info, has to be authorized with a proper access token 
