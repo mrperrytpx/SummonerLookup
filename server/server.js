@@ -9,11 +9,7 @@ const helmet = require("helmet");
 const { defaultErrorHandler, errorHandler, asyncHandler } = require("./utils/");
 
 //  Import Routes - lmao 
-const { registerRoute,
-	loginRoute,
-	freshTokensRoute,
-	logoutRoute
-} = require("./routes/auth/");
+const { registerRoute, loginRoute, freshTokensRoute, logoutRoute } = require("./routes/auth/");
 
 // const myProfileRoute = require("./routes/myProfile");
 // const deleteUserRoute = require("./routes/deleteUser");
