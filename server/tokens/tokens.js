@@ -1,5 +1,5 @@
 const { sign } = require("jsonwebtoken");
-const { signingOptions } = require("./signingOptions");
+const signingOptions = require("./signingOptions");
 
 const createAccessToken = (userId, username) => {
 	// Sign (create) a JWT access token with the user._id, signed with the access_secret .env
