@@ -7,7 +7,7 @@ const { createAccessToken,
 } = require("../../tokens/tokens");
 const { asyncHandler } = require("../../utils");
 // Validation import for the register form
-const { loginValidation } = require("../../user_validations/");
+const { loginValidation } = require("../../validations");
 
 // MongoDB User schema
 const User = require("../../model/User");

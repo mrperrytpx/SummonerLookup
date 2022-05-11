@@ -1,4 +1,4 @@
 module.exports = {
     userProfileRoute: require("./userProfile"),
-    deleteUserAccountRoute: require("./deleteUserProfile")
-}
+    deleteUserRoute: require("./deleteUser")
+};

@@ -9,7 +9,7 @@ import Summoner from "../components/Summoner";
 const getFollowing = async (token) => {
 	const abortCont = new AbortController();
 	try {
-		const response = await fetch("/api/me", {
+		const response = await fetch("/api/user/me", {
 			method: "GET",
 			signal: abortCont.signal,
 			headers: {
@@ -31,7 +31,7 @@ const getFollowing = async (token) => {
 		console.log(err);
 	}
 	return () => abortCont.abort();
-}
+};
 
 const Me = () => {
 	const { token } = useContext(TokenContext);
@@ -61,6 +61,6 @@ const Me = () => {
 			{!data?.length && <p>You're not following anyone</p>}
 		</div>
 	);
-}
+};
 
 export default Me;

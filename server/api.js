@@ -1,10 +1,12 @@
-const express = require('express');
-const router = express.Router();
+const router = require('express').Router();
 
-const { loginRoute, freshTokensRoute, registerRoute } = require("./routes/auth");
+const authController = require("./controllers/authController");
+const userController = require("./controllers/userController");
+const summonerController = require("./controllers/summonerController");
 
-router.use("/login", loginRoute);
-router.use("/refresh_token", freshTokensRoute);
-router.use("/register", registerRoute);
+router.use("/auth", authController);
+router.use("/user", userController);
+router.use("/summoner", summonerController);
+
 
 module.exports = router;

@@ -26,7 +26,7 @@ app.use(express.json());
 app.use(cors({ origin: process.env.WEBSITE_URL, credentials: true }));
 
 // API
-app.use("/api/", api);
+app.use("/api", api);
 
 app.use(defaultErrorHandler);
 app.use(errorHandler);

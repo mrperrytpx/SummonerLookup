@@ -1,5 +1,5 @@
 import { useReducer } from "react";
-import { useParams } from "react-router"
+import { useParams } from "react-router";
 import { useQuery, useQueryClient } from "react-query";
 // Components
 import PlayerCard from "../components/PlayerCard";
@@ -14,7 +14,7 @@ const fetchPlayer = (region, server, summonerName) => {
 	// Only way I found how to properly cancel a react-query fetch request
 	const promise = new Promise(async (resolve, reject) => {
 		try {
-			const response = await fetch(`/api/${region}/${server}/${summonerName.toLowerCase()}`, {
+			const response = await fetch(`/api/summoner/search_summoner/${region}/${server}/${summonerName.toLowerCase()}`, {
 				method: "GET",
 				signal: controller.signal
 			});
@@ -27,26 +27,26 @@ const fetchPlayer = (region, server, summonerName) => {
 	});
 	promise.cancel = () => controller.abort();
 	return promise;
-}
+};
 
 const initialState = {
 	isOverviewActive: true,
 	isStatsActive: false,
 	isLiveActive: false
-}
+};
 
 const stateReducer = (state, action) => {
 	switch (action.type) {
 		case "OVERVIEW":
-			return { ...state, isOverviewActive: true, isStatsActive: false, isLiveActive: false }
+			return { ...state, isOverviewActive: true, isStatsActive: false, isLiveActive: false };
 		case "STATS":
-			return { ...state, isOverviewActive: false, isStatsActive: true, isLiveActive: false }
+			return { ...state, isOverviewActive: false, isStatsActive: true, isLiveActive: false };
 		case "LIVE":
-			return { ...state, isOverviewActive: false, isStatsActive: false, isLiveActive: true }
+			return { ...state, isOverviewActive: false, isStatsActive: false, isLiveActive: true };
 		default:
 			return state;
 	}
-}
+};
 
 const Players = () => {
 	const queryClient = useQueryClient();
@@ -71,7 +71,7 @@ const Players = () => {
 
 	if (isError) return (<div>No summoner</div>);
 
-	if (isLoading) return (<div>Loading...</div>)
+	if (isLoading) return (<div>Loading...</div>);
 
 	return (
 		<div className="container">
@@ -98,6 +98,6 @@ const Players = () => {
 			}
 		</div>
 	);
-}
+};
 
 export default Players;

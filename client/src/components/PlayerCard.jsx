@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useQueryClient } from "react-query";
 // Contexts
@@ -10,6 +10,7 @@ const PlayerCard = () => {
 	const { region, server, summonerName } = useParams();
 	const { accountData } = queryClient.getQueryData(["player", region, server, summonerName.toLowerCase()]);
 	const version = queryClient.getQueryData(["version"]);
+	const [buttonState, setButtonState] = useState("FOLLOW");
 
 	const { isLoggedIn } = useContext(LoggedInContext);
 	const { token } = useContext(TokenContext);
@@ -23,9 +24,9 @@ const PlayerCard = () => {
 			server: accountData?.server,
 			puuid: accountData?.puuid,
 			summonerId: accountData?.summonerId
-		}
+		};
 		try {
-			const response = await fetch(`/api/add`, {
+			const response = await fetch(`/api/summoner/follow_summoner`, {
 				method: "POST",
 				signal: controller.signal,
 				headers: {
@@ -33,14 +34,19 @@ const PlayerCard = () => {
 					authorization: `Bearer ${token}`,
 				},
 				body: JSON.stringify(payload),
-			})
-			if (!response.ok) throw new Error("Couldn't follow player");
+			});
+			if (!response.ok) {
+				throw new Error("Couldn't follow player");
+			} else {
+				setButtonState(() => "FOLLOWED!");
+
+			}
 
 		} catch (err) {
 			err.name === "AbortError" ? console.log("Fetch aborted") : console.log(err);
 		}
 		return () => controller.abort();
-	}
+	};
 
 	return (
 		<div className="summoner">
@@ -61,13 +67,13 @@ const PlayerCard = () => {
 				</div>
 
 				<div className="follow-summoner">
-					<button disabled={!isLoggedIn} onClick={() => handleFollow()} className="follow">FOLLOW</button>
+					<button disabled={!isLoggedIn} onClick={() => handleFollow()} className="follow">{buttonState}</button>
 				</div>
 
 			</div>
 
 		</div>
 	);
-}
+};
 
 export default PlayerCard;

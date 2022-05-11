@@ -2,5 +2,5 @@ module.exports = {
     errorHandler: require("./errorHandler"),
     defaultErrorHandler: require("./defaultErrorHandler"),
     asyncHandler: require("./asyncHandler"),
-    authorizationMiddleware: require("./authorizationMiddleware"),
+    authMiddleware: require("./authMiddleware"),
 };

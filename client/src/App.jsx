@@ -66,7 +66,7 @@ const App = () => {
 	useEffect(() => {
 		const controller = new AbortController();
 		(async () => {
-			const response = await fetch("/api/refresh_token", {
+			const response = await fetch("/api/auth/refresh_token", {
 				method: "POST",
 				credentials: "include",
 				signal: controller.signal

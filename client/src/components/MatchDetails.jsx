@@ -2,7 +2,7 @@ import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 
 const getMatchDetails = async (id, region) => {
-	const response = await fetch(`/api/match/${region}/${id}`);
+	const response = await fetch(`/api/summoner/summoner_match_details/${region}/${id}`);
 	if (!response.ok) throw new Error("Couldn't fetch that match");
 
 	const data = await response.json();
@@ -10,7 +10,7 @@ const getMatchDetails = async (id, region) => {
 	if (!data) throw new Error("Invalid Match ID");
 
 	return data;
-}
+};
 
 const MatchDetials = ({ id }) => {
 	const { region } = useParams();
@@ -31,6 +31,6 @@ const MatchDetials = ({ id }) => {
 			{error && <p>{error.message}</p>}
 		</div>
 	);
-}
+};
 
 export default MatchDetials;

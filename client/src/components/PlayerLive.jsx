@@ -5,7 +5,7 @@ const fetchLiveGame = async (server, summonerName) => {
 	const controller = new AbortController();
 	const promise = new Promise(async (resolve, reject) => {
 		try {
-			const response = await fetch(`/api/live/${server}/${summonerName}`, {
+			const response = await fetch(`/api/summoner/summoner_live_game/${server}/${summonerName}`, {
 				method: "GET",
 				signal: controller.signal
 			});
@@ -18,7 +18,7 @@ const fetchLiveGame = async (server, summonerName) => {
 	});
 	promise.cancel = () => controller.abort();
 	return promise;
-}
+};
 
 
 const PlayerLive = () => {
@@ -32,11 +32,11 @@ const PlayerLive = () => {
 		});
 
 	if (isLoading) {
-		return <div>Loading...</div>
+		return <div>Loading...</div>;
 	}
 
 	if (isError) {
-		return <div>There was an error: {error.message}</div>
+		return <div>There was an error: {error.message}</div>;
 	}
 
 	return (
@@ -44,6 +44,6 @@ const PlayerLive = () => {
 			<p>{JSON.stringify(data, null, 2)}</p>
 		</div>
 	);
-}
+};
 
 export default PlayerLive;

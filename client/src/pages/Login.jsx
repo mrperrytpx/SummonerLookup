@@ -20,7 +20,7 @@ const Login = () => {
 		e.preventDefault();
 		const info = { username, password };
 		try {
-			const login = await fetch(`/api/login`, {
+			const login = await fetch(`/api/auth/login`, {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify(info),
