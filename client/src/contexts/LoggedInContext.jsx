@@ -2,7 +2,7 @@ import { useState, createContext, useCallback } from 'react';
 
 export const LoggedInContext = createContext();
 
-function LoggedInContextProvider(props) {
+function LoggedInContextProvider({ children }) {
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 
 	const setLoggedIn = useCallback((bool) => {
@@ -13,9 +13,9 @@ function LoggedInContextProvider(props) {
 
 	return (
 		<LoggedInContext.Provider value={value}>
-			{props.children}
+			{children}
 		</LoggedInContext.Provider>
-	)
+	);
 }
 
 export default LoggedInContextProvider;

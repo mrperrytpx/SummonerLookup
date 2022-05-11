@@ -2,7 +2,7 @@ import { useState, createContext, useCallback } from 'react';
 
 export const TokenContext = createContext();
 
-function TokenContextProvider(props) {
+function TokenContextProvider({ children }) {
 	const [token, setToken] = useState("");
 
 	const setNewToken = useCallback((string) => {
@@ -13,9 +13,9 @@ function TokenContextProvider(props) {
 
 	return (
 		<TokenContext.Provider value={value}>
-			{props.children}
+			{children}
 		</TokenContext.Provider>
-	)
+	);
 }
 
 export default TokenContextProvider;

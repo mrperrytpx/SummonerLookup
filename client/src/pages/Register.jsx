@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 
 const Register = () => {
@@ -13,7 +13,7 @@ const Register = () => {
 	const [isPasswordsMatching, setIsPasswordsMatching] = useState(true);
 	const [error, setError] = useState("");
 
-	const history = useHistory();
+	const navigate = useNavigate();
 
 	const handleRegister = async (e) => {
 		e.preventDefault();
@@ -45,7 +45,7 @@ const Register = () => {
 			email,
 			username,
 			password,
-		}
+		};
 		try {
 			const response = await fetch(`/api/register/`, {
 				method: "POST",
@@ -55,11 +55,11 @@ const Register = () => {
 			const data = await response.json();
 			// SETUP ROUTING TO /LOGIN EVENTUALLY
 			console.log(data);
-			history.push("/login");
+			navigate("/login");
 		} catch (err) {
 			console.log(err);
 		}
-	}
+	};
 
 	// Toggle type for password field to "hide/show"
 	const handleVisibility = (e) => {
@@ -67,12 +67,12 @@ const Register = () => {
 		setIsVisible(!isVisible);
 		if (isVisible === false) {
 			setPasswordField("text");
-			setIsVisible(true)
+			setIsVisible(true);
 		} else {
 			setPasswordField("password");
 			setIsVisible(false);
 		}
-	}
+	};
 
 	return (
 		<section className="input-section">
@@ -146,6 +146,6 @@ const Register = () => {
 			</form>
 		</section>
 	);
-}
+};
 
 export default Register;

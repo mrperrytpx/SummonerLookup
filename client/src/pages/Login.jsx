@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 // Contexts
 import { LoggedInContext } from "../contexts/LoggedInContext";
@@ -14,7 +14,7 @@ const Login = () => {
 	const [error, setError] = useState("");
 	const { setLoggedIn } = useContext(LoggedInContext);
 	const { setNewToken } = useContext(TokenContext);
-	const history = useHistory();
+	const navigate = useNavigate();
 
 	const handleLogin = async (e) => {
 		e.preventDefault();
@@ -32,7 +32,7 @@ const Login = () => {
 			if (accessToken) {
 				setLoggedIn(() => true);
 				setNewToken(() => accessToken);
-				history.push("/");
+				navigate("/");
 			} else {
 				setError("Invalid username or password");
 			}

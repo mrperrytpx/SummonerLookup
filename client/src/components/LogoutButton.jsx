@@ -1,10 +1,10 @@
 import { useContext } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 // Contexts
 import { TokenContext } from "../contexts/TokenContext";
 
 const LogoutButton = () => {
-	const history = useHistory();
+	const navigate = useNavigate();
 	const { token, setNewToken } = useContext(TokenContext);
 
 	const handleLogout = async (e) => {
@@ -21,13 +21,13 @@ const LogoutButton = () => {
 		// If the response contains a message, clear the access token and refresh the page
 		if (message) {
 			setNewToken("");
-			history.go(0);
+			navigate("/", { replace: true });
 		}
-	}
+	};
 
 	return (
 		<button className="logout-button" onClick={(e) => handleLogout(e)}>Log Out</button>
 	);
-}
+};
 
 export default LogoutButton;

@@ -1,5 +1,5 @@
 import { useEffect, useState, useContext } from "react";
-import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 // Components
 import Navbar from "./components/Navbar";
 // Pages
@@ -77,7 +77,7 @@ const App = () => {
 			setNewToken(accessToken);
 			setLoading(false);
 		})();
-		return () => controller.abort();
+		// return () => controller.abort(); 
 	}, [setLoggedIn, setNewToken]);
 
 	const { data } = useQuery(["version"], () => fetchVersion(), {
@@ -97,31 +97,24 @@ const App = () => {
 	if (loading) return <div>Loading...</div>;
 
 	return (
-		<Router>
-			<div className="App">
-				<Navbar />
-				<div className="content">
-					<Switch>
-						<Route exact path="/"><Home /></Route>
-						<Route exact path="/login">
-							{isLoggedIn ? <Redirect to="/" /> : <Login />}
-						</Route>
-						<Route exact path="/register">
-							{isLoggedIn ? <Redirect to="/" /> : <Register />}
-						</Route>
-						<Route exact path="/me">
-							{!isLoggedIn ? <Redirect to="/login" /> : <Me />}
-						</Route>
-						<Route exact path="/me/delete">
-							{!isLoggedIn ? <Redirect to="/login" /> : <DeleteUser />}
-						</Route>
-						<Route exact path="/:region/:server/:summonerName">
-							<Player />
-						</Route>
-					</Switch>
-				</div>
+		<div className="App">
+			<Navbar />
+			<div className="content">
+				<Routes>
+					<Route path="/" element={<Home />} />
+
+					<Route path="/login" element={isLoggedIn ? <Navigate to="/" /> : <Login />} />
+
+					<Route path="/register" element={isLoggedIn ? <Navigate to="/" /> : <Register />} />
+
+					<Route path="/me" element={!isLoggedIn ? <Navigate to="/login" /> : <Me />} />
+
+					<Route path="/me/delete" element={!isLoggedIn ? <Navigate to="/login" /> : <DeleteUser />} />
+
+					<Route path="/:region/:server/:summonerName" element={<Player />} />
+				</Routes>
 			</div>
-		</Router>
+		</div>
 	);
 };
 

@@ -1,16 +1,19 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from "react";
+import ReactDOM from 'react-dom/client';
+import { BrowserRouter } from "react-router-dom";
 import './styles/index.css';
 
 import App from './App';
-
 import ContextProviders from "./contexts/ContextProviders";
 
-ReactDOM.render(
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+root.render(
 	<React.StrictMode>
-		<ContextProviders>
-			<App />
-		</ContextProviders>
-	</React.StrictMode>,
-	document.getElementById('root')
+		<BrowserRouter>
+			<ContextProviders>
+				<App />
+			</ContextProviders>
+		</BrowserRouter>
+	</React.StrictMode>
 );
