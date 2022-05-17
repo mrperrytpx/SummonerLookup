@@ -77,7 +77,7 @@ const App = () => {
 			setNewToken(accessToken);
 			setLoading(false);
 		})();
-		// return () => controller.abort(); 
+		return () => controller.abort();
 	}, [setLoggedIn, setNewToken]);
 
 	const { data } = useQuery(["version"], () => fetchVersion(), {
