@@ -77,7 +77,9 @@ const App = () => {
 			setNewToken(accessToken);
 			setLoading(false);
 		})();
-		return () => controller.abort();
+		// return () => controller.abort(); 
+		// ^ BREAKS REFRESH-TOKEN WITH STRICTMODE (ONLY DURING DEV) BECAUSE USEEFFECT RUNS TWICE
+		// XD
 	}, [setLoggedIn, setNewToken]);
 
 	const { data } = useQuery(["version"], () => fetchVersion(), {
