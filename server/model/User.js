@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 
+const Summoner = require("./Summoner");
+
 const userSchema = new mongoose.Schema({
 	username: {
 		type: String,
@@ -17,30 +19,7 @@ const userSchema = new mongoose.Schema({
 		min: 8
 	},
 	// Who the user follows
-	following: [
-		{
-			region: { // Player's region
-				type: String,
-				required: true
-			},
-			server: { // Player's server
-				type: String,
-				required: true,
-			},
-			summonerName: { // Player's summoner name
-				type: String,
-				required: true
-			},
-			summonerId: { // Player's summoner ID
-				type: String,
-				required: true
-			},
-			puuid: { // Player's puuid
-				type: String,
-				required: true
-			}
-		},
-	],
+	following: [Summoner],
 	// refresh token that's stored in the cookie
 	refreshToken: {
 		type: String
@@ -55,6 +34,6 @@ const userSchema = new mongoose.Schema({
 		type: Date,
 		default: Date.now
 	}
-})
+});
 
 module.exports = mongoose.model("User", userSchema);

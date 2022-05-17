@@ -9,6 +9,7 @@ const unfollowPlayer = async ({ id, token }) => {
 		headers: {
 			"Content-Type": "application/json",
 			authorization: `Bearer ${token}`,
+			credentials: "include"
 		},
 		body: JSON.stringify({ id })
 	});

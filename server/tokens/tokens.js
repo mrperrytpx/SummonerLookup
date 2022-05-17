@@ -5,7 +5,7 @@ const createAccessToken = (userId, username) => {
 	// Sign (create) a JWT access token with the user._id, signed with the access_secret .env
 	const payload = { _id: userId };
 
-	const signOptions = signingOptions(username, "15m");
+	const signOptions = signingOptions(username, "30m");
 
 	const KEY = process.env.JWT_ACCESS_TOKEN_PRIVATE_KEY;
 
@@ -34,7 +34,6 @@ const sendRefreshToken = (res, token) => {
 	// send the refresh token as a cookie
 	res.cookie("slup", token, {
 		httpOnly: true,
-		path: "/api/auth/refresh_token",
 		signed: true,
 		maxAge: 60 * 60 * 24 * 7, // 7 days croissant 
 		sameSite: true,

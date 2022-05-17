@@ -73,6 +73,7 @@ const App = () => {
 			});
 			if (!response.ok) setNewToken("");
 			const { accessToken } = await response.json();
+			console.log("Access token:", accessToken);
 			if (accessToken) setLoggedIn(true);
 			setNewToken(accessToken);
 			setLoading(false);
