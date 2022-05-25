@@ -13,8 +13,7 @@ module.exports = function (req, _res, next) {
 		const verified = verify(token, ACCESS_KEY, verifyOptions);
 
 		// If the access token is verified, set the request.user to the verified user
-		console.log(verified);
-		// req.newAccess = token;
+		req.user = verified;
 		next();
 	} catch (err) {
 		next(err);
