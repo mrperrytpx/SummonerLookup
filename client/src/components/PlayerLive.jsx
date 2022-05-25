@@ -5,7 +5,7 @@ const fetchLiveGame = async (server, summonerName) => {
 	const controller = new AbortController();
 	const promise = new Promise(async (resolve, reject) => {
 		try {
-			const response = await fetch(`/api/summoner/summoner_live_game/${server}/${summonerName}`, {
+			const response = await fetch(`/api/summoner/live_game/${server}/${summonerName}`, {
 				method: "GET",
 				signal: controller.signal
 			});

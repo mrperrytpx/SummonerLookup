@@ -2,7 +2,7 @@ import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 
 const getMatchDetails = async (id, region) => {
-	const response = await fetch(`/api/summoner/summoner_match_details/${region}/${id}`);
+	const response = await fetch(`/api/summoner/match_details/${region}/${id}`);
 	if (!response.ok) throw new Error("Couldn't fetch that match");
 
 	const data = await response.json();
