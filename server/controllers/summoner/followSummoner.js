@@ -1,6 +1,6 @@
 const router = require("express").Router();
 
-const User = require("../../model/User");
+const User = require("../../db/models/User");
 
 router.post("/", async (req, res) => {
 	try {
@@ -13,12 +13,12 @@ router.post("/", async (req, res) => {
 			throw new Error("Already following");
 		}
 		// Update user's following list with the summoner information
-		await User.updateOne({ _id: user._id }, { "$push": { following: req.body } })
+		await User.updateOne({ _id: user._id }, { "$push": { following: req.body } });
 
 		res.sendStatus(204);
 	} catch (error) {
 		res.status(404).json(error);
 	}
-})
+});
 
 module.exports = router;

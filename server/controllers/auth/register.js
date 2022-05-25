@@ -5,7 +5,7 @@ const { hash, genSalt } = require("bcryptjs");
 const { registerValidation } = require("../../validations");
 
 // MongoDB User schema
-const User = require("../../model/User");
+const User = require("../../db/models/User");
 
 router.post("/", async (req, res) => {
 	// Validating info

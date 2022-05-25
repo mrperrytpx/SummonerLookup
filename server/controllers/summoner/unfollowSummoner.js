@@ -1,6 +1,6 @@
 const router = require("express").Router();
 
-const User = require("../../model/User");
+const User = require("../../db/models/User");
 
 router.patch("/", async (req, res) => {
 	// Get the ID from request body
@@ -12,14 +12,14 @@ router.patch("/", async (req, res) => {
 		});
 		// If the player isn't following, throw an error
 		if (!user.following.find(summoner => summoner._id.toString() == id)) {
-			throw new Error("Not following that player")
+			throw new Error("Not following that player");
 		}
 		// Update the following array to remove the player with the same document ID
-		await User.updateOne({ _id: user._id }, { "$pull": { following: { _id: id } } })
+		await User.updateOne({ _id: user._id }, { "$pull": { following: { _id: id } } });
 		res.sendStatus(204);
 	} catch (error) {
 		res.status(400).json(error);
 	}
-})
+});
 
 module.exports = router;

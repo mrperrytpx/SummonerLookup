@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const fetch = require("node-fetch");
-const { asyncHandler } = require("../../utils/");
+const { asyncHandler } = require("../../handlers/");
 
 router.get("/:server/:id", asyncHandler(async (req, res) => {
 

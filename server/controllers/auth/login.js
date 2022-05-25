@@ -4,13 +4,13 @@ const { createAccessToken,
 	createRefreshToken,
 	sendAccessToken,
 	sendRefreshToken
-} = require("../../tokens/tokens");
-const { asyncHandler } = require("../../utils");
+} = require("../../utils/tokens");
+const { asyncHandler } = require("../../handlers");
 // Validation import for the register form
 const { loginValidation } = require("../../validations");
 
 // MongoDB User schema
-const User = require("../../model/User");
+const User = require("../../db/models/User");
 
 router.post("/", asyncHandler(async (req, res, next) => {
 	const username = req.body.username;

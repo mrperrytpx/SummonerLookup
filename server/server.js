@@ -7,7 +7,7 @@ const cookieParser = require("cookie-parser");
 const helmet = require("helmet");
 
 const api = require("./api");
-const { defaultErrorHandler, errorHandler } = require("./utils/");
+const { defaultErrorHandler, errorHandler } = require("./handlers/");
 
 // Initialize express
 const app = express();

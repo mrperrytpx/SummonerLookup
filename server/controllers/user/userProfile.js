@@ -1,7 +1,7 @@
 const router = require("express").Router();
 
 // MongoDB User schema
-const User = require("../../model/User");
+const User = require("../../db/models/User");
 
 router.get("/", async (req, res) => {
 	// destructure _id from request.user

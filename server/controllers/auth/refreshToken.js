@@ -3,10 +3,10 @@ const { verify } = require("jsonwebtoken");
 const { createAccessToken,
 	createRefreshToken,
 	sendRefreshToken,
-	sendAccessToken
-} = require("../../tokens");
-const { verifyOptions } = require("../../tokens");
-const User = require("../../model/User");
+	sendAccessToken,
+	verifyOptions
+} = require("../../utils/tokens");
+const User = require("../../db/models/User");
 
 router.post('/', async (req, res) => {
 	// get the token from the cookie

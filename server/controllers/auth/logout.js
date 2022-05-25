@@ -1,7 +1,7 @@
 const router = require("express").Router();
 
 // MongoDB User schema
-const User = require("../../model/User");
+const User = require("../../db/models/User");
 
 router.post("/", async (req, res) => {
 	try {
@@ -16,10 +16,10 @@ router.post("/", async (req, res) => {
 		});
 	}
 	// clear the cookie with the refresh token
-	res.clearCookie('slup', { path: '/api/refresh_token' });
+	res.clearCookie('slup');
 	return res.send({
 		message: 'Logged out',
 	});
-})
+});
 
 module.exports = router;
