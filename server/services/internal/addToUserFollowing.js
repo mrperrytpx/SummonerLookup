@@ -1,7 +1,7 @@
 const User = require("../../models/User");
 
-const updateUserFollowing = async (id, body) => {
+const addToUserFollowing = async (id, body) => {
     return await User.updateOne({ _id: id }, { "$push": { following: body } });
 };
 
-module.exports = updateUserFollowing;
+module.exports = addToUserFollowing;

@@ -1,7 +1,7 @@
 const router = require("express").Router();
 
 const { asyncHandler } = require("../../handlers");
-const { getUserFromDB, updateUserFollowing } = require("../../services/internal");
+const { getUserFromDB, addToUserFollowing } = require("../../services/internal");
 
 router.post("/", asyncHandler(async (req, res) => {
 	// Find a user with the same _id as provided in the JWT Access Token
@@ -11,7 +11,7 @@ router.post("/", asyncHandler(async (req, res) => {
 		throw new Error("Already following");
 	}
 	// Update user's following list with the summoner information
-	await updateUserFollowing(user._id, req.body);
+	await addToUserFollowing(user._id, req.body);
 
 	res.sendStatus(204);
 

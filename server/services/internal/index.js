@@ -1,7 +1,8 @@
 module.exports = {
     createNewUser: require("./createNewUser"),
+    deleteUser: require("./deleteUser"),
     getUserFromDB: require("./getUserFromDB"),
     updateUserRefreshToken: require("./updateUserRefreshToken"),
-    updateUserFollowing: require("./updateUserFollowing"),
-    deleteUser: require("./deleteUser"),
+    addToUserFollowing: require("./addToUserFollowing"),
+    removeFromUserFollowing: require("./removeFromUserFollowing"),
 };
