@@ -1,7 +1,7 @@
 const router = require("express").Router();
 
 const { asyncHandler } = require("../../handlers");
-const getUserFromDB = require("../../services/internal/getUserFromDB");
+const { getUserFromDB } = require("../../services/internal/");
 
 router.get("/", asyncHandler(async (req, res) => {
 	const { _id } = req.user;

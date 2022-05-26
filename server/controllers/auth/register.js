@@ -1,12 +1,11 @@
 const router = require("express").Router();
-const { genSalt, hash } = require("bcryptjs");
 
 const { registerValidation } = require("../../validations");
 const { asyncHandler } = require("../../handlers/");
 const { createNewUser, getUserFromDB } = require("../../services/internal");
+const hashPassword = require("../../utils/hashPassword");
 
 router.post("/", asyncHandler(async (req, res) => {
-
 	// Destructure the error from the loginValidationf unction
 	const { error } = registerValidation(req.body);
 	// If there's an error, throw the error message
@@ -17,8 +16,7 @@ router.post("/", asyncHandler(async (req, res) => {
 	// If the user exists, throw an error
 	if (emailExists) throw new Error("User already exists");
 
-	const passwordSalt = await genSalt(11);
-	const hashedPassword = await hash(req.body.password, passwordSalt);
+	const hashedPassword = await hashPassword(req.body.password);
 
 	await createNewUser(req, hashedPassword);
 

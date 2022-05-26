@@ -1,8 +1,8 @@
 // MongoDB User schema
 const User = require("../../models/User");
 
-const getUserFromDB = async (username) => {
-    return await User.findOne(username);
+const getUserFromDB = async (identifier) => {
+    return await User.findOne(identifier);
 };
 
 module.exports = getUserFromDB;
