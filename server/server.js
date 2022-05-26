@@ -1,23 +1,19 @@
 // NPM Packages
 require('dotenv').config();
 const express = require("express");
-const mongoose = require("mongoose");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const helmet = require("helmet");
 
 const api = require("./api");
 const { defaultErrorHandler, errorHandler } = require("./handlers/");
+const connectToMongoAtlas = require("./utils/connectToMongoAtlas");
 
 // Initialize express
 const app = express();
 
 // Connect with Mongo Atlas
-mongoose.connect(
-	process.env.MONGO_CONNECT,
-	{ useNewUrlParser: true, useUnifiedTopology: true },
-	(err) => err ? console.log(err) : console.log("Connected to Cluster0")
-);
+connectToMongoAtlas();
 
 // Middlewares
 app.use(helmet());

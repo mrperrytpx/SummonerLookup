@@ -4,7 +4,6 @@ module.exports = {
     getSummonerLiveGame: require("./getSummonerLiveGame"),
     getSummonerChampionStats: require("./getSummonerChampionStats"),
     getSummonerAccountData: require("./getSummonerAccountData"),
-    getMatchDetails: require("./getMatchDetails"),
     getMatch: require("./getMatch"),
 
 };
