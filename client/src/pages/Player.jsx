@@ -20,6 +20,7 @@ const fetchPlayer = (region, server, summonerName) => {
 			});
 			if (!response.ok) reject(new Error("Problem fetching data"));
 			const data = await response.json();
+			console.log(data);
 			resolve(data);
 		} catch (error) {
 			if (error?.name === "AbortError") reject(new Error("Request aborted"));

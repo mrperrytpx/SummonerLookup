@@ -1,11 +1,11 @@
-import { useQuery } from "react-query";
+import { useQuery, useQueryClient } from "react-query";
 import { useParams } from "react-router-dom";
 
-const fetchLiveGame = async (server, summonerName) => {
+const fetchLiveGame = async (server, summonerId) => {
 	const controller = new AbortController();
 	const promise = new Promise(async (resolve, reject) => {
 		try {
-			const response = await fetch(`/api/summoner/live_game/${server}/${summonerName}`, {
+			const response = await fetch(`/api/summoner/live_game/${server}/${summonerId}`, {
 				method: "GET",
 				signal: controller.signal
 			});
@@ -22,11 +22,12 @@ const fetchLiveGame = async (server, summonerName) => {
 
 
 const PlayerLive = () => {
-	const { server, summonerName } = useParams();
-
+	const { region, server, summonerName } = useParams();
+	const queryClient = useQueryClient();
+	const summoner = queryClient.getQueryData(["player", region, server, summonerName.toLowerCase()]);
 	const { data, error, isError, isLoading } = useQuery(
-		["live-game", server, summonerName],
-		() => fetchLiveGame(server, summonerName),
+		["live-game", server, summoner.accountData.summonerId],
+		() => fetchLiveGame(server, summoner.accountData.summonerId),
 		{
 			onSuccess: (data) => console.log(data)
 		});
