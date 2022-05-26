@@ -1,23 +1,15 @@
 const router = require("express").Router();
 
-// MongoDB User schema
-const User = require("../../db/models/User");
+const { asyncHandler } = require("../../handlers");
+const getUserFromDB = require("../../services/internal/getUserFromDB");
 
-router.get("/", async (req, res) => {
-	// destructure _id from request.user
+router.get("/", asyncHandler(async (req, res) => {
 	const { _id } = req.user;
 
-	try {
-		// get the array of followers the user follows from the DB
-		const { following } = await User.findOne({ _id: _id });
+	// get the array of followers the user follows from the DB
+	const { following } = await getUserFromDB({ _id: _id });
 
-		// send the array to the frontend
-		res.json(following);
-	} catch (err) {
-		res.send({
-			error: `${err.message}`
-		});
-	}
-});
+	res.json(following);
+}));
 
 module.exports = router;

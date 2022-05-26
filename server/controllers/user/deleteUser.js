@@ -1,21 +1,15 @@
 const router = require("express").Router();
 
 // MongoDB User schema
-const User = require("../../db/models/User");
+const { asyncHandler } = require("../../handlers");
+const { deleteUser } = require("../../services/internal");
 
-router.delete("/", async (req, res) => {
-	try {
-		const { _id } = req.user; // Get the _id from request.user which was set in the authorize middleware
-		await User.deleteOne({ _id: _id }); // Delete the user with the _id: _id
+router.delete("/", asyncHandler(async (req, res) => {
+	const { _id } = req.user; // Get the _id from request.user which was set in the authorize middleware
+	await deleteUser(_id);
+	res.clearCookie('slup'); // Clear the refresh cookie
+	res.sendStatus(204); // Send success
 
-		res.clearCookie('slup'); // Clear the refresh cookie
-		res.sendStatus(204); // Send success
-	} catch (err) {
-		// Send the error
-		res.send({
-			err: `${err.message}`
-		});
-	}
-});
+}));
 
 module.exports = router;

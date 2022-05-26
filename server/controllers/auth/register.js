@@ -1,47 +1,28 @@
 const router = require("express").Router();
-const { hash, genSalt } = require("bcryptjs");
+const { genSalt, hash } = require("bcryptjs");
 
-// Validation import for the register form
 const { registerValidation } = require("../../validations");
+const { asyncHandler } = require("../../handlers/");
+const { createNewUser, getUserFromDB } = require("../../services/internal");
 
-// MongoDB User schema
-const User = require("../../db/models/User");
+router.post("/", asyncHandler(async (req, res) => {
 
-router.post("/", async (req, res) => {
-	// Validating info
-	try {
-		// Destructure the error from the loginValidationf unction
-		const { error } = registerValidation(req.body);
-		// If there's an error, throw the error message
-		if (error) throw new Error(`${error.details[0].message}`);
+	// Destructure the error from the loginValidationf unction
+	const { error } = registerValidation(req.body);
+	// If there's an error, throw the error message
+	if (error) throw new Error(`${error.details[0].message}`);
 
-		// Check if the user already exists in the DB
-		const emailExists = await User.findOne({
-			email: req.body.email
-		});
-		// If the user exists, throw an error
-		if (emailExists) throw new Error("User already exists");
+	// Check if the user already exists in the DB
+	const emailExists = await getUserFromDB({ email: req.body.email });
+	// If the user exists, throw an error
+	if (emailExists) throw new Error("User already exists");
 
-		// Hashing the password
-		const passwordSalt = await genSalt(12);
-		const hashedPassword = await hash(req.body.password, passwordSalt);
+	const passwordSalt = await genSalt(11);
+	const hashedPassword = await hash(req.body.password, passwordSalt);
 
-		// Setting the information to a new User document
-		const user = new User({
-			email: req.body.email,
-			username: req.body.username,
-			password: hashedPassword,
-		});
+	await createNewUser(req, hashedPassword);
 
-		// Insert the user into the DB
-		await user.save();
-		res.send({ message: "User created" });
-	} catch (err) {
-		// Send error
-		res.status(400).send({
-			error: `${err.message}`
-		});
-	}
-});
+	res.send({ message: "User created" });
+}));
 
 module.exports = router;

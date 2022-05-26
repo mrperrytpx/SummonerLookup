@@ -1,20 +1,18 @@
 const router = require("express").Router();
 const { compare } = require("bcryptjs");
+
 const { createAccessToken,
 	createRefreshToken,
 	sendAccessToken,
 	sendRefreshToken
 } = require("../../utils/tokens");
 const { asyncHandler } = require("../../handlers");
-// Validation import for the register form
+
 const { loginValidation } = require("../../validations");
+const { updateUserRefreshToken, getUserFromDB } = require("../../services/internal");
 
-// MongoDB User schema
-const User = require("../../db/models/User");
-
-router.post("/", asyncHandler(async (req, res, next) => {
+router.post("/", asyncHandler(async (req, res) => {
 	const username = req.body.username;
-	// Validating info
 
 	// Destructure the error from the loginValidationf unction
 	const { error } = loginValidation(req.body);
@@ -22,7 +20,7 @@ router.post("/", asyncHandler(async (req, res, next) => {
 	if (error) throw new Error(`${error.details[0].message}`);
 
 	// Fetch the user if it exists in the DB
-	const user = await User.findOne({ username: username });
+	const user = await getUserFromDB({ username: username });
 	if (!user) throw new Error("Invalid Username");
 
 	// CONFIRM BY EMAIL - TBD
@@ -36,8 +34,7 @@ router.post("/", asyncHandler(async (req, res, next) => {
 	const refreshToken = createRefreshToken(user._id, username);
 
 	// Update the user's document with a refresh token
-	await User.updateOne({ _id: user._id }, { "$set": { refreshToken: refreshToken } });
-
+	await updateUserRefreshToken(user._id, refreshToken);
 	// Send the refresh token as a cookie, and access token as a response
 	sendRefreshToken(res, refreshToken);
 	sendAccessToken(res, accessToken);

@@ -1,6 +1,6 @@
 const router = require("express").Router();
 
-const User = require("../../db/models/User");
+const User = require("../../models/User");
 
 router.patch("/", async (req, res) => {
 	// Get the ID from request body

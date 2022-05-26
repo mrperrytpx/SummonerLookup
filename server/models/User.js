@@ -30,7 +30,7 @@ const userSchema = new mongoose.Schema({
 		default: false
 	},
 	// when the user registered
-	date: {
+	createdAt: {
 		type: Date,
 		default: Date.now
 	}

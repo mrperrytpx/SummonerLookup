@@ -19,7 +19,7 @@ const Summoner = {
         type: String,
         required: true
     },
-    date: {
+    followedAt: {
         type: Date,
         default: Date.now
     }

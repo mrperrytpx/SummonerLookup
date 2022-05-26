@@ -6,18 +6,18 @@ const { createAccessToken,
 	sendAccessToken,
 	verifyOptions
 } = require("../../utils/tokens");
-const User = require("../../db/models/User");
 
-router.post('/', async (req, res) => {
+const { asyncHandler } = require("../../handlers");
+const { updateUserRefreshToken, getUserFromDB } = require("../../services/internal");
+
+router.post('/', asyncHandler(async (req, res) => {
 	// get the token from the cookie
 	const token = req.signedCookies.slup;
-
 	// If we don't have a token in our request, set the access token to nothing
 	if (!token) return res.send({ accesstoken: '' });
 
 	// Verify the refresh token
 	const KEY = process.env.JWT_REFRESH_TOKEN_PUBLIC_KEY;
-
 	let payload = null;
 	try {
 		payload = verify(token, KEY, verifyOptions);
@@ -26,9 +26,8 @@ router.post('/', async (req, res) => {
 		// If the refresh token isn't verified, set the access token to nothing
 		return res.send({ accesstoken: '' });
 	}
-
 	// Find a user with the refresh token ID
-	const user = await User.findOne({ _id: payload._id });
+	const user = await getUserFromDB({ _id: payload._id });
 
 	// If there isn't a user, set the access token to nothing
 	if (!user) return res.send({ accesstoken: '' });
@@ -40,11 +39,11 @@ router.post('/', async (req, res) => {
 	const refreshToken = createRefreshToken(user._id, payload.sub);
 
 	// Update users refresh token in the DB with a new refresh token 
-	await User.updateOne({ _id: user._id }, { "$set": { refreshToken: refreshToken } });
+	await updateUserRefreshToken(user._id, refreshToken);
 	// Send both tokens to the front-end
 	sendRefreshToken(res, refreshToken);
 	sendAccessToken(res, accessToken);
 
-});
+}));
 
 module.exports = router;
