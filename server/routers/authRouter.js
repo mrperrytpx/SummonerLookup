@@ -1,10 +1,12 @@
 const router = require("express").Router();
+
 const authController = require("../controllers/auth");
 const authMiddleware = require("../middlewares/authMiddleware");
+const { asyncHandler } = require("../handlers");
 
-router.use("/login", authController.loginRoute);
-router.use("/register", authController.registerRoute);
-router.use("/refresh_token", authController.refreshTokenRoute);
-router.use("/logout", authMiddleware, authController.logoutRoute);
+router.post("/login", asyncHandler(authController.loginRoute));
+router.post("/register", asyncHandler(authController.registerRoute));
+router.post("/refresh_token", asyncHandler(authController.refreshTokenRoute));
+router.post("/logout", authMiddleware, asyncHandler(authController.logoutRoute));
 
 module.exports = router;

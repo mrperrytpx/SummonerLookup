@@ -1,9 +1,6 @@
-const router = require("express").Router();
-
-const { asyncHandler } = require("../../handlers");
 const { getSummonerLiveGame } = require("../../services/external/");
 
-router.get("/:server/:summonerName/", asyncHandler(async (req, res) => {
+const summonerLiveGame = async (req, res) => {
 
 	const { server, id } = req.params;
 
@@ -11,6 +8,6 @@ router.get("/:server/:summonerName/", asyncHandler(async (req, res) => {
 
 	res.status(200).json(liveGameData);
 
-}));
+};
 
-module.exports = router;
+module.exports = summonerLiveGame;

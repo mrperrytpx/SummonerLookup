@@ -1,9 +1,6 @@
-const router = require("express").Router();
-
-const { asyncHandler } = require("../../handlers");
 const { getSummonerAccountData } = require("../../services/external");
 
-router.get("/:region/:server/:summonerName/", asyncHandler(async (req, res) => {
+const searchSummoner = async (req, res) => {
 	const { region, server, summonerName } = req.params;
 	const notSpacedSummoner = summonerName.split(" ").join("%20");
 	let payload = {};
@@ -21,6 +18,6 @@ router.get("/:region/:server/:summonerName/", asyncHandler(async (req, res) => {
 	};
 
 	res.json(payload);
-}));
+};
 
-module.exports = router;
+module.exports = searchSummoner;

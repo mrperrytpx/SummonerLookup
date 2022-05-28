@@ -1,9 +1,6 @@
-const router = require("express").Router();
-
-const { asyncHandler } = require("../../handlers");
 const { getUserFromDB, removeFromUserFollowing } = require("../../services/internal");
 
-router.patch("/", asyncHandler(async (req, res) => {
+const unfollowSummoner = async (req, res) => {
 	// Get the ID from request body
 	const { id } = req.body;
 
@@ -17,6 +14,6 @@ router.patch("/", asyncHandler(async (req, res) => {
 	await removeFromUserFollowing(user?._id, id);
 	res.sendStatus(204);
 
-}));
+};
 
-module.exports = router;
+module.exports = unfollowSummoner;

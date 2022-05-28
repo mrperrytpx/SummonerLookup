@@ -1,11 +1,8 @@
-const router = require("express").Router();
-
 const { registerValidation } = require("../../validations");
-const { asyncHandler } = require("../../handlers/");
 const { createNewUser, getUserFromDB } = require("../../services/internal");
 const hashPassword = require("../../utils/hashPassword");
 
-router.post("/", asyncHandler(async (req, res) => {
+const register = async (req, res) => {
 	// Destructure the error from the loginValidationf unction
 	const { error } = registerValidation(req.body);
 	// If there's an error, throw the error message
@@ -21,6 +18,6 @@ router.post("/", asyncHandler(async (req, res) => {
 	await createNewUser(req, hashedPassword);
 
 	res.send({ message: "User created" });
-}));
+};
 
-module.exports = router;
+module.exports = register;

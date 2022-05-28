@@ -12,7 +12,7 @@ const DeleteUser = () => {
 
 	const handleDelete = async (token) => {
 		try {
-			const response = await fetch("/api/user/delete_user", {
+			const response = await fetch("/api/user/delete_account", {
 				method: "DELETE",
 				headers: {
 					"Content-Type": "application/json",

@@ -1,9 +1,6 @@
-const router = require("express").Router();
-
-const { asyncHandler } = require("../../handlers/");
 const { getSummonerRankedStats } = require("../../services/external");
 
-router.get("/:server/:summonerId", asyncHandler(async (req, res) => {
+const summonerRankedStats = async (req, res) => {
 
     const { server, summonerId } = req.params;
 
@@ -11,6 +8,6 @@ router.get("/:server/:summonerId", asyncHandler(async (req, res) => {
     console.log(rankedStanding);
 
     res.json(rankedStanding);
-}));
+};
 
-module.exports = router;
+module.exports = summonerRankedStats;

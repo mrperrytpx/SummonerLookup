@@ -1,4 +1,3 @@
-const router = require("express").Router();
 const { verify } = require("jsonwebtoken");
 const { createAccessToken,
 	createRefreshToken,
@@ -7,10 +6,9 @@ const { createAccessToken,
 	verifyOptions
 } = require("../../utils/tokens");
 
-const { asyncHandler } = require("../../handlers");
 const { updateUserRefreshToken, getUserFromDB } = require("../../services/internal");
 
-router.post('/', asyncHandler(async (req, res) => {
+const refreshToken = async (req, res) => {
 	// get the token from the cookie
 	const token = req.signedCookies.slup;
 	// If we don't have a token in our request, set the access token to nothing
@@ -44,6 +42,6 @@ router.post('/', asyncHandler(async (req, res) => {
 	sendRefreshToken(res, refreshToken);
 	sendAccessToken(res, accessToken);
 
-}));
+};
 
-module.exports = router;
+module.exports = refreshToken;

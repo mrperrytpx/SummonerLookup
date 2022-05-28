@@ -1,11 +1,8 @@
-const router = require("express").Router();
-
 // const summonerSpells = require("../../static/summonerSpellIds");
 // const runes = require("../../static/runeIds");
-const { asyncHandler } = require("../../handlers/");
 const { getSummonerMatches, getMatch } = require("../../services/external/");
 
-router.get("/:region/:puuid", asyncHandler(async (req, res) => {
+const summonerMatches = async (req, res) => {
     const { region, puuid } = req.params;
     let payload = [];
     // Fetch the match IDs
@@ -41,6 +38,6 @@ router.get("/:region/:puuid", asyncHandler(async (req, res) => {
     //             payload.push(gameDetails);
     //         }
     //     }
-}));
+};
 
-module.exports = router;
+module.exports = summonerMatches;

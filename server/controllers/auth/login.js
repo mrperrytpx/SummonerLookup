@@ -1,4 +1,3 @@
-const router = require("express").Router();
 const { compare } = require("bcryptjs");
 
 const { createAccessToken,
@@ -6,12 +5,11 @@ const { createAccessToken,
 	sendAccessToken,
 	sendRefreshToken
 } = require("../../utils/tokens");
-const { asyncHandler } = require("../../handlers");
 
 const { loginValidation } = require("../../validations");
 const { updateUserRefreshToken, getUserFromDB } = require("../../services/internal");
 
-router.post("/", asyncHandler(async (req, res) => {
+const login = async (req, res) => {
 	const username = req.body.username;
 
 	// Destructure the error from the loginValidationf unction
@@ -39,6 +37,6 @@ router.post("/", asyncHandler(async (req, res) => {
 	sendRefreshToken(res, refreshToken);
 	sendAccessToken(res, accessToken);
 
-}));
+};
 
-module.exports = router;
+module.exports = login;

@@ -1,9 +1,6 @@
-const router = require("express").Router();
-
-const { asyncHandler } = require("../../handlers");
 const { getUserFromDB, addToUserFollowing } = require("../../services/internal");
 
-router.post("/", asyncHandler(async (req, res) => {
+const followSummoner = async (req, res) => {
 	// Find a user with the same _id as provided in the JWT Access Token
 	const user = await getUserFromDB({ _id: req?.user?._id });
 	// If the user is already 'following' a summoner, throw an error so it doesn't 'follow' agian
@@ -15,6 +12,6 @@ router.post("/", asyncHandler(async (req, res) => {
 
 	res.sendStatus(204);
 
-}));
+};
 
-module.exports = router;
+module.exports = followSummoner;

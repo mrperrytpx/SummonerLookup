@@ -21,7 +21,7 @@ const LogoutButton = () => {
 		// If the response contains a message, clear the access token and refresh the page
 		if (message) {
 			setNewToken("");
-			navigate("/", { replace: true });
+			navigate("/");
 		}
 	};
 
