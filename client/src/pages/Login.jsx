@@ -19,27 +19,25 @@ const Login = () => {
 	const handleLogin = async (e) => {
 		e.preventDefault();
 		const info = { username, password };
-		try {
-			const login = await fetch(`/api/auth/login`, {
-				method: "POST",
-				headers: { "Content-Type": "application/json" },
-				body: JSON.stringify(info),
-			});
-			const data = await login.json();
-			console.log(data);
+		const response = await fetch(`/api/auth/login`, {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify(info),
+		});
 
-			const { accessToken } = data;
-			if (accessToken) {
-				setLoggedIn(() => true);
-				setNewToken(() => accessToken);
-				navigate("/");
-			} else {
-				setError("Invalid username or password");
-			}
-		} catch (err) {
-			console.log(err);
+		if (300 < response.status < 500) {
+			setError("Invalid username of password");
+		}
+
+		const data = await response.json();
+		const { accessToken } = data;
+		if (accessToken) {
+			setLoggedIn(() => true);
+			setNewToken(() => accessToken);
+			navigate("/");
 		}
 	};
+
 
 	const handleVisibility = (e) => {
 		e.preventDefault();

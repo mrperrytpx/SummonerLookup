@@ -41,23 +41,20 @@ const Register = () => {
 		setError("");
 
 		// If all the info is validated, send the info to the /register path to create a user
-		const info = {
-			email,
-			username,
-			password,
-		};
-		try {
-			const response = await fetch(`/api/auth/register/`, {
-				method: "POST",
-				headers: { "Content-Type": "application/json" },
-				body: JSON.stringify(info)
-			});
+		const info = { email, username, password };
+
+		const response = await fetch(`/api/auth/register/`, {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify(info)
+		});
+
+		if (response.statusText === "Conflict") {
+			setError("Email already taken");
+		} else {
 			const data = await response.json();
-			// SETUP ROUTING TO /LOGIN EVENTUALLY
 			console.log(data);
 			navigate("/login");
-		} catch (err) {
-			console.log(err);
 		}
 	};
 
