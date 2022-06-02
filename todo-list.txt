@@ -2,7 +2,7 @@ TASKS FOR FUTURE ME WHEN ITS FUNCTIONAL (WIP)
 
 - Register Validation check on unfocus instead of on submit
 - Send email validation
-- Make pages for Unauthorized and Already logged in cases - or just redirect
+- Make views for Unauthorized and Already logged in cases - or just redirect
 - store refresh token versions instead of actual refresh tokens in DB
 - split player profile fetch into multiple fetches to get payload sooner?
 - make your own picture library for icons so it doesn't run out of date randomly
@@ -15,5 +15,5 @@ TASKS FOR FUTURE ME WHEN ITS FUNCTIONAL (WIP)
 - sortable Champion stats (ascending, descending)
 - make a ProtectedRoute component with render prop
 - make AuthProvider component
-- look how to have phones go to login/register pages, but hsvr it be popup on the PC
+- look how to have phones go to login/register views, but hsvr it be popup on the PC
 - make custom hooks to SOC components

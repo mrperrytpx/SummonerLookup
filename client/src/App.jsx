@@ -2,17 +2,20 @@ import { useEffect, useState, useContext } from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
 // Components
 import Navbar from "./components/Navbar";
-// Pages
-import Home from "./pages/Home";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
-import Me from "./pages/Me";
-import DeleteUser from "./pages/DeleteUser";
-import Player from "./pages/Player";
+// views
+import Home from "./views/Home";
+import Login from "./views/Login";
+import Register from "./views/Register";
+import Me from "./views/Me";
+import DeleteUser from "./views/DeleteUser";
+import Player from "./views/Player";
+
+import ProtectedRoute from "./utils/ProtectedRoute";
 // Contexts
 import { TokenContext } from "./contexts/TokenContext";
 import { LoggedInContext } from "./contexts/LoggedInContext";
 import { useQuery } from "react-query";
+import useAuth from "./hooks/useAuth";
 
 const fetchAllChampions = async (version) => {
 	const controller = new AbortController();
@@ -58,6 +61,7 @@ const fetchVersion = async () => {
 
 const App = () => {
 	const [loading, setLoading] = useState(true);
+	const auth = useAuth();
 
 	const { isLoggedIn, setLoggedIn } = useContext(LoggedInContext);
 	const { setNewToken } = useContext(TokenContext);
@@ -75,6 +79,7 @@ const App = () => {
 			const { accessToken } = await response.json();
 			console.log("Access token:", accessToken);
 			if (accessToken) setLoggedIn(true);
+
 			setNewToken(accessToken);
 			setLoading(false);
 		})();
@@ -106,13 +111,15 @@ const App = () => {
 				<Routes>
 					<Route path="/" element={<Home />} />
 
-					<Route path="/login" element={isLoggedIn ? <Navigate to="/" /> : <Login />} />
+					<Route element={<ProtectedRoute redirectPath="/" isAllowed={!auth.user} />}>
+						<Route path="/login" element={<Login />} />
+						<Route path="/register" element={<Register />} />
+					</Route>
 
-					<Route path="/register" element={isLoggedIn ? <Navigate to="/" /> : <Register />} />
-
-					<Route path="/me" element={!isLoggedIn ? <Navigate to="/login" /> : <Me />} />
-
-					<Route path="/me/delete" element={!isLoggedIn ? <Navigate to="/login" /> : <DeleteUser />} />
+					<Route element={<ProtectedRoute redirectPath="/login" isAllowed={!!auth.user} />}>
+						<Route path="/me" element={<Me />} />
+						<Route path="/me/delete" element={<DeleteUser />} />
+					</Route>
 
 					<Route path="/:region/:server/:summonerName" element={<Player />} />
 				</Routes>

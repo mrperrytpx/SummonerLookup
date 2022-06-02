@@ -1,41 +1,23 @@
-import { useState, useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 // Contexts
-import { LoggedInContext } from "../contexts/LoggedInContext";
-import { TokenContext } from "../contexts/TokenContext";
+import useAuth from "../hooks/useAuth";
 
 const Login = () => {
+
+	const auth = useAuth();
+
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
 	const [isVisible, setIsVisible] = useState(false);
 	const [passwordField, setPasswordField] = useState("password");
 
 	const [error, setError] = useState("");
-	const { setLoggedIn } = useContext(LoggedInContext);
-	const { setNewToken } = useContext(TokenContext);
-	const navigate = useNavigate();
 
 	const handleLogin = async (e) => {
 		e.preventDefault();
-		const info = { username, password };
-		const response = await fetch(`/api/auth/login`, {
-			method: "POST",
-			headers: { "Content-Type": "application/json" },
-			body: JSON.stringify(info),
-		});
-
-		if (300 < response.status < 500) {
-			setError("Invalid username of password");
-		}
-
-		const data = await response.json();
-		const { accessToken } = data;
-		if (accessToken) {
-			setLoggedIn(() => true);
-			setNewToken(() => accessToken);
-			navigate("/");
-		}
+		await auth.signIn(username, password);
 	};
 
 

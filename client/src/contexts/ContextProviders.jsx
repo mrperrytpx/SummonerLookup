@@ -1,6 +1,7 @@
 // Contexts
 import LoggedInContextProvider from "./LoggedInContext";
 import TokenContextProvider from "./TokenContext";
+import AuthContextProvider from "./AuthContext";
 
 // React-query Cache
 import { QueryClient, QueryClientProvider, QueryCache } from "react-query";
@@ -19,11 +20,13 @@ const queryClient = new QueryClient({
 export default function ContextProviders({ children }) {
 	return (
 		<QueryClientProvider client={queryClient}>
-			<LoggedInContextProvider>
-				<TokenContextProvider >
-					{children}
-				</TokenContextProvider>
-			</LoggedInContextProvider>
+			<AuthContextProvider>
+				<LoggedInContextProvider>
+					<TokenContextProvider >
+						{children}
+					</TokenContextProvider>
+				</LoggedInContextProvider>
+			</AuthContextProvider>
 		</QueryClientProvider>
 	);
 }
