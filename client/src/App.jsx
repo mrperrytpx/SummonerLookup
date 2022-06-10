@@ -106,7 +106,7 @@ const App = () => {
 
 	return (
 		<div className="App">
-			<Navbar />
+			{/* <Navbar /> */}
 			<div className="content">
 				<Routes>
 					<Route path="/" element={<Home />} />
