@@ -1,898 +1,128 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
-.nav {
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  width: 100%;
-  min-width: 17.5rem;
-  height: max(75px, 10vh);
-  font-family: "Poppins", sans-serif;
-  border-bottom: 3px solid rgba(255, 255, 255, 0.486);
-}
-.nav .logo {
-  font-size: clamp(1.2rem, 2.1vw, 2rem);
-  color: white;
-  font-weight: 600;
-}
-.nav a {
-  text-decoration: none;
-}
-.nav a > p {
-  color: white;
-  padding: 0.5rem 0.8rem;
-  font-size: clamp(1.2rem, 2vw, 2rem);
-  font-weight: 600;
-}
-
-.input-section {
-  width: min(500px, 95%);
-  margin: 0 auto;
-  font-family: "Poppins", sans-serif;
-  height: 100vh;
-  color: white;
-}
-.input-section form {
-  padding: 0.7rem 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-}
-.input-section input,
-.input-section label {
-  width: min(350px, 90vw);
-  height: 40px;
-  font-size: clamp(1.2rem, 1vw, 2rem);
-}
-.input-section label {
-  display: flex;
-  align-items: center;
-  font-weight: 500;
-}
-.input-section input {
-  padding: 0 0.5rem;
-}
-.input-section button {
-  height: 40px;
-  width: 150px;
-  font-size: clamp(1.2rem, 1vw, 2rem);
-  margin: 1.2rem 0;
-  cursor: pointer;
-}
-.input-section a {
-  text-decoration: none;
-  color: white;
-}
-.input-section a > h3 {
-  width: min(500px, 100%);
-  text-align: center;
-  margin: 1rem 0;
-  font-size: clamp(1.5rem, 2.5vw, 2rem);
-  font-weight: 600;
-  border-bottom: 1px solid white;
-  color: white;
-}
-.input-section .password-field {
-  position: relative;
-}
-.input-section .show-password {
-  position: absolute;
-  top: 0;
-  right: 0;
-  transform: translateY(-50%);
-  width: 50px;
-  display: grid;
-  place-items: center;
-  background: none;
-  border: none;
-  color: #1692b1;
-}
-.input-section input,
-.input-section button {
-  border-radius: 0.2rem;
-  border: none;
-  border: 2px solid rgba(0, 90, 194, 0.39);
-}
-
-.logout-button {
-  color: white;
-  border: none;
-  border-radius: 3px;
-  padding: 0.5rem 0.8rem;
-  font-size: clamp(1.2rem, 2vw, 2rem);
-  font-weight: 600;
-  font-family: "Poppins", sans-serif;
-  cursor: pointer;
-  padding: 0.5rem 1rem;
-  background: none;
-}
-
-.container {
-  width: min(98%, 1000px);
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  padding: 0.2rem;
-}
-
-.summoner {
-  width: 100%;
-  min-height: 150px;
-  display: flex;
-  align-items: center;
-  border-bottom: 1px solid black;
-  margin: 1rem 0 2rem 0;
-}
-.summoner .summoner-icon {
-  flex: 0 0 98px;
-  height: 98px;
-  margin-left: 1rem;
-  position: relative;
-}
-.summoner .player-summoner-icon {
-  width: 98px;
-  aspect-ratio: 1/1;
-}
-.summoner .player-account-level {
-  position: absolute;
-  left: 50%;
-  bottom: -10%;
-  transform: translateX(-50%);
-  border: 1px solid gray;
-  padding: 0 0.2rem;
-  font-size: 0.8rem;
-  font-weight: 600;
-  font-family: "Poppins", sans-serif;
-  color: white;
-  font-size: 1rem;
-  background-color: white;
-  color: black;
-}
-.summoner .name-wrapper {
-  margin-left: 1rem;
-  width: 100%;
-  min-height: 98px;
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
-  justify-content: space-between;
-  overflow: hidden;
-}
-.summoner .player-name,
-.summoner .follow-summoner {
-  display: grid;
-  place-items: start;
-  width: 100%;
-}
-.summoner .summoner-name {
-  font-size: 0.8rem;
-  font-weight: 600;
-  font-family: "Poppins", sans-serif;
-  color: white;
-  line-height: 1.3rem;
-  padding: 1rem 0;
-  font-size: 1.2rem;
-}
-.summoner .follow {
-  border: none;
-  border: 2px solid lightblue;
-  padding: 0.5rem;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 0.8rem;
-  font-weight: 600;
-  font-family: "Poppins", sans-serif;
-  color: white;
-  font-size: 1rem;
-  color: #222;
-}
-.summoner .follow:disabled {
-  opacity: 0.3;
-  background-color: gray;
-  cursor: not-allowed;
-}
-
-.profile-navbar {
-  width: 100%;
-  min-height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  border-bottom: 1px solid black;
-  margin: 0 0 2rem 0;
-  position: relative;
-}
-.profile-navbar .profile-navbar-wrapper {
-  width: 100%;
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  overflow-x: auto;
-}
-.profile-navbar a {
-  white-space: nowrap;
-  text-align: left;
-  text-decoration: none;
-  font-size: 0.8rem;
-  font-weight: 600;
-  font-family: "Poppins", sans-serif;
-  color: white;
-  font-size: 1rem;
-  flex-flow: row nowrap;
-  padding: 0 0.5em;
-  border-right: 2px solid white;
-}
-.profile-navbar a:focus {
-  text-decoration: underline;
-}
-
-.wrapper {
-  display: flex;
-  margin-bottom: 2rem;
-}
-
-.best-champions {
-  min-height: 250px;
-  border: 1px solid black;
-  display: flex;
-  flex-flow: column wrap;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  margin: 1rem 0;
-}
-.best-champions .best-champions-header {
-  font-size: 0.8rem;
-  font-weight: 600;
-  font-family: "Poppins", sans-serif;
-  color: white;
-  width: 100%;
-  text-align: center;
-  font-size: 1.2rem;
-  border-bottom: 1px solid black;
-}
-.best-champions .best-champions-box {
-  padding: 0.5rem 0;
-  display: flex;
-  flex-flow: column nowrap;
-  width: 100%;
-  min-height: 213px;
-  border-bottom: 1px solid black;
-}
-.best-champions .best-champions-wrapper {
-  margin: 0 auto;
-  padding: 0.5rem 0rem;
-  width: 90%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid black;
-}
-.best-champions .best-champion-score,
-.best-champions .best-champion-look,
-.best-champions .best-champion-games {
-  width: 100%;
-}
-.best-champions .best-champion-look {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.best-champions .best-champion-icon {
-  flex: 0 0 44px;
-  height: 44px;
-}
-.best-champions .champion-icon {
-  width: 44px;
-  aspect-ratio: 1/1;
-}
-.best-champions .best-champion-name {
-  font-size: 0.8rem;
-  font-weight: 600;
-  font-family: "Poppins", sans-serif;
-  color: white;
-}
-.best-champions .best-champion-score {
-  display: flex;
-  flex-flow: column wrap;
-  width: 100%;
-  height: 100%;
-  align-items: center;
-  text-align: center;
-  justify-content: center;
-  font-size: 0.8rem;
-  font-weight: 600;
-  font-family: "Poppins", sans-serif;
-  color: white;
-}
-.best-champions .best-champion-games {
-  display: flex;
-  flex-flow: column wrap;
-  width: 60%;
-  height: 100%;
-  align-items: flex-end;
-  justify-content: center;
-  font-size: 0.8rem;
-  font-weight: 600;
-  font-family: "Poppins", sans-serif;
-  color: white;
-}
-
-.rank {
-  width: 100%;
-  min-height: 250px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  margin: 1rem 0;
-  border: 1px solid black;
-}
-.rank .rank-header {
-  font-size: 0.8rem;
-  font-weight: 600;
-  font-family: "Poppins", sans-serif;
-  color: white;
-  width: 100%;
-  text-align: center;
-  font-size: 1.2rem;
-  border-bottom: 1px solid black;
-}
-.rank .rank-stats-wrap {
-  min-height: 213px;
-  width: 90%;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  margin-bottom: 1.25rem;
-}
-.rank .rank-image {
-  flex: 0 0 128px;
-  height: 128px;
-  place-self: center;
-}
-.rank .rank-icon {
-  width: 128px;
-  aspect-ratio: 1/1;
-}
-.rank .rank-points {
-  place-self: center start;
-  width: 100%;
-  font-size: 0.8rem;
-  font-weight: 600;
-  font-family: "Poppins", sans-serif;
-  color: white;
-  font-size: 1rem;
-}
-.rank .rank-elo,
-.rank .rank-winrate {
-  padding: 0.8em 0;
-}
-.rank .rank-elo {
-  border-bottom: 1px solid black;
-}
-.rank .rank-winrate {
-  font-size: 0.9rem;
-}
-
-.matches {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 12rem;
-}
-
-.matches-header {
-  width: 100%;
-  height: 50px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  padding-left: 1rem;
-  border-bottom: 2px solid black;
-  font-size: 0.8rem;
-  font-weight: 600;
-  font-family: "Poppins", sans-serif;
-  color: white;
-}
-
-.games-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  justify-content: flex-start;
-  width: 98%;
-  border-bottom: 1px solid black;
-  margin-top: 1rem;
-}
-
-.game-wrapper {
-  cursor: pointer;
-  width: 100%;
-  height: 100%;
-  border-bottom: 1px solid black;
-  display: grid;
-  grid-template-columns: 25% 75%;
-}
-
-.game-champ-setup {
-  padding: 0.5rem 0.4rem;
-  width: 100%;
-  min-width: 120px;
-  display: grid;
-  grid-template-columns: 2fr 2fr;
-  grid-template-rows: 1fr;
-}
-
-.game-champ-summs {
-  width: 100%;
-  display: grid;
-  grid-template-columns: 26px 26px;
-  grid-template-rows: 26px 26px;
-  place-self: center;
-}
-
-.summoner1, .summoner2, .keystone, .secondary {
-  background-color: rgba(0, 32, 70, 0.493);
-  width: 26px;
-  height: 26px;
-}
-
-.small {
-  width: 26px;
-  height: 26px;
-}
-
-.game-champ-icon {
-  display: grid;
-}
-
-.ch {
-  width: 52px;
-  height: 52px;
-  place-self: center;
-}
-
-.game-build-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-}
-
-.game-champ-score {
-  width: 33%;
-  text-align: start;
-  line-height: 1.4rem;
-  min-width: 100px;
-  padding: 0.8rem 0.4rem;
-  font-size: 0.8rem;
-  font-weight: 600;
-  font-family: "Poppins", sans-serif;
-  color: white;
-  font-size: 0.95rem;
-}
-
-.game-champ-build {
-  display: flex;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-}
-
-.game-champ-build-wrapper {
-  width: 150%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.item {
-  width: 40px;
-  height: 40px;
-  background-color: #222;
-  border-right: 1px solid black;
-}
-
-.item-image {
-  flex: 0 0 40px;
-  height: 40px;
-  border: 1px solid black;
-}
-
-.duration {
-  width: 50%;
-  text-align: center;
-  font-size: 0.8rem;
-  font-weight: 600;
-  font-family: "Poppins", sans-serif;
-  color: white;
-}
-
-.loser {
-  background: linear-gradient(to right, #e66465, #921717);
-}
-
-.winner {
-  background: linear-gradient(to right, #2f8524, #1e4b12);
-}
-
-@media only screen and (max-width: 800px) {
-  .rank .rank-winrate {
-    font-size: 0.85rem;
-  }
-}
-@media only screen and (max-width: 700px) {
-  .best-champions .best-champion-look {
-    width: 60%;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .rank .rank-stats-wrap {
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(2, 1fr);
-    margin-bottom: 0;
-  }
-  .rank .rank-elo, .rank .rank-winrate {
-    text-align: center;
-  }
-
-  .duration {
-    display: none;
-  }
-}
-@media only screen and (max-width: 550px) {
-  .wrapper {
-    flex-flow: column nowrap;
-  }
-
-  .game-wrapper {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .game-champ-score {
-    padding: 0;
-    display: flex;
-    width: 100%;
-    align-content: flex-end;
-    justify-content: space-evenly;
-    font-size: 13px;
-  }
-
-  .score-header, .calculated-kda, .game-score {
-    width: 100%;
-    height: 100%;
-    display: grid;
-    place-items: end center;
-  }
-
-  .game-champ-build {
-    width: 100%;
-    align-items: flex-start;
-    margin-right: 8px;
-  }
-
-  .item {
-    width: 25px;
-    height: 25px;
-  }
-
-  .item-image {
-    flex: 0 0 25px;
-    height: 25px;
-  }
-
-  .ch {
-    width: 42px;
-    height: 42px;
-  }
-
-  .game-champ-setup {
-    padding: 0.5rem 0;
-  }
-
-  .game-build-wrapper {
-    flex-direction: column;
-  }
-
-  .best-champions .best-champion-games {
-    width: 100%;
-  }
-
-  .summoner-name {
-    width: 100%;
-    text-align: center;
-  }
-
-  .follow {
-    place-self: center;
-  }
-
-  .rank .rank-winrate {
-    font-size: 0.9rem;
-  }
-}
-.following {
-  width: min(98%, 1100px);
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-}
-.following .followed-players {
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 10px;
-}
-.following .followed-player {
-  display: flex;
-  flex-direction: column;
-  border-radius: 10px;
-  padding: 1rem 0;
-  margin: 0 auto;
-  width: 100%;
-  min-width: 310px;
-  max-width: 600px;
-  border: 1px solid black;
-}
-.following .followed-player-summary {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  align-items: center;
-  justify-content: center;
-  min-height: 200px;
-  height: 100%;
-}
-.following .followed-player-profile, .following .followed-player-rank {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-  width: 100%;
-  height: 100%;
-}
-.following .followed-player-name {
-  font-size: 0.8rem;
-  font-weight: 600;
-  font-family: "Poppins", sans-serif;
-  color: white;
-  font-size: 1rem;
-}
-.following .followed-player-icon, .following .followed-player-tier {
-  width: 100px;
-  height: 100px;
-  position: relative;
-}
-.following .followed-icon, .following .followed-rank {
-  width: 100px;
-  aspect-ratio: 1/1;
-}
-.following .level {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 0.8rem;
-  font-weight: 600;
-  font-family: "Poppins", sans-serif;
-  color: white;
-  border-style: solid;
-  border-width: 1px 1px 0 1px;
-  padding: 3px 8px;
-}
-.following .followed-player-division {
-  font-size: 0.8rem;
-  font-weight: 600;
-  font-family: "Poppins", sans-serif;
-  color: white;
-  font-size: 0.9rem;
-  text-align: center;
-}
-.following .latest-game-wrapper {
-  display: grid;
-  grid-template-columns: 2fr 4fr;
-  margin-top: 1rem;
-  border-top: 1px solid black;
-  padding-top: 1rem;
-}
-.following .latest-champ-setup {
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-}
-.following .latest-champ-summs {
-  display: grid;
-  grid-template-columns: 30px 30px;
-  grid-template-rows: 30px 30px;
-}
-.following .latest-build-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-.following .latest-champ-icon {
-  width: 60px;
-  height: 60px;
-}
-.following .latest-champ {
-  width: 60px;
-  aspect-ratio: 1/1;
-}
-.following .latest-summoner1, .following .latest-summoner2, .following .latest-keystone, .following .latest-secondary {
-  background-color: rgba(0, 32, 70, 0.493);
-  width: 30px;
-  height: 30px;
-}
-.following .latest-small {
-  width: 30px;
-  height: 30px;
-}
-.following .latest-score {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  font-size: 0.8rem;
-  font-weight: 600;
-  font-family: "Poppins", sans-serif;
-  color: white;
-}
-.following .latest-build {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  width: 100%;
-}
-.following .latest-item {
-  width: 40px;
-  height: 40px;
-  background-color: #222;
-  border-right: 1px solid black;
-}
-.following .latest-item-image {
-  flex: 0 0 40px;
-  height: 40px;
-  border: 1px solid black;
-}
-
-@media only screen and (max-width: 850px) {
-  .following .followed-players {
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(auto, 3fr);
-  }
-  .following .latest-champ {
-    width: 50px;
-  }
-  .following .latest-champ-icon {
-    width: 50px;
-    height: 50px;
-  }
-}
-@media only screen and (max-width: 450px) {
-  .following .latest-item {
-    width: 30px;
-    height: 30px;
-  }
-  .following .latest-item-image {
-    flex: 0 0 30px;
-    height: 30px;
-  }
-  .following .latest-build-wrapper {
-    justify-content: space-around;
-  }
-  .following .latest-champ {
-    width: 46px;
-  }
-  .following .latest-champ-icon {
-    width: 46px;
-    height: 46px;
-  }
-  .following .latest-summoner1, .following .latest-summoner2, .following .latest-keystone, .following .latest-secondary {
-    width: 28px;
-    height: 28px;
-    place-self: center;
-  }
-  .following .latest-small {
-    width: 28px;
-    height: 28px;
-    place-self: center;
-  }
-}
-@media only screen and (max-width: 350px) {
-  .following .latest-summoner1, .following .latest-summoner2, .following .latest-keystone, .following .latest-secondary {
-    width: 24px;
-    height: 24px;
-  }
-  .following .latest-small {
-    width: 24px;
-    height: 24px;
-    place-self: center;
-  }
-  .following .latest-champ-summs {
-    grid-template-columns: 23px 23px;
-    grid-template-rows: 23px 23px;
-  }
-  .following .latest-champ {
-    width: 40px;
-  }
-  .following .latest-champ-icon {
-    width: 40px;
-    height: 40px;
-  }
-}
-.ranked-stats-wrapper {
-  font-size: 0.8rem;
-  font-weight: 600;
-  font-family: "Poppins", sans-serif;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.ranked-stats-wrapper .ranked-stats-fields {
-  width: 100%;
-  display: grid;
-  grid-template-columns: 4% 18% 14% 14% 10% 10% repeat(4, 1fr);
-  background-color: red;
-  place-items: center;
-}
-.ranked-stats-wrapper p {
-  width: 100%;
-  text-align: center;
-}
-.ranked-stats-wrapper .empty {
-  width: 50px;
-  background-color: purple;
-}
-.ranked-stats-wrapper .champ-stats {
-  margin: 10px;
-  width: 100%;
-  display: grid;
-  grid-template-columns: 4% 18% 14% 14% 10% 10% repeat(4, 1fr);
-  place-items: center;
-}
-.ranked-stats-wrapper .image-and-name {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
-.ranked-stats-wrapper .image-and-name img {
-  width: 50px;
-  height: 50px;
-  aspect-ratio: 1/1;
-}
-.ranked-stats-wrapper .image-and-name .no {
-  padding-left: 1rem;
-  text-align: left;
-}
-.ranked-stats-wrapper .two-rows {
-  width: 100%;
-}
-.ranked-stats-wrapper .two-rows p {
-  padding: 3px;
-}
-
-* {
+*, *::before, *::after {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
 
-body {
-  background-color: #1692b1;
-  color: black;
+html {
+  height: 100vh;
 }
 
-/*# sourceMappingURL=index.css.map */
+html, body {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+}
+
+body {
+  background-color: hsl(192deg, 78%, 39%);
+  line-height: 1.5;
+  color: black;
+  height: 100%;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 8vh;
+  background-color: green;
+}
+header .logo-container {
+  flex: 1;
+}
+header .searchbar-placeholder {
+  flex: 3;
+  height: 100%;
+  background-color: pink;
+}
+header nav {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  background-color: red;
+  height: 100%;
+}
+header nav a {
+  background-color: black;
+  padding: 0.5rem 1.5rem;
+  font-size: 1.3rem;
+  text-decoration: none;
+  color: white;
+}
+
+main {
+  height: 92vh;
+  display: grid;
+  background-color: olive;
+}
+
+.searchbar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: yellow;
+  width: 750px;
+  margin: 0 auto 300px auto;
+}
+.searchbar-container img {
+  margin-bottom: 1rem;
+}
+.searchbar-container .input-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: grey;
+  width: 750px;
+  height: 6vh;
+  margin-bottom: 1rem;
+  border: 1px solid black;
+}
+.searchbar-container .input-container input {
+  font-size: 1.5rem;
+  padding: 0 1rem;
+  height: 100%;
+  flex: 5;
+  border: none;
+}
+.searchbar-container .input-container input:focus {
+  outline: none;
+}
+.searchbar-container .input-container button {
+  cursor: pointer;
+  height: 100%;
+  flex: 1;
+  border: none;
+  font-size: 1.2rem;
+}
+.searchbar-container .regions-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: lightblue;
+  width: 100%;
+  gap: 1rem;
+}
+.searchbar-container .regions-container .region {
+  background-color: white;
+  padding: 3px 6px;
+  border: 1px solid black;
+  font-size: 0.85rem;
+}

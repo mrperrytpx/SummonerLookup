@@ -1,0 +1,31 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  height: 100vh;
+}
+
+html, body {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+}
+
+body {
+  background-color: hsl(192, 78%, 39%);
+  line-height: 1.5;
+  color: black;
+  height: 100%;
+
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}

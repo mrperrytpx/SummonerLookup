@@ -3,7 +3,9 @@ import { Route, Routes, Navigate } from "react-router-dom";
 // Components
 import Navbar from "./components/Navbar";
 // views
-import Home from "./views/Home";
+
+import Home from "./components/pages/Home";
+
 import Login from "./views/Login";
 import Register from "./views/Register";
 import Me from "./views/Me";
