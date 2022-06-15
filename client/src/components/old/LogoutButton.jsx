@@ -1,10 +1,10 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import useAuth from "../hooks/useAuth";
+import useAuth from "../../hooks/useAuth";
 
 
 // Contexts
-import { TokenContext } from "../contexts/TokenContext";
+import { TokenContext } from "../../contexts/TokenContext";
 
 const LogoutButton = () => {
 	const navigate = useNavigate();

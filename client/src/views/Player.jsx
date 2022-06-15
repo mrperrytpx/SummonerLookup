@@ -2,12 +2,12 @@ import { useReducer } from "react";
 import { useParams } from "react-router";
 import { useQuery, useQueryClient } from "react-query";
 // Components
-import PlayerCard from "../components/PlayerCard";
-import PlayerNav from "../components/PlayerNav";
-import Matches from "../components/Matches";
-import PlayerOverview from "../components/PlayerOverview";
-import PlayerRankedStats from "../components/PlayerRankedStats";
-import PlayerLive from "../components/PlayerLive";
+import PlayerCard from "../components/old/PlayerCard";
+import PlayerNav from "../components/old/PlayerNav";
+import Matches from "../components/old/Matches";
+import PlayerOverview from "../components/old/PlayerOverview";
+import PlayerRankedStats from "../components/old/PlayerRankedStats";
+import PlayerLive from "../components/old/PlayerLive";
 
 const fetchPlayer = (region, server, summonerName) => {
 	const controller = new AbortController();

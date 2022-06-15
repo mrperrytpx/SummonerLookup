@@ -1,7 +1,7 @@
 import { useEffect, useState, useContext } from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
 // Components
-import Navbar from "./components/Navbar";
+import Navbar from "./components/old/Navbar";
 // views
 
 import Home from "./components/pages/Home";
@@ -114,8 +114,8 @@ const App = () => {
 					<Route path="/" element={<Home />} />
 
 					<Route element={<ProtectedRoute redirectPath="/" isAllowed={!auth.user} />}>
-						<Route path="/login" element={<Login />} />
-						<Route path="/register" element={<Register />} />
+						<Route path="/signin" element={<Login />} />
+						<Route path="/signup" element={<Register />} />
 					</Route>
 
 					<Route element={<ProtectedRoute redirectPath="/login" isAllowed={!!auth.user} />}>

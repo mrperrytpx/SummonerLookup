@@ -1,6 +1,16 @@
 import React from 'react';
+import useScreenSize from '../../hooks/useScreenSize';
+
+import NavButton from '../atoms/NavButton/NavButton';
+import FuncButton from '../atoms/FuncButton/FuncButton';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
+
+  const screenWidth = useScreenSize();
+
+  const navigate = useNavigate();
+
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -20,15 +30,15 @@ const Home = () => {
 
         <div className='logo-container'>
 
-          <img src='' alt='suckmydick' />
+          <img src='' alt="daskldas" />
 
         </div>
 
-        <div className='searchbar-placeholder'></div>
+        {/* {screenWidth > 800 && <div className='searchbar-placeholder'></div>} */}
 
         <nav>
-          <a href="/">LOGIN</a>
-          <a href="/">SIGNUP</a>
+          <NavButton href="/signup">Sign Up</NavButton>
+          <NavButton href="/signin">Sign in</NavButton>
         </nav>
 
       </header>
@@ -42,7 +52,7 @@ const Home = () => {
           <div className="input-container">
 
             <input placeholder='Enter a summoner name' />
-            <button type="submit">SEARCH</button>
+            <FuncButton onClick={() => navigate("/fukk")}>Search</FuncButton>
 
           </div>
 

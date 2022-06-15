@@ -4,7 +4,7 @@ import { useQuery } from "react-query";
 // Contexts
 import { TokenContext } from "../contexts/TokenContext";
 // Components
-import Summoner from "../components/Summoner";
+import Summoner from "../components/old/Summoner";
 
 const getFollowing = async (token) => {
 	const abortCont = new AbortController();

@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { useMutation, useQueryClient } from "react-query";
 // Contexts
-import { TokenContext } from "../contexts/TokenContext";
+import { TokenContext } from "../../contexts/TokenContext";
 
 const unfollowPlayer = async ({ id, token }) => {
 	const response = await fetch(`/api/summoner/unfollow_summoner`, {

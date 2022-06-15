@@ -40,7 +40,6 @@ header {
   align-items: center;
   justify-content: space-evenly;
   height: 8vh;
-  background-color: green;
 }
 header .logo-container {
   flex: 1;
@@ -48,7 +47,6 @@ header .logo-container {
 header .searchbar-placeholder {
   flex: 3;
   height: 100%;
-  background-color: pink;
 }
 header nav {
   flex: 1;
@@ -56,11 +54,9 @@ header nav {
   align-items: center;
   justify-content: center;
   gap: 2rem;
-  background-color: red;
   height: 100%;
 }
 header nav a {
-  background-color: black;
   padding: 0.5rem 1.5rem;
   font-size: 1.3rem;
   text-decoration: none;
@@ -70,7 +66,6 @@ header nav a {
 main {
   height: 92vh;
   display: grid;
-  background-color: olive;
 }
 
 .searchbar-container {
@@ -78,50 +73,49 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: yellow;
-  width: 750px;
+  width: min(90vw, 750px);
   margin: 0 auto 300px auto;
 }
 .searchbar-container img {
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 .searchbar-container .input-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: grey;
-  width: 750px;
+  width: 100%;
   height: 6vh;
   margin-bottom: 1rem;
   border: 1px solid black;
 }
 .searchbar-container .input-container input {
-  font-size: 1.5rem;
+  font-size: 1.35rem;
   padding: 0 1rem;
   height: 100%;
-  flex: 5;
   border: none;
+  flex: 5;
 }
 .searchbar-container .input-container input:focus {
   outline: none;
 }
 .searchbar-container .input-container button {
+  flex: 1;
   cursor: pointer;
   height: 100%;
-  flex: 1;
   border: none;
   font-size: 1.2rem;
+  background-color: white;
+  border-left: 1px solid black;
 }
 .searchbar-container .regions-container {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  background-color: lightblue;
-  width: 100%;
+  width: min(100%, 90vw);
   gap: 1rem;
+  flex-wrap: wrap;
 }
 .searchbar-container .regions-container .region {
-  background-color: white;
   padding: 3px 6px;
   border: 1px solid black;
   font-size: 0.85rem;
