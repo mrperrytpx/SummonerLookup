@@ -1,9 +1,9 @@
 import React from 'react';
 import useScreenSize from '../../hooks/useScreenSize';
 
-import NavButton from '../atoms/NavButton/NavButton';
-import FuncButton from '../atoms/FuncButton/FuncButton';
 import { useNavigate } from 'react-router-dom';
+
+import Button from "../atoms/Button/Button";
 
 const Home = () => {
 
@@ -37,8 +37,7 @@ const Home = () => {
         {/* {screenWidth > 800 && <div className='searchbar-placeholder'></div>} */}
 
         <nav>
-          <NavButton href="/signup">Sign Up</NavButton>
-          <NavButton href="/signin">Sign in</NavButton>
+          <Button>YOYOYO</Button>
         </nav>
 
       </header>
@@ -52,7 +51,6 @@ const Home = () => {
           <div className="input-container">
 
             <input placeholder='Enter a summoner name' />
-            <FuncButton onClick={() => navigate("/fukk")}>Search</FuncButton>
 
           </div>
 
