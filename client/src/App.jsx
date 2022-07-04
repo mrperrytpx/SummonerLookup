@@ -1,5 +1,5 @@
-import { useEffect, useState, useContext } from "react";
-import { Route, Routes, Navigate } from "react-router-dom";
+import { useEffect, useState, useRef } from "react";
+import { Route, Routes } from "react-router-dom";
 // Components
 
 import GlobalStyles from "./misc/globalStyles";
@@ -16,42 +16,24 @@ import Player from "./views/Player";
 
 import ProtectedRoute from "./utils/ProtectedRoute";
 // Contexts
-import { TokenContext } from "./contexts/TokenContext";
-import { LoggedInContext } from "./contexts/LoggedInContext";
 import useAuth from "./hooks/useAuth";
 
 import useGetLeagueChampions from "./hooks/useGetLeagueChampions";
-
 
 const App = () => {
 	const [loading, setLoading] = useState(true);
 	const auth = useAuth();
 
-	const { isLoggedIn, setLoggedIn } = useContext(LoggedInContext);
-	const { setNewToken } = useContext(TokenContext);
+	const executedRef = useRef(false);
 
-	// Give the user a new access token if there's a refresh token stored in cookies
-	useEffect(() => {
-		const controller = new AbortController();
-		(async () => {
-			const response = await fetch("/api/auth/refresh_token", {
-				method: "POST",
-				credentials: "include",
-				signal: controller.signal
-			});
-			if (!response.ok) setNewToken("");
-			const { accessToken } = await response.json();
-			console.log("Access token:", accessToken);
-			if (accessToken) setLoggedIn(true);
+	useEffect(function getTokens() {
+		if (executedRef.current) { return; }
 
-			setNewToken(accessToken);
-			setLoading(false);
-		})();
-		// return () => controller.abort(); 
-		// ^ BREAKS REFRESH-TOKEN WITH STRICTMODE (ONLY DURING DEV) BECAUSE USEEFFECT RUNS TWICE
-		// XD
-	}, [setLoggedIn, setNewToken]);
+		auth.getFreshTokens();
 
+		executedRef.current = true;
+		setLoading(false);
+	}, [auth.getTokens]);
 
 	useGetLeagueChampions();
 

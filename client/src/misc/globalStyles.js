@@ -2,8 +2,6 @@ import { createGlobalStyle } from "styled-components";
 
 const GlobalStyles = createGlobalStyle`
 
-    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
-
     *, *::before, *::after {
         box-sizing: border-box;
         padding: 0;
@@ -20,9 +18,9 @@ const GlobalStyles = createGlobalStyle`
     }
 
     body {
-        background-color: #371B58;
+        background-color: ${({ theme }) => theme.backgroundColors.primary};
         line-height: 1.5;
-        color: black;
+        color: ${({ theme }) => theme.textColors.dark};
         height: 100%;
 
     }
