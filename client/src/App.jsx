@@ -2,7 +2,7 @@ import { useEffect, useState, useContext } from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
 // Components
 
-import GlobalStyles from "./utils/globalStyles";
+import GlobalStyles from "./misc/globalStyles";
 import Navbar from "./components/old/Navbar";
 // views
 

@@ -2,6 +2,8 @@
 import LoggedInContextProvider from "./LoggedInContext";
 import TokenContextProvider from "./TokenContext";
 import AuthContextProvider from "./AuthContext";
+import { ThemeProvider } from "styled-components";
+import { theme } from "../misc/theme";
 
 // React-query Cache
 import { QueryClient, QueryClientProvider, QueryCache } from "react-query";
@@ -17,16 +19,18 @@ const queryClient = new QueryClient({
 	},
 });
 
-export default function ContextProviders({ children }) {
+export default function AppProviders({ children }) {
 	return (
-		<QueryClientProvider client={queryClient}>
-			<AuthContextProvider>
-				<LoggedInContextProvider>
-					<TokenContextProvider >
-						{children}
-					</TokenContextProvider>
-				</LoggedInContextProvider>
-			</AuthContextProvider>
-		</QueryClientProvider>
+		<ThemeProvider theme={theme}>
+			<QueryClientProvider client={queryClient}>
+				<AuthContextProvider>
+					<LoggedInContextProvider>
+						<TokenContextProvider >
+							{children}
+						</TokenContextProvider>
+					</LoggedInContextProvider>
+				</AuthContextProvider>
+			</QueryClientProvider>
+		</ThemeProvider>
 	);
 }
