@@ -33,7 +33,7 @@ const App = () => {
 
 		executedRef.current = true;
 		setLoading(false);
-	}, [auth.getTokens]);
+	}, [auth.getFreshTokens]);
 
 	useGetLeagueChampions();
 
