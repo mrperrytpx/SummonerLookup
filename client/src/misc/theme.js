@@ -8,6 +8,6 @@ export const theme = {
     },
     textColors: {
         dark: "#111111",
-        light: "#eeeeee"
+        light: "#ffffff"
     }
 };

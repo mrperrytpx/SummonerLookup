@@ -1,9 +1,10 @@
 import React from 'react';
 import useScreenSize from '../../hooks/useScreenSize';
+import { ReactComponent as MyLogo } from "../../assets/square_logo_no_text.svg";
 
 import { useNavigate } from 'react-router-dom';
 
-import Button from "../atoms/Button/Button";
+import { Button } from "../atoms/Buttons/Button/Button";
 
 const Home = () => {
 
@@ -37,7 +38,8 @@ const Home = () => {
         {/* {screenWidth > 800 && <div className='searchbar-placeholder'></div>} */}
 
         <nav>
-          <Button>YOYOYO</Button>
+          <Button variant="quaternary" href="/signin">Sign in</Button>
+          <Button variant="quaternary" href="/signup">Sign up</Button>
         </nav>
 
       </header>
@@ -46,7 +48,7 @@ const Home = () => {
 
         <form className="searchbar-container" onSubmit={(e) => handleSubmit(e)}>
 
-          <img src="https://media.discordapp.net/attachments/417341511450099714/986631768889241660/unknown.png" alt="logo?" />
+          <MyLogo />
 
           <div className="input-container">
 

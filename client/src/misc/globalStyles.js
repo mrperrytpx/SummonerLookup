@@ -33,6 +33,10 @@ const GlobalStyles = createGlobalStyle`
         display: block;
         max-width: 100%;
     }
+
+    svg, svg g {
+        fill: white;
+    }
 `;
 
 export default GlobalStyles;
