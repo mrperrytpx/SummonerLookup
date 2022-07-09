@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 // Contexts
 import useAuth from "../hooks/useAuth";
+import { TextLogoLink } from "../components/atoms/TextLogoLink/TextLogoLink";
 
 const Login = () => {
 
@@ -37,8 +38,7 @@ const Login = () => {
 		<section className="input-section">
 			<form onSubmit={handleLogin}>
 
-				<Link to="/"><h3>SummonerLookup™</h3></Link>
-
+				<TextLogoLink />
 				<label htmlFor="username">Username:</label>
 				<input
 					autoComplete="true"

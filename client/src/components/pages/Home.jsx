@@ -1,16 +1,6 @@
-import React from 'react';
-import useScreenSize from '../../hooks/useScreenSize';
-import { ReactComponent as MyLogo } from "../../assets/square_logo_no_text.svg";
-
-import { useNavigate } from 'react-router-dom';
-
-import { Button } from "../atoms/Buttons/Button/Button";
+import { Navbar } from "../organisms/Navbar/Navbar";
 
 const Home = () => {
-
-  const screenWidth = useScreenSize();
-
-  const navigate = useNavigate();
 
 
   function handleSubmit(e) {
@@ -27,28 +17,11 @@ const Home = () => {
 
     <div className='page-wrapper'>
 
-      <header>
-
-        <div className='logo-container'>
-
-          <img src='' alt="daskldas" />
-
-        </div>
-
-        {/* {screenWidth > 800 && <div className='searchbar-placeholder'></div>} */}
-
-        <nav>
-          <Button variant="quaternary" href="/signin">Sign in</Button>
-          <Button variant="quaternary" href="/signup">Sign up</Button>
-        </nav>
-
-      </header>
+      <Navbar />
 
       <main>
 
         <form className="searchbar-container" onSubmit={(e) => handleSubmit(e)}>
-
-          <MyLogo />
 
           <div className="input-container">
 

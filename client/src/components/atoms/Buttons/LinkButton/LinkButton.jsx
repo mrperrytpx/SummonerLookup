@@ -1,4 +1,4 @@
-import { StyledLinkButton } from "./Button.styled";
+import { StyledLinkButton } from "./LinkButton.styled";
 import PropTypes from "prop-types";
 
 export const LinkButton = ({ children, href, variant }) => {
@@ -7,13 +7,13 @@ export const LinkButton = ({ children, href, variant }) => {
   );
 };
 
-Button.propTypes = {
+LinkButton.propTypes = {
   children: PropTypes.node.isRequired,
   href: PropTypes.string,
   variant: PropTypes.string
 };
 
-Button.defaultProps = {
+LinkButton.defaultProps = {
   variant: "quaternary",
   children: "Button text"
 };
