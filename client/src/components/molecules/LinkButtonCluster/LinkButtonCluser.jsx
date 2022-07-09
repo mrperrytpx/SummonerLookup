@@ -1,4 +1,4 @@
-import { LinkButton } from "../../atoms/Buttons/LinkButton/LinkButton";
+import { LinkButton } from "../../atoms/LinkButton/LinkButton";
 import { StyledLinkButtonCluster } from "./LinkButtonCluser.styled";
 
 export const LinkButtonCluser = () => {

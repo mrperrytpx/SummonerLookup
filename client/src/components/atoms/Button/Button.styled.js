@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { backgroundColor } from "../../../../misc/backgroundColor";
+import { backgroundColor } from "../../../misc/backgroundColor";
 
 export const StyledButton = styled.button`
     background-color: ${({ theme, variant }) => backgroundColor(theme, variant)};

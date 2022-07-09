@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { backgroundColor } from "../../../../misc/backgroundColor";
+import { backgroundColor } from "../../../misc/backgroundColor";
 import styled from "styled-components";
 
 export const StyledLinkButton = styled(Link)`
