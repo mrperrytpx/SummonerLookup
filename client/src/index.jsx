@@ -8,12 +8,12 @@ import AppProviders from "./contexts/AppProviders";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
-	// <React.StrictMode>
-	<BrowserRouter>
-		<AppProviders>
-			<App />
-		</AppProviders>
-	</BrowserRouter>
-	// </React.StrictMode>
+	<React.StrictMode>
+		<BrowserRouter>
+			<AppProviders>
+				<App />
+			</AppProviders>
+		</BrowserRouter>
+	</React.StrictMode>
 
 );

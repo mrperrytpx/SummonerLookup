@@ -1,6 +1,6 @@
 import { StyledNavbar } from "./Navbar.styled";
 import { TextLogoLink } from "../../atoms/TextLogoLink/TextLogoLink";
-import { LinkButtonCluser } from "../../molecules/LinkButtonCluster/LinkButtonCluser";
+import { LinkButtonCluser } from "../../molecules/LinkButtonCluster/LinkButtonCluster";
 
 export const Navbar = () => {
   return (

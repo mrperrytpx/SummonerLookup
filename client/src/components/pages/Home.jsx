@@ -1,7 +1,7 @@
-import { Navbar } from "../organisms/Navbar/Navbar";
-
 import { useState } from "react";
-import { CheckedServer } from "../molecules/CheckedServer/CheckedServer";
+
+import { CheckedServer } from "../atoms/CheckedServer/CheckedServer";
+import { Navbar } from "../organisms/Navbar/Navbar";
 
 const SERVER_VALUES = {
   "eun1": "EUNE",
@@ -17,7 +17,7 @@ const SERVER_VALUES = {
   "kr1": "KR",
 };
 
-const Home = () => {
+export const Home = () => {
 
   const [checkedRadioButton, setCheckedRadioButton] = useState("euw1");
 
@@ -59,11 +59,10 @@ const Home = () => {
 
           <div className="regions-container">
 
-            {[...Object.keys(SERVER_VALUES)].map((server, i) => (
+            {[...Object.keys(SERVER_VALUES)].map((server) => (
               <CheckedServer
                 key={server}
                 server={server}
-                i={i}
                 handleLabelClick={handleLabelClick}
                 handleRadioClick={handleRadioClick}
                 checkedRadioButton={checkedRadioButton}
@@ -114,5 +113,3 @@ const Home = () => {
     </div >
   );
 };
-
-export default Home;

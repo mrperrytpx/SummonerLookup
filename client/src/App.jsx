@@ -6,7 +6,7 @@ import GlobalStyles from "./misc/globalStyles";
 import Navbar from "./components/old/Navbar";
 // views
 
-import Home from "./components/pages/Home";
+import { Home } from "./components/pages/Home";
 
 import Login from "./views/Login";
 import Register from "./views/Register";
