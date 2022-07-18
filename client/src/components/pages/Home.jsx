@@ -1,17 +1,45 @@
 import { Navbar } from "../organisms/Navbar/Navbar";
 
+import { useState } from "react";
+import { CheckedServer } from "../molecules/CheckedServer/CheckedServer";
+
+const SERVER_VALUES = {
+  "eun1": "EUNE",
+  "euw1": "EUW",
+  "tr1": "TR",
+  "ru1": "RU",
+  "na1": "NA",
+  "las1": "LAS",
+  "lan1": "LAN",
+  "br1": "BR",
+  "oce1": "OCE",
+  "jp1": "JP",
+  "kr1": "KR",
+};
+
 const Home = () => {
+
+  const [checkedRadioButton, setCheckedRadioButton] = useState("euw1");
 
 
   function handleSubmit(e) {
     e.preventDefault();
-    const myRadioInput = e.target.elements.region.value;
+    const myRadioInput = checkedRadioButton;
     if (!myRadioInput) {
       alert("no");
       return;
     }
     console.log(myRadioInput);
   }
+
+  const handleLabelClick = (e) => {
+    console.log(e.target.htmlFor);
+    setCheckedRadioButton(e.target.htmlFor);
+  };
+
+  const handleRadioClick = (e) => {
+    setCheckedRadioButton(e.target.value);
+  };
 
   return (
 
@@ -31,9 +59,21 @@ const Home = () => {
 
           <div className="regions-container">
 
-            <label className="region-container">EUN
-              <input type="radio" value="eun1" name="region" />
-            </label>
+            {[...Object.keys(SERVER_VALUES)].map((server, i) => (
+              <CheckedServer
+                key={server}
+                server={server}
+                i={i}
+                handleLabelClick={handleLabelClick}
+                handleRadioClick={handleRadioClick}
+                checkedRadioButton={checkedRadioButton}
+              >
+                {SERVER_VALUES[server]}
+              </CheckedServer>
+            ))}
+            {/* <label style={{ color: "white" }} className="region-container">EUNE */}
+            {/* <input type="radio" value="eun1" name="region" /> */}
+            {/* </label>
             <label className="region-container">EUW
               <input type="radio" name="region" value="euw1" />
             </label>
@@ -63,7 +103,7 @@ const Home = () => {
             </label>
             <label className="region-container">BR
               <input type="radio" name="region" value="br1" />
-            </label>
+            </label> */}
 
           </div>
 
@@ -71,7 +111,7 @@ const Home = () => {
 
 
       </main>
-    </div>
+    </div >
   );
 };
 
