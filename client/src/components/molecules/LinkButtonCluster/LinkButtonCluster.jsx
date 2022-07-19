@@ -1,11 +1,9 @@
-import { LinkButton } from "../../atoms/LinkButton/LinkButton";
 import { StyledLinkButtonCluster } from "./LinkButtonCluster.styled";
 
-export const LinkButtonCluser = () => {
+export const LinkButtonCluster = ({ children }) => {
   return (
     <StyledLinkButtonCluster>
-      <LinkButton variant="quaternary" href="/signin">Sign in</LinkButton>
-      <LinkButton variant="quaternary" href="/signup">Sign up</LinkButton>
+      {children}
     </StyledLinkButtonCluster>
   );
 };

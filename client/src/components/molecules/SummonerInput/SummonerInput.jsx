@@ -1,12 +1,12 @@
 import { StyledSummonerInput } from "./SummonerInput.styled";
-import { IconButton } from "../../atoms/IconButton/IconButton";
+import { IconButtonLink } from "../../atoms/IconButtonLink/IconButtonLink";
 import { InputField } from "../../atoms/InputField/InputField";
 
 export const SummonerInput = () => {
   return (
     <StyledSummonerInput>
       <InputField />
-      <IconButton />
+      <IconButtonLink icon="search" />
     </StyledSummonerInput>
   );
 };

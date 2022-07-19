@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 export const TextLogoLink = ({ to }) => {
   return (
     <StyledTextLogoLink to={to}>
-      <TextLogo />
+      <TextLogo fill="white" />
     </StyledTextLogoLink>
   );
 };

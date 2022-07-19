@@ -6,6 +6,6 @@ export const StyledSearchSummoner = styled(FlexColCenter)`
     max-width: 1080px;
     margin: 0 auto;
     height: calc(100vh - 1rem - 80px);
-    padding-bottom: 7rem;
+    padding-bottom: 8rem;
     gap: 1rem;
 `;

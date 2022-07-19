@@ -7,4 +7,7 @@ export const StyledInputField = styled.input.attrs({
     padding: 1rem;
     height: 60px;
     flex: 1;
+    background-color: #eeeeee;
+    border: none;
+
 `;

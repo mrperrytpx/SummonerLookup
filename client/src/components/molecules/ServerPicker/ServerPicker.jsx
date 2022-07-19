@@ -1,5 +1,5 @@
 import { StyledServerPicker } from "./ServerPicker.styled";
-import { CheckedServer } from "../../atoms/CheckedServer/CheckedServer";
+import { CheckedServer } from "../../atoms/ServerButton/ServerButton";
 
 const SERVER_VALUES = {
   "eun1": "EUNE",

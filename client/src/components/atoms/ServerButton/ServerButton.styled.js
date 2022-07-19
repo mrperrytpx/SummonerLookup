@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledCheckedServer = styled.div`
+export const StyledServerButton = styled.div`
     display: inline-block;
     height: 100%;
 

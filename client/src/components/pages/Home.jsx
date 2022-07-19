@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Footer } from "../organisms/Footer/Footer";
 
 import { Navbar } from "../organisms/Navbar/Navbar";
 import { SearchSummoner } from "../organisms/SearchSummoner/SearchSummoner";
@@ -30,6 +31,8 @@ export const Home = () => {
         />
 
       </main>
+
+      <Footer />
     </>
   );
 };
