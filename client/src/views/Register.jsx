@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 
 const Register = () => {
 	const [email, setEmail] = useState("");
@@ -126,7 +125,6 @@ const Register = () => {
 						className="show-password"
 						onClick={handleVisibility}
 					>
-						{isVisible ? <AiFillEye /> : <AiFillEyeInvisible />}
 					</button>
 				</div>
 

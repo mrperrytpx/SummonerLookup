@@ -4,7 +4,7 @@ import { LinkButtonCluser } from "../../molecules/LinkButtonCluster/LinkButtonCl
 
 export const Navbar = () => {
   return (
-    <StyledNavbar>
+    <StyledNavbar as="nav">
       <TextLogoLink />
       <LinkButtonCluser />
     </StyledNavbar>

@@ -11,7 +11,7 @@ export const StyledCheckedServer = styled.div`
         text-align: center;
         color: ${({ server, checkedRadioButton, theme }) => server === checkedRadioButton ? theme.textColors.dark : theme.textColors.light};
         
-        padding: .5rem;
+        padding: .3rem .5rem;
         margin-right: .5rem;
         
         background-color: ${({ server, checkedRadioButton, theme }) => server === checkedRadioButton ? theme.backgroundColors.active : theme.backgroundColors.tertiary};

@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 // Contexts
 import useAuth from "../hooks/useAuth";
 import { TextLogoLink } from "../components/atoms/TextLogoLink/TextLogoLink";
@@ -64,8 +63,7 @@ const Login = () => {
 					<button
 						className="show-password"
 						onClick={handleVisibility}
-					>{isVisible ? <AiFillEye /> : <AiFillEyeInvisible />}</button>
-				</div>
+					></button>				</div>
 
 				{error && <p>{error}</p>}
 

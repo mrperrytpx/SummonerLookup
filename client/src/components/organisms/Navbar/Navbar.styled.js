@@ -1,11 +1,9 @@
 import styled from "styled-components";
+import { FlexRowSpaceBetween } from "../../atoms/FlexBoxes/FlexBoxes.styled";
 
-export const StyledNavbar = styled.nav`
-    display: flex;
+export const StyledNavbar = styled(FlexRowSpaceBetween)`
     height: 80px;
     width: 100%;
-    align-items: center;
-    justify-content: space-between;
     padding: 1rem;
     border-bottom: 2px solid ${(props) => props.theme.backgroundColors.tertiary};
     margin-bottom: 1rem;

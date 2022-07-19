@@ -29,6 +29,10 @@ const GlobalStyles = createGlobalStyle`
         font: inherit;
     }
 
+    button {
+        border: none;
+    }
+
     img, picture, video, canvas {
         display: block;
         max-width: 100%;
