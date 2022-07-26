@@ -1,6 +1,5 @@
 import { ReactComponent as TextLogo } from "../../../assets/txtlogo.svg";
 import { StyledTextLogoLink } from "./TextLogolink.styled";
-import PropTypes from "prop-types";
 
 export const TextLogoLink = ({ to }) => {
   return (
@@ -8,12 +7,4 @@ export const TextLogoLink = ({ to }) => {
       <TextLogo fill="white" />
     </StyledTextLogoLink>
   );
-};
-
-TextLogoLink.propTypes = {
-  to: PropTypes.string
-};
-
-TextLogoLink.defaultProps = {
-  to: "/"
 };

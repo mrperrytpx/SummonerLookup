@@ -46,25 +46,25 @@ export const FlexColCenter = styled(FlexCol)`
 `;
 
 export const FlexColStart = styled(FlexCol)`
-    justify-content: center;
-    align-items: flex-start;
+    justify-content: flex-start;
+    align-items: center;
 `;
 
 export const FlexColEnd = styled(FlexCol)`
-    justify-content: center;
-    align-items: flex-end;
+    justify-content: flex-end;
+    align-items: center;
 `;
 
 export const FlexColSpaceAround = styled(FlexCol)`
-    justify-content: center;
-    align-items: space-around;
+    justify-content: space-around;
+    align-items: center;
 `;
 
 export const FlexColSpaceBetween = styled(FlexCol)`
-    justify-content: center;
-    align-items: space-between;
+    justify-content: space-between;
+    align-items: center;
 `;
 export const FlexColSpaceEvenly = styled(FlexCol)`
-    justify-content: center;
-    align-items: space-evenly;
+    justify-content: space-evenly;
+    align-items: center;
 `;

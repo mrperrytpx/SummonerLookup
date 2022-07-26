@@ -1,8 +1,8 @@
 import { StyledLinkButtonCluster } from "./LinkButtonCluster.styled";
 
-export const LinkButtonCluster = ({ children }) => {
+export const LinkButtonCluster = ({ children, variant, border }) => {
   return (
-    <StyledLinkButtonCluster>
+    <StyledLinkButtonCluster border={border} variant={variant}>
       {children}
     </StyledLinkButtonCluster>
   );

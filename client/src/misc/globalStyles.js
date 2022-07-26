@@ -22,6 +22,7 @@ const GlobalStyles = createGlobalStyle`
         line-height: 1.5;
         color: ${({ theme }) => theme.textColors.dark};
         height: 100%;
+        overflow-x: hidden;
 
     }
 

@@ -1,5 +1,4 @@
 import { StyledServerButton } from "./ServerButton.styled";
-import PropTypes from "prop-types";
 
 export const CheckedServer = ({ server, children, handleLabelClick, handleRadioClick, checkedRadioButton }) => {
 
@@ -11,12 +10,4 @@ export const CheckedServer = ({ server, children, handleLabelClick, handleRadioC
       <input type="radio" onChange={handleRadioClick} checked={isRadioChecked(server)} id={server} value={server} />
     </StyledServerButton>
   );
-};
-
-CheckedServer.propTypes = {
-  server: PropTypes.string.isRequired,
-  children: PropTypes.node.isRequired,
-  handleLabelClick: PropTypes.func.isRequired,
-  handleRadioClick: PropTypes.func.isRequired,
-  checkedRadioButton: PropTypes.string.isRequired
 };

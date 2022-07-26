@@ -7,6 +7,14 @@ export const StyledFooter = styled(FlexRowSpaceBetween).attrs({
     background-color: ${({ theme }) => theme.backgroundColors.primary};
     border-top: 1px solid ${({ theme }) => theme.backgroundColors.quaternary};
     padding: 1rem;
-    max-width: 1920px;
     margin: auto;
+    padding-bottom: 2rem;
+
+    @media only screen and (min-width: 2400px) {
+        justify-content: center;
+    }
+
+    @media only screen and (max-width: 600px) {
+        flex-direction: column;
+    }
 `;
