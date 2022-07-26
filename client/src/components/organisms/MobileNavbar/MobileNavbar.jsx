@@ -8,8 +8,8 @@ export const MobileNavbar = () => {
   return (
     <StyledMobileNavbar>
       <LinkButtonCluster variant="mobile">
-        <LinkButton variant="quaternary" href="/signin">Sign in</LinkButton>
-        <LinkButton variant="quaternary" href="/signup">Sign up</LinkButton>
+        <LinkButton variant="quaternary" to="/signin">Sign in</LinkButton>
+        <LinkButton variant="quaternary" to="/signup">Sign up</LinkButton>
       </LinkButtonCluster>
 
       <LinkButtonCluster>

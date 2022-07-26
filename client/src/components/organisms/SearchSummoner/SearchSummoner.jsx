@@ -1,18 +1,31 @@
 import { StyledSearchSummoner } from "./SearchSummoner.styled";
 import { SummonerInput } from "../../molecules/SummonerInput/SummonerInput";
 import { ServerPicker } from "../../molecules/ServerPicker/ServerPicker";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
+export const SearchSummoner = () => {
 
-export const SearchSummoner = ({ handleLabelClick, handleRadioClick, checkedRadioButton }) => {
+  const [summonerName, setSummonerName] = useState("");
+  const [checkedRadioButton, setCheckedRadioButton] = useState("eun1");
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const myRadioInput = checkedRadioButton;
-    if (!myRadioInput) {
+    if (!checkedRadioButton) {
       alert("no");
       return;
     }
-    console.log(myRadioInput);
+    navigate(`/${checkedRadioButton}/${summonerName}`);
+  };
+
+  const handleLabelClick = (e) => {
+    console.log(e.target.htmlFor);
+    setCheckedRadioButton(e.target.htmlFor);
+  };
+
+  const handleRadioClick = (e) => {
+    setCheckedRadioButton(e.target.value);
   };
 
   return (
@@ -20,7 +33,7 @@ export const SearchSummoner = ({ handleLabelClick, handleRadioClick, checkedRadi
       as="form"
       onSubmit={(e) => handleSubmit(e)}
     >
-      <SummonerInput />
+      <SummonerInput setSummonerName={setSummonerName} summonerName={summonerName} server={checkedRadioButton} />
       <ServerPicker
         handleLabelClick={handleLabelClick}
         handleRadioClick={handleRadioClick}

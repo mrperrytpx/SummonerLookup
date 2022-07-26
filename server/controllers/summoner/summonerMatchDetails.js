@@ -1,7 +1,10 @@
 const { getMatch } = require("../../services/external");
+const leagueRegion = require("../../utils/leagueRegion");
 
 const summonerMatchDetails = async (req, res) => {
-	const { region, id } = req.params;
+	const { id } = req.params;
+	const server = id.split("_")[0];
+	const region = leagueRegion(server);
 
 	const matchData = await getMatch(region, id);
 

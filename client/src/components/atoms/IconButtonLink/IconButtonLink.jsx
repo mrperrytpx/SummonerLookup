@@ -2,13 +2,13 @@ import { FaSearch, FaGithub, FaLinkedin } from "react-icons/fa";
 import { StyledIconButtonLink } from "./IconButtonLink.styled";
 import { StyledIconButtonAnchor } from "./IconButtonAchor.styled";
 
-export const IconButtonLink = ({ size, icon }) => {
+export const IconButtonLink = ({ size, icon, server, summonerName }) => {
 
   switch (icon) {
 
     case "search": {
       return (
-        <StyledIconButtonLink to="/">
+        <StyledIconButtonLink to={`/${server}/${summonerName}/`}>
           <FaSearch size="40" fill="black" />
         </StyledIconButtonLink>
       );

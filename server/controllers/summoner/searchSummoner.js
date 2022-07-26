@@ -1,7 +1,9 @@
 const { getSummonerAccountData } = require("../../services/external");
+const leagueRegion = require("../../utils/leagueRegion");
 
 const searchSummoner = async (req, res) => {
-	const { region, server, summonerName } = req.params;
+	const { server, summonerName } = req.params;
+	const region = leagueRegion(server);
 	const notSpacedSummoner = summonerName.split(" ").join("%20");
 	let payload = {};
 

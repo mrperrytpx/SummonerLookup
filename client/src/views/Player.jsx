@@ -10,11 +10,13 @@ import PlayerRankedStats from "../components/old/PlayerRankedStats";
 import PlayerLive from "../components/old/PlayerLive";
 
 const fetchPlayer = (region, server, summonerName) => {
+
+	console.log(region);
 	const controller = new AbortController();
 	// Only way I found how to properly cancel a react-query fetch request
 	const promise = new Promise(async (resolve, reject) => {
 		try {
-			const response = await fetch(`/api/summoner/search_summoner/${region}/${server}/${summonerName.toLowerCase()}`, {
+			const response = await fetch(`/api/summoner/search_summoner/${server}/${summonerName.toLowerCase()}`, {
 				method: "GET",
 				signal: controller.signal
 			});

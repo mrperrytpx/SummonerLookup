@@ -37,7 +37,7 @@ const Login = () => {
 		<section className="input-section">
 			<form onSubmit={handleLogin}>
 
-				<TextLogoLink />
+				<TextLogoLink to="/" />
 				<label htmlFor="username">Username:</label>
 				<input
 					autoComplete="true"

@@ -57,7 +57,7 @@ const App = () => {
 						<Route path="/me/delete" element={<DeleteUser />} />
 					</Route>
 
-					<Route path="/:region/:server/:summonerName" element={<Player />} />
+					<Route path="/:server/:summonerName" element={<Player />} />
 				</Routes>
 			</div>
 		</div>
