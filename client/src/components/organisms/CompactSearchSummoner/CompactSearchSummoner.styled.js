@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { FlexRow } from "../../atoms/FlexBoxes/FlexBoxes.styled";
 
 export const StyledCompactSearchSummoner = styled(FlexRow)`
-    width: min(90%, 650px);
+    width: min(90%, 500px);
     max-width: 2400px;
     background-color: #eeeeee;
 `;

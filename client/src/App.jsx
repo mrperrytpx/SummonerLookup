@@ -50,7 +50,7 @@ const App = () => {
 	};
 
 	useEffect(function closeNav() {
-		if (width >= 700 && isNavOpen) setIsNavOpen(false);
+		if (width >= 750 && isNavOpen) setIsNavOpen(false);
 	}, [width, isNavOpen, setIsNavOpen]);
 
 	if (loading) return <div>Loading...</div>;

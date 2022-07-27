@@ -10,12 +10,11 @@ import { ReactComponent as SquareLogo } from "../../../assets/square_logo_no_tex
 import { ReactComponent as TextLogo } from "../../../assets/txtlogo.svg";
 
 export const Navbar = ({ width, isNavOpen, handleNavOpen, setIsNavOpen }) => {
-  // <SquareLogo fill="white" width="60" />
   const location = useLocation();
 
   return (
     <StyledNavbar>
-      {width >= 700
+      {width >= 750
         ? <LinkButtonCluster>
           <LinkButton variant="quaternary" to="/signin">Sign in</LinkButton>
           <LinkButton variant="quaternary" to="/signup">Sign up</LinkButton>
@@ -26,7 +25,7 @@ export const Navbar = ({ width, isNavOpen, handleNavOpen, setIsNavOpen }) => {
       }
 
       {location.pathname !== "/" && !isNavOpen ? <CompactSearchSummoner /> : null}
-      {width >= 700
+      {width >= 600
         ? <SvgLink to="/">
           {location.pathname === "/"
             ? <TextLogo fill="white" />
@@ -41,3 +40,18 @@ export const Navbar = ({ width, isNavOpen, handleNavOpen, setIsNavOpen }) => {
     </StyledNavbar>
   );
 };
+
+// if width is >= 750
+//   render link cluster
+// else render correct navigation icon
+//   as long as nav open state is false
+
+// if it's not homepage and nav isn't open
+//   render search bar with dropdown
+
+// if width is >= 600
+//   render a svg link
+//     if it's homepage, always render textlogo
+//     if it's nothomepage and width is >= 1100
+//       render textlogo
+//       else render squarelogo
