@@ -10,7 +10,7 @@ import { ReactComponent as SquareLogo } from "../../../assets/square_logo_no_tex
 import { ReactComponent as TextLogo } from "../../../assets/txtlogo.svg";
 
 export const Navbar = ({ width, isNavOpen, handleNavOpen, setIsNavOpen }) => {
-
+  // <SquareLogo fill="white" width="60" />
   const location = useLocation();
 
   return (
@@ -30,7 +30,9 @@ export const Navbar = ({ width, isNavOpen, handleNavOpen, setIsNavOpen }) => {
         ? <SvgLink to="/">
           {location.pathname === "/"
             ? <TextLogo fill="white" />
-            : <SquareLogo fill="white" width="60" />
+            : width >= 1100
+              ? <TextLogo fill="white" />
+              : <SquareLogo fill="white" width="60" />
           }
         </SvgLink>
         : null

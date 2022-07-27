@@ -21,6 +21,10 @@ import useAuth from "./hooks/useAuth";
 import useGetLeagueChampions from "./hooks/useGetLeagueChampions";
 import useScreenSize from "./hooks/useScreenSize";
 
+import { WithNav } from "./components/templates/WithNav";
+import { WithoutNav } from "./components/templates/WithoutNav";
+
+
 const App = () => {
 	const [loading, setLoading] = useState(true);
 	const auth = useAuth();
@@ -54,21 +58,26 @@ const App = () => {
 	return (
 		<div className="App">
 			<GlobalStyles />
-			<Navbar width={width} setIsNavOpen={setIsNavOpen} isNavOpen={isNavOpen} handleNavOpen={handleNavOpen} />
+			{/* <Navbar width={width} setIsNavOpen={setIsNavOpen} isNavOpen={isNavOpen} handleNavOpen={handleNavOpen} /> */}
 			<Routes>
-				<Route path="/" element={<Home isNavOpen={isNavOpen} width={width} />} />
 
-				<Route element={<ProtectedRoute redirectPath="/" isAllowed={!auth.user} />}>
-					<Route path="/signin" element={<Login />} />
-					<Route path="/signup" element={<Register />} />
+				<Route element={<WithNav width={width} setIsNavOpen={setIsNavOpen} isNavOpen={isNavOpen} handleNavOpen={handleNavOpen} />}>
+					<Route path="/" element={<Home isNavOpen={isNavOpen} width={width} />} />
+					<Route element={<ProtectedRoute redirectPath="/login" isAllowed={!!auth.user} />}>
+						<Route path="/me" element={<Me />} />
+						<Route path="/me/delete" element={<DeleteUser />} />
+					</Route>
+
+					<Route path="/:server/:summonerName" element={<Player />} />
 				</Route>
 
-				<Route element={<ProtectedRoute redirectPath="/login" isAllowed={!!auth.user} />}>
-					<Route path="/me" element={<Me />} />
-					<Route path="/me/delete" element={<DeleteUser />} />
+				<Route element={<WithoutNav />}>
+					<Route element={<ProtectedRoute redirectPath="/" isAllowed={!auth.user} />}>
+						<Route path="/signin" element={<Login />} />
+						<Route path="/signup" element={<Register />} />
+					</Route>
 				</Route>
 
-				<Route path="/:server/:summonerName" element={<Player />} />
 			</Routes>
 		</div>
 	);
