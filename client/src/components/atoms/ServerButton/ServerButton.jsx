@@ -1,6 +1,6 @@
 import { StyledServerButton } from "./ServerButton.styled";
 
-export const CheckedServer = ({ server, children, handleLabelClick, handleRadioClick, checkedRadioButton }) => {
+export const ServerButton = ({ server, children, handleLabelClick, handleRadioClick, checkedRadioButton }) => {
 
   const isRadioChecked = (value) => checkedRadioButton === value;
 

@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router-dom";
 // Components
 
 import GlobalStyles from "./misc/globalStyles";
-import Navbar from "./components/old/Navbar";
+import { Navbar } from "./components/organisms/Navbar/Navbar";
 // views
 
 import { Home } from "./components/pages/Home";
@@ -19,6 +19,7 @@ import ProtectedRoute from "./utils/ProtectedRoute";
 import useAuth from "./hooks/useAuth";
 
 import useGetLeagueChampions from "./hooks/useGetLeagueChampions";
+import useScreenSize from "./hooks/useScreenSize";
 
 const App = () => {
 	const [loading, setLoading] = useState(true);
@@ -37,29 +38,38 @@ const App = () => {
 
 	useGetLeagueChampions();
 
+	const [isNavOpen, setIsNavOpen] = useState(false);
+	const { width } = useScreenSize(setIsNavOpen);
+
+	const handleNavOpen = () => {
+		setIsNavOpen(prev => !prev);
+	};
+
+	useEffect(function closeNav() {
+		if (width >= 700 && isNavOpen) setIsNavOpen(false);
+	}, [width, isNavOpen, setIsNavOpen]);
+
 	if (loading) return <div>Loading...</div>;
 
 	return (
 		<div className="App">
 			<GlobalStyles />
-			{/* <Navbar /> */}
-			<div className="content">
-				<Routes>
-					<Route path="/" element={<Home />} />
+			<Navbar width={width} setIsNavOpen={setIsNavOpen} isNavOpen={isNavOpen} handleNavOpen={handleNavOpen} />
+			<Routes>
+				<Route path="/" element={<Home isNavOpen={isNavOpen} width={width} />} />
 
-					<Route element={<ProtectedRoute redirectPath="/" isAllowed={!auth.user} />}>
-						<Route path="/signin" element={<Login />} />
-						<Route path="/signup" element={<Register />} />
-					</Route>
+				<Route element={<ProtectedRoute redirectPath="/" isAllowed={!auth.user} />}>
+					<Route path="/signin" element={<Login />} />
+					<Route path="/signup" element={<Register />} />
+				</Route>
 
-					<Route element={<ProtectedRoute redirectPath="/login" isAllowed={!!auth.user} />}>
-						<Route path="/me" element={<Me />} />
-						<Route path="/me/delete" element={<DeleteUser />} />
-					</Route>
+				<Route element={<ProtectedRoute redirectPath="/login" isAllowed={!!auth.user} />}>
+					<Route path="/me" element={<Me />} />
+					<Route path="/me/delete" element={<DeleteUser />} />
+				</Route>
 
-					<Route path="/:server/:summonerName" element={<Player />} />
-				</Routes>
-			</div>
+				<Route path="/:server/:summonerName" element={<Player />} />
+			</Routes>
 		</div>
 	);
 };

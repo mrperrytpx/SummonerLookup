@@ -1,10 +1,9 @@
 import styled from "styled-components";
 
 export const StyledInputField = styled.input`
-display: block;
-    font-size: 1.3rem;
-    padding: 1rem;
-    height: 60px;
+    font-size: 1.25rem;
+    padding: 0.5rem 1rem;
+    height: 100%;
     flex: 1;
     background-color: #eeeeee;
     border: none;

@@ -1,34 +1,27 @@
-import { useEffect, useState } from "react";
-import useScreenSize from "../../hooks/useScreenSize";
-
 import { Footer } from "../organisms/Footer/Footer";
-import { MobileMenu } from "../organisms/MobileMenu/MobileMenu";
-import { Navbar } from "../organisms/Navbar/Navbar";
 import { SearchSummoner } from "../organisms/SearchSummoner/SearchSummoner";
-import { FlexColCenter } from "../atoms/FlexBoxes/FlexBoxes.styled";
+import useScreenSize from "../../hooks/useScreenSize";
+import { CompactSearchSummoner } from "../organisms/CompactSearchSummoner/CompactSearchSummoner";
+import { ReactComponent as SquareLogo } from "../../assets/square_logo_no_text.svg";
+import { StyledHome } from "./Home.styled";
 
 export const Home = () => {
 
-  const [isNavOpen, setIsNavOpen] = useState(false);
-  const { width } = useScreenSize(setIsNavOpen);
-
-  const handleNavOpen = () => setIsNavOpen(prev => !prev);
-
-  useEffect(function closeNav() {
-    if (width >= 600 && isNavOpen) setIsNavOpen(false);
-  }, [width, isNavOpen, setIsNavOpen]);
+  const { width } = useScreenSize();
 
   return (
     <>
-      <Navbar width={width} isNavOpen={isNavOpen} handleNavOpen={handleNavOpen} />
-      {
-        !isNavOpen
-          ? <FlexColCenter as="main" style={{ minHeight: "calc(100vh - 1rem - 80px)" }}>
-            <SearchSummoner />
-          </FlexColCenter>
-          : <MobileMenu />
-      }
+      <StyledHome center={width >= 710 ? true : false}>
+        {width >= 710
+          ? <SearchSummoner />
+          : <>
+            <SquareLogo fill="white" width="200" />
+            <CompactSearchSummoner />
+          </>
+        }
+      </StyledHome>
       {width >= 600 ? <Footer /> : null}
+
     </>
   );
 };

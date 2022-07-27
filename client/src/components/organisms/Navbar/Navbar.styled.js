@@ -1,23 +1,24 @@
 import styled from "styled-components";
 import { FlexRowSpaceBetween } from "../../atoms/FlexBoxes/FlexBoxes.styled";
 
-export const StyledNavbar = styled(FlexRowSpaceBetween)`
+export const StyledNavbar = styled(FlexRowSpaceBetween).attrs({ as: "nav" })`
+    flex-direction: row-reverse;
+
     width: 100%;
     min-height: 80px;
 
-    padding: 1rem;
-    margin: auto;
-    margin-bottom: 1rem;
+    padding: 0 1rem;
+    margin: auto auto 1rem auto;
+    position: relative;
+    gap: 1rem;
 
     border-bottom: 1px solid ${({ theme }) => theme.backgroundColors.quaternary};
 
     @media only screen and (min-width: ${({ theme }) => theme.resolutions.widescreen}) {
         justify-content: space-evenly;
-        gap: 20rem;
-        
     }
 
-    @media only screen and (max-width: ${({ theme }) => theme.resolutions.tablet}) {
+    @media only screen and (max-width: ${({ theme }) => theme.resolutions.mobile}) {
         padding: 0.5rem 1rem;
     }
 `;

@@ -6,9 +6,7 @@ export const StyledFooter = styled(FlexRowCenter).attrs({
 })`
     background-color: ${({ theme }) => theme.backgroundColors.primary};
     border-top: 1px solid ${({ theme }) => theme.backgroundColors.quaternary};
-    padding: 1rem;
-    margin: auto;
-    padding-bottom: 2rem;
+    padding: 1rem 1rem 2rem 1rem;
 
     @media only screen and (max-width: ${({ theme }) => theme.resolutions.tablet}) {
         flex-direction: column;

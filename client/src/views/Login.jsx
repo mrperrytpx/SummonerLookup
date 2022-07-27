@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 // Contexts
 import useAuth from "../hooks/useAuth";
-import { TextLogoLink } from "../components/atoms/TextLogoLink/TextLogoLink";
+import { SvgLink } from "../components/atoms/SvgLink/SvgLink";
 
 const Login = () => {
 
@@ -37,7 +37,7 @@ const Login = () => {
 		<section className="input-section">
 			<form onSubmit={handleLogin}>
 
-				<TextLogoLink to="/" />
+				<SvgLink to="/" />
 				<label htmlFor="username">Username:</label>
 				<input
 					autoComplete="true"
