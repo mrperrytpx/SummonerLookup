@@ -18,4 +18,4 @@ export const SummonerInput = ({ setSummonerName, summonerName, server }) => {
       />
     </StyledSummonerInput>
   );
-};;
+};

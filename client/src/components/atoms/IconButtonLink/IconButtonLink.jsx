@@ -9,7 +9,7 @@ export const IconButtonLink = ({ size, icon, server, summonerName }) => {
     case "search": {
       return (
         <StyledIconButtonLink disabled={summonerName ? false : true} to={`/${server}/${summonerName}/`}>
-          <FaSearch size="40" fill="black" />
+          <FaSearch size="40" fill="#283655" />
         </StyledIconButtonLink>
       );
     }
