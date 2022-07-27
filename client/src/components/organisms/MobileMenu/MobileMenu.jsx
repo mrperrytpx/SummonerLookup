@@ -2,11 +2,11 @@ import { Disclaimer } from "../../atoms/Disclaimer/Disclaimer";
 import { IconButtonLink } from "../../atoms/IconButtonLink/IconButtonLink";
 import { LinkButton } from "../../atoms/LinkButton/LinkButton";
 import { LinkButtonCluster } from "../../molecules/LinkButtonCluster/LinkButtonCluster";
-import { StyledMobileNavbar } from "./MobileNavbar.styled";
+import { StyledMobileMenu } from "./MobileMenu.styled";
 
-export const MobileNavbar = () => {
+export const MobileMenu = () => {
   return (
-    <StyledMobileNavbar>
+    <StyledMobileMenu>
       <LinkButtonCluster variant="mobile">
         <LinkButton variant="quaternary" to="/signin">Sign in</LinkButton>
         <LinkButton variant="quaternary" to="/signup">Sign up</LinkButton>
@@ -18,6 +18,6 @@ export const MobileNavbar = () => {
       </LinkButtonCluster>
 
       <Disclaimer />
-    </StyledMobileNavbar>
+    </StyledMobileMenu>
   );
 };

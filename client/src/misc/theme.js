@@ -9,5 +9,11 @@ export const theme = {
     textColors: {
         dark: "#111111",
         light: "#ffffff"
+    },
+    resolutions: {
+        mobile: "421px",
+        tablet: "701px",
+        desktop: "1025px",
+        widescreen: "2400px"
     }
 };

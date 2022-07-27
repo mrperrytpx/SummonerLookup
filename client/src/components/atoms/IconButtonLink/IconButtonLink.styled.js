@@ -8,4 +8,6 @@ export const StyledIconButtonLink = styled(Link)`
     justify-content: center;
     background-color: #eeeeee;
     cursor: pointer;
+
+    pointer-events: ${(props) => props.disabled ? 'none' : ''};
 `;

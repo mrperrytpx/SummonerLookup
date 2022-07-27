@@ -9,7 +9,7 @@ const GlobalStyles = createGlobalStyle`
     }
 
     html {
-        height: 100vh;
+        min-height: 100vh;
     }
 
     html, body {

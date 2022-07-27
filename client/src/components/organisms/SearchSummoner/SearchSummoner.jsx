@@ -12,7 +12,7 @@ export const SearchSummoner = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!checkedRadioButton) {
+    if (!checkedRadioButton || !summonerName) {
       alert("no");
       return;
     }
@@ -20,7 +20,6 @@ export const SearchSummoner = () => {
   };
 
   const handleLabelClick = (e) => {
-    console.log(e.target.htmlFor);
     setCheckedRadioButton(e.target.htmlFor);
   };
 
@@ -29,11 +28,12 @@ export const SearchSummoner = () => {
   };
 
   return (
-    <StyledSearchSummoner
-      as="form"
-      onSubmit={(e) => handleSubmit(e)}
-    >
-      <SummonerInput setSummonerName={setSummonerName} summonerName={summonerName} server={checkedRadioButton} />
+    <StyledSearchSummoner as="form" onSubmit={(e) => handleSubmit(e)}>
+      <SummonerInput
+        setSummonerName={setSummonerName}
+        summonerName={summonerName}
+        server={checkedRadioButton}
+      />
       <ServerPicker
         handleLabelClick={handleLabelClick}
         handleRadioClick={handleRadioClick}

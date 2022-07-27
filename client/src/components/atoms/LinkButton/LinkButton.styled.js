@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 export const StyledLinkButton = styled(Link)`
     background-color: ${({ theme, variant }) => backgroundColor(theme, variant)};
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 1px 4px rgba(255, 255, 255, 0.25);
 
     display: inline-block;
     height: 100%;
