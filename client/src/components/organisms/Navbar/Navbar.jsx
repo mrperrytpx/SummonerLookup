@@ -25,7 +25,7 @@ export const Navbar = ({ width, isNavOpen, handleNavOpen, setIsNavOpen }) => {
       }
 
       {location.pathname !== "/" && !isNavOpen ? <CompactSearchSummoner /> : null}
-      {width >= 600
+      {width >= 450
         ? <SvgLink to="/">
           {location.pathname === "/"
             ? <TextLogo fill="white" />

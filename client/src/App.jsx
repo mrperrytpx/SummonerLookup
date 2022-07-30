@@ -3,10 +3,9 @@ import { Route, Routes } from "react-router-dom";
 // Components
 
 import GlobalStyles from "./misc/globalStyles";
-import { Navbar } from "./components/organisms/Navbar/Navbar";
 // views
 
-import { Home } from "./components/pages/Home";
+import { Home } from "./components/pages/Home/Home";
 
 import Login from "./views/Login";
 import Register from "./views/Register";
@@ -58,7 +57,6 @@ const App = () => {
 	return (
 		<div className="App">
 			<GlobalStyles />
-			{/* <Navbar width={width} setIsNavOpen={setIsNavOpen} isNavOpen={isNavOpen} handleNavOpen={handleNavOpen} /> */}
 			<Routes>
 
 				<Route element={<WithNav width={width} setIsNavOpen={setIsNavOpen} isNavOpen={isNavOpen} handleNavOpen={handleNavOpen} />}>
