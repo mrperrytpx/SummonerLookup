@@ -15,7 +15,7 @@ import Player from "./views/Player";
 
 import ProtectedRoute from "./utils/ProtectedRoute";
 // Contexts
-import useAuth from "./hooks/useAuth";
+import { useAuth } from "./hooks/useAuth";
 
 import useGetLeagueChampions from "./hooks/useGetLeagueChampions";
 import useScreenSize from "./hooks/useScreenSize";

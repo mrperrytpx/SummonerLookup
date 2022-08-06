@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 // Contexts
-import useAuth from "../hooks/useAuth";
+import { useAuth } from "../hooks/useAuth";
 import { SvgLink } from "../components/atoms/SvgLink/SvgLink";
 
 const Login = () => {
