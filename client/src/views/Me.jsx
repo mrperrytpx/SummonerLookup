@@ -5,6 +5,7 @@ import { useQuery } from "react-query";
 import { TokenContext } from "../contexts/TokenContext";
 // Components
 import Summoner from "../components/old/Summoner";
+import { useAuth } from "../hooks/useAuth";
 
 const getFollowing = async (token) => {
 	const abortCont = new AbortController();
@@ -12,9 +13,10 @@ const getFollowing = async (token) => {
 		const response = await fetch("/api/user/me", {
 			method: "GET",
 			signal: abortCont.signal,
+			credentials: "include",
+
 			headers: {
 				"Content-Type": "application/json",
-				credentials: "include",
 				authorization: `Bearer ${token}`
 			}
 		});

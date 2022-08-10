@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { Route, Routes } from "react-router-dom";
+import { ReactQueryDevtools } from "react-query/devtools";
 // Components
 
 import GlobalStyles from "./misc/globalStyles";
@@ -25,19 +26,14 @@ import { WithoutNav } from "./components/templates/WithoutNav";
 
 
 const App = () => {
-	const [loading, setLoading] = useState(true);
-	const auth = useAuth();
+	const { accessToken } = useAuth();
 
-	const executedRef = useRef(false);
+	let user;
 
-	useEffect(function getTokens() {
-		if (executedRef.current) { return; }
-
-		auth.getFreshTokens();
-
-		executedRef.current = true;
-		setLoading(false);
-	}, [auth.getFreshTokens]);
+	useEffect(() => {
+		console.log("new token!!");
+		user = accessToken;
+	}, [accessToken]);
 
 	useGetLeagueChampions();
 
@@ -52,8 +48,6 @@ const App = () => {
 		if (width >= 750 && isNavOpen) setIsNavOpen(false);
 	}, [width, isNavOpen, setIsNavOpen]);
 
-	if (loading) return <div>Loading...</div>;
-
 	return (
 		<div className="App">
 			<GlobalStyles />
@@ -61,7 +55,7 @@ const App = () => {
 
 				<Route element={<WithNav width={width} setIsNavOpen={setIsNavOpen} isNavOpen={isNavOpen} handleNavOpen={handleNavOpen} />}>
 					<Route path="/" element={<Home isNavOpen={isNavOpen} width={width} />} />
-					<Route element={<ProtectedRoute redirectPath="/login" isAllowed={!!auth.user} />}>
+					<Route element={<ProtectedRoute redirectPath="/login" isAllowed={() => !!accessToken} />}>
 						<Route path="/me" element={<Me />} />
 						<Route path="/me/delete" element={<DeleteUser />} />
 					</Route>
@@ -70,13 +64,14 @@ const App = () => {
 				</Route>
 
 				<Route element={<WithoutNav />}>
-					<Route element={<ProtectedRoute redirectPath="/" isAllowed={!auth.user} />}>
+					<Route element={<ProtectedRoute redirectPath="/" isAllowed={!!accessToken} />}>
 						<Route path="/signin" element={<Login />} />
 						<Route path="/signup" element={<Register />} />
 					</Route>
 				</Route>
 
 			</Routes>
+			<ReactQueryDevtools initialIsOpen={false} />
 		</div>
 	);
 };

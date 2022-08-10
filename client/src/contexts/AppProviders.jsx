@@ -1,7 +1,7 @@
 // Contexts
 import LoggedInContextProvider from "./LoggedInContext";
 import TokenContextProvider from "./TokenContext";
-import AuthContextProvider from "./AuthContext";
+import { AuthContextProvider } from "../hooks/useAuth";
 import { ThemeProvider } from "styled-components";
 import { theme } from "../misc/theme";
 
