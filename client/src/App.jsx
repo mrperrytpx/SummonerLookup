@@ -64,7 +64,7 @@ const App = () => {
 				</Route>
 
 				<Route element={<WithoutNav />}>
-					<Route element={<ProtectedRoute redirectPath="/" isAllowed={!!accessToken} />}>
+					<Route element={<ProtectedRoute redirectPath="/" isAllowed={!accessToken} />}>
 						<Route path="/signin" element={<Login />} />
 						<Route path="/signup" element={<Register />} />
 					</Route>
