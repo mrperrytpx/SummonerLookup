@@ -6,7 +6,7 @@ import { SvgLink } from "../components/atoms/SvgLink/SvgLink";
 
 const Login = () => {
 
-	const auth = useAuth();
+	const { signIn } = useAuth();
 
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
@@ -17,7 +17,7 @@ const Login = () => {
 
 	const handleLogin = async (e) => {
 		e.preventDefault();
-		await auth.signIn(username, password);
+		await signIn.mutate({ username, password });
 	};
 
 

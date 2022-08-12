@@ -8,7 +8,7 @@ const logout = async (req, res) => {
 	await updateUserRefreshToken(_id, "");
 	// clear the cookie with the refresh token
 	res.clearCookie('slup');
-	return res.send({ message: 'Logged out' });
+	return res.sendStatus(200);
 };
 
 module.exports = logout;

@@ -18,7 +18,7 @@ const register = async (req, res) => {
 
 	await createNewUser(req, hashedPassword);
 
-	res.json({ message: "User created" });
+	res.sendStatus(201);
 };
 
 module.exports = register;

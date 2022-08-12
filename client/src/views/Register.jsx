@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../hooks/useAuth";
 
 const Register = () => {
 	const [email, setEmail] = useState("");
@@ -13,6 +14,7 @@ const Register = () => {
 	const [error, setError] = useState("");
 
 	const navigate = useNavigate();
+	const { signUp } = useAuth();
 
 	const handleRegister = async (e) => {
 		e.preventDefault();
@@ -40,30 +42,7 @@ const Register = () => {
 		setError("");
 
 		// If all the info is validated, send the info to the /register path to create a user
-		const info = { email, username, password };
-
-		try {
-			const response = await fetch(`/api/auth/register/`, {
-				method: "POST",
-				headers: { "Content-Type": "application/json" },
-				body: JSON.stringify(info)
-			});
-
-			if (!response.ok) {
-				switch (response.status) {
-					case 409:
-						throw new Error("Email already taken");
-					default:
-						throw new Error("Something is wrong...");
-				}
-			}
-			const data = await response.json();
-			console.log(data);
-			navigate("/login");
-
-		} catch (err) {
-			setError(err.message);
-		}
+		signUp.mutate({ email, username, password });
 	};
 
 	// Toggle type for password field to "hide/show"

@@ -1,16 +1,12 @@
 import { useAuth } from "../../hooks/useAuth";
 
-// Contexts
-
 const LogoutButton = () => {
 
-	const { signOut } = useAuth();
+	const { signOut, accessToken } = useAuth();
 
 	const handleLogout = async (e) => {
 		e.preventDefault();
-		console.log("Idk");
-		await signOut();
-		// }
+		await signOut.mutate({ accessToken });
 	};
 
 	return (
