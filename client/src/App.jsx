@@ -28,13 +28,6 @@ import { WithoutNav } from "./components/templates/WithoutNav";
 const App = () => {
 	const { accessToken } = useAuth();
 
-	let user;
-
-	useEffect(() => {
-		console.log("new token!!");
-		user = accessToken;
-	}, [accessToken]);
-
 	useGetLeagueChampions();
 
 	const [isNavOpen, setIsNavOpen] = useState(false);

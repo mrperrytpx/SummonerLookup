@@ -4,12 +4,7 @@ import { useQuery, useQueryClient } from "react-query";
 import { useNavigate } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 
-const useProvideAuth = () => {
-    const [user, setUser] = useState(null);
-    const [accessToken, setAccessToken] = useState(null);
-    const queryClient = useQueryClient();
-    const navigate = useNavigate();
-
+const useGetFreshTokens = (setAccessToken, setUser) => {
     async function getFreshTokens() {
         console.log("Trying for token...");
         const controller = new AbortController();
@@ -27,9 +22,11 @@ const useProvideAuth = () => {
         if (controller.signal.aborted) return;
 
         const data = await response.json();
+
         if (data?.accessToken) {
             const decoded = jwt_decode(data?.accessToken);
             setAccessToken(data?.accessToken);
+            setUser(decoded);
         }
         console.log("Token: ", data?.accessToken);
         return data;
@@ -37,15 +34,32 @@ const useProvideAuth = () => {
 
     const { isLoading: tokenLoading } = useQuery(["accessToken"], getFreshTokens, {
         onSuccess: (data) => {
-            const decoded = jwt_decode(data?.accessToken);
-            setUser(decoded);
-            setAccessToken(data?.accessToken);
+            if (data?.accessToken) {
+                const decoded = jwt_decode(data?.accessToken);
+                setUser(decoded);
+                setAccessToken(data?.accessToken);
+            } else {
+                setUser(null);
+                setAccessToken(null);
+            }
         },
         onError: () => {
             setUser(null);
             setAccessToken(null);
         }
     });
+
+    return { tokenLoading };
+};
+
+const useProvideAuth = () => {
+    const [accessToken, setAccessToken] = useState(null);
+    const [user, setUser] = useState(null);
+    const queryClient = useQueryClient();
+    const navigate = useNavigate();
+
+    const { tokenLoading } = useGetFreshTokens(setAccessToken, setUser);
+
     function signUp() { }
 
     function clearUser() {
@@ -70,6 +84,7 @@ const useProvideAuth = () => {
         setUser(null);
         setAccessToken(null);
         queryClient.setQueryData(["accessToken"], null);
+        navigate("/", { replace: true });
     }
 
     const signIn = async (username, password) => {
@@ -101,7 +116,7 @@ const useProvideAuth = () => {
         }
     };
 
-    return { user, updateUser, clearUser, accessToken, updateToken, clearToken, signIn, signOut, signUp, tokenLoading };
+    return { user, updateUser, clearUser, accessToken, updateToken, clearToken, signOut, signIn, signUp, tokenLoading };
 };
 
 
