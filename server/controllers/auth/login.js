@@ -11,7 +11,7 @@ const { updateUserRefreshToken, getUserFromDB } = require("../../services/intern
 const ApiError = require("../../utils/ApiError");
 
 const login = async (req, res) => {
-	const username = req.body.username;
+	const email = req.body.email;
 
 	// Destructure the error from the loginValidationf unction
 	const { error } = loginValidation(req.body);
@@ -19,8 +19,8 @@ const login = async (req, res) => {
 	if (error) throw new ApiError(`${error.details[0].message}`, 400);
 
 	// Fetch the user if it exists in the DB
-	const user = await getUserFromDB({ username: username });
-	if (!user) throw new ApiError("Invalid Username", 400);
+	const user = await getUserFromDB({ email: email });
+	if (!user) throw new ApiError("User doesn't exist", 400);
 
 	// CONFIRM BY EMAIL - TBD
 	// if (!user.confirmed) return res.status(400).json("Please confirm your email to login");
@@ -29,8 +29,8 @@ const login = async (req, res) => {
 	if (!valid) throw new ApiError("Invalid Password", 400);
 
 	// Create a refresh and an access token
-	const accessToken = createAccessToken(user._id, username);
-	const refreshToken = createRefreshToken(user._id, username);
+	const accessToken = createAccessToken(user._id, email);
+	const refreshToken = createRefreshToken(user._id, email);
 
 	// Update the user's document with a refresh token
 	await updateUserRefreshToken(user._id, refreshToken);

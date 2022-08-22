@@ -7,8 +7,8 @@ import GlobalStyles from "./misc/globalStyles";
 // views
 
 import { Home } from "./components/pages/Home/Home";
+import { SignIn } from "./components/pages/SignIn/SignIn";
 
-import Login from "./views/Login";
 import Register from "./views/Register";
 import Me from "./views/Me";
 import DeleteUser from "./views/DeleteUser";
@@ -58,7 +58,7 @@ const App = () => {
 
 				<Route element={<WithoutNav />}>
 					<Route element={<ProtectedRoute redirectPath="/" isAllowed={!accessToken} />}>
-						<Route path="/signin" element={<Login />} />
+						<Route path="/signin" element={<SignIn />} />
 						<Route path="/signup" element={<Register />} />
 					</Route>
 				</Route>

@@ -53,8 +53,8 @@ const useGetFreshTokensQuery = (setAccessToken, setUser) => {
 };
 
 const useSignInMutation = (setAccessToken, setUser, navigate) => {
-    const signIn = async ({ username, password }) => {
-        const info = { username, password };
+    const signIn = async ({ email, password }) => {
+        const info = { email, password };
         const controller = new AbortController();
         const response = await fetch(`/api/auth/login`, {
             method: "POST",
