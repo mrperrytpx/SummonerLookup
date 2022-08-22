@@ -2,17 +2,21 @@ import styled from "styled-components";
 
 export const StyledServerButton = styled.div`
     display: inline-block;
-    height: 100%;
+    text-align: center;
+    margin-right: .5rem;
 
+    
     label {
-        display: inline-block;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
         min-width: 3rem;
-        font-size: 0.9rem;
-        text-align: center;
+        font-size: .9em;
+        vertical-align: middle;
         color: ${({ server, checkedRadioButton, theme }) => server === checkedRadioButton ? theme.textColors.dark : theme.textColors.light};
         
-        padding: .3rem .5rem;
-        margin-right: .5rem;
+        padding: 5px 8px;
         
         background-color: ${({ server, checkedRadioButton, theme }) => server === checkedRadioButton ? theme.backgroundColors.active : theme.backgroundColors.tertiary};
         
@@ -24,3 +28,5 @@ export const StyledServerButton = styled.div`
     }
 
 `;
+
+// flex row, width 100% container, button div height 100%, label min width 3rem, padding .3rem .5rem
