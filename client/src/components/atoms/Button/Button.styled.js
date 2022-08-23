@@ -8,6 +8,7 @@ export const StyledButton = styled.button`
     display: inline-block;
     height: 100%;
     min-width: 100px;
+    width: min(${({ wide }) => wide ? "75%" : ""}, 200px);
     padding: .5em;
     border: none;
 

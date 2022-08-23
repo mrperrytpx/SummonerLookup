@@ -6,20 +6,18 @@ import { FormNav } from "../../molecules/FormNav/FormNav";
 import { SignInUpForm } from "../../molecules/SignInUpForm/SignInUpForm";
 import { useAuth } from "../../../hooks/useAuth";
 import { StyledSignIn } from "./SignIn.styled";
-import useScreenSize from "../../../hooks/useScreenSize";
+import { Button } from "../../atoms/Button/Button";
 
 export const SignIn = () => {
 
   const { register, handleSubmit } = useForm();
   const { signIn } = useAuth();
-  const { width } = useScreenSize();
 
   const onSubmit = (data) => signIn.mutate({ ...data });
 
   return (
     <StyledSignIn>
       <section>
-        <div style={{ color: "white" }}>{width}</div>
         <FormNav />
         <SignInUpForm onSubmit={handleSubmit(onSubmit)} >
           <SvgLink to="/">
@@ -41,7 +39,7 @@ export const SignIn = () => {
             placeholder="Type your password"
             required
           />
-          <button type="submit">SUBMIT TO MY DESIGN</button>
+          <Button wide={true} type="submit" variant="quaternary">SIGN IN</Button>
         </SignInUpForm>
       </section>
     </StyledSignIn>

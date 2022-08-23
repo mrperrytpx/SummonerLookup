@@ -1,7 +1,7 @@
 import { StyledButton } from "./Button.styled";
 
-export const Button = ({ children, onClick, variant }) => {
+export const Button = ({ wide = false, children, onClick = () => null, variant, type = "button" }) => {
   return (
-    <StyledButton onClick={onClick} variant={variant}>{children}</StyledButton>
+    <StyledButton wide={wide} type={type} onClick={onClick} variant={variant}>{children}</StyledButton>
   );
 };

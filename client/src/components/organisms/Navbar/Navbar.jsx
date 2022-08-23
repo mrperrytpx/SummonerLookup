@@ -9,12 +9,11 @@ import { CompactSearchSummoner } from "../CompactSearchSummoner/CompactSearchSum
 import { ReactComponent as SquareLogo } from "../../../assets/square_logo_no_text.svg";
 import { ReactComponent as TextLogo } from "../../../assets/txtlogo.svg";
 import { useAuth } from "../../../hooks/useAuth";
-import LogoutButton from "../../old/LogoutButton";
 import { Button } from "../../atoms/Button/Button";
 
 export const Navbar = ({ width, isNavOpen, handleNavOpen, setIsNavOpen }) => {
-  const location = useLocation();
 
+  const location = useLocation();
   const { tokenLoading, user, signOut, accessToken } = useAuth();
 
   const handleLogout = async (e) => {
@@ -27,8 +26,14 @@ export const Navbar = ({ width, isNavOpen, handleNavOpen, setIsNavOpen }) => {
       {tokenLoading ? <p style={{ color: "white" }}>Loading</p> :
         width >= 750
           ? <LinkButtonCluster>
-            {user ? <LinkButton variant="quaternary" to="/me">Profile</LinkButton> : <LinkButton variant="quaternary" to="/signin">Sign in</LinkButton>}
-            {user ? <Button onClick={(e) => handleLogout(e)} variant="danger">Sign Out</Button> : <LinkButton variant="quaternary" to="/signup">Sign up</LinkButton>}
+            {user
+              ? <LinkButton variant="quaternary" to="/me">Profile</LinkButton>
+              : <LinkButton variant="quaternary" to="/signin">Sign in</LinkButton>
+            }
+            {user
+              ? <Button onClick={(e) => handleLogout(e)} variant="danger">Sign Out</Button>
+              : <LinkButton variant="quaternary" to="/signup">Sign up</LinkButton>
+            }
           </LinkButtonCluster>
           : !isNavOpen
             ? <ImMenu3 fill="white" size="48" onClick={handleNavOpen}></ImMenu3>
