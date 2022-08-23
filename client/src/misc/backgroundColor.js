@@ -13,6 +13,12 @@ export function backgroundColor(theme, variant) {
         case "primary": {
             return theme.backgroundColors.primary;
         }
+        case "active": {
+            return theme.backgroundColors.active;
+        }
+        case "danger": {
+            return theme.backgroundColors.danger;
+        }
         default: {
             return theme.backgroundColors.quaternary;
         }

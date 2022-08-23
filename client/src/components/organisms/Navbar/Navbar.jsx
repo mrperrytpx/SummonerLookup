@@ -10,11 +10,17 @@ import { ReactComponent as SquareLogo } from "../../../assets/square_logo_no_tex
 import { ReactComponent as TextLogo } from "../../../assets/txtlogo.svg";
 import { useAuth } from "../../../hooks/useAuth";
 import LogoutButton from "../../old/LogoutButton";
+import { Button } from "../../atoms/Button/Button";
 
 export const Navbar = ({ width, isNavOpen, handleNavOpen, setIsNavOpen }) => {
   const location = useLocation();
 
-  const { tokenLoading, user } = useAuth();
+  const { tokenLoading, user, signOut, accessToken } = useAuth();
+
+  const handleLogout = async (e) => {
+    e.preventDefault();
+    await signOut.mutate({ accessToken });
+  };
 
   return (
     <StyledNavbar>
@@ -22,7 +28,7 @@ export const Navbar = ({ width, isNavOpen, handleNavOpen, setIsNavOpen }) => {
         width >= 750
           ? <LinkButtonCluster>
             {user ? <LinkButton variant="quaternary" to="/me">Profile</LinkButton> : <LinkButton variant="quaternary" to="/signin">Sign in</LinkButton>}
-            {user ? <LogoutButton /> : <LinkButton variant="quaternary" to="/signup">Sign up</LinkButton>}
+            {user ? <Button onClick={(e) => handleLogout(e)} variant="danger">Sign Out</Button> : <LinkButton variant="quaternary" to="/signup">Sign up</LinkButton>}
           </LinkButtonCluster>
           : !isNavOpen
             ? <ImMenu3 fill="white" size="48" onClick={handleNavOpen}></ImMenu3>
