@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { FlexRowSpaceBetween } from "../../atoms/FlexBoxes/FlexBoxes.styled";
 
 export const StyledNavbar = styled(FlexRowSpaceBetween).attrs({ as: "nav" })`
-    flex-direction: row-reverse;
 
     width: 100%;
     min-height: 80px;
@@ -19,6 +18,7 @@ export const StyledNavbar = styled(FlexRowSpaceBetween).attrs({ as: "nav" })`
     }
 
     @media only screen and (max-width: ${({ theme }) => theme.resolutions.mobile}) {
+        flex-direction: row-reverse;
         padding: 0.5rem 1rem;
     }
 `;

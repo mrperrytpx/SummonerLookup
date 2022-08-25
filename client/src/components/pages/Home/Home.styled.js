@@ -7,4 +7,8 @@ export const StyledHome = styled(FlexColStart).attrs({ as: "main" })`
     margin: auto;
     margin-top: 3rem;
     gap: 2rem;
+
+    @media only screen and (max-width: ${({ theme }) => theme.resolutions.mobile}) {
+        margin: 3rem auto;
+    }
 `;

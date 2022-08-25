@@ -12,7 +12,7 @@ export const theme = {
         light: "#ffffff"
     },
     resolutions: {
-        mobile: "421px",
+        mobile: "449px",
         tablet: "701px",
         desktop: "1025px",
         widescreen: "2400px"

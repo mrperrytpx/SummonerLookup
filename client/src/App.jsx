@@ -48,7 +48,7 @@ const App = () => {
 			<Routes>
 
 				<Route element={<WithNav width={width} setIsNavOpen={setIsNavOpen} isNavOpen={isNavOpen} handleNavOpen={handleNavOpen} />}>
-					<Route path="/" element={<Home isNavOpen={isNavOpen} />} />
+					<Route path="/" element={<Home />} />
 					<Route element={<ProtectedRoute redirectPath="/signin" isAllowed={!!accessToken} />}>
 						<Route path="/me" element={<Me />} />
 						<Route path="/me/delete" element={<DeleteUser />} />

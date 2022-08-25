@@ -23,11 +23,26 @@ export const Navbar = ({ width, isNavOpen, handleNavOpen, setIsNavOpen }) => {
 
   return (
     <StyledNavbar>
+      {isNavOpen ? <MobileMenu setIsNavOpen={setIsNavOpen} /> : null}
+      {width >= 450
+        ? <SvgLink to="/">
+          {location.pathname === "/"
+            ? <TextLogo fill="white" />
+            : width >= 1100
+              ? <TextLogo fill="white" />
+              : <SquareLogo fill="white" width="60" />
+          }
+        </SvgLink>
+        : null
+      }
+      {location.pathname !== "/" && !isNavOpen ? <CompactSearchSummoner /> : null}
+
+
       {tokenLoading ? <p style={{ color: "white" }}>Loading</p> :
         width >= 750
           ? <LinkButtonCluster>
             {user
-              ? <LinkButton variant="quaternary" to="/me">Profile</LinkButton>
+              ? location.pathname !== "/me" ? <LinkButton variant="quaternary" to="/me">Profile</LinkButton> : null
               : <LinkButton variant="quaternary" to="/signin">Sign in</LinkButton>
             }
             {user
@@ -40,19 +55,7 @@ export const Navbar = ({ width, isNavOpen, handleNavOpen, setIsNavOpen }) => {
             : <ImMenu4 fill="white" size="48" onClick={handleNavOpen}></ImMenu4>
       }
 
-      {location.pathname !== "/" && !isNavOpen ? <CompactSearchSummoner /> : null}
-      {width >= 450
-        ? <SvgLink to="/">
-          {location.pathname === "/"
-            ? <TextLogo fill="white" />
-            : width >= 1100
-              ? <TextLogo fill="white" />
-              : <SquareLogo fill="white" width="60" />
-          }
-        </SvgLink>
-        : null
-      }
-      {isNavOpen ? <MobileMenu setIsNavOpen={setIsNavOpen} /> : null}
+
     </StyledNavbar>
   );
 };

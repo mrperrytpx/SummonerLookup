@@ -1,5 +1,7 @@
 TASKS FOR FUTURE ME WHEN ITS FUNCTIONAL (WIP)
 
+- rethink ["user"] and ["accessToken"] current dynamic (Bonnie vid)
+- fix zoomed in homepage with mobile menu open
 - Register Validation check on unfocus instead of on submit
 - Send email validation
 - store refresh token versions instead of actual refresh tokens in DB
