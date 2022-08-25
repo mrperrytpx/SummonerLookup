@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const StyledSignIn = styled.main`
     margin: auto;
-    min-height: 100vh;
 
     section {
         margin: 5rem auto;
@@ -12,7 +11,6 @@ export const StyledSignIn = styled.main`
         @media only screen and (max-width: ${({ theme }) => theme.resolutions.mobile}) {
             margin: 1rem auto;
             background-color: ${({ theme }) => theme.backgroundColors.primary};
-
         }
     }
 

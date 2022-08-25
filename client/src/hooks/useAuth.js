@@ -12,9 +12,7 @@ const useGetFreshTokensQuery = (setAccessToken, setUser) => {
             method: "POST",
             credentials: "include",
             signal: controller.signal,
-            headers: {
-                "Content-Type": "application/json",
-            },
+            headers: { "Content-Type": "application/json" },
         });
 
         if (response.status >= 500) throw new Error("Something went wrong...");
@@ -64,21 +62,24 @@ const useSignInMutation = (setAccessToken, setUser, navigate) => {
         });
 
         if (!response.ok) {
-            setUser(null);
-            setAccessToken(null);
-            throw new Error("Something went wrong...");
+            // setUser(null);
+            // setAccessToken(null);
+            if (response.status === 400) {
+                throw new Error("Wrong username or password");
+            } else {
+                throw new Error("Something went wrong...");
+            }
         }
 
         if (controller.signal.aborted) return;
 
         const data = await response.json();
+        if (data.error) throw new Error(JSON.stringify(data.error, null, 2));
         if (data?.accessToken) {
             const decoded = jwt_decode(data?.accessToken);
             setUser(decoded);
             setAccessToken(data?.accessToken);
             navigate("/");
-        } else {
-            throw new Error("Wrong email or password");
         }
     };
 
@@ -109,7 +110,7 @@ const useSignUpMutation = (navigate) => {
     return useMutation(signUp);
 };
 
-const useSignOutMutation = (setAccessToken, setUser, navigate, queryClient) => {
+const useSignOutMutation = (setAccessToken, setUser, queryClient) => {
     const signOut = async ({ accessToken }) => {
         const controller = new AbortController();
         const response = await fetch(`/api/auth/logout`, {
@@ -129,7 +130,6 @@ const useSignOutMutation = (setAccessToken, setUser, navigate, queryClient) => {
             setAccessToken(null);
             queryClient.setQueryData(["accessToken"], null);
             queryClient.setQueryData(["user"], null);
-            navigate("/", { replace: true });
         }
         return;
     };
@@ -146,7 +146,7 @@ const useProvideAuth = () => {
     const { tokenLoading } = useGetFreshTokensQuery(setAccessToken, setUser);
     const signIn = useSignInMutation(setAccessToken, setUser, navigate);
     const signUp = useSignUpMutation(navigate);
-    const signOut = useSignOutMutation(setAccessToken, setUser, navigate, queryClient);
+    const signOut = useSignOutMutation(setAccessToken, setUser, queryClient);
 
     function clearUser() {
         setUser(null);
