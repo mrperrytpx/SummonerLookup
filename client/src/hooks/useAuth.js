@@ -87,8 +87,8 @@ const useSignInMutation = (setAccessToken, setUser, navigate) => {
 };
 
 const useSignUpMutation = (navigate) => {
-    const signUp = async ({ email, username, password }) => {
-        const info = { email, username, password };
+    const signUp = async ({ email, password }) => {
+        const info = { email, password };
         console.log("REG INFO: ", info);
         const controller = new AbortController();
         const response = await fetch(`/api/auth/register`, {

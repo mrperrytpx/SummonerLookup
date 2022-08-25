@@ -5,8 +5,8 @@ import { FormLabelInput } from "../../atoms/FormLabelInput/FormLabelInput";
 import { FormNav } from "../../molecules/FormNav/FormNav";
 import { SignInUpForm } from "../../molecules/SignInUpForm/SignInUpForm";
 import { useAuth } from "../../../hooks/useAuth";
-import { StyledSignIn } from "./SignIn.styled";
 import { Button } from "../../atoms/Button/Button";
+import { SingleFormPage } from "../../templates/SingleFormPage/SingleFormPage";
 
 export const SignIn = () => {
 
@@ -16,7 +16,7 @@ export const SignIn = () => {
   const onSubmit = (data) => signIn.mutate({ ...data });
 
   return (
-    <StyledSignIn>
+    <SingleFormPage>
       <section>
         <FormNav />
         <SignInUpForm onSubmit={handleSubmit(onSubmit)} >
@@ -42,6 +42,6 @@ export const SignIn = () => {
           <Button wide={true} type="submit" variant="quaternary">SIGN IN</Button>
         </SignInUpForm>
       </section>
-    </StyledSignIn>
+    </SingleFormPage>
   );
 };
