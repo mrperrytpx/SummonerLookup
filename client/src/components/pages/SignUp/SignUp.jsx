@@ -7,13 +7,18 @@ import { SignInUpForm } from "../../molecules/SignInUpForm/SignInUpForm";
 import { useAuth } from "../../../hooks/useAuth";
 import { Button } from "../../atoms/Button/Button";
 import { SingleFormPage } from "../../templates/SingleFormPage/SingleFormPage";
+import { useNavigate } from "react-router-dom";
 
 export const SignUp = () => {
 
+  const navigate = useNavigate();
   const { register, handleSubmit } = useForm();
   const { signUp } = useAuth();
 
-  const onSubmit = (data) => signUp.mutate({ ...data });
+  const onSubmit = async (data) => {
+    await signUp.mutateAsync({ ...data });
+    navigate("/signin");
+  };
 
   return (
     <SingleFormPage>

@@ -7,13 +7,21 @@ import { SignInUpForm } from "../../molecules/SignInUpForm/SignInUpForm";
 import { useAuth } from "../../../hooks/useAuth";
 import { Button } from "../../atoms/Button/Button";
 import { SingleFormPage } from "../../templates/SingleFormPage/SingleFormPage";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export const SignIn = () => {
 
+  const navigate = useNavigate();
   const { register, handleSubmit } = useForm();
   const { signIn } = useAuth();
+  const location = useLocation();
 
-  const onSubmit = (data) => signIn.mutate({ ...data });
+  const from = location.state?.from?.pathname || "/";
+
+  const onSubmit = async (data) => {
+    await signIn.mutateAsync({ ...data });
+    navigate(from, { replace: true });
+  };
 
   return (
     <SingleFormPage>

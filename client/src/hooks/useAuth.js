@@ -1,7 +1,6 @@
 import { useContext, useState } from "react";
 import { createContext } from "react";
 import { useMutation, useQuery, useQueryClient } from "react-query";
-import { useNavigate } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 
 const useGetFreshTokensQuery = (setAccessToken, setUser) => {
@@ -50,7 +49,7 @@ const useGetFreshTokensQuery = (setAccessToken, setUser) => {
     return { tokenLoading };
 };
 
-const useSignInMutation = (setAccessToken, setUser, navigate) => {
+const useSignInMutation = (setAccessToken, setUser) => {
     const signIn = async ({ email, password }) => {
         const info = { email, password };
         const controller = new AbortController();
@@ -79,14 +78,13 @@ const useSignInMutation = (setAccessToken, setUser, navigate) => {
             const decoded = jwt_decode(data?.accessToken);
             setUser(decoded);
             setAccessToken(data?.accessToken);
-            navigate("/");
         }
     };
 
     return useMutation(signIn);
 };
 
-const useSignUpMutation = (navigate) => {
+const useSignUpMutation = () => {
     const signUp = async ({ email, password }) => {
         const info = { email, password };
         console.log("REG INFO: ", info);
@@ -101,8 +99,6 @@ const useSignUpMutation = (navigate) => {
 
         if (!response.ok) {
             throw new Error("Something went wrong...");
-        } else {
-            navigate("/signin");
         }
         return;
     };
@@ -141,11 +137,10 @@ const useProvideAuth = () => {
     const [accessToken, setAccessToken] = useState(null);
     const [user, setUser] = useState(null);
     const queryClient = useQueryClient();
-    const navigate = useNavigate();
 
     const { tokenLoading } = useGetFreshTokensQuery(setAccessToken, setUser);
-    const signIn = useSignInMutation(setAccessToken, setUser, navigate);
-    const signUp = useSignUpMutation(navigate);
+    const signIn = useSignInMutation(setAccessToken, setUser);
+    const signUp = useSignUpMutation();
     const signOut = useSignOutMutation(setAccessToken, setUser, queryClient);
 
     function clearUser() {
