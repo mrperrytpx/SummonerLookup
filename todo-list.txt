@@ -12,3 +12,4 @@ TASKS FOR FUTURE ME WHEN ITS FUNCTIONAL (WIP)
 - Add react-router site map and React Helmet for SEO
 - sortable Champion stats (ascending, descending)
 - add remember me functionality
+- fix reloading token protected routes when reloading
