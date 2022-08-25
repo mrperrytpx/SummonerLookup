@@ -2,18 +2,11 @@ TASKS FOR FUTURE ME WHEN ITS FUNCTIONAL (WIP)
 
 - Register Validation check on unfocus instead of on submit
 - Send email validation
-- Make views for Unauthorized and Already logged in cases - or just redirect
 - store refresh token versions instead of actual refresh tokens in DB
-- split player profile fetch into multiple fetches to get payload sooner?
-- make your own picture library for icons so it doesn't run out of date randomly
 - add server choice to local storage
-- give credit to u.gg and riot disclaimer to the footer - make a footer
-- switch all useEffect fetchers into useQuery - full send it
+- give credit to u.gg to the footer - make a footer
 - add rate limiting - cloudflare?
 - pre-fetch "following" data on app load if user is logged in
 - Add react-router site map and React Helmet for SEO
 - sortable Champion stats (ascending, descending)
-- make a ProtectedRoute component with render prop
-- make AuthProvider component
-- look how to have phones go to login/register views, but hsvr it be popup on the PC
-- make custom hooks to SOC components
+- add remember me functionality
