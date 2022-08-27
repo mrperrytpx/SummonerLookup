@@ -1,9 +1,12 @@
-import { Navigate, Outlet } from "react-router-dom";
+import { Navigate, Outlet, useLocation } from "react-router-dom";
 
 const ProtectedRoute = ({ isAllowed, redirectPath = '/login', children }) => {
 
+  const location = useLocation();
+  const from = location.state?.from || redirectPath;
+
   if (!isAllowed) {
-    return <Navigate to={redirectPath} replace />;
+    return <Navigate state={{ from: location.pathname }} to={from} replace />;
   }
 
   return children ? children : <Outlet />;

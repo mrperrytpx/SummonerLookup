@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import { ReactQueryDevtools } from "react-query/devtools";
 // Components
@@ -10,7 +10,6 @@ import { Home } from "./components/pages/Home/Home";
 import { SignIn } from "./components/pages/SignIn/SignIn";
 import { SignUp } from "./components/pages/SignUp/SignUp";
 
-import Register from "./views/Register";
 import Me from "./views/Me";
 import DeleteUser from "./views/DeleteUser";
 import Player from "./views/Player";
