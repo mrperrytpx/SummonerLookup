@@ -6,10 +6,11 @@ TASKS FOR FUTURE ME WHEN ITS FUNCTIONAL (WIP)
 - Send email validation
 - store refresh token versions instead of actual refresh tokens in DB
 - add server choice to local storage
-- give credit to u.gg to the footer - make a footer
+- give credit to u.gg to the footer
 - add rate limiting - cloudflare?
 - pre-fetch "following" data on app load if user is logged in
 - Add react-router site map and React Helmet for SEO
 - sortable Champion stats (ascending, descending)
-- fix reloading token protected routes when reloading (poorly done atm);¸
+- fix reloading token protected routes when reloading (maybe poorly done atm)¸
 - fix server error when fetching /me
+- add interceptor for expired access tokens (maybe breaks remember me)
