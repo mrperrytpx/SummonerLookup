@@ -11,10 +11,10 @@ const { updateUserRefreshToken, getUserFromDB } = require("../../services/intern
 const ApiError = require("../../utils/ApiError");
 
 const login = async (req, res) => {
-	const email = req.body.email;
+	const { email, password, rememberMe } = req.body;
 
 	// Destructure the error from the loginValidationf unction
-	const { error } = loginValidation(req.body);
+	const { error } = loginValidation({ email, password });
 	// If there's an error, throw the error message
 	if (error) throw new ApiError(`${error.details[0].message}`, 400);
 
@@ -25,7 +25,7 @@ const login = async (req, res) => {
 	// CONFIRM BY EMAIL - TBD
 	// if (!user.confirmed) return res.status(400).json("Please confirm your email to login");
 	// Check if the password is correct
-	const valid = await compare(req.body.password, user.password);
+	const valid = await compare(password, user.password);
 	if (!valid) throw new ApiError("Invalid Password", 400);
 
 	// Create a refresh and an access token
@@ -33,9 +33,11 @@ const login = async (req, res) => {
 	const refreshToken = createRefreshToken(user._id, email);
 
 	// Update the user's document with a refresh token
-	await updateUserRefreshToken(user._id, refreshToken);
 	// Send the refresh token as a cookie, and access token as a response
-	sendRefreshToken(res, refreshToken);
+	if (rememberMe) {
+		await updateUserRefreshToken(user._id, refreshToken);
+		sendRefreshToken(res, refreshToken);
+	}
 	sendAccessToken(res, accessToken);
 
 };

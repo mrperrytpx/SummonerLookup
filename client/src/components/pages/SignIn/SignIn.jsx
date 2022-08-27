@@ -16,9 +16,10 @@ export const SignIn = () => {
   const { signIn } = useAuth();
   const location = useLocation();
 
-  const from = location.state?.from?.pathname || "/";
+  const from = location.state?.from || "/";
 
   const onSubmit = async (data) => {
+    console.log(data);
     await signIn.mutateAsync({ ...data });
     navigate(from, { replace: true });
   };
@@ -47,7 +48,10 @@ export const SignIn = () => {
             placeholder="Type your password"
             required
           />
-          <Button wide={true} type="submit" variant="quaternary">SIGN IN</Button>
+          <label style={{ placeSelf: "start" }} htmlFor="rememberMe">
+            <input {...register("rememberMe", { required: false })} id="rememberMe" type="checkbox" /> Remember Me
+          </label>
+          <Button wide={true} type="submit" variant="quaternary">{signIn.isLoading ? "Signing in..." : "SIGN IN"}</Button>
         </SignInUpForm>
       </section>
     </SingleFormPage>

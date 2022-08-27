@@ -11,5 +11,5 @@ TASKS FOR FUTURE ME WHEN ITS FUNCTIONAL (WIP)
 - pre-fetch "following" data on app load if user is logged in
 - Add react-router site map and React Helmet for SEO
 - sortable Champion stats (ascending, descending)
-- add remember me functionality
-- fix reloading token protected routes when reloading
+- fix reloading token protected routes when reloading (poorly done atm);¸
+- fix server error when fetching /me
