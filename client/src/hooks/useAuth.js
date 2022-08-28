@@ -43,7 +43,8 @@ const useGetFreshTokensQuery = (setAccessToken, setUser) => {
         onError: () => {
             setUser(null);
             setAccessToken(null);
-        }
+        },
+        refetchIntervalInBackground: 1440000 // 24 minutes, 6 minutes less than the lifespan of the accessToken
     });
 
     return { tokenLoading };

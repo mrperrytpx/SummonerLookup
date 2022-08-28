@@ -8,11 +8,12 @@ import { useAuth } from "../../../hooks/useAuth";
 import { Button } from "../../atoms/Button/Button";
 import { SingleFormPage } from "../../templates/SingleFormPage/SingleFormPage";
 import { useNavigate } from "react-router-dom";
+import { ErrorText } from "../../atoms/ErrorText/ErrorText";
 
 export const SignUp = () => {
 
   const navigate = useNavigate();
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, formState: { errors } } = useForm();
   const { signUp } = useAuth();
 
   const onSubmit = async (data) => {
@@ -34,23 +35,29 @@ export const SignUp = () => {
             label="Email"
             type="email"
             placeholder="Type your email"
-            required
+            errors={errors?.email}
+            required={true}
+            pattern={/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/}
           />
+          {errors?.email?.message && <ErrorText>• {errors?.email?.message}</ErrorText>}
           <FormLabelInput
             formName="password"
             register={register}
             label="Password"
             type="password"
             placeholder="Type your password"
-            required
+            errors={errors?.password}
+            required={true}
+            minLength={8}
           />
+          {errors?.password?.message && <ErrorText>• {errors?.password?.message}</ErrorText>}
           <FormLabelInput
             formName="repeatPassword"
             register={register}
             label="Repeat Password"
             type="password"
             placeholder="Repeat your password"
-            required
+            required={true}
           />
           <Button wide={true} type="submit" variant="quaternary">SIGN UP</Button>
         </SignInUpForm>
