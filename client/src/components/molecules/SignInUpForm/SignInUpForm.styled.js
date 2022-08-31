@@ -6,6 +6,6 @@ export const StyledSignInUpForm = styled(FlexColStart).attrs({ as: "form" })`
     margin-top: 1rem;
 
     & > :last-child {
-        margin-top: 2rem;
+        margin-top: 1rem;
     }
 `;

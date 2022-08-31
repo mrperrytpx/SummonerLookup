@@ -62,8 +62,6 @@ const useSignInMutation = (setAccessToken, setUser) => {
         });
 
         if (!response.ok) {
-            // setUser(null);
-            // setAccessToken(null);
             if (response.status === 400) {
                 throw new Error("Wrong username or password");
             } else {
@@ -88,7 +86,6 @@ const useSignInMutation = (setAccessToken, setUser) => {
 const useSignUpMutation = () => {
     const signUp = async ({ email, password }) => {
         const info = { email, password };
-        console.log("REG INFO: ", info);
         const controller = new AbortController();
         const response = await fetch(`/api/auth/register`, {
             method: "POST",
@@ -99,8 +96,13 @@ const useSignUpMutation = () => {
         if (controller.signal.aborted) return;
 
         if (!response.ok) {
-            throw new Error("Something went wrong...");
+            if (response.status === 409) {
+                throw new Error("User with that email already exists");
+            } else {
+                throw new Error("Something went wrong. Try reloading the page");
+            }
         }
+
         return;
     };
 

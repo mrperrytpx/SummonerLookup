@@ -9,6 +9,7 @@ import { Button } from "../../atoms/Button/Button";
 import { SingleFormPage } from "../../templates/SingleFormPage/SingleFormPage";
 import { useLocation, useNavigate } from "react-router-dom";
 import { ErrorText } from "../../atoms/ErrorText/ErrorText";
+import { RememberMe } from "../../atoms/RememberMe/RememberMe";
 
 export const SignIn = () => {
 
@@ -53,10 +54,15 @@ export const SignIn = () => {
             errors={errors?.password}
           />
           {errors?.password?.message && <ErrorText>• {errors?.password?.message}</ErrorText>}
-          <label style={{ placeSelf: "start" }} htmlFor="rememberMe">
-            <input {...register("rememberMe", { required: false })} id="rememberMe" type="checkbox" /> Remember Me
-          </label>
-          <Button wide={true} type="submit" variant="quaternary">{signIn.isLoading ? "Signing in..." : "SIGN IN"}</Button>
+
+          <RememberMe htmlFor="rememberMe" label="Remember me" register={register} />
+
+          {signIn?.error && <ErrorText center={true}>{signIn?.error?.message}</ErrorText>}
+
+          <Button wide={true} type="submit" variant="quaternary">
+            {signIn.isLoading ? "Signing in..." : "SIGN IN"}
+          </Button>
+
         </SignInUpForm>
       </section>
     </SingleFormPage>

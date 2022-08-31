@@ -59,7 +59,10 @@ export const SignUp = () => {
             placeholder="Repeat your password"
             required={true}
           />
-          <Button wide={true} type="submit" variant="quaternary">SIGN UP</Button>
+          {signUp?.error && <ErrorText center={true}>{signUp?.error?.message}</ErrorText>}
+          <Button wide={true} type="submit" variant="quaternary">
+            {signUp.isLoading ? "Signing up..." : "SIGN UP"}
+          </Button>
         </SignInUpForm>
       </section>
     </SingleFormPage>
