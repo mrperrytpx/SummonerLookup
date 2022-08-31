@@ -97,7 +97,7 @@ const useSignUpMutation = () => {
 
         if (!response.ok) {
             if (response.status === 409) {
-                throw new Error("User with that email already exists");
+                throw new Error("User already exists");
             } else {
                 throw new Error("Something went wrong. Try reloading the page");
             }

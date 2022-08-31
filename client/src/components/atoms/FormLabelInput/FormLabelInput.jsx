@@ -5,23 +5,7 @@ export const FormLabelInput = ({ formName, register, label, type = "text", place
     <StyledFormLabelInput errors={errors}>
       <label htmlFor={label}>{label}</label>
       <input id={label}
-
-        {...register(formName,
-          {
-            required: {
-              value: required,
-              message: "This field is required"
-            },
-            pattern: {
-              value: pattern,
-              message: "Enter a valid email"
-            },
-            minLength: {
-              value: minLength,
-              message: `Passwords needs to be at least ${minLength} characters long`
-            }
-          })}
-
+        {...register(formName)}
         type={type}
         placeholder={placeholder}
       />

@@ -3,7 +3,7 @@ import { FlexCol } from "../FlexBoxes/FlexBoxes.styled";
 
 export const StyledFormLabelInput = styled(FlexCol)`
     width: 100%;
-    margin: .75rem 0;
+    margin: .75rem 0 0 0;
     
     &:first-of-type {
         margin-top: 2rem;

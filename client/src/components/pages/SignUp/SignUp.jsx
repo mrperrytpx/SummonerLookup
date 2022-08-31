@@ -9,14 +9,24 @@ import { Button } from "../../atoms/Button/Button";
 import { SingleFormPage } from "../../templates/SingleFormPage/SingleFormPage";
 import { useNavigate } from "react-router-dom";
 import { ErrorText } from "../../atoms/ErrorText/ErrorText";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+
+const yupValidationSchema = yup.object().shape({
+  email: yup.string().email("Must be a valid email").required("This field is required"),
+  password: yup.string().min(8, "Must be at least 8 characters long").required("This field is required"),
+  repeatPassword: yup.string().oneOf([yup.ref("password"), null], "Passwords must match").required("This field is required")
+}).required();
 
 export const SignUp = () => {
 
   const navigate = useNavigate();
-  const { register, handleSubmit, formState: { errors } } = useForm();
   const { signUp } = useAuth();
 
+  const { register, handleSubmit, formState: { errors } } = useForm({ resolver: yupResolver(yupValidationSchema) });
+
   const onSubmit = async (data) => {
+    console.log("REG DATA: ", data);
     await signUp.mutateAsync({ ...data });
     navigate("/signin");
   };
@@ -36,7 +46,6 @@ export const SignUp = () => {
             type="email"
             placeholder="Type your email"
             errors={errors?.email}
-            required={true}
             pattern={/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/}
           />
           {errors?.email?.message && <ErrorText>• {errors?.email?.message}</ErrorText>}
@@ -47,8 +56,6 @@ export const SignUp = () => {
             type="password"
             placeholder="Type your password"
             errors={errors?.password}
-            required={true}
-            minLength={8}
           />
           {errors?.password?.message && <ErrorText>• {errors?.password?.message}</ErrorText>}
           <FormLabelInput
@@ -57,8 +64,12 @@ export const SignUp = () => {
             label="Repeat Password"
             type="password"
             placeholder="Repeat your password"
-            required={true}
+            errors={errors?.repeatPassword}
           />
+          {errors?.repeatPassword?.message && <ErrorText>• {errors?.repeatPassword?.message}</ErrorText>}
+
+
+
           {signUp?.error && <ErrorText center={true}>{signUp?.error?.message}</ErrorText>}
           <Button wide={true} type="submit" variant="quaternary">
             {signUp.isLoading ? "Signing up..." : "SIGN UP"}
