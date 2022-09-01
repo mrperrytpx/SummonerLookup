@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import { ErrorText } from "../../atoms/ErrorText/ErrorText";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { FormNavLink } from "../../atoms/FormNavLink/FormNavLink";
 
 const yupValidationSchema = yup.object().shape({
   email: yup.string().email("Must be a valid email").required("This field is required"),
@@ -34,7 +35,10 @@ export const SignUp = () => {
   return (
     <SingleFormPage>
       <section>
-        <FormNav />
+        <FormNav>
+          <FormNavLink to="/signin">Sign In</FormNavLink>
+          <FormNavLink to="/signup">Sign Up</FormNavLink>
+        </FormNav>
         <SignInUpForm onSubmit={handleSubmit(onSubmit)} >
           <SvgLink to="/">
             <TextLogoNoSquare fill="white" />

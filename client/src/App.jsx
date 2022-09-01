@@ -9,8 +9,8 @@ import GlobalStyles from "./misc/globalStyles";
 import { Home } from "./components/pages/Home/Home";
 import { SignIn } from "./components/pages/SignIn/SignIn";
 import { SignUp } from "./components/pages/SignUp/SignUp";
+import { Me } from "./components/pages/Me/Me";
 
-import Me from "./views/Me";
 import DeleteUser from "./views/DeleteUser";
 import Player from "./views/Player";
 
@@ -49,7 +49,9 @@ const App = () => {
 				<Route element={<WithNav width={width} setIsNavOpen={setIsNavOpen} isNavOpen={isNavOpen} handleNavOpen={handleNavOpen} />}>
 					<Route path="/" element={<Home />} />
 					<Route element={<ProtectedRoute redirectPath="/signin" isAllowed={!!accessToken} />}>
-						<Route path="/me" element={<Me />} />
+						<Route path="/me" element={<Me />}>
+							<Route path="settings" element={<DeleteUser />} />
+						</Route>
 						<Route path="/me/delete" element={<DeleteUser />} />
 					</Route>
 

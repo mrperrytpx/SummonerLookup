@@ -42,7 +42,7 @@ export const Navbar = ({ width, isNavOpen, handleNavOpen, setIsNavOpen }) => {
         width >= 750
           ? <LinkButtonCluster>
             {user
-              ? location.pathname !== "/me" ? <LinkButton variant="quaternary" to="/me">Profile</LinkButton> : null
+              ? !location.pathname.includes("/me") ? <LinkButton variant="quaternary" to="/me">Profile</LinkButton> : null
               : <LinkButton variant="quaternary" to="/signin">Sign in</LinkButton>
             }
             {user
