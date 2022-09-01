@@ -13,8 +13,8 @@ export const Me = () => {
   return (
     <StyledMe>
       <FormNav>
-        <FormNavLink to="/me">Following</FormNavLink>
-        <FormNavLink to="settings">Settings</FormNavLink>
+        <FormNavLink active={location.pathname === "/me" ? 1 : 0} to="/me">Following</FormNavLink>
+        <FormNavLink active={location.pathname === "/me/settings" ? 1 : 0} to="settings">Settings</FormNavLink>
       </FormNav>
       <ExpandingMenu label="Account" />
       <ExpandingMenu label="Password" />

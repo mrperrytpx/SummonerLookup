@@ -30,8 +30,8 @@ export const SignIn = () => {
     <SingleFormPage>
       <section>
         <FormNav>
-          <FormNavLink to="/signin">Sign In</FormNavLink>
-          <FormNavLink to="/signup">Sign Up</FormNavLink>
+          <FormNavLink active={location.pathname === "/signin" ? 1 : 0} to="/signin">Sign In</FormNavLink>
+          <FormNavLink active={location.pathname === "/signup" ? 1 : 0} to="/signup">Sign Up</FormNavLink>
         </FormNav>
         <SignInUpForm onSubmit={handleSubmit(onSubmit)} >
           <SvgLink to="/">

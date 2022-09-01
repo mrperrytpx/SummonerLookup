@@ -1,8 +1,8 @@
 import { StyledFormNavLink } from "./FormNavLink.styled";
 
-export const FormNavLink = ({ to, children }) => {
+export const FormNavLink = ({ active, to, children }) => {
 
   return (
-    <StyledFormNavLink to={to}>{children}</StyledFormNavLink>
+    <StyledFormNavLink active={active} to={to}>{children}</StyledFormNavLink>
   );
 };

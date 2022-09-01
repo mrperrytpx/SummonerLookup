@@ -14,3 +14,4 @@ TASKS FOR FUTURE ME WHEN ITS FUNCTIONAL (WIP)
 - fix reloading token protected routes when reloading (maybe poorly done atm)¸
 - fix server error when fetching /me
 - add interceptor for expired access tokens (maybe breaks remember me)
+- make SignIn/SignUp use <Outlet />

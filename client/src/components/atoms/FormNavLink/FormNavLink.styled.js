@@ -20,10 +20,10 @@ export const StyledFormNavLink = styled(NavLink)`
     font-size: 1.3rem;
     font-weight: 600;
 
-    &[aria-current] {
+    ${({ active, theme }) => active && `
         opacity: 100%;
         border-bottom: 5px solid white;
-        color: ${({ theme }) => theme.textColors.dark};
-        background-color: ${({ theme }) => theme.backgroundColors.active};
-    }
+        color: ${theme.textColors.dark};
+        background-color: ${theme.backgroundColors.active};
+    `}
 `;

@@ -7,7 +7,7 @@ import { SignInUpForm } from "../../molecules/SignInUpForm/SignInUpForm";
 import { useAuth } from "../../../hooks/useAuth";
 import { Button } from "../../atoms/Button/Button";
 import { SingleFormPage } from "../../templates/SingleFormPage/SingleFormPage";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { ErrorText } from "../../atoms/ErrorText/ErrorText";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -23,6 +23,7 @@ export const SignUp = () => {
 
   const navigate = useNavigate();
   const { signUp } = useAuth();
+  const location = useLocation();
 
   const { register, handleSubmit, formState: { errors } } = useForm({ resolver: yupResolver(yupValidationSchema) });
 
@@ -36,8 +37,8 @@ export const SignUp = () => {
     <SingleFormPage>
       <section>
         <FormNav>
-          <FormNavLink to="/signin">Sign In</FormNavLink>
-          <FormNavLink to="/signup">Sign Up</FormNavLink>
+          <FormNavLink active={location.pathname === "/signin" ? 1 : 0} to="/signin">Sign In</FormNavLink>
+          <FormNavLink active={location.pathname === "/signup" ? 1 : 0} to="/signup">Sign Up</FormNavLink>
         </FormNav>
         <SignInUpForm onSubmit={handleSubmit(onSubmit)} >
           <SvgLink to="/">
