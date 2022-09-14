@@ -23,10 +23,11 @@ import useScreenSize from "./hooks/useScreenSize";
 
 import { WithNav } from "./components/templates/WithNav";
 import { WithoutNav } from "./components/templates/WithoutNav";
+import { FullscreenLoading } from "./components/atoms/FullscreenLoading/FullscreenLoading";
 
 
 const App = () => {
-	const { accessToken } = useAuth();
+	const { accessToken, tokenLoading } = useAuth();
 
 	useGetLeagueChampions();
 
@@ -40,6 +41,8 @@ const App = () => {
 	useEffect(function closeNav() {
 		if (width >= 750 && isNavOpen) setIsNavOpen(false);
 	}, [width, isNavOpen, setIsNavOpen]);
+
+	if (tokenLoading) return <FullscreenLoading />;
 
 	return (
 		<div className="App">
