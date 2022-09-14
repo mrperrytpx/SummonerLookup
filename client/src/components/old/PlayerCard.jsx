@@ -4,6 +4,7 @@ import { useQueryClient } from "react-query";
 // Contexts
 import { LoggedInContext } from "../../contexts/LoggedInContext";
 import { TokenContext } from "../../contexts/TokenContext";
+import { useAuth } from "../../hooks/useAuth";
 
 const PlayerCard = () => {
 	const queryClient = useQueryClient();
@@ -13,7 +14,7 @@ const PlayerCard = () => {
 	const [buttonState, setButtonState] = useState("FOLLOW");
 
 	const { isLoggedIn } = useContext(LoggedInContext);
-	const { token } = useContext(TokenContext);
+	const { accessToken: token } = useAuth();
 
 
 	const handleFollow = async () => {
@@ -67,7 +68,7 @@ const PlayerCard = () => {
 				</div>
 
 				<div className="follow-summoner">
-					<button disabled={!isLoggedIn} onClick={() => handleFollow()} className="follow">{buttonState}</button>
+					<button onClick={() => handleFollow()} className="follow">{buttonState}</button>
 				</div>
 
 			</div>
