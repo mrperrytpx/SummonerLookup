@@ -24,10 +24,12 @@ import useScreenSize from "./hooks/useScreenSize";
 import { WithNav } from "./components/templates/WithNav";
 import { WithoutNav } from "./components/templates/WithoutNav";
 import { FullscreenLoading } from "./components/atoms/FullscreenLoading/FullscreenLoading";
+import { useGetFollowingQuery } from "./hooks/useGetFollowingQuery";
 
 
 const App = () => {
 	const { accessToken, tokenLoading } = useAuth();
+	useGetFollowingQuery();
 
 	useGetLeagueChampions();
 
