@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const StyledExpandingMenu = styled.div`
-
     span {
         display: flex;
         align-items: center;
@@ -10,6 +9,8 @@ export const StyledExpandingMenu = styled.div`
         vertical-align: middle;
         border-bottom: 2px solid white;
         padding: 0.5rem 0;
+        cursor: pointer;
+        user-select: none;
 
         svg {
             padding: 0.1rem;

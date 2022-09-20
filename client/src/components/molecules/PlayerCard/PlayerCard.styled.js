@@ -10,6 +10,7 @@ export const StyledPlayerCard = styled.div`
     border-radius: 10px;
     box-shadow: 0 0 2px 0px white inset, 0 0 2px 0px white;
     color: ${({ theme }) => theme.textColors.light};
+    user-select: none;
 
     a {
         text-decoration: none;

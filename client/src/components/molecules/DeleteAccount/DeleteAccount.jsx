@@ -1,14 +1,17 @@
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../../hooks/useAuth";
 import { StyledDeleteAccount } from "./DeleteAccounts.styled";
 
 export const DeleteAccount = () => {
   const { deleteUser, clearUser, clearToken, accessToken } = useAuth();
+  const navigate = useNavigate();
 
   const handleDelete = async (e) => {
     e.preventDefault();
     await deleteUser.mutateAsync({ accessToken });
     clearUser();
     clearToken();
+    navigate("/");
   };
 
   return (
