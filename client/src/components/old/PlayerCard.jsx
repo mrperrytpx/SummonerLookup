@@ -2,8 +2,6 @@ import { useContext, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useQueryClient } from "react-query";
 // Contexts
-import { LoggedInContext } from "../../contexts/LoggedInContext";
-import { TokenContext } from "../../contexts/TokenContext";
 import { useAuth } from "../../hooks/useAuth";
 
 const PlayerCard = () => {
@@ -13,9 +11,7 @@ const PlayerCard = () => {
 	const version = queryClient.getQueryData(["version"]);
 	const [buttonState, setButtonState] = useState("FOLLOW");
 
-	const { isLoggedIn } = useContext(LoggedInContext);
 	const { accessToken: token } = useAuth();
-
 
 	const handleFollow = async () => {
 		const controller = new AbortController();

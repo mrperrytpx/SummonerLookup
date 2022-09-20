@@ -11,7 +11,6 @@ import { SignIn } from "./components/pages/SignIn/SignIn";
 import { SignUp } from "./components/pages/SignUp/SignUp";
 import { Me } from "./components/pages/Me/Me";
 
-import DeleteUser from "./views/DeleteUser";
 import Player from "./views/Player";
 
 import ProtectedRoute from "./utils/ProtectedRoute";
@@ -50,26 +49,28 @@ const App = () => {
 		<div className="App">
 			<GlobalStyles />
 			<Routes>
-
 				<Route element={<WithNav width={width} setIsNavOpen={setIsNavOpen} isNavOpen={isNavOpen} handleNavOpen={handleNavOpen} />}>
+
 					<Route path="/" element={<Home />} />
+
 					<Route element={<ProtectedRoute redirectPath="/signin" isAllowed={!!accessToken} />}>
-						<Route path="/me" element={<Me />}>
-							<Route path="settings" element={<DeleteUser />} />
-						</Route>
-						<Route path="/me/delete" element={<DeleteUser />} />
+						<Route path="/me" element={<Me />} />
 					</Route>
 
 					<Route path="/:server/:summonerName" element={<Player />} />
+
 				</Route>
 
 				<Route element={<WithoutNav />}>
+
 					<Route element={<ProtectedRoute redirectPath="/" isAllowed={!accessToken} />}>
+
 						<Route path="/signin" element={<SignIn />} />
 						<Route path="/signup" element={<SignUp />} />
-					</Route>
-				</Route>
 
+					</Route>
+
+				</Route>
 			</Routes>
 			<ReactQueryDevtools initialIsOpen={false} />
 		</div>

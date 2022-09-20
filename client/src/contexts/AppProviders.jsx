@@ -1,6 +1,4 @@
 // Contexts
-import LoggedInContextProvider from "./LoggedInContext";
-import TokenContextProvider from "./TokenContext";
 import { AuthContextProvider } from "../hooks/useAuth";
 import { ThemeProvider } from "styled-components";
 import { theme } from "../misc/theme";
@@ -24,11 +22,7 @@ export default function AppProviders({ children }) {
 		<ThemeProvider theme={theme}>
 			<QueryClientProvider client={queryClient}>
 				<AuthContextProvider>
-					<LoggedInContextProvider>
-						<TokenContextProvider >
-							{children}
-						</TokenContextProvider>
-					</LoggedInContextProvider>
+					{children}
 				</AuthContextProvider>
 			</QueryClientProvider>
 		</ThemeProvider>

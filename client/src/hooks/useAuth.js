@@ -31,6 +31,7 @@ const useGetFreshTokensQuery = (setAccessToken, setUser) => {
 
     const { isLoading: tokenLoading } = useQuery(["accessToken"], getFreshTokens, {
         onSuccess: (data) => {
+            console.log("Fetched new token");
             if (data?.accessToken) {
                 const decoded = jwt_decode(data?.accessToken);
                 setUser(decoded);
@@ -137,6 +138,31 @@ const useSignOutMutation = (setAccessToken, setUser, queryClient) => {
     return useMutation(signOut);
 };
 
+const useDeleteUserMutation = () => {
+    const deleteUser = async ({ accessToken }) => {
+        const controller = new AbortController();
+        const response = await fetch("/api/user/delete_account", {
+            method: "DELETE",
+            signal: controller.signal,
+            headers: {
+                "Content-Type": "application/json",
+                credentials: "include",
+                authorization: `Bearer ${accessToken}`
+            }
+        });
+
+        if (controller.signal.aborted) return;
+
+
+        if (!response.ok) {
+            throw new Error("Something went wrong");
+        }
+        return;
+    };
+
+    return useMutation(deleteUser);
+};
+
 const useProvideAuth = () => {
     const [accessToken, setAccessToken] = useState(null);
     const [user, setUser] = useState(null);
@@ -146,6 +172,7 @@ const useProvideAuth = () => {
     const signIn = useSignInMutation(setAccessToken, setUser);
     const signUp = useSignUpMutation();
     const signOut = useSignOutMutation(setAccessToken, setUser, queryClient);
+    const deleteUser = useDeleteUserMutation();
 
     function clearUser() {
         setUser(null);
@@ -165,7 +192,19 @@ const useProvideAuth = () => {
         queryClient.invalidateQueries(["accessToken"]);
     }
 
-    return { user, updateUser, clearUser, accessToken, updateToken, clearToken, signOut, signIn, signUp, tokenLoading };
+    return {
+        user,
+        updateUser,
+        clearUser,
+        deleteUser,
+        accessToken,
+        updateToken,
+        clearToken,
+        signOut,
+        signIn,
+        signUp,
+        tokenLoading
+    };
 };
 
 

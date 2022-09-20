@@ -2,6 +2,7 @@ import { StyledMe } from "./Me.styled";
 import { useGetFollowingQuery } from "../../../hooks/useGetFollowingQuery";
 import { ExpandingMenu } from "../../molecules/ExpandingMenu/ExpandingMenu";
 import { PlayerCard } from "../../molecules/PlayerCard/PlayerCard";
+import { DeleteAccount } from "../../molecules/DeleteAccount/DeleteAccount";
 
 export const Me = () => {
 
@@ -14,7 +15,9 @@ export const Me = () => {
           ? <p>Loading...</p>
           : following.map(player => <PlayerCard player={player} key={player.puuid} />)}
       </ExpandingMenu>
-      <ExpandingMenu label="Account" />
+      <ExpandingMenu label="Account">
+        <DeleteAccount />
+      </ExpandingMenu>
     </StyledMe>
   );
 };
