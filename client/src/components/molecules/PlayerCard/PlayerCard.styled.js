@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const StyledPlayerCard = styled.div`
 
-    margin: 1rem 1rem 1rem 0;
+    margin: 0.4rem;
     display: inline-block;
     padding: 1rem;
 
@@ -16,7 +16,6 @@ export const StyledPlayerCard = styled.div`
         text-decoration: none;
         color: ${({ theme }) => theme.textColors.light};
         margin-right: 1rem;
-        font-size: 1.1rem;
 
         div {
             display: inline-block;

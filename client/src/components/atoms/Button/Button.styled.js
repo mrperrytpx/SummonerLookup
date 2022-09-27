@@ -18,4 +18,9 @@ export const StyledButton = styled.button`
     font-weight: 600;
 
     cursor: pointer;
+
+    &:disabled {
+        cursor: initial;
+        opacity: 0.3;
+    }
 `;

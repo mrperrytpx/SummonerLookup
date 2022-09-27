@@ -1,6 +1,6 @@
 import { StyledFormLabelInput } from "./FormLabelInput.styled";
 
-export const FormLabelInput = ({ formName, register, label, type = "text", placeholder = "", errors = null, required = false, minLength = 0, pattern = null }) => {
+export const FormLabelInput = ({ formName, register, label, type = "text", placeholder = "", errors = null }) => {
   return (
     <StyledFormLabelInput errors={errors}>
       <label htmlFor={label}>{label}</label>
