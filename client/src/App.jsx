@@ -20,7 +20,6 @@ import { WithoutNav } from "./components/templates/WithoutNav";
 import { FullscreenLoading } from "./components/atoms/FullscreenLoading/FullscreenLoading";
 import { useGetFollowingQuery } from "./hooks/useGetFollowingQuery";
 
-
 const App = () => {
 	const { accessToken, tokenLoading } = useAuth();
 	const [isNavOpen, setIsNavOpen] = useState(false);
@@ -42,13 +41,19 @@ const App = () => {
 			<Routes>
 
 				<Route element={<WithNav width={width} setIsNavOpen={setIsNavOpen} isNavOpen={isNavOpen} handleNavOpen={handleNavOpen} />}>
+
 					<Route path="/" element={<Home />} />
+
+					<Route path="/:server/:summonerName" element={<Player />}>
+						<Route index element={<div style={{ color: "white" }}>OVERVIEW</div>} />
+						<Route path="stats" element={<div style={{ color: "white" }}>STATS</div>} />
+						<Route path="live-game" element={<div style={{ color: "white" }}>LIVE GAME</div>} />
+					</Route>
 
 					<Route element={<ProtectedRoute redirectPath="/signin" isAllowed={!!accessToken} />}>
 						<Route path="/me" element={<Me />} />
 					</Route>
 
-					<Route path="/:server/:summonerName" element={<Player />} />
 				</Route>
 
 				<Route element={<WithoutNav />}>

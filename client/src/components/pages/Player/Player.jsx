@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Outlet, useParams } from "react-router-dom";
 import { useGetPlayerQuery } from "../../../hooks/useGetPlayerQuery";
 import { StyledPlayer } from "./Player.styled";
 
@@ -10,6 +10,7 @@ export const Player = () => {
   return (
     <StyledPlayer>
       <div style={{ color: "white" }}>{JSON.stringify(playerData, null, 2)}</div>
+      <Outlet />
     </StyledPlayer>
   );
 };
