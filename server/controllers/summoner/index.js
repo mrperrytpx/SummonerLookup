@@ -6,5 +6,6 @@ module.exports = {
     summonerMatchDetailsRoute: require("./summonerMatchDetails"),
     summonerChampionStatsRoute: require("./summonerChampionStats"),
     summonerMatchesRoute: require("./summonerMatches"),
-    summonerRankedStatsRoute: require("./summonerRankedStats")
+    summonerRankedStatsRoute: require("./summonerRankedStats"),
+    summonerChallenges: require("./summonerChallenges")
 };

@@ -7,6 +7,7 @@ export const StyledDeleteAccount = styled.div`
     p {
         font-size: 1.1rem;
         margin-bottom: 1rem;
+        padding-top: 1rem;
 
         code {
             background-color: ${({ theme }) => theme.backgroundColors.active};
@@ -36,7 +37,7 @@ export const StyledDeleteAccount = styled.div`
                 }
 
                 button {
-                    width: 100%;
+                    width: 100%
                 }
             }
         }

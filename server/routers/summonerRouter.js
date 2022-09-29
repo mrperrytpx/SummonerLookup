@@ -12,6 +12,7 @@ router.get("/live_game/:server/:summonerName/", asyncHandler(summonerController.
 
 router.get("/matches/:region/:puuid", asyncHandler(summonerController.summonerMatchesRoute));
 router.get("/match_details/:id", asyncHandler(summonerController.summonerMatchDetailsRoute));
+router.get("/challenges/:server/:puuid", asyncHandler(summonerController.summonerChallenges));
 
 router.get("/champion_stats/:server/:summonerName", asyncHandler(summonerController.summonerChampionStatsRoute));
 router.get("/ranked_stats/:server/:summonerId", asyncHandler(summonerController.summonerRankedStatsRoute));

@@ -6,12 +6,7 @@ import { ReactQueryDevtools } from "react-query/devtools";
 import GlobalStyles from "./misc/globalStyles";
 // views
 
-import { Home } from "./components/pages/Home/Home";
-import { SignIn } from "./components/pages/SignIn/SignIn";
-import { SignUp } from "./components/pages/SignUp/SignUp";
-import { Me } from "./components/pages/Me/Me";
-
-import Player from "./views/Player";
+import { Home, Me, Player, SignIn, SignUp } from "./components/pages";
 
 import ProtectedRoute from "./utils/ProtectedRoute";
 // Contexts
@@ -28,16 +23,12 @@ import { useGetFollowingQuery } from "./hooks/useGetFollowingQuery";
 
 const App = () => {
 	const { accessToken, tokenLoading } = useAuth();
-	useGetFollowingQuery();
-
-	useGetLeagueChampions();
-
 	const [isNavOpen, setIsNavOpen] = useState(false);
 	const { width } = useScreenSize(setIsNavOpen);
+	useGetLeagueChampions();
+	useGetFollowingQuery();
 
-	const handleNavOpen = () => {
-		setIsNavOpen(prev => !prev);
-	};
+	const handleNavOpen = () => setIsNavOpen(prev => !prev);
 
 	useEffect(function closeNav() {
 		if (width >= 750 && isNavOpen) setIsNavOpen(false);
@@ -49,8 +40,8 @@ const App = () => {
 		<div className="App">
 			<GlobalStyles />
 			<Routes>
-				<Route element={<WithNav width={width} setIsNavOpen={setIsNavOpen} isNavOpen={isNavOpen} handleNavOpen={handleNavOpen} />}>
 
+				<Route element={<WithNav width={width} setIsNavOpen={setIsNavOpen} isNavOpen={isNavOpen} handleNavOpen={handleNavOpen} />}>
 					<Route path="/" element={<Home />} />
 
 					<Route element={<ProtectedRoute redirectPath="/signin" isAllowed={!!accessToken} />}>
@@ -58,16 +49,13 @@ const App = () => {
 					</Route>
 
 					<Route path="/:server/:summonerName" element={<Player />} />
-
 				</Route>
 
 				<Route element={<WithoutNav />}>
 
 					<Route element={<ProtectedRoute redirectPath="/" isAllowed={!accessToken} />}>
-
 						<Route path="/signin" element={<SignIn />} />
 						<Route path="/signup" element={<SignUp />} />
-
 					</Route>
 
 				</Route>

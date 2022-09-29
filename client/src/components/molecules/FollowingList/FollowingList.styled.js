@@ -9,6 +9,6 @@ export const StyledFollowingList = styled.div`
             align-items: center;
             justify-content: center;
             padding: 2rem 0.1rem 0.1rem 0.1rem;
-            gap: 1.5rem;
+            gap: 0.5rem;
         }
 `;
