@@ -4,19 +4,18 @@ import { useMutation, useQuery, useQueryClient } from "react-query";
 import jwt_decode from "jwt-decode";
 
 const useGetFreshTokensQuery = (setAccessToken, setUser) => {
-    async function getFreshTokens() {
+    async function getFreshTokens({ signal }) {
         console.log("Trying for token...");
-        const controller = new AbortController();
         const response = await fetch("/api/auth/refresh_token", {
             method: "POST",
             credentials: "include",
-            signal: controller.signal,
+            signal,
             headers: { "Content-Type": "application/json" },
         });
 
         if (response.status >= 500) throw new Error("Something went wrong...");
 
-        if (controller.signal.aborted) return;
+        if (signal.aborted) return;
 
         const data = await response.json();
 
@@ -55,10 +54,8 @@ const useGetFreshTokensQuery = (setAccessToken, setUser) => {
 const useSignInMutation = (setAccessToken, setUser) => {
     const signIn = async ({ email, password, rememberMe }) => {
         const info = { email, password, rememberMe };
-        const controller = new AbortController();
         const response = await fetch(`/api/auth/login`, {
             method: "POST",
-            signal: controller.signal,
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(info),
         });
@@ -70,8 +67,6 @@ const useSignInMutation = (setAccessToken, setUser) => {
                 throw new Error("Something went wrong...");
             }
         }
-
-        if (controller.signal.aborted) return;
 
         const data = await response.json();
         if (data.error) throw new Error(JSON.stringify(data.error, null, 2));
@@ -88,14 +83,11 @@ const useSignInMutation = (setAccessToken, setUser) => {
 const useSignUpMutation = () => {
     const signUp = async ({ email, password }) => {
         const info = { email, password };
-        const controller = new AbortController();
         const response = await fetch(`/api/auth/register`, {
             method: "POST",
-            signal: controller.signal,
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(info),
         });
-        if (controller.signal.aborted) return;
 
         if (!response.ok) {
             if (response.status === 409) {
@@ -113,16 +105,13 @@ const useSignUpMutation = () => {
 
 const useSignOutMutation = (setAccessToken, setUser, queryClient) => {
     const signOut = async ({ accessToken }) => {
-        const controller = new AbortController();
         const response = await fetch(`/api/auth/logout`, {
             method: "POST",
-            signal: controller.signal,
             headers: {
                 "Content-Type": "application/json",
                 "authorization": `Bearer ${accessToken}`
             },
         });
-        if (controller.signal.aborted) return;
 
         if (!response.ok) {
             throw new Error("Something went wrong...");
@@ -140,19 +129,14 @@ const useSignOutMutation = (setAccessToken, setUser, queryClient) => {
 
 const useDeleteUserMutation = () => {
     const deleteUser = async ({ accessToken }) => {
-        const controller = new AbortController();
         const response = await fetch("/api/user/delete_account", {
             method: "DELETE",
-            signal: controller.signal,
             headers: {
                 "Content-Type": "application/json",
                 credentials: "include",
                 authorization: `Bearer ${accessToken}`
             }
         });
-
-        if (controller.signal.aborted) return;
-
 
         if (!response.ok) {
             throw new Error("Something went wrong");
