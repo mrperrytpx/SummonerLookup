@@ -1,6 +1,6 @@
 import { useQuery } from "react-query";
 
-const useGetLeagueVersion = () => {
+export const useGetLeagueVersion = () => {
 
     const fetchVersion = async ({ signal }) => {
         const response = await fetch("http://ddragon.leagueoflegends.com/api/versions.json", {
@@ -14,5 +14,3 @@ const useGetLeagueVersion = () => {
 
     return useQuery(["version"], fetchVersion, { staleTime: 900000 });
 };
-
-export default useGetLeagueVersion;

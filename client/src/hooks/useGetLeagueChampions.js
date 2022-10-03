@@ -1,7 +1,7 @@
 import { useQuery } from "react-query";
-import useGetLeagueVersion from "./useGetLeagueVersion";
+import { useGetLeagueVersion } from "./useGetLeagueVersion";
 
-const useGetLeagueChampions = () => {
+export const useGetLeagueChampions = () => {
     const { data: version } = useGetLeagueVersion();
 
     const fetchAllChampions = async ({ signal }) => {
@@ -24,5 +24,3 @@ const useGetLeagueChampions = () => {
         staleTime: 900000,
     });
 };
-
-export default useGetLeagueChampions;

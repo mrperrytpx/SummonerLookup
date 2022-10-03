@@ -2,11 +2,10 @@ import { useQuery } from "react-query";
 import { useAuth } from "./useAuth";
 import { queryClient } from "../contexts/AppProviders";
 
-const getFollowing = async (accessToken) => {
-    const controller = new AbortController();
+const getFollowing = async (accessToken, signal) => {
     const response = await fetch("/api/user/me", {
         method: "GET",
-        signal: controller.signal,
+        signal,
         credentials: "include",
         headers: {
             "Content-Type": "application/json",
@@ -14,7 +13,7 @@ const getFollowing = async (accessToken) => {
         }
     });
 
-    if (controller.signal.aborted) return;
+    if (signal.aborted) return;
 
     if (!response.ok) {
         if (response.status === 403) {
@@ -32,7 +31,7 @@ const getFollowing = async (accessToken) => {
 export const useGetFollowingQuery = () => {
 
     const { accessToken } = useAuth();
-    return useQuery(["me"], () => getFollowing(accessToken), {
+    return useQuery(["me"], ({ signal }) => getFollowing(accessToken, signal), {
         enabled: !!accessToken
     });
 };

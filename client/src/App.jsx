@@ -12,28 +12,29 @@ import ProtectedRoute from "./utils/ProtectedRoute";
 // Contexts
 import { useAuth } from "./hooks/useAuth";
 
-import useGetLeagueChampions from "./hooks/useGetLeagueChampions";
-import useScreenSize from "./hooks/useScreenSize";
+import { useGetLeagueChampions } from "./hooks/useGetLeagueChampions";
+import { useScreenSize } from "./hooks/useScreenSize";
 
 import { WithNav } from "./components/templates/WithNav";
 import { WithoutNav } from "./components/templates/WithoutNav";
 import { FullscreenLoading } from "./components/atoms/FullscreenLoading/FullscreenLoading";
 import { useGetFollowingQuery } from "./hooks/useGetFollowingQuery";
+import { useGetLeagueChallengesQuery } from "./hooks/useGetLeagueChallengesQuery";
 
 const App = () => {
 	const { accessToken, tokenLoading } = useAuth();
 	const [isNavOpen, setIsNavOpen] = useState(false);
 	const { width } = useScreenSize(setIsNavOpen);
-	useGetLeagueChampions();
+	const { isLoading: challengesLoading } = useGetLeagueChallengesQuery();
+	const { isLoading: championsLoading } = useGetLeagueChampions();
 	useGetFollowingQuery();
-
 	const handleNavOpen = () => setIsNavOpen(prev => !prev);
 
 	useEffect(function closeNav() {
 		if (width >= 750 && isNavOpen) setIsNavOpen(false);
 	}, [width, isNavOpen, setIsNavOpen]);
 
-	if (tokenLoading) return <FullscreenLoading />;
+	if (tokenLoading || challengesLoading || championsLoading) return <FullscreenLoading />;
 
 	return (
 		<div className="App">

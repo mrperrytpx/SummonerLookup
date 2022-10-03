@@ -5,11 +5,10 @@ const searchSummoner = async (req, res) => {
 	const { server, summonerName } = req.params;
 	const region = leagueRegion(server);
 	const notSpacedSummoner = summonerName.split(" ").join("%20");
-	let payload = {};
 
 	const accountData = await getSummonerAccountData(server, notSpacedSummoner);
 	// Set the necessary account data into the payload
-	payload.accountData = {
+	let payload = {
 		server: server,
 		region: region,
 		puuid: accountData.puuid,

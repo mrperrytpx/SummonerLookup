@@ -7,7 +7,6 @@ export const useGetPlayerQuery = (server, summonerName) => {
     const getPlayer = async ({ signal }) => {
 
         const response = await fetch(`/api/summoner/search_summoner/${server}/${summonerName.toLowerCase()}`, {
-            method: "GET",
             signal
         });
 
@@ -19,7 +18,7 @@ export const useGetPlayerQuery = (server, summonerName) => {
     };
 
     return useQuery(["player", server, summonerName.toLowerCase()], getPlayer, {
-        staleTime: 30000,
+        staleTime: 180000,
         retry: 1,
         enabled: !!server && !!summonerName,
         onError: () => queryClient.cancelQueries("player"),
