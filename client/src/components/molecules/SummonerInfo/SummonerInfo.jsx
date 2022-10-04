@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { Span } from "../../atoms/Span/Span";
 import { StyledSummonerInfo } from "./SummonerInfo.styled";
 import { Button } from "../../atoms/Button/Button";
+import { CHALLENGE_THRESHOLDS } from "../../../consts/challengeThresholds";
 
 export const SummonerInfo = () => {
 
@@ -14,10 +15,17 @@ export const SummonerInfo = () => {
 
   const playerTitle = () => {
     const playerTitleId = +playerChallengesData?.preferences.title.slice(0, -2);
+    // titleId converted to a number excluding last 2 digits
     const playerTitleInObject = +playerChallengesData?.preferences.title.slice(-1);
+    // last digit in titleId which determines which object's child (in order) it is that has the actual title string
 
     const titleData = leagueChallengesData?.find(challenge => challenge.id === playerTitleId);
-    const titleKey = Object.keys(titleData?.thresholds)[playerTitleInObject];
+    // find challenge data with shortened titleId
+    const titleKey = CHALLENGE_THRESHOLDS[playerTitleInObject];
+    // gets which key in 'thresholds' object has the actual title string
+    // example: CHALLENGE_THRESHOLDS[2] returns "SILVER" which would have .rewards[0].title in it
+    // why doesn't the API separate the ID itself or why doesn't it just return the title string instead of the ID 
+    // boggles my mind greatly
 
     const correctTitle = titleData?.thresholds[`${titleKey}`].rewards[0].title;
     return correctTitle;
