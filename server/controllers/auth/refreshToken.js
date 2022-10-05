@@ -10,15 +10,15 @@ const { updateUserRefreshToken, getUserFromDB } = require("../../services/intern
 
 const refreshToken = async (req, res) => {
 	// get the token from the cookie
-	const token = req.signedCookies.slup;
+	const cookieToken = req.signedCookies.slup;
 	// If we don't have a token in our request, set the access token to nothing
-	if (!token) return res.send({ accesstoken: '' });
+	if (!cookieToken) return res.json({ accesstoken: '' });
 
 	// Verify the refresh token
 	const KEY = process.env.JWT_REFRESH_TOKEN_PUBLIC_KEY;
 	let payload = null;
 	try {
-		payload = verify(token, KEY, verifyOptions);
+		payload = verify(cookieToken, KEY, verifyOptions);
 		if (!payload) throw new Error("Invalid Refresh token");
 	} catch (err) {
 		// If the refresh token isn't verified, set the access token to nothing
@@ -30,7 +30,7 @@ const refreshToken = async (req, res) => {
 	// If there isn't a user, set the access token to nothing
 	if (!user) return res.send({ accesstoken: '' });
 	// If the user document doesn't have the same refresh token as the recieved refresh token
-	if (user.refreshToken !== token) return res.send({ accesstoken: '' });
+	if (user.refreshToken !== cookieToken) return res.send({ accesstoken: '' });
 
 	// create access and refresh tokens
 	const accessToken = createAccessToken(user._id, payload.sub);

@@ -7,7 +7,7 @@ module.exports = function (req, _res, next) {
 	try {
 		// Check if an access token exists in request headers
 		let token = req.headers?.authorization.split(" ")[1];
-		if (!token) throw new ApiError("Access Denied", 403);
+		if (!token) throw new ApiError("Access Denied", 403, req.url);
 
 		const ACCESS_KEY = process.env.JWT_ACCESS_TOKEN_PUBLIC_KEY;
 		// Verify the recieved access token

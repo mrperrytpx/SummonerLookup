@@ -4,18 +4,15 @@ import { useMutation, useQuery, useQueryClient } from "react-query";
 import jwt_decode from "jwt-decode";
 
 const useGetFreshTokensQuery = (setAccessToken, setUser) => {
-    async function getFreshTokens({ signal }) {
+    async function getFreshTokens() {
         console.log("Trying for token...");
         const response = await fetch("/api/auth/refresh_token", {
             method: "POST",
             credentials: "include",
-            signal,
             headers: { "Content-Type": "application/json" },
         });
 
         if (response.status >= 500) throw new Error("Something went wrong...");
-
-        if (signal.aborted) return;
 
         const data = await response.json();
 
