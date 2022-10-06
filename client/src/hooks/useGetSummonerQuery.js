@@ -1,10 +1,10 @@
 import { useQuery, useQueryClient } from "react-query";
 
-export const useGetPlayerQuery = (server, summonerName) => {
+export const useGetSummonerQuery = (server, summonerName) => {
 
     const queryClient = useQueryClient();
 
-    const getPlayer = async ({ signal }) => {
+    const getSummoner = async ({ signal }) => {
 
         const response = await fetch(`/api/summoner/search_summoner/${server}/${summonerName.toLowerCase()}`, {
             signal
@@ -17,11 +17,11 @@ export const useGetPlayerQuery = (server, summonerName) => {
         return data;
     };
 
-    return useQuery(["player", server, summonerName.toLowerCase()], getPlayer, {
+    return useQuery(["summoner", server, summonerName.toLowerCase()], getSummoner, {
         staleTime: 180000,
         retry: 1,
         enabled: !!server && !!summonerName,
-        onError: () => queryClient.cancelQueries("player"),
-        onSuccess: (data) => console.log("Player data:", data)
+        onError: () => queryClient.cancelQueries("summoner"),
+        onSuccess: (data) => console.log("Summoner data:", data)
     });
 };

@@ -7,7 +7,7 @@ export const useUnfollowSummonerMutation = () => {
     const queryClient = useQueryClient();
 
     const unfollowSummoner = async ({ id }) => {
-        console.log("DELETING PLAYER WITH ID:", id);
+        console.log("DELETING SUMMONER WITH ID:", id);
         const controller = new AbortController();
         const response = await fetch("/api/summoner/unfollow_summoner", {
             method: "PATCH",
@@ -35,7 +35,7 @@ export const useUnfollowSummonerMutation = () => {
                 (old) => old.filter((summ) => summ._id !== id));
             return { previousFollowing };
         },
-        onError: (_err, _player, context) => {
+        onError: (_err, _summoner, context) => {
             queryClient.setQueryData(["me"], context.previousFollowing);
         }
     });

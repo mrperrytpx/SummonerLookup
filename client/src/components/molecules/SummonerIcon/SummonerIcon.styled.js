@@ -3,7 +3,7 @@ import { FlexColCenter } from "../../atoms/FlexBoxes/FlexBoxes.styled";
 
 export const StyledSummonerIcon = styled(FlexColCenter)`
     position: relative;
-    width: 200px;
+    width: 180px;
     margin: 0;
     border: 1px solid ${({ theme }) => theme.backgroundColors.active};
 

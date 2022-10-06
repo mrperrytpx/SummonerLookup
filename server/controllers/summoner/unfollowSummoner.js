@@ -7,7 +7,7 @@ const unfollowSummoner = async (req, res) => {
 	// try to find a user which was put into req.user in the authorization middleware
 	const user = await getUserFromDB({ _id: req?.user?._id });
 	// If the player isn't following, throw an error
-	if (!user.following.find(summoner => summoner._id.toString() == id)) {
+	if (!user.following.find(summoner => summoner.summonerId == id)) {
 		throw new Error("Not following that player");
 	}
 	// Update the following array to remove the player with the same document ID

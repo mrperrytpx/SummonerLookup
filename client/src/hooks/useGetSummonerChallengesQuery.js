@@ -1,8 +1,8 @@
 import { useQuery } from "react-query";
 
-export const useGetPlayerChallengesQuery = (server, summonerName, puuid) => {
+export const useGetSummonerChallengesQuery = (server, summonerName, puuid) => {
 
-    const getPlayerChallenges = async ({ signal }) => {
+    const getSummonerChallenges = async ({ signal }) => {
         const response = await fetch(`/api/summoner/challenges/${server}/${puuid}`, {
             signal
         });
@@ -12,11 +12,11 @@ export const useGetPlayerChallengesQuery = (server, summonerName, puuid) => {
         if (signal.aborted) return;
 
         const data = await response.json();
-        console.log("Player challenges data:", data);
+        console.log("Summoner challenges data:", data);
         return data;
     };
 
-    return useQuery(["challenges", server, summonerName, puuid], getPlayerChallenges, {
+    return useQuery(["challenges", server, summonerName.toLowerCase(), puuid], getSummonerChallenges, {
         enabled: !!puuid,
         staleTime: 300000
     });

@@ -10,7 +10,7 @@ export const StyledButton = styled.button`
     padding: .5em;
     border: none;
 
-    color: ${({ theme }) => theme.textColors.light};
+    color: ${({ theme, variant }) => variant === "danger" ? theme.textColors.light : theme.textColors.dark};
     text-align: center;
     vertical-align: middle;
     font-size: 1.1rem;

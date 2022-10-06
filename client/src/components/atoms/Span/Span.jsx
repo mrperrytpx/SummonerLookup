@@ -1,8 +1,8 @@
 import { StyledSpan } from "./Span.styled";
 
-export const Span = ({ children, capsed = false, fontSize = "0.75rem" }) => {
+export const Span = ({ children, capsed = false, size = "m" }) => {
   return (
-    <StyledSpan fontSize={fontSize} capsed={capsed}>
+    <StyledSpan size={size} capsed={capsed}>
       {children}
     </StyledSpan>
   );

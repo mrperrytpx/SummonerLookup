@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledPlayerCardSmall = styled.div`
+export const StyledSummonerCardSmall = styled.div`
 
     margin: 0.4rem;
     display: inline-block;
