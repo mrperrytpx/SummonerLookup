@@ -7,7 +7,7 @@ export const StyledButton = styled.button`
 
     /* min-width: 100px; */
     width: min(${({ wide }) => wide ? "75%" : ""}, 200px);
-    padding: .5em;
+    padding: .5em 1em;
     border: none;
 
     color: ${({ theme, variant }) => variant === "danger" ? theme.textColors.light : theme.textColors.dark};
@@ -20,6 +20,6 @@ export const StyledButton = styled.button`
 
     &:disabled {
         cursor: initial;
-        opacity: 0.3;
+        opacity: 0.15;
     }
 `;

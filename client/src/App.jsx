@@ -7,6 +7,7 @@ import GlobalStyles from "./misc/globalStyles";
 // views
 
 import { Home, Me, Summoner, SignIn, SignUp } from "./components/pages";
+import { SummonerOverview } from "./components/organisms/SummonerOverview/SummonerOverview";
 
 import ProtectedRoute from "./utils/ProtectedRoute";
 // Contexts
@@ -46,7 +47,7 @@ const App = () => {
 					<Route path="/" element={<Home />} />
 
 					<Route path="/:server/:summonerName" element={<Summoner />}>
-						<Route index element={<div style={{ color: "white" }}>OVERVIEW</div>} />
+						<Route index element={<SummonerOverview />} />
 						<Route path="stats" element={<div style={{ color: "white" }}>STATS</div>} />
 						<Route path="live-game" element={<div style={{ color: "white" }}>LIVE GAME</div>} />
 					</Route>

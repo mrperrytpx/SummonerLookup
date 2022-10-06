@@ -27,7 +27,7 @@ const useGetFreshTokensQuery = (setAccessToken, setUser) => {
 
     const { isLoading: tokenLoading } = useQuery(["accessToken"], getFreshTokens, {
         onSuccess: (data) => {
-            console.log("Fetched new token");
+            console.log("Fetched new token", data?.accessToken);
             if (data?.accessToken) {
                 const decoded = jwt_decode(data?.accessToken);
                 setUser(decoded);
