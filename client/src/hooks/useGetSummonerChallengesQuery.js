@@ -18,6 +18,6 @@ export const useGetSummonerChallengesQuery = (server, summonerName, puuid) => {
 
     return useQuery(["challenges", server, summonerName.toLowerCase(), puuid], getSummonerChallenges, {
         enabled: !!puuid,
-        staleTime: 300000
+        staleTime: 180000
     });
 };

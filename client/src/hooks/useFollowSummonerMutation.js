@@ -1,4 +1,4 @@
-import { useMutation, useQueryClient } from "react-query";
+import { useMutation } from "react-query";
 import { useAuth } from "./useAuth";
 
 export const useFollowSummonerMutation = () => {

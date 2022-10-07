@@ -23,6 +23,9 @@ const spanSize = (size) => {
         case "xxxl": {
             return "2rem";
         }
+        default: {
+            return "1rem";
+        }
     }
 };
 

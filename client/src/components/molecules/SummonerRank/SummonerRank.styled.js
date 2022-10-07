@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { FlexCol, FlexRowSpaceBetween } from "../../atoms/FlexBoxes/FlexBoxes.styled";
+import { FlexCol } from "../../atoms/FlexBoxes/FlexBoxes.styled";
 
 export const StyledSummonerRank = styled(FlexCol)`
     width: 100%;

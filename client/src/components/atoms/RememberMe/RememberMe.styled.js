@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { FlexRow, FlexRowCenter, FlexRowSpaceBetween } from "../FlexBoxes/FlexBoxes.styled";
+import { FlexRow } from "../FlexBoxes/FlexBoxes.styled";
 
 export const StyledRememberMe = styled(FlexRow).attrs({ as: "label" })`
     width: min(200px, 100%);

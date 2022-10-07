@@ -3,11 +3,13 @@ import { backgroundColor } from "../../../misc/backgroundColor";
 
 export const StyledButton = styled.button`
     background-color: ${({ theme, variant }) => backgroundColor(theme, variant)};
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    /* box-shadow: 0px 4px 4px, rgba(0, 0, 0, 0.25); */
 
     /* min-width: 100px; */
-    width: min(${({ wide }) => wide ? "75%" : ""}, 200px);
+    white-space: pre;
+    width: ${({ wide }) => wide ? "100%" : "auto"};
     padding: .5em 1em;
+    padding: ${({ padding }) => padding || ".5em 1em"};
     border: none;
 
     color: ${({ theme, variant }) => variant === "danger" ? theme.textColors.light : theme.textColors.dark};

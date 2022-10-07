@@ -32,10 +32,10 @@ export const useUnfollowSummonerMutation = () => {
             const previousFollowing = queryClient.getQueryData(["me"]);
             queryClient.setQueryData(
                 ["me"],
-                (old) => old.filter((summ) => summ._id !== id));
+                (old) => old.filter((summ) => summ.summonerId !== id));
             return { previousFollowing };
         },
-        onError: (_err, _summoner, context) => {
+        onError: (_err, _player, context) => {
             queryClient.setQueryData(["me"], context.previousFollowing);
         }
     });

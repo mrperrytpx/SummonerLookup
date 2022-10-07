@@ -11,7 +11,7 @@ export const Summoner = () => {
   const { server, summonerName } = useParams();
   const { data: summonerData, isLoading: isSummonerLoading } = useGetSummonerQuery(server, summonerName);
   const { data: summonerChallengesData, isLoading: isSummonerChallengesLoading } = useGetSummonerChallengesQuery(server, summonerName, summonerData?.puuid);
-  const { data: summonerRankedData } = useGetSummonerRankedStatsQuery(server, summonerData?.summonerId);
+  useGetSummonerRankedStatsQuery(server, summonerData?.summonerId);
 
   if (isSummonerLoading || isSummonerChallengesLoading) return <div style={{ color: "white" }}>Loading...</div>;
 
