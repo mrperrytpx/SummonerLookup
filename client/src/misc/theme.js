@@ -5,7 +5,9 @@ export const theme = {
         tertiary: "#283655",
         quaternary: "#758aab",
         active: "#d0e1f9",
-        danger: "#d65250"
+        danger: "#d65250",
+        win: "#009021",
+        loss: "#b60f00"
     },
     textColors: {
         dark: "#111111",

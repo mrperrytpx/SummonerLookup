@@ -16,3 +16,4 @@ TASKS FOR FUTURE ME WHEN ITS FUNCTIONAL (WIP)
 - add interceptor for expired access tokens (maybe breaks remember me)
 - make SignIn/SignUp use <Outlet />¸
 - tabbing on Home desktop servers
+- fix SummonerRank components if summoner doesn't have ranked data
