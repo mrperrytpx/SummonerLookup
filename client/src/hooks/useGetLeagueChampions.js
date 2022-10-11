@@ -22,6 +22,6 @@ export const useGetLeagueChampions = () => {
 
     return useQuery(["champions"], fetchAllChampions, {
         enabled: !!version,
-        staleTime: 900000,
+        staleTime: 3000000,
     });
 };
