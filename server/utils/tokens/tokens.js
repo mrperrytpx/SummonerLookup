@@ -35,7 +35,7 @@ const sendRefreshToken = (res, token) => {
 	res.cookie("slup", token, {
 		httpOnly: true,
 		signed: true,
-		maxAge: 60 * 60 * 24 * 7, // 7 days croissant 
+		maxAge: 604800000, // 7 days croissant IN MILLISECONDS
 		sameSite: true,
 	});
 };

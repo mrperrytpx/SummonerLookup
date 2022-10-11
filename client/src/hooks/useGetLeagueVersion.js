@@ -12,5 +12,5 @@ export const useGetLeagueVersion = () => {
     };
 
 
-    return useQuery(["version"], fetchVersion, { staleTime: 900000 });
+    return useQuery(["version"], fetchVersion, { staleTime: 3000000 });
 };
