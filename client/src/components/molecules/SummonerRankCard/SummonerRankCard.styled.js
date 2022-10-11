@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { FlexCol } from "../../atoms/FlexBoxes/FlexBoxes.styled";
 
-export const StyledSummonerRank = styled(FlexCol)`
+export const StyledSummonerRankCard = styled(FlexCol)`
     width: 100%;
     padding: 1rem;
     margin-bottom: 1rem;

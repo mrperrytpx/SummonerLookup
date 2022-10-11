@@ -16,6 +16,7 @@ export const useGetLeagueChampions = () => {
             map.set(data.data[name].key, name);
         }
 
+        console.log("CHAMPIONS MAP:", map);
         return map;
     };
 

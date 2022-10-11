@@ -1,4 +1,5 @@
-import { SummonerRank } from "../../molecules/SummonerRank/SummonerRank";
+import { SummonerRankCard } from "../../molecules/SummonerRankCard/SummonerRankCard";
+import { SummonerChampStatsCard } from "../../molecules/SummonerChampStatsCard/SummonerChampStatsCard";
 import { StyledSummonerOverview } from "./SummonerOverview.styled";
 import styled from "styled-components";
 import { FlexCol } from "../../atoms/FlexBoxes/FlexBoxes.styled";
@@ -8,12 +9,10 @@ import { useGetSummonerRankedStatsQuery } from "../../../hooks/useGetSummonerRan
 
 const StyledFlexColOne = styled(FlexCol)`
   flex: 1;
-  border: 1px solid white;
 `;
 
 const StyledFlexColTwo = styled(FlexCol)`
   flex: 2;
-  border: 1px solid white;
 `;
 
 export const SummonerOverview = () => {
@@ -29,9 +28,10 @@ export const SummonerOverview = () => {
       </StyledFlexColTwo>
       <StyledFlexColOne>
         {summonerRankedData?.length
-          ? [...summonerRankedData]?.reverse().map(ranked => <SummonerRank key={ranked?.leagueId} ranked={ranked} />)
+          ? [...summonerRankedData]?.reverse().map(ranked => <SummonerRankCard key={ranked?.leagueId} ranked={ranked} />)
           : null
         }
+        <SummonerChampStatsCard />
       </StyledFlexColOne>
     </StyledSummonerOverview>
   );

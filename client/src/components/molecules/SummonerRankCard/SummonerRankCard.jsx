@@ -1,17 +1,17 @@
-import { StyledSummonerRank } from "./SummonerRank.styled";
+import { StyledSummonerRankCard } from "./SummonerRankCard.styled";
 import { FlexColCenter, FlexRowSpaceBetween, FlexRow } from "../../atoms/FlexBoxes/FlexBoxes.styled";
 import { Span } from "../../atoms/Span/Span";
 import { ImageContainer } from "../../atoms/ImageContainer/ImageContainer";
 import { RANKED_TYPES } from "../../../consts/rankedTypes";
 import { PromoGameStatus } from "../../atoms/PromoGameStatus/PromoGameStatus";
 
-export const SummonerRank = ({ ranked }) => {
+export const SummonerRankCard = ({ ranked }) => {
 
   const winrate = ((ranked.wins / (ranked.wins + ranked.losses)) * 100).toFixed(2);
 
   return (
-    <StyledSummonerRank>
-      <Span size="l">{RANKED_TYPES[ranked.queueType]}</Span>
+    <StyledSummonerRankCard>
+      <Span size="m">{RANKED_TYPES[ranked.queueType]}</Span>
 
       <FlexRowSpaceBetween>
         <FlexRow gap="1rem">
@@ -37,6 +37,6 @@ export const SummonerRank = ({ ranked }) => {
         </FlexRow>
         : null
       }
-    </StyledSummonerRank>
+    </StyledSummonerRankCard>
   );
 };

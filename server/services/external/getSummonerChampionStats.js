@@ -36,7 +36,7 @@ const getSummonerChampionStats = async (server, summonerName) => {
                 "summonerName": `${summonerName}`,
                 "regionId": `${server}`,
                 "role": 7,
-                "seasonId": 16,
+                "seasonId": 999,
                 "queueType": [
                     420,
                 ]
@@ -46,6 +46,7 @@ const getSummonerChampionStats = async (server, summonerName) => {
 
     if (!statsResponse.statusText === "OK") throw new Error("U.GG Might be having issues");
     const statsData = await statsResponse.json();
+
     return statsData;
 };
 

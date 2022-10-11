@@ -15,11 +15,6 @@ const app = express();
 // Connect with Mongo Atlas
 connectToMongoAtlas();
 
-app.use((req, _res, next) => {
-    console.log(req.url);
-    next();
-});
-
 // Middlewares
 app.use(helmet());
 app.use(cookieParser(process.env.COOKIE_SIGNATURE));
@@ -29,7 +24,7 @@ app.use(cors({ origin: process.env.WEBSITE_URL, credentials: true }));
 // API
 app.use("/api", api);
 
-// app.use(defaultErrorHandler);
+app.use(defaultErrorHandler);
 app.use(errorHandler);
 
 module.exports = app;
