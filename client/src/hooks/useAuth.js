@@ -16,6 +16,8 @@ const useGetFreshTokensQuery = (setAccessToken, setUser) => {
 
         const data = await response.json();
 
+        console.log("Refresh token data:", data);
+
         if (data?.accessToken) {
             const decoded = jwt_decode(data?.accessToken);
             setAccessToken(data?.accessToken);

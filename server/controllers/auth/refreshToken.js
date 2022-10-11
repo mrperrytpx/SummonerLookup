@@ -11,6 +11,8 @@ const { updateUserRefreshToken, getUserFromDB } = require("../../services/intern
 const refreshToken = async (req, res) => {
 	// get the token from the cookie
 	const cookieToken = req.signedCookies.slup;
+
+	console.log("COOKIE TOKEN:", cookieToken);
 	// If we don't have a token in our request, set the access token to nothing
 	if (!cookieToken) return res.json({ accesstoken: '' });
 
@@ -30,7 +32,10 @@ const refreshToken = async (req, res) => {
 	// If there isn't a user, set the access token to nothing
 	if (!user) return res.send({ accesstoken: '' });
 	// If the user document doesn't have the same refresh token as the recieved refresh token
-	if (user.refreshToken !== cookieToken) return res.send({ accesstoken: '' });
+	if (user.refreshToken !== cookieToken) {
+		console.log("ARE TOKENS EQUAL?: ", user.refreshToken === cookieToken);
+		return res.send({ accesstoken: '' });
+	}
 
 	// create access and refresh tokens
 	const accessToken = createAccessToken(user._id, payload.sub);

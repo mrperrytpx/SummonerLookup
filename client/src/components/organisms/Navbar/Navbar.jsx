@@ -2,7 +2,7 @@ import { StyledNavbar } from "./Navbar.styled";
 import { SvgLink } from "../../atoms/SvgLink/SvgLink";
 import { LinkButtonCluster } from "../../molecules/LinkButtonCluster/LinkButtonCluster";
 import { LinkButton } from "../../atoms/LinkButton/LinkButton";
-import { ImMenu3, ImMenu4 } from "react-icons/im";
+import { ImMenu, ImMenu4 } from "react-icons/im";
 import { MobileMenu } from "../MobileMenu/MobileMenu";
 import { useLocation } from "react-router-dom";
 import { CompactSearchSummoner } from "../CompactSearchSummoner/CompactSearchSummoner";
@@ -51,7 +51,7 @@ export const Navbar = ({ width, isNavOpen, handleNavOpen, setIsNavOpen }) => {
             }
           </LinkButtonCluster>
           : !isNavOpen
-            ? <ImMenu3 fill="white" size="48" onClick={handleNavOpen}></ImMenu3>
+            ? <ImMenu fill="white" size="48" onClick={handleNavOpen}></ImMenu>
             : <ImMenu4 fill="white" size="48" onClick={handleNavOpen}></ImMenu4>
       }
 
