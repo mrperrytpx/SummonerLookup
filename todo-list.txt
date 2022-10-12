@@ -18,3 +18,5 @@ TASKS FOR FUTURE ME WHEN ITS FUNCTIONAL (WIP)
 - tabbing on Home desktop servers
 - fix SummonerRank components if summoner doesn't have ranked data
 - optimistic updates for all applicable hooks
+
+https://ddragon.leagueoflegends.com/cdn/version/img/item/item.full

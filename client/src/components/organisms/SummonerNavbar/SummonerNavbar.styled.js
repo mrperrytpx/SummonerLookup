@@ -10,4 +10,8 @@ export const StyledSummonerNavbar = styled(FlexRowStart)`
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
     margin: 0.7rem 0;
+
+    a:first-of-type {
+        padding-left: 0.2rem;
+    }
 `;

@@ -6,6 +6,7 @@ import { FlexCol } from "../../atoms/FlexBoxes/FlexBoxes.styled";
 import { useParams } from "react-router-dom";
 import { useGetSummonerQuery } from "../../../hooks/useGetSummonerQuery";
 import { useGetSummonerRankedStatsQuery } from "../../../hooks/useGetSummonerRankedStatsQuery";
+import { SummonerMatches } from "../SummonerMatches/SummonerMatches";
 
 const StyledFlexColOne = styled(FlexCol)`
   flex: 1;
@@ -24,7 +25,7 @@ export const SummonerOverview = () => {
   return (
     <StyledSummonerOverview>
       <StyledFlexColTwo>
-        <div style={{ color: "white" }}>OVERVIEW</div>
+        <SummonerMatches />
       </StyledFlexColTwo>
       <StyledFlexColOne>
         {summonerRankedData?.length

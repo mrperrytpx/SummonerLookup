@@ -21,6 +21,7 @@ import { WithoutNav } from "./components/templates/WithoutNav";
 import { FullscreenLoading } from "./components/atoms/FullscreenLoading/FullscreenLoading";
 import { useGetFollowingQuery } from "./hooks/useGetFollowingQuery";
 import { useGetLeagueChallengesQuery } from "./hooks/useGetLeagueChallengesQuery";
+import { useGetLeagueItemsQuery } from "hooks/useGetLeagueItemsQuery";
 
 const App = () => {
 	const { accessToken, tokenLoading } = useAuth();
@@ -28,6 +29,7 @@ const App = () => {
 	const { width } = useScreenSize(setIsNavOpen);
 	const { isLoading: challengesLoading } = useGetLeagueChallengesQuery();
 	const { isLoading: championsLoading } = useGetLeagueChampions();
+	const { isLoading: itemsLoading } = useGetLeagueItemsQuery();
 	useGetFollowingQuery();
 	const handleNavOpen = () => setIsNavOpen(prev => !prev);
 
@@ -35,7 +37,7 @@ const App = () => {
 		if (width >= 750 && isNavOpen) setIsNavOpen(false);
 	}, [width, isNavOpen, setIsNavOpen]);
 
-	if (tokenLoading || challengesLoading || championsLoading) return <FullscreenLoading />;
+	if (tokenLoading || challengesLoading || championsLoading || itemsLoading) return <FullscreenLoading />;
 
 	return (
 		<div className="App">

@@ -10,7 +10,7 @@ router.patch("/unfollow_summoner", authMiddleware, asyncHandler(summonerControll
 router.get("/search_summoner/:server/:summonerName/", asyncHandler(summonerController.searchSummonerRoute));
 router.get("/live_game/:server/:summonerName/", asyncHandler(summonerController.summonerLiveGameRoute));
 
-router.get("/matches/:region/:puuid", asyncHandler(summonerController.summonerMatchesRoute));
+router.get("/matches/:server/:puuid", asyncHandler(summonerController.summonerMatchesRoute));
 router.get("/match_details/:id", asyncHandler(summonerController.summonerMatchDetailsRoute));
 router.get("/challenges/:server/:puuid", asyncHandler(summonerController.summonerChallenges));
 
