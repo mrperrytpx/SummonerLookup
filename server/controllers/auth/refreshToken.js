@@ -12,7 +12,6 @@ const refreshToken = async (req, res) => {
 	// get the token from the cookie
 	const cookieToken = req.signedCookies.slup;
 
-	console.log("COOKIE TOKEN:", cookieToken);
 	// If we don't have a token in our request, set the access token to nothing
 	if (!cookieToken) return res.json({ accesstoken: '' });
 

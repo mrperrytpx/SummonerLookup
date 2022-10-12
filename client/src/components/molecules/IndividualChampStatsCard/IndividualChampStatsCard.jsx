@@ -23,14 +23,14 @@ export const IndividualChampStatsCard = ({ champion }) => {
           <img src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${champions.get(`${champion.championId}`)}.png`} alt="" />
         </FlexColCenter>
         <FlexColCenter>
-          <Span block={true} align="left" size="s">{champions.get(`${champion.championId}`)}</Span>
+          <Span align="left" size="s">{champions.get(`${champion.championId}`)}</Span>
 
         </FlexColCenter>
       </FlexRow>
 
       <FlexColCenter style={{ flex: "1" }}>
-        <Span block={true} align="center" size="s">{kda} KDA</Span>
-        <Span block="true" align="center" size="s">{averageKills} {averageDeaths} {averageAssists}</Span>
+        <Span align="center" size="s">{kda} KDA</Span>
+        <Span align="center" size="s">{averageKills} {averageDeaths} {averageAssists}</Span>
       </FlexColCenter>
 
       <FlexColCenter>

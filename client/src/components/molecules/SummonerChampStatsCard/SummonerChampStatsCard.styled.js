@@ -1,7 +1,7 @@
+import { FlexCol } from "components/atoms/FlexBoxes/FlexBoxes.styled";
 import styled from "styled-components";
-import { FlexCol, FlexRow } from "../../atoms/FlexBoxes/FlexBoxes.styled";
 
-export const StyledSummonerChampStatsCard = styled.div`
+export const StyledSummonerChampStatsCard = styled(FlexCol)`
 
     width: 100%;
     padding: 1rem;
@@ -9,6 +9,6 @@ export const StyledSummonerChampStatsCard = styled.div`
     border-radius: 1rem;
 
     & > span {
-        margin-bottom: 1rem;
+        margin-bottom: 0.5rem;
     }
 `;

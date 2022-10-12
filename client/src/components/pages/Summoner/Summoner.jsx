@@ -9,11 +9,13 @@ import { useGetSummonerRankedStatsQuery } from "../../../hooks/useGetSummonerRan
 export const Summoner = () => {
 
   const { server, summonerName } = useParams();
-  const { data: summonerData, isLoading: isSummonerLoading } = useGetSummonerQuery(server, summonerName);
+  const { data: summonerData, isLoading: isSummonerLoading, isError } = useGetSummonerQuery(server, summonerName);
   const { data: summonerChallengesData, isLoading: isSummonerChallengesLoading } = useGetSummonerChallengesQuery(server, summonerName, summonerData?.puuid);
   useGetSummonerRankedStatsQuery(server, summonerData?.summonerId);
 
   if (isSummonerLoading || isSummonerChallengesLoading) return <div style={{ color: "white" }}>Loading...</div>;
+
+  if (isError) return <div style={{ color: "white" }}>NO SUMMONER XD</div>;
 
   return (
     <StyledSummoner>

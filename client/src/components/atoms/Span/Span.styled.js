@@ -30,10 +30,10 @@ const spanSize = (size) => {
 };
 
 export const StyledSpan = styled.span`
-    display: ${({ block }) => block ? "inline-block" : "inline"};
     width: 100%;
     color: ${({ theme }) => theme.textColors.light};
     font-size: ${({ size }) => spanSize(size)};
     text-transform: ${({ capsed }) => capsed ? "uppercase" : "none"};
     text-align: ${({ align }) => align};
+    border-bottom: ${({ underline }) => underline ? "1px solid white" : ""};
 `;

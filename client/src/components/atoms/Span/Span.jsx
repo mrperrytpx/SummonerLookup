@@ -1,8 +1,14 @@
 import { StyledSpan } from "./Span.styled";
 
-export const Span = ({ align = "left", block = false, children, capsed = false, size = "m" }) => {
+export const Span = ({ align = "left", underline = false, children, capsed = false, size = "m", ...rest }) => {
   return (
-    <StyledSpan align={align} block={block} size={size} capsed={capsed}>
+    <StyledSpan
+      {...rest}
+      underline={underline}
+      align={align}
+      size={size}
+      capsed={capsed}
+    >
       {children}
     </StyledSpan>
   );

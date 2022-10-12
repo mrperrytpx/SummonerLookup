@@ -3,6 +3,7 @@ import { StyledSummonerChampStatsCard } from "./SummonerChampStatsCard.styled";
 import { useParams } from "react-router-dom";
 import { IndividualChampStatsCard } from "../IndividualChampStatsCard/IndividualChampStatsCard";
 import { Span } from "../../atoms/Span/Span";
+import { CustomLink } from "components/atoms/CustomLink/CustomLink";
 
 export const SummonerChampStatsCard = () => {
 
@@ -14,8 +15,7 @@ export const SummonerChampStatsCard = () => {
 
   return (
     <StyledSummonerChampStatsCard>
-      <Span size="m" align="left" block={true}>Champion stats</Span>
-
+      <CustomLink to="stats">Champion stats</CustomLink>
       {championRankedStatsData.slice(0, 5).map((champion, i) => <IndividualChampStatsCard key={i} champion={champion} />)}
     </StyledSummonerChampStatsCard>
   );
