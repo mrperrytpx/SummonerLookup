@@ -67,11 +67,13 @@ export const SummonerInfo = () => {
   return (
     <StyledSummonerInfo>
       <div>
-        <Span size="xxxl" capsed={true}>{summonerData?.summonerName}</Span><Span size="xxxl">{summonerChallengesData?.preferences?.title ? " - " + summonerTitle() : null}</Span>
+        <Span size="xxxl" capsed={true}>{summonerData?.summonerName}</Span>
+        <Span size="xxxl">{summonerChallengesData?.preferences?.title ? " - " + summonerTitle() : null}</Span>
         <div>
           <Span size="s">{summonerChallengesData?.totalPoints?.current} out of {summonerChallengesData?.totalPoints?.max} challenge points earned</Span>
         </div>
       </div>
+
       <Button
         disabled={!accessToken}
         type="button"

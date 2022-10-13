@@ -28,7 +28,7 @@ export const SummonerMatches = () => {
           {page?.matchesData?.map((match, i) => <SummonerMatchCard key={i} match={match?.value} />)}
         </Fragment>
       ))}
-      {summonerMatchesData && <div ref={ref}></div>}
+      {/* {summonerMatchesData && <div ref={ref}></div>} */}
     </StyledSummonerMatches>
   );
 };

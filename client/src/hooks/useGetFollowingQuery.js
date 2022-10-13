@@ -6,7 +6,6 @@ const getFollowing = async (accessToken, signal) => {
     const response = await fetch("/api/user/me", {
         method: "GET",
         signal,
-        credentials: "include",
         headers: {
             "Content-Type": "application/json",
             authorization: `Bearer ${accessToken}`
