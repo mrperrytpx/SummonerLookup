@@ -3,7 +3,7 @@ const ApiError = require("../../utils/ApiError");
 
 const getSummonerMatches = async (region, puuid, page) => {
 
-    const matchesUrl = `https://${region}.api.riotgames.com/lol/match/v5/matches/by-puuid/${puuid}/ids?start=${(page - 1) * 10}&count=11&api_key=${process.env.RIOT_API}`;
+    const matchesUrl = `https://${region}.api.riotgames.com/lol/match/v5/matches/by-puuid/${puuid}/ids?start=${(page - 1) * 10}&count=3&api_key=${process.env.RIOT_API}`;
     const matchesResponse = await fetch(matchesUrl);
     if (!matchesResponse.ok) {
         if (matchesResponse.status === 429) {

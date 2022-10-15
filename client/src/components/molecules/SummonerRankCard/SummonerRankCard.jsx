@@ -15,9 +15,11 @@ export const SummonerRankCard = ({ ranked }) => {
 
       <FlexRowSpaceBetween>
         <FlexRow gap="1rem">
-          <ImageContainer width="65px">
-            <img src={`https://static.u.gg/assets/lol/ranks/2d/${ranked.tier?.toLowerCase()}.svg`} alt="Ranked tier" />
-          </ImageContainer>
+          <ImageContainer
+            src={`https://static.u.gg/assets/lol/ranks/2d/${ranked.tier?.toLowerCase()}.svg`}
+            alt="Ranked tier"
+            width="65px"
+          />
           <FlexColCenter gap="0.2rem">
             <Span size="m">{ranked.tier} {ranked.rank}</Span>
             <Span size="s">{ranked.leaguePoints} LP</Span>

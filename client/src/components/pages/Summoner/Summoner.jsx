@@ -5,6 +5,7 @@ import { useGetSummonerChallengesQuery } from "../../../hooks/useGetSummonerChal
 import { SummonerCard } from "../../organisms/SummonerCard/SummonerCard";
 import { SummonerNavbar } from "../../organisms/SummonerNavbar/SummonerNavbar";
 import { useGetSummonerRankedStatsQuery } from "../../../hooks/useGetSummonerRankedStatsQuery";
+import { FullscreenLoading } from "components/atoms/FullscreenLoading/FullscreenLoading";
 
 export const Summoner = () => {
 
@@ -13,7 +14,9 @@ export const Summoner = () => {
   const { data: summonerChallengesData, isLoading: isSummonerChallengesLoading } = useGetSummonerChallengesQuery(server, summonerName, summonerData?.puuid);
   useGetSummonerRankedStatsQuery(server, summonerData?.summonerId);
 
-  if (isSummonerLoading || isSummonerChallengesLoading) return <div style={{ color: "white" }}>Loading...</div>;
+
+
+  if (isSummonerLoading || isSummonerChallengesLoading) return <FullscreenLoading />;
 
   if (isError) return <div style={{ color: "white" }}>NO SUMMONER XD</div>;
 

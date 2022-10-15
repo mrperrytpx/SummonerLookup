@@ -1,15 +1,19 @@
 import styled from "styled-components";
-import { FlexColCenter } from "../../atoms/FlexBoxes/FlexBoxes.styled";
+import { FlexColCenter } from "../FlexBoxes/FlexBoxes.styled";
 
-export const StyledSummonerIcon = styled(FlexColCenter)`
+export const StyledIconWithLevel = styled(FlexColCenter)`
     position: relative;
-    width: 140px;
+    width: ${({ width }) => width + "px"};
+    height: ${({ width }) => width + "px"};
+    aspect-ratio: 1 / 1;
     margin: 0;
-    border: 1px solid ${({ theme }) => theme.backgroundColors.active};
 
     img {
         width: 100%;
         aspect-ratio: 1 / 1;
+        &[alt] {
+            font-size: 0.6rem;
+        }
     }
 
     span {
@@ -17,12 +21,11 @@ export const StyledSummonerIcon = styled(FlexColCenter)`
         position: absolute;
         bottom: 0; 
         right: 0;
+        font-size: ${({ width }) => width > 100 ? "0.8rem" : "0.65rem"};
         
-        border-top: 1px solid ${({ theme }) => theme.backgroundColors.active};
-        border-left: 1px solid ${({ theme }) => theme.backgroundColors.active};
         background-color: ${({ theme }) => theme.backgroundColors.primary};
         color: ${({ theme }) => theme.textColors.light};
         
-        padding: 0.2rem 0.3rem;
+        padding: 0.1rem 0.15rem;
     }   
 `;

@@ -6,8 +6,6 @@ export const theme = {
         quaternary: "#758aab",
         active: "#d0e1f9",
         danger: "#d65250",
-        win: "#009021",
-        loss: "#b60f00"
     },
     textColors: {
         dark: "#111111",
@@ -18,5 +16,13 @@ export const theme = {
         tablet: "701px",
         desktop: "1025px",
         widescreen: "2400px"
+    },
+    matchResult: {
+        win: "#0d8b2880",
+        winBorder: "#0d8b28",
+        winPromo: "#11BA3580",
+        loss: "#8d090b80",
+        lossBorder: "#8d090b",
+        lossPromo: "#BD0C0F80"
     }
 };

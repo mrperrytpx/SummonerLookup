@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
-import { ReactQueryDevtools } from "react-query/devtools";
 // Components
 
 import GlobalStyles from "./misc/globalStyles";
@@ -22,6 +21,8 @@ import { FullscreenLoading } from "./components/atoms/FullscreenLoading/Fullscre
 import { useGetFollowingQuery } from "./hooks/useGetFollowingQuery";
 import { useGetLeagueChallengesQuery } from "./hooks/useGetLeagueChallengesQuery";
 import { useGetLeagueItemsQuery } from "hooks/useGetLeagueItemsQuery";
+import { useGetLeagueRunesQuery } from "hooks/useGetLeagueRunesQuery";
+import { useGetLeagueSummonerSpellsQuery } from "hooks/useGetLeagueSummonerSpellsQuery";
 
 const App = () => {
 	const { accessToken, tokenLoading } = useAuth();
@@ -29,7 +30,9 @@ const App = () => {
 	const { width } = useScreenSize(setIsNavOpen);
 	const { isLoading: challengesLoading } = useGetLeagueChallengesQuery();
 	const { isLoading: championsLoading } = useGetLeagueChampions();
-	const { isLoading: itemsLoading } = useGetLeagueItemsQuery();
+	// const { isLoading: itemsLoading } = useGetLeagueItemsQuery();
+	const { isLoading: runesLoading } = useGetLeagueRunesQuery();
+	const { isLoading: summonerSpellsLoading } = useGetLeagueSummonerSpellsQuery();
 	useGetFollowingQuery();
 	const handleNavOpen = () => setIsNavOpen(prev => !prev);
 
@@ -37,7 +40,7 @@ const App = () => {
 		if (width >= 750 && isNavOpen) setIsNavOpen(false);
 	}, [width, isNavOpen, setIsNavOpen]);
 
-	if (tokenLoading || challengesLoading || championsLoading || itemsLoading) return <FullscreenLoading />;
+	if (tokenLoading || challengesLoading || championsLoading || runesLoading || summonerSpellsLoading) return <FullscreenLoading />;
 
 	return (
 		<div className="App">
@@ -69,7 +72,6 @@ const App = () => {
 
 				</Route>
 			</Routes>
-			<ReactQueryDevtools initialIsOpen={false} />
 		</div>
 	);
 };

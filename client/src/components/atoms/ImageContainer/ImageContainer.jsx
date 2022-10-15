@@ -1,9 +1,9 @@
 import { StyledImageContainer } from "./ImageContainer.styled";
 
-export const ImageContainer = ({ children, width }) => {
+export const ImageContainer = ({ src, alt, width, background, max }) => {
   return (
-    <StyledImageContainer width={width}>
-      {children}
+    <StyledImageContainer max={max} background={background} width={width}>
+      <img src={src} alt={alt} />
     </StyledImageContainer>
   );
 };
