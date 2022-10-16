@@ -4,9 +4,12 @@ import { useParams } from "react-router-dom";
 import { IndividualChampStatsCard } from "../IndividualChampStatsCard/IndividualChampStatsCard";
 import { Span } from "../../atoms/Span/Span";
 import { CustomLink } from "components/atoms/CustomLink/CustomLink";
+import { useState } from "react";
+import { FlexRow, FlexRowSpaceBetween } from "components/atoms/FlexBoxes/FlexBoxes.styled";
 
 export const SummonerChampStatsCard = () => {
 
+  const [stats, setStats] = useState("Solo");
 
   const { server, summonerName } = useParams();
   const { data: championRankedStatsData, isLoading } = useGetSummonerRankedChampStatsQuery(server, summonerName);
@@ -15,8 +18,16 @@ export const SummonerChampStatsCard = () => {
 
   return (
     <StyledSummonerChampStatsCard>
-      <CustomLink to="stats">Champion stats</CustomLink>
-      {championRankedStatsData.slice(0, 5).map((champion, i) => <IndividualChampStatsCard key={i} champion={champion} />)}
+      <FlexRowSpaceBetween>
+        <CustomLink to="stats">Champion stats - {stats}</CustomLink>
+        <select defaultValue={stats} name="queue" id="queue" onChange={(e) => setStats(e.target.value)}>
+          <option value="Solo">Ranked Solo</option>
+          <option value="Flex">Ranked Flex</option>
+          <option value="Combined">Combined</option>
+        </select>
+      </FlexRowSpaceBetween>
+
+      {championRankedStatsData?.[stats].map((champion, i) => <IndividualChampStatsCard key={i} champion={champion} />)}
     </StyledSummonerChampStatsCard>
   );
 };

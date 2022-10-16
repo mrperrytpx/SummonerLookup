@@ -8,38 +8,49 @@ const getSummonerChampionStats = async (server, summonerName) => {
         },
         body: JSON.stringify({
             query: `
-                query getPlayerStats($queueType: [Int!], $regionId: String!, $role: Int!, $seasonId: Int!, $summonerName: String!) {
-                    fetchPlayerStatistics(queueType: $queueType, summonerName: $summonerName, regionId: $regionId, role: $role, seasonId: $seasonId) {
-                      basicChampionPerformances {
-                        championId
-                        kills
-                        assists
-                        deaths
-                        cs
-                        damage
-                        doubleKills
-                        tripleKills
-                        quadraKills
-                        pentaKills
-                        gold
-                        wins
-                        totalMatches
-                      }
-                      queueType
-                      regionId
-                      role
-                      seasonId
-                      __typename
-                    }
-                  }`,
+            query getPlayerStats($queueType: [Int!], $regionId: String!, $role: Int!, $seasonId: Int!, $summonerName: String!) {
+                fetchPlayerStatistics(
+                  queueType: $queueType
+                  summonerName: $summonerName
+                  regionId: $regionId
+                  role: $role
+                  seasonId: $seasonId
+                ) {
+                  basicChampionPerformances {
+                    assists
+                    championId
+                    cs
+                    damage
+                    damageTaken
+                    deaths
+                    doubleKills
+                    gold
+                    kills
+                    maxDeaths
+                    maxKills
+                    pentaKills
+                    quadraKills
+                    totalMatches
+                    tripleKills
+                    wins
+                    lpAvg
+                    __typename
+                  }
+                  exodiaUuid
+                  puuid
+                  queueType
+                  regionId
+                  role
+                  seasonId
+                  __typename
+                }
+              }`,
             variables: {
-                "summonerName": `${summonerName}`,
+                "queueType": [420, 440],
                 "regionId": `${server}`,
                 "role": 7,
                 "seasonId": 999,
-                "queueType": [
-                    420,
-                ]
+                "summonerName": `${summonerName}`,
             }
         })
     });
@@ -51,3 +62,6 @@ const getSummonerChampionStats = async (server, summonerName) => {
 };
 
 module.exports = getSummonerChampionStats;
+
+
+

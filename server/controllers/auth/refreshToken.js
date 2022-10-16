@@ -32,7 +32,6 @@ const refreshToken = async (req, res) => {
 	if (!user) return res.send({ accesstoken: '' });
 	// If the user document doesn't have the same refresh token as the recieved refresh token
 	if (user.refreshToken !== cookieToken) {
-		console.log("ARE TOKENS EQUAL?: ", user.refreshToken === cookieToken);
 		return res.send({ accesstoken: '' });
 	}
 
