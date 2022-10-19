@@ -4,19 +4,20 @@ import { StyledSummonerMatches } from "./SummonerMatches.styled";
 import { useParams } from "react-router-dom";
 import { SummonerMatchCard } from "components/molecules/SummonerMatchCard/SummonerMatchCard";
 import { Span } from "components/atoms/Span/Span";
-import { Fragment, useEffect } from "react";
-import { useInView } from "react-intersection-observer";
+import { Fragment } from "react";
+import { Button } from "components/atoms/Button/Button";
 
 export const SummonerMatches = () => {
 
-  const { ref, inView } = useInView();
   const { server, summonerName } = useParams();
   const { data: summonerData } = useGetSummonerQuery(server, summonerName);
-  const { data: summonerMatchesData, isLoading, fetchNextPage } = useGetSummonerMatchesInfiniteQuery(server, summonerData?.puuid);
-
-  useEffect(function nextPage() {
-    if (inView) fetchNextPage();
-  }, [inView]);
+  const {
+    data: summonerMatchesData,
+    isLoading,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage
+  } = useGetSummonerMatchesInfiniteQuery(server, summonerData?.puuid);
 
   if (isLoading) return <div style={{ color: "white" }}>Loading...</div>;
 
@@ -28,7 +29,23 @@ export const SummonerMatches = () => {
           {page?.matchesData?.map((match, i) => <SummonerMatchCard key={i} match={match?.value} />)}
         </Fragment>
       ))}
-      {/* {summonerMatchesData && <div ref={ref}></div>} */}
+      {summonerMatchesData && (
+        <Button
+          disabled={!hasNextPage || isFetchingNextPage}
+          padding="0.1rem"
+          variant="tertiary"
+          onClick={() => fetchNextPage()}
+          type="button"
+          wide
+        >
+          {isFetchingNextPage
+            ? 'Loading more...'
+            : hasNextPage
+              ? 'Load 5 more'
+              : 'Nothing more to load'}
+        </Button>
+      )}
+
     </StyledSummonerMatches>
   );
 };

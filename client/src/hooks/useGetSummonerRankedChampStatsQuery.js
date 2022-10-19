@@ -17,7 +17,7 @@ export const useGetSummonerRankedChampStatsQuery = (server, summonerName) => {
     };
 
     return useQuery(["champion-stats", server, summonerName.toLowerCase()], getChampRankedStats, {
-        enabled: !!server && !!summonerName
+        enabled: !!server && !!summonerName,
     });
 
 };

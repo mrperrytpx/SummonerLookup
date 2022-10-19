@@ -12,7 +12,7 @@ export const StyledButton = styled.button`
     padding: ${({ padding }) => padding || ".5em 1em"};
     border: none;
 
-    color: ${({ theme, variant }) => variant === "danger" ? theme.textColors.light : theme.textColors.dark};
+    color: ${({ theme, variant }) => variant === "danger" || variant === "tertiary" || variant == "quaternary" ? theme.textColors.light : theme.textColors.dark};
     text-align: center;
     vertical-align: middle;
     font-size: 1.1rem;

@@ -18,7 +18,7 @@ export const useGetSummonerQuery = (server, summonerName) => {
     };
 
     return useQuery(["summoner", server, summonerName.toLowerCase()], getSummoner, {
-        staleTime: 180000,
+        staleTime: 300000,
         retry: 1,
         enabled: !!server && !!summonerName,
         onError: () => queryClient.cancelQueries("summoner"),

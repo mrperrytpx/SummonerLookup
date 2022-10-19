@@ -21,6 +21,11 @@ app.use(cookieParser(process.env.COOKIE_SIGNATURE));
 app.use(express.json());
 app.use(cors({ origin: process.env.WEBSITE_URL, credentials: true }));
 
+app.use((req, _res, next) => {
+    console.log(req.url);
+    next();
+});
+
 // API
 app.use("/api", api);
 

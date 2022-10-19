@@ -18,6 +18,7 @@ export const useGetSummonerRankedStatsQuery = (server, summonerId) => {
     };
 
     return useQuery(["ranked-stats", server, summonerId], getRankedStats, {
-        enabled: !!server && !!summonerId
+        enabled: !!server && !!summonerId,
+        staleTime: 300000
     });
 };

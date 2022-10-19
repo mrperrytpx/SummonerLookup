@@ -36,4 +36,10 @@ export const StyledSpan = styled.span`
     text-transform: ${({ capsed }) => capsed ? "uppercase" : "none"};
     text-align: ${({ align }) => align};
     border-bottom: ${({ underline }) => underline ? "1px solid white" : ""};
+    ${({ pointer }) => pointer && `
+        cursor: pointer;
+    `}
+    ${({ padding }) => padding && `
+        padding: ${padding};
+    `}
 `;

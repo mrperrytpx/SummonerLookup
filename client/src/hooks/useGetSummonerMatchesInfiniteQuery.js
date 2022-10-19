@@ -16,6 +16,7 @@ export const useGetSummonerMatchesInfiniteQuery = (server, puuid) => {
     };
 
     return useInfiniteQuery(["matches", server, puuid], getSummonerMatches, {
+        staleTime: 300000,
         enabled: !!server && !!puuid,
         getNextPageParam: (lastPage, pages) => {
             if (lastPage?.hasNextPage) {

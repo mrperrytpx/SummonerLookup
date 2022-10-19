@@ -29,7 +29,7 @@ export const SummonerOverview = () => {
       </StyledFlexColTwo>
       <StyledFlexColOne>
         {summonerRankedData?.length
-          ? [...summonerRankedData]?.reverse().map(ranked => <SummonerRankCard key={ranked?.leagueId} ranked={ranked} />)
+          ? [...summonerRankedData]?.map(ranked => <SummonerRankCard key={ranked?.leagueId} ranked={ranked} />)
           : null
         }
         <SummonerChampStatsCard />
