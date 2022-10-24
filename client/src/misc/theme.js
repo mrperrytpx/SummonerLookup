@@ -18,8 +18,8 @@ export const theme = {
         widescreen: "2400px"
     },
     matchResult: {
-        win: "#0d8b2880",
-        winBorder: "#0d8b28",
+        win: "#758aab80",
+        winBorder: "#758aab",
         winPromo: "#11BA3580",
         loss: "#8d090b80",
         lossBorder: "#8d090b",

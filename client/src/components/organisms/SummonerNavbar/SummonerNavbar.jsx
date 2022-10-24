@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { NavActiveLink } from "../../atoms/NavActiveLink/NavActiveLink";
 import { StyledSummonerNavbar } from "./SummonerNavbar.styled";
@@ -6,6 +7,8 @@ export const SummonerNavbar = () => {
 
   const location = useLocation();
   const { server, summonerName } = useParams();
+
+  useEffect(() => console.log(summonerName), [summonerName]);
 
   return (
     <StyledSummonerNavbar>

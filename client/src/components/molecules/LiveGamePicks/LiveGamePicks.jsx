@@ -4,7 +4,7 @@ import { StyledLiveGamePicks } from "./LiveGamePicks.styled";
 import { ImageContainer } from "components/atoms/ImageContainer/ImageContainer";
 import { useQueryClient } from "react-query";
 
-export const LiveGamePicks = ({ picks }) => {
+export const LiveGamePicks = ({ picks, direction }) => {
 
   const queryClient = useQueryClient();
   const version = queryClient.getQueryData(["version"]);
@@ -20,13 +20,12 @@ export const LiveGamePicks = ({ picks }) => {
     }
     return returnArray;
   };
-
   // getTree(pick.perks.perkStyle).slots[0].runes.find(rune => rune.id === pick.perks.perkIds[0]).icon
 
   return (
-    <StyledLiveGamePicks>
+    <StyledLiveGamePicks direction={direction}>
       {picks?.map((pick, i) => (
-        <FlexRowStart data-grid key={i}>
+        <div data-grid key={i}>
           <ImageContainer
             src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${champions.get(`${pick.championId}`)}.png`}
             width="40px"
@@ -53,7 +52,7 @@ export const LiveGamePicks = ({ picks }) => {
               />;
             })}
           </FlexRowStart>
-        </FlexRowStart>
+        </div>
       ))}
     </StyledLiveGamePicks>
   );

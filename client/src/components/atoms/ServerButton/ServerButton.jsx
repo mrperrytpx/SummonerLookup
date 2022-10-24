@@ -7,7 +7,13 @@ export const ServerButton = ({ server, children, handleLabelClick, handleRadioCl
   return (
     <StyledServerButton server={server} checkedRadioButton={checkedRadioButton}>
       <label onClick={handleLabelClick} htmlFor={server}>{children}</label>
-      <input type="radio" onChange={handleRadioClick} checked={isRadioChecked(server)} id={server} value={server} />
+      <input
+        type="radio"
+        onChange={handleRadioClick}
+        checked={isRadioChecked(server)}
+        id={server}
+        value={server}
+      />
     </StyledServerButton>
   );
 };

@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 export const SearchSummoner = () => {
 
   const [summonerName, setSummonerName] = useState("");
-  const [checkedRadioButton, setCheckedRadioButton] = useState("eun1");
+  const [checkedRadioButton, setCheckedRadioButton] = useState(localStorage.getItem("server") || "eun1");
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -20,6 +20,7 @@ export const SearchSummoner = () => {
   };
 
   const handleLabelClick = (e) => {
+    localStorage.setItem("server", e.target.htmlFor);
     setCheckedRadioButton(e.target.htmlFor);
   };
 

@@ -22,6 +22,12 @@ export const SummonerOverview = () => {
   const { data: summonerData } = useGetSummonerQuery(server, summonerName);
   const { data: summonerRankedData } = useGetSummonerRankedStatsQuery(server, summonerData?.summonerId);
 
+  const sortQueues = (a, b) => {
+    if (a.wins + a.losses < b.wins + b.losses) return 1;
+    if (a.wins + a.losses > b.wins + b.losses) return -1;
+    return 0;
+  };
+
   return (
     <StyledSummonerOverview>
       <StyledFlexColTwo>
@@ -29,7 +35,7 @@ export const SummonerOverview = () => {
       </StyledFlexColTwo>
       <StyledFlexColOne>
         {summonerRankedData?.length
-          ? [...summonerRankedData]?.map(ranked => <SummonerRankCard key={ranked?.leagueId} ranked={ranked} />)
+          ? [...summonerRankedData]?.sort(sortQueues).map(ranked => <SummonerRankCard key={ranked?.leagueId} ranked={ranked} />)
           : null
         }
         <SummonerChampStatsCard />

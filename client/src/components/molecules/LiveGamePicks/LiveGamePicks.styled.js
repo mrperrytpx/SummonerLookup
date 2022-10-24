@@ -10,5 +10,11 @@ export const StyledLiveGamePicks = styled(FlexCol)`
         grid-template-columns: 40px 160px 2fr 1fr;
         padding: .5rem;
         gap: 0.2rem;
+        width: 100%;
+        ${({ direction }) => direction && `direction: ${direction}`};
+
+        span {
+            place-self: center;
+        }
     }
 `;

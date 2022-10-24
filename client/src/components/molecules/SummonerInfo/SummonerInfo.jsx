@@ -53,6 +53,8 @@ export const SummonerInfo = () => {
     const titleData = leagueChallengesData?.find(challenge => challenge.id === summonerTitleId);
     // find challenge data with shortened titleId
     const titleKey = CHALLENGE_THRESHOLDS[summonerTitleInObject];
+
+    if (!titleKey) return;
     // gets which key in 'thresholds' object has the actual title string
     // example: CHALLENGE_THRESHOLDS[2] returns "SILVER" which would have .rewards[0].title in it because summonerTitleId ends with a '2'
     // why doesn't the API separate the ID itself or why doesn't it just return the title string instead of the ID 
@@ -68,7 +70,7 @@ export const SummonerInfo = () => {
     <StyledSummonerInfo>
       <div>
         <Span size="xxxl" capsed={true}>{summonerData?.summonerName}</Span>
-        <Span size="xxxl">{summonerChallengesData?.preferences?.title ? " - " + summonerTitle() : null}</Span>
+        <Span size="xxxl">{summonerChallengesData?.preferences?.title?.length > 2 ? " - " + summonerTitle() : null}</Span>
         <div>
           <Span size="s">{summonerChallengesData?.totalPoints?.current} out of {summonerChallengesData?.totalPoints?.max} challenge points earned</Span>
         </div>

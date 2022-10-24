@@ -7,7 +7,7 @@ import { StyledCompactSearchSummoner } from "./CompactSearchSummoner.styled";
 export const CompactSearchSummoner = () => {
 
   const [summonerName, setSummonerName] = useState("");
-  const [dropdownValue, setDropdownValue] = useState("eun1");
+  const [dropdownValue, setDropdownValue] = useState(localStorage.getItem("server") || "eun1");
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -21,6 +21,7 @@ export const CompactSearchSummoner = () => {
   };
 
   const handleOptionClick = (e) => {
+    localStorage.setItem("server", e.target.value);
     setDropdownValue(e.target.value);
   };
 
