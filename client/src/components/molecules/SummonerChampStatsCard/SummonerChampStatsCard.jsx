@@ -27,7 +27,7 @@ export const SummonerChampStatsCard = () => {
         </select>
       </FlexRowSpaceBetween>
 
-      {championRankedStatsData?.[stats].map((champion, i) => <IndividualChampStatsCard key={i} champion={champion} />)}
+      {championRankedStatsData?.[stats].slice(0, 5).map((champion, i) => <IndividualChampStatsCard key={i} champion={champion} />)}
     </StyledSummonerChampStatsCard>
   );
 };

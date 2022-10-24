@@ -8,13 +8,12 @@ export const SummonerNavbar = () => {
   const location = useLocation();
   const { server, summonerName } = useParams();
 
-  useEffect(() => console.log(summonerName), [summonerName]);
-
+  const encodedSummoner = encodeURIComponent(summonerName);
   return (
     <StyledSummonerNavbar>
-      <NavActiveLink active={location.pathname === `/${server}/${summonerName}` ? 1 : 0} to="">Overview</NavActiveLink>
-      <NavActiveLink active={location.pathname === `/${server}/${summonerName}/stats` ? 1 : 0} to="stats">Ranked Stats</NavActiveLink>
-      <NavActiveLink active={location.pathname === `/${server}/${summonerName}/live-game` ? 1 : 0} to="live-game">Live Game</NavActiveLink>
+      <NavActiveLink active={location.pathname === `/${server}/${encodedSummoner}` ? 1 : 0} to="">Overview</NavActiveLink>
+      <NavActiveLink active={location.pathname === `/${server}/${encodedSummoner}/stats` ? 1 : 0} to="stats">Ranked Stats</NavActiveLink>
+      <NavActiveLink active={location.pathname === `/${server}/${encodedSummoner}/live-game` ? 1 : 0} to="live-game">Live Game</NavActiveLink>
     </StyledSummonerNavbar>
   );
 };
