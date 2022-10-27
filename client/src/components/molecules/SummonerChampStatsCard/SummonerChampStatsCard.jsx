@@ -9,7 +9,7 @@ import { FlexRow, FlexRowSpaceBetween } from "components/atoms/FlexBoxes/FlexBox
 
 export const SummonerChampStatsCard = () => {
 
-  const [stats, setStats] = useState("Solo");
+  const [stats, setStats] = useState("solo");
 
   const { server, summonerName } = useParams();
   const { data: championRankedStatsData, isLoading } = useGetSummonerRankedChampStatsQuery(server, summonerName);
@@ -21,9 +21,9 @@ export const SummonerChampStatsCard = () => {
       <FlexRowSpaceBetween>
         <CustomLink to="stats">Champion stats - {stats}</CustomLink>
         <select defaultValue={stats} name="queue" id="queue" onChange={(e) => setStats(e.target.value)}>
-          <option value="Solo">Ranked Solo</option>
-          <option value="Flex">Ranked Flex</option>
-          <option value="Combined">Combined</option>
+          <option value="solo">Ranked Solo</option>
+          <option value="flex">Ranked Flex</option>
+          <option value="combined">Combined</option>
         </select>
       </FlexRowSpaceBetween>
 

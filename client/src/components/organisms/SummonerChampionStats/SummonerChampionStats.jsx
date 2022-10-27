@@ -36,8 +36,8 @@ export const SummonerChampionStats = () => {
               ))
             }
           </thead>
-          <tbody>
 
+          <tbody>
             {combinedTable.getRowModel().rows.map(row => (
               <tr key={row.id}>
                 {
@@ -49,10 +49,8 @@ export const SummonerChampionStats = () => {
                 }
               </tr>
             ))}
-
           </tbody>
         </>
-
       }
     </StyledSummonerChampionStats>
   );
