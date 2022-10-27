@@ -37,9 +37,9 @@ const summonerChampionStats = async (req, res) => {
     });
 
     const payload = {
-        "Solo": statsData.data.fetchPlayerStatistics[0].basicChampionPerformances,
-        "Flex": statsData.data.fetchPlayerStatistics[1].basicChampionPerformances,
-        "Combined": [...statsMap.values()]
+        "solo": statsData.data.fetchPlayerStatistics[0].basicChampionPerformances,
+        "flex": statsData.data.fetchPlayerStatistics[1].basicChampionPerformances,
+        "combined": [...statsMap.values()]
     };
     res.status(200).json(payload);
 };

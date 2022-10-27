@@ -8,6 +8,7 @@ import GlobalStyles from "./misc/globalStyles";
 import { Home, Me, Summoner, SignIn, SignUp } from "./components/pages";
 import { SummonerOverview } from "./components/organisms/SummonerOverview/SummonerOverview";
 import { SummonerLiveGame } from "components/organisms/SummonerLiveGame/SummonerLiveGame";
+import { SummonerChampionStats } from "components/organisms/SummonerChampionStats/SummonerChampionStats";
 
 import ProtectedRoute from "./utils/ProtectedRoute";
 // Contexts
@@ -54,7 +55,7 @@ const App = () => {
 
 					<Route path="/:server/:summonerName" element={<Summoner />}>
 						<Route index element={<SummonerOverview />} />
-						<Route path="stats" element={<div style={{ color: "white" }}>STATS</div>} />
+						<Route path="stats" element={<SummonerChampionStats />} />
 						<Route path="live-game" element={<SummonerLiveGame />} />
 					</Route>
 
