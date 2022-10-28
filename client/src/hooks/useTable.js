@@ -18,7 +18,7 @@ export const useTable = (data) => {
     const defaultColumns = useMemo(() => [
         columnHelper.accessor((_row, i) => `${i + 1}`, {
             cell: props => props.getValue(),
-            header: "Rank",
+            header: "#",
             sortingFn: "alphanumeric",
         }),
         columnHelper.accessor(row => `${champions.get(`${row.championId}`)}`, {

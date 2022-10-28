@@ -1,18 +1,29 @@
 import { flexRender } from "@tanstack/react-table";
 import { useScreenSize } from "hooks/useScreenSize";
 import { useTable } from "hooks/useTable";
+import { useEffect } from "react";
 import { StyledStatsTable } from "./StatsTable.styled";
+
+
 
 export const StatsTable = ({ data }) => {
 
-  const table = useTable(data);
   const { width } = useScreenSize();
+  const table = useTable(data);
+
+  useEffect(() => {
+    if (width < 1000) {
+      table.getColumn("avg_gold").toggleVisibility(false);
+    } else {
+      table.getColumn("avg_gold").toggleVisibility(true);
+    }
+  }, [width, table]);
 
   return (
     <>
       {table.getAllLeafColumns().map(column => {
         return (
-          <div key={column.id} >
+          <div column={column} key={column.id} >
             <label>
               <input
                 {...{
@@ -20,8 +31,7 @@ export const StatsTable = ({ data }) => {
                   checked: column.getIsVisible(),
                   onChange: column.getToggleVisibilityHandler(),
                 }}
-              />{' '}
-              {column.id}
+              /> {column.id}
             </label>
           </div>
         );
