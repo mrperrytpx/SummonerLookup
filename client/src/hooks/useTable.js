@@ -6,15 +6,16 @@ const columnHelper = createColumnHelper();
 
 export const useTable = (data) => {
 
-    const champions = queryClient.getQueryData(["champions"]);
+    const [sorting, setSorting] = useState([]);
+    const [columnVisibility, setColumnVisibility] = useState({});
 
-    const [sorting, setSorting] = useState();
+    const champions = queryClient.getQueryData(["champions"]);
 
     const winrate = (row) => `${Math.round((row.wins / row.totalMatches) * 100)}%`;
     const kda = (row) => `${((row.kills + row.assists) / row.deaths).toFixed(2)}`;
 
     // Rank, Champion, KDA, LP gain, avg cs, avg dmg, avg dmg taken, avg gold
-    const defaultColumns = [
+    const defaultColumns = useMemo(() => [
         columnHelper.accessor((_row, i) => `${i + 1}`, {
             cell: props => props.getValue(),
             header: "Rank",
@@ -58,23 +59,24 @@ export const useTable = (data) => {
             cell: props => props.getValue(),
             header: "Avg Gold",
             sortingFn: "alphanumeric",
-            sortDescFirst: true
+            sortDescFirst: true,
+            id: "avg_gold"
         }),
-    ];
+    ], [champions]);
 
-    const memoColumns = useMemo(() => defaultColumns, []);
     const memoData = useMemo(() => data, [data]);
 
     const instance = useReactTable({
         data: memoData,
-        columns: memoColumns,
+        columns: defaultColumns,
         getCoreRowModel: getCoreRowModel(),
         getSortedRowModel: getSortedRowModel(),
         state: {
             sorting,
+            columnVisibility
         },
         onSortingChange: setSorting,
-        debugTable: true,
+        onColumnVisibilityChange: setColumnVisibility,
     });
 
     return instance;

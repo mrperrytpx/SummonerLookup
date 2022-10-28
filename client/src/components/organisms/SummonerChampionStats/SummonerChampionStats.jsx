@@ -5,6 +5,7 @@ import { Span } from "components/atoms/Span/Span";
 import { useState } from "react";
 import { FlexRowStart } from "components/atoms/FlexBoxes/FlexBoxes.styled";
 import { StatsTable } from "components/molecules/StatsTable/StatsTable";
+import { useTable } from "hooks/useTable";
 
 export const SummonerChampionStats = () => {
 
