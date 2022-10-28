@@ -6,7 +6,6 @@ const columnHelper = createColumnHelper();
 
 export const useTable = (data) => {
 
-
     const champions = queryClient.getQueryData(["champions"]);
 
     const winrate = (row) => `${Math.round((row.wins / row.totalMatches) * 100)}%`;
