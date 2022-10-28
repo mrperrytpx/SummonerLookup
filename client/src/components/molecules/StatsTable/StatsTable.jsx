@@ -6,6 +6,8 @@ export const StatsTable = ({ data }) => {
 
   const table = useTable(data);
 
+  // flexRender(header.column.columnDef.header, header.getContext())
+
   return (
     <StyledStatsTable>
       <thead>
@@ -14,9 +16,18 @@ export const StatsTable = ({ data }) => {
             <tr key={headerGroup.id}>
               {headerGroup.headers.map(header => (
                 <th key={header.id}>
-                  {header.isPlaceholder
-                    ? null
-                    : flexRender(header.column.columnDef.header, header.getContext())
+                  {header.isPlaceholder ? null : (
+                    <div
+                      {...{
+                        onClick: header.column.getToggleSortingHandler()
+                      }}
+                    >
+                      {flexRender(
+                        header.column.columnDef.header,
+                        header.getContext()
+                      )}
+                    </div>
+                  )
                   }
                 </th>
               ))}
