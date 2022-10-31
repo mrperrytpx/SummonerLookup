@@ -37,6 +37,18 @@ export const useTable = (data) => {
             sortingFn: "alphanumeric",
             sortDescFirst: true
         }),
+        columnHelper.accessor("maxKills", {
+            cell: props => props.getValue(),
+            header: "Max Kills",
+            sortingFn: "alphanumeric",
+            sortDescFirst: true
+        }),
+        columnHelper.accessor("maxDeaths", {
+            cell: props => props.getValue(),
+            header: "Max Deaths",
+            sortingFn: "alphanumeric",
+            sortDescFirst: true
+        }),
         columnHelper.accessor(row => `${(row.cs / row.totalMatches).toFixed(1)}`, {
             cell: props => props.getValue(),
             header: "Avg CS",

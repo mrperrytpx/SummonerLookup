@@ -30,7 +30,7 @@ const spanSize = (size) => {
 };
 
 export const StyledSpan = styled.span`
-    width: 100%;
+    width: ${({ width }) => width ? width : "100%"};
     color: ${({ theme }) => theme.textColors.light};
     font-size: ${({ size }) => spanSize(size)};
     text-transform: ${({ capsed }) => capsed ? "uppercase" : "none"};

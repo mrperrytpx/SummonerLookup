@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { StyledSummonerChampionStats } from "./SummonerChampionStats.styled";
 import { Span } from "components/atoms/Span/Span";
 import { useState } from "react";
-import { FlexRowStart } from "components/atoms/FlexBoxes/FlexBoxes.styled";
+import { FlexRowSpaceBetween } from "components/atoms/FlexBoxes/FlexBoxes.styled";
 import { StatsTable } from "components/molecules/StatsTable/StatsTable";
 
 export const SummonerChampionStats = () => {
@@ -17,13 +17,14 @@ export const SummonerChampionStats = () => {
 
   return (
     <StyledSummonerChampionStats>
-      <FlexRowStart>
+      <FlexRowSpaceBetween>
         <select defaultValue={stats} name="queue" id="queue" onChange={(e) => setStats(e.target.value)}>
           <option value="solo">Ranked Solo</option>
           <option value="flex">Ranked Flex</option>
           <option value="combined">Combined</option>
         </select>
-      </FlexRowStart>
+        <Span width="auto" size="s">Thanks to <a href="https://u.gg">U.gg</a> for providing the stats data</Span>
+      </FlexRowSpaceBetween>
       {championRankedStatsData?.[stats] && <StatsTable data={championRankedStatsData?.[stats]} />}
     </StyledSummonerChampionStats>
   );
