@@ -25,7 +25,9 @@ export const SummonerChampionStats = () => {
         </select>
         <Span width="auto" size="s">Thanks to <a href="https://u.gg">U.gg</a> for providing the stats data</Span>
       </FlexRowSpaceBetween>
-      {championRankedStatsData?.[stats] && <StatsTable data={championRankedStatsData?.[stats]} />}
+      <div className="border">
+        {championRankedStatsData?.[stats] && <StatsTable data={championRankedStatsData?.[stats]} />}
+      </div>
     </StyledSummonerChampionStats>
   );
 };

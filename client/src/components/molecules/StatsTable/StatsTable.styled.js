@@ -5,7 +5,7 @@ export const StyledStatsTable = styled.table`
     width: 100%;
     border-collapse: separate;
     border-spacing: 0;
-
+    
     thead {
         background-color: ${({ theme }) => theme.backgroundColors.tertiary};
     }
@@ -17,8 +17,7 @@ export const StyledStatsTable = styled.table`
         align-items: center;
     }
 
-    tbody {
-        background-color: ${({ theme }) => theme.backgroundColors.secondary};
+    tbody {        background-color: ${({ theme }) => theme.backgroundColors.secondary};
         border-radius: 20px;
         border: 1px solid white;
     }
