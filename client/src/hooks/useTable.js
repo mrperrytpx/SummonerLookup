@@ -24,6 +24,7 @@ export const useTable = (data) => {
         columnHelper.accessor(row => `${champions.get(`${row.championId}`)}`, {
             cell: props => props.getValue(),
             header: "Champion",
+
         }),
         columnHelper.accessor(row => `${winrate(row)}`, {
             cell: props => props.getValue(),

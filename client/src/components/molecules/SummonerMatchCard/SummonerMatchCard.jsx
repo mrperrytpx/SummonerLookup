@@ -19,7 +19,7 @@ export const SummonerMatchCard = ({ match }) => {
   const { data: summonerData } = useGetSummonerQuery(server, summonerName);
 
   const version = queryClient.getQueryData(["version"]);
-  // const items = queryClient.getQueryData(["items"]);
+  const champions = queryClient.getQueryData(["champions"]);
   const runes = queryClient.getQueryData(["runes"]);
   const summonerSpells = queryClient.getQueryData(["summoner-spells"]);
 
@@ -58,7 +58,7 @@ export const SummonerMatchCard = ({ match }) => {
 
       <FlexRowCenter data-order="2">
         <IconWithLevel
-          src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${summonerMatchData.championName}.png`}
+          src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${champions.get(`${summonerMatchData.championId}`)}.png`}
           alt="Champion"
           level={summonerMatchData.champLevel}
           width={60}

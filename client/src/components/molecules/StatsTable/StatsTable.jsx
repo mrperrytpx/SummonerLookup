@@ -47,10 +47,10 @@ export const StatsTable = ({ data }) => {
       </thead>
 
       <tbody>
-        {table.getRowModel().rows.map(row => (
-          <tr key={row.id}>
+        {table.getRowModel().rows.map((row, i) => (
+          <tr data-order={i} key={row.id}>
             {
-              row.getVisibleCells().map(cell => (
+              row.getVisibleCells().map((cell) => (
                 <td key={cell.id}>
                   {flexRender(cell.column.columnDef.cell, cell.getContext())}
                 </td>
