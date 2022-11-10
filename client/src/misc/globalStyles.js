@@ -20,10 +20,9 @@ const GlobalStyles = createGlobalStyle`
     body {
         background-color: ${({ theme }) => theme.backgroundColors.primary};
         line-height: 1.5;
-        color: ${({ theme }) => theme.textColors.dark};
+        color: ${({ theme }) => theme.textColors.light};
         height: 100%;
         overflow-x: hidden;
-
     }
 
     input, button, textarea, select {
@@ -37,6 +36,10 @@ const GlobalStyles = createGlobalStyle`
     img, picture, video, canvas {
         display: block;
         max-width: 100%;
+    }
+
+    a {
+        color: white;
     }
 `;
 

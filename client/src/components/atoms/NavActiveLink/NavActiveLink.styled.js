@@ -7,6 +7,7 @@ export const StyledNavActiveLink = styled(NavLink)`
     font-size: 1.1rem;
     padding: 0.5em 1em;
     display: block;
+    white-space: pre;
 
     ${({ active, theme }) => active && `
         &:after {

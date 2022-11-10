@@ -59,6 +59,13 @@ export const useTable = (data) => {
             sortDescFirst: true,
             id: "avg_cs"
         }),
+        columnHelper.accessor(row => `${Math.round(row.gold / row.totalMatches)}`, {
+            cell: props => props.getValue(),
+            header: "Avg Gold",
+            sortingFn: "alphanumeric",
+            sortDescFirst: true,
+            id: "avg_gold"
+        }),
         columnHelper.accessor(row => `${Math.round(row.damage / row.totalMatches)}`, {
             cell: props => props.getValue(),
             header: "Avg Dmg",
@@ -72,13 +79,6 @@ export const useTable = (data) => {
             sortingFn: "alphanumeric",
             sortDescFirst: true,
             id: "avg_dmg_taken"
-        }),
-        columnHelper.accessor(row => `${Math.round(row.gold / row.totalMatches)}`, {
-            cell: props => props.getValue(),
-            header: "Avg Gold",
-            sortingFn: "alphanumeric",
-            sortDescFirst: true,
-            id: "avg_gold"
         }),
     ], [champions]);
 
