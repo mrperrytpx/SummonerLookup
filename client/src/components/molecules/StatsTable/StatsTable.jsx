@@ -12,11 +12,14 @@ export const StatsTable = ({ data }) => {
   const table = useTable(data);
 
   useEffect(() => {
-    if (width < 1000) {
-      table.getColumn("avg_gold").toggleVisibility(false);
-    } else {
-      table.getColumn("avg_gold").toggleVisibility(true);
-    }
+
+    const desktop = width > 1000;
+
+    table.getColumn("avg_gold").toggleVisibility(desktop);
+    table.getColumn("avg_dmg_taken").toggleVisibility(desktop);
+    table.getColumn("avg_dmg").toggleVisibility(desktop);
+    table.getColumn("avg_cs").toggleVisibility(desktop);
+
   }, [width, table]);
 
   return (
