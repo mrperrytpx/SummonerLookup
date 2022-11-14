@@ -11,4 +11,5 @@ export const StyledMobileMenu = styled(FlexColStart)`
     margin-top: calc(80px + 1rem);
     border: ${({ theme }) => theme.backgroundColors.active};
     background-color: ${({ theme }) => theme.backgroundColors.primary};
+    z-index: 9999;
 `;

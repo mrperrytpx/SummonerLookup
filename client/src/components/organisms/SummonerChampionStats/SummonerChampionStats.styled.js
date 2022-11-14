@@ -4,9 +4,9 @@ export const StyledSummonerChampionStats = styled.div`
     color: white;
     width: 100%;
 
-    & > div {
+    .border {
         margin-top: 1rem;
-        border-radius: 10px;
+        border-radius: 1rem;
         overflow: hidden;
     }
 `;

@@ -28,11 +28,11 @@ const summonerChampionStats = async (req, res) => {
     statsData.data.fetchPlayerStatistics[0].basicChampionPerformances.forEach((champ) => statsMap.set(champ.championId, { ...champ }));
     statsData.data.fetchPlayerStatistics[1].basicChampionPerformances.forEach((champ) => {
         if (!statsMap.get(champ.championId)) {
+            statsMap.set(champ.championId, { ...champ });
+        } else {
             let current = statsMap.get(champ.championId);
             const summedObjects = sumObjects(current, champ);
-            statsMap.set(champ.championId, { ...summedObjects });
-        } else {
-            statsMap.set(champ.championid, { ...champ });
+            statsMap.set(champ.championId, summedObjects);
         }
     });
 

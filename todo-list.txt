@@ -21,5 +21,7 @@ TASKS FOR FUTURE ME WHEN ITS FUNCTIONAL (WIP)
 - fix SummonerRank components if summoner doesn't have ranked data
 - optimistic updates for all applicable hooks
 - no summoner error ??? - check for errors at the very top where a query is called
+- don't sum maxkills and maxdeaths
+- localStorage with new dropdown doens't work
 
 https://ddragon.leagueoflegends.com/cdn/version/img/item/item.full

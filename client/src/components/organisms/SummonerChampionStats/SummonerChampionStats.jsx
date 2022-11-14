@@ -34,8 +34,8 @@ export const SummonerChampionStats = () => {
   return (
     <StyledSummonerChampionStats>
       <FlexRowSpaceBetween>
-        <Dropdown state={stats} setState={setStats} options={options} id="queue" />
-        <Span width="auto" size="s">Data pulled from <a target="_blank" href="https://u.gg">U.gg</a></Span>
+        <Dropdown from={"left"} state={stats} setState={setStats} options={options} />
+        <Span width="auto" size="s">Data pulled from <a rel="noreferrer" target="_blank" href="https://u.gg">U.gg</a></Span>
       </FlexRowSpaceBetween>
       <div className="border">
         {championRankedStatsData?.[stats] && <StatsTable data={championRankedStatsData?.[stats]} />}

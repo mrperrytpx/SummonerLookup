@@ -1,12 +1,26 @@
+import { useState } from "react";
 import { StyledDropdown } from "./Dropdown.styled";
 
-export const Dropdown = ({ options, id, state, setState }) => {
+export const Dropdown = ({ from, options, state, setState, ...rest }) => {
+
+  const [isActive, setIsActive] = useState(false);
+
+  const handleClick = (value) => {
+    setState(value);
+    setIsActive(false);
+  };
 
   return (
-    <StyledDropdown defaultValue={state} name={id} id={id} onChange={(e) => setState(e.target.value)}>
-      {options.map((option, i) => (
-        <option key={i} value={option.stateValue}>{option.text}</option>
-      ))}
+    <StyledDropdown {...rest} from={from}>
+      <span onClick={() => setIsActive(!isActive)}>{state}</span>
+      {isActive && (
+        <div>
+          {options.map((option, i) => (
+            <span onClick={() => handleClick(option.stateValue)} key={i}>{option.text}</span>
+          ))}
+        </div>
+      )}
     </StyledDropdown>
   );
 };
+

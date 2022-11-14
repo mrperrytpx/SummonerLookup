@@ -219,12 +219,14 @@ array1.forEach((champ) => statsMap.set(champ.championId, { ...champ }));
 
 array2.forEach((champ) => {
     if (!statsMap.get(champ.championId)) {
+        statsMap.set(champ.championId, { ...champ });
+    } else {
         let current = statsMap.get(champ.championId);
         const summedObjects = sumObjects(current, champ);
         statsMap.set(champ.championId, summedObjects);
     }
 });
 
-// console.log(statsMap.get(127));
+console.log(statsMap.get(81));
 // console.log([...statsMap]);
-console.log([...statsMap.values()].length);
+// console.log([...statsMap.values()]);

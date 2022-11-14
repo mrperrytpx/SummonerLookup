@@ -30,8 +30,8 @@ export const SummonerChampStatsCard = () => {
   return (
     <StyledSummonerChampStatsCard>
       <FlexRowSpaceBetween>
-        <CustomLink to="stats">Champion stats - {stats}</CustomLink>
-        <Dropdown state={stats} setState={setStats} id="queue" options={options} />
+        <CustomLink to="stats">Champion stats - {stats.toUpperCase()}</CustomLink>
+        <Dropdown from="right" state={stats} setState={setStats} id="queue" options={options} />
       </FlexRowSpaceBetween>
 
       {championRankedStatsData?.[stats].slice(0, 5).map((champion, i) => <IndividualChampStatsCard key={i} champion={champion} />)}
