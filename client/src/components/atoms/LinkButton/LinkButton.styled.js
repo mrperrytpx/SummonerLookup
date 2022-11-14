@@ -11,6 +11,7 @@ export const StyledLinkButton = styled(Link)`
     min-width: 100px;
     padding: .5em;
     border: none;
+    border-radius: 5px;
 
     color: ${({ theme }) => theme.textColors.light};
     text-align: center;

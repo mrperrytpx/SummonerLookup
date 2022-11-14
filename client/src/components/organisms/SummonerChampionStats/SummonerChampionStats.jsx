@@ -6,6 +6,7 @@ import { useState } from "react";
 import { FlexRowSpaceBetween } from "components/atoms/FlexBoxes/FlexBoxes.styled";
 import { StatsTable } from "components/molecules/StatsTable/StatsTable";
 import { Dropdown } from "components/atoms/Dropdown/Dropdown";
+import { Disclaimer } from "components/atoms/Disclaimer/Disclaimer";
 
 export const SummonerChampionStats = () => {
 
@@ -34,11 +35,12 @@ export const SummonerChampionStats = () => {
     <StyledSummonerChampionStats>
       <FlexRowSpaceBetween>
         <Dropdown state={stats} setState={setStats} options={options} id="queue" />
-        <Span width="auto" size="s">Data pulled from <a href="https://u.gg">U.gg</a></Span>
+        <Span width="auto" size="s">Data pulled from <a target="_blank" href="https://u.gg">U.gg</a></Span>
       </FlexRowSpaceBetween>
       <div className="border">
         {championRankedStatsData?.[stats] && <StatsTable data={championRankedStatsData?.[stats]} />}
       </div>
+      <Disclaimer />
     </StyledSummonerChampionStats>
   );
 };

@@ -9,7 +9,7 @@ export const useScreenSize = () => {
         return () => window.removeEventListener("resize", handleResize);
     }, []);
 
-    const handleResize = () => setTimeout(() => setWidth(window.innerWidth), 150);
+    const handleResize = () => setTimeout(() => setWidth(window.innerWidth), 250);
 
     return { width, setWidth };
 };

@@ -2,7 +2,7 @@ import { useReactTable, createColumnHelper, getCoreRowModel, getSortedRowModel }
 import { queryClient } from "contexts/AppProviders";
 import { useMemo, useState } from "react";
 import { ImageContainer } from "components/atoms/ImageContainer/ImageContainer";
-import { FlexColCenter, FlexRow, FlexRowCenter, FlexRowStart } from "components/atoms/FlexBoxes/FlexBoxes.styled";
+import { FlexColCenter, FlexRowStart } from "components/atoms/FlexBoxes/FlexBoxes.styled";
 import { Span } from "components/atoms/Span/Span";
 
 const columnHelper = createColumnHelper();
@@ -15,14 +15,10 @@ export const useTable = (data) => {
     const champions = queryClient.getQueryData(["champions"]);
     const version = queryClient.getQueryData(["version"]);
 
-    // <img src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${champions.get(`${champion.championId}`)}.png`} alt="" />
+    const winrate = (row) => Math.round((row.wins / row.totalMatches) * 100);
+    const kda = (row) => Math.round(((row.kills + row.assists) / row.deaths) * 100) / 100;
 
-    const winrate = (row) => `${Math.round((row.wins / row.totalMatches) * 100)}%`;
-    const kda = (row) => `${((row.kills + row.assists) / row.deaths).toFixed(2)}`;
-
-    const kills = (row) => `${(row.kills / row.totalMatches).toFixed(1)}`;
-    const deaths = (row) => `${(row.deaths / row.totalMatches).toFixed(1)}`;
-    const assists = (row) => `${(row.assists / row.totalMatches).toFixed(1)}`;
+    const stat = (field, total) => `${Math.round((field / total) * 10) / 10}`;
 
     // Rank, Champion, KDA, LP gain, avg cs, avg dmg, avg dmg taken, avg gold
     const defaultColumns = useMemo(() => [
@@ -39,33 +35,60 @@ export const useTable = (data) => {
                         alt="champion"
                         max="40px"
                     />
-                    <Span size="sm">&nbsp;&nbsp;{props.getValue()}</Span>
+                    <Span data-champ="true" size="sm">&nbsp;&nbsp;{props.getValue()}</Span>
                 </FlexRowStart>
             ),
-            header: "Champion",
+            header: "Champ",
             id: "champion"
         }),
         columnHelper.accessor(row => row, {
-            cell: (props) => (
-                <FlexColCenter>
-                    <Span size="m" align="center">{winrate(props.getValue())}</Span>
-                    <Span size="s" align="center">{kills(props.getValue())}, {deaths(props.getValue())}, {assists(props.getValue())}</Span>
-                </FlexColCenter>
-            ),
+            cell: (props) => {
+                const row = props.getValue();
+                return (
+                    <FlexColCenter>
+                        <Span size="sm" align="center">{winrate(row)}%</Span>
+                        <Span size="s" align="center">
+                            ({props.getValue().wins}<Span size="s" color="lightgreen">W</Span> / {props.getValue().totalMatches - props.getValue().wins}<Span size="s" color="#ff6961">L</Span>)
+                        </Span>
+                    </FlexColCenter>
+                );
+            },
             header: "Winrate",
-            sortingFn: "alphanumeric",
+            sortingFn: (rowA, rowB) => {
+                const rowA_winrate = winrate(rowA.original);
+                const rowB_winrate = winrate(rowB.original);
+                if (rowA_winrate > rowB_winrate) return 1;
+                if (rowB_winrate > rowA_winrate) return -1;
+                return 0;
+            },
             sortDescFirst: true,
-            id: "winrate"
+            id: "winrate",
         }),
-        columnHelper.accessor(row => `${kda(row)}`, {
-            cell: props => props.getValue(),
+        columnHelper.accessor(row => row, {
+            cell: (props) => {
+                const row = props.getValue();
+                return (
+                    <FlexColCenter>
+                        <Span size="sm" align="center">{kda(row)}</Span>
+                        <Span size="s" align="center">
+                            ({stat(row.kills, row.totalMatches)}, <Span size="s" color="#ff6961">{stat(row.deaths, row.totalMatches)}</Span>, {stat(row.assists, row.totalMatches)})
+                        </Span>
+                    </FlexColCenter>
+                );
+            },
             header: "KD/A",
-            sortingFn: "alphanumeric",
+            sortingFn: (rowA, rowB) => {
+                const rowA_kda = kda(rowA.original);
+                const rowB_kda = kda(rowB.original);
+                if (rowA_kda > rowB_kda) return 1;
+                if (rowB_kda > rowA_kda) return -1;
+                return 0;
+            },
             sortDescFirst: true,
             id: "kda"
         }),
         columnHelper.accessor("maxKills", {
-            cell: props => props.getValue(),
+            cell: (props) => <Span size="sm" align="center">{props.getValue()}</Span>,
             header: () => (
                 <div>
                     <div>Max</div>
@@ -76,7 +99,7 @@ export const useTable = (data) => {
             sortDescFirst: true
         }),
         columnHelper.accessor("maxDeaths", {
-            cell: props => props.getValue(),
+            cell: (props) => props.getValue(),
             header: () => (
                 <div>
                     <div>Max</div>
@@ -86,7 +109,7 @@ export const useTable = (data) => {
             sortingFn: "alphanumeric",
             sortDescFirst: true
         }),
-        columnHelper.accessor(row => `${(row.cs / row.totalMatches).toFixed(1)}`, {
+        columnHelper.accessor(row => `${Math.round((row.cs / row.totalMatches) * 10) / 10}`, {
             cell: props => props.getValue(),
             header: () => (
                 <div>
@@ -96,10 +119,10 @@ export const useTable = (data) => {
             ),
             sortingFn: "alphanumeric",
             sortDescFirst: true,
-            id: "avg_cs"
+            id: "avgCs"
         }),
         columnHelper.accessor(row => `${Math.round(row.gold / row.totalMatches)}`, {
-            cell: props => props.getValue(),
+            cell: (props) => <Span color="gold" size="sm">{props.getValue()}</Span>,
             header: () => (
                 <div>
                     <div>Avg</div>
@@ -108,7 +131,7 @@ export const useTable = (data) => {
             ),
             sortingFn: "alphanumeric",
             sortDescFirst: true,
-            id: "avg_gold"
+            id: "avgGold"
         }),
         columnHelper.accessor(row => `${Math.round(row.damage / row.totalMatches)}`, {
             cell: props => props.getValue(),
@@ -120,7 +143,7 @@ export const useTable = (data) => {
             ),
             sortingFn: "alphanumeric",
             sortDescFirst: true,
-            id: "avg_dmg"
+            id: "avgDmg"
         }),
         columnHelper.accessor(row => `${Math.round(row.damageTaken / row.totalMatches)}`, {
             cell: props => props.getValue(),
@@ -132,7 +155,7 @@ export const useTable = (data) => {
             ),
             sortingFn: "alphanumeric",
             sortDescFirst: true,
-            id: "avg_dmg_taken"
+            id: "avgDmgTaken"
         }),
         columnHelper.accessor("doubleKills", {
             celL: props => props.getValue(),

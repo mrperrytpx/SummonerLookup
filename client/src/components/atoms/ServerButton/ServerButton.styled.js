@@ -19,6 +19,9 @@ export const StyledServerButton = styled.div`
         background-color: ${({ server, checkedRadioButton, theme }) => server === checkedRadioButton ? theme.backgroundColors.active : theme.backgroundColors.tertiary};
         
         transition: background-color 50ms ease-in, color 50ms ease-in;
+        font-weight: 500;
+        border-radius: 3px;
+
     }
 
     input {

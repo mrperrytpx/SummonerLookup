@@ -8,21 +8,36 @@ export const StyledStatsTable = styled.table`
     
     thead {
         background-color: ${({ theme }) => theme.backgroundColors.tertiary};
-        border: thin solid white;
     }
 
     th {
         font-size: 0.75rem;
         font-weight: 500;
-        opacity: 0.65;
+        opacity: 0.8;
         text-transform: uppercase;
         user-select: none;
         cursor: pointer;
 
         &:nth-child(2) > div {
             width: 100%;
-            display: inline-block;
-            text-align: left;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: start;
+        }
+
+        &[data-sorted="asc"], &[data-sorted="desc"] {
+            opacity: 1;
+        }
+
+        &[data-sorted="asc"] > div {
+            border-top: 3px solid ${({ theme }) => theme.backgroundColors.active};
+            color: white
+        }
+
+        &[data-sorted="desc"] > div {
+            border-bottom: 3px solid ${({ theme }) => theme.backgroundColors.active};
+            color: white;
         }
     }
     
@@ -31,6 +46,7 @@ export const StyledStatsTable = styled.table`
         display: flex;
         justify-content: center;
         align-items: center;
+        height: 54px;
     }
 
     tbody {        
@@ -55,5 +71,17 @@ export const StyledStatsTable = styled.table`
         padding: .5rem .25rem;
         text-align: center;
         font-weight: 500;
+        font-size: .82rem;
+    }
+
+    td[data-sorted="asc"], td[data-sorted="desc"] {
+        background-color: ${({ theme }) => theme.backgroundColors.tertiary};
+    }
+
+    @media only screen and (max-width: 400px) {
+        span[data-champ] {
+            display: none;
+            padding: 0;
+        }
     }
 `;

@@ -11,15 +11,23 @@ export const StatsTable = ({ data }) => {
   const { width } = useScreenSize();
   const table = useTable(data);
 
-  useEffect(() => {
+  useEffect(function responiveTable() {
+    //someone tell me a better way please I beg
+    const breakOne = width > 1000;
+    const breakTwo = width > 800;
+    const breakThree = width > 600;
 
-    const desktop = width > 1000;
+    table.getColumn("pentaKills").toggleVisibility(breakOne);
+    table.getColumn("quadraKills").toggleVisibility(breakOne);
+    table.getColumn("tripleKills").toggleVisibility(breakOne);
+    table.getColumn("doubleKills").toggleVisibility(breakOne);
 
-    table.getColumn("avg_gold").toggleVisibility(desktop);
-    table.getColumn("avg_dmg_taken").toggleVisibility(desktop);
-    table.getColumn("avg_dmg").toggleVisibility(desktop);
-    table.getColumn("avg_cs").toggleVisibility(desktop);
+    table.getColumn("avgDmg").toggleVisibility(breakTwo);
+    table.getColumn("avgDmgTaken").toggleVisibility(breakTwo);
+    table.getColumn("avgGold").toggleVisibility(breakTwo);
 
+    table.getColumn("maxKills").toggleVisibility(breakThree);
+    table.getColumn("maxDeaths").toggleVisibility(breakThree);
   }, [width, table]);
 
   return (
@@ -29,7 +37,7 @@ export const StatsTable = ({ data }) => {
           table.getHeaderGroups().map((headerGroup) => (
             <tr key={headerGroup.id}>
               {headerGroup.headers.map((header) => (
-                <th key={header.id}>
+                <th data-sorted={header.column.getIsSorted()} key={header.id}>
                   {header.isPlaceholder ? null : (
                     <div
                       {...{
@@ -53,11 +61,13 @@ export const StatsTable = ({ data }) => {
         {table.getRowModel().rows.map((row) => (
           <tr key={row.id}>
             {
-              row.getVisibleCells().map((cell) => (
-                <td key={cell.id}>
-                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                </td>
-              ))
+              row.getVisibleCells().map((cell) => {
+                return (
+                  <td data-sorted={cell.column.getIsSorted()} key={cell.id}>
+                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                  </td>
+                );
+              })
             }
           </tr>
         ))}

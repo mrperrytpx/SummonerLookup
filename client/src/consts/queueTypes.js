@@ -6,4 +6,5 @@ export const QUEUE_TYPES = {
     430: "Normal Blind",
     420: "Ranked Solo",
     400: "Normal Draft",
+    1400: "Ult Spellbook"
 };
