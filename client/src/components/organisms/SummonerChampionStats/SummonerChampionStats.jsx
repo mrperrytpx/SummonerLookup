@@ -11,7 +11,7 @@ export const SummonerChampionStats = () => {
 
   const { server, summonerName } = useParams();
   const { data: championRankedStatsData, isLoading } = useGetSummonerRankedChampStatsQuery(server, summonerName);
-  const [stats, setStats] = useState("solo");
+  const [stats, setStats] = useState("combined");
 
   const options = [
     {

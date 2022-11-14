@@ -28,7 +28,7 @@ export const StatsTable = ({ data }) => {
         {
           table.getHeaderGroups().map((headerGroup) => (
             <tr key={headerGroup.id}>
-              {headerGroup.headers.map(header => (
+              {headerGroup.headers.map((header) => (
                 <th key={header.id}>
                   {header.isPlaceholder ? null : (
                     <div
@@ -50,8 +50,8 @@ export const StatsTable = ({ data }) => {
       </thead>
 
       <tbody>
-        {table.getRowModel().rows.map((row, i) => (
-          <tr data-order={i} key={row.id}>
+        {table.getRowModel().rows.map((row) => (
+          <tr key={row.id}>
             {
               row.getVisibleCells().map((cell) => (
                 <td key={cell.id}>

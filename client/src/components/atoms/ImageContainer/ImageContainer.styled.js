@@ -13,5 +13,8 @@ export const StyledImageContainer = styled(FlexRowCenter)`
         aspect-ratio: 1 / 1;
         width: ${({ width }) => width};
         max-width: ${({ max }) => max};
+        &[alt] {
+            font-size: 0.6rem;
+        }
     }
 `;

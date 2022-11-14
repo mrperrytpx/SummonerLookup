@@ -8,6 +8,9 @@ const spanSize = (size) => {
         case "s": {
             return ".75rem";
         }
+        case "sm": {
+            return ".82rem";
+        }
         case "m": {
             return "1rem";
         }

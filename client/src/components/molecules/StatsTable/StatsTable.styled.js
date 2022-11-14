@@ -8,6 +8,22 @@ export const StyledStatsTable = styled.table`
     
     thead {
         background-color: ${({ theme }) => theme.backgroundColors.tertiary};
+        border: thin solid white;
+    }
+
+    th {
+        font-size: 0.75rem;
+        font-weight: 500;
+        opacity: 0.65;
+        text-transform: uppercase;
+        user-select: none;
+        cursor: pointer;
+
+        &:nth-child(2) > div {
+            width: 100%;
+            display: inline-block;
+            text-align: left;
+        }
     }
     
     th > div {
@@ -17,25 +33,27 @@ export const StyledStatsTable = styled.table`
         align-items: center;
     }
 
-    tbody {        background-color: ${({ theme }) => theme.backgroundColors.secondary};
+    tbody {        
+        background-color: ${({ theme }) => theme.backgroundColors.secondary};
         border-radius: 20px;
         border: 1px solid white;
     }
 
-    tbody:before {
-        content:"";
-        display:block;
+    tr:not(:first-child) {
+        outline: thin solid ${({ theme }) => theme.backgroundColors.tertiary};
     }
 
-    tr[data-order="0"] > td {
+    tr:nth-child(1) > td {
         padding-top: 1rem;
     }
-    tr[data-order]:last-child > td {
+
+    tr:last-child > td {
         padding-bottom: 1rem;
     }
 
     td {
-        padding: .25rem;
+        padding: .5rem .25rem;
         text-align: center;
+        font-weight: 500;
     }
 `;
