@@ -13,7 +13,10 @@ export const useGetLeagueChampions = () => {
 
         let map = new Map();
         for (let name in data.data) {
-            map.set(data.data[name].key, name);
+            map.set(data.data[name].key, {
+                name: data.data[name].name,
+                id: name
+            });
         }
 
         console.log("CHAMPIONS MAP:", map);

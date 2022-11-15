@@ -22,20 +22,20 @@ export const useTable = (data) => {
 
     // Rank, Champion, KDA, LP gain, avg cs, avg dmg, avg dmg taken, avg gold
     const defaultColumns = useMemo(() => [
-        columnHelper.accessor((_row, i) => `${i + 1}`, {
+        columnHelper.accessor((_row, i) => i + 1, {
             cell: props => props.getValue(),
             header: "#",
             sortingFn: "alphanumeric",
         }),
-        columnHelper.accessor(row => `${champions.get(`${row.championId}`)}`, {
+        columnHelper.accessor(row => champions.get(`${row.championId}`), {
             cell: (props) => (
                 <FlexRowStart>
                     <ImageContainer
-                        src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${props.getValue()}.png`}
+                        src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${props.getValue().id}.png`}
                         alt="champion"
                         max="40px"
                     />
-                    <Span data-champ="true" size="sm">&nbsp;&nbsp;{props.getValue()}</Span>
+                    <Span data-champ="true" size="sm">&nbsp;&nbsp;{props.getValue().name}</Span>
                 </FlexRowStart>
             ),
             header: "Champ",
