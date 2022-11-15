@@ -21,9 +21,9 @@ export const CompactSearchSummoner = () => {
     navigate(`/${dropdownValue}/${summonerName}`);
   };
 
-  const handleOptionClick = (e) => {
-    localStorage.setItem("server", e.target.value);
-    setDropdownValue(e.target.value);
+  const handleClick = (value) => {
+    localStorage.setItem("server", value);
+    setDropdownValue(value);
   };
 
   const options = Object.keys(SERVER_VALUES).map(server => {
@@ -36,11 +36,12 @@ export const CompactSearchSummoner = () => {
   return (
     <StyledCompactSearchSummoner as="form" onSubmit={(e) => handleSubmit(e)}>
       <Dropdown
+        values={SERVER_VALUES}
         from="left"
         options={options}
-        handleOptionClick={handleOptionClick}
         state={dropdownValue}
         setState={setDropdownValue}
+        handleClick={handleClick}
       />
       <SummonerInput
         setSummonerName={setSummonerName}

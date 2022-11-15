@@ -14,6 +14,8 @@ export const SummonerChampionStats = () => {
   const { data: championRankedStatsData, isLoading } = useGetSummonerRankedChampStatsQuery(server, summonerName);
   const [stats, setStats] = useState("combined");
 
+  const handleClick = (value) => setStats(value);
+
   const options = [
     {
       stateValue: "solo",
@@ -34,7 +36,12 @@ export const SummonerChampionStats = () => {
   return (
     <StyledSummonerChampionStats>
       <FlexRowSpaceBetween>
-        <Dropdown from={"left"} state={stats} setState={setStats} options={options} />
+        <Dropdown
+          from={"left"}
+          state={stats}
+          handleClick={handleClick}
+          options={options}
+        />
         <Span width="auto" size="s">Data pulled from <a rel="noreferrer" target="_blank" href="https://u.gg">U.gg</a></Span>
       </FlexRowSpaceBetween>
       <div className="border">

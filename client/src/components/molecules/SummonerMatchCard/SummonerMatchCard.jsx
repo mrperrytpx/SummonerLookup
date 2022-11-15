@@ -1,19 +1,16 @@
-import { FlexColCenter, FlexRow, FlexRowCenter } from "components/atoms/FlexBoxes/FlexBoxes.styled";
+import { FlexColCenter, FlexRowCenter } from "components/atoms/FlexBoxes/FlexBoxes.styled";
 import { GridBox } from "components/atoms/GridBoxes/GridBoxes.styled";
 import { IconWithLevel } from "components/atoms/IconWithLevel/IconWithLevel";
 import { ImageContainer } from "components/atoms/ImageContainer/ImageContainer";
 import { Span } from "components/atoms/Span/Span";
 import { useGetSummonerQuery } from "hooks/useGetSummonerQuery";
-import { useScreenSize } from "hooks/useScreenSize";
 import { useQueryClient } from "react-query";
 import { useParams } from "react-router-dom";
 import { StyledSummonerMatchCard } from "./SummonerMatchCard.styled";
 import { QUEUE_TYPES } from "consts/queueTypes";
-import { useEffect } from "react";
 
 export const SummonerMatchCard = ({ match }) => {
 
-  // const { width } = useScreenSize();
   const queryClient = useQueryClient();
   const { server, summonerName } = useParams();
   const { data: summonerData } = useGetSummonerQuery(server, summonerName);
@@ -58,7 +55,7 @@ export const SummonerMatchCard = ({ match }) => {
 
       <FlexRowCenter data-order="2">
         <IconWithLevel
-          src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${champions.get(`${summonerMatchData.championId}`)}.png`}
+          src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${champions.get(`${summonerMatchData.championId}`).id}.png`}
           alt="Champion"
           level={summonerMatchData.champLevel}
           width={60}

@@ -8,6 +8,22 @@ export const StyledIconWithLevel = styled(FlexColCenter)`
     aspect-ratio: 1 / 1;
     margin: 0;
 
+    ${({ border, theme }) => border && `
+        border: 2px solid ${theme.backgroundColors.tertiary};
+    `}
+    
+    ${({ radius }) => radius && `
+        border-radius: ${radius};
+
+        img {
+            border-radius: ${radius};
+        }
+
+        span {
+            border-radius: 0 0 ${radius} 0;
+        }
+    `}
+
     img {
         width: 100%;
         aspect-ratio: 1 / 1;

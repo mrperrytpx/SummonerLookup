@@ -27,7 +27,7 @@ export const LiveGamePicks = ({ picks, direction }) => {
       {picks?.map((pick, i) => (
         <div data-grid key={i}>
           <ImageContainer
-            src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${champions.get(`${pick.championId}`)}.png`}
+            src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${champions.get(`${pick.championId}`).id}.png`}
             width="40px"
           />
           <Span align="center" size="s">{pick.summonerName}</Span>

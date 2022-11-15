@@ -34,6 +34,7 @@ export const useTable = (data) => {
                         src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${props.getValue().id}.png`}
                         alt="champion"
                         max="40px"
+                        min="40px"
                     />
                     <Span data-champ="true" size="sm">&nbsp;&nbsp;{props.getValue().name}</Span>
                 </FlexRowStart>
@@ -181,7 +182,7 @@ export const useTable = (data) => {
             sortingFn: "alphanumeric",
             sortDescFirst: true,
         }),
-    ], [champions]);
+    ], [champions, version]);
 
     const memoData = useMemo(() => data, [data]);
 

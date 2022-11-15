@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { FlexCol, FlexColSpaceBetween } from "components/atoms/FlexBoxes/FlexBoxes.styled";
+import { FlexCol } from "components/atoms/FlexBoxes/FlexBoxes.styled";
 
 export const StyledSummonerLiveGame = styled(FlexCol)`
     margin: 2rem 0;

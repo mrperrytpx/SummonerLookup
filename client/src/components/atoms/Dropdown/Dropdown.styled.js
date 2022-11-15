@@ -3,7 +3,7 @@ import { FlexColCenter } from "../FlexBoxes/FlexBoxes.styled";
 
 export const StyledDropdown = styled(FlexColCenter)`
     width: auto;
-    color: black;
+    color: ${({ theme }) => theme.textColors.dark};
     background-color: ${({ theme }) => theme.backgroundColors.active};
     user-select: none;
     position: relative;
@@ -16,8 +16,8 @@ export const StyledDropdown = styled(FlexColCenter)`
         justify-content: center;
         width: 100%;
         height: 100%;
+        min-width: 60px;
         padding: .25rem .5rem;
-        border-radius: 5px;
         cursor: pointer;
         text-transform: uppercase;
         font-weight: 600;

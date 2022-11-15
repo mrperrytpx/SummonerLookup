@@ -1,18 +1,14 @@
 TASKS FOR FUTURE ME WHEN ITS FUNCTIONAL (WIP)
 
-
 - fix mobile menu imagines leaking through?
 - rethink ["user"] and ["accessToken"] current dynamic (Bonnie vid)
 - fix zoomed in homepage with mobile menu open
 - Register Validation check on unfocus instead of on submit
 - Send email validation
 - store refresh token versions instead of actual refresh tokens in DB
-- add server choice to local storage
-- give credit to u.gg to the footer
 - add rate limiting - cloudflare?
 - pre-fetch "following" data on app load if user is logged in
 - Add react-router site map and React Helmet for SEO
-- sortable Champion stats (ascending, descending)
 - fix reloading token protected routes when reloading (maybe poorly done atm)¸
 - fix server error when fetching /me
 - add interceptor for expired access tokens (maybe breaks remember me)
@@ -22,6 +18,6 @@ TASKS FOR FUTURE ME WHEN ITS FUNCTIONAL (WIP)
 - optimistic updates for all applicable hooks
 - no summoner error ??? - check for errors at the very top where a query is called
 - don't sum maxkills and maxdeaths
-- localStorage with new dropdown doens't work
+- challenge icons (challenges route to see all?)
 
 https://ddragon.leagueoflegends.com/cdn/version/img/item/item.full

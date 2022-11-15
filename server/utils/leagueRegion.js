@@ -2,14 +2,14 @@ const LEAGUE_SERVERS = {
     "eun1": "europe",
     "euw1": "europe",
     "tr1": "europe",
-    "ru1": "europe",
-    "oce1": "sea",
+    "ru": "europe",
     "na1": "americas",
-    "las1": "americas",
-    "lan1": "americas",
+    "la1": "americas",
+    "la2": "americas",
     "br1": "americas",
-    "kr1": "asia",
-    "jp1": "asia"
+    "oc1": "sea",
+    "jp1": "asia",
+    "kr": "asia",
 };
 
 const leagueRegion = (server) => LEAGUE_SERVERS[server.toLowerCase()];

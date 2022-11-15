@@ -15,7 +15,7 @@ export const LiveGameBans = ({ bans, align }) => {
           key={i}
           border="black"
           width="44px"
-          src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${champions.get(`${ban.championId}`)}.png`}
+          src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${champions.get(`${ban.championId}`).id}.png`}
           alt={`Champion ban ${i + 1}`}
         />
       ))}

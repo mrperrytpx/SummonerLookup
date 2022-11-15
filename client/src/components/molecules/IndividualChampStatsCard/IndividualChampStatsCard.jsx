@@ -20,10 +20,10 @@ export const IndividualChampStatsCard = ({ champion }) => {
     <StyledIndividualChampStatsCard>
       <FlexRow gap="0.25rem">
         <FlexColCenter>
-          <img src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${champions.get(`${champion.championId}`)}.png`} alt="" />
+          <img src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${champions.get(`${champion.championId}`).id}.png`} alt="" />
         </FlexColCenter>
         <FlexColCenter>
-          <Span align="left" size="s">{champions.get(`${champion.championId}`)}</Span>
+          <Span align="left" size="s">{champions.get(`${champion.championId}`).name}</Span>
 
         </FlexColCenter>
       </FlexRow>

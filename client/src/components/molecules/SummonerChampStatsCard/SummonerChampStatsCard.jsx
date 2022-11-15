@@ -14,6 +14,8 @@ export const SummonerChampStatsCard = () => {
   const { server, summonerName } = useParams();
   const { data: championRankedStatsData, isLoading } = useGetSummonerRankedChampStatsQuery(server, summonerName);
 
+  const handleClick = (value) => setStats(value);
+
   const options = [
     {
       stateValue: "solo",
@@ -31,7 +33,14 @@ export const SummonerChampStatsCard = () => {
     <StyledSummonerChampStatsCard>
       <FlexRowSpaceBetween>
         <CustomLink to="stats">Champion stats - {stats.toUpperCase()}</CustomLink>
-        <Dropdown from="right" state={stats} setState={setStats} id="queue" options={options} />
+        <Dropdown
+          handleClick={handleClick}
+          from="right"
+          state={stats}
+          setState={setStats}
+          id="queue"
+          options={options}
+        />
       </FlexRowSpaceBetween>
 
       {championRankedStatsData?.[stats].slice(0, 5).map((champion, i) => <IndividualChampStatsCard key={i} champion={champion} />)}
