@@ -13,10 +13,6 @@ export const StyledSummonerCardSmall = styled(Link)`
     color: ${({ theme }) => theme.textColors.light};
     user-select: none;
     text-decoration: none;
-
-    button {
-        z-index: 10;
-    }
     
     &:hover {
         border: 1px solid ${({ theme }) => theme.backgroundColors.quaternary};

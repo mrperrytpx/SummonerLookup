@@ -11,4 +11,14 @@ export const StyledLiveGameBans = styled(FlexRowStart)`
     ${({ align }) => align && `
         justify-content: flex-end;
     `}
+
+    @media only screen and (max-width: 900px) {
+        & {
+            justify-content: center;
+        }
+
+        img {
+            width: 36px;
+        }
+    }
 `;

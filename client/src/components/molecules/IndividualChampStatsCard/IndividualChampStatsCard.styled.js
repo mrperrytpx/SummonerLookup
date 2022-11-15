@@ -8,10 +8,6 @@ export const StyledIndividualChampStatsCard = styled.div`
     border-top: 1px solid ${({ theme }) => theme.backgroundColors.tertiary};
     width: 100%;
 
-    &:first-of-type{
-        border-top: none;
-    }
-
     img {
         width: 40px;
         aspect-ratio: 1 / 1;

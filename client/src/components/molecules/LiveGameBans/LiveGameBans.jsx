@@ -14,7 +14,7 @@ export const LiveGameBans = ({ bans, align }) => {
         <ImageContainer
           key={i}
           border="black"
-          width="44px"
+          width="40px"
           src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${champions.get(`${ban.championId}`).id}.png`}
           alt={`Champion ban ${i + 1}`}
         />

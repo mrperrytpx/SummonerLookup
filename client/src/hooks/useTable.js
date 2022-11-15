@@ -26,6 +26,7 @@ export const useTable = (data) => {
             cell: props => props.getValue(),
             header: "#",
             sortingFn: "alphanumeric",
+            id: "number"
         }),
         columnHelper.accessor(row => champions.get(`${row.championId}`), {
             cell: (props) => (

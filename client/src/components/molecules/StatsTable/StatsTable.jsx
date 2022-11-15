@@ -16,6 +16,7 @@ export const StatsTable = ({ data }) => {
     const breakOne = width > 1000;
     const breakTwo = width > 800;
     const breakThree = width > 600;
+    const breakFour = width > 300;
 
     table.getColumn("pentaKills").toggleVisibility(breakOne);
     table.getColumn("quadraKills").toggleVisibility(breakOne);
@@ -28,6 +29,8 @@ export const StatsTable = ({ data }) => {
 
     table.getColumn("maxKills").toggleVisibility(breakThree);
     table.getColumn("maxDeaths").toggleVisibility(breakThree);
+
+    table.getColumn("number").toggleVisibility(breakFour);
   }, [width, table]);
 
   return (

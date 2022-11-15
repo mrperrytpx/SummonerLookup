@@ -8,7 +8,7 @@ export const StyledSummonerChampStatsCard = styled(FlexCol)`
     background-color: ${({ theme }) => theme.backgroundColors.secondary};
     border-radius: 1rem;
 
-    & > span {
-        margin-bottom: 0.5rem;
+    div:nth-child(2) {
+        border-top: none;
     }
 `;

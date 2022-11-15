@@ -24,7 +24,6 @@ export const IndividualChampStatsCard = ({ champion }) => {
         </FlexColCenter>
         <FlexColCenter>
           <Span align="left" size="s">{champions.get(`${champion.championId}`).name}</Span>
-
         </FlexColCenter>
       </FlexRow>
 

@@ -43,7 +43,7 @@ export const SummonerChampStatsCard = () => {
         />
       </FlexRowSpaceBetween>
 
-      {championRankedStatsData?.[stats].slice(0, 5).map((champion, i) => <IndividualChampStatsCard key={i} champion={champion} />)}
+      {championRankedStatsData?.[stats].slice(0, 5).map((champion, i) => <IndividualChampStatsCard data-order={i} key={i} champion={champion} />)}
     </StyledSummonerChampStatsCard>
   );
 };
