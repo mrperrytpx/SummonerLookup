@@ -10,12 +10,10 @@ import { ReactQueryDevtools } from "react-query/devtools";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
-	<React.StrictMode>
-		<BrowserRouter>
-			<AppProviders>
-				<App />
-				<ReactQueryDevtools initialIsOpen={false} />
-			</AppProviders>
-		</BrowserRouter>
-	</React.StrictMode>
+	<BrowserRouter>
+		<AppProviders>
+			<App />
+			<ReactQueryDevtools initialIsOpen={false} />
+		</AppProviders>
+	</BrowserRouter>
 );

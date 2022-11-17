@@ -10,21 +10,24 @@ import { ReactComponent as SquareLogo } from "../../../assets/square_logo_no_tex
 import { ReactComponent as TextLogo } from "../../../assets/txtlogo.svg";
 import { useAuth } from "../../../hooks/useAuth";
 import { Button } from "../../atoms/Button/Button";
+import { useScreenSize } from "hooks/useScreenSize";
 
-export const Navbar = ({ width, isNavOpen, handleNavOpen, setIsNavOpen }) => {
+export const Navbar = ({ isNavOpen, handleNavOpen, setIsNavOpen }) => {
 
   const location = useLocation();
+  const { width } = useScreenSize();
   const { tokenLoading, user, signOut, accessToken } = useAuth();
 
   const handleLogout = async (e) => {
     e.preventDefault();
-    await signOut.mutate({ accessToken });
+    await signOut.mutateAsync({ accessToken });
   };
 
   return (
     <StyledNavbar>
-      {isNavOpen ? <MobileMenu setIsNavOpen={setIsNavOpen} /> : null}
+      {isNavOpen ? <MobileMenu isNavOpen={isNavOpen} setIsNavOpen={setIsNavOpen} /> : null}
       {width >= 450
+        // rendering different logos depending on width
         ? <SvgLink to="/">
           {location.pathname === "/"
             ? <TextLogo fill="white" />
@@ -36,7 +39,6 @@ export const Navbar = ({ width, isNavOpen, handleNavOpen, setIsNavOpen }) => {
         : null
       }
       {location.pathname !== "/" && !isNavOpen ? <CompactSearchSummoner /> : null}
-
 
       {tokenLoading ? <p style={{ color: "white" }}>Loading</p> :
         width >= 750
@@ -54,8 +56,6 @@ export const Navbar = ({ width, isNavOpen, handleNavOpen, setIsNavOpen }) => {
             ? <ImMenu3 fill="white" size="48" onClick={handleNavOpen}></ImMenu3>
             : <ImMenu4 fill="white" size="48" onClick={handleNavOpen}></ImMenu4>
       }
-
-
     </StyledNavbar>
   );
 };

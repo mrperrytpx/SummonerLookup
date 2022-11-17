@@ -4,7 +4,7 @@ import { FlexColStart } from "../../atoms/FlexBoxes/FlexBoxes.styled";
 export const StyledMobileMenu = styled(FlexColStart)`
     opacity: 1;
     position: absolute;
-    min-height: calc(100vh - 80px - 1rem);
+    min-height: 100vh;
     inset: 0px;
     width: 100vw;
     gap: 3rem;

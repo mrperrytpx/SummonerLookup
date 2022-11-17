@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { useAuth } from "../../../hooks/useAuth";
 import { Button } from "../../atoms/Button/Button";
@@ -7,22 +8,23 @@ import { LinkButton } from "../../atoms/LinkButton/LinkButton";
 import { LinkButtonCluster } from "../../molecules/LinkButtonCluster/LinkButtonCluster";
 import { StyledMobileMenu } from "./MobileMenu.styled";
 
-export const MobileMenu = ({ setIsNavOpen }) => {
+export const MobileMenu = ({ isNavOpen, setIsNavOpen }) => {
 
   const { user, signOut, accessToken } = useAuth();
+  const location = useLocation();
+
 
   const handleLogout = async (e) => {
     e.preventDefault();
-    await signOut.mutate({ accessToken });
+    await signOut.mutateAsync({ accessToken });
     setIsNavOpen(false);
   };
 
-  const location = useLocation();
   return (
     <StyledMobileMenu>
       <LinkButtonCluster variant="mobile">
         {location.pathname !== "/"
-          ? <LinkButton onClick={() => setIsNavOpen(false)} variant="secondary" to="/">Home</LinkButton>
+          ? <LinkButton variant="secondary" to="/">Home</LinkButton>
           : null}
         {user
           ? <LinkButton variant="quaternary" to="/me">Profile</LinkButton>

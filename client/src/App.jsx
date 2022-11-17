@@ -29,7 +29,8 @@ import { useGetLeagueSummonerSpellsQuery } from "hooks/useGetLeagueSummonerSpell
 const App = () => {
 	const { accessToken, tokenLoading } = useAuth();
 	const [isNavOpen, setIsNavOpen] = useState(false);
-	const { width } = useScreenSize(setIsNavOpen);
+	const { width } = useScreenSize();
+
 	const { isLoading: challengesLoading } = useGetLeagueChallengesQuery();
 	const { isLoading: championsLoading } = useGetLeagueChampions();
 	// const { isLoading: itemsLoading } = useGetLeagueItemsQuery();
@@ -46,10 +47,10 @@ const App = () => {
 
 	return (
 		<div className="App">
-			<GlobalStyles />
+			<GlobalStyles isNavOpen={isNavOpen} />
 			<Routes>
 
-				<Route element={<WithNav width={width} setIsNavOpen={setIsNavOpen} isNavOpen={isNavOpen} handleNavOpen={handleNavOpen} />}>
+				<Route element={<WithNav setIsNavOpen={setIsNavOpen} isNavOpen={isNavOpen} handleNavOpen={handleNavOpen} />}>
 
 					<Route path="/" element={<Home />} />
 

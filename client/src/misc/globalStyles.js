@@ -10,6 +10,7 @@ const GlobalStyles = createGlobalStyle`
 
     html {
         min-height: 100vh;
+        scroll-behavior: smooth;
     }
 
     html, body {
@@ -23,6 +24,10 @@ const GlobalStyles = createGlobalStyle`
         color: ${({ theme }) => theme.textColors.light};
         height: 100%;
         overflow-x: hidden;
+        ${({ isNavOpen }) => isNavOpen && `
+            overflow-y: hidden;
+            touch-action: none;
+    `}
     }
 
     input, button, textarea, select {

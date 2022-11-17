@@ -5,5 +5,4 @@ export const StyledDisclaimer = styled.p`
     color: #cccccc;
     padding: 2rem 2rem;
     max-width: 1920px;
-
 `;
