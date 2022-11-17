@@ -6,14 +6,13 @@ import { Button } from "../../atoms/Button/Button";
 import { useState } from "react";
 
 export const DeleteAccount = () => {
-  const { deleteUser, clearUser, clearToken, accessToken } = useAuth();
+  const { deleteUser, clearToken, accessToken } = useAuth();
   const navigate = useNavigate();
   const [input, setInput] = useState("");
 
   const handleDelete = async (e) => {
     e.preventDefault();
     await deleteUser.mutateAsync({ accessToken });
-    clearUser();
     clearToken();
     navigate("/");
   };

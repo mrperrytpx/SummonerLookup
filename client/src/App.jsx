@@ -22,7 +22,7 @@ import { WithoutNav } from "./components/templates/WithoutNav";
 import { FullscreenLoading } from "./components/atoms/FullscreenLoading/FullscreenLoading";
 import { useGetFollowingQuery } from "./hooks/useGetFollowingQuery";
 import { useGetLeagueChallengesQuery } from "./hooks/useGetLeagueChallengesQuery";
-import { useGetLeagueItemsQuery } from "hooks/useGetLeagueItemsQuery";
+// import { useGetLeagueItemsQuery } from "hooks/useGetLeagueItemsQuery";
 import { useGetLeagueRunesQuery } from "hooks/useGetLeagueRunesQuery";
 import { useGetLeagueSummonerSpellsQuery } from "hooks/useGetLeagueSummonerSpellsQuery";
 

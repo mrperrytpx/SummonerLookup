@@ -39,6 +39,7 @@ export const SignIn = () => {
           </SvgLink>
           <FormLabelInput
             register={register}
+            autocomplete="email"
             formName="email"
             label="Email"
             type="email"
@@ -49,6 +50,7 @@ export const SignIn = () => {
           />
           {errors?.email?.message && <ErrorText>• {errors?.email?.message}</ErrorText>}
           <FormLabelInput
+            autocomplete="current-password"
             formName="password"
             register={register}
             label="Password"

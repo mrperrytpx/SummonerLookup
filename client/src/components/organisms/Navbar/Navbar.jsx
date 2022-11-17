@@ -16,7 +16,7 @@ export const Navbar = ({ isNavOpen, handleNavOpen, setIsNavOpen }) => {
 
   const location = useLocation();
   const { width } = useScreenSize();
-  const { tokenLoading, user, signOut, accessToken } = useAuth();
+  const { tokenLoading, signOut, accessToken } = useAuth();
 
   const handleLogout = async (e) => {
     e.preventDefault();
@@ -25,7 +25,7 @@ export const Navbar = ({ isNavOpen, handleNavOpen, setIsNavOpen }) => {
 
   return (
     <StyledNavbar>
-      {isNavOpen ? <MobileMenu isNavOpen={isNavOpen} setIsNavOpen={setIsNavOpen} /> : null}
+      {isNavOpen && <MobileMenu setIsNavOpen={setIsNavOpen} />}
       {width >= 450
         // rendering different logos depending on width
         ? <SvgLink to="/">
@@ -43,11 +43,11 @@ export const Navbar = ({ isNavOpen, handleNavOpen, setIsNavOpen }) => {
       {tokenLoading ? <p style={{ color: "white" }}>Loading</p> :
         width >= 750
           ? <LinkButtonCluster>
-            {user
+            {accessToken
               ? !location.pathname.includes("/me") ? <LinkButton variant="quaternary" to="/me">Profile</LinkButton> : null
               : <LinkButton variant="quaternary" to="/signin">Sign in</LinkButton>
             }
-            {user
+            {accessToken
               ? <Button onClick={(e) => handleLogout(e)} variant="danger">Sign Out</Button>
               : <LinkButton variant="quaternary" to="/signup">Sign up</LinkButton>
             }

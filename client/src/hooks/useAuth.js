@@ -1,9 +1,8 @@
 import { useContext, useState } from "react";
 import { createContext } from "react";
 import { useMutation, useQuery, useQueryClient } from "react-query";
-import jwt_decode from "jwt-decode";
 
-const useGetFreshTokensQuery = (setAccessToken, setUser) => {
+const useGetFreshTokensQuery = (setAccessToken) => {
     async function getFreshTokens() {
         console.log("Trying for token...");
         const response = await fetch("/api/auth/refresh_token", {
@@ -17,9 +16,7 @@ const useGetFreshTokensQuery = (setAccessToken, setUser) => {
         const data = await response.json();
 
         if (data?.accessToken) {
-            const decoded = jwt_decode(data?.accessToken);
             setAccessToken(data?.accessToken);
-            setUser(decoded);
         }
         console.log("new token: ", data?.accessToken);
         return data;
@@ -28,16 +25,12 @@ const useGetFreshTokensQuery = (setAccessToken, setUser) => {
     const { isLoading: tokenLoading } = useQuery(["accessToken"], getFreshTokens, {
         onSuccess: (data) => {
             if (data?.accessToken) {
-                const decoded = jwt_decode(data?.accessToken);
-                setUser(decoded);
                 setAccessToken(data?.accessToken);
             } else {
-                setUser(null);
                 setAccessToken(null);
             }
         },
         onError: () => {
-            setUser(null);
             setAccessToken(null);
         },
         refetchIntervalInBackground: true,
@@ -47,7 +40,7 @@ const useGetFreshTokensQuery = (setAccessToken, setUser) => {
     return { tokenLoading };
 };
 
-const useSignInMutation = (setAccessToken, setUser) => {
+const useSignInMutation = (setAccessToken) => {
     const signIn = async ({ email, password, rememberMe }) => {
         const info = { email, password, rememberMe };
         const response = await fetch(`/api/auth/login`, {
@@ -67,8 +60,6 @@ const useSignInMutation = (setAccessToken, setUser) => {
         const data = await response.json();
         if (data.error) throw new Error(JSON.stringify(data.error, null, 2));
         if (data?.accessToken) {
-            const decoded = jwt_decode(data?.accessToken);
-            setUser(decoded);
             setAccessToken(data?.accessToken);
         }
     };
@@ -99,7 +90,7 @@ const useSignUpMutation = () => {
     return useMutation(signUp);
 };
 
-const useSignOutMutation = (setAccessToken, setUser, queryClient) => {
+const useSignOutMutation = (setAccessToken, queryClient) => {
     const signOut = async ({ accessToken }) => {
         const response = await fetch(`/api/auth/logout`, {
             method: "POST",
@@ -112,10 +103,8 @@ const useSignOutMutation = (setAccessToken, setUser, queryClient) => {
         if (!response.ok) {
             throw new Error("Something went wrong...");
         } else {
-            setUser(null);
             setAccessToken(null);
             queryClient.setQueryData(["accessToken"], null);
-            queryClient.setQueryData(["user"], null);
         }
         return;
     };
@@ -145,23 +134,13 @@ const useDeleteUserMutation = () => {
 
 const useProvideAuth = () => {
     const [accessToken, setAccessToken] = useState(null);
-    const [user, setUser] = useState(null);
     const queryClient = useQueryClient();
 
-    const { tokenLoading } = useGetFreshTokensQuery(setAccessToken, setUser);
-    const signIn = useSignInMutation(setAccessToken, setUser);
+    const { tokenLoading } = useGetFreshTokensQuery(setAccessToken);
+    const signIn = useSignInMutation(setAccessToken);
     const signUp = useSignUpMutation();
-    const signOut = useSignOutMutation(setAccessToken, setUser, queryClient);
+    const signOut = useSignOutMutation(setAccessToken, queryClient);
     const deleteUser = useDeleteUserMutation();
-
-    function clearUser() {
-        setUser(null);
-        queryClient.setQueryData(["user"], null);
-    }
-
-    function updateUser() {
-        queryClient.invalidateQueries(["user"]);
-    };
 
     function clearToken() {
         setAccessToken(null);
@@ -173,9 +152,6 @@ const useProvideAuth = () => {
     }
 
     return {
-        user,
-        updateUser,
-        clearUser,
         deleteUser,
         accessToken,
         updateToken,

@@ -19,5 +19,6 @@ TASKS FOR FUTURE ME WHEN ITS FUNCTIONAL (WIP)
 - no summoner error ??? - check for errors at the very top where a query is called
 - don't sum maxkills and maxdeaths
 - challenge icons (challenges route to see all?)
+- navbar switches state before it closes when going to a new route
 
 https://ddragon.leagueoflegends.com/cdn/version/img/item/item.full
