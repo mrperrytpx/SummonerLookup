@@ -25,9 +25,9 @@ const createRefreshToken = (userId, username) => {
 	return refreshToken;
 };
 
-const sendAccessToken = (res, token) => {
+const sendAccessToken = (res, token, rememberMe) => {
 	// Send the access token as a response
-	res.json({ accessToken: token });
+	res.json({ accessToken: token, rememberMe });
 };
 
 const sendRefreshToken = (res, token) => {

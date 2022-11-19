@@ -1,8 +1,9 @@
+import { queryClient } from "contexts/AppProviders";
 import { useContext, useState } from "react";
 import { createContext } from "react";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 
-const useGetFreshTokensQuery = (setAccessToken) => {
+const useGetFreshTokensQuery = (setAccessToken, shouldRefetch, setShouldRefetch) => {
     async function getFreshTokens() {
         console.log("Trying for token...");
         const response = await fetch("/api/auth/refresh_token", {
@@ -17,6 +18,7 @@ const useGetFreshTokensQuery = (setAccessToken) => {
 
         if (data?.accessToken) {
             setAccessToken(data?.accessToken);
+            queryClient.setQueryData(["accessToken"], data?.accessToken);
         }
         console.log("new token: ", data?.accessToken);
         return data;
@@ -26,21 +28,24 @@ const useGetFreshTokensQuery = (setAccessToken) => {
         onSuccess: (data) => {
             if (data?.accessToken) {
                 setAccessToken(data?.accessToken);
+                setShouldRefetch(true);
             } else {
                 setAccessToken(null);
+                setShouldRefetch(false);
             }
         },
         onError: () => {
             setAccessToken(null);
         },
+        enabled: !!shouldRefetch,
         refetchIntervalInBackground: true,
-        refetchInterval: 1440000 // 24 minutes, 6 minutes less than the lifespan of the accessToken
+        refetchInterval: 10000 // 24 minutes, 6 minutes less than the lifespan of the accessToken
     });
 
     return { tokenLoading };
 };
 
-const useSignInMutation = (setAccessToken) => {
+const useSignInMutation = (setAccessToken, setShouldRefetch) => {
     const signIn = async ({ email, password, rememberMe }) => {
         const info = { email, password, rememberMe };
         const response = await fetch(`/api/auth/login`, {
@@ -62,6 +67,7 @@ const useSignInMutation = (setAccessToken) => {
         if (data?.accessToken) {
             setAccessToken(data?.accessToken);
         }
+        setShouldRefetch(data.rememberMe);
     };
 
     return useMutation(signIn);
@@ -134,10 +140,11 @@ const useDeleteUserMutation = () => {
 
 const useProvideAuth = () => {
     const [accessToken, setAccessToken] = useState(null);
+    const [shouldRefetch, setShouldRefetch] = useState(true);
     const queryClient = useQueryClient();
 
-    const { tokenLoading } = useGetFreshTokensQuery(setAccessToken);
-    const signIn = useSignInMutation(setAccessToken);
+    const { tokenLoading } = useGetFreshTokensQuery(setAccessToken, shouldRefetch, setShouldRefetch);
+    const signIn = useSignInMutation(setAccessToken, setShouldRefetch);
     const signUp = useSignUpMutation();
     const signOut = useSignOutMutation(setAccessToken, queryClient);
     const deleteUser = useDeleteUserMutation();

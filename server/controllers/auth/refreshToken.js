@@ -43,7 +43,7 @@ const refreshToken = async (req, res) => {
 	await updateUserRefreshToken(user._id, refreshToken);
 	// Send both tokens to the front-end
 	sendRefreshToken(res, refreshToken);
-	sendAccessToken(res, accessToken);
+	sendAccessToken(res, accessToken, null);
 
 };
 

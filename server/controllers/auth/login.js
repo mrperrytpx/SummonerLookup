@@ -29,7 +29,7 @@ const login = async (req, res) => {
 	if (!valid) throw new ApiError("Invalid Password", 400, req.url);
 
 	// Create a refresh and an access token
-	const accessToken = createAccessToken(user._id, email);
+	const accessToken = createAccessToken(user._id, email, rememberMe);
 	const refreshToken = createRefreshToken(user._id, email);
 
 	// Update the user's document with a refresh token
@@ -38,7 +38,7 @@ const login = async (req, res) => {
 		await updateUserRefreshToken(user._id, refreshToken);
 		sendRefreshToken(res, refreshToken);
 	}
-	sendAccessToken(res, accessToken);
+	sendAccessToken(res, accessToken, rememberMe);
 
 };
 
