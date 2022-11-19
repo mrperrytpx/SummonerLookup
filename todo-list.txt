@@ -24,5 +24,6 @@ TASKS FOR FUTURE ME WHEN ITS FUNCTIONAL (WIP)
 - swap from .toFixed(x)
 - dont refetch token if rememberMe is false (increase life maaybe?)
 - fix redirect back to old page after logging in
+- livegame overlapping names, not fully responsive yet
 
 https://ddragon.leagueoflegends.com/cdn/version/img/item/item.full

@@ -7,6 +7,8 @@ import { Span } from "components/atoms/Span/Span";
 // import { liveGameData } from "consts/gameObject";
 import { LiveGamePicks } from "components/molecules/LiveGamePicks/LiveGamePicks";
 import { FlexColSpaceBetween } from "components/atoms/FlexBoxes/FlexBoxes.styled";
+import { ErrorText } from "components/atoms/ErrorText/ErrorText";
+import { Container } from "components/atoms/Container/Container";
 
 export const SummonerLiveGame = () => {
 
@@ -16,7 +18,12 @@ export const SummonerLiveGame = () => {
 
   if (isLoading) return <Span>Loading...</Span>;
 
-  if (!liveGameData) return <Span>Not in live game</Span>;
+  if (!liveGameData) return (
+    <Container>
+      <ErrorText size="clamp(1rem, 3vw, 1.5rem)" center={true}>"{summonerData.summonerName}" is currently not in a game.</ErrorText>
+      <ErrorText size="clamp(.8rem, 3vw, 1.2rem)" center={true}>If the game just started, try refreshing the page.</ErrorText>
+    </Container>
+  );
 
   return (
     <StyledSummonerLiveGame>
@@ -34,7 +41,6 @@ export const SummonerLiveGame = () => {
         <Span align="right" underline padding={"0.5rem 0.6rem"}>Red side picks:</Span>
         <LiveGamePicks platform={liveGameData?.platformId} direction="rtl" picks={liveGameData?.participants?.slice(5, 10)} />
       </FlexColSpaceBetween>
-
 
     </StyledSummonerLiveGame>
   );

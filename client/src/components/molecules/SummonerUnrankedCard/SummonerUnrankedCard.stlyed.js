@@ -1,7 +1,7 @@
+import { FlexCol } from "components/atoms/FlexBoxes/FlexBoxes.styled";
 import styled from "styled-components";
-import { FlexCol } from "../../atoms/FlexBoxes/FlexBoxes.styled";
 
-export const StyledSummonerRankCard = styled(FlexCol)`
+export const StyledSummonerUnrankedCards = styled(FlexCol)`
     width: 100%;
     padding: 1rem;
     background-color: ${({ theme }) => theme.backgroundColors.secondary};

@@ -87,11 +87,9 @@ export const StyledSummonerMatchCard = styled.div`
     }
 
     
-    @media only screen and (max-width: 305px) {
+    @media only screen and (max-width: 350px) {
         & > :nth-child(3) span:last-child {
             display: none;
         }
     }
-
-
  `;

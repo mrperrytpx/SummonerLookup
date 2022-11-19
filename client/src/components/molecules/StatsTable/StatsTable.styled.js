@@ -53,6 +53,7 @@ export const StyledStatsTable = styled.table`
         background-color: ${({ theme }) => theme.backgroundColors.secondary};
         border-radius: 20px;
         border: 1px solid white;
+        width: 100%;
     }
 
     tr:not(:first-child) {

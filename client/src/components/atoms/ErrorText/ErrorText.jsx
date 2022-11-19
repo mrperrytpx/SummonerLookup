@@ -1,7 +1,7 @@
 import { StyledErrorText } from "./ErrorText.styled";
 
-export const ErrorText = ({ children, center = false }) => {
+export const ErrorText = ({ children, center = false, ...rest }) => {
   return (
-    <StyledErrorText center={center}>{children}</StyledErrorText>
+    <StyledErrorText {...rest} center={center}>{children}</StyledErrorText>
   );
 };

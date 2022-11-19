@@ -34,8 +34,7 @@ export const useTable = (data) => {
                     <ImageContainer
                         src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${props.getValue().id}.png`}
                         alt="champion"
-                        max="40px"
-                        min="40px"
+                        width="40px"
                     />
                     <Span data-champ="true" size="sm">&nbsp;&nbsp;{props.getValue().name}</Span>
                 </FlexRowStart>

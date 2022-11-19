@@ -4,7 +4,6 @@ import { Span } from "components/atoms/Span/Span";
 import { StyledIndividualChampStatsCard } from "./IndividualChampStatsCard.styled";
 
 export const IndividualChampStatsCard = ({ champion }) => {
-
   const queryClient = useQueryClient();
 
   const champions = queryClient.getQueryData(["champions"]);
@@ -27,7 +26,7 @@ export const IndividualChampStatsCard = ({ champion }) => {
         </FlexColCenter>
       </FlexRow>
 
-      <FlexColCenter style={{ flex: "1" }}>
+      <FlexColCenter flex="1">
         <Span align="center" size="s">{kda} KDA</Span>
         <Span align="center" size="s">{averageKills} {averageDeaths} {averageAssists}</Span>
       </FlexColCenter>

@@ -11,5 +11,6 @@ export const StyledSummonerMatches = styled(FlexCol)`
 
     & > div:first-of-type {
         margin-top: .5rem;
+        min-height: 150px;
     }
 `;

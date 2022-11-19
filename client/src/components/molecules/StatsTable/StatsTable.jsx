@@ -1,12 +1,14 @@
 import { flexRender } from "@tanstack/react-table";
 import { useScreenSize } from "hooks/useScreenSize";
-import { useTable } from "hooks/useTable";
+import { useTable } from "components/molecules/StatsTable/useTable";
 import { useEffect } from "react";
 import { StyledStatsTable } from "./StatsTable.styled";
-
-
+import { ErrorText } from "components/atoms/ErrorText/ErrorText";
+import { Container } from "components/atoms/Container/Container";
 
 export const StatsTable = ({ data }) => {
+
+  useEffect(() => console.log(data), [data]);
 
   const { width } = useScreenSize();
   const table = useTable(data);
@@ -34,47 +36,58 @@ export const StatsTable = ({ data }) => {
   }, [width, table]);
 
   return (
-    <StyledStatsTable>
-      <thead>
-        {
-          table.getHeaderGroups().map((headerGroup) => (
-            <tr key={headerGroup.id}>
-              {headerGroup.headers.map((header) => (
-                <th data-sorted={header.column.getIsSorted()} key={header.id}>
-                  {header.isPlaceholder ? null : (
-                    <div
-                      {...{
-                        onClick: header.column.getToggleSortingHandler()
-                      }}
-                    >
-                      {flexRender(
-                        header.column.columnDef.header,
-                        header.getContext()
-                      )}
-                    </div>
-                  )}
-                </th>
-              ))}
-            </tr>
-          ))
-        }
-      </thead>
+    <>
+      {
+        data.length
+          ? <StyledStatsTable>
+            <thead>
+              {
+                table.getHeaderGroups().map((headerGroup) => (
+                  <tr key={headerGroup.id}>
+                    {headerGroup.headers.map((header) => (
+                      <th data-sorted={header.column.getIsSorted()} key={header.id}>
+                        {header.isPlaceholder ? null : (
+                          <div
+                            {...{
+                              onClick: header.column.getToggleSortingHandler()
+                            }}
+                          >
+                            {flexRender(
+                              header.column.columnDef.header,
+                              header.getContext()
+                            )}
+                          </div>
+                        )}
+                      </th>
+                    ))}
+                  </tr>
+                ))
+              }
+            </thead>
 
-      <tbody>
-        {table.getRowModel().rows.map((row) => (
-          <tr key={row.id}>
-            {
-              row.getVisibleCells().map((cell) => {
-                return (
-                  <td data-sorted={cell.column.getIsSorted()} key={cell.id}>
-                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                  </td>
-                );
-              })
-            }
-          </tr>
-        ))}
-      </tbody>
-    </StyledStatsTable>
+            <tbody>
+              {table.getRowModel().rows.map((row) => (
+                <tr key={row.id}>
+                  {
+                    row.getVisibleCells().map((cell) => {
+                      return (
+                        <td data-sorted={cell.column.getIsSorted()} key={cell.id}>
+                          {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                        </td>
+                      );
+                    })
+                  }
+                </tr>
+              ))}
+            </tbody>
+
+          </StyledStatsTable>
+
+          : <Container>
+            <ErrorText size="1rem" center={true}>No stats for the selected queue.</ErrorText>
+            <ErrorText size="clamp(1.2rem, 3vw, 3rem)" center={true}>(╯°□°）╯︵ ┻━┻</ErrorText>
+          </Container>
+      }
+    </>
   );
 };

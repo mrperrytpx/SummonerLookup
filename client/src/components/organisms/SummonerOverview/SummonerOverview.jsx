@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 import { useGetSummonerQuery } from "../../../hooks/useGetSummonerQuery";
 import { useGetSummonerRankedStatsQuery } from "../../../hooks/useGetSummonerRankedStatsQuery";
 import { SummonerMatches } from "../SummonerMatches/SummonerMatches";
+import { SummonerUnrankedCard } from "components/molecules/SummonerUnrankedCard/SummonerUnrankedCard";
 
 export const SummonerOverview = () => {
 
@@ -28,7 +29,7 @@ export const SummonerOverview = () => {
         <FlexCol data-stats="true">
           {summonerRankedData?.length
             ? [...summonerRankedData]?.sort(sortQueues).map(ranked => <SummonerRankCard key={ranked?.leagueId} ranked={ranked} />)
-            : null
+            : <SummonerUnrankedCard />
           }
         </FlexCol>
         <SummonerChampStatsCard />
