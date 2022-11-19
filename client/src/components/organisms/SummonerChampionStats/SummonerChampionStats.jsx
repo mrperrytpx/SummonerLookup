@@ -6,7 +6,6 @@ import { useState } from "react";
 import { FlexRowSpaceBetween } from "components/atoms/FlexBoxes/FlexBoxes.styled";
 import { StatsTable } from "components/molecules/StatsTable/StatsTable";
 import { Dropdown } from "components/atoms/Dropdown/Dropdown";
-import { Disclaimer } from "components/atoms/Disclaimer/Disclaimer";
 
 export const SummonerChampionStats = () => {
 
@@ -47,7 +46,6 @@ export const SummonerChampionStats = () => {
       <div className="border">
         {championRankedStatsData?.[stats] && <StatsTable data={championRankedStatsData?.[stats]} />}
       </div>
-      <Disclaimer />
     </StyledSummonerChampionStats>
   );
 };

@@ -6,6 +6,8 @@ export const StyledSummonerMatches = styled(FlexCol)`
     background-color: ${({ theme }) => theme.backgroundColors.secondary};
     padding: 1rem;
     border-radius: 1rem;
+    width: 100%;
+    align-self: start;
 
     & > div:first-of-type {
         margin-top: .5rem;

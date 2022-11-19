@@ -13,7 +13,7 @@ export const StyledNavActiveLink = styled(NavLink)`
         &:after {
             content:"";
             display: block;
-            width: 95%;
+            width: 100%;
             margin: 0 auto;
             border-bottom: 2px solid ${theme.backgroundColors.active};
         }

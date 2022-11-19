@@ -1,20 +1,11 @@
 import { SummonerRankCard } from "../../molecules/SummonerRankCard/SummonerRankCard";
 import { SummonerChampStatsCard } from "../../molecules/SummonerChampStatsCard/SummonerChampStatsCard";
 import { StyledSummonerOverview } from "./SummonerOverview.styled";
-import styled from "styled-components";
-import { FlexCol } from "../../atoms/FlexBoxes/FlexBoxes.styled";
+import { FlexCol, FlexRow } from "../../atoms/FlexBoxes/FlexBoxes.styled";
 import { useParams } from "react-router-dom";
 import { useGetSummonerQuery } from "../../../hooks/useGetSummonerQuery";
 import { useGetSummonerRankedStatsQuery } from "../../../hooks/useGetSummonerRankedStatsQuery";
 import { SummonerMatches } from "../SummonerMatches/SummonerMatches";
-
-const StyledFlexColOne = styled(FlexCol)`
-  flex: 1;
-`;
-
-const StyledFlexColTwo = styled(FlexCol)`
-  flex: 2;
-`;
 
 export const SummonerOverview = () => {
 
@@ -30,16 +21,18 @@ export const SummonerOverview = () => {
 
   return (
     <StyledSummonerOverview>
-      <StyledFlexColTwo>
+      <FlexRow flex="2">
         <SummonerMatches />
-      </StyledFlexColTwo>
-      <StyledFlexColOne>
-        {summonerRankedData?.length
-          ? [...summonerRankedData]?.sort(sortQueues).map(ranked => <SummonerRankCard key={ranked?.leagueId} ranked={ranked} />)
-          : null
-        }
+      </FlexRow>
+      <FlexCol flex="1">
+        <FlexCol data-stats="true">
+          {summonerRankedData?.length
+            ? [...summonerRankedData]?.sort(sortQueues).map(ranked => <SummonerRankCard key={ranked?.leagueId} ranked={ranked} />)
+            : null
+          }
+        </FlexCol>
         <SummonerChampStatsCard />
-      </StyledFlexColOne>
+      </FlexCol>
     </StyledSummonerOverview>
   );
 };

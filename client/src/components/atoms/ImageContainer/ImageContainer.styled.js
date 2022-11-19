@@ -5,6 +5,14 @@ export const StyledImageContainer = styled(FlexRowCenter)`
     background-color: ${({ theme, background }) => background ? theme.backgroundColors.primary : "transparent"};
     max-width: ${({ max }) => max};
 
+    ${({ radius }) => radius && `
+        border-radius: ${radius};
+
+        img {
+            border-radius: ${radius};
+        }
+    `}
+
     ${({ min }) => min && `
         min-width: ${min};
         min-height: ${min}

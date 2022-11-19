@@ -20,5 +20,7 @@ TASKS FOR FUTURE ME WHEN ITS FUNCTIONAL (WIP)
 - don't sum maxkills and maxdeaths
 - challenge icons (challenges route to see all?)
 - navbar switches state before it closes when going to a new route
+- infinity kda
+- swap from .toFixed(x)
 
 https://ddragon.leagueoflegends.com/cdn/version/img/item/item.full

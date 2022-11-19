@@ -10,6 +10,7 @@ import { useGetFollowingQuery } from "../../../hooks/useGetFollowingQuery";
 import { useAuth } from "../../../hooks/useAuth";
 import { useGetSummonerQuery } from "../../../hooks/useGetSummonerQuery";
 import { useGetSummonerChallengesQuery } from "../../../hooks/useGetSummonerChallengesQuery";
+import { FlexCol, FlexColCenter, FlexRow, FlexRowCenter, FlexRowStart } from "components/atoms/FlexBoxes/FlexBoxes.styled";
 
 export const SummonerInfo = () => {
 
@@ -68,13 +69,31 @@ export const SummonerInfo = () => {
 
   return (
     <StyledSummonerInfo>
-      <div>
-        <Span size="xxxl" capsed={true}>{summonerData?.summonerName}</Span>
-        <Span size="xxxl">{summonerChallengesData?.preferences?.title?.length > 2 ? " - " + summonerTitle() : null}</Span>
-        <div>
-          <Span size="s">{summonerChallengesData?.totalPoints?.current} out of {summonerChallengesData?.totalPoints?.max} challenge points earned</Span>
-        </div>
-      </div>
+      <FlexRow gap=".5rem">
+        <Span align="left" size="xxl">{summonerData?.summonerName}</Span>
+        {summonerChallengesData?.preferences?.title?.length > 2
+          ?
+          <>
+            <FlexRow>
+              <Span size="xxl" align="left">-</Span>
+            </FlexRow>
+            <FlexRow>
+
+              <Span size="xxl" align="left"><em>{summonerTitle()}</em></Span>
+            </FlexRow>
+          </>
+          : null
+        }
+      </FlexRow>
+
+      <FlexRowCenter>
+        <Span
+          align="center"
+          size="s"
+        >
+          {summonerChallengesData?.totalPoints?.current} out of {summonerChallengesData?.totalPoints?.max} challenge points earned
+        </Span>
+      </FlexRowCenter>
 
       <Button
         disabled={!accessToken}

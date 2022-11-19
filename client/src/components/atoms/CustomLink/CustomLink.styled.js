@@ -8,7 +8,7 @@ export const StyledCustomLink = styled(Link)`
         overflow-x: hidden;
         place-self: center start;
         width: 100%;
-        max-width: 100px;
+        max-width: ${({ max }) => max ? max : "100px"};
         white-space: pre;
 
         ${({ border }) => border && `

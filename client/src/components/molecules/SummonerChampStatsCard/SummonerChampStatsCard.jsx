@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { IndividualChampStatsCard } from "../IndividualChampStatsCard/IndividualChampStatsCard";
 import { CustomLink } from "components/atoms/CustomLink/CustomLink";
 import { useState } from "react";
-import { FlexRowSpaceBetween } from "components/atoms/FlexBoxes/FlexBoxes.styled";
+import { FlexColCenter, FlexRowSpaceBetween } from "components/atoms/FlexBoxes/FlexBoxes.styled";
 import { Dropdown } from "components/atoms/Dropdown/Dropdown";
 
 export const SummonerChampStatsCard = () => {
@@ -32,7 +32,7 @@ export const SummonerChampStatsCard = () => {
   return (
     <StyledSummonerChampStatsCard>
       <FlexRowSpaceBetween>
-        <CustomLink to="stats">Champion stats - {stats.toUpperCase()}</CustomLink>
+        <CustomLink max="200px" to="stats">Champion stats</CustomLink>
         <Dropdown
           handleClick={handleClick}
           from="right"
@@ -43,7 +43,9 @@ export const SummonerChampStatsCard = () => {
         />
       </FlexRowSpaceBetween>
 
-      {championRankedStatsData?.[stats].slice(0, 5).map((champion, i) => <IndividualChampStatsCard data-order={i} key={i} champion={champion} />)}
+      <FlexColCenter>
+        {championRankedStatsData?.[stats].slice(0, 5).map((champion, i) => <IndividualChampStatsCard data-order={i} key={i} champion={champion} />)}
+      </FlexColCenter>
     </StyledSummonerChampStatsCard>
   );
 };

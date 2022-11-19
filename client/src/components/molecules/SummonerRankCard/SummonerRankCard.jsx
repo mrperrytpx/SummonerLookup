@@ -12,7 +12,6 @@ export const SummonerRankCard = ({ ranked }) => {
   return (
     <StyledSummonerRankCard>
       <Span underline size="m">{RANKED_TYPES[ranked.queueType]}</Span>
-
       <FlexRowSpaceBetween>
         <FlexRow gap="1rem">
           <ImageContainer
