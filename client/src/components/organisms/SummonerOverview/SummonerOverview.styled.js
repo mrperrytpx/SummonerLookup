@@ -32,13 +32,4 @@ export const StyledSummonerOverview = styled(FlexRow)`
             gap: 0.5rem;
         }
     }
-
-    @media only screen and (max-width: 300px) {
-        img {
-            width: 40px;
-            height: 40px;
-        }
-    }
-
-
 `;

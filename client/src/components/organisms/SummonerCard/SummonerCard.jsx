@@ -15,7 +15,7 @@ export const SummonerCard = ({ summonerData, summonerChallengesData }) => {
         radius="10px"
         src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/profileicon/${summonerData?.profileIconId}.png`}
         level={summonerData?.summonerLevel}
-        width={140}
+        width="140px"
         alt="Account icon"
       />
       <SummonerInfo summonerData={summonerData} summonerChallengesData={summonerChallengesData} />

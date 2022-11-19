@@ -3,10 +3,12 @@ import { FlexColCenter } from "../FlexBoxes/FlexBoxes.styled";
 
 export const StyledIconWithLevel = styled(FlexColCenter)`
     position: relative;
-    width: ${({ width }) => width + "px"};
-    height: ${({ width }) => width + "px"};
-    aspect-ratio: 1 / 1;
-    margin: 0;
+    background-color: ${({ theme, background }) => background ? theme.backgroundColors.primary : "transparent"};
+    width: ${({ width }) => width ? width : "auto"};
+
+    ${({ border }) => border && `
+        border  : 1px solid ${border};
+    `}
 
     ${({ border, theme }) => border && `
         border: 2px solid ${theme.backgroundColors.tertiary};
@@ -23,14 +25,6 @@ export const StyledIconWithLevel = styled(FlexColCenter)`
             border-radius: 0 0 ${radius} 0;
         }
     `}
-
-    img {
-        width: 100%;
-        aspect-ratio: 1 / 1;
-        &[alt] {
-            font-size: 0.6rem;
-        }
-    }
 
     span {
         display: inline-block;

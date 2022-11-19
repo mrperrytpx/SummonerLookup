@@ -9,7 +9,7 @@ export const StyledSummonerMatchCard = styled.div`
 
     background-color: ${({ isWin, theme }) => isWin ? theme.matchResult.win : theme.matchResult.loss};
     display: grid;
-    grid-template-columns: 120px 1fr 100px 1fr;
+    grid-template-columns: 120px minmax(120px, 200px) 100px 1fr;
     grid-template-rows: 78px;
     gap: 0.5rem;
 
@@ -19,7 +19,7 @@ export const StyledSummonerMatchCard = styled.div`
     }
 
     @media only screen and (max-width: 675px) {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr 2fr;
         grid-template-rows: 20px 15px 38px;
         grid-template-areas: 
             "a a"
@@ -51,8 +51,47 @@ export const StyledSummonerMatchCard = styled.div`
         }
     }
 
-    @media only screen and (max-width: 440px) {
+    @media only screen and (max-width: 450px) {
+        grid-template-rows: 15px 15px 20px;
 
+        & > :first-child {
+            span {
+                font-size: 0.9rem;
+            }
+        }
+
+        & > :last-child {
+            grid-template-columns: repeat(7, 20px);
+            div {
+                width: 100%;
+                aspect-ratio: 1 / 1;
+            }
+        }
+
+        & > :nth-child(2) > :first-child{
+            width: 40px;
+            aspect-ratio: 1 / 1;
+        }
+
+
+        div[data-setup]{
+            width: 20px;
+            aspect-ratio: 1 / 1;
+        }
+
+        div:has(div[data-setup]) {
+            place-self: end start;
+            grid-template-rows: repeat(2, minmax(20px, 1fr));
+            grid-template-columns: repeat(2, minmax(20px, 1fr));
+        }
     }
+
+    
+    @media only screen and (max-width: 305px) {
+        & > :nth-child(3) span:last-child {
+            display: none;
+        }
+    }
+
 
  `;

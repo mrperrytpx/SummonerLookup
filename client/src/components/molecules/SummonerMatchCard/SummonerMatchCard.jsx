@@ -44,7 +44,7 @@ export const SummonerMatchCard = ({ match }) => {
     summonerMatchData.item6,
   ];
 
-  const itemWidth = "32px";
+  const itemWidth = "35px";
 
   return (
     <StyledSummonerMatchCard isWin={summonerMatchData.win}>
@@ -61,7 +61,7 @@ export const SummonerMatchCard = ({ match }) => {
           src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${champions.get(`${summonerMatchData.championId}`).id}.png`}
           alt="Champion"
           level={summonerMatchData.champLevel}
-          width={60}
+          width="60px"
         />
         <GridBox rows="repeat(2, minmax(30px, 1fr))" cols="repeat(2, minmax(30px, 1fr))">
           <ImageContainer
@@ -70,6 +70,7 @@ export const SummonerMatchCard = ({ match }) => {
             width="30px"
             src={`https://ddragon.leagueoflegends.com/cdn/img/${primaryTree.slots[0].runes.find(rune => rune.id === keystoneRuneId).icon}`}
             alt="Keystone rune"
+            data-setup
           />
           <ImageContainer
             border="black"
@@ -77,19 +78,21 @@ export const SummonerMatchCard = ({ match }) => {
             width="30px"
             src={`https://ddragon.leagueoflegends.com/cdn/img/${secondaryTree.icon}`}
             alt="Secondary rune tree"
+            data-setup
           />
-
           <ImageContainer
             border="black"
             width="30px"
             src={`https://raw.communitydragon.org/latest/game/${firstSummonerSpell}`}
             alt="Summoner Spell 1"
+            data-setup
           />
           <ImageContainer
             border="black"
             width="30px"
             src={`https://raw.communitydragon.org/latest/game/${secondSummonerSpell}`}
             alt="Summoner Spell 2"
+            data-setup
           />
         </GridBox>
       </FlexRowCenter>
