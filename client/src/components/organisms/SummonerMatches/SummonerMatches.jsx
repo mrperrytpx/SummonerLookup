@@ -4,7 +4,7 @@ import { StyledSummonerMatches } from "./SummonerMatches.styled";
 import { useParams } from "react-router-dom";
 import { SummonerMatchCard } from "components/molecules/SummonerMatchCard/SummonerMatchCard";
 import { Span } from "components/atoms/Span/Span";
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 import { Button } from "components/atoms/Button/Button";
 import { Container } from "components/atoms/Container/Container";
 import { ErrorText } from "components/atoms/ErrorText/ErrorText";
@@ -14,19 +14,18 @@ export const SummonerMatches = () => {
   const { server, summonerName } = useParams();
   const { data: summonerData } = useGetSummonerQuery(server, summonerName);
   const {
-
+    data: summonerMatchesData,
     isLoading,
     fetchNextPage,
     hasNextPage,
     isFetchingNextPage
   } = useGetSummonerMatchesInfiniteQuery(server, summonerData?.puuid);
 
-  const summonerMatchesData = [];
 
   if (isLoading) return <div style={{ color: "white" }}>Loading...</div>;
 
   return (
-    <StyledSummonerMatches>
+    <StyledSummonerMatches noMatches={summonerMatchesData.length}>
       <Span underline size="m" align="left">Match History</Span>
       {summonerMatchesData?.pages?.length
         ? <>
@@ -42,25 +41,22 @@ export const SummonerMatches = () => {
         </Container>
       }
 
-      {summonerMatchesData.length
-        ? (
-          <Button
-            disabled={!hasNextPage || isFetchingNextPage}
-            padding="0.1rem"
-            variant="tertiary"
-            onClick={() => fetchNextPage()}
-            type="button"
-            wide
-          >
-            {isFetchingNextPage
-              ? 'Loading more...'
-              : hasNextPage
-                ? 'Load 5 more'
-                : 'Nothing more to load'}
-          </Button>
-        )
-        : null
-      }
+      {summonerMatchesData?.pages?.length && (
+        <Button
+          disabled={!hasNextPage || isFetchingNextPage}
+          padding="0.1rem"
+          variant="tertiary"
+          onClick={() => fetchNextPage()}
+          type="button"
+          wide
+        >
+          {isFetchingNextPage
+            ? 'Loading more...'
+            : hasNextPage
+              ? 'Load more'
+              : 'Nothing more to load'}
+        </Button>
+      )}
     </StyledSummonerMatches>
   );
 };
