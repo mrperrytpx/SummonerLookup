@@ -44,73 +44,81 @@ export const SummonerMatchCard = ({ match }) => {
     summonerMatchData.item6,
   ];
 
+  const itemWidth = "34px";
+
   return (
     <StyledSummonerMatchCard isWin={summonerMatchData.win}>
 
-      <FlexColCenter data-order="1" style={{ width: "100%" }} gap="0.25rem">
-        <Span size="m">{QUEUE_TYPES[match?.info?.queueId]}</Span>
-        <Span size="s">{summonerMatchData.win ? "Victory" : "Defeat"} - {parseInt(match.info.gameDuration / 60)}m {match.info.gameDuration % 60}s</Span>
-        <Span size="s">{(new Date(match?.info?.gameEndTimestamp)).toDateString()}</Span>
-      </FlexColCenter>
+      <FlexRowCenter>
 
-      <FlexRowCenter data-order="2">
-        <IconWithLevel
-          src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${champions.get(`${summonerMatchData.championId}`).id}.png`}
-          alt="Champion"
-          level={summonerMatchData.champLevel}
-          width={60}
-        />
-        <GridBox rows="repeat(2, minmax(26px, 1fr))" cols="repeat(2, minmax(26px, 1fr))">
-          <ImageContainer
-            border="black"
-            background
-            width="26px"
-            src={`https://ddragon.leagueoflegends.com/cdn/img/${primaryTree.slots[0].runes.find(rune => rune.id === keystoneRuneId).icon}`}
-            alt="Keystone rune"
-          />
-          <ImageContainer
-            border="black"
-            background
-            width="26px"
-            src={`https://ddragon.leagueoflegends.com/cdn/img/${secondaryTree.icon}`}
-            alt="Secondary rune tree"
-          />
+        <FlexColCenter style={{ width: "100%" }} gap="0.25rem">
+          <Span size="m">{QUEUE_TYPES[match?.info?.queueId]}</Span>
+          <Span size="s">{summonerMatchData.win ? "Victory" : "Defeat"} - {parseInt(match.info.gameDuration / 60)}m {match.info.gameDuration % 60}s</Span>
+          <Span size="s">{(new Date(match?.info?.gameEndTimestamp)).toDateString()}</Span>
+        </FlexColCenter>
 
-          <ImageContainer
-            border="black"
-            width="26px"
-            src={`https://raw.communitydragon.org/latest/game/${firstSummonerSpell}`}
-            alt="Summoner Spell 1"
+        <FlexRowCenter>
+          <IconWithLevel
+            src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${champions.get(`${summonerMatchData.championId}`).id}.png`}
+            alt="Champion"
+            level={summonerMatchData.champLevel}
+            width={60}
           />
-          <ImageContainer
-            border="black"
-            width="26px"
-            src={`https://raw.communitydragon.org/latest/game/${secondSummonerSpell}`}
-            alt="Summoner Spell 2"
-          />
-        </GridBox>
+          <GridBox rows="repeat(2, minmax(30px, 1fr))" cols="repeat(2, minmax(30px, 1fr))">
+            <ImageContainer
+              border="black"
+              background
+              width="30px"
+              src={`https://ddragon.leagueoflegends.com/cdn/img/${primaryTree.slots[0].runes.find(rune => rune.id === keystoneRuneId).icon}`}
+              alt="Keystone rune"
+            />
+            <ImageContainer
+              border="black"
+              background
+              width="30px"
+              src={`https://ddragon.leagueoflegends.com/cdn/img/${secondaryTree.icon}`}
+              alt="Secondary rune tree"
+            />
+
+            <ImageContainer
+              border="black"
+              width="30px"
+              src={`https://raw.communitydragon.org/latest/game/${firstSummonerSpell}`}
+              alt="Summoner Spell 1"
+            />
+            <ImageContainer
+              border="black"
+              width="30px"
+              src={`https://raw.communitydragon.org/latest/game/${secondSummonerSpell}`}
+              alt="Summoner Spell 2"
+            />
+          </GridBox>
+        </FlexRowCenter>
+
       </FlexRowCenter>
 
-      <FlexColCenter data-order="3">
-        <Span align="center" size="s">{summonerMatchData.kills} / {summonerMatchData.deaths} / {summonerMatchData.assists}</Span>
-        <Span align="center" size="s">{summonerMatchData.totalMinionsKilled} CS ({Math.round(summonerMatchData.totalMinionsKilled / match.info.gameDuration * 600) / 10})</Span>
-        <Span align="center" size="s">{summonerMatchData.visionScore} VS</Span>
-      </FlexColCenter>
+      <FlexRowCenter>
+        <FlexColCenter>
+          <Span align="center" size="s">{summonerMatchData.kills} / {summonerMatchData.deaths} / {summonerMatchData.assists}</Span>
+          <Span align="center" size="s">{summonerMatchData.totalMinionsKilled} CS ({Math.round(summonerMatchData.totalMinionsKilled / match.info.gameDuration * 600) / 10})</Span>
+          <Span align="center" size="s">{summonerMatchData.visionScore} VS</Span>
+        </FlexColCenter>
 
-      <GridBox cols="repeat(7, 1fr)" data-order="4">
-        {itemsArray.map((item, i) => (
-          item
-            ? <ImageContainer
-              border="black"
-              width="100%"
-              max="38px"
-              key={i}
-              src={`http://ddragon.leagueoflegends.com/cdn/${version}/img/item/${item}.png`}
-              alt="Item"
-            />
-            : <div key={i} style={{ backgroundColor: "black", width: "100%", maxWidth: "38px", border: "2px solid black", height: "38px" }} ></div>
-        ))}
-      </GridBox>
+        <GridBox data-retard cols={`repeat(auto-fit, ${itemWidth})`}>
+          {itemsArray.map((item, i) => (
+            item
+              ? <ImageContainer
+                data-item
+                border="black"
+                width={itemWidth}
+                key={i}
+                src={`http://ddragon.leagueoflegends.com/cdn/${version}/img/item/${item}.png`}
+                alt="Item"
+              />
+              : <div data-item="empty" key={i} style={{ backgroundColor: "black", width: itemWidth, maxWidth: itemWidth, border: "2px solid black", height: itemWidth }} ></div>
+          ))}
+        </GridBox>
+      </FlexRowCenter>
 
     </StyledSummonerMatchCard >
   );

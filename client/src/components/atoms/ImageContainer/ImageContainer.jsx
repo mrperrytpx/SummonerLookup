@@ -1,11 +1,10 @@
 import { StyledImageContainer } from "./ImageContainer.styled";
 
-export const ImageContainer = ({ border, radius, src, alt, width, background, max, min }) => {
+export const ImageContainer = ({ border, radius, src, alt, width, background, ...rest }) => {
   return (
     <StyledImageContainer
-      min={min}
+      {...rest}
       border={border}
-      max={max}
       background={background}
       width={width}
       radius={radius}

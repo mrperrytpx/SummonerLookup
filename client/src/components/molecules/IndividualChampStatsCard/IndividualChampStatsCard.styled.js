@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const StyledIndividualChampStatsCard = styled.div`
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-columns: 2fr 1fr 75px;
     
     padding: 0.5rem 0;
     border-top: 1px solid ${({ theme }) => theme.backgroundColors.tertiary};

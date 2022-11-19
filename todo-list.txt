@@ -23,5 +23,6 @@ TASKS FOR FUTURE ME WHEN ITS FUNCTIONAL (WIP)
 - infinity kda
 - swap from .toFixed(x)
 - dont refetch token if rememberMe is false (increase life maaybe?)
+- fix redirect back to old page after logging in
 
 https://ddragon.leagueoflegends.com/cdn/version/img/item/item.full

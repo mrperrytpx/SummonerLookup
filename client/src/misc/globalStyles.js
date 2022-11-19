@@ -41,6 +41,8 @@ const GlobalStyles = createGlobalStyle`
     img, picture, video, canvas {
         display: block;
         max-width: 100%;
+        width: 100%;
+        min-width: 100%;
     }
 
     a {
