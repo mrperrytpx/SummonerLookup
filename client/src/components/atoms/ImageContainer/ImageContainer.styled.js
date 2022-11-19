@@ -6,6 +6,6 @@ export const StyledImageContainer = styled(FlexRowCenter)`
     width: ${({ width }) => width ? width : "auto"};
 
     ${({ border }) => border && `
-        border: 1px solid ${border};
+        border  : 1px solid ${border};
     `}
 `;

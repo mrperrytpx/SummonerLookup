@@ -44,81 +44,83 @@ export const SummonerMatchCard = ({ match }) => {
     summonerMatchData.item6,
   ];
 
-  const itemWidth = "34px";
+  const itemWidth = "32px";
 
   return (
     <StyledSummonerMatchCard isWin={summonerMatchData.win}>
 
+
+      <FlexColCenter gap="0.25rem">
+        <Span size="m">{QUEUE_TYPES[match?.info?.queueId]}</Span>
+        <Span size="s">{summonerMatchData.win ? "Victory" : "Defeat"} - {parseInt(match.info.gameDuration / 60)}m {match.info.gameDuration % 60}s</Span>
+        <Span size="s">{(new Date(match?.info?.gameEndTimestamp)).toDateString()}</Span>
+      </FlexColCenter>
+
       <FlexRowCenter>
-
-        <FlexColCenter style={{ width: "100%" }} gap="0.25rem">
-          <Span size="m">{QUEUE_TYPES[match?.info?.queueId]}</Span>
-          <Span size="s">{summonerMatchData.win ? "Victory" : "Defeat"} - {parseInt(match.info.gameDuration / 60)}m {match.info.gameDuration % 60}s</Span>
-          <Span size="s">{(new Date(match?.info?.gameEndTimestamp)).toDateString()}</Span>
-        </FlexColCenter>
-
-        <FlexRowCenter>
-          <IconWithLevel
-            src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${champions.get(`${summonerMatchData.championId}`).id}.png`}
-            alt="Champion"
-            level={summonerMatchData.champLevel}
-            width={60}
+        <IconWithLevel
+          src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${champions.get(`${summonerMatchData.championId}`).id}.png`}
+          alt="Champion"
+          level={summonerMatchData.champLevel}
+          width={60}
+        />
+        <GridBox rows="repeat(2, minmax(30px, 1fr))" cols="repeat(2, minmax(30px, 1fr))">
+          <ImageContainer
+            border="black"
+            background
+            width="30px"
+            src={`https://ddragon.leagueoflegends.com/cdn/img/${primaryTree.slots[0].runes.find(rune => rune.id === keystoneRuneId).icon}`}
+            alt="Keystone rune"
           />
-          <GridBox rows="repeat(2, minmax(30px, 1fr))" cols="repeat(2, minmax(30px, 1fr))">
-            <ImageContainer
-              border="black"
-              background
-              width="30px"
-              src={`https://ddragon.leagueoflegends.com/cdn/img/${primaryTree.slots[0].runes.find(rune => rune.id === keystoneRuneId).icon}`}
-              alt="Keystone rune"
-            />
-            <ImageContainer
-              border="black"
-              background
-              width="30px"
-              src={`https://ddragon.leagueoflegends.com/cdn/img/${secondaryTree.icon}`}
-              alt="Secondary rune tree"
-            />
+          <ImageContainer
+            border="black"
+            background
+            width="30px"
+            src={`https://ddragon.leagueoflegends.com/cdn/img/${secondaryTree.icon}`}
+            alt="Secondary rune tree"
+          />
 
-            <ImageContainer
-              border="black"
-              width="30px"
-              src={`https://raw.communitydragon.org/latest/game/${firstSummonerSpell}`}
-              alt="Summoner Spell 1"
-            />
-            <ImageContainer
-              border="black"
-              width="30px"
-              src={`https://raw.communitydragon.org/latest/game/${secondSummonerSpell}`}
-              alt="Summoner Spell 2"
-            />
-          </GridBox>
-        </FlexRowCenter>
-
-      </FlexRowCenter>
-
-      <FlexRowCenter>
-        <FlexColCenter>
-          <Span align="center" size="s">{summonerMatchData.kills} / {summonerMatchData.deaths} / {summonerMatchData.assists}</Span>
-          <Span align="center" size="s">{summonerMatchData.totalMinionsKilled} CS ({Math.round(summonerMatchData.totalMinionsKilled / match.info.gameDuration * 600) / 10})</Span>
-          <Span align="center" size="s">{summonerMatchData.visionScore} VS</Span>
-        </FlexColCenter>
-
-        <GridBox data-retard cols={`repeat(auto-fit, ${itemWidth})`}>
-          {itemsArray.map((item, i) => (
-            item
-              ? <ImageContainer
-                data-item
-                border="black"
-                width={itemWidth}
-                key={i}
-                src={`http://ddragon.leagueoflegends.com/cdn/${version}/img/item/${item}.png`}
-                alt="Item"
-              />
-              : <div data-item="empty" key={i} style={{ backgroundColor: "black", width: itemWidth, maxWidth: itemWidth, border: "2px solid black", height: itemWidth }} ></div>
-          ))}
+          <ImageContainer
+            border="black"
+            width="30px"
+            src={`https://raw.communitydragon.org/latest/game/${firstSummonerSpell}`}
+            alt="Summoner Spell 1"
+          />
+          <ImageContainer
+            border="black"
+            width="30px"
+            src={`https://raw.communitydragon.org/latest/game/${secondSummonerSpell}`}
+            alt="Summoner Spell 2"
+          />
         </GridBox>
       </FlexRowCenter>
+
+      <FlexColCenter>
+        <Span width="auto" align="center" size="s">{summonerMatchData.kills} / {summonerMatchData.deaths} / {summonerMatchData.assists}</Span>
+        <Span width="auto" align="center" size="s">{summonerMatchData.totalMinionsKilled} CS ({Math.round(summonerMatchData.totalMinionsKilled / match.info.gameDuration * 600) / 10})</Span>
+        <Span width="auto" align="center" size="s">{summonerMatchData.visionScore} VS</Span>
+      </FlexColCenter>
+
+      <GridBox style={{ backgroundColor: "black" }} cols={`repeat(7, ${itemWidth})`}>
+        {itemsArray.map((item, i) => (
+          item
+            ? <ImageContainer
+              data-item
+              border="black"
+              width={itemWidth}
+              key={i}
+              src={`http://ddragon.leagueoflegends.com/cdn/${version}/img/item/${item}.png`}
+              alt="Item"
+            />
+            : <ImageContainer
+              data-item
+              border="black"
+              width={itemWidth}
+              key={i}
+              src={`https://raw.communitydragon.org/latest/game/assets/ux/summonericons/profileicon29.png`}
+              alt="Item"
+            />
+        ))}
+      </GridBox>
 
     </StyledSummonerMatchCard >
   );
