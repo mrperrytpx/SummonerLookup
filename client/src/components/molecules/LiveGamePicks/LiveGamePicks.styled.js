@@ -13,30 +13,32 @@ export const StyledLiveGamePicks = styled(FlexCol)`
         width: 100%;
         ${({ direction }) => direction && `direction: ${direction}`};
 
-
         & :last-child {
             justify-content: space-around;
         }
     }
 
     @media only screen and (max-width: 480px) {
+
+        & > div {
+        grid-template-columns: 30px 80px 1fr;
+
+        }
+
         [data-mobile] {
             justify-content: flex-end;
-            width: 48px;
         }
 
-        div {
-            grid-template-columns: 24px 100px 1fr;
+        a {
+            font-size: 0.7rem;
         }
 
-        div > div:last-child {
-            gap: 0.1rem;
-            justify-content: flex-end;
+        & > div > div:first-child {
+            width: 30px;
         }
 
-        img {
-            width: 24px;
-            place-self: start center;
+        [data-rune] {
+            width: 20px;
         }
     }
 

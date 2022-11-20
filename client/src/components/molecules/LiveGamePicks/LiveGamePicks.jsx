@@ -32,10 +32,11 @@ export const LiveGamePicks = ({ picks, direction, platform }) => {
             width="40px"
           />
           <CustomLink fontSize=".8rem" to={`/${platform.toLowerCase()}/${pick.summonerName}`} align={direction === "rtl" ? "right" : "left"} size="s">&nbsp;{pick.summonerName}</CustomLink>
-          <FlexRow data-runes>
+          <FlexRow>
             <FlexRowCenter>
               {pick.perks.perkIds.slice(0, 4).map((perkId, i) => (
                 <ImageContainer
+                  data-rune
                   key={i}
                   border
                   width="32px"
@@ -47,6 +48,7 @@ export const LiveGamePicks = ({ picks, direction, platform }) => {
               {pick.perks.perkIds.slice(4, 6).map((perkId, i) => {
                 const allTreeRunes = getAllRunes(getTree(pick.perks.perkSubStyle).slots);
                 return <ImageContainer
+                  data-rune
                   key={i}
                   border
                   width="32px"
