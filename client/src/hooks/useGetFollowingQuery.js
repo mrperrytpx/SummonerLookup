@@ -1,6 +1,5 @@
 import { useQuery } from "react-query";
 import { useAuth } from "./useAuth";
-import { queryClient } from "../contexts/AppProviders";
 
 const getFollowing = async (accessToken, signal) => {
     const response = await fetch("/api/user/me", {
@@ -33,9 +32,4 @@ export const useGetFollowingQuery = () => {
     return useQuery(["me"], ({ signal }) => getFollowing(accessToken, signal), {
         enabled: !!accessToken
     });
-};
-
-
-export const prefetchFollowingQuery = async () => {
-    await queryClient.prefetchQuery(["me"], getFollowing);
 };

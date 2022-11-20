@@ -7,7 +7,7 @@ export const StyledLiveGamePicks = styled(FlexCol)`
 
     & > div {
         display: grid;
-        grid-template-columns: 40px 100px 1fr;
+        grid-template-columns: 40px minmax(100px, max-content) 1fr;
         padding: .5rem;
         gap: 0.2rem;
         width: 100%;
@@ -18,7 +18,7 @@ export const StyledLiveGamePicks = styled(FlexCol)`
         }
     }
 
-    @media only screen and (max-width: 480px) {
+    @media only screen and (max-width: 440px) {
 
         & > div {
         grid-template-columns: 30px 80px 1fr;

@@ -33,7 +33,7 @@ export const SummonerChampStatsCard = () => {
   return (
     <StyledSummonerChampStatsCard>
       <FlexRowSpaceBetween>
-        <CustomLink max="200px" to="stats">Champion stats</CustomLink>
+        <CustomLink underline="true" to="stats">See all stats</CustomLink>
         <Dropdown
           handleClick={handleClick}
           from="right"

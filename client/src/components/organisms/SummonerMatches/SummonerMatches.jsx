@@ -4,7 +4,7 @@ import { StyledSummonerMatches } from "./SummonerMatches.styled";
 import { useParams } from "react-router-dom";
 import { SummonerMatchCard } from "components/molecules/SummonerMatchCard/SummonerMatchCard";
 import { Span } from "components/atoms/Span/Span";
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 import { Button } from "components/atoms/Button/Button";
 import { Container } from "components/atoms/Container/Container";
 import { ErrorText } from "components/atoms/ErrorText/ErrorText";

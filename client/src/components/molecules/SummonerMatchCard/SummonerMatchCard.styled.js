@@ -52,7 +52,7 @@ export const StyledSummonerMatchCard = styled.div`
     }
 
     @media only screen and (max-width: 450px) {
-        grid-template-rows: 15px 15px 20px;
+        grid-template-rows: 10px 15px 20px;
 
         & > :first-child {
             span {
@@ -87,9 +87,16 @@ export const StyledSummonerMatchCard = styled.div`
     }
 
     
-    @media only screen and (max-width: 350px) {
-        & > :nth-child(3) span:last-child {
-            display: none;
+    @media only screen and (max-width: 370px) {
+        & > :nth-child(3) span {
+            font-size: 0.65rem;
+            &:last-child {
+                display: none;
+            }
+        }
+
+        & > :nth-child(1) span {
+            font-size: 0.75rem;
         }
     }
  `;

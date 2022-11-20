@@ -8,12 +8,12 @@ export const StyledSummonerLiveGame = styled(FlexRowCenter)`
     gap: 1rem;
 
     & > div {
-        width: min(450px, 95%);
+        width: min(500px, 98%);
         background-color: ${({ theme }) => theme.backgroundColors.secondary};
         border-radius: 1rem;
     }
 
-    @media only screen and (max-width: 900px) {
+    @media only screen and (max-width: 775px) {
         & {
             flex-direction: column;
         }

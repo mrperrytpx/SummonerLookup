@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 import { StyledSummonerLiveGame } from "./SummonerLiveGame.styled";
 import { LiveGameBans } from "components/molecules/LiveGameBans/LiveGameBans";
 import { Span } from "components/atoms/Span/Span";
-import { liveGameData } from "consts/gameObject";
 import { LiveGamePicks } from "components/molecules/LiveGamePicks/LiveGamePicks";
 import { FlexColSpaceBetween } from "components/atoms/FlexBoxes/FlexBoxes.styled";
 import { ErrorText } from "components/atoms/ErrorText/ErrorText";
@@ -14,9 +13,9 @@ export const SummonerLiveGame = () => {
 
   const { server, summonerName } = useParams();
   const { data: summonerData } = useGetSummonerQuery(server, summonerName);
-  // const { data: liveGameData, isLoading } = useGetSummonerLiveGameQuery(server, summonerData?.summonerId);
+  const { data: liveGameData, isLoading } = useGetSummonerLiveGameQuery(server, summonerData?.summonerId);
 
-  // if (isLoading) return <Span>Loading...</Span>;
+  if (isLoading) return <Span>Loading...</Span>;
 
   if (!liveGameData) return (
     <Container>

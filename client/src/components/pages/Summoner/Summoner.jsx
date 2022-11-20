@@ -14,8 +14,6 @@ export const Summoner = () => {
   const { data: summonerChallengesData, isLoading: isSummonerChallengesLoading } = useGetSummonerChallengesQuery(server, summonerName, summonerData?.puuid);
   useGetSummonerRankedStatsQuery(server, summonerData?.summonerId);
 
-
-
   if (isSummonerLoading || isSummonerChallengesLoading) return <FullscreenLoading />;
 
   if (isError) return <div style={{ color: "white" }}>NO SUMMONER XD</div>;

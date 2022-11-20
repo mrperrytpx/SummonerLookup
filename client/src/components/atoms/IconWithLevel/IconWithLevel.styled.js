@@ -31,7 +31,7 @@ export const StyledIconWithLevel = styled(FlexColCenter)`
         position: absolute;
         bottom: 0; 
         right: 0;
-        font-size: ${({ width }) => width > 100 ? "0.8rem" : "0.65rem"};
+        font-size: 0.72rem;
         
         background-color: ${({ theme }) => theme.backgroundColors.primary};
         color: ${({ theme }) => theme.textColors.light};

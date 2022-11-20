@@ -23,6 +23,10 @@ export const StyledCustomLink = styled(Link)`
                 text-align: ${align};
         `}
 
+        ${({ underline }) => underline && `
+                text-decoration: underline;
+        `}
+
         &:hover {
                 color: ${({ theme }) => theme.backgroundColors.quaternary};
         }
