@@ -10,6 +10,10 @@ export const StyledStatsTable = styled.table`
         background-color: ${({ theme }) => theme.backgroundColors.tertiary};
     }
 
+    [data-icon="true"] {
+        min-width: 40px;
+    }
+
     th {
         font-size: 0.75rem;
         font-weight: 500;
@@ -69,7 +73,7 @@ export const StyledStatsTable = styled.table`
     }
 
     td {
-        padding: .5rem 0;
+        padding: .5rem .25rem;
         text-align: center;
         font-weight: 500;
         font-size: .82rem;
@@ -83,6 +87,20 @@ export const StyledStatsTable = styled.table`
         span[data-champ] {
             display: none;
             padding: 0;
+        }
+
+        [data-icon="true"] {
+            min-width: 30px;
+            width: 30px;
+        }
+
+        span {
+            font-size: 0.65rem;
+        }
+
+        td {
+            font-size: 0.65rem;
+
         }
     }
 `;

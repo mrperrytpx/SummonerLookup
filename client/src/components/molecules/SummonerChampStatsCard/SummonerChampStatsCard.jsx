@@ -7,6 +7,8 @@ import { useState } from "react";
 import { FlexColCenter, FlexRowSpaceBetween } from "components/atoms/FlexBoxes/FlexBoxes.styled";
 import { Dropdown } from "components/atoms/Dropdown/Dropdown";
 import { Span } from "components/atoms/Span/Span";
+import { Container } from "components/atoms/Container/Container";
+import { LoadingIndicator } from "components/atoms/LoadingIndicator/LoadingIndicator";
 
 export const SummonerChampStatsCard = () => {
 
@@ -28,8 +30,6 @@ export const SummonerChampStatsCard = () => {
     }
   ];
 
-  if (isLoading) return <div style={{ color: "white" }}>LOADING...</div>;
-
   return (
     <StyledSummonerChampStatsCard>
       <FlexRowSpaceBetween>
@@ -45,9 +45,14 @@ export const SummonerChampStatsCard = () => {
       </FlexRowSpaceBetween>
 
       <FlexColCenter>
+        {isLoading && (
+          <Container>
+            <LoadingIndicator />
+          </Container>
+        )}
         {championRankedStatsData?.[stats].length
           ? championRankedStatsData?.[stats].slice(0, 5).map((champion, i) => <IndividualChampStatsCard data-order={i} key={i} champion={champion} />)
-          : <Span align="center">No {options.find(x => x.stateValue === stats).text} stats</Span>
+          : !isLoading ? <Span align="center">No {options.find(x => x.stateValue === stats).text} stats</Span> : null
         }
       </FlexColCenter>
     </StyledSummonerChampStatsCard>

@@ -4,14 +4,21 @@ import { Span } from "../../atoms/Span/Span";
 import { ImageContainer } from "../../atoms/ImageContainer/ImageContainer";
 import { RANKED_TYPES } from "../../../consts/rankedTypes";
 import { PromoGameStatus } from "../../atoms/PromoGameStatus/PromoGameStatus";
+import { Container } from "components/atoms/Container/Container";
+import { LoadingIndicator } from "components/atoms/LoadingIndicator/LoadingIndicator";
 
-export const SummonerRankCard = ({ ranked }) => {
+export const SummonerRankCard = ({ ranked, isLoading }) => {
 
   const winrate = ((ranked.wins / (ranked.wins + ranked.losses)) * 100).toFixed(2);
 
   return (
     <StyledSummonerRankCard>
       <Span underline size="m">{RANKED_TYPES[ranked.queueType]}</Span>
+      {isLoading && (
+        <Container bg={true}>
+          <LoadingIndicator />
+        </Container>
+      )}
       <FlexRowSpaceBetween>
         <FlexRow gap="1rem">
           <ImageContainer

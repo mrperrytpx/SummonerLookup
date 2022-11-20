@@ -3,8 +3,8 @@ import { FlexColCenter } from "../FlexBoxes/FlexBoxes.styled";
 
 export const StyledLoadingIndicator = styled(FlexColCenter)`
     position: relative;
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
     ${({ center }) => center && `
         margin: auto;
     `}
@@ -17,6 +17,7 @@ export const StyledLoadingIndicator = styled(FlexColCenter)`
         border-radius: 50%;
         border-top: 5px solid ${({ theme }) => theme.backgroundColors.active};
         animation: spin 2s ease-in-out infinite;
+        animation-delay: -200ms;
     }
 
     & :last-child {

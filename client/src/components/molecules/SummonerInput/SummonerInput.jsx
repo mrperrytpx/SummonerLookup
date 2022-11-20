@@ -10,6 +10,7 @@ export const SummonerInput = ({ setSummonerName, summonerName, server }) => {
         placeholder="Search a summoner..."
         setSummonerName={setSummonerName}
         summonerName={summonerName}
+        maxLength="16"
       />
       <IconButtonLink
         icon="search"

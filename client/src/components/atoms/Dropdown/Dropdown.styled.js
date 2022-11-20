@@ -10,6 +10,7 @@ export const StyledDropdown = styled(FlexColCenter)`
     border-radius: 5px;
     
     span {
+        background-color: ${({ theme }) => theme.backgroundColors.active};
         display: flex;
         flex-direction: column;
         align-items: center;

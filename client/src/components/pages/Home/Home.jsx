@@ -4,8 +4,6 @@ import { useScreenSize } from "../../../hooks/useScreenSize";
 import { CompactSearchSummoner } from "../../organisms/CompactSearchSummoner/CompactSearchSummoner";
 import { ReactComponent as SquareLogo } from "../../../assets/square_logo_no_text.svg";
 import { StyledHome } from "./Home.styled";
-import { LoadingIndicator } from "components/atoms/LoadingIndicator/LoadingIndicator";
-import { Container } from "components/atoms/Container/Container";
 
 export const Home = () => {
 
@@ -13,10 +11,6 @@ export const Home = () => {
 
   return (
     <>
-      <Container>
-        <LoadingIndicator />
-
-      </Container>
       <StyledHome center={width >= 710 ? true : false}>
         {width >= 710
           ? <SearchSummoner />

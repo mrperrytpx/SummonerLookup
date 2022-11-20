@@ -12,7 +12,7 @@ export const SummonerOverview = () => {
 
   const { server, summonerName } = useParams();
   const { data: summonerData } = useGetSummonerQuery(server, summonerName);
-  const { data: summonerRankedData } = useGetSummonerRankedStatsQuery(server, summonerData?.summonerId);
+  const { data: summonerRankedData, isLoading } = useGetSummonerRankedStatsQuery(server, summonerData?.summonerId);
 
   const sortQueues = (a, b) => {
     if (a.wins + a.losses < b.wins + b.losses) return 1;
@@ -28,7 +28,7 @@ export const SummonerOverview = () => {
       <FlexCol flex="1">
         <FlexCol data-stats="true">
           {summonerRankedData?.length
-            ? [...summonerRankedData]?.sort(sortQueues).map(ranked => <SummonerRankCard key={ranked?.leagueId} ranked={ranked} />)
+            ? [...summonerRankedData]?.sort(sortQueues).map(ranked => <SummonerRankCard isLoading={isLoading} key={ranked?.leagueId} ranked={ranked} />)
             : <SummonerUnrankedCard />
           }
         </FlexCol>

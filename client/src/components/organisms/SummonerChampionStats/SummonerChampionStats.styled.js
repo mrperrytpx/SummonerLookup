@@ -10,4 +10,8 @@ export const StyledSummonerChampionStats = styled.div`
         border-radius: 1rem;
         overflow: hidden;
     }
+
+    & > :first-child > span {
+        margin-right: 0.5rem;
+    }
 `;

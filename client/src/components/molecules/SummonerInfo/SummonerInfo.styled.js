@@ -8,6 +8,7 @@ export const StyledSummonerInfo = styled(FlexColSpaceBetween)`
     gap: 0.5rem;
 
 
+
     span {
         width: auto;
     }
@@ -29,6 +30,11 @@ export const StyledSummonerInfo = styled(FlexColSpaceBetween)`
             & > div {
                 flex-direction: column;
             }
+        }
+
+        & > :last-child {
+            flex-direction: column;
+            gap: 0.5rem;
         }
     }
 `;

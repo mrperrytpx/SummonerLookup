@@ -1,4 +1,3 @@
-import { FlexRow, FlexRowSpaceAround, FlexRowSpaceBetween } from "components/atoms/FlexBoxes/FlexBoxes.styled";
 import styled from "styled-components";
 
 export const StyledSummonerMatchCard = styled.div`
@@ -18,7 +17,7 @@ export const StyledSummonerMatchCard = styled.div`
         justify-self: center;
     }
 
-    @media only screen and (max-width: 675px) {
+    @media only screen and (max-width: 700px) {
         grid-template-columns: 1fr 2fr;
         grid-template-rows: 20px 15px 38px;
         grid-template-areas: 

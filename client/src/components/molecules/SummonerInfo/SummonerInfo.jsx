@@ -10,7 +10,8 @@ import { useGetFollowingQuery } from "../../../hooks/useGetFollowingQuery";
 import { useAuth } from "../../../hooks/useAuth";
 import { useGetSummonerQuery } from "../../../hooks/useGetSummonerQuery";
 import { useGetSummonerChallengesQuery } from "../../../hooks/useGetSummonerChallengesQuery";
-import { FlexCol, FlexColCenter, FlexRow, FlexRowCenter, FlexRowStart } from "components/atoms/FlexBoxes/FlexBoxes.styled";
+import { FlexRow, FlexRowCenter, FlexRowStart } from "components/atoms/FlexBoxes/FlexBoxes.styled";
+import { LoadingIndicator } from "components/atoms/LoadingIndicator/LoadingIndicator";
 
 export const SummonerInfo = () => {
 
@@ -95,12 +96,15 @@ export const SummonerInfo = () => {
         </Span>
       </FlexRowCenter>
 
-      <Button
-        disabled={!accessToken}
-        type="button"
-        variant={alreadyFollowing ? "danger" : "active"}
-        onClick={(e) => alreadyFollowing ? handleUnfollow(e) : handleFollow(e)}
-      >{alreadyFollowing ? "UNFOLLOW" : "FOLLOW"}</Button>
+      <FlexRowStart gap="1.5rem">
+        <Button
+          disabled={!accessToken}
+          type="button"
+          variant={alreadyFollowing ? "danger" : "active"}
+          onClick={(e) => alreadyFollowing ? handleUnfollow(e) : handleFollow(e)}
+        >{alreadyFollowing ? "UNFOLLOW" : "FOLLOW"}</Button>
+        {unfollowSummoner.isLoading || followSummoner.isLoading ? <LoadingIndicator /> : null}
+      </FlexRowStart>
     </StyledSummonerInfo >
   );
 };

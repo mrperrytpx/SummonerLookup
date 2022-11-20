@@ -5,9 +5,9 @@ import { useGetSummonerChallengesQuery } from "../../../hooks/useGetSummonerChal
 import { SummonerCard } from "../../organisms/SummonerCard/SummonerCard";
 import { SummonerNavbar } from "../../organisms/SummonerNavbar/SummonerNavbar";
 import { useGetSummonerRankedStatsQuery } from "../../../hooks/useGetSummonerRankedStatsQuery";
-import { FullscreenLoading } from "components/atoms/FullscreenLoading/FullscreenLoading";
 import { Container } from "components/atoms/Container/Container";
 import { LoadingIndicator } from "components/atoms/LoadingIndicator/LoadingIndicator";
+import { ErrorText } from "components/atoms/ErrorText/ErrorText";
 
 export const Summoner = () => {
 
@@ -22,7 +22,18 @@ export const Summoner = () => {
     </Container>
   );
 
-  if (isError) return <div style={{ color: "white" }}>NO SUMMONER XD</div>;
+  if (isError) return (
+    <StyledSummoner>
+      <Container height="300px" bg={true}>
+        <ErrorText size="clamp(1rem, 2vw, 1.8rem)" center={true}>
+          Couldn't find summoner "{summonerName}".
+        </ErrorText >
+        <ErrorText size="clamp(1rem, 2vw, 1.5rem)" center={true}>
+          Maybe they're on another server?
+        </ErrorText>
+      </Container>
+    </StyledSummoner>
+  );
 
   return (
     <StyledSummoner>

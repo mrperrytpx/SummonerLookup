@@ -1,30 +1,26 @@
 TASKS FOR FUTURE ME WHEN ITS FUNCTIONAL (WIP)
 
-- fix mobile menu imagines leaking through?
-- rethink ["user"] and ["accessToken"] current dynamic (Bonnie vid)
-- fix zoomed in homepage with mobile menu open
 - Register Validation check on unfocus instead of on submit
-- Send email validation
 - store refresh token versions instead of actual refresh tokens in DB
 - add rate limiting - cloudflare?
-- pre-fetch "following" data on app load if user is logged in
 - Add react-router site map and React Helmet for SEO
 - fix reloading token protected routes when reloading (maybe poorly done atm)¸
-- fix server error when fetching /me
-- add interceptor for expired access tokens (maybe breaks remember me)
+- fix server error when fetching /me (??)
 - make SignIn/SignUp use <Outlet />¸
 - tabbing on Home desktop servers
-- fix SummonerRank components if summoner doesn't have ranked data
 - optimistic updates for all applicable hooks
-- no summoner error ??? - check for errors at the very top where a query is called
 - don't sum maxkills and maxdeaths
 - challenge icons (challenges route to see all?)
-- navbar switches state before it closes when going to a new route
 - infinity kda
 - swap from .toFixed(x)
-- dont refetch token if rememberMe is false (increase life maaybe?)
 - fix redirect back to old page after logging in
-- livegame overlapping names, not fully responsive yet, refetch button for livegame instead of telling to refresh?
 - check out react-query loading component
+- expand match history into a table of both teams' stats
+- limit match history?
+- split stats into 3 fetches?
+- increase mobile icons a bit until 300px?
+- remove focus from navsearch on submit
+- fix mobile nav menu shifting
+- fix "the baus ffs" successfully searching "thebausffs" (less words to describe)
 
 https://ddragon.leagueoflegends.com/cdn/version/img/item/item.full

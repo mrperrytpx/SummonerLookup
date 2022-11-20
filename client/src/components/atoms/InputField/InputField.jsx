@@ -1,6 +1,6 @@
 import { StyledInputField } from "./InputField.styled";
 
-export const InputField = ({ summonerName, setSummonerName, placeholder, type }) => {
+export const InputField = ({ summonerName, setSummonerName, placeholder, type, maxLength }) => {
   return (
     <StyledInputField
       placeholder={placeholder ? placeholder : ""}
@@ -8,6 +8,7 @@ export const InputField = ({ summonerName, setSummonerName, placeholder, type })
       onChange={(e) => setSummonerName(e.target.value)}
       type={type ? type : "text"}
       required
+      maxLength={maxLength}
     />
   );
 };

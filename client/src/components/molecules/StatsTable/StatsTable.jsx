@@ -84,7 +84,7 @@ export const StatsTable = ({ data }) => {
           </StyledStatsTable>
 
           : <Container>
-            <ErrorText size="1rem" center={true}>No stats for the selected queue.</ErrorText>
+            <ErrorText size="1rem" center={true}>No stats available.</ErrorText>
             <ErrorText size="clamp(1.2rem, 3vw, 3rem)" center={true}>(╯°□°）╯︵ ┻━┻</ErrorText>
           </Container>
       }

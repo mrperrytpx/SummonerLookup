@@ -52,8 +52,15 @@ export const SummonerMatchCard = ({ match }) => {
 
       <FlexColCenter gap="0.25rem">
         <Span size="m">{QUEUE_TYPES[match?.info?.queueId]}</Span>
-        <Span size="s">{summonerMatchData.win ? "Victory" : "Defeat"} - {parseInt(match.info.gameDuration / 60)}m {match.info.gameDuration % 60}s</Span>
-        <Span size="s">{(new Date(match?.info?.gameEndTimestamp)).toDateString()}</Span>
+        <Span size="s">
+          {summonerMatchData.win ? "Victory" : "Defeat"}
+          {" - "}
+          {match?.info?.gameEndTimestamp
+            ? `${parseInt(match.info.gameDuration / 60)}m ${match.info.gameDuration % 60}s`
+            : `${parseInt(match.info.gameDuration / 60000)}m ${match.info.gameDuration % 60000 % 60}s`
+          }
+        </Span>
+        <Span size="s">{(new Date(match?.info?.gameEndTimestamp ? match?.info?.gameEndTimestamp : match?.info?.gameStartTimestamp + match?.info?.gameDuration)).toDateString()}</Span>
       </FlexColCenter>
 
       <FlexRowCenter>

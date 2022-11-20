@@ -6,6 +6,9 @@ import { useState } from "react";
 import { FlexRowSpaceBetween } from "components/atoms/FlexBoxes/FlexBoxes.styled";
 import { StatsTable } from "components/molecules/StatsTable/StatsTable";
 import { Dropdown } from "components/atoms/Dropdown/Dropdown";
+import { Container } from "components/atoms/Container/Container";
+import { LoadingIndicator } from "components/atoms/LoadingIndicator/LoadingIndicator";
+import { ErrorText } from "components/atoms/ErrorText/ErrorText";
 
 export const SummonerChampionStats = () => {
 
@@ -30,7 +33,12 @@ export const SummonerChampionStats = () => {
     }
   ];
 
-  if (isLoading) return <Span size="xl">Loading...</Span>;
+  if (isLoading) return (
+    <Container>
+      <ErrorText size="1rem" center={true}>Loading table...</ErrorText>
+      <LoadingIndicator />
+    </Container>
+  );
 
   return (
     <StyledSummonerChampionStats>

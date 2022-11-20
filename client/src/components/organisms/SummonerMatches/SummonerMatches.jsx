@@ -4,7 +4,7 @@ import { StyledSummonerMatches } from "./SummonerMatches.styled";
 import { useParams } from "react-router-dom";
 import { SummonerMatchCard } from "components/molecules/SummonerMatchCard/SummonerMatchCard";
 import { Span } from "components/atoms/Span/Span";
-import { Fragment, useEffect } from "react";
+import { Fragment } from "react";
 import { Button } from "components/atoms/Button/Button";
 import { Container } from "components/atoms/Container/Container";
 import { ErrorText } from "components/atoms/ErrorText/ErrorText";
@@ -34,7 +34,7 @@ export const SummonerMatches = () => {
   return (
     <StyledSummonerMatches noMatches={summonerMatchesData.length}>
       <Span underline size="m" align="left">Match History</Span>
-      {summonerMatchesData?.pages?.length
+      {summonerMatchesData?.pages[0].matchesData.length
         ? <>
           {summonerMatchesData?.pages?.map((page, i) => (
             <Fragment key={i}>
@@ -48,22 +48,23 @@ export const SummonerMatches = () => {
         </Container>
       }
 
-      {summonerMatchesData?.pages?.length && (
-        <Button
-          disabled={!hasNextPage || isFetchingNextPage}
-          padding="0.1rem"
-          variant="tertiary"
-          onClick={() => fetchNextPage()}
-          type="button"
-          wide
-        >
-          {isFetchingNextPage
-            ? 'Loading more...'
-            : hasNextPage
-              ? 'Load more'
-              : 'Nothing more to load'}
-        </Button>
-      )}
+      {summonerMatchesData?.pages?.[0]?.matchesData.length
+        ? (
+          <Button
+            disabled={!hasNextPage || isFetchingNextPage}
+            padding="0.1rem"
+            variant="tertiary"
+            onClick={() => fetchNextPage()}
+            type="button"
+            wide
+          >
+            {isFetchingNextPage
+              ? 'Loading more...'
+              : hasNextPage
+                ? 'Load more'
+                : 'Nothing more to load'}
+          </Button>
+        ) : null}
     </StyledSummonerMatches>
   );
 };
