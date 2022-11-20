@@ -8,6 +8,7 @@ import { Fragment, useEffect } from "react";
 import { Button } from "components/atoms/Button/Button";
 import { Container } from "components/atoms/Container/Container";
 import { ErrorText } from "components/atoms/ErrorText/ErrorText";
+import { LoadingIndicator } from "components/atoms/LoadingIndicator/LoadingIndicator";
 
 export const SummonerMatches = () => {
 
@@ -21,7 +22,14 @@ export const SummonerMatches = () => {
     isFetchingNextPage
   } = useGetSummonerMatchesInfiniteQuery(server, summonerData?.puuid);
 
-  if (isLoading) return <div style={{ color: "white" }}>Loading...</div>;
+  if (isLoading) return (
+    <StyledSummonerMatches>
+      <Span underline size="m" align="left">Match History</Span>
+      <Container>
+        <LoadingIndicator center={false} />
+      </Container>
+    </StyledSummonerMatches>
+  );
 
   return (
     <StyledSummonerMatches noMatches={summonerMatchesData.length}>

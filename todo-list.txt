@@ -25,5 +25,6 @@ TASKS FOR FUTURE ME WHEN ITS FUNCTIONAL (WIP)
 - dont refetch token if rememberMe is false (increase life maaybe?)
 - fix redirect back to old page after logging in
 - livegame overlapping names, not fully responsive yet, refetch button for livegame instead of telling to refresh?
+- check out react-query loading component
 
 https://ddragon.leagueoflegends.com/cdn/version/img/item/item.full

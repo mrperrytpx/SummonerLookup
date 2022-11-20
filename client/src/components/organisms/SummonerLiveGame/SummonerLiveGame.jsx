@@ -8,6 +8,7 @@ import { LiveGamePicks } from "components/molecules/LiveGamePicks/LiveGamePicks"
 import { FlexColSpaceBetween } from "components/atoms/FlexBoxes/FlexBoxes.styled";
 import { ErrorText } from "components/atoms/ErrorText/ErrorText";
 import { Container } from "components/atoms/Container/Container";
+import { LoadingIndicator } from "components/atoms/LoadingIndicator/LoadingIndicator";
 
 export const SummonerLiveGame = () => {
 
@@ -15,7 +16,11 @@ export const SummonerLiveGame = () => {
   const { data: summonerData } = useGetSummonerQuery(server, summonerName);
   const { data: liveGameData, isLoading } = useGetSummonerLiveGameQuery(server, summonerData?.summonerId);
 
-  if (isLoading) return <Span>Loading...</Span>;
+  if (isLoading) return (
+    <Container>
+      <LoadingIndicator />
+    </Container>
+  );
 
   if (!liveGameData) return (
     <Container>

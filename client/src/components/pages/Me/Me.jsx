@@ -4,6 +4,7 @@ import { ExpandingMenu } from "../../molecules/ExpandingMenu/ExpandingMenu";
 import { SummonerCardSmall } from "../../molecules/SummonerCardSmall/SummonerCardSmall";
 import { DeleteAccount } from "../../molecules/DeleteAccount/DeleteAccount";
 import { FollowingList } from "../../molecules/FollowingList/FollowingList";
+import { LoadingIndicator } from "components/atoms/LoadingIndicator/LoadingIndicator";
 
 export const Me = () => {
 
@@ -14,7 +15,7 @@ export const Me = () => {
       <ExpandingMenu expanded={true} label="Following">
         <FollowingList>
           {isLoading
-            ? <p>Loading...</p>
+            ? <LoadingIndicator />
             : following.map(summoner => <SummonerCardSmall summoner={summoner} key={summoner.puuid} />)}
         </FollowingList>
       </ExpandingMenu>
