@@ -1,7 +1,5 @@
 TASKS FOR FUTURE ME WHEN ITS FUNCTIONAL (WIP)
 
-- optimistic updates for all applicable hooks
-- don't sum maxkills and maxdeaths
 - challenge icons (challenges route to see all?)
 - infinity kda
 - swap from .toFixed(x)

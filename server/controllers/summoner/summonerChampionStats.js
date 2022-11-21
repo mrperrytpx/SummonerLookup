@@ -8,6 +8,14 @@ function sumObjects(...objects) {
                     prev["__typename"] = curr["__typename"];
                     continue;
                 }
+                if (key === "maxKills") {
+                    prev.maxKills = prev.maxKills >= curr.maxKills ? prev.maxKills : curr.maxKills;
+                    continue;
+                }
+                if (key === "maxDeaths") {
+                    prev.maxDeaths = prev.maxDeaths >= curr.maxDeaths ? prev.maxDeaths : curr.maxDeaths;
+                    continue;
+                }
                 if (key === "championId") {
                     prev["championId"] = curr["championId"];
                     continue;
