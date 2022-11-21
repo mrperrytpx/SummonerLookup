@@ -7,11 +7,11 @@ const summonerMatches = async (req, res) => {
     const region = leagueRegion(server);
     const [matchIds, hasNextPage] = await getSummonerMatches(region, puuid, page);
     // Fetch each match
-    let matchResponses = await Promise.allSettled(matchIds.map(game => getMatch(region, game)));
+    const matchResponses = await Promise.allSettled(matchIds.map(game => getMatch(region, game)));
     // Filter out rejects
     const matchesData = matchResponses.filter(match => match.status === "fulfilled");
 
-    res.json({ matchesData, hasNextPage });
+    res.json({ matchesData, hasNextPage: hasNextPage && matchesData >= matchResponses });
 };
 
 module.exports = summonerMatches;

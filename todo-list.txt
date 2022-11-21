@@ -1,8 +1,5 @@
 TASKS FOR FUTURE ME WHEN ITS FUNCTIONAL (WIP)
 
-- Register Validation check on unfocus instead of on submit
-- store refresh token versions instead of actual refresh tokens in DB
-- add rate limiting - cloudflare?
 - Add react-router site map and React Helmet for SEO
 - fix reloading token protected routes when reloading (maybe poorly done atm)¸
 - fix server error when fetching /me (??)

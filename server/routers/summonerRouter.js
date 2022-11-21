@@ -2,10 +2,11 @@ const router = require("express").Router();
 
 const summonerController = require("../controllers/summoner");
 const authMiddleware = require("../middlewares/authMiddleware");
+const rateLimiter = require("../middlewares/rateLimiter");
 const { asyncHandler } = require("../handlers");
 
-router.post("/follow_summoner", authMiddleware, asyncHandler(summonerController.followSummonerRoute));
-router.patch("/unfollow_summoner", authMiddleware, asyncHandler(summonerController.unfollowSummonerRoute));
+router.post("/follow_summoner", rateLimiter, authMiddleware, asyncHandler(summonerController.followSummonerRoute));
+router.patch("/unfollow_summoner", rateLimiter, authMiddleware, asyncHandler(summonerController.unfollowSummonerRoute));
 
 router.get("/search_summoner/:server/:summonerName/", asyncHandler(summonerController.searchSummonerRoute));
 router.get("/live_game/:server/:id/", asyncHandler(summonerController.summonerLiveGameRoute));

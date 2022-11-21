@@ -54,13 +54,18 @@ const useSignInMutation = (setAccessToken, setShouldRefetch) => {
             body: JSON.stringify(info),
         });
 
+        console.log(response);
+
         if (!response.ok) {
             if (response.status === 400) {
                 throw new Error("Wrong username or password");
+            } else if (response.status === 429) {
+                const data = await response.json();
+                throw new Error(data.message);
             } else {
                 throw new Error("Something went wrong...");
             }
-        }
+        };
 
         const data = await response.json();
         if (data.error) throw new Error(JSON.stringify(data.error, null, 2));
