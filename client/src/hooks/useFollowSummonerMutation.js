@@ -1,12 +1,12 @@
-import { useMutation } from "react-query";
+import { useMutation, useQueryClient } from "react-query";
 import { useAuth } from "./useAuth";
 
 export const useFollowSummonerMutation = () => {
 
     const { accessToken } = useAuth();
+    const queryClient = useQueryClient();
 
     const followSummoner = async ({ payload }) => {
-        console.log("FOLLOWING SUMMONER WITH:", payload);
         const response = await fetch("/api/summoner/follow_summoner", {
             method: "POST",
             credentials: "include",
@@ -21,5 +21,17 @@ export const useFollowSummonerMutation = () => {
         return response;
     };
 
-    return useMutation(followSummoner);
+    return useMutation(followSummoner, {
+        onMutate: async ({ payload }) => {
+            await queryClient.cancelQueries(["me"]);
+            const previousFollowing = queryClient.getQueryData(["me"]);
+            queryClient.setQueryData(
+                ["me"],
+                (old) => [...old, payload]);
+            return { previousFollowing };
+        },
+        onError: (_err, _player, context) => {
+            queryClient.setQueryData(["me"], context.previousFollowing);
+        }
+    });
 };

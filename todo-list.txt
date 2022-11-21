@@ -1,6 +1,5 @@
 TASKS FOR FUTURE ME WHEN ITS FUNCTIONAL (WIP)
 
-- tabbing on Home desktop servers
 - optimistic updates for all applicable hooks
 - don't sum maxkills and maxdeaths
 - challenge icons (challenges route to see all?)
@@ -18,5 +17,7 @@ TASKS FOR FUTURE ME WHEN ITS FUNCTIONAL (WIP)
 - remove load more matches button instead of displaying "no more"
 - don't display matches that aren't on screen
 - error boundry component
+- stop space from scrolling when selecting a server
+- remove all console.logs when finished
 
 https://ddragon.leagueoflegends.com/cdn/version/img/item/item.full

@@ -79,7 +79,7 @@ export const SignUp = () => {
 
 
           {signUp?.error && <ErrorText center={true}>{signUp?.error?.message}</ErrorText>}
-          <Button wide={true} type="submit" variant="quaternary">
+          <Button width="100%" type="submit" variant="quaternary">
             {signUp.isLoading ? "Signing up..." : "SIGN UP"}
           </Button>
         </SignInUpForm>

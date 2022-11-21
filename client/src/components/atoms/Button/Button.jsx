@@ -4,7 +4,6 @@ export const Button = ({ wide, children, onClick = () => null, variant, type = "
   return (
     <StyledButton
       {...rest}
-      wide={wide}
       type={type}
       onClick={onClick}
       variant={variant}

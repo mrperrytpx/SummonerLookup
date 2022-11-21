@@ -88,23 +88,20 @@ export const SummonerInfo = () => {
       </FlexRow>
 
       <FlexRowCenter>
-        <Span
-          align="center"
-          size="s"
-        >
+        <Span align="center" size="s">
           {summonerChallengesData?.totalPoints?.current} out of {summonerChallengesData?.totalPoints?.max} challenge points earned
         </Span>
       </FlexRowCenter>
 
-      <FlexRowStart gap="1.5rem">
-        <Button
-          disabled={!accessToken}
-          type="button"
-          variant={alreadyFollowing ? "danger" : "active"}
-          onClick={(e) => alreadyFollowing ? handleUnfollow(e) : handleFollow(e)}
-        >{alreadyFollowing ? "UNFOLLOW" : "FOLLOW"}</Button>
-        {unfollowSummoner.isLoading || followSummoner.isLoading ? <LoadingIndicator /> : null}
-      </FlexRowStart>
+      <Button
+        width="135px"
+        disabled={!accessToken}
+        type="button"
+        variant={alreadyFollowing ? "danger" : "active"}
+        onClick={(e) => alreadyFollowing ? handleUnfollow(e) : handleFollow(e)}
+      >
+        {alreadyFollowing ? "UNFOLLOW" : "FOLLOW"}
+      </Button>
     </StyledSummonerInfo >
   );
 };

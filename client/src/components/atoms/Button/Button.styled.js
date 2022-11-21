@@ -7,8 +7,7 @@ export const StyledButton = styled.button`
 
     /* min-width: 100px; */
     white-space: pre;
-    width: ${({ wide }) => wide ? "100%" : "auto"};
-    padding: .5em 1em;
+    width: ${({ width }) => width || "auto"};
     padding: ${({ padding }) => padding || ".5em 1em"};
     border: none;
     border-radius: 5px;

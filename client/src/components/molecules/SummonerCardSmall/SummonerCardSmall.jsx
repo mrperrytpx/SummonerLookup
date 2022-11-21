@@ -21,7 +21,7 @@ export const SummonerCardSmall = ({ summoner }) => {
 
         <div>{summoner?.summonerName} - {SERVER_VALUES[summoner?.server]}</div>
 
-        <Button variant="danger" type="button" wide={false} padding={"0.5rem"} onClick={(e) => handleUnfollow(e)}>
+        <Button variant="danger" type="button" padding="0.5rem" onClick={(e) => handleUnfollow(e)}>
           <FlexRowCenter>
             <ImCross color="white" />
           </FlexRowCenter>
