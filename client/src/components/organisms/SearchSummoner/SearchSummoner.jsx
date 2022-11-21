@@ -24,8 +24,9 @@ export const SearchSummoner = () => {
     setCheckedRadioButton(e.target.htmlFor);
   };
 
-  const handleRadioClick = (e) => {
-    setCheckedRadioButton(e.target.value);
+  const handleRadioClick = (value) => {
+    localStorage.setItem("server", value);
+    setCheckedRadioButton(value);
   };
 
   return (

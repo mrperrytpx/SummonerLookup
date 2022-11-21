@@ -8,4 +8,8 @@ export const StyledImageContainer = styled(FlexRowCenter)`
     ${({ border }) => border && `
         border  : 1px solid ${border};
     `}
+
+    img[alt] {
+        font-size: 0.2rem;
+    }
 `;

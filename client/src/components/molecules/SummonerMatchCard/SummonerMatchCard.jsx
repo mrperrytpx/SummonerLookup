@@ -16,7 +16,6 @@ export const SummonerMatchCard = ({ match }) => {
   const { data: summonerData } = useGetSummonerQuery(server, summonerName);
 
   const version = queryClient.getQueryData(["version"]);
-  const champions = queryClient.getQueryData(["champions"]);
   const runes = queryClient.getQueryData(["runes"]);
   const summonerSpells = queryClient.getQueryData(["summoner-spells"]);
 
@@ -30,8 +29,8 @@ export const SummonerMatchCard = ({ match }) => {
   const primaryTree = runes.find(tree => tree.id === primaryRuneTreeId);
   const secondaryTree = runes.find(tree => tree.id === secondaryRuneTreeId);
 
-  const firstSummonerSpell = summonerSpells.find(spell => spell.id === summonerMatchData.summoner1Id).iconPath.split("/lol-game-data/assets/").pop().toLowerCase();
-  const secondSummonerSpell = summonerSpells.find(spell => spell.id === summonerMatchData.summoner2Id).iconPath.split("/lol-game-data/assets/").pop().toLowerCase();
+  const firstSummonerSpell = summonerSpells.find(spell => spell.id === summonerMatchData.summoner1Id)?.iconPath.split("/lol-game-data/assets/").pop().toLowerCase();
+  const secondSummonerSpell = summonerSpells.find(spell => spell.id === summonerMatchData.summoner2Id)?.iconPath.split("/lol-game-data/assets/").pop().toLowerCase();
   // string.split("/lol-game-data/assets/").pop().toLowerCase()
 
   const itemsArray = [
@@ -48,8 +47,6 @@ export const SummonerMatchCard = ({ match }) => {
 
   return (
     <StyledSummonerMatchCard isWin={summonerMatchData.win}>
-
-
       <FlexColCenter gap="0.25rem">
         <Span size="m">{QUEUE_TYPES[match?.info?.queueId]}</Span>
         <Span size="s">
@@ -65,7 +62,7 @@ export const SummonerMatchCard = ({ match }) => {
 
       <FlexRowCenter>
         <IconWithLevel
-          src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${champions.get(`${summonerMatchData.championId}`).id}.png`}
+          src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${summonerMatchData.championName}.png`}
           alt="Champion"
           level={summonerMatchData.champLevel}
           width="60px"

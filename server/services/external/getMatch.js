@@ -11,6 +11,10 @@ const getMatch = async (region, game) => {
     }
 
     const gameData = await gameResponse.json();
+    const gameVersion = gameData.info.gameVersion.split(".").slice(0, 2);
+
+    if (+gameVersion[0] < 11) throw new Error("Game too old");
+    if (+gameVersion[0] === 11 && +gameVersion[1] < 4) throw new Error("Game too old");
 
     return gameData;
 };

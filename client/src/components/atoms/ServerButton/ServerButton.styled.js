@@ -6,6 +6,7 @@ export const StyledServerButton = styled.div`
     margin-right: .5rem;
 
     label {
+        cursor: pointer;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -13,7 +14,7 @@ export const StyledServerButton = styled.div`
         min-width: 3rem;
         font-size: .9em;
         color: ${({ server, checkedRadioButton, theme }) => server === checkedRadioButton ? theme.textColors.dark : theme.textColors.light};
-        
+    
         padding: 5px 8px;
         
         background-color: ${({ server, checkedRadioButton, theme }) => server === checkedRadioButton ? theme.backgroundColors.active : theme.backgroundColors.tertiary};
@@ -26,6 +27,7 @@ export const StyledServerButton = styled.div`
 
     input {
         display: none;
+
     }
 
 `;
