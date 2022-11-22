@@ -10,8 +10,8 @@ import { useGetFollowingQuery } from "../../../hooks/useGetFollowingQuery";
 import { useAuth } from "../../../hooks/useAuth";
 import { useGetSummonerQuery } from "../../../hooks/useGetSummonerQuery";
 import { useGetSummonerChallengesQuery } from "../../../hooks/useGetSummonerChallengesQuery";
-import { FlexRow, FlexRowCenter, FlexRowStart } from "components/atoms/FlexBoxes/FlexBoxes.styled";
-import { LoadingIndicator } from "components/atoms/LoadingIndicator/LoadingIndicator";
+import { FlexCol, FlexColStart, FlexRow, FlexRowCenter, FlexRowStart } from "components/atoms/FlexBoxes/FlexBoxes.styled";
+import { ImageContainer } from "components/atoms/ImageContainer/ImageContainer";
 
 export const SummonerInfo = () => {
 
@@ -66,6 +66,11 @@ export const SummonerInfo = () => {
     return correctTitle;
   };
 
+  const profileBadges = summonerChallengesData?.preferences?.challengeIds?.map((id) => {
+    const challengeData = summonerChallengesData?.challenges.find((challenge) => challenge.challengeId === id);
+    return challengeData;
+  }) || [];
+
   const alreadyFollowing = userData?.some(summoner => summoner.summonerId === summonerData.summonerId);
 
   return (
@@ -75,11 +80,8 @@ export const SummonerInfo = () => {
         {summonerChallengesData?.preferences?.title?.length > 2
           ?
           <>
-            <FlexRow>
+            <FlexRow gap="0.5rem">
               <Span size="xxl" align="left">-</Span>
-            </FlexRow>
-            <FlexRow>
-
               <Span size="xxl" align="left"><em>{summonerTitle()}</em></Span>
             </FlexRow>
           </>
@@ -87,11 +89,33 @@ export const SummonerInfo = () => {
         }
       </FlexRow>
 
-      <FlexRowCenter>
-        <Span align="center" size="s">
-          {summonerChallengesData?.totalPoints?.current} out of {summonerChallengesData?.totalPoints?.max} challenge points earned
-        </Span>
-      </FlexRowCenter>
+      <FlexRowStart gap="1rem">
+        <FlexCol>
+          <Span align="center" size="s">
+            {summonerChallengesData?.totalPoints?.current} out of {summonerChallengesData?.totalPoints?.max} challenge points earned
+          </Span>
+          {summonerChallengesData?.totalPoints?.percentile && (
+            <Span align="left" size="s">
+              {/* https://stackoverflow.com/questions/5037839/avoiding-problems-with-javascripts-weird-decimal-calculations */}
+              (top {+((1 - summonerChallengesData?.totalPoints?.percentile) * 100).toFixed(2)}% server)
+            </Span>
+          )}
+        </FlexCol>
+
+        <FlexRowStart gap="0.5rem">
+          {profileBadges.length
+            ? profileBadges.map((badge) => (
+              <ImageContainer
+                key={badge.challengeId}
+                src={`https://ddragon.leagueoflegends.com/cdn/img/challenges-images/${badge?.challengeId}-${badge?.level}.png`}
+                alt="Challenge"
+                width="40px"
+              />
+            ))
+            : null
+          }
+        </FlexRowStart>
+      </FlexRowStart>
 
       <Button
         width="135px"

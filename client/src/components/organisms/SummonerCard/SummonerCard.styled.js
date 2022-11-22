@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { FlexRow } from "../../atoms/FlexBoxes/FlexBoxes.styled";
+import { FlexRowStart } from "../../atoms/FlexBoxes/FlexBoxes.styled";
 
-export const StyledSummonerCard = styled(FlexRow)`
+export const StyledSummonerCard = styled(FlexRowStart)`
     width: 100%;
     padding: 0.2rem;
     margin: 2rem 0;

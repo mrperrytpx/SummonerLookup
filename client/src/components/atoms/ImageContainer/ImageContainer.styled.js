@@ -6,10 +6,17 @@ export const StyledImageContainer = styled(FlexRowCenter)`
     width: ${({ width }) => width ? width : "auto"};
 
     ${({ border }) => border && `
-        border  : 1px solid ${border};
+        border : 1px solid ${border};
     `}
 
-    img[alt] {
-        font-size: 0.2rem;
+    ${({ radius }) => radius && `
+        border-radius: ${radius};
+    `}
+
+    img {
+        object-fit: cover;
+        &[alt] {
+            font-size: 0.2rem;
+        }
     }
 `;

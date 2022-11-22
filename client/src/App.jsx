@@ -25,6 +25,7 @@ import { useGetLeagueChallengesQuery } from "./hooks/useGetLeagueChallengesQuery
 // import { useGetLeagueItemsQuery } from "hooks/useGetLeagueItemsQuery";
 import { useGetLeagueRunesQuery } from "hooks/useGetLeagueRunesQuery";
 import { useGetLeagueSummonerSpellsQuery } from "hooks/useGetLeagueSummonerSpellsQuery";
+import { SummonerChallenges } from "components/organisms/SummonerChallenges/SummonerChallenges";
 
 const App = () => {
 	const { accessToken, tokenLoading } = useAuth();
@@ -58,6 +59,7 @@ const App = () => {
 						<Route index element={<SummonerOverview />} />
 						<Route path="stats" element={<SummonerChampionStats />} />
 						<Route path="live-game" element={<SummonerLiveGame />} />
+						<Route path="challenges" element={<SummonerChallenges />} />
 					</Route>
 
 					<Route element={<ProtectedRoute redirectPath="/signin" isAllowed={!!accessToken} />}>

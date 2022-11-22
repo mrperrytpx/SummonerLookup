@@ -17,5 +17,6 @@ TASKS FOR FUTURE ME WHEN ITS FUNCTIONAL (WIP)
 - error boundry component
 - stop space from scrolling when selecting a server
 - remove all console.logs when finished
+- small navbar overflow-x kinda scuffed 
 
 https://ddragon.leagueoflegends.com/cdn/version/img/item/item.full

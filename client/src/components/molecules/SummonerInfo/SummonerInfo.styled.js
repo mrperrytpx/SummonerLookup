@@ -29,5 +29,9 @@ export const StyledSummonerInfo = styled(FlexColSpaceBetween)`
                 flex-direction: column;
             }
         }
+
+        & > :nth-child(2) {
+            flex-direction: column;
+        }
     }
 `;

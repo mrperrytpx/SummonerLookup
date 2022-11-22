@@ -5,6 +5,7 @@ export const StyledIconWithLevel = styled(FlexColCenter)`
     position: relative;
     background-color: ${({ theme, background }) => background ? theme.backgroundColors.primary : "transparent"};
     width: ${({ width }) => width ? width : "auto"};
+    max-height: ${({ width }) => width ? width : "auto"};
 
     ${({ border }) => border && `
         border  : 1px solid ${border};
@@ -25,6 +26,10 @@ export const StyledIconWithLevel = styled(FlexColCenter)`
             border-radius: 0 0 ${radius} 0;
         }
     `}
+
+    img {
+        object-fit: fill;
+    }
 
     span {
         display: inline-block;

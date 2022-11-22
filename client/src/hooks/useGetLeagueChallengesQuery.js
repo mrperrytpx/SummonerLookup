@@ -14,6 +14,7 @@ export const useGetLeagueChallengesQuery = () => {
         if (!response.ok) throw new Error("Something went wrong. Try reloading the page");
 
         const data = await response.json();
+        console.log("LEAGUE CHALLENGES: ", data);
         return data;
     };
 
