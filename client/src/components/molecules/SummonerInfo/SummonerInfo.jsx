@@ -68,8 +68,8 @@ export const SummonerInfo = () => {
   };
 
   const profileBadges = summonerChallengesData?.preferences?.challengeIds?.map((id) => {
-    const challengeData = summonerChallengesData?.challenges.find((challenge) => challenge.challengeId === id);
-    return challengeData;
+    const key = id.toString().slice(0, 4) + "00";
+    return summonerChallengesData?.challenges[key].find((challenge) => challenge.challengeId === id);
   }) || [];
 
   const alreadyFollowing = userData?.some(summoner => summoner.summonerId === summonerData.summonerId);

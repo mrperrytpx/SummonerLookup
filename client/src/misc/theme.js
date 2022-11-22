@@ -24,5 +24,16 @@ export const theme = {
         loss: "#8d090b80",
         lossBorder: "#8d090b",
         lossPromo: "#BD0C0F80"
+    },
+    category: {
+        iron: ["#cd7f32", "#d59352"],
+        bronze: ["#cd7f32", "#d59352"],
+        silver: ["#cd7f32", "#d59352"],
+        gold: ["#cd7f32", "#d59352"],
+        platinum: ["#cd7f32", "#d59352"],
+        diamond: ["#cd7f32", "#d59352"],
+        master: ["#cd7f32", "#d59352"],
+        grandmaster: ["#cd7f32", "#d59352"],
+        challenger: ["#cd7f32", "#d59352"],
     }
 };
