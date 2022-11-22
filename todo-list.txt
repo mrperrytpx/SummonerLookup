@@ -1,6 +1,5 @@
 TASKS FOR FUTURE ME WHEN ITS FUNCTIONAL (WIP)
 
-- challenge icons (challenges route to see all?)
 - infinity kda
 - swap from .toFixed(x)
 - fix redirect back to old page after logging in
@@ -18,5 +17,9 @@ TASKS FOR FUTURE ME WHEN ITS FUNCTIONAL (WIP)
 - stop space from scrolling when selecting a server
 - remove all console.logs when finished
 - small navbar overflow-x kinda scuffed 
+- add hover to profile badges
+- prefetch summoner when hovered on /me
+- code splitting? 
+- server - name in tab name
 
 https://ddragon.leagueoflegends.com/cdn/version/img/item/item.full

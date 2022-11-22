@@ -12,6 +12,7 @@ import { useGetSummonerQuery } from "../../../hooks/useGetSummonerQuery";
 import { useGetSummonerChallengesQuery } from "../../../hooks/useGetSummonerChallengesQuery";
 import { FlexCol, FlexColStart, FlexRow, FlexRowCenter, FlexRowStart } from "components/atoms/FlexBoxes/FlexBoxes.styled";
 import { ImageContainer } from "components/atoms/ImageContainer/ImageContainer";
+import { SERVER_VALUES } from "consts/serverValues";
 
 export const SummonerInfo = () => {
 
@@ -97,7 +98,7 @@ export const SummonerInfo = () => {
           {summonerChallengesData?.totalPoints?.percentile && (
             <Span align="left" size="s">
               {/* https://stackoverflow.com/questions/5037839/avoiding-problems-with-javascripts-weird-decimal-calculations */}
-              (top {+((1 - summonerChallengesData?.totalPoints?.percentile) * 100).toFixed(2)}% server)
+              (better than {+((1 - summonerChallengesData?.totalPoints?.percentile) * 100).toFixed(2)}% of {SERVER_VALUES[server]})
             </Span>
           )}
         </FlexCol>

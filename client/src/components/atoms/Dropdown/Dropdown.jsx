@@ -28,11 +28,11 @@ export const Dropdown = ({ from, options, state, values = null, handleClick }) =
 
   return (
     <StyledDropdown ref={ref} from={from}>
-      <span onClick={() => setIsActive(!isActive)}>{values ? values[state] : state}</span>
+      <span tabIndex="0" onClick={() => setIsActive(!isActive)}>{values ? values[state] : state}</span>
       {isActive && (
         <div>
           {options.map((option, i) => (
-            <span onClick={() => {
+            <span tabIndex="0" onClick={() => {
               handleClick(option.stateValue);
               setIsActive(false);
             }}

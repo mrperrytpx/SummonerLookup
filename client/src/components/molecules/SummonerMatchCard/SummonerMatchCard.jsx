@@ -18,6 +18,7 @@ export const SummonerMatchCard = ({ match }) => {
   const version = queryClient.getQueryData(["version"]);
   const runes = queryClient.getQueryData(["runes"]);
   const summonerSpells = queryClient.getQueryData(["summoner-spells"]);
+  const champions = queryClient.getQueryData(["champions"]);
 
   const summonerIndex = match?.metadata?.participants?.indexOf(summonerData.puuid);
   const summonerMatchData = match?.info?.participants[summonerIndex];
@@ -59,10 +60,9 @@ export const SummonerMatchCard = ({ match }) => {
         </Span>
         <Span size="s">{(new Date(match?.info?.gameEndTimestamp ? match?.info?.gameEndTimestamp : match?.info?.gameStartTimestamp + match?.info?.gameDuration)).toDateString()}</Span>
       </FlexColCenter>
-
       <FlexRowCenter>
         <IconWithLevel
-          src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${summonerMatchData.championName}.png`}
+          src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${champions.get(`${summonerMatchData.championId}`).id}.png`}
           alt="Champion"
           level={summonerMatchData.champLevel}
           width="60px"

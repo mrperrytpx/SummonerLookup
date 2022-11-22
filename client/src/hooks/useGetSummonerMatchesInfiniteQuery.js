@@ -2,12 +2,8 @@ import { useInfiniteQuery } from "react-query";
 
 export const useGetSummonerMatchesInfiniteQuery = (server, puuid) => {
 
-    const getSummonerMatches = async ({ signal, pageParam = 1 }) => {
-        const response = await fetch(`/api/summoner/matches/${server}/${puuid}/${pageParam}`, {
-            signal
-        });
-
-        if (signal.aborted) return;
+    const getSummonerMatches = async ({ pageParam = 1 }) => {
+        const response = await fetch(`/api/summoner/matches/${server}/${puuid}/${pageParam}`);
 
         if (!response.ok) throw new Error("Something went wrong... try reloading the poge");
 
