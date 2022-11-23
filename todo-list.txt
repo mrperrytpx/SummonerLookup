@@ -20,7 +20,9 @@ TASKS FOR FUTURE ME WHEN ITS FUNCTIONAL (WIP)
 - add hover to profile badges
 - prefetch summoner when hovered on /me
 - code splitting? 
+- intersection observer for challenges and matches
 - server - name in tab name
+- sticky stats on Overview
 - redis cache for matches
 
 https://ddragon.leagueoflegends.com/cdn/version/img/item/item.full

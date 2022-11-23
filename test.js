@@ -3,21 +3,21 @@ const array = [
         "challengeId": 0,
         "percentile": 0.36,
         "level": "SILVER",
-        "value": 2805,
+        "value": 2880,
         "achievedTime": 1654603168047
     },
     {
         "challengeId": 1,
-        "percentile": 0.256,
+        "percentile": 0.257,
         "level": "SILVER",
-        "value": 560,
+        "value": 610,
         "achievedTime": 1654603162171
     },
     {
         "challengeId": 2,
         "percentile": 0.388,
         "level": "BRONZE",
-        "value": 370,
+        "value": 375,
         "achievedTime": 1665440680775
     },
     {
@@ -31,7 +31,7 @@ const array = [
         "challengeId": 4,
         "percentile": 0.414,
         "level": "BRONZE",
-        "value": 280,
+        "value": 300,
         "achievedTime": 1663597374316
     },
     {
@@ -43,10 +43,10 @@ const array = [
     },
     {
         "challengeId": 302100,
-        "percentile": 0.513,
-        "level": "IRON",
-        "value": 15,
-        "achievedTime": 1663597374316
+        "percentile": 0.42,
+        "level": "BRONZE",
+        "value": 30,
+        "achievedTime": 1669218360006
     },
     {
         "challengeId": 302101,
@@ -54,6 +54,13 @@ const array = [
         "level": "BRONZE",
         "value": 5,
         "achievedTime": 1665434580996
+    },
+    {
+        "challengeId": 302105,
+        "percentile": 0.13,
+        "level": "SILVER",
+        "value": 1,
+        "achievedTime": 1669217547090
     },
     {
         "challengeId": 302106,
@@ -66,7 +73,7 @@ const array = [
         "challengeId": 203303,
         "percentile": 0.375,
         "level": "BRONZE",
-        "value": 45,
+        "value": 46,
         "achievedTime": 1664044026269
     },
     {
@@ -80,7 +87,7 @@ const array = [
         "challengeId": 203301,
         "percentile": 0.454,
         "level": "IRON",
-        "value": 39,
+        "value": 41,
         "achievedTime": 1663598011761
     },
     {
@@ -92,7 +99,7 @@ const array = [
     },
     {
         "challengeId": 301100,
-        "percentile": 0.328,
+        "percentile": 0.329,
         "level": "SILVER",
         "value": 30,
         "achievedTime": 1665437134301
@@ -141,7 +148,7 @@ const array = [
     },
     {
         "challengeId": 301104,
-        "percentile": 0.497,
+        "percentile": 0.498,
         "level": "IRON",
         "value": 2,
         "achievedTime": 1663594850892
@@ -162,7 +169,7 @@ const array = [
     },
     {
         "challengeId": 510001,
-        "percentile": 0.174,
+        "percentile": 0.173,
         "level": "PLATINUM",
         "value": 118,
         "achievedTime": 1654188257271
@@ -213,14 +220,14 @@ const array = [
         "challengeId": 402502,
         "percentile": 0.483,
         "level": "IRON",
-        "value": 324,
+        "value": 362,
         "achievedTime": 1663598011761
     },
     {
         "challengeId": 402503,
         "percentile": 0.378,
         "level": "BRONZE",
-        "value": 5830,
+        "value": 5963,
         "achievedTime": 1665434580996
     },
     {
@@ -288,21 +295,21 @@ const array = [
     },
     {
         "challengeId": 103000,
-        "percentile": 0.375,
+        "percentile": 0.376,
         "level": "SILVER",
-        "value": 125,
+        "value": 175,
         "achievedTime": 1665931523830
     },
     {
         "challengeId": 2022015,
-        "percentile": 0.347,
+        "percentile": 0.346,
         "level": "BRONZE",
         "value": 19,
         "achievedTime": 1663759786984
     },
     {
         "challengeId": 2022009,
-        "percentile": 0.48,
+        "percentile": 0.479,
         "level": "IRON",
         "value": 39,
         "achievedTime": 1663591569883
@@ -316,7 +323,7 @@ const array = [
     },
     {
         "challengeId": 2022005,
-        "percentile": 0.368,
+        "percentile": 0.367,
         "level": "SILVER",
         "value": 3,
         "achievedTime": 1665439066313
@@ -330,7 +337,7 @@ const array = [
     },
     {
         "challengeId": 2022003,
-        "percentile": 0.335,
+        "percentile": 0.334,
         "level": "BRONZE",
         "value": 6,
         "achievedTime": 1665434580996
@@ -344,7 +351,7 @@ const array = [
     },
     {
         "challengeId": 2022000,
-        "percentile": 0.392,
+        "percentile": 0.391,
         "level": "BRONZE",
         "value": 85,
         "achievedTime": 1664046319864
@@ -365,14 +372,14 @@ const array = [
     },
     {
         "challengeId": 302202,
-        "percentile": 0.269,
+        "percentile": 0.27,
         "level": "SILVER",
         "value": 8,
         "achievedTime": 1664044026269
     },
     {
         "challengeId": 101000,
-        "percentile": 0.079,
+        "percentile": 0.08,
         "level": "GOLD",
         "value": 390,
         "achievedTime": 1663968941091
@@ -405,7 +412,7 @@ const array = [
     },
     {
         "challengeId": 301204,
-        "percentile": 0.335,
+        "percentile": 0.336,
         "level": "PLATINUM",
         "value": 1,
         "achievedTime": 1663589135926
@@ -426,7 +433,7 @@ const array = [
     },
     {
         "challengeId": 2022018,
-        "percentile": 0.447,
+        "percentile": 0.446,
         "level": "IRON",
         "value": 1,
         "achievedTime": 1663589135926
@@ -461,7 +468,7 @@ const array = [
     },
     {
         "challengeId": 505003,
-        "percentile": 0.196,
+        "percentile": 0.195,
         "level": "DIAMOND",
         "value": 69,
         "achievedTime": 1652367929856
@@ -491,7 +498,7 @@ const array = [
         "challengeId": 402102,
         "percentile": 0.465,
         "level": "IRON",
-        "value": 26,
+        "value": 27,
         "achievedTime": 1663594850892
     },
     {
@@ -531,7 +538,7 @@ const array = [
     },
     {
         "challengeId": 103100,
-        "percentile": 0.238,
+        "percentile": 0.239,
         "level": "SILVER",
         "value": 25,
         "achievedTime": 1665927858121
@@ -540,7 +547,7 @@ const array = [
         "challengeId": 402107,
         "percentile": 0.369,
         "level": "BRONZE",
-        "value": 183,
+        "value": 185,
         "achievedTime": 1665434580996
     },
     {
@@ -552,7 +559,7 @@ const array = [
     },
     {
         "challengeId": 103102,
-        "percentile": 0.177,
+        "percentile": 0.178,
         "level": "SILVER",
         "value": 5,
         "achievedTime": 1665925338878
@@ -593,7 +600,7 @@ const array = [
         "challengeId": 303303,
         "percentile": 1,
         "level": "NONE",
-        "value": 1
+        "value": 2
     },
     {
         "challengeId": 504004,
@@ -627,7 +634,7 @@ const array = [
         "challengeId": 401102,
         "percentile": 0.09,
         "level": "DIAMOND",
-        "value": 2693059,
+        "value": 2693149,
         "achievedTime": 1654604535394
     },
     {
@@ -681,7 +688,7 @@ const array = [
     },
     {
         "challengeId": 302301,
-        "percentile": 0.378,
+        "percentile": 0.379,
         "level": "BRONZE",
         "value": 39,
         "achievedTime": 1664828109070
@@ -702,7 +709,7 @@ const array = [
     },
     {
         "challengeId": 204000,
-        "percentile": 0.433,
+        "percentile": 0.434,
         "level": "IRON",
         "value": 15,
         "achievedTime": 1665929613644
@@ -718,14 +725,14 @@ const array = [
         "challengeId": 302305,
         "percentile": 1,
         "level": "NONE",
-        "value": 6,
+        "value": 7,
         "achievedTime": 1652619334815
     },
     {
         "challengeId": 101101,
         "percentile": 0.019,
-        "position": 94818,
-        "playersInLevel": 394994,
+        "position": 95740,
+        "playersInLevel": 397740,
         "level": "MASTER",
         "value": 22,
         "achievedTime": 1654604535394
@@ -760,7 +767,7 @@ const array = [
     },
     {
         "challengeId": 101107,
-        "percentile": 0.089,
+        "percentile": 0.09,
         "level": "SILVER",
         "value": 4140,
         "achievedTime": 1654604535394
@@ -769,7 +776,7 @@ const array = [
         "challengeId": 502005,
         "percentile": 0.32,
         "level": "BRONZE",
-        "value": 8,
+        "value": 9,
         "achievedTime": 1654459051009
     },
     {
@@ -846,7 +853,7 @@ const array = [
         "challengeId": 202000,
         "percentile": 0.406,
         "level": "BRONZE",
-        "value": 95,
+        "value": 100,
         "achievedTime": 1663761584931
     },
     {
@@ -907,14 +914,14 @@ const array = [
     },
     {
         "challengeId": 103200,
-        "percentile": 0.489,
-        "level": "SILVER",
-        "value": 50,
-        "achievedTime": 1665931523830
+        "percentile": 0.296,
+        "level": "GOLD",
+        "value": 90,
+        "achievedTime": 1669218360006
     },
     {
         "challengeId": 103203,
-        "percentile": 0.33,
+        "percentile": 0.331,
         "level": "BRONZE",
         "value": 4,
         "achievedTime": 1663586229707
@@ -932,6 +939,13 @@ const array = [
         "level": "BRONZE",
         "value": 51,
         "achievedTime": 1664041588592
+    },
+    {
+        "challengeId": 103204,
+        "percentile": 0.348,
+        "level": "PLATINUM",
+        "value": 3,
+        "achievedTime": 1669217547090
     },
     {
         "challengeId": 103206,
@@ -970,7 +984,7 @@ const array = [
     },
     {
         "challengeId": 401205,
-        "percentile": 0.175,
+        "percentile": 0.174,
         "level": "IRON",
         "value": 2,
         "achievedTime": 1652440032792
@@ -984,7 +998,7 @@ const array = [
     },
     {
         "challengeId": 401200,
-        "percentile": 0.216,
+        "percentile": 0.215,
         "level": "IRON",
         "value": 20,
         "achievedTime": 1652441205624
@@ -1005,7 +1019,7 @@ const array = [
     },
     {
         "challengeId": 302401,
-        "percentile": 0.381,
+        "percentile": 0.382,
         "level": "BRONZE",
         "value": 5,
         "achievedTime": 1665434580996
@@ -1031,7 +1045,7 @@ const array = [
     },
     {
         "challengeId": 101201,
-        "percentile": 0.058,
+        "percentile": 0.059,
         "level": "GOLD",
         "value": 7554,
         "achievedTime": 1656503852317
@@ -1045,7 +1059,7 @@ const array = [
     },
     {
         "challengeId": 101203,
-        "percentile": 0.057,
+        "percentile": 0.058,
         "level": "GOLD",
         "value": 366,
         "achievedTime": 1663967662334
@@ -1066,16 +1080,16 @@ const array = [
     },
     {
         "challengeId": 101206,
-        "percentile": 0.195,
+        "percentile": 0.196,
         "level": "BRONZE",
         "value": 1,
         "achievedTime": 1653149257442
     },
     {
         "challengeId": 203102,
-        "percentile": 0.319,
+        "percentile": 0.32,
         "level": "GOLD",
-        "value": 158,
+        "value": 160,
         "achievedTime": 1664044026269
     },
     {
@@ -1110,7 +1124,7 @@ const array = [
         "challengeId": 202100,
         "percentile": 0.442,
         "level": "BRONZE",
-        "value": 30,
+        "value": 35,
         "achievedTime": 1664043737991
     },
     {
@@ -1122,10 +1136,10 @@ const array = [
     },
     {
         "challengeId": 202104,
-        "percentile": 1,
-        "level": "NONE",
-        "value": 2,
-        "achievedTime": 1652616449169
+        "percentile": 0.473,
+        "level": "IRON",
+        "value": 3,
+        "achievedTime": 1669217547090
     },
     {
         "challengeId": 103300,
@@ -1176,7 +1190,7 @@ const array = [
     },
     {
         "challengeId": 101301,
-        "percentile": 0.211,
+        "percentile": 0.212,
         "level": "IRON",
         "value": 1,
         "achievedTime": 1654186858574
@@ -1185,7 +1199,7 @@ const array = [
         "challengeId": 302000,
         "percentile": 0.4,
         "level": "BRONZE",
-        "value": 115,
+        "value": 135,
         "achievedTime": 1664830082487
     },
     {
@@ -1197,7 +1211,7 @@ const array = [
     },
     {
         "challengeId": 101303,
-        "percentile": 0.056,
+        "percentile": 0.057,
         "level": "GOLD",
         "value": 6,
         "achievedTime": 1656503852317
@@ -1246,7 +1260,7 @@ const array = [
     },
     {
         "challengeId": 600012,
-        "percentile": 0.512,
+        "percentile": 0.511,
         "level": "BRONZE",
         "value": 1,
         "achievedTime": 1663754616228
@@ -1260,14 +1274,14 @@ const array = [
     },
     {
         "challengeId": 600006,
-        "percentile": 0.271,
+        "percentile": 0.27,
         "level": "PLATINUM",
         "value": 174,
         "achievedTime": 1654188168100
     },
     {
         "challengeId": 202203,
-        "percentile": 0.257,
+        "percentile": 0.258,
         "level": "BRONZE",
         "value": 7,
         "achievedTime": 1663759786984
@@ -1308,30 +1322,30 @@ const array = [
     },
     {
         "challengeId": 402407,
-        "percentile": 0.336,
+        "percentile": 0.337,
         "level": "BRONZE",
-        "value": 4197,
+        "value": 4268,
         "achievedTime": 1664044026269
     },
     {
         "challengeId": 402404,
         "percentile": 0.383,
         "level": "BRONZE",
-        "value": 18,
+        "value": 19,
         "achievedTime": 1665434580996
     },
     {
         "challengeId": 402402,
         "percentile": 0.436,
         "level": "IRON",
-        "value": 152,
+        "value": 154,
         "achievedTime": 1663759786984
     },
     {
         "challengeId": 402403,
         "percentile": 0.312,
         "level": "IRON",
-        "value": 15,
+        "value": 16,
         "achievedTime": 1664038817028
     },
     {
@@ -1359,49 +1373,12 @@ const array = [
         "challengeId": 402409,
         "percentile": 0.387,
         "level": "BRONZE",
-        "value": 321496,
+        "value": 325225,
         "achievedTime": 1664044026269
     }
 ];
 
-const startingNumbers = [1, 2, 3, 4, 5, 6];
+const checkChar = (chall) => chall.challengeId.toString().charAt(0) === "1";
+const checkIfOne = (chall) => chall.challengeId.toString().length !== 1;
 
-const challengeCategory = (startingNumber) => {
-    return array
-        ?.filter((challenge) => (challenge.challengeId + "").charAt(0) === startingNumber + "")
-        .sort((a, b) => {
-            if (a.challengeId > b.challengeId) return 1;
-            if (a.challengeId < b.challengeId) return -1;
-            return 0;
-        });
-};
-
-const challengesMap = {};
-
-const subcategories = startingNumbers.map((x) => challengeCategory(x)).flat()
-    .filter((challenge) => challenge.challengeId % 100 === 0)
-    .forEach((challenge) => challengesMap[challenge.challengeId] = [challenge.challengeId]);
-
-
-const challs = startingNumbers.map((x) => challengeCategory(x)).flat()
-    .filter((challenge) => challenge.challengeId % 100 !== 0)
-    .forEach((challenge) => {
-        if (challenge.challengeId.toString().length === 1) return;
-        if (challenge.challengeId.toString().length === 7) {
-            const key = challenge.challengeId.toString().slice(0, 5) + "00";
-            if (!challengesMap[key].includes(challenge.challengeId)) {
-                challengesMap[key].push(challenge.challengeId);
-            }
-        } else {
-            const key = challenge.challengeId.toString().slice(0, 4) + "00";
-            if (!challengesMap.hasOwnProperty(key)) {
-                challengesMap[key] = [challenge.challengeId];
-                return;
-            }
-            if (!challengesMap[key].includes(challenge.challengeId)) {
-                challengesMap[key].push(challenge.challengeId);
-            }
-        }
-    });
-
-console.log(challengesMap);
+console.log(array.filter(checkChar).filter(checkIfOne));

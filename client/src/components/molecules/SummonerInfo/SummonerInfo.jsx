@@ -10,7 +10,7 @@ import { useGetFollowingQuery } from "../../../hooks/useGetFollowingQuery";
 import { useAuth } from "../../../hooks/useAuth";
 import { useGetSummonerQuery } from "../../../hooks/useGetSummonerQuery";
 import { useGetSummonerChallengesQuery } from "../../../hooks/useGetSummonerChallengesQuery";
-import { FlexCol, FlexColStart, FlexRow, FlexRowCenter, FlexRowStart } from "components/atoms/FlexBoxes/FlexBoxes.styled";
+import { FlexCol, FlexRow, FlexRowStart } from "components/atoms/FlexBoxes/FlexBoxes.styled";
 import { ImageContainer } from "components/atoms/ImageContainer/ImageContainer";
 import { SERVER_VALUES } from "consts/serverValues";
 
@@ -68,8 +68,7 @@ export const SummonerInfo = () => {
   };
 
   const profileBadges = summonerChallengesData?.preferences?.challengeIds?.map((id) => {
-    const key = id.toString().slice(0, 4) + "00";
-    return summonerChallengesData?.challenges[key].find((challenge) => challenge.challengeId === id);
+    return summonerChallengesData?.challenges.find((challenge) => challenge.challengeId === id);
   }) || [];
 
   const alreadyFollowing = userData?.some(summoner => summoner.summonerId === summonerData.summonerId);

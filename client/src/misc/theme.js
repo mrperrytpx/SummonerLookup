@@ -26,14 +26,15 @@ export const theme = {
         lossPromo: "#BD0C0F80"
     },
     category: {
-        iron: ["#cd7f32", "#d59352"],
-        bronze: ["#cd7f32", "#d59352"],
-        silver: ["#cd7f32", "#d59352"],
-        gold: ["#cd7f32", "#d59352"],
-        platinum: ["#cd7f32", "#d59352"],
-        diamond: ["#cd7f32", "#d59352"],
-        master: ["#cd7f32", "#d59352"],
-        grandmaster: ["#cd7f32", "#d59352"],
-        challenger: ["#cd7f32", "#d59352"],
+        "none": "#696969",
+        "iron": "#696969",
+        "bronze": "#8c5139",
+        "silver": "silver",
+        "gold": "#f4c873",
+        "platinum": "#4f9896",
+        "diamond": "#576ace",
+        "master": "#a137c2",
+        "grandmaster": "#da4f64",
+        "challenger": "#ffd700",
     }
 };
