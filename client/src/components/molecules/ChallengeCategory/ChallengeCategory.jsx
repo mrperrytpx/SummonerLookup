@@ -6,15 +6,15 @@ import { useParams } from "react-router-dom";
 // (better than {+((1 - summonerChallengesData?.totalPoints?.percentile) * 100).toFixed(2)}% of {SERVER_VALUES[server]})
 
 
-export const ChallengeCategory = ({ category, name, onClick }) => {
+export const ChallengeCategory = ({ category, data, onClick }) => {
 
   const { server } = useParams();
 
   return (
-    <StyledChallengeCategory onClick={onClick} bg={category.level.toLowerCase()}>
-      <Span size="m" align="center">{name}</Span>
-      <Span size="s" align="center">{category.current} out of {category.max} challenge pts</Span>
-      <Span size="s" align="center">(better than {+((1 - category.percentile) * 100).toFixed(2)}% of {SERVER_VALUES[server]})</Span>
-    </StyledChallengeCategory>
+    <StyledChallengeCategory onClick={onClick}>
+      <Span size="sm" align="center">{category.name}</Span>
+      <Span size="s" align="center">{data.current} out of {data.max} pts</Span>
+      <Span size="s" align="center">(better than {+((1 - data?.percentile) * 100).toFixed(2)}% of {SERVER_VALUES[server]})</Span>
+    </StyledChallengeCategory >
   );
 };

@@ -6,7 +6,7 @@ const getSummonerChallenges = async (server, puuid) => {
     const playerChallengesResponse = await fetch(playerChallengesUrl);
 
     if (!playerChallengesResponse.ok) throw new Error("idno yet");
-    let playerChallengesData = await playerChallengesResponse.json();
+    const playerChallengesData = await playerChallengesResponse.json();
 
     const startingNumbers = [1, 2, 3, 4, 5, 6];
     const challengeCategory = (startingNumber) => {
@@ -58,7 +58,7 @@ const getSummonerChallenges = async (server, puuid) => {
     };
     challs();
 
-    return { ...playerChallengesData, challenges: challengesMap };
+    return { ...playerChallengesData, challenges: challengesMap, oldChallenges: playerChallengesData.challenges };
 };
 
 module.exports = getSummonerChallenges;

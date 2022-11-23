@@ -2,7 +2,7 @@ import { Span } from "components/atoms/Span/Span";
 import { useQueryClient } from "react-query";
 import { StyledChallengeCard } from "./ChallengeCard.styled";
 
-export const ChallengeCard = ({ capstone, challenge, solo }) => {
+export const ChallengeCard = ({ challenge }) => {
 
   const queryClient = useQueryClient();
   const challenges = queryClient.getQueryData(["challenges"]);
@@ -11,8 +11,7 @@ export const ChallengeCard = ({ capstone, challenge, solo }) => {
 
   return (
     <StyledChallengeCard>
-      {capstone ? <h1>{challengeData?.name}</h1> : null}
-      <Span>{capstone ? "(Capstone)" : null}{challengeData?.name} ({solo ? "solo" : null})</Span>
+      <Span>{challengeData?.name}</Span>
     </StyledChallengeCard>
   );
 };
