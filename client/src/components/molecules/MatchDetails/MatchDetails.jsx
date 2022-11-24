@@ -37,11 +37,14 @@ export const MatchDetails = ({ match }) => {
   }, [width, tables]);
 
   return (
-    <>
+    <FlexCol style={{
+      marginBottom: "1.5rem",
+      borderBottom: `10px solid lightblue`,
+      borderTop: `10px solid lightblue`,
+      borderRadius: "10px"
+    }}>
       {tables.map((table, i) => (
-        <FlexCol style={{
-          margin: "1rem 0",
-        }}>
+        <FlexCol>
           <LiveGameBans size="30px" align="left" isWinner={teams[i][0].win} bans={match?.info.teams[i].bans}>BANS:</LiveGameBans>
           <StyledMatchDetails key={i} isWinner={teams[i][0].win}>
             <thead>
@@ -81,7 +84,8 @@ export const MatchDetails = ({ match }) => {
             </tbody>
           </StyledMatchDetails>
         </FlexCol>
-      ))}
-    </>
+      ))
+      }
+    </FlexCol >
   );
-};
+};;

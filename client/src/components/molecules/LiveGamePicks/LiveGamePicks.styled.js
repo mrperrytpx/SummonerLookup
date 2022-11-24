@@ -5,6 +5,10 @@ export const StyledLiveGamePicks = styled(FlexCol)`
     color: white;
     width: 100%;
 
+    [data-is-player="true"] {
+        background-color: ${({ theme }) => theme.backgroundColors.tertiary};
+    }
+
     & > div {
         display: grid;
         grid-template-columns: 40px minmax(100px, max-content) 1fr;

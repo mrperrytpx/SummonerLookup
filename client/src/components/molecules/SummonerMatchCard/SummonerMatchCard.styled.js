@@ -14,6 +14,7 @@ export const StyledSummonerMatchCard = styled(FlexCol)`
         grid-template-columns: 120px minmax(120px, 200px) 100px 1fr;
         grid-template-rows: 78px;
         gap: 0.1rem;
+        margin-bottom: 0.25rem;
 
         cursor: pointer;
 
@@ -145,6 +146,4 @@ export const StyledSummonerMatchCard = styled(FlexCol)`
             }
         }
     }
-
-    /* expanded details */
  `;

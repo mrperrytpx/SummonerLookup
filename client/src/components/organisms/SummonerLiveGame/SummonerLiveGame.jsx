@@ -36,14 +36,14 @@ export const SummonerLiveGame = () => {
         <Span padding={"0.5rem 0.6rem"} underline>Blue side bans:</Span>
         <LiveGameBans bans={liveGameData?.bannedChampions?.slice(0, 5)} />
         <Span underline padding={"0.5rem 0.6rem"}>Blue side picks:</Span>
-        <LiveGamePicks platform={liveGameData?.platformId} picks={liveGameData?.participants?.slice(0, 5)} />
+        <LiveGamePicks picks={liveGameData?.participants?.slice(0, 5)} />
       </FlexColSpaceBetween>
 
       <FlexColSpaceBetween gap=".5rem">
         <Span align="right" underline padding={"0.5rem 0.6rem"}>Red side bans:</Span>
         <LiveGameBans align="right" bans={liveGameData?.bannedChampions?.slice(5, 10)} />
         <Span align="right" underline padding={"0.5rem 0.6rem"}>Red side picks:</Span>
-        <LiveGamePicks platform={liveGameData?.platformId} direction="rtl" picks={liveGameData?.participants?.slice(5, 10)} />
+        <LiveGamePicks direction="rtl" picks={liveGameData?.participants?.slice(5, 10)} />
       </FlexColSpaceBetween>
 
     </StyledSummonerLiveGame>
