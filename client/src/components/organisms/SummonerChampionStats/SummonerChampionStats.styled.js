@@ -11,6 +11,7 @@ export const StyledSummonerChampionStats = styled.div`
         overflow: hidden;
     }
 
+    /*  u.gg credit */
     & > :first-child > span {
         margin-right: 0.5rem;
     }

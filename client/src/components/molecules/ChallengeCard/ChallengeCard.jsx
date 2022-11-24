@@ -33,7 +33,7 @@ export const ChallengeCard = ({ challenge }) => {
           <Span size="s">
             <em>
               {challenge?.position ? `#${challenge.position} - ` : null}
-              better than {Math.round(((1 - challenge.percentile) * 100))}% of {SERVER_VALUES[server]} - {challenge.level} tier
+              better than {Math.round(((1 - challenge.percentile) * 100))}% of {SERVER_VALUES[server]} - <b>{challenge.level}</b> tier
             </em>
           </Span>
           <Span size="xs">{new Date(challenge.achievedTime).toDateString()}</Span>

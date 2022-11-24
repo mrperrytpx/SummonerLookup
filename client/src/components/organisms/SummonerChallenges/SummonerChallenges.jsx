@@ -9,6 +9,7 @@ import { StyledSummonerChallenges } from "./SummonerChallenges.styled";
 import { CHALLENGE_THRESHOLDS } from "consts/challengeThresholds";
 import { Container } from "components/atoms/Container/Container";
 import { ErrorText } from "components/atoms/ErrorText/ErrorText";
+import { LoadingIndicator } from "components/atoms/LoadingIndicator/LoadingIndicator";
 
 export const SummonerChallenges = () => {
 
@@ -35,7 +36,11 @@ export const SummonerChallenges = () => {
   const sortedChallenges = sortedByFirst(currentCat);
   const categoryName = CHALLENGE_GROUPS.find(grp => grp.id === currentCat).name;
 
-  if (isLoading) return <p>fk u </p>;
+  if (isLoading) return (
+    <Container>
+      <LoadingIndicator />
+    </Container>
+  );
 
   return (
     <StyledSummonerChallenges>

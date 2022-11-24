@@ -9,12 +9,18 @@ export const StyledIndividualChampStatsCard = styled.div`
     width: 100%;
 
     & > div:nth-child(2) {
-        place-self: center end;
+        place-self: center;
     }
 
     img {
         width: 40px;
         aspect-ratio: 1 / 1;
+    }
+
+    @media only screen and (max-width: 1100px) {
+        & > div:nth-child(2) {
+            place-self: center end;
+        }
     }
 
     @media only screen and (max-width: 1000px) {

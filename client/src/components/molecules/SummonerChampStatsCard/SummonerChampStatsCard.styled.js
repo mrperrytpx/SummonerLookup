@@ -9,4 +9,7 @@ export const StyledSummonerChampStatsCard = styled(FlexCol)`
     border-radius: 1rem;
     gap: .5rem;
     margin-bottom: .5rem;
+
+    position: sticky;
+    top: 50px;
 `;

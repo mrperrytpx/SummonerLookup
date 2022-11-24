@@ -4,13 +4,18 @@ export const StyledSummonerChallenges = styled.div`
     border-radius: 10px;
     display: grid;
     grid-template-columns: 250px 1fr;
+    position: sticky;
     gap: 1rem;
 
     aside {
+        max-height: 0;
+        position: sticky;
+        top: 0;
         display: flex;
         flex-direction:column;
         gap: 1rem;
         padding: .5rem;
+        width: 100%;
     }
 
     & > div {
@@ -28,7 +33,7 @@ export const StyledSummonerChallenges = styled.div`
         gap: 1rem;
 
         aside {
-            border-radius: 10px 10px 0 0;
+            max-height: 100%;
 
             background-color: ${({ theme }) => theme.backgroundColors.tertiary};
             flex-direction: row;

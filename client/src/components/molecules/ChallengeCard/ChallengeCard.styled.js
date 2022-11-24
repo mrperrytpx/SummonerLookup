@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const StyledChallengeCard = styled.div`
     border-bottom: 3px solid ${({ theme, tier }) => theme.category[tier.toLowerCase()]};
-    background-color: ${({ theme, tier }) => `${theme.category[tier.toLowerCase()]}70`};
+    background-color: ${({ theme, tier }) => `${theme.category[tier.toLowerCase()]}90`};
     padding: .5rem;
     border-radius: 10px;
     width: 100%;
