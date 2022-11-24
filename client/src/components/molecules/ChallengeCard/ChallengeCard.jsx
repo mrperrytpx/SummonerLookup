@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { StyledChallengeCard } from "./ChallengeCard.styled";
 import { SERVER_VALUES } from "consts/serverValues";
 import { Span } from "components/atoms/Span/Span";
+import { FlexCol, FlexColStart, FlexRow, FlexRowSpaceAround, FlexRowStart } from "components/atoms/FlexBoxes/FlexBoxes.styled";
 
 export const ChallengeCard = ({ challenge }) => {
 
@@ -14,23 +15,30 @@ export const ChallengeCard = ({ challenge }) => {
 
   return (
     <StyledChallengeCard tier={challenge?.level}>
-      {/* <div>{JSON.stringify(challenge)}</div> */}
-      <Span size="m">{challengeData.name}</Span>
-      <ImageContainer
-        src={`https://ddragon.leagueoflegends.com/cdn/img/challenges-images/${challenge?.challengeId}-${challenge?.level === "NONE" ? "IRON" : challenge?.level}.png`}
-        alt="Challenge badge"
-        width="50px"
-        opacity={challenge?.level === "NONE" ? "0.4" : "1"}
-        radius="50%"
-        min="50px"
-      />
-      <Span size="s">{challenge.level}</Span>
-      <Span size="s">{challenge?.position ? `#${challenge.position} - ` : null}better than {Math.round(((1 - challenge.percentile) * 100))}% of {SERVER_VALUES[server]}</Span>
-      <Span size="s">{challengeData.description}</Span>
-      <Span size="s">
-      </Span>
-      {/* {challenge?.level !== "NONE" && <div>NEXT LEVEL: {challengeData.thresholds[challenge.level]}</div>} */}
-      {challenge?.achievedTime && challenge?.level !== "NONE" ? <Span size="s">Earned on {challenge?.achievedTime}</Span> : null}
+      <FlexRow gap="0.5rem">
+        <ImageContainer
+          src={`https://ddragon.leagueoflegends.com/cdn/img/challenges-images/${challenge?.challengeId}-${challenge?.level === "NONE" ? "IRON" : challenge?.level}.png`}
+          alt="Challenge badge"
+          width="46px"
+          opacity={challenge?.level === "NONE" ? "0.4" : "1"}
+          radius="50%"
+          min="46px"
+        />
+        <FlexCol data-info gap="0.25rem">
+          <div>
+            <Span width="auto" size="m"><b>{challengeData.name + " "}</b></Span>
+            <Span width="auto" size="sm">- {challengeData.description}</Span>
+          </div>
+
+          <Span size="s">
+            <em>
+              {challenge?.position ? `#${challenge.position} - ` : null}
+              better than {Math.round(((1 - challenge.percentile) * 100))}% of {SERVER_VALUES[server]} - {challenge.level} tier
+            </em>
+          </Span>
+          <Span size="xs">{new Date(challenge.achievedTime).toDateString()}</Span>
+        </FlexCol>
+      </FlexRow>
     </StyledChallengeCard>
   );
 };

@@ -3,7 +3,7 @@ import styled from "styled-components";
 const spanSize = (size) => {
     switch (size) {
         case "xs": {
-            return ".5rem";
+            return ".62rem";
         }
         case "s": {
             return ".75rem";

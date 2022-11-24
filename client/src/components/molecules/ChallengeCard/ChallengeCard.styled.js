@@ -1,14 +1,16 @@
-import { FlexCol, FlexColCenter } from "components/atoms/FlexBoxes/FlexBoxes.styled";
 import styled from "styled-components";
 
-export const StyledChallengeCard = styled(FlexColCenter)`
-    border: 5px solid ${({ theme, tier }) => theme.category[tier.toLowerCase()]};
-    padding: .75rem;
+export const StyledChallengeCard = styled.div`
+    border-bottom: 3px solid ${({ theme, tier }) => theme.category[tier.toLowerCase()]};
+    background-color: ${({ theme, tier }) => `${theme.category[tier.toLowerCase()]}70`};
+    padding: .5rem;
+    border-radius: 10px;
+    width: 100%;
     gap: 1rem;
-    border-radius: 20px;
-    box-shadow: 0 0 0 1px ${({ theme, tier }) => theme.category[tier.toLowerCase()]};
+    box-shadow: 1px 1px 1px 1px ${({ theme, tier }) => theme.category[tier.toLowerCase()]};
 
-    span {
-        text-align: center;
+    [data-info] {
+        width: 100%;
     }
+
 `;

@@ -29,7 +29,7 @@ export const theme = {
         "none": "#696969",
         "iron": "#696969",
         "bronze": "#8c5139",
-        "silver": "silver",
+        "silver": "#c0c0c0",
         "gold": "#f4c873",
         "platinum": "#4f9896",
         "diamond": "#576ace",
