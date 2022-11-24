@@ -2,6 +2,7 @@ import { flexRender } from "@tanstack/react-table";
 import { FlexCol } from "components/atoms/FlexBoxes/FlexBoxes.styled";
 import { useGetSummonerQuery } from "hooks/useGetSummonerQuery";
 import { useScreenSize } from "hooks/useScreenSize";
+import { theme } from "misc/theme";
 import { useEffect, useMemo } from "react";
 import { useParams } from "react-router-dom";
 import { LiveGameBans } from "../LiveGameBans/LiveGameBans";
@@ -11,14 +12,14 @@ import { useTable } from "./useTable";
 export const MatchDetails = ({ match }) => {
 
   const { width } = useScreenSize();
+  const { server, summonerName } = useParams();
+  const { data: summonerData } = useGetSummonerQuery(server, summonerName);
+
   const blueTeam = useMemo(() => match.info.participants.slice(0, 5), [match]);
   const redTeam = useMemo(() => match.info.participants.slice(5), [match]);
 
   const blueTable = useTable(blueTeam);
   const redTable = useTable(redTeam);
-
-  const { server, summonerName } = useParams();
-  const { data: summonerData } = useGetSummonerQuery(server, summonerName);
 
   const teams = useMemo(() => [blueTeam, redTeam], [blueTeam, redTeam]);
   const tables = useMemo(() => [blueTable, redTable], [blueTable, redTable]);
@@ -39,13 +40,19 @@ export const MatchDetails = ({ match }) => {
   return (
     <FlexCol style={{
       marginBottom: "1.5rem",
-      borderBottom: `10px solid lightblue`,
-      borderTop: `10px solid lightblue`,
+      borderBottom: `10px solid ${theme.backgroundColors.tertiary}`,
+      borderTop: `10px solid ${theme.backgroundColors.tertiary}`,
       borderRadius: "10px"
     }}>
       {tables.map((table, i) => (
         <FlexCol>
-          <LiveGameBans size="30px" align="left" isWinner={teams[i][0].win} bans={match?.info.teams[i].bans}>BANS:</LiveGameBans>
+          <LiveGameBans
+            size="30px"
+            align="left"
+            isWinner={teams[i][0].win} bans={match?.info.teams[i].bans}
+          >
+            BANS:
+          </LiveGameBans>
           <StyledMatchDetails key={i} isWinner={teams[i][0].win}>
             <thead>
               {

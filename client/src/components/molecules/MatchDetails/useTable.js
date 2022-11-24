@@ -4,7 +4,7 @@ import { FlexColCenter, FlexRowStart } from "components/atoms/FlexBoxes/FlexBoxe
 import { GridBox } from "components/atoms/GridBoxes/GridBoxes.styled";
 import { ImageContainer } from "components/atoms/ImageContainer/ImageContainer";
 import { Span } from "components/atoms/Span/Span";
-import { useMemo } from "react";
+import { useCallback, useMemo } from "react";
 import { useQueryClient } from "react-query";
 import { useParams } from "react-router-dom";
 
@@ -18,8 +18,7 @@ export const useTable = (data) => {
     const summonerSpells = queryClient.getQueryData(["summoner-spells"]);
     const runes = queryClient.getQueryData(["runes"]);
 
-    const kda = (row) => Math.round(((row.kills + row.assists) / (row.deaths || 1)) * 100) / 100;
-
+    const kda = useCallback((row) => Math.round(((row.kills + row.assists) / (row.deaths || 1)) * 100) / 100, []);
 
     const defaultColumns = useMemo(() => [
         columnHelper.accessor(row => row, {
@@ -96,7 +95,7 @@ export const useTable = (data) => {
                 const row = props.getValue();
                 return (
                     <FlexColCenter>
-                        <Span size="sm" align="center">{kda(row)}:1</Span>
+                        <Span size="sm" align="center">{kda(row)}</Span>
                         <Span size="s" align="center">
                             {(row.kills)}, <Span size="s" color="#ff6961">{row.deaths}</Span>, {row.assists}
                         </Span>
@@ -107,7 +106,7 @@ export const useTable = (data) => {
             id: "kda"
         }),
         columnHelper.accessor("goldEarned", {
-            cell: (props) => <Span color="gold" size="sm">{props.getValue()}</Span>,
+            cell: (props) => <Span size="sm">{props.getValue()}</Span>,
             header: "Gold",
             id: "gold"
         }),
@@ -169,7 +168,7 @@ export const useTable = (data) => {
             header: "Items",
             id: "items"
         }),
-    ], [server, version, runes, summonerSpells]);
+    ], [server, version, runes, summonerSpells, kda]);
 
     const memoData = useMemo(() => data, [data]);
 

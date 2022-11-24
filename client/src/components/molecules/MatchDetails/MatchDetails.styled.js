@@ -15,8 +15,7 @@ export const StyledMatchDetails = styled.table`
     }
 
     [data-profile="true"] {
-        outline: thin solid ${({ theme }) => theme.backgroundColors.active};
-        background-color: ${({ theme }) => theme.backgroundColors.quaternary};
+        background-color: ${({ theme, isWinner }) => isWinner ? theme.matchResult.winBorder : theme.matchResult.lossBorder};
     }
 
     th {
@@ -62,7 +61,7 @@ export const StyledMatchDetails = styled.table`
 
     tr {
         outline: thin solid ${({ theme }) => theme.backgroundColors.tertiary};
-        background-color: ${({ theme, isWinner }) => isWinner ? theme.matchResult.win : theme.matchResult.loss}
+        background-color: ${({ theme, isWinner }) => isWinner ? theme.matchResult.win : theme.matchResult.loss};
     }
 
 

@@ -1,7 +1,6 @@
 TASKS FOR FUTURE ME WHEN ITS FUNCTIONAL (WIP)
 
-- items component
-- limit match history?
+- items / champsetup component
 - remove focus from navsearch on submit
 - comments on useTable components
 - swap from "rtl-ltr" thing for livegame
