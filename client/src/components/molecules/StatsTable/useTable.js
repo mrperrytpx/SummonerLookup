@@ -16,7 +16,7 @@ export const useTable = (data) => {
     const version = queryClient.getQueryData(["version"]);
 
     const winrate = (row) => Math.round((row.wins / row.totalMatches) * 100);
-    const kda = (row) => Math.round(((row.kills + row.assists) / row.deaths) * 100) / 100;
+    const kda = (row) => Math.round(((row.kills + row.assists) / (row.deaths || 1)) * 100) / 100;
 
     const stat = (field, total) => `${Math.round((field / total) * 10) / 10}`;
 

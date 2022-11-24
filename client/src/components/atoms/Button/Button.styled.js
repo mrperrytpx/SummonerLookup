@@ -5,7 +5,9 @@ export const StyledButton = styled.button`
     background-color: ${({ theme, variant }) => backgroundColor(theme, variant)};
     /* box-shadow: 0px 4px 4px, rgba(0, 0, 0, 0.25); */
 
-    /* min-width: 100px; */
+    ${({ minWidth }) => minWidth && `
+        min-width: ${minWidth};
+    `}
     white-space: pre;
     width: ${({ width }) => width || "auto"};
     padding: ${({ padding }) => padding || ".5em 1em"};

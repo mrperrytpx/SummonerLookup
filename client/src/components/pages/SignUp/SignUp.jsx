@@ -30,7 +30,7 @@ export const SignUp = () => {
   const onSubmit = async (data) => {
     console.log("REG DATA: ", data);
     await signUp.mutateAsync({ ...data });
-    navigate("/signin");
+    navigate("/signin", { replace: false });
   };
 
   return (
@@ -52,7 +52,7 @@ export const SignUp = () => {
             type="email"
             placeholder="Type your email"
             errors={errors?.email}
-            pattern={/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/}
+            pattern="/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/"
           />
           {errors?.email?.message && <ErrorText>• {errors?.email?.message}</ErrorText>}
           <FormLabelInput

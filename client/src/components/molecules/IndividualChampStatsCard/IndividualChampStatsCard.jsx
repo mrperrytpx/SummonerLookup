@@ -9,10 +9,10 @@ export const IndividualChampStatsCard = ({ champion }) => {
   const champions = queryClient.getQueryData(["champions"]);
   const version = queryClient.getQueryData(["version"]);
 
-  const kda = ((champion.kills + champion.assists) / champion.deaths).toFixed(2);
-  const averageKills = (champion.kills / champion.totalMatches).toFixed(1);
-  const averageDeaths = (champion.deaths / champion.totalMatches).toFixed(1);
-  const averageAssists = (champion.assists / champion.totalMatches).toFixed(1);
+  const kda = Math.round(((champion.kills + champion.assists) / (champion.deaths || 1)) * 100) / 100;
+  const averageKills = Math.round((champion.kills / champion.totalMatches) * 10) / 10;
+  const averageDeaths = Math.round((champion.deaths / champion.totalMatches) * 10) / 10;
+  const averageAssists = Math.round((champion.assists / champion.totalMatches) * 10) / 10;
   const winrate = Math.round((champion.wins / champion.totalMatches) * 100);
 
   return (

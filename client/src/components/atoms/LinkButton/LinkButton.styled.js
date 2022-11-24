@@ -8,7 +8,9 @@ export const StyledLinkButton = styled(Link)`
 
     display: inline-block;
     height: 100%;
-    min-width: 100px;
+    ${({ minWidth }) => minWidth && `
+        min-width: ${minWidth};
+    `}
     padding: .5em;
     border: none;
     border-radius: 5px;

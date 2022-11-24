@@ -21,14 +21,14 @@ export const MobileMenu = ({ setIsNavOpen }) => {
   return (
     <StyledMobileMenu>
       <LinkButtonCluster variant="mobile">
-        {location.pathname !== "/" && <LinkButton variant="secondary" to="/">Home</LinkButton>}
+        {location.pathname !== "/" && <LinkButton minWidth="120px" variant="quaternary" to="/">Home</LinkButton>}
         {accessToken
-          ? <LinkButton variant="quaternary" to="/me">Profile</LinkButton>
-          : <LinkButton variant="quaternary" to="/signin">Sign in</LinkButton>
+          ? <LinkButton minWidth="120px" variant="quaternary" to="/me">Profile</LinkButton>
+          : <LinkButton minWidth="120px" variant="quaternary" to="/signin">Sign in</LinkButton>
         }
         {accessToken
-          ? <Button onClick={(e) => handleLogout(e)} variant="danger">Sign Out</Button>
-          : <LinkButton variant="quaternary" to="/signup">Sign up</LinkButton>
+          ? <Button minWidth="120px" onClick={(e) => handleLogout(e)} variant="danger">Sign Out</Button>
+          : <LinkButton minWidth="120px" variant="quaternary" to="/signup">Sign up</LinkButton>
         }
       </LinkButtonCluster>
 

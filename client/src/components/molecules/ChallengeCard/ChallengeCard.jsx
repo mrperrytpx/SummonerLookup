@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { StyledChallengeCard } from "./ChallengeCard.styled";
 import { SERVER_VALUES } from "consts/serverValues";
 import { Span } from "components/atoms/Span/Span";
-import { FlexCol, FlexColStart, FlexRow, FlexRowSpaceAround, FlexRowStart } from "components/atoms/FlexBoxes/FlexBoxes.styled";
+import { FlexCol, FlexRow } from "components/atoms/FlexBoxes/FlexBoxes.styled";
 
 export const ChallengeCard = ({ challenge }) => {
 

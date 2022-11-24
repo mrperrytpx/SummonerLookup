@@ -1,28 +1,20 @@
 TASKS FOR FUTURE ME WHEN ITS FUNCTIONAL (WIP)
 
-- infinity kda
-- swap from .toFixed(x)
-- fix redirect back to old page after logging in
-- check out react-query loading component
 - expand match history into a table of both teams' stats
 - limit match history?
-- split stats into 3 fetches?
-- increase mobile icons a bit until 300px?
 - remove focus from navsearch on submit
 - fix mobile nav menu shifting
 - fix "the baus ffs" successfully searching "thebausffs" (less words to describe)
 - remove load more matches button instead of displaying "no more"
 - don't display matches that aren't on screen
+- intersection observer for challenges and matches
 - error boundry component
 - stop space from scrolling when selecting a server
 - remove all console.logs when finished
-- small navbar overflow-x kinda scuffed 
 - add hover to profile badges
 - prefetch summoner when hovered on /me
 - code splitting? 
-- intersection observer for challenges and matches
 - server - name in tab name
-- sticky stats on Overview
 - redis cache for matches
 
 https://ddragon.leagueoflegends.com/cdn/version/img/item/item.full

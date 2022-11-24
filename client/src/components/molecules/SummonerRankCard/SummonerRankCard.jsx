@@ -9,7 +9,7 @@ import { LoadingIndicator } from "components/atoms/LoadingIndicator/LoadingIndic
 
 export const SummonerRankCard = ({ ranked, isLoading }) => {
 
-  const winrate = ((ranked.wins / (ranked.wins + ranked.losses)) * 100).toFixed(2);
+  const winrate = Math.round((ranked.wins / (ranked.wins + ranked.losses)) * 10000) / 100;
 
   return (
     <StyledSummonerRankCard>

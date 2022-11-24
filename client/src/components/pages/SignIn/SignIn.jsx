@@ -46,7 +46,7 @@ export const SignIn = () => {
             placeholder="Type your email"
             required={true}
             errors={errors?.email}
-            pattern={/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/}
+            pattern="/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/"
           />
           {errors?.email?.message && <ErrorText>• {errors?.email?.message}</ErrorText>}
           <FormLabelInput

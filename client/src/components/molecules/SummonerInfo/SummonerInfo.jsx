@@ -60,7 +60,7 @@ export const SummonerInfo = () => {
     if (!titleKey) return;
     // gets which key in 'thresholds' object has the actual title string
     // example: CHALLENGE_THRESHOLDS[2] returns "SILVER" which would have .rewards[0].title in it because summonerTitleId ends with a '2'
-    // why doesn't the API separate the ID itself or why doesn't it just return the title string instead of the ID 
+    // why doesn't the API separate the ID itself or why doesn't it just return the title string instead of the ID
     // boggles my mind greatly
 
     const correctTitle = titleData?.thresholds[`${titleKey}`].rewards[0].title;
@@ -96,8 +96,7 @@ export const SummonerInfo = () => {
           </Span>
           {summonerChallengesData?.totalPoints?.percentile && (
             <Span align="left" size="s">
-              {/* https://stackoverflow.com/questions/5037839/avoiding-problems-with-javascripts-weird-decimal-calculations */}
-              (better than {+((1 - summonerChallengesData?.totalPoints?.percentile) * 100).toFixed(2)}% of {SERVER_VALUES[server]})
+              (better than {100 - (summonerChallengesData?.totalPoints?.percentile) * 100}% of {SERVER_VALUES[server]})
             </Span>
           )}
         </FlexCol>
