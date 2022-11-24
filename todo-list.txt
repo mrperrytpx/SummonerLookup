@@ -1,6 +1,8 @@
 TASKS FOR FUTURE ME WHEN ITS FUNCTIONAL (WIP)
 
 - expand match history into a table of both teams' stats
+- infinite rerender matchdetails
+- items component
 - limit match history?
 - remove focus from navsearch on submit
 - fix mobile nav menu shifting

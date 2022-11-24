@@ -8,12 +8,16 @@ import { useQueryClient } from "react-query";
 import { useParams } from "react-router-dom";
 import { StyledSummonerMatchCard } from "./SummonerMatchCard.styled";
 import { QUEUE_TYPES } from "consts/queueTypes";
+import { MatchDetails } from "../MatchDetails/MatchDetails";
+import { useState } from "react";
 
 export const SummonerMatchCard = ({ match }) => {
 
   const queryClient = useQueryClient();
   const { server, summonerName } = useParams();
   const { data: summonerData } = useGetSummonerQuery(server, summonerName);
+
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const version = queryClient.getQueryData(["version"]);
   const runes = queryClient.getQueryData(["runes"]);
@@ -48,86 +52,89 @@ export const SummonerMatchCard = ({ match }) => {
 
   return (
     <StyledSummonerMatchCard isWin={summonerMatchData.win}>
-      <FlexColCenter gap="0.25rem">
-        <Span size="m">{QUEUE_TYPES[match?.info?.queueId]}</Span>
-        <Span size="s">
-          {summonerMatchData.win ? "Victory" : "Defeat"}
-          {" - "}
-          {match?.info?.gameEndTimestamp
-            ? `${parseInt(match.info.gameDuration / 60)}m ${match.info.gameDuration % 60}s`
-            : `${parseInt(match.info.gameDuration / 60000)}m ${match.info.gameDuration % 60000 % 60}s`
-          }
-        </Span>
-        <Span size="s">{(new Date(match?.info?.gameEndTimestamp ? match?.info?.gameEndTimestamp : match?.info?.gameStartTimestamp + match?.info?.gameDuration)).toDateString()}</Span>
-      </FlexColCenter>
-      <FlexRowCenter>
-        <IconWithLevel
-          src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${champions.get(`${summonerMatchData.championId}`).id}.png`}
-          alt="Champion"
-          level={summonerMatchData.champLevel}
-          width="60px"
-        />
-        <GridBox rows="repeat(2, minmax(30px, 1fr))" cols="repeat(2, minmax(30px, 1fr))">
-          <ImageContainer
-            border="black"
-            background
-            width="30px"
-            src={`https://ddragon.leagueoflegends.com/cdn/img/${primaryTree.slots[0].runes.find(rune => rune.id === keystoneRuneId).icon}`}
-            alt="Keystone rune"
-            data-setup
+      <div onClick={() => setIsExpanded(!isExpanded)}>
+        <FlexColCenter gap="0.25rem">
+          <Span size="m">{QUEUE_TYPES[match?.info?.queueId]}</Span>
+          <Span size="s">
+            {summonerMatchData.win ? "Victory" : "Defeat"}
+            {" - "}
+            {match?.info?.gameEndTimestamp
+              ? `${parseInt(match.info.gameDuration / 60)}m ${match.info.gameDuration % 60}s`
+              : `${parseInt(match.info.gameDuration / 60000)}m ${match.info.gameDuration % 60000 % 60}s`
+            }
+          </Span>
+          <Span size="s">{(new Date(match?.info?.gameEndTimestamp ? match?.info?.gameEndTimestamp : match?.info?.gameStartTimestamp + match?.info?.gameDuration)).toDateString()}</Span>
+        </FlexColCenter>
+        <FlexRowCenter>
+          <IconWithLevel
+            src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${champions.get(`${summonerMatchData.championId}`).id}.png`}
+            alt="Champion"
+            level={summonerMatchData.champLevel}
+            width="60px"
           />
-          <ImageContainer
-            border="black"
-            background
-            width="30px"
-            src={`https://ddragon.leagueoflegends.com/cdn/img/${secondaryTree.icon}`}
-            alt="Secondary rune tree"
-            data-setup
-          />
-          <ImageContainer
-            border="black"
-            width="30px"
-            src={`https://raw.communitydragon.org/latest/game/${firstSummonerSpell}`}
-            alt="Summoner Spell 1"
-            data-setup
-          />
-          <ImageContainer
-            border="black"
-            width="30px"
-            src={`https://raw.communitydragon.org/latest/game/${secondSummonerSpell}`}
-            alt="Summoner Spell 2"
-            data-setup
-          />
+          <GridBox rows="repeat(2, minmax(30px, 1fr))" cols="repeat(2, minmax(30px, 1fr))">
+            <ImageContainer
+              border="black"
+              background
+              width="30px"
+              src={`https://ddragon.leagueoflegends.com/cdn/img/${primaryTree.slots[0].runes.find(rune => rune.id === keystoneRuneId).icon}`}
+              alt="Keystone rune"
+              data-setup
+            />
+            <ImageContainer
+              border="black"
+              background
+              width="30px"
+              src={`https://ddragon.leagueoflegends.com/cdn/img/${secondaryTree.icon}`}
+              alt="Secondary rune tree"
+              data-setup
+            />
+            <ImageContainer
+              border="black"
+              width="30px"
+              src={`https://raw.communitydragon.org/latest/game/${firstSummonerSpell}`}
+              alt="Summoner Spell 1"
+              data-setup
+            />
+            <ImageContainer
+              border="black"
+              width="30px"
+              src={`https://raw.communitydragon.org/latest/game/${secondSummonerSpell}`}
+              alt="Summoner Spell 2"
+              data-setup
+            />
+          </GridBox>
+        </FlexRowCenter>
+
+        <FlexColCenter>
+          <Span width="auto" align="center" size="s">{summonerMatchData.kills} / {summonerMatchData.deaths} / {summonerMatchData.assists}</Span>
+          <Span width="auto" align="center" size="s">{summonerMatchData.totalMinionsKilled} CS ({Math.round(summonerMatchData.totalMinionsKilled / match.info.gameDuration * 600) / 10})</Span>
+          <Span width="auto" align="center" size="s">{summonerMatchData.visionScore} VS</Span>
+        </FlexColCenter>
+
+        <GridBox style={{ backgroundColor: "black" }} cols={`repeat(7, ${itemWidth})`}>
+          {itemsArray.map((item, i) => (
+            item
+              ? <ImageContainer
+                data-item
+                border="black"
+                width={itemWidth}
+                key={i}
+                src={`http://ddragon.leagueoflegends.com/cdn/${version}/img/item/${item}.png`}
+                alt="Item"
+              />
+              : <ImageContainer
+                data-item
+                border="black"
+                width={itemWidth}
+                key={i}
+                src={`https://raw.communitydragon.org/latest/game/assets/ux/summonericons/profileicon29.png`}
+                alt="Item"
+              />
+          ))}
         </GridBox>
-      </FlexRowCenter>
-
-      <FlexColCenter>
-        <Span width="auto" align="center" size="s">{summonerMatchData.kills} / {summonerMatchData.deaths} / {summonerMatchData.assists}</Span>
-        <Span width="auto" align="center" size="s">{summonerMatchData.totalMinionsKilled} CS ({Math.round(summonerMatchData.totalMinionsKilled / match.info.gameDuration * 600) / 10})</Span>
-        <Span width="auto" align="center" size="s">{summonerMatchData.visionScore} VS</Span>
-      </FlexColCenter>
-
-      <GridBox style={{ backgroundColor: "black" }} cols={`repeat(7, ${itemWidth})`}>
-        {itemsArray.map((item, i) => (
-          item
-            ? <ImageContainer
-              data-item
-              border="black"
-              width={itemWidth}
-              key={i}
-              src={`http://ddragon.leagueoflegends.com/cdn/${version}/img/item/${item}.png`}
-              alt="Item"
-            />
-            : <ImageContainer
-              data-item
-              border="black"
-              width={itemWidth}
-              key={i}
-              src={`https://raw.communitydragon.org/latest/game/assets/ux/summonericons/profileicon29.png`}
-              alt="Item"
-            />
-        ))}
-      </GridBox>
+      </div>
+      {isExpanded && <MatchDetails match={match} />}
 
     </StyledSummonerMatchCard >
   );

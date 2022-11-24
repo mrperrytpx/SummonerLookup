@@ -5,8 +5,8 @@ export const StyledButton = styled.button`
     background-color: ${({ theme, variant }) => backgroundColor(theme, variant)};
     /* box-shadow: 0px 4px 4px, rgba(0, 0, 0, 0.25); */
 
-    ${({ minWidth }) => minWidth && `
-        min-width: ${minWidth};
+    ${({ minwidth }) => minwidth && `
+        min-width: ${minwidth};
     `}
     white-space: pre;
     width: ${({ width }) => width || "auto"};

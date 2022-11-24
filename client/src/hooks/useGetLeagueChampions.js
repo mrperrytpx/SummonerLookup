@@ -15,9 +15,15 @@ export const useGetLeagueChampions = () => {
         for (let name in data.data) {
             map.set(data.data[name].key, {
                 name: data.data[name].name,
-                id: name
+                id: name,
+                link: (version) => `https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${name}.png`
             });
         }
+        map.set("-1", {
+            name: "NoBan",
+            id: "No ban",
+            link: () => "https://raw.communitydragon.org/latest/game/assets/ux/summonericons/profileicon29.png"
+        });
 
         console.log("CHAMPIONS MAP:", map);
         return map;

@@ -8,6 +8,7 @@ export const StyledDropdown = styled(FlexColCenter)`
     user-select: none;
     position: relative;
     border-radius: 5px;
+    z-index: 20;
     
     span {
         background-color: ${({ theme }) => theme.backgroundColors.active};

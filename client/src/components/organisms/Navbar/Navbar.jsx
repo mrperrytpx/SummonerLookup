@@ -45,12 +45,12 @@ export const Navbar = ({ isNavOpen, handleNavOpen, setIsNavOpen }) => {
         width >= 750
           ? <LinkButtonCluster>
             {accessToken
-              ? !location.pathname.includes("/me") ? <LinkButton minWidth="100px" state={{ from: location.pathname }} variant="quaternary" to="/me">Profile</LinkButton> : null
-              : <LinkButton minWidth="100px" state={{ from: location.pathname }} variant="quaternary" to="/signin">Sign in</LinkButton>
+              ? !location.pathname.includes("/me") ? <LinkButton minwidth="100px" state={{ from: location.pathname }} variant="quaternary" to="/me">Profile</LinkButton> : null
+              : <LinkButton minwidth="100px" state={{ from: location.pathname }} variant="quaternary" to="/signin">Sign in</LinkButton>
             }
             {accessToken
               ? <Button onClick={(e) => handleLogout(e)} variant="danger">Sign Out</Button>
-              : <LinkButton minWidth="100px" state={{ from: location.pathname }} variant="quaternary" to="/signup">Sign up</LinkButton>
+              : <LinkButton minwidth="100px" state={{ from: location.pathname }} variant="quaternary" to="/signup">Sign up</LinkButton>
             }
           </LinkButtonCluster>
           : !isNavOpen

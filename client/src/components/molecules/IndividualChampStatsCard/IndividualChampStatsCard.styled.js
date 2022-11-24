@@ -37,5 +37,9 @@ export const StyledIndividualChampStatsCard = styled.div`
         & > :first-child  span {
             display: none;
         }
+
+        & > div:nth-child(2) {
+        place-self: center end;
+    }
     }
 `; 

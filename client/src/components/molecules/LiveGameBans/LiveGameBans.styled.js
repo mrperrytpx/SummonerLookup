@@ -6,17 +6,14 @@ export const StyledLiveGameBans = styled(FlexRowStart)`
     color: white;
     width: 100%;
     background-color: ${({ theme }) => theme.backgroundColors.secondary};
-    padding: 0.5rem;
+    padding: 0.25rem;
 
     ${({ align }) => align && `
-        justify-content: flex-end;
+        justify-content: ${align};
     `}
 
     @media only screen and (max-width: 900px) {
-        & {
-            justify-content: center;
-        }
-
+        justify-content: ${({ align }) => align || "center"};
         img {
             width: 36px;
         }
