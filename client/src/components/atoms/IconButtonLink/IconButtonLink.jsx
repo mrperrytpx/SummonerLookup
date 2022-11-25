@@ -5,7 +5,6 @@ import { StyledIconButtonAnchor } from "./IconButtonAchor.styled";
 export const IconButtonLink = ({ size, icon, server, summonerName }) => {
 
   switch (icon) {
-
     case "search": {
       return (
         <StyledIconButtonLink disabled={summonerName ? false : true} to={`/${server}/${summonerName}/`}>

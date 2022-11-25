@@ -1,14 +1,14 @@
-import { useGetSummonerRankedChampStatsQuery } from "../../../hooks/useGetSummonerRankedChampStatsQuery";
-import { StyledSummonerChampStatsCard } from "./SummonerChampStatsCard.styled";
-import { useParams } from "react-router-dom";
-import { IndividualChampStatsCard } from "../IndividualChampStatsCard/IndividualChampStatsCard";
-import { CustomLink } from "components/atoms/CustomLink/CustomLink";
 import { useState } from "react";
-import { FlexColCenter, FlexRowSpaceBetween } from "components/atoms/FlexBoxes/FlexBoxes.styled";
-import { Dropdown } from "components/atoms/Dropdown/Dropdown";
-import { Span } from "components/atoms/Span/Span";
+import { useParams } from "react-router-dom";
+import { StyledSummonerChampStatsCard } from "./SummonerChampStatsCard.styled";
 import { Container } from "components/atoms/Container/Container";
+import { CustomLink } from "components/atoms/CustomLink/CustomLink";
+import { Dropdown } from "components/atoms/Dropdown/Dropdown";
+import { FlexColCenter, FlexRowSpaceBetween } from "components/atoms/FlexBoxes/FlexBoxes.styled";
 import { LoadingIndicator } from "components/atoms/LoadingIndicator/LoadingIndicator";
+import { Span } from "components/atoms/Span/Span";
+import { IndividualChampStatsCard } from "../IndividualChampStatsCard/IndividualChampStatsCard";
+import { useGetSummonerRankedChampStatsQuery } from "../../../hooks/useGetSummonerRankedChampStatsQuery";
 
 export const SummonerChampStatsCard = () => {
 

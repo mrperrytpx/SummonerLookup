@@ -3,10 +3,10 @@ import styled from "styled-components";
 
 export const StyledGameBans = styled(FlexRowStart)`
     gap: 1rem;
-    color: white;
     width: 100%;
-    background-color: ${({ theme }) => theme.backgroundColors.secondary};
     padding: 0.25rem;
+    background-color: ${({ theme }) => theme.backgroundColors.secondary};
+    color: white;
 
     ${({ align }) => align && `
         justify-content: ${align};
@@ -17,6 +17,7 @@ export const StyledGameBans = styled(FlexRowStart)`
         ${({ align, shouldMobileAlign }) => shouldMobileAlign && `
             justify-content: ${align};
         `}
+        
         img {
             width: 36px;
         }

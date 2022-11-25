@@ -1,9 +1,9 @@
+import { useMemo, useState } from "react";
 import { useReactTable, createColumnHelper, getCoreRowModel, getSortedRowModel } from "@tanstack/react-table";
 import { queryClient } from "contexts/AppProviders";
-import { useMemo, useState } from "react";
-import { ImageContainer } from "components/atoms/ImageContainer/ImageContainer";
-import { FlexColCenter, FlexRowStart } from "components/atoms/FlexBoxes/FlexBoxes.styled";
 import { Span } from "components/atoms/Span/Span";
+import { FlexColCenter, FlexRowStart } from "components/atoms/FlexBoxes/FlexBoxes.styled";
+import { ImageContainer } from "components/atoms/ImageContainer/ImageContainer";
 
 const columnHelper = createColumnHelper();
 

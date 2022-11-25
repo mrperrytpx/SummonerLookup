@@ -1,14 +1,14 @@
-import { useGetSummonerRankedChampStatsQuery } from "hooks/useGetSummonerRankedChampStatsQuery";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { StyledSummonerChampionStats } from "./SummonerChampionStats.styled";
-import { Span } from "components/atoms/Span/Span";
-import { useState } from "react";
-import { FlexRowSpaceBetween } from "components/atoms/FlexBoxes/FlexBoxes.styled";
-import { StatsTable } from "components/molecules/StatsTable/StatsTable";
-import { Dropdown } from "components/atoms/Dropdown/Dropdown";
 import { Container } from "components/atoms/Container/Container";
-import { LoadingIndicator } from "components/atoms/LoadingIndicator/LoadingIndicator";
+import { Dropdown } from "components/atoms/Dropdown/Dropdown";
 import { ErrorText } from "components/atoms/ErrorText/ErrorText";
+import { FlexRowSpaceBetween } from "components/atoms/FlexBoxes/FlexBoxes.styled";
+import { LoadingIndicator } from "components/atoms/LoadingIndicator/LoadingIndicator";
+import { Span } from "components/atoms/Span/Span";
+import { StatsTable } from "components/molecules/StatsTable/StatsTable";
+import { useGetSummonerRankedChampStatsQuery } from "hooks/useGetSummonerRankedChampStatsQuery";
 
 export const SummonerChampionStats = () => {
 

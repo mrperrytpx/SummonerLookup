@@ -3,7 +3,6 @@ import { useQuery } from "react-query";
 export const useGetSummonerLiveGameQuery = (server, summonerId) => {
 
     const getSummonerLiveGame = async ({ signal }) => {
-
         const response = await fetch(`/api/summoner/live_game/${server}/${summonerId}`, {
             signal
         });
@@ -19,6 +18,5 @@ export const useGetSummonerLiveGameQuery = (server, summonerId) => {
         staleTime: 10000,
         retry: 1,
         enabled: !!server && !!summonerId,
-        onSuccess: (data) => console.log("Live game data:", data)
     });
 };

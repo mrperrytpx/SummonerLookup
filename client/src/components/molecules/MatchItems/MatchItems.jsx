@@ -1,6 +1,6 @@
-import { ImageContainer } from "components/atoms/ImageContainer/ImageContainer";
 import { useQueryClient } from "react-query";
 import { StyledMatchItems } from "./MatchItems.styled";
+import { ImageContainer } from "components/atoms/ImageContainer/ImageContainer";
 
 export const MatchItems = ({ items, initialWidth, gap }) => {
 

@@ -1,16 +1,16 @@
 import styled from "styled-components";
 
 export const StyledSummonerChallenges = styled.div`
-    border-radius: 10px;
+    position: sticky;
     display: grid;
     grid-template-columns: 250px 1fr;
-    position: sticky;
     gap: 1rem;
+    border-radius: 10px;
 
     aside {
-        max-height: 0;
         position: sticky;
         top: 0;
+        max-height: 0;
         display: flex;
         flex-direction:column;
         gap: 1rem;
@@ -33,12 +33,11 @@ export const StyledSummonerChallenges = styled.div`
         gap: 1rem;
 
         aside {
-            max-height: 100%;
-
             background-color: ${({ theme }) => theme.backgroundColors.tertiary};
             flex-direction: row;
-            overflow-x: scroll;
             height: auto;
+            max-height: 100%;
+            overflow-x: scroll;
 
             ::-webkit-scrollbar {
                 height: 5px;

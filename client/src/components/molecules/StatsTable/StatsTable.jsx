@@ -8,8 +8,6 @@ import { Container } from "components/atoms/Container/Container";
 
 export const StatsTable = ({ data }) => {
 
-  useEffect(() => console.log(data), [data]);
-
   const { width } = useScreenSize();
   const table = useTable(data);
 

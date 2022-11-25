@@ -1,7 +1,7 @@
 import { StyledSummonerUnrankedCards } from "./SummonerUnrankedCard.stlyed";
 import { FlexColCenter, FlexRowSpaceBetween, FlexRow } from "../../atoms/FlexBoxes/FlexBoxes.styled";
-import { Span } from "../../atoms/Span/Span";
 import { ImageContainer } from "../../atoms/ImageContainer/ImageContainer";
+import { Span } from "../../atoms/Span/Span";
 
 export const SummonerUnrankedCard = () => {
 

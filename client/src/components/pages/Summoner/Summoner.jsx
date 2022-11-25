@@ -1,13 +1,13 @@
 import { Outlet, useParams } from "react-router-dom";
-import { useGetSummonerQuery } from "../../../hooks/useGetSummonerQuery";
 import { StyledSummoner } from "./Summoner.styled";
-import { useGetSummonerChallengesQuery } from "../../../hooks/useGetSummonerChallengesQuery";
+import { Container } from "components/atoms/Container/Container";
+import { ErrorText } from "components/atoms/ErrorText/ErrorText";
+import { LoadingIndicator } from "components/atoms/LoadingIndicator/LoadingIndicator";
 import { SummonerCard } from "../../organisms/SummonerCard/SummonerCard";
 import { SummonerNavbar } from "../../organisms/SummonerNavbar/SummonerNavbar";
 import { useGetSummonerRankedStatsQuery } from "../../../hooks/useGetSummonerRankedStatsQuery";
-import { Container } from "components/atoms/Container/Container";
-import { LoadingIndicator } from "components/atoms/LoadingIndicator/LoadingIndicator";
-import { ErrorText } from "components/atoms/ErrorText/ErrorText";
+import { useGetSummonerChallengesQuery } from "../../../hooks/useGetSummonerChallengesQuery";
+import { useGetSummonerQuery } from "../../../hooks/useGetSummonerQuery";
 
 export const Summoner = () => {
 
@@ -36,13 +36,10 @@ export const Summoner = () => {
   );
 
   return (
-
     <StyledSummoner>
       <SummonerCard summonerData={summonerData} summonerChallengesData={summonerChallengesData} />
       <SummonerNavbar />
       <Outlet />
     </StyledSummoner>
-
-
   );
 };

@@ -12,7 +12,6 @@ export const useGetSummonerChallengesQuery = (server, summonerName, puuid) => {
         if (signal.aborted) return;
 
         const data = await response.json();
-        console.log("Summoner challenges data:", data);
         return data;
     };
 

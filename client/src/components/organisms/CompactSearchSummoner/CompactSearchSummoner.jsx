@@ -1,8 +1,8 @@
-import { Dropdown } from "components/atoms/Dropdown/Dropdown";
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { SummonerInput } from "../../molecules/SummonerInput/SummonerInput";
 import { StyledCompactSearchSummoner } from "./CompactSearchSummoner.styled";
+import { Dropdown } from "components/atoms/Dropdown/Dropdown";
+import { SummonerInput } from "../../molecules/SummonerInput/SummonerInput";
 import { SERVER_VALUES } from "consts/serverValues";
 
 export const CompactSearchSummoner = () => {
@@ -13,7 +13,6 @@ export const CompactSearchSummoner = () => {
   const inputRef = useRef(null);
 
   const handleSubmit = (e) => {
-    console.log(e);
     e.preventDefault();
     if (!dropdownValue || !summonerName) {
       alert("no");

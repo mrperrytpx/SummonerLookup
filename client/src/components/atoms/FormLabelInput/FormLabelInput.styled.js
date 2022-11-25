@@ -10,12 +10,12 @@ export const StyledFormLabelInput = styled(FlexCol)`
     }
 
     input {
-        font-size: 1.1rem;
-        padding: 0.7rem .8rem;
+        flex: 1;
         height: 100%;
+        padding: 0.7rem .8rem;
+        font-size: 1.1rem;
         background-color: #eeeeee;
         border: ${({ errors, theme }) => errors ? `3px solid ${theme.backgroundColors.danger}` : "none"};
-        flex: 1;
     }
 
     label {

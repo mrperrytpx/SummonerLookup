@@ -1,14 +1,14 @@
-import { useGetSummonerQuery } from "hooks/useGetSummonerQuery";
-import { useGetSummonerMatchesInfiniteQuery } from "hooks/useGetSummonerMatchesInfiniteQuery";
-import { StyledSummonerMatches } from "./SummonerMatches.styled";
-import { useParams } from "react-router-dom";
-import { SummonerMatchCard } from "components/molecules/SummonerMatchCard/SummonerMatchCard";
-import { Span } from "components/atoms/Span/Span";
 import { Fragment } from "react";
+import { useParams } from "react-router-dom";
+import { StyledSummonerMatches } from "./SummonerMatches.styled";
 import { Button } from "components/atoms/Button/Button";
 import { Container } from "components/atoms/Container/Container";
 import { ErrorText } from "components/atoms/ErrorText/ErrorText";
 import { LoadingIndicator } from "components/atoms/LoadingIndicator/LoadingIndicator";
+import { Span } from "components/atoms/Span/Span";
+import { SummonerMatchCard } from "components/molecules/SummonerMatchCard/SummonerMatchCard";
+import { useGetSummonerQuery } from "hooks/useGetSummonerQuery";
+import { useGetSummonerMatchesInfiniteQuery } from "hooks/useGetSummonerMatchesInfiniteQuery";
 
 export const SummonerMatches = () => {
 
@@ -47,7 +47,6 @@ export const SummonerMatches = () => {
           <ErrorText size="clamp(.8rem, 3vw, 1.4rem)" center={true}>(┬┬﹏┬┬)</ErrorText>
         </Container>
       }
-
       {summonerMatchesData?.pages?.[0]?.matchesData.length && hasNextPage
         ? (
           <Button

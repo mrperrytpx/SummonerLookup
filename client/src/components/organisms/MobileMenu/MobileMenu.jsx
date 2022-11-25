@@ -1,11 +1,11 @@
 import { useLocation } from "react-router-dom";
-import { useAuth } from "../../../hooks/useAuth";
+import { StyledMobileMenu } from "./MobileMenu.styled";
 import { Button } from "../../atoms/Button/Button";
 import { Disclaimer } from "../../atoms/Disclaimer/Disclaimer";
 import { IconButtonLink } from "../../atoms/IconButtonLink/IconButtonLink";
 import { LinkButton } from "../../atoms/LinkButton/LinkButton";
 import { LinkButtonCluster } from "../../molecules/LinkButtonCluster/LinkButtonCluster";
-import { StyledMobileMenu } from "./MobileMenu.styled";
+import { useAuth } from "../../../hooks/useAuth";
 
 export const MobileMenu = ({ setIsNavOpen }) => {
 

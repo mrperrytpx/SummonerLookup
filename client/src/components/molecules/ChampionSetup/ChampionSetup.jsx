@@ -21,6 +21,8 @@ export const ChampionSetup = ({ summonerMatchData, width, position }) => {
   const firstSummonerSpell = summonerSpells.find(spell => spell.id === summonerMatchData.summoner1Id)?.iconPath.split("/lol-game-data/assets/").pop().toLowerCase();
   const secondSummonerSpell = summonerSpells.find(spell => spell.id === summonerMatchData.summoner2Id)?.iconPath.split("/lol-game-data/assets/").pop().toLowerCase();
 
+  const noSummonerSpell = "/lol-game-data/assets/DATA/Spells/Icons2D/Summoner_Empty.png".split("/lol-game-data/assets/").pop().toLowerCase();
+
   return (
     <StyledChampionSetup position={position} data-champsetup>
       <ImageContainer
@@ -49,14 +51,14 @@ export const ChampionSetup = ({ summonerMatchData, width, position }) => {
         <ImageContainer
           border="black"
           width={`${width / 2}px` || "20px"}
-          src={`https://raw.communitydragon.org/latest/game/${firstSummonerSpell}`}
+          src={`https://raw.communitydragon.org/latest/game/${firstSummonerSpell || noSummonerSpell}`}
           alt="Summoner Spell 1"
           data-setup
         />
         <ImageContainer
           border="black"
           width={`${width / 2}px` || "20px"}
-          src={`https://raw.communitydragon.org/latest/game/${secondSummonerSpell}`}
+          src={`https://raw.communitydragon.org/latest/game/${secondSummonerSpell || noSummonerSpell}`}
           alt="Summoner Spell 2"
           data-setup
         />

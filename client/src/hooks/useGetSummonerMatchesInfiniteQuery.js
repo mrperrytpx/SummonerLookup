@@ -21,7 +21,6 @@ export const useGetSummonerMatchesInfiniteQuery = (server, puuid) => {
                 return undefined;
             }
         },
-        onSuccess: (data) => console.log("Matches data: ", data),
         retry: 1
     });
 

@@ -1,6 +1,7 @@
 import { StyledGenericInput } from "./GenericInput.styled";
 
-export const GenericInput = ({ placeholder = "", input = "", setInput = () => { } }) => {
+export const GenericInput = ({ placeholder = "", input = "", setInput }) => {
+
   return (
     <StyledGenericInput
       placeholder={placeholder}

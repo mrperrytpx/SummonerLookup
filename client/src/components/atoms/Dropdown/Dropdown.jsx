@@ -4,11 +4,9 @@ import { StyledDropdown } from "./Dropdown.styled";
 export const Dropdown = ({ from, options, state, values = null, handleClick }) => {
 
   const [isActive, setIsActive] = useState(false);
-
   const ref = useRef(null);
 
   useEffect(function collapseDropdown() {
-
     const element = ref.current;
 
     const closeMenu = (e) => {
@@ -24,7 +22,6 @@ export const Dropdown = ({ from, options, state, values = null, handleClick }) =
       return () => document.removeEventListener(type, closeMenu);
     });
   }, [setIsActive, ref]);
-
 
   return (
     <StyledDropdown ref={ref} from={from}>

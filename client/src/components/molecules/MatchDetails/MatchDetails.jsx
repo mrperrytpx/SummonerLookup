@@ -1,13 +1,13 @@
-import { flexRender } from "@tanstack/react-table";
-import { FlexCol } from "components/atoms/FlexBoxes/FlexBoxes.styled";
-import { useGetSummonerQuery } from "hooks/useGetSummonerQuery";
-import { useScreenSize } from "hooks/useScreenSize";
-import { theme } from "misc/theme";
 import { useEffect, useMemo } from "react";
+import { flexRender } from "@tanstack/react-table";
 import { useParams } from "react-router-dom";
-import { GameBans } from "../GameBans/GameBans";
 import { StyledMatchDetails } from "./MatchDetails.styled";
+import { FlexCol } from "components/atoms/FlexBoxes/FlexBoxes.styled";
+import { useScreenSize } from "hooks/useScreenSize";
+import { GameBans } from "../GameBans/GameBans";
+import { useGetSummonerQuery } from "hooks/useGetSummonerQuery";
 import { useTable } from "./useTable";
+import { theme } from "misc/theme";
 
 export const MatchDetails = ({ match }) => {
 

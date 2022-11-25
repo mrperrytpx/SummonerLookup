@@ -13,8 +13,6 @@ export const useGetLeagueItemsQuery = () => {
 
         if (!response.ok) throw new Error("Problem fetching data");
         const data = await response.json();
-        console.log("Items:, ", data.data);
-
 
         return data.data;
     };

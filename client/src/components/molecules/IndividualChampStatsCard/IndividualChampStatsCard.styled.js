@@ -3,10 +3,10 @@ import styled from "styled-components";
 export const StyledIndividualChampStatsCard = styled.div`
     display: grid;
     grid-template-columns: 2fr 1fr 78px;
-    
     padding: 0.5rem 0;
-    border-top: 1px solid ${({ theme }) => theme.backgroundColors.tertiary};
     width: 100%;
+    
+    border-top: 1px solid ${({ theme }) => theme.backgroundColors.tertiary};
 
     & > div:nth-child(2) {
         place-self: center;

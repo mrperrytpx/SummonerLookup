@@ -3,25 +3,22 @@ import styled from "styled-components";
 
 export const StyledSummonerMatchCard = styled(FlexCol)`
     /* match card */
-
     & > div:first-child {
-
-        padding: .5rem;
         border: 1px solid ${({ theme, isWin }) => isWin ? theme.matchResult.win : theme.matchResult.loss};
         border-radius: 8px;
-        box-shadow: 0px 1px 1px ${({ theme, isWin }) => isWin ? theme.matchResult.win : theme.matchResult.loss};
 
+        box-shadow: 0px 1px 1px ${({ theme, isWin }) => isWin ? theme.matchResult.win : theme.matchResult.loss};
         background-color: ${({ isWin, theme }) => isWin ? theme.matchResult.win : theme.matchResult.loss};
         display: grid;
         grid-template-columns: 120px minmax(120px, 200px) 100px 1fr;
         grid-template-rows: 78px;
         gap: 0.1rem;
         margin-bottom: 0.25rem;
+        padding: .5rem;
 
         ${({ isVisible }) => !isVisible && `
             visibility: hidden;
         `};
-
         cursor: pointer;
 
         /* items */

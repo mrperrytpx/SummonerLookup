@@ -1,15 +1,15 @@
-import { FlexColCenter } from "components/atoms/FlexBoxes/FlexBoxes.styled";
-import { Span } from "components/atoms/Span/Span";
-import { useGetSummonerQuery } from "hooks/useGetSummonerQuery";
+import { useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import { StyledSummonerMatchCard } from "./SummonerMatchCard.styled";
-import { QUEUE_TYPES } from "consts/queueTypes";
+import { FlexColCenter } from "components/atoms/FlexBoxes/FlexBoxes.styled";
+import { Span } from "components/atoms/Span/Span";
 import { MatchDetails } from "../MatchDetails/MatchDetails";
-import { useRef, useState } from "react";
 import { ChampionSetup } from "../ChampionSetup/ChampionSetup";
 import { MatchItems } from "../MatchItems/MatchItems";
-import { useIntersectionObserver } from "hooks/useIntersectionObserver";
 import { ErrorBoundary } from "utils/ErrorBoundry";
+import { useGetSummonerQuery } from "hooks/useGetSummonerQuery";
+import { useIntersectionObserver } from "hooks/useIntersectionObserver";
+import { QUEUE_TYPES } from "consts/queueTypes";
 
 export const SummonerMatchCard = ({ match }) => {
 
@@ -19,7 +19,7 @@ export const SummonerMatchCard = ({ match }) => {
   const { data: summonerData } = useGetSummonerQuery(server, summonerName);
 
   const matchRef = useRef(null);
-  const isOnScreen = useIntersectionObserver(matchRef, { rootMargin: "100px" });
+  const isOnScreen = useIntersectionObserver(matchRef, { rootMargin: "500px" });
 
   const summonerIndex = match?.metadata?.participants?.indexOf(summonerData.puuid);
   const summonerMatchData = match?.info?.participants[summonerIndex];

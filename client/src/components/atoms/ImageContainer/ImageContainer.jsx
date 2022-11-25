@@ -1,6 +1,7 @@
 import { StyledImageContainer } from "./ImageContainer.styled";
 
 export const ImageContainer = ({ border, radius, src, alt, width, background, children, ...rest }) => {
+
   return (
     <StyledImageContainer
       {...rest}

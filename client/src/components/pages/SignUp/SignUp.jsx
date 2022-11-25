@@ -1,17 +1,17 @@
-import { ReactComponent as TextLogoNoSquare } from "../../../assets/text_logo_no_square.svg";
-import { SvgLink } from "../../atoms/SvgLink/SvgLink";
-import { useForm } from "react-hook-form";
-import { FormLabelInput } from "../../atoms/FormLabelInput/FormLabelInput";
-import { FormNav } from "../../molecules/FormNav/FormNav";
-import { SignInUpForm } from "../../molecules/SignInUpForm/SignInUpForm";
-import { useAuth } from "../../../hooks/useAuth";
-import { Button } from "../../atoms/Button/Button";
-import { SingleFormPage } from "../../templates/SingleFormPage/SingleFormPage";
-import { useLocation, useNavigate } from "react-router-dom";
-import { ErrorText } from "../../atoms/ErrorText/ErrorText";
 import * as yup from "yup";
+import { useLocation, useNavigate } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
+import { ReactComponent as TextLogoNoSquare } from "../../../assets/text_logo_no_square.svg";
+import { ErrorText } from "../../atoms/ErrorText/ErrorText";
+import { FormLabelInput } from "../../atoms/FormLabelInput/FormLabelInput";
 import { FormNavLink } from "../../atoms/FormNavLink/FormNavLink";
+import { SvgLink } from "../../atoms/SvgLink/SvgLink";
+import { Button } from "../../atoms/Button/Button";
+import { SignInUpForm } from "../../molecules/SignInUpForm/SignInUpForm";
+import { FormNav } from "../../molecules/FormNav/FormNav";
+import { SingleFormPage } from "../../templates/SingleFormPage/SingleFormPage";
+import { useAuth } from "../../../hooks/useAuth";
 
 const yupValidationSchema = yup.object().shape({
   email: yup.string().email("Must be a valid email").required("This field is required"),
@@ -28,7 +28,6 @@ export const SignUp = () => {
   const { register, handleSubmit, formState: { errors } } = useForm({ resolver: yupResolver(yupValidationSchema) });
 
   const onSubmit = async (data) => {
-    console.log("REG DATA: ", data);
     await signUp.mutateAsync({ ...data });
     navigate("/signin", { replace: false });
   };

@@ -1,9 +1,9 @@
+import { useCallback, useMemo } from "react";
+import { useParams } from "react-router-dom";
 import { useReactTable, createColumnHelper, getCoreRowModel, getSortedRowModel } from "@tanstack/react-table";
 import { CustomLink } from "components/atoms/CustomLink/CustomLink";
 import { FlexColCenter, FlexRowStart } from "components/atoms/FlexBoxes/FlexBoxes.styled";
 import { Span } from "components/atoms/Span/Span";
-import { useCallback, useMemo } from "react";
-import { useParams } from "react-router-dom";
 import { ChampionSetup } from "../ChampionSetup/ChampionSetup";
 import { MatchItems } from "../MatchItems/MatchItems";
 

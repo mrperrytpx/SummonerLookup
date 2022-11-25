@@ -1,16 +1,16 @@
+import { useLocation } from "react-router-dom";
+import { ImMenu3, ImMenu4 } from "react-icons/im";
 import { StyledNavbar } from "./Navbar.styled";
+import { ReactComponent as TextLogo } from "../../../assets/txtlogo.svg";
+import { ReactComponent as SquareLogo } from "../../../assets/square_logo_no_text.svg";
+import { Button } from "../../atoms/Button/Button";
+import { LinkButton } from "../../atoms/LinkButton/LinkButton";
 import { SvgLink } from "../../atoms/SvgLink/SvgLink";
 import { LinkButtonCluster } from "../../molecules/LinkButtonCluster/LinkButtonCluster";
-import { LinkButton } from "../../atoms/LinkButton/LinkButton";
-import { ImMenu3, ImMenu4 } from "react-icons/im";
-import { MobileMenu } from "../MobileMenu/MobileMenu";
-import { useLocation } from "react-router-dom";
 import { CompactSearchSummoner } from "../CompactSearchSummoner/CompactSearchSummoner";
-import { ReactComponent as SquareLogo } from "../../../assets/square_logo_no_text.svg";
-import { ReactComponent as TextLogo } from "../../../assets/txtlogo.svg";
-import { useAuth } from "../../../hooks/useAuth";
-import { Button } from "../../atoms/Button/Button";
+import { MobileMenu } from "../MobileMenu/MobileMenu";
 import { useScreenSize } from "hooks/useScreenSize";
+import { useAuth } from "../../../hooks/useAuth";
 
 export const Navbar = ({ isNavOpen, handleNavOpen, setIsNavOpen }) => {
 
@@ -38,9 +38,7 @@ export const Navbar = ({ isNavOpen, handleNavOpen, setIsNavOpen }) => {
         </SvgLink>
         : null
       }
-
       {location.pathname !== "/" && !isNavOpen ? <CompactSearchSummoner /> : null}
-
       {tokenLoading ? <p style={{ color: "white" }}>Loading</p> :
         width >= 750
           ? <LinkButtonCluster>
@@ -54,12 +52,10 @@ export const Navbar = ({ isNavOpen, handleNavOpen, setIsNavOpen }) => {
             }
           </LinkButtonCluster>
           : !isNavOpen
-            ? <ImMenu3 fill="white" size="48" onClick={handleNavOpen}></ImMenu3>
-            : <ImMenu4 fill="white" size="48" onClick={handleNavOpen}></ImMenu4>
+            ? <ImMenu3 style={{ minWidth: "48px" }} fill="white" size="48" onClick={handleNavOpen}></ImMenu3>
+            : <ImMenu4 style={{ minWidth: "48px" }} fill="white" size="48" onClick={handleNavOpen}></ImMenu4>
       }
-
       {isNavOpen && <MobileMenu setIsNavOpen={setIsNavOpen} />}
-
     </StyledNavbar>
   );
 };

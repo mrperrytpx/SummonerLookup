@@ -3,6 +3,7 @@ import { ServerButton } from "../../atoms/ServerButton/ServerButton";
 import { SERVER_VALUES } from "../../../consts/serverValues";
 
 export const ServerPicker = ({ handleLabelClick, handleRadioClick, checkedRadioButton }) => {
+
   return (
     <StyledServerPicker>
       {[...Object.keys(SERVER_VALUES)].map((server) => (

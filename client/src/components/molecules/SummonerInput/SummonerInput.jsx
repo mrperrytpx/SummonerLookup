@@ -1,7 +1,7 @@
+import { forwardRef } from "react";
 import { StyledSummonerInput } from "./SummonerInput.styled";
 import { IconButtonLink } from "../../atoms/IconButtonLink/IconButtonLink";
 import { InputField } from "../../atoms/InputField/InputField";
-import { forwardRef } from "react";
 
 export const SummonerInput = forwardRef(({ setSummonerName, summonerName, server }, ref) => {
 

@@ -1,7 +1,7 @@
-import { FlexCol } from "components/atoms/FlexBoxes/FlexBoxes.styled";
-import { Span } from "components/atoms/Span/Span";
 import React from "react";
 import styled from "styled-components";
+import { FlexCol } from "components/atoms/FlexBoxes/FlexBoxes.styled";
+import { Span } from "components/atoms/Span/Span";
 
 const StyledErrorContainer = styled(FlexCol)`
     visibility: hidden;

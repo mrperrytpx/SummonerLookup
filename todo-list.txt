@@ -1,3 +1,2 @@
-    - redis cache for matches
-    - code splitting? 
-    - remove all console.logs when finished
+icon with level condition
+live game duration

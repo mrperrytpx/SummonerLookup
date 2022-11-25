@@ -1,36 +1,35 @@
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
-// Components
 
 import GlobalStyles from "./misc/globalStyles";
-// views
-
-import { Home, Me, Summoner, SignIn, SignUp } from "./components/pages";
-import { SummonerOverview } from "./components/organisms/SummonerOverview/SummonerOverview";
-import { SummonerLiveGame } from "components/organisms/SummonerLiveGame/SummonerLiveGame";
-import { SummonerChampionStats } from "components/organisms/SummonerChampionStats/SummonerChampionStats";
-
 import ProtectedRoute from "./utils/ProtectedRoute";
-// Contexts
-import { useAuth } from "./hooks/useAuth";
-
-import { useGetLeagueChampions } from "./hooks/useGetLeagueChampions";
-import { useScreenSize } from "./hooks/useScreenSize";
 
 import { WithNav } from "./components/templates/WithNav";
 import { WithoutNav } from "./components/templates/WithoutNav";
-import { FullscreenLoading } from "./components/atoms/FullscreenLoading/FullscreenLoading";
-import { useGetFollowingQuery } from "./hooks/useGetFollowingQuery";
-import { useGetLeagueChallengesQuery } from "./hooks/useGetLeagueChallengesQuery";
-// import { useGetLeagueItemsQuery } from "hooks/useGetLeagueItemsQuery";
-import { useGetLeagueRunesQuery } from "hooks/useGetLeagueRunesQuery";
-import { useGetLeagueSummonerSpellsQuery } from "hooks/useGetLeagueSummonerSpellsQuery";
+
+import { Home, Me, SignIn, SignUp, Summoner } from "components/pages/";
+import { SummonerOverview } from "./components/organisms/SummonerOverview/SummonerOverview";
+import { SummonerChampionStats } from "components/organisms/SummonerChampionStats/SummonerChampionStats";
+import { SummonerLiveGame } from "components/organisms/SummonerLiveGame/SummonerLiveGame";
 import { SummonerChallenges } from "components/organisms/SummonerChallenges/SummonerChallenges";
 
+import { useAuth } from "./hooks/useAuth";
+import { useGetLeagueChampions } from "./hooks/useGetLeagueChampions";
+import { useScreenSize } from "./hooks/useScreenSize";
+import { useGetLeagueRunesQuery } from "hooks/useGetLeagueRunesQuery";
+import { useGetLeagueSummonerSpellsQuery } from "hooks/useGetLeagueSummonerSpellsQuery";
+import { useGetFollowingQuery } from "./hooks/useGetFollowingQuery";
+import { useGetLeagueChallengesQuery } from "./hooks/useGetLeagueChallengesQuery";
+
+import { FullscreenLoading } from "./components/atoms/FullscreenLoading/FullscreenLoading";
+import { LoadingIndicator } from "components/atoms/LoadingIndicator/LoadingIndicator";
+import { Container } from "components/atoms/Container/Container";
+
 const App = () => {
-	const { accessToken, tokenLoading } = useAuth();
 	const [isNavOpen, setIsNavOpen] = useState(false);
+
 	const { width } = useScreenSize();
+	const { accessToken, tokenLoading } = useAuth();
 
 	const { isLoading: challengesLoading } = useGetLeagueChallengesQuery();
 	const { isLoading: championsLoading } = useGetLeagueChampions();
@@ -38,6 +37,7 @@ const App = () => {
 	const { isLoading: runesLoading } = useGetLeagueRunesQuery();
 	const { isLoading: summonerSpellsLoading } = useGetLeagueSummonerSpellsQuery();
 	useGetFollowingQuery();
+
 	const handleNavOpen = () => setIsNavOpen(prev => !prev);
 
 	useEffect(function closeNav() {
@@ -50,9 +50,7 @@ const App = () => {
 		<div className="App">
 			<GlobalStyles isNavOpen={isNavOpen} />
 			<Routes>
-
 				<Route element={<WithNav setIsNavOpen={setIsNavOpen} isNavOpen={isNavOpen} handleNavOpen={handleNavOpen} />}>
-
 					<Route path="/" element={<Home />} />
 
 					<Route path="/:server/:summonerName" element={<Summoner />}>
@@ -61,20 +59,40 @@ const App = () => {
 						<Route path="live-game" element={<SummonerLiveGame />} />
 						<Route path="challenges" element={<SummonerChallenges />} />
 					</Route>
-
 					<Route element={<ProtectedRoute redirectPath="/signin" isAllowed={!!accessToken} />}>
-						<Route path="/me" element={<Me />} />
+						<Route path="/me" element={
+							<Suspense fallback={
+								<Container>
+									<LoadingIndicator center={true} />
+								</Container>
+							}>
+								<Me />
+							</Suspense>
+						} />
 					</Route>
-
 				</Route>
-
 				<Route element={<WithoutNav />}>
-
 					<Route element={<ProtectedRoute redirectPath="/" isAllowed={!accessToken} />}>
-						<Route path="/signin" element={<SignIn />} />
-						<Route path="/signup" element={<SignUp />} />
-					</Route>
+						<Route path="/signin" element={
+							<Suspense fallback={
+								<Container>
+									<LoadingIndicator center={true} />
+								</Container>
+							}>
+								<SignIn />
+							</Suspense>
+						} />
 
+						<Route path="/signup" element={
+							<Suspense fallback={
+								<Container>
+									<LoadingIndicator center={true} />
+								</Container>
+							}>
+								<SignUp />
+							</Suspense>
+						} />
+					</Route>
 				</Route>
 			</Routes>
 		</div>

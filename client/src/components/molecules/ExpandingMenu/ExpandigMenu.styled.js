@@ -5,10 +5,10 @@ export const StyledExpandingMenu = styled.div`
         display: flex;
         align-items: center;
         justify-content: start;
+        padding: 0.5rem 0;
         color: white;
         vertical-align: middle;
         border-bottom: 2px solid white;
-        padding: 0.5rem 0;
         cursor: pointer;
         user-select: none;
 

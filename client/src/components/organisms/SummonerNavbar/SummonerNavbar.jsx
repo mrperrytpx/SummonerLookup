@@ -1,6 +1,6 @@
 import { useLocation, useParams } from "react-router-dom";
-import { NavActiveLink } from "../../atoms/NavActiveLink/NavActiveLink";
 import { StyledSummonerNavbar } from "./SummonerNavbar.styled";
+import { NavActiveLink } from "../../atoms/NavActiveLink/NavActiveLink";
 
 export const SummonerNavbar = () => {
 

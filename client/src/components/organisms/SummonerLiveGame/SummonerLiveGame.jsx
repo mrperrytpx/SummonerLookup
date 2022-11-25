@@ -1,13 +1,13 @@
-import { useGetSummonerLiveGameQuery } from "hooks/useGetSummonerLiveGameQuery";
-import { useGetSummonerQuery } from "hooks/useGetSummonerQuery";
 import { useParams } from "react-router-dom";
 import { StyledSummonerLiveGame } from "./SummonerLiveGame.styled";
+import { Container } from "components/atoms/Container/Container";
+import { ErrorText } from "components/atoms/ErrorText/ErrorText";
+import { FlexColSpaceBetween } from "components/atoms/FlexBoxes/FlexBoxes.styled";
+import { LoadingIndicator } from "components/atoms/LoadingIndicator/LoadingIndicator";
 import { GameBans } from "components/molecules/GameBans/GameBans";
 import { LiveGamePicks } from "components/molecules/LiveGamePicks/LiveGamePicks";
-import { FlexColSpaceBetween } from "components/atoms/FlexBoxes/FlexBoxes.styled";
-import { ErrorText } from "components/atoms/ErrorText/ErrorText";
-import { Container } from "components/atoms/Container/Container";
-import { LoadingIndicator } from "components/atoms/LoadingIndicator/LoadingIndicator";
+import { useGetSummonerLiveGameQuery } from "hooks/useGetSummonerLiveGameQuery";
+import { useGetSummonerQuery } from "hooks/useGetSummonerQuery";
 
 export const SummonerLiveGame = () => {
 
@@ -30,17 +30,14 @@ export const SummonerLiveGame = () => {
 
   return (
     <StyledSummonerLiveGame>
-
       <FlexColSpaceBetween gap=".5rem">
         <GameBans align="left" bans={liveGameData?.bannedChampions?.slice(0, 5)}>BANS: </GameBans>
         <LiveGamePicks picks={liveGameData?.participants?.slice(0, 5)} />
       </FlexColSpaceBetween>
-
       <FlexColSpaceBetween gap=".5rem">
         <GameBans align="left" bans={liveGameData?.bannedChampions?.slice(5, 10)}>BANS:</GameBans>
         <LiveGamePicks picks={liveGameData?.participants?.slice(5, 10)} />
       </FlexColSpaceBetween>
-
     </StyledSummonerLiveGame>
   );
 };

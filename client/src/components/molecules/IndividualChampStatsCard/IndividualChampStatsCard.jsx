@@ -1,9 +1,10 @@
 import { useQueryClient } from "react-query";
+import { StyledIndividualChampStatsCard } from "./IndividualChampStatsCard.styled";
 import { FlexRow, FlexColCenter } from "../../atoms/FlexBoxes/FlexBoxes.styled";
 import { Span } from "components/atoms/Span/Span";
-import { StyledIndividualChampStatsCard } from "./IndividualChampStatsCard.styled";
 
 export const IndividualChampStatsCard = ({ champion }) => {
+
   const queryClient = useQueryClient();
 
   const champions = queryClient.getQueryData(["champions"]);

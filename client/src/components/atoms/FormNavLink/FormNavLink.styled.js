@@ -6,8 +6,8 @@ export const StyledFormNavLink = styled(NavLink)`
     flex-direction: column; 
     align-items: center;
     justify-content: center;
+    
     flex: 1;
-
     height: 100%;
     min-width: 100px;
     padding: .5em 0;

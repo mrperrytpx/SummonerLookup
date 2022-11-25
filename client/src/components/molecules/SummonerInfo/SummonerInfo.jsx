@@ -1,20 +1,20 @@
 import { useQueryClient } from "react-query";
 import { useParams } from "react-router-dom";
-import { Span } from "../../atoms/Span/Span";
 import { StyledSummonerInfo } from "./SummonerInfo.styled";
 import { Button } from "../../atoms/Button/Button";
-import { CHALLENGE_THRESHOLDS } from "../../../consts/challengeThresholds";
-import { useUnfollowSummonerMutation } from "../../../hooks/useUnfollowSummonerMutation";
-import { useFollowSummonerMutation } from "../../../hooks/useFollowSummonerMutation";
-import { useGetFollowingQuery } from "../../../hooks/useGetFollowingQuery";
-import { useAuth } from "../../../hooks/useAuth";
-import { useGetSummonerQuery } from "../../../hooks/useGetSummonerQuery";
-import { useGetSummonerChallengesQuery } from "../../../hooks/useGetSummonerChallengesQuery";
-import { FlexCol, FlexRow, FlexRowStart } from "components/atoms/FlexBoxes/FlexBoxes.styled";
 import { ImageContainer } from "components/atoms/ImageContainer/ImageContainer";
-import { SERVER_VALUES } from "consts/serverValues";
+import { FlexCol, FlexRow, FlexRowStart } from "components/atoms/FlexBoxes/FlexBoxes.styled";
+import { Span } from "../../atoms/Span/Span";
 import { ChallengeTooltip } from "../ChallengeTooltip/ChallengeTooltip";
 import { ErrorBoundary } from "utils/ErrorBoundry";
+import { SERVER_VALUES } from "consts/serverValues";
+import { CHALLENGE_THRESHOLDS } from "../../../consts/challengeThresholds";
+import { useAuth } from "../../../hooks/useAuth";
+import { useFollowSummonerMutation } from "../../../hooks/useFollowSummonerMutation";
+import { useGetSummonerQuery } from "../../../hooks/useGetSummonerQuery";
+import { useGetFollowingQuery } from "../../../hooks/useGetFollowingQuery";
+import { useGetSummonerChallengesQuery } from "../../../hooks/useGetSummonerChallengesQuery";
+import { useUnfollowSummonerMutation } from "../../../hooks/useUnfollowSummonerMutation";
 
 export const SummonerInfo = () => {
 

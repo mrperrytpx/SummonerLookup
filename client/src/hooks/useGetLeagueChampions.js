@@ -25,7 +25,6 @@ export const useGetLeagueChampions = () => {
             link: () => "https://raw.communitydragon.org/latest/game/assets/ux/summonericons/profileicon29.png"
         });
 
-        console.log("CHAMPIONS MAP:", map);
         return map;
     };
 

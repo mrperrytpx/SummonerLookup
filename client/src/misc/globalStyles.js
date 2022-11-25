@@ -27,7 +27,7 @@ const GlobalStyles = createGlobalStyle`
         ${({ isNavOpen }) => isNavOpen && `
             overflow-y: hidden;
             touch-action: none;
-    `}
+        `}
     }
 
     input, button, textarea, select {

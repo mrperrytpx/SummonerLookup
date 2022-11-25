@@ -1,15 +1,15 @@
-import { ChallengeCard } from "components/molecules/ChallengeCard/ChallengeCard";
-import { ChallengeCategory } from "components/molecules/ChallengeCategory/ChallengeCategory";
-import { CHALLENGE_GROUPS } from "consts/challengeGroups";
-import { useGetSummonerChallengesQuery } from "hooks/useGetSummonerChallengesQuery";
-import { useGetSummonerQuery } from "hooks/useGetSummonerQuery";
 import { useCallback, useState } from "react";
 import { useParams } from "react-router-dom";
 import { StyledSummonerChallenges } from "./SummonerChallenges.styled";
-import { CHALLENGE_THRESHOLDS } from "consts/challengeThresholds";
-import { Container } from "components/atoms/Container/Container";
 import { ErrorText } from "components/atoms/ErrorText/ErrorText";
 import { LoadingIndicator } from "components/atoms/LoadingIndicator/LoadingIndicator";
+import { Container } from "components/atoms/Container/Container";
+import { ChallengeCard } from "components/molecules/ChallengeCard/ChallengeCard";
+import { ChallengeCategory } from "components/molecules/ChallengeCategory/ChallengeCategory";
+import { CHALLENGE_THRESHOLDS } from "consts/challengeThresholds";
+import { CHALLENGE_GROUPS } from "consts/challengeGroups";
+import { useGetSummonerChallengesQuery } from "hooks/useGetSummonerChallengesQuery";
+import { useGetSummonerQuery } from "hooks/useGetSummonerQuery";
 
 export const SummonerChallenges = () => {
 

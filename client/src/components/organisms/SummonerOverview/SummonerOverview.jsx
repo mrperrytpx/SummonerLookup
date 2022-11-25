@@ -1,12 +1,12 @@
-import { SummonerRankCard } from "../../molecules/SummonerRankCard/SummonerRankCard";
-import { SummonerChampStatsCard } from "../../molecules/SummonerChampStatsCard/SummonerChampStatsCard";
-import { StyledSummonerOverview } from "./SummonerOverview.styled";
-import { FlexCol, FlexRow } from "../../atoms/FlexBoxes/FlexBoxes.styled";
 import { useParams } from "react-router-dom";
+import { StyledSummonerOverview } from "./SummonerOverview.styled";
+import { SummonerChampStatsCard } from "../../molecules/SummonerChampStatsCard/SummonerChampStatsCard";
+import { FlexCol, FlexRow } from "../../atoms/FlexBoxes/FlexBoxes.styled";
+import { SummonerUnrankedCard } from "components/molecules/SummonerUnrankedCard/SummonerUnrankedCard";
+import { SummonerRankCard } from "../../molecules/SummonerRankCard/SummonerRankCard";
+import { SummonerMatches } from "../SummonerMatches/SummonerMatches";
 import { useGetSummonerQuery } from "../../../hooks/useGetSummonerQuery";
 import { useGetSummonerRankedStatsQuery } from "../../../hooks/useGetSummonerRankedStatsQuery";
-import { SummonerMatches } from "../SummonerMatches/SummonerMatches";
-import { SummonerUnrankedCard } from "components/molecules/SummonerUnrankedCard/SummonerUnrankedCard";
 
 export const SummonerOverview = () => {
 

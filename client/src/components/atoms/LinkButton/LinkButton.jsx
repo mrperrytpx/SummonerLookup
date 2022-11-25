@@ -1,6 +1,7 @@
 import { StyledLinkButton } from "./LinkButton.styled";
 
 export const LinkButton = ({ children, to, variant, onClick, ...rest }) => {
+
   return (
     <StyledLinkButton
       {...rest}

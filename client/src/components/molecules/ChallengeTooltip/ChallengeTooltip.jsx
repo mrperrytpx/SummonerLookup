@@ -1,6 +1,6 @@
-import { Span } from "components/atoms/Span/Span";
 import { useQueryClient } from "react-query";
 import { StyledChallengeTooltip } from "./ChallengeTooltip.styled";
+import { Span } from "components/atoms/Span/Span";
 
 export const ChallengeTooltip = ({ badge = {} }) => {
 

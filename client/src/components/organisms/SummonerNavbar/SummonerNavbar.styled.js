@@ -3,7 +3,7 @@ import { FlexRowStart } from "../../atoms/FlexBoxes/FlexBoxes.styled";
 
 export const StyledSummonerNavbar = styled(FlexRowStart)`
     color: ${({ theme }) => theme.textColors.light};
-    
+
     background-color: ${({ theme }) => theme.backgroundColors.secondary};
     border-radius: 10px;
 
@@ -11,9 +11,8 @@ export const StyledSummonerNavbar = styled(FlexRowStart)`
         width: 5px;
         background-color: red;
     }
-
     margin: 1rem 0;
-
+    
     a:hover {
         color: ${({ theme }) => theme.backgroundColors.quaternary};
     }

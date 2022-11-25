@@ -2,19 +2,20 @@ import styled from "styled-components";
 import { FlexColCenter } from "../FlexBoxes/FlexBoxes.styled";
 
 export const StyledDropdown = styled(FlexColCenter)`
+    user-select: none;
     width: auto;
+    position: relative;
     color: ${({ theme }) => theme.textColors.dark};
     background-color: ${({ theme }) => theme.backgroundColors.active};
-    user-select: none;
-    position: relative;
     border-radius: 5px;
     z-index: 2;
+
     span {
-        background-color: ${({ theme }) => theme.backgroundColors.active};
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        background-color: ${({ theme }) => theme.backgroundColors.active};
         width: 100%;
         height: 100%;
         min-width: 60px;
@@ -25,11 +26,11 @@ export const StyledDropdown = styled(FlexColCenter)`
     }
 
     & > div {
+        position: absolute;
+        top: 100%;
         width: 100%;
         min-width: 150px;
         background-color: ${({ theme }) => theme.backgroundColors.active};
-        position: absolute;
-        top: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -45,8 +46,8 @@ export const StyledDropdown = styled(FlexColCenter)`
             background-color: ${({ theme }) => theme.backgroundColors.active};
             display: inline-block;
             width: 100%;
-            text-align: left;
             padding: .25rem .5rem;
+            text-align: left;
             cursor: pointer;
 
             &:hover {

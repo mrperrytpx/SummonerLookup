@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { StyledExpandingMenu } from "./ExpandigMenu.styled";
 import { FaGreaterThan } from "react-icons/fa";
+import { StyledExpandingMenu } from "./ExpandigMenu.styled";
 
 export const ExpandingMenu = ({ children, expanded = false, label }) => {
+
   const [isExpanded, setIsExpanded] = useState(expanded);
 
   return (

@@ -13,8 +13,6 @@ export const useGetLeagueRunesQuery = () => {
 
         if (!response.ok) throw new Error("Problem fetching data");
         const data = await response.json();
-        console.log("Runes:, ", data);
-
 
         return data;
     };

@@ -1,11 +1,11 @@
 import { StyledSummonerRankCard } from "./SummonerRankCard.styled";
-import { FlexColCenter, FlexRowSpaceBetween, FlexRow } from "../../atoms/FlexBoxes/FlexBoxes.styled";
-import { Span } from "../../atoms/Span/Span";
-import { ImageContainer } from "../../atoms/ImageContainer/ImageContainer";
-import { RANKED_TYPES } from "../../../consts/rankedTypes";
-import { PromoGameStatus } from "../../atoms/PromoGameStatus/PromoGameStatus";
 import { Container } from "components/atoms/Container/Container";
+import { FlexColCenter, FlexRowSpaceBetween, FlexRow } from "../../atoms/FlexBoxes/FlexBoxes.styled";
+import { ImageContainer } from "../../atoms/ImageContainer/ImageContainer";
 import { LoadingIndicator } from "components/atoms/LoadingIndicator/LoadingIndicator";
+import { PromoGameStatus } from "../../atoms/PromoGameStatus/PromoGameStatus";
+import { Span } from "../../atoms/Span/Span";
+import { RANKED_TYPES } from "../../../consts/rankedTypes";
 
 export const SummonerRankCard = ({ ranked, isLoading }) => {
 

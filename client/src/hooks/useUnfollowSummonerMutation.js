@@ -7,7 +7,6 @@ export const useUnfollowSummonerMutation = () => {
     const queryClient = useQueryClient();
 
     const unfollowSummoner = async ({ id }) => {
-        console.log("DELETING SUMMONER WITH ID:", id);
         const controller = new AbortController();
         const response = await fetch("/api/summoner/unfollow_summoner", {
             method: "PATCH",

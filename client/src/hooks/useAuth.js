@@ -1,11 +1,9 @@
-import { queryClient } from "contexts/AppProviders";
-import { useContext, useState } from "react";
-import { createContext } from "react";
+import { useContext, useState, createContext } from "react";
 import { useMutation, useQuery, useQueryClient } from "react-query";
+import { queryClient } from "contexts/AppProviders";
 
 const useGetFreshTokensQuery = (setAccessToken, shouldRefetch, setShouldRefetch) => {
     async function getFreshTokens() {
-        console.log("Trying for token...");
         const response = await fetch("/api/auth/refresh_token", {
             method: "POST",
             credentials: "include",
@@ -20,7 +18,6 @@ const useGetFreshTokensQuery = (setAccessToken, shouldRefetch, setShouldRefetch)
             setAccessToken(data?.accessToken);
             queryClient.setQueryData(["accessToken"], data?.accessToken);
         }
-        console.log("new token: ", data?.accessToken);
         return data;
     }
 
@@ -53,8 +50,6 @@ const useSignInMutation = (setAccessToken, setShouldRefetch) => {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(info),
         });
-
-        console.log(response);
 
         if (!response.ok) {
             if (response.status === 400) {
@@ -174,7 +169,6 @@ const useProvideAuth = () => {
         tokenLoading
     };
 };
-
 
 //##################### CONTEXT
 const AuthContext = createContext(null);

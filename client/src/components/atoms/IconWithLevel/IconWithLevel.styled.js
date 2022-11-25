@@ -7,9 +7,6 @@ export const StyledIconWithLevel = styled(FlexColCenter)`
     width: ${({ width }) => width ? width : "auto"};
     max-height: ${({ width }) => width ? width : "auto"};
 
-    ${({ border }) => border && `
-        border  : 1px solid ${border};
-    `}
 
     ${({ border, theme }) => border && `
         border: 2px solid ${theme.backgroundColors.tertiary};
@@ -36,11 +33,11 @@ export const StyledIconWithLevel = styled(FlexColCenter)`
         position: absolute;
         bottom: 0; 
         right: 0;
-        font-size: 0.72rem;
+        padding: 0.1rem 0.15rem;
         
+        font-size: 0.72rem;
         background-color: ${({ theme }) => theme.backgroundColors.primary};
         color: ${({ theme }) => theme.textColors.light};
         
-        padding: 0.1rem 0.15rem;
     }   
 `;

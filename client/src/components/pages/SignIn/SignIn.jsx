@@ -1,16 +1,16 @@
+import { useLocation, useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
 import { ReactComponent as TextLogoNoSquare } from "../../../assets/text_logo_no_square.svg";
 import { SvgLink } from "../../atoms/SvgLink/SvgLink";
-import { useForm } from "react-hook-form";
+import { Button } from "../../atoms/Button/Button";
+import { ErrorText } from "../../atoms/ErrorText/ErrorText";
 import { FormLabelInput } from "../../atoms/FormLabelInput/FormLabelInput";
+import { FormNavLink } from "../../atoms/FormNavLink/FormNavLink";
+import { RememberMe } from "../../atoms/RememberMe/RememberMe";
 import { FormNav } from "../../molecules/FormNav/FormNav";
 import { SignInUpForm } from "../../molecules/SignInUpForm/SignInUpForm";
-import { useAuth } from "../../../hooks/useAuth";
-import { Button } from "../../atoms/Button/Button";
 import { SingleFormPage } from "../../templates/SingleFormPage/SingleFormPage";
-import { useLocation, useNavigate } from "react-router-dom";
-import { ErrorText } from "../../atoms/ErrorText/ErrorText";
-import { RememberMe } from "../../atoms/RememberMe/RememberMe";
-import { FormNavLink } from "../../atoms/FormNavLink/FormNavLink";
+import { useAuth } from "../../../hooks/useAuth";
 
 export const SignIn = () => {
 
@@ -60,7 +60,6 @@ export const SignIn = () => {
             errors={errors?.password}
           />
           {errors?.password?.message && <ErrorText>• {errors?.password?.message}</ErrorText>}
-
           <RememberMe htmlFor="rememberMe" label="Remember me" register={register} />
 
           {signIn?.error && <ErrorText center={true}>{signIn?.error?.message}</ErrorText>}
@@ -68,7 +67,6 @@ export const SignIn = () => {
           <Button width="100%" type="submit" variant="quaternary">
             {signIn.isLoading ? "Signing in..." : "SIGN IN"}
           </Button>
-
         </SignInUpForm>
       </section>
     </SingleFormPage>

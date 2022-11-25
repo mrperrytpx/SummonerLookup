@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
-import { Navbar } from '../organisms/Navbar/Navbar';
 import { Outlet, useLocation } from 'react-router-dom';
+import { Navbar } from '../organisms/Navbar/Navbar';
 
 export const WithNav = ({ setIsNavOpen, isNavOpen, handleNavOpen }) => {
 

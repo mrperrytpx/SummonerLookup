@@ -1,5 +1,5 @@
-import { Span } from "components/atoms/Span/Span";
 import { StyledChallengeCategory } from "./ChallengeCategory.styled";
+import { Span } from "components/atoms/Span/Span";
 
 export const ChallengeCategory = ({ isActive, category, data, onClick }) => {
 

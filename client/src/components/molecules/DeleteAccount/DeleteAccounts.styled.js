@@ -24,21 +24,20 @@ export const StyledDeleteAccount = styled.div`
         input {
             margin-right: 1.5rem;
         }
-
     }
 
     @media only screen and (max-width: ${({ theme }) => theme.resolutions.mobile}) {
-            form {
-                flex-direction: column;
+        form {
+            flex-direction: column;
 
-                input {
-                    width: 100%;
-                    margin: 0 0 1rem 0;
-                }
+            input {
+                width: 100%;
+                margin: 0 0 1rem 0;
+            }
 
-                button {
-                    width: 100%
-                }
+            button {
+                width: 100%
             }
         }
+    }
 `;

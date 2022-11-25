@@ -4,8 +4,8 @@ import { FlexRowCenter } from "components/atoms/FlexBoxes/FlexBoxes.styled";
 export const StyledSummonerLiveGame = styled(FlexRowCenter)`
     margin: 2rem 0;
     width: 100%;
-    border-radius: 15px;
     gap: 1rem;
+    border-radius: 15px;
 
     & > div {
         width: min(500px, 98%);
@@ -14,8 +14,6 @@ export const StyledSummonerLiveGame = styled(FlexRowCenter)`
     }
 
     @media only screen and (max-width: 775px) {
-        & {
-            flex-direction: column;
-        }
+        flex-direction: column;
     }
 `;

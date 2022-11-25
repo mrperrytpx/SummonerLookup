@@ -1,10 +1,10 @@
 import { StyledMe } from "./Me.styled";
-import { useGetFollowingQuery } from "../../../hooks/useGetFollowingQuery";
-import { ExpandingMenu } from "../../molecules/ExpandingMenu/ExpandingMenu";
-import { SummonerCardSmall } from "../../molecules/SummonerCardSmall/SummonerCardSmall";
-import { DeleteAccount } from "../../molecules/DeleteAccount/DeleteAccount";
-import { FollowingList } from "../../molecules/FollowingList/FollowingList";
 import { LoadingIndicator } from "components/atoms/LoadingIndicator/LoadingIndicator";
+import { DeleteAccount } from "../../molecules/DeleteAccount/DeleteAccount";
+import { ExpandingMenu } from "../../molecules/ExpandingMenu/ExpandingMenu";
+import { FollowingList } from "../../molecules/FollowingList/FollowingList";
+import { SummonerCardSmall } from "../../molecules/SummonerCardSmall/SummonerCardSmall";
+import { useGetFollowingQuery } from "../../../hooks/useGetFollowingQuery";
 
 export const Me = () => {
 

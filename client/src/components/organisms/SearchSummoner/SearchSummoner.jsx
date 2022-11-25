@@ -1,8 +1,8 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { StyledSearchSummoner } from "./SearchSummoner.styled";
 import { SummonerInput } from "../../molecules/SummonerInput/SummonerInput";
 import { ServerPicker } from "../../molecules/ServerPicker/ServerPicker";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 export const SearchSummoner = () => {
 

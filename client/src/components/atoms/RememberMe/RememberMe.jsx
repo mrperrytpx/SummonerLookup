@@ -2,6 +2,7 @@ import { useState } from "react";
 import { StyledRememberMe } from "./RememberMe.styled";
 
 export const RememberMe = ({ label, htmlFor, register }) => {
+
   const [isChecked, setIsChecked] = useState(false);
 
   return (

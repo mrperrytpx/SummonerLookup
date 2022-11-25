@@ -1,6 +1,6 @@
+import { StyledFooter } from "./Footer.styled";
 import { Disclaimer } from "../../atoms/Disclaimer/Disclaimer";
 import { IconButtonLink } from "../../atoms/IconButtonLink/IconButtonLink";
-import { StyledFooter } from "./Footer.styled";
 import { LinkButtonCluster } from "../../molecules/LinkButtonCluster/LinkButtonCluster";
 
 export const Footer = () => {

@@ -10,5 +10,6 @@ export const StyledHome = styled(FlexColStart).attrs({ as: "main" })`
 
     @media only screen and (max-width: ${({ theme }) => theme.resolutions.mobile}) {
         margin: 3rem auto;
+        min-height: auto;
     }
 `;

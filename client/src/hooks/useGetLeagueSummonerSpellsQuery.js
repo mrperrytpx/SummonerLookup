@@ -1,5 +1,3 @@
-// https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/en_gb/v1/summoner-spells.json
-
 import { useQuery } from "react-query";
 
 export const useGetLeagueSummonerSpellsQuery = () => {
@@ -13,8 +11,6 @@ export const useGetLeagueSummonerSpellsQuery = () => {
 
         if (!response.ok) throw new Error("Problem fetching data");
         const data = await response.json();
-        console.log("Summoners spells:, ", data);
-
         return data;
     };
 

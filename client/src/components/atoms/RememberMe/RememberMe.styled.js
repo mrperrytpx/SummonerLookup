@@ -27,8 +27,8 @@ export const StyledRememberMe = styled(FlexRow).attrs({ as: "label" })`
                 position: absolute;
                 content: "✔";
                 right: 50%;
-                transform: translateX(50%);
                 top: -0.3125rem;
+                transform: translateX(50%);
                 color: ${({ theme }) => theme.backgroundColors.secondary};
                 font-size: 1.5em;
             }

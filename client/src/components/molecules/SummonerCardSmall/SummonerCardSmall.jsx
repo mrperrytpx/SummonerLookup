@@ -1,10 +1,10 @@
+import { ImCross } from "react-icons/im";
+import { queryClient } from "contexts/AppProviders";
 import { StyledSummonerCardSmall } from "./SummonerCardSmall.styled";
+import { Button } from "../../atoms/Button/Button";
+import { FlexRowCenter, FlexRowSpaceBetween } from "../../atoms/FlexBoxes/FlexBoxes.styled";
 import { SERVER_VALUES } from "../../../consts/serverValues";
 import { useUnfollowSummonerMutation } from "../../../hooks/useUnfollowSummonerMutation";
-import { Button } from "../../atoms/Button/Button";
-import { ImCross } from "react-icons/im";
-import { FlexRowCenter, FlexRowSpaceBetween } from "../../atoms/FlexBoxes/FlexBoxes.styled";
-import { queryClient } from "contexts/AppProviders";
 
 export const SummonerCardSmall = ({ summoner }) => {
 
@@ -19,18 +19,14 @@ export const SummonerCardSmall = ({ summoner }) => {
 
   return (
     <StyledSummonerCardSmall to={`/${summoner.server}/${summoner.summonerName}`}>
-
       <FlexRowSpaceBetween gap="1rem">
-
         <div>{summoner?.summonerName} - {SERVER_VALUES[summoner?.server]}</div>
-
         <Button variant="danger" type="button" padding="0.5rem" onClick={(e) => handleUnfollow(e)}>
           <FlexRowCenter>
             <ImCross color="white" />
           </FlexRowCenter>
         </Button>
       </FlexRowSpaceBetween>
-
     </StyledSummonerCardSmall>
   );
 };

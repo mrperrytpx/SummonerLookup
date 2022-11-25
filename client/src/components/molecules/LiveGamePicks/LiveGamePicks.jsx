@@ -1,9 +1,9 @@
-import { FlexRow, FlexRowCenter } from "components/atoms/FlexBoxes/FlexBoxes.styled";
-import { StyledLiveGamePicks } from "./LiveGamePicks.styled";
-import { ImageContainer } from "components/atoms/ImageContainer/ImageContainer";
 import { useQueryClient } from "react-query";
-import { CustomLink } from "components/atoms/CustomLink/CustomLink";
 import { useParams } from "react-router-dom";
+import { StyledLiveGamePicks } from "./LiveGamePicks.styled";
+import { CustomLink } from "components/atoms/CustomLink/CustomLink";
+import { FlexRow, FlexRowCenter } from "components/atoms/FlexBoxes/FlexBoxes.styled";
+import { ImageContainer } from "components/atoms/ImageContainer/ImageContainer";
 import { useGetSummonerQuery } from "hooks/useGetSummonerQuery";
 
 export const LiveGamePicks = ({ picks, direction }) => {

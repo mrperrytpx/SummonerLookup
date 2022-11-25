@@ -1,9 +1,7 @@
-// Contexts
 import { AuthContextProvider } from "../hooks/useAuth";
 import { ThemeProvider } from "styled-components";
 import { theme } from "../misc/theme";
 
-// React-query Cache
 import { QueryClient, QueryClientProvider, QueryCache } from "react-query";
 
 const queryCache = new QueryCache();

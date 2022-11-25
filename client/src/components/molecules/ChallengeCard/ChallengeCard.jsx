@@ -1,11 +1,11 @@
-import { ImageContainer } from "components/atoms/ImageContainer/ImageContainer";
+import { useRef } from "react";
 import { useQueryClient } from "react-query";
 import { useParams } from "react-router-dom";
-import { StyledChallengeCard } from "./ChallengeCard.styled";
 import { SERVER_VALUES } from "consts/serverValues";
+import { StyledChallengeCard } from "./ChallengeCard.styled";
+import { ImageContainer } from "components/atoms/ImageContainer/ImageContainer";
 import { Span } from "components/atoms/Span/Span";
 import { FlexCol, FlexRow } from "components/atoms/FlexBoxes/FlexBoxes.styled";
-import { useRef } from "react";
 import { useIntersectionObserver } from "hooks/useIntersectionObserver";
 
 export const ChallengeCard = ({ challenge }) => {
@@ -16,10 +16,10 @@ export const ChallengeCard = ({ challenge }) => {
   const challengeData = leagueChallengesData.find(chal => chal.id === challenge.challengeId);
 
   const challengeRef = useRef(null);
-  const isOnScreen = useIntersectionObserver(challengeRef, { rootMargin: "100px" });
+  const isVisible = useIntersectionObserver(challengeRef, { rootMargin: "500px" });
 
   return (
-    <StyledChallengeCard isVisible={isOnScreen} ref={challengeRef} tier={challenge?.level}>
+    <StyledChallengeCard isVisible={isVisible} ref={challengeRef} tier={challenge?.level}>
       <FlexRow gap="0.5rem">
         <ImageContainer
           src={`https://ddragon.leagueoflegends.com/cdn/img/challenges-images/${challenge?.challengeId}-${challenge?.level === "NONE" ? "IRON" : challenge?.level}.png`}

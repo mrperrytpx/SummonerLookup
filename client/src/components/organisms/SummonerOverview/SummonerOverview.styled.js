@@ -12,9 +12,7 @@ export const StyledSummonerOverview = styled(FlexRow)`
     }
 
     @media only screen and (max-width: 1000px) {
-        & {
-            flex-direction: column-reverse;
-        }
+        flex-direction: column-reverse;
 
         [data-stats] {
             margin-bottom: 1rem;

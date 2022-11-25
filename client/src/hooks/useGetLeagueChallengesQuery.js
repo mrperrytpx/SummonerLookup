@@ -6,7 +6,6 @@ export const useGetLeagueChallengesQuery = () => {
     const { data: version } = useGetLeagueVersion();
 
     const getChallenges = async ({ signal }) => {
-
         const response = await fetch(`https://ddragon.leagueoflegends.com/cdn/${version}/data/en_US/challenges.json`, {
             signal
         });
@@ -14,7 +13,6 @@ export const useGetLeagueChallengesQuery = () => {
         if (!response.ok) throw new Error("Something went wrong. Try reloading the page");
 
         const data = await response.json();
-        console.log("LEAGUE CHALLENGES: ", data);
         return data;
     };
 
