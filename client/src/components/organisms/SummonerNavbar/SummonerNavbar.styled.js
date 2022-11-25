@@ -3,11 +3,6 @@ import { FlexRowStart } from "../../atoms/FlexBoxes/FlexBoxes.styled";
 
 export const StyledSummonerNavbar = styled(FlexRowStart)`
     color: ${({ theme }) => theme.textColors.light};
-
-    ${({ shouldStick }) => shouldStick && `
-        position: sticky;
-        top: 0;
-    `}
     
     z-index: 10;
 

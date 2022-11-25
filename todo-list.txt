@@ -1,7 +1,5 @@
 TASKS FOR FUTURE ME WHEN ITS FUNCTIONAL (WIP)
 
-- swap from "rtl-ltr" thing for livegame
-- fix mobile nav menu shifting
 - fix "the baus ffs" successfully searching "thebausffs" (less words to describe)
 - remove load more matches button instead of displaying "no more"
 - don't display matches that aren't on screen

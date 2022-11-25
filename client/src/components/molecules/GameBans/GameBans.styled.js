@@ -13,7 +13,10 @@ export const StyledGameBans = styled(FlexRowStart)`
     `}
 
     @media only screen and (max-width: 900px) {
-        justify-content: ${({ align }) => align || "center"};
+        justify-content: center;
+        ${({ align, shouldMobileAlign }) => shouldMobileAlign && `
+            justify-content: ${align};
+        `}
         img {
             width: 36px;
         }

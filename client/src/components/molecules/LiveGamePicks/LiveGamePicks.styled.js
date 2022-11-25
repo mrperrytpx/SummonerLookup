@@ -4,6 +4,7 @@ import styled from "styled-components";
 export const StyledLiveGamePicks = styled(FlexCol)`
     color: white;
     width: 100%;
+    border-top: 1px solid white;
 
     [data-is-player="true"] {
         background-color: ${({ theme }) => theme.backgroundColors.tertiary};
@@ -15,7 +16,6 @@ export const StyledLiveGamePicks = styled(FlexCol)`
         padding: .5rem;
         gap: 0.2rem;
         width: 100%;
-        ${({ direction }) => direction && `direction: ${direction}`};
 
         & :last-child {
             justify-content: space-around;

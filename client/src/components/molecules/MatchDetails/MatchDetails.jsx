@@ -48,6 +48,7 @@ export const MatchDetails = ({ match }) => {
         <FlexCol key={i}>
           {match?.info.teams[i].bans.length
             ? <GameBans
+              shouldMobileAlign={true}
               size="30px"
               align="left"
               isWinner={teams[i][0].win}

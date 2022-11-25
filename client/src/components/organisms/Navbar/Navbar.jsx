@@ -25,8 +25,7 @@ export const Navbar = ({ isNavOpen, handleNavOpen, setIsNavOpen }) => {
   };
 
   return (
-    <StyledNavbar>
-      {isNavOpen && <MobileMenu setIsNavOpen={setIsNavOpen} />}
+    <StyledNavbar isNavOpen={isNavOpen}>
       {width >= 450
         // rendering different logos depending on width
         ? <SvgLink to="/">
@@ -39,6 +38,7 @@ export const Navbar = ({ isNavOpen, handleNavOpen, setIsNavOpen }) => {
         </SvgLink>
         : null
       }
+
       {location.pathname !== "/" && !isNavOpen ? <CompactSearchSummoner /> : null}
 
       {tokenLoading ? <p style={{ color: "white" }}>Loading</p> :
@@ -57,6 +57,9 @@ export const Navbar = ({ isNavOpen, handleNavOpen, setIsNavOpen }) => {
             ? <ImMenu3 fill="white" size="48" onClick={handleNavOpen}></ImMenu3>
             : <ImMenu4 fill="white" size="48" onClick={handleNavOpen}></ImMenu4>
       }
+
+      {isNavOpen && <MobileMenu setIsNavOpen={setIsNavOpen} />}
+
     </StyledNavbar>
   );
 };

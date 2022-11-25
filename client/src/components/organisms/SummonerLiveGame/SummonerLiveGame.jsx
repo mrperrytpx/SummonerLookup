@@ -8,19 +8,20 @@ import { LiveGamePicks } from "components/molecules/LiveGamePicks/LiveGamePicks"
 import { FlexColSpaceBetween } from "components/atoms/FlexBoxes/FlexBoxes.styled";
 import { ErrorText } from "components/atoms/ErrorText/ErrorText";
 import { Container } from "components/atoms/Container/Container";
-import { LoadingIndicator } from "components/atoms/LoadingIndicator/LoadingIndicator";
+// import { LoadingIndicator } from "components/atoms/LoadingIndicator/LoadingIndicator";
+import { liveGameData } from "consts/gameObject";
 
 export const SummonerLiveGame = () => {
 
   const { server, summonerName } = useParams();
   const { data: summonerData } = useGetSummonerQuery(server, summonerName);
-  const { data: liveGameData, isLoading } = useGetSummonerLiveGameQuery(server, summonerData?.summonerId);
+  // const { data: liveGameData, isLoading } = useGetSummonerLiveGameQuery(server, summonerData?.summonerId);
 
-  if (isLoading) return (
-    <Container>
-      <LoadingIndicator />
-    </Container>
-  );
+  // if (isLoading) return (
+  //   <Container>
+  //     <LoadingIndicator />
+  //   </Container>
+  // );
 
   if (!liveGameData) return (
     <Container>
@@ -33,17 +34,13 @@ export const SummonerLiveGame = () => {
     <StyledSummonerLiveGame>
 
       <FlexColSpaceBetween gap=".5rem">
-        <Span padding={"0.5rem 0.6rem"} underline>Blue side bans:</Span>
-        <GameBans bans={liveGameData?.bannedChampions?.slice(0, 5)} />
-        <Span underline padding={"0.5rem 0.6rem"}>Blue side picks:</Span>
+        <GameBans align="left" bans={liveGameData?.bannedChampions?.slice(0, 5)}>BANS: </GameBans>
         <LiveGamePicks picks={liveGameData?.participants?.slice(0, 5)} />
       </FlexColSpaceBetween>
 
       <FlexColSpaceBetween gap=".5rem">
-        <Span align="right" underline padding={"0.5rem 0.6rem"}>Red side bans:</Span>
-        <GameBans align="right" bans={liveGameData?.bannedChampions?.slice(5, 10)} />
-        <Span align="right" underline padding={"0.5rem 0.6rem"}>Red side picks:</Span>
-        <LiveGamePicks direction="rtl" picks={liveGameData?.participants?.slice(5, 10)} />
+        <GameBans align="left" bans={liveGameData?.bannedChampions?.slice(5, 10)}>BANS:</GameBans>
+        <LiveGamePicks picks={liveGameData?.participants?.slice(5, 10)} />
       </FlexColSpaceBetween>
 
     </StyledSummonerLiveGame>

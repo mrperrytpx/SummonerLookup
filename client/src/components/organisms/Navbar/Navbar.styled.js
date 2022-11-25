@@ -11,6 +11,10 @@ export const StyledNavbar = styled(FlexRowSpaceBetween).attrs({ as: "nav" })`
     position: relative;
     gap: 1rem;
 
+    & > svg {
+        place-self: center end;
+    }
+
     border-bottom: 1px solid ${({ theme }) => theme.backgroundColors.quaternary};
 
     @media only screen and (min-width: ${({ theme }) => theme.resolutions.widescreen}) {
@@ -18,7 +22,9 @@ export const StyledNavbar = styled(FlexRowSpaceBetween).attrs({ as: "nav" })`
     }
 
     @media only screen and (max-width: ${({ theme }) => theme.resolutions.mobile}) {
-        flex-direction: row-reverse;
+        ${({ isNavOpen }) => isNavOpen && `
+            flex-direction: row-reverse;
+        `}
         padding: 0.5rem 1rem;
     }
 `;

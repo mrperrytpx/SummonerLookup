@@ -35,7 +35,7 @@ export const LiveGamePicks = ({ picks, direction }) => {
             src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${champions.get(`${pick.championId}`).id}.png`}
             width="40px"
           />
-          <CustomLink fontSize=".8rem" to={`/${server.toLowerCase()}/${pick.summonerName}`} align={direction === "rtl" ? "right" : "left"} size="s">&nbsp;{pick.summonerName}</CustomLink>
+          <CustomLink fontSize=".8rem" to={`/${server.toLowerCase()}/${pick.summonerName}`} size="s">&nbsp;{pick.summonerName}</CustomLink>
           <FlexRow>
             <FlexRowCenter>
               {pick.perks.perkIds.slice(0, 4).map((perkId, i) => (
