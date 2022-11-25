@@ -14,6 +14,7 @@ import { FlexCol, FlexRow, FlexRowStart } from "components/atoms/FlexBoxes/FlexB
 import { ImageContainer } from "components/atoms/ImageContainer/ImageContainer";
 import { SERVER_VALUES } from "consts/serverValues";
 import { ChallengeTooltip } from "../ChallengeTooltip/ChallengeTooltip";
+import { ErrorBoundary } from "utils/ErrorBoundry";
 
 export const SummonerInfo = () => {
 
@@ -111,7 +112,9 @@ export const SummonerInfo = () => {
                 alt="Challenge"
                 width="40px"
               >
-                <ChallengeTooltip badge={badge} />
+                <ErrorBoundary absolute={true}>
+                  <ChallengeTooltip badge={badge} />
+                </ErrorBoundary>
               </ImageContainer>
             ))
             : null

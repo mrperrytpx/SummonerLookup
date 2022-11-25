@@ -41,7 +41,7 @@ export const ChallengeCard = ({ challenge }) => {
               better than {Math.round(((1 - challenge.percentile) * 100))}% of {SERVER_VALUES[server]} - <b>{challenge.level}</b> tier
             </em>
           </Span>
-          <Span size="xs">{new Date(challenge.achievedTime).toDateString()}</Span>
+          <Span width="auto" align="right" size="xs">{new Date(challenge.achievedTime).toDateString()}</Span>
         </FlexCol>
       </FlexRow>
     </StyledChallengeCard>

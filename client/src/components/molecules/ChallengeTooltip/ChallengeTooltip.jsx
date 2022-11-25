@@ -1,8 +1,9 @@
 import { Span } from "components/atoms/Span/Span";
 import { useQueryClient } from "react-query";
+import { ErrorBoundary } from "utils/ErrorBoundry";
 import { StyledChallengeTooltip } from "./ChallengeTooltip.styled";
 
-export const ChallengeTooltip = ({ badge }) => {
+export const ChallengeTooltip = ({ badge = {} }) => {
 
   const queryClient = useQueryClient();
   const challenges = queryClient.getQueryData(["challenges"]);
