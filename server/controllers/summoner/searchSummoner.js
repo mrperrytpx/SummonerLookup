@@ -4,9 +4,8 @@ const leagueRegion = require("../../utils/leagueRegion");
 const searchSummoner = async (req, res) => {
 	const { server, summonerName } = req.params;
 	const region = leagueRegion(server);
-	const notSpacedSummoner = summonerName.split(" ").join("%20");
 
-	const accountData = await getSummonerAccountData(server, notSpacedSummoner);
+	const accountData = await getSummonerAccountData(server, summonerName);
 	// Set the necessary account data into the payload
 	let payload = {
 		server: server,

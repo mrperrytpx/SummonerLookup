@@ -48,7 +48,7 @@ export const SummonerMatches = () => {
         </Container>
       }
 
-      {summonerMatchesData?.pages?.[0]?.matchesData.length
+      {summonerMatchesData?.pages?.[0]?.matchesData.length && hasNextPage
         ? (
           <Button
             disabled={!hasNextPage || isFetchingNextPage}

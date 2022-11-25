@@ -13,4 +13,8 @@ export const StyledChallengeCard = styled.div`
         width: 100%;
     }
 
+    ${({ isVisible }) => !isVisible && `
+        visibility: hidden;
+    `}
+
 `;

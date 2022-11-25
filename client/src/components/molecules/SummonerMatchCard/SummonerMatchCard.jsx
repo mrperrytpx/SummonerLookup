@@ -5,14 +5,18 @@ import { useParams } from "react-router-dom";
 import { StyledSummonerMatchCard } from "./SummonerMatchCard.styled";
 import { QUEUE_TYPES } from "consts/queueTypes";
 import { MatchDetails } from "../MatchDetails/MatchDetails";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { ChampionSetup } from "../ChampionSetup/ChampionSetup";
 import { MatchItems } from "../MatchItems/MatchItems";
+import { useIntersectionObserver } from "hooks/useIntersectionObserver";
 
 export const SummonerMatchCard = ({ match }) => {
 
   const { server, summonerName } = useParams();
   const { data: summonerData } = useGetSummonerQuery(server, summonerName);
+
+  const matchRef = useRef(null);
+  const isOnScreen = useIntersectionObserver(matchRef, { rootMargin: "100px" });
 
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -30,8 +34,8 @@ export const SummonerMatchCard = ({ match }) => {
   ];
 
   return (
-    <StyledSummonerMatchCard isWin={summonerMatchData.win}>
-      <div onClick={() => setIsExpanded(!isExpanded)}>
+    <StyledSummonerMatchCard isVisible={isOnScreen} isWin={summonerMatchData.win}>
+      <div ref={matchRef} onClick={() => setIsExpanded(!isExpanded)}>
         <FlexColCenter gap="0.25rem">
           <Span size="m">{QUEUE_TYPES[match?.info?.queueId]}</Span>
           <Span size="s">
@@ -56,7 +60,6 @@ export const SummonerMatchCard = ({ match }) => {
         <MatchItems items={itemsArray} initialWidth={35} />
       </div>
       {isExpanded && <MatchDetails match={match} />}
-
     </StyledSummonerMatchCard >
   );
 };

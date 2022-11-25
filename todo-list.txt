@@ -1,9 +1,5 @@
 TASKS FOR FUTURE ME WHEN ITS FUNCTIONAL (WIP)
 
-- fix "the baus ffs" successfully searching "thebausffs" (less words to describe)
-- remove load more matches button instead of displaying "no more"
-- don't display matches that aren't on screen
-- intersection observer for challenges and matches
 - error boundry component
 - stop space from scrolling when selecting a server
 - remove all console.logs when finished

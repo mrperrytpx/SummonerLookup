@@ -3,7 +3,9 @@ import styled from "styled-components";
 
 export const StyledSummonerMatchCard = styled(FlexCol)`
     /* match card */
+
     & > div:first-child {
+
         padding: .5rem;
         border: 1px solid ${({ theme, isWin }) => isWin ? theme.matchResult.win : theme.matchResult.loss};
         border-radius: 8px;
@@ -15,6 +17,10 @@ export const StyledSummonerMatchCard = styled(FlexCol)`
         grid-template-rows: 78px;
         gap: 0.1rem;
         margin-bottom: 0.25rem;
+
+        ${({ isVisible }) => !isVisible && `
+            visibility: hidden;
+        `};
 
         cursor: pointer;
 
