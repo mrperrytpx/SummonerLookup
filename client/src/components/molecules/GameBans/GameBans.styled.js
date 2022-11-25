@@ -1,7 +1,7 @@
 import { FlexRowStart } from "components/atoms/FlexBoxes/FlexBoxes.styled";
 import styled from "styled-components";
 
-export const StyledLiveGameBans = styled(FlexRowStart)`
+export const StyledGameBans = styled(FlexRowStart)`
     gap: 1rem;
     color: white;
     width: 100%;

@@ -5,7 +5,7 @@ import { useScreenSize } from "hooks/useScreenSize";
 import { theme } from "misc/theme";
 import { useEffect, useMemo } from "react";
 import { useParams } from "react-router-dom";
-import { LiveGameBans } from "../LiveGameBans/LiveGameBans";
+import { GameBans } from "../GameBans/GameBans";
 import { StyledMatchDetails } from "./MatchDetails.styled";
 import { useTable } from "./useTable";
 
@@ -45,15 +45,16 @@ export const MatchDetails = ({ match }) => {
       borderRadius: "10px"
     }}>
       {tables.map((table, i) => (
-        <FlexCol>
-          <LiveGameBans
+        <FlexCol key={i}>
+          <GameBans
             size="30px"
             align="left"
-            isWinner={teams[i][0].win} bans={match?.info.teams[i].bans}
+            isWinner={teams[i][0].win}
+            bans={match?.info.teams[i].bans}
           >
             BANS:
-          </LiveGameBans>
-          <StyledMatchDetails key={i} isWinner={teams[i][0].win}>
+          </GameBans>
+          <StyledMatchDetails isWinner={teams[i][0].win}>
             <thead>
               {
                 table.getHeaderGroups().map((headerGroup) => (
@@ -95,4 +96,4 @@ export const MatchDetails = ({ match }) => {
       }
     </FlexCol >
   );
-};;
+};

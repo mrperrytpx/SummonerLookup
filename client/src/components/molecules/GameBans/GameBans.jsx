@@ -1,16 +1,16 @@
 import { ImageContainer } from "components/atoms/ImageContainer/ImageContainer";
 import { Span } from "components/atoms/Span/Span";
-import { StyledLiveGameBans } from "components/molecules/LiveGameBans/LiveGameBans.styled";
+import { StyledGameBans } from "components/molecules/GameBans/GameBans.styled";
 import { useQueryClient } from "react-query";
 
-export const LiveGameBans = ({ bans, align, size, children, ...rest }) => {
+export const GameBans = ({ bans, align, size, children, ...rest }) => {
 
   const queryClient = useQueryClient();
   const version = queryClient.getQueryData(["version"]);
   const champions = queryClient.getQueryData(["champions"]);
 
   return (
-    <StyledLiveGameBans {...rest} align={align}>
+    <StyledGameBans {...rest} align={align}>
       <Span width="auto" size="s" align="left">{children}</Span>
       {bans.map((ban, i) => {
         return (
@@ -23,6 +23,6 @@ export const LiveGameBans = ({ bans, align, size, children, ...rest }) => {
           />
         );
       })}
-    </StyledLiveGameBans>
+    </StyledGameBans>
   );
 };
