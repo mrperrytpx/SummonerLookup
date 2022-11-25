@@ -32,7 +32,7 @@ export const SummonerMatches = () => {
   );
 
   return (
-    <StyledSummonerMatches noMatches={summonerMatchesData.length}>
+    <StyledSummonerMatches noMatches={summonerMatchesData?.length}>
       <Span underline size="m" align="left">Match History</Span>
       {summonerMatchesData?.pages[0].matchesData.length
         ? <>

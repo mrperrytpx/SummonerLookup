@@ -4,10 +4,13 @@ import { useUnfollowSummonerMutation } from "../../../hooks/useUnfollowSummonerM
 import { Button } from "../../atoms/Button/Button";
 import { ImCross } from "react-icons/im";
 import { FlexRowCenter, FlexRowSpaceBetween } from "../../atoms/FlexBoxes/FlexBoxes.styled";
+import { queryClient } from "contexts/AppProviders";
 
 export const SummonerCardSmall = ({ summoner }) => {
 
   const unfollowSummoner = useUnfollowSummonerMutation();
+
+  queryClient.setQueryData(["summoner", summoner.server, summoner.summonerName.toLowerCase()], summoner);
 
   const handleUnfollow = async (e) => {
     e.preventDefault();

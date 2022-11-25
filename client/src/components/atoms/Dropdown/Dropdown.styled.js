@@ -8,8 +8,7 @@ export const StyledDropdown = styled(FlexColCenter)`
     user-select: none;
     position: relative;
     border-radius: 5px;
-    z-index: 20;
-    
+    z-index: 2;
     span {
         background-color: ${({ theme }) => theme.backgroundColors.active};
         display: flex;
@@ -43,7 +42,6 @@ export const StyledDropdown = styled(FlexColCenter)`
         `};
 
         span {
-            z-index: 10;
             background-color: ${({ theme }) => theme.backgroundColors.active};
             display: inline-block;
             width: 100%;

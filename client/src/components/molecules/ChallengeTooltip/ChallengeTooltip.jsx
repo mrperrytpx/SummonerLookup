@@ -1,6 +1,5 @@
 import { Span } from "components/atoms/Span/Span";
 import { useQueryClient } from "react-query";
-import { ErrorBoundary } from "utils/ErrorBoundry";
 import { StyledChallengeTooltip } from "./ChallengeTooltip.styled";
 
 export const ChallengeTooltip = ({ badge = {} }) => {

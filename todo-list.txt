@@ -1,9 +1,6 @@
 TASKS FOR FUTURE ME WHEN ITS FUNCTIONAL (WIP)
 
-- stop space from scrolling when selecting a server
 - remove all console.logs when finished
-- add hover to profile badges
-- check z-indexes
 - prefetch summoner when hovered on /me
 - code splitting? 
 - server - name in tab name

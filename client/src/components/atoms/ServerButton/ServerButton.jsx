@@ -6,13 +6,14 @@ export const ServerButton = ({ server, children, handleLabelClick, handleRadioCl
 
   const handleTabbing = (e) => {
     if (e.keyCode === 32) {
+      e.preventDefault();
       handleRadioClick(server);
     }
   };
 
   return (
     <StyledServerButton server={server} checkedRadioButton={checkedRadioButton}>
-      <label onKeyDown={handleTabbing} tabIndex="0" onClick={handleLabelClick} htmlFor={server}>{children}</label>
+      <label onKeyDown={(e) => handleTabbing(e)} tabIndex="0" onClick={handleLabelClick} htmlFor={server}>{children}</label>
       <input
         type="radio"
         onChange={(e) => handleLabelClick(e.target.value)}

@@ -19,6 +19,14 @@ const Summoner = {
         type: String,
         required: true
     },
+    profileIconId: {
+        type: Number,
+        required: true
+    },
+    summonerLevel: {
+        type: Number,
+        required: true
+    },
     followedAt: {
         type: Date,
         default: Date.now

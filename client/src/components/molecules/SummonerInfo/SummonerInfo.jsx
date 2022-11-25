@@ -37,7 +37,9 @@ export const SummonerInfo = () => {
       region: summonerData?.region,
       server: summonerData?.server,
       puuid: summonerData?.puuid,
-      summonerId: summonerData?.summonerId
+      summonerId: summonerData?.summonerId,
+      profileIconId: summonerData?.profileIconId,
+      summonerLevel: summonerData?.summonerLevel
     };
     await followSummoner.mutateAsync({ payload });
     queryClient.invalidateQueries(["me"]);
