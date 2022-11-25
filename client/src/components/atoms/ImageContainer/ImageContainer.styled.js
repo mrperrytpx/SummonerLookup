@@ -5,6 +5,11 @@ export const StyledImageContainer = styled(FlexRowCenter)`
     background-color: ${({ theme, background }) => background ? theme.backgroundColors.primary : "transparent"};
     width: ${({ width }) => width ? width : "auto"};
     aspect-ratio: 1 / 1;
+    position: relative;
+
+    &:hover > div[data-tooltip] {
+        visibility: visible;
+    }
 
     ${({ min }) => min && `
         min-width: ${min};

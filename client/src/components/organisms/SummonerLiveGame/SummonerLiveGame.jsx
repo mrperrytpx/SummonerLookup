@@ -3,25 +3,23 @@ import { useGetSummonerQuery } from "hooks/useGetSummonerQuery";
 import { useParams } from "react-router-dom";
 import { StyledSummonerLiveGame } from "./SummonerLiveGame.styled";
 import { GameBans } from "components/molecules/GameBans/GameBans";
-import { Span } from "components/atoms/Span/Span";
 import { LiveGamePicks } from "components/molecules/LiveGamePicks/LiveGamePicks";
 import { FlexColSpaceBetween } from "components/atoms/FlexBoxes/FlexBoxes.styled";
 import { ErrorText } from "components/atoms/ErrorText/ErrorText";
 import { Container } from "components/atoms/Container/Container";
-// import { LoadingIndicator } from "components/atoms/LoadingIndicator/LoadingIndicator";
-import { liveGameData } from "consts/gameObject";
+import { LoadingIndicator } from "components/atoms/LoadingIndicator/LoadingIndicator";
 
 export const SummonerLiveGame = () => {
 
   const { server, summonerName } = useParams();
   const { data: summonerData } = useGetSummonerQuery(server, summonerName);
-  // const { data: liveGameData, isLoading } = useGetSummonerLiveGameQuery(server, summonerData?.summonerId);
+  const { data: liveGameData, isLoading } = useGetSummonerLiveGameQuery(server, summonerData?.summonerId);
 
-  // if (isLoading) return (
-  //   <Container>
-  //     <LoadingIndicator />
-  //   </Container>
-  // );
+  if (isLoading) return (
+    <Container>
+      <LoadingIndicator />
+    </Container>
+  );
 
   if (!liveGameData) return (
     <Container>

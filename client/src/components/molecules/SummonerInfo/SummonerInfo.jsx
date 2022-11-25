@@ -13,6 +13,7 @@ import { useGetSummonerChallengesQuery } from "../../../hooks/useGetSummonerChal
 import { FlexCol, FlexRow, FlexRowStart } from "components/atoms/FlexBoxes/FlexBoxes.styled";
 import { ImageContainer } from "components/atoms/ImageContainer/ImageContainer";
 import { SERVER_VALUES } from "consts/serverValues";
+import { ChallengeTooltip } from "../ChallengeTooltip/ChallengeTooltip";
 
 export const SummonerInfo = () => {
 
@@ -109,7 +110,9 @@ export const SummonerInfo = () => {
                 src={`https://ddragon.leagueoflegends.com/cdn/img/challenges-images/${badge?.challengeId}-${badge?.level}.png`}
                 alt="Challenge"
                 width="40px"
-              />
+              >
+                <ChallengeTooltip badge={badge} />
+              </ImageContainer>
             ))
             : null
           }
