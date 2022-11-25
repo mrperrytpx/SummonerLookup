@@ -36,10 +36,13 @@ export const Summoner = () => {
   );
 
   return (
+
     <StyledSummoner>
       <SummonerCard summonerData={summonerData} summonerChallengesData={summonerChallengesData} />
       <SummonerNavbar />
       <Outlet />
     </StyledSummoner>
+
+
   );
 };

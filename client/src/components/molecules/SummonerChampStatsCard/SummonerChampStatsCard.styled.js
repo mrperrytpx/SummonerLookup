@@ -11,5 +11,5 @@ export const StyledSummonerChampStatsCard = styled(FlexCol)`
     margin-bottom: .5rem;
 
     position: sticky;
-    top: 50px;
+    top: 0;
 `;

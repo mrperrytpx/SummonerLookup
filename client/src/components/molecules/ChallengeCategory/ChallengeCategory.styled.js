@@ -1,4 +1,4 @@
-import { FlexCol, FlexColCenter } from "components/atoms/FlexBoxes/FlexBoxes.styled";
+import { FlexColCenter } from "components/atoms/FlexBoxes/FlexBoxes.styled";
 import styled from "styled-components";
 
 export const StyledChallengeCategory = styled(FlexColCenter)`

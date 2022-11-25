@@ -1,9 +1,3 @@
-TASKS FOR FUTURE ME WHEN ITS FUNCTIONAL (WIP)
-
-- remove all console.logs when finished
-- prefetch summoner when hovered on /me
-- code splitting? 
-- server - name in tab name
-- redis cache for matches
-
-https://ddragon.leagueoflegends.com/cdn/version/img/item/item.full
+    - redis cache for matches
+    - code splitting? 
+    - remove all console.logs when finished

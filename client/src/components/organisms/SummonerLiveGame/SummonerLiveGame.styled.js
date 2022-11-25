@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { FlexCol, FlexRow, FlexRowCenter, FlexRowSpaceBetween } from "components/atoms/FlexBoxes/FlexBoxes.styled";
+import { FlexRowCenter } from "components/atoms/FlexBoxes/FlexBoxes.styled";
 
 export const StyledSummonerLiveGame = styled(FlexRowCenter)`
     margin: 2rem 0;

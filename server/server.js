@@ -4,16 +4,16 @@ const express = require("express");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const helmet = require("helmet");
-
 const api = require("./api");
 const { defaultErrorHandler, errorHandler } = require("./handlers/");
 const connectToMongoAtlas = require("./utils/connectToMongoAtlas");
+const { redisSetup } = require("./utils/redisClient");
 
 // Initialize express
 const app = express();
 
-// Connect with Mongo Atlas
 connectToMongoAtlas();
+redisSetup();
 
 // Middlewares
 app.use(helmet());
