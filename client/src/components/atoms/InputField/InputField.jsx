@@ -1,6 +1,7 @@
 import { StyledInputField } from "./InputField.styled";
+import { forwardRef } from "react";
 
-export const InputField = ({ summonerName, setSummonerName, placeholder, type, maxLength }) => {
+export const InputField = forwardRef(({ summonerName, setSummonerName, placeholder, type, maxLength }, ref) => {
   return (
     <StyledInputField
       placeholder={placeholder ? placeholder : ""}
@@ -9,6 +10,7 @@ export const InputField = ({ summonerName, setSummonerName, placeholder, type, m
       type={type ? type : "text"}
       required
       maxLength={maxLength}
+      ref={ref}
     />
   );
-};
+});

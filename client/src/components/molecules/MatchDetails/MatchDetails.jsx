@@ -46,14 +46,17 @@ export const MatchDetails = ({ match }) => {
     }}>
       {tables.map((table, i) => (
         <FlexCol key={i}>
-          <GameBans
-            size="30px"
-            align="left"
-            isWinner={teams[i][0].win}
-            bans={match?.info.teams[i].bans}
-          >
-            BANS:
-          </GameBans>
+          {match?.info.teams[i].bans.length
+            ? <GameBans
+              size="30px"
+              align="left"
+              isWinner={teams[i][0].win}
+              bans={match?.info.teams[i].bans}
+            >
+              BANS:
+            </GameBans>
+            : null
+          }
           <StyledMatchDetails isWinner={teams[i][0].win}>
             <thead>
               {

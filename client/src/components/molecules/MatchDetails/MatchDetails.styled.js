@@ -10,10 +10,12 @@ export const StyledMatchDetails = styled.table`
         background-color: ${({ theme }) => theme.backgroundColors.tertiary};
     }
 
+    /* champion icon */
     [data-icon] {
         min-width: 40px;
     }
 
+    /* row which highlights the profile's champion in a given game  */
     [data-profile="true"] {
         background-color: ${({ theme, isWinner }) => isWinner ? theme.matchResult.winBorder : theme.matchResult.lossBorder};
     }
@@ -24,6 +26,7 @@ export const StyledMatchDetails = styled.table`
         text-transform: uppercase;
         user-select: none;
 
+        /* champion header */
         &:nth-child(2) > div {
             width: 100%;
             display: flex;
@@ -33,10 +36,12 @@ export const StyledMatchDetails = styled.table`
         }
     }
 
+    /* first header */
     th:first-child, th:first-child > div {
         width: 190px;
     }
 
+    /* last header */
     th:last-child, th:last-child > div {
         width: 180px;
     }
@@ -46,10 +51,6 @@ export const StyledMatchDetails = styled.table`
         display: flex;
         justify-content: center;
         align-items: center;
-    }
-
-    th > div >:first-child {
-        border: 1px solid white;
     }
 
     tbody {        
@@ -84,12 +85,14 @@ export const StyledMatchDetails = styled.table`
     }
 
     @media only screen and (max-width: 575px) {
+        /*  first header */
         th:first-child, th:first-child > div {
             width: 150px;
         }
     }
 
     @media only screen and (max-width: 500px) {
+        /* last header */
         th:last-child, th:last-child > div {
             width: 100px;
         }
@@ -111,6 +114,7 @@ export const StyledMatchDetails = styled.table`
     }
 
     @media only screen and (max-width: 615px) {
+        /* first header */
         th:first-child, th:first-child > div {
             width: 80px;
         }
@@ -123,6 +127,7 @@ export const StyledMatchDetails = styled.table`
             }
         }
 
+        /* grid with champion icon, runes and summoner spells */
         [data-data-champsetup] {
             place-self: start;
             padding-left: 0.25rem;
@@ -130,30 +135,35 @@ export const StyledMatchDetails = styled.table`
     }
 
     @media only screen and (max-width: 320px) {
+        /* champion icon */
         [data-icon] {
             min-width: 30px;
             width: 30px;
         }
 
+        /* champion setup */
         [data-setup] {
             min-width: 15px;
             width: 15px;
         }
 
-        [data-data-champsetup] {
+        [data-champsetup] {
             place-self: start;
         }
 
+        /* only summoner spells and runes grid */
         [data-setupgrid] {
             grid-template-columns: repeat(2, 15px);
             grid-template-rows: repeat(2, 15px);
         }
 
+        /*  items grid */
         [data-itemgrid] {
             grid-template-columns: repeat(4, 20px);
             grid-template-rows: repeat(2, 20px);
             place-content: center;
 
+            /* 7th item in grid */
             div:nth-child(7) {
                 grid-column: 5 / 4;
                 grid-row: 1 / 2;

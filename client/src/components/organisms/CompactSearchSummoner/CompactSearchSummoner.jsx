@@ -1,5 +1,5 @@
 import { Dropdown } from "components/atoms/Dropdown/Dropdown";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { SummonerInput } from "../../molecules/SummonerInput/SummonerInput";
 import { StyledCompactSearchSummoner } from "./CompactSearchSummoner.styled";
@@ -10,14 +10,17 @@ export const CompactSearchSummoner = () => {
   const [summonerName, setSummonerName] = useState("");
   const [dropdownValue, setDropdownValue] = useState(localStorage.getItem("server") || "eun1");
   const navigate = useNavigate();
+  const inputRef = useRef(null);
 
   const handleSubmit = (e) => {
+    console.log(e);
     e.preventDefault();
     if (!dropdownValue || !summonerName) {
       alert("no");
       return;
     }
     setSummonerName(() => "");
+    inputRef.current.blur();
     navigate(`/${dropdownValue}/${summonerName}`);
   };
 
@@ -44,6 +47,7 @@ export const CompactSearchSummoner = () => {
         handleClick={handleClick}
       />
       <SummonerInput
+        ref={inputRef}
         setSummonerName={setSummonerName}
         summonerName={summonerName}
         server={dropdownValue}

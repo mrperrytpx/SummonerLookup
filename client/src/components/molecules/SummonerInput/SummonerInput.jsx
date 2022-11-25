@@ -1,12 +1,14 @@
 import { StyledSummonerInput } from "./SummonerInput.styled";
 import { IconButtonLink } from "../../atoms/IconButtonLink/IconButtonLink";
 import { InputField } from "../../atoms/InputField/InputField";
+import { forwardRef } from "react";
 
-export const SummonerInput = ({ setSummonerName, summonerName, server }) => {
+export const SummonerInput = forwardRef(({ setSummonerName, summonerName, server }, ref) => {
 
   return (
     <StyledSummonerInput>
       <InputField
+        ref={ref}
         placeholder="Search a summoner..."
         setSummonerName={setSummonerName}
         summonerName={summonerName}
@@ -19,4 +21,4 @@ export const SummonerInput = ({ setSummonerName, summonerName, server }) => {
       />
     </StyledSummonerInput>
   );
-};
+});

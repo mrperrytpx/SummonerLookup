@@ -1,7 +1,5 @@
 TASKS FOR FUTURE ME WHEN ITS FUNCTIONAL (WIP)
 
-- remove focus from navsearch on submit
-- comments on useTable components
 - swap from "rtl-ltr" thing for livegame
 - fix mobile nav menu shifting
 - fix "the baus ffs" successfully searching "thebausffs" (less words to describe)
