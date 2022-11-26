@@ -1,1 +1,1 @@
-export const API_URL = "https://slup-server-production.up.railway.app";
+export const API_URL = "http://localhost:3001";

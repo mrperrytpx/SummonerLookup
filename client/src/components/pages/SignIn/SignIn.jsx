@@ -23,6 +23,9 @@ export const SignIn = () => {
 
   const onSubmit = async (data) => {
     await signIn.mutateAsync({ ...data });
+    if (signIn.isError) {
+      return;
+    }
     navigate(from, { replace: true });
   };
 

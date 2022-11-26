@@ -35,7 +35,6 @@ const useGetFreshTokensQuery = (setAccessToken, shouldRefetch, setShouldRefetch)
         onError: () => {
             setAccessToken(null);
         },
-        enabled: !!shouldRefetch,
         refetchIntervalInBackground: true,
         refetchInterval: 1440000 // 24 minutes, 6 minutes less than the lifespan of the accessToken
     });
@@ -48,6 +47,7 @@ const useSignInMutation = (setAccessToken, setShouldRefetch) => {
         const info = { email, password, rememberMe };
         const response = await fetch(`${API_URL}/api/auth/login`, {
             method: "POST",
+            credentials: "include",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(info),
         });
@@ -69,6 +69,7 @@ const useSignInMutation = (setAccessToken, setShouldRefetch) => {
             setAccessToken(data?.accessToken);
         }
         setShouldRefetch(data.rememberMe);
+
     };
 
     return useMutation(signIn);
@@ -125,7 +126,6 @@ const useDeleteUserMutation = () => {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
-                credentials: "include",
                 authorization: `Bearer ${accessToken}`
             }
         });

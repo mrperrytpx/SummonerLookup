@@ -12,7 +12,6 @@ export const useUnfollowSummonerMutation = () => {
         const response = await fetch(`${API_URL}/api/summoner/unfollow_summoner`, {
             method: "PATCH",
             signal: controller.signal,
-            credentials: "include",
             headers: {
                 "Content-Type": "application/json",
                 authorization: `Bearer ${accessToken}`,

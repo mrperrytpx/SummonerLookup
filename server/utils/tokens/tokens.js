@@ -33,6 +33,7 @@ const sendAccessToken = (res, token, rememberMe) => {
 const sendRefreshToken = (res, token) => {
 	// send the refresh token as a cookie
 	res.cookie("slup", token, {
+		secure: true,
 		httpOnly: true,
 		signed: true,
 		maxAge: 60 * 60 * 24 * 7 * 1000, // 7 days croissant 

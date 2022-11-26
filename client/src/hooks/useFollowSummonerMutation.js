@@ -10,7 +10,6 @@ export const useFollowSummonerMutation = () => {
     const followSummoner = async ({ payload }) => {
         const response = await fetch(`${API_URL}/api/summoner/follow_summoner`, {
             method: "POST",
-            credentials: "include",
             headers: {
                 "Content-Type": "application/json",
                 authorization: `Bearer ${accessToken}`,
