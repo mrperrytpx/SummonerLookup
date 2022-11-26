@@ -16,7 +16,7 @@ export const MatchItems = ({ items, initialWidth, gap }) => {
             border="black"
             width={`${initialWidth}px`}
             key={i}
-            src={`http://ddragon.leagueoflegends.com/cdn/${version}/img/item/${item}.png`}
+            src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/item/${item}.png`}
             alt="Item"
           />
           : <ImageContainer
