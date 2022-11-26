@@ -77,7 +77,7 @@ const useSignInMutation = (setAccessToken, setShouldRefetch) => {
 const useSignUpMutation = () => {
     const signUp = async ({ email, password }) => {
         const info = { email, password };
-        const response = await fetch(`/api/auth/register`, {
+        const response = await fetch(`${API_URL}/auth/register`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(info),
@@ -99,7 +99,7 @@ const useSignUpMutation = () => {
 
 const useSignOutMutation = (setAccessToken, queryClient) => {
     const signOut = async ({ accessToken }) => {
-        const response = await fetch(`/api/auth/logout`, {
+        const response = await fetch(`${API_URL}/auth/logout`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
