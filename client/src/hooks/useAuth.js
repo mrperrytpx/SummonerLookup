@@ -99,7 +99,7 @@ const useSignUpMutation = () => {
 
 const useSignOutMutation = (setAccessToken, queryClient) => {
     const signOut = async ({ accessToken }) => {
-        const response = await fetch(`${API_URL}/auth/logout`, {
+        const response = await fetch(`${API_URL}/api/auth/logout`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
