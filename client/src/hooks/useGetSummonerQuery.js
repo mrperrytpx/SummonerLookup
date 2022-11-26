@@ -1,7 +1,8 @@
+import { API_URL } from "consts/apiUrl";
 import { useQuery } from "react-query";
 
 const getSummoner = async (signal, server, summonerName) => {
-    const response = await fetch(`/api/summoner/search_summoner/${server}/${summonerName.toLowerCase()}`, {
+    const response = await fetch(`${API_URL}/api/summoner/search_summoner/${server}/${summonerName.toLowerCase()}`, {
         signal
     });
 

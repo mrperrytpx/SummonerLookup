@@ -1,9 +1,10 @@
+import { API_URL } from "consts/apiUrl";
 import { useQuery } from "react-query";
 
 export const useGetSummonerLiveGameQuery = (server, summonerId) => {
 
     const getSummonerLiveGame = async ({ signal }) => {
-        const response = await fetch(`/api/summoner/live_game/${server}/${summonerId}`, {
+        const response = await fetch(`${API_URL}/api/summoner/live_game/${server}/${summonerId}`, {
             signal
         });
 

@@ -1,9 +1,10 @@
+import { API_URL } from "consts/apiUrl";
 import { useQuery } from "react-query";
 
 export const useGetSummonerRankedStatsQuery = (server, summonerId) => {
 
     const getRankedStats = async ({ signal }) => {
-        const response = await fetch(`/api/summoner/ranked_stats/${server}/${summonerId}`, {
+        const response = await fetch(`${API_URL}/api/summoner/ranked_stats/${server}/${summonerId}`, {
             signal
         });
 

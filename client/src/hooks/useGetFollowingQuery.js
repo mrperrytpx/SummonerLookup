@@ -1,8 +1,9 @@
+import { API_URL } from "consts/apiUrl";
 import { useQuery } from "react-query";
 import { useAuth } from "./useAuth";
 
 const getFollowing = async (accessToken, signal) => {
-    const response = await fetch("/api/user/me", {
+    const response = await fetch(`${API_URL}/api/user/me`, {
         method: "GET",
         signal,
         headers: {

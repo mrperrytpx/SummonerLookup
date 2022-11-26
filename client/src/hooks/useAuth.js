@@ -121,7 +121,7 @@ const useSignOutMutation = (setAccessToken, queryClient) => {
 
 const useDeleteUserMutation = () => {
     const deleteUser = async ({ accessToken }) => {
-        const response = await fetch("/api/user/delete_account", {
+        const response = await fetch(`${API_URL}/api/user/delete_account`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",

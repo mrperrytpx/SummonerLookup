@@ -1,3 +1,4 @@
+import { API_URL } from "consts/apiUrl";
 import { useMutation, useQueryClient } from "react-query";
 import { useAuth } from "./useAuth";
 
@@ -8,7 +9,7 @@ export const useUnfollowSummonerMutation = () => {
 
     const unfollowSummoner = async ({ id }) => {
         const controller = new AbortController();
-        const response = await fetch("/api/summoner/unfollow_summoner", {
+        const response = await fetch(`${API_URL}/api/summoner/unfollow_summoner`, {
             method: "PATCH",
             signal: controller.signal,
             credentials: "include",
