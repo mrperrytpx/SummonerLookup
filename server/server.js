@@ -8,7 +8,6 @@ const api = require("./api");
 const { defaultErrorHandler, errorHandler } = require("./handlers/");
 const connectToMongoAtlas = require("./utils/connectToMongoAtlas");
 const { redisSetup } = require("./utils/redisClient");
-const path = require("path");
 
 // Initialize express
 const app = express();
@@ -29,12 +28,6 @@ app.use((req, _res, next) => {
 
 // API;
 app.use("/api", api);
-
-app.use(express.static(path.join(__dirname, 'build')));
-
-app.get('/*', function (_req, res) {
-    res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
 
 app.use(defaultErrorHandler);
 app.use(errorHandler);
