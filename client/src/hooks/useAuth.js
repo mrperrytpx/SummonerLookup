@@ -1,10 +1,11 @@
 import { useContext, useState, createContext } from "react";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { queryClient } from "contexts/AppProviders";
+import { API_URL } from "consts/apiUrl";
 
 const useGetFreshTokensQuery = (setAccessToken, shouldRefetch, setShouldRefetch) => {
     async function getFreshTokens() {
-        const response = await fetch("https://slup-server-production.up.railway.app/api/auth/refresh_token", {
+        const response = await fetch(`${API_URL}/api/auth/refresh_token`, {
             method: "POST",
             credentials: "include",
             headers: { "Content-Type": "application/json" },
@@ -45,7 +46,7 @@ const useGetFreshTokensQuery = (setAccessToken, shouldRefetch, setShouldRefetch)
 const useSignInMutation = (setAccessToken, setShouldRefetch) => {
     const signIn = async ({ email, password, rememberMe }) => {
         const info = { email, password, rememberMe };
-        const response = await fetch(`/api/auth/login`, {
+        const response = await fetch(`${API_URL}/api/auth/login`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(info),

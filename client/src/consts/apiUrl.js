@@ -1,0 +1,1 @@
+export const API_URL = "https://slup-server-production.up.railway.app";
