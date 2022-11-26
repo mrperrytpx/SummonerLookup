@@ -15,6 +15,10 @@ const app = express();
 connectToMongoAtlas();
 redisSetup();
 
+app.get("/", (_req, res) => {
+    res.sendStatus(200);
+});
+
 // Middlewares
 app.use(helmet());
 app.use(cookieParser(process.env.COOKIE_SIGNATURE));
