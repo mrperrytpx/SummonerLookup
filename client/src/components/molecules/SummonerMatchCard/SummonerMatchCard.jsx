@@ -51,7 +51,7 @@ export const SummonerMatchCard = ({ match }) => {
             <Span size="s">{(new Date(match?.info?.gameEndTimestamp ? match?.info?.gameEndTimestamp : match?.info?.gameStartTimestamp + match?.info?.gameDuration)).toDateString()}</Span>
           </FlexColCenter>
 
-          <ChampionSetup position="center" summonerMatchData={summonerMatchData} width={60} />
+          <ChampionSetup hasLevel={true} position="center" summonerMatchData={summonerMatchData} width={60} />
 
           <FlexColCenter>
             <Span width="auto" align="center" size="s">{summonerMatchData.kills} / {summonerMatchData.deaths} / {summonerMatchData.assists}</Span>

@@ -1,6 +1,7 @@
 import { FaSearch, FaGithub, FaLinkedin } from "react-icons/fa";
 import { StyledIconButtonLink } from "./IconButtonLink.styled";
 import { StyledIconButtonAnchor } from "./IconButtonAchor.styled";
+import { ReactComponent as UggLogo } from "assets/ugg.svg";
 
 export const IconButtonLink = ({ size, icon, server, summonerName }) => {
 
@@ -25,6 +26,14 @@ export const IconButtonLink = ({ size, icon, server, summonerName }) => {
       return (
         <StyledIconButtonAnchor rel="noopener noreferrer" href="https://www.linkedin.com/" target="_black">
           <FaLinkedin size={size ? size : "30"} fill="white" />
+        </StyledIconButtonAnchor>
+      );
+    }
+
+    case "u.gg": {
+      return (
+        <StyledIconButtonAnchor rel="noopener noreferrer" href={`https://u.gg/lol/profile/${server}/${summonerName}/overview`} target="_black">
+          <UggLogo size={size ? size : "30"} />
         </StyledIconButtonAnchor>
       );
     }

@@ -1,9 +1,10 @@
 import { GridBox } from "components/atoms/GridBoxes/GridBoxes.styled";
+import { IconWithLevel } from "components/atoms/IconWithLevel/IconWithLevel";
 import { ImageContainer } from "components/atoms/ImageContainer/ImageContainer";
 import { useQueryClient } from "react-query";
 import { StyledChampionSetup } from "./ChampionSetup.styled";
 
-export const ChampionSetup = ({ summonerMatchData, width, position }) => {
+export const ChampionSetup = ({ hasLevel, summonerMatchData, width, position }) => {
 
   const queryClient = useQueryClient();
 
@@ -25,12 +26,21 @@ export const ChampionSetup = ({ summonerMatchData, width, position }) => {
 
   return (
     <StyledChampionSetup position={position} data-champsetup>
-      <ImageContainer
-        data-icon="true"
-        src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${summonerMatchData.championName}.png`}
-        alt="champion"
-        width={`${width}px` || "40px"}
-      />
+      {!hasLevel
+        ? <ImageContainer
+          data-icon="true"
+          src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${summonerMatchData.championName}.png`}
+          alt="champion"
+          width={`${width}px` || "40px"}
+        />
+        : <IconWithLevel
+          level={summonerMatchData?.champLevel || "?"}
+          data-icon
+          src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${summonerMatchData.championName}.png`}
+          alt="champion"
+          width={`${width}px` || "40px"}
+        />
+      }
       <GridBox data-setupgrid rows={`repeat(2, minmax(${width / 2}px, 1fr))`} cols={`repeat(2, minmax(${width / 2}px, 1fr))`}>
         <ImageContainer
           border="black"

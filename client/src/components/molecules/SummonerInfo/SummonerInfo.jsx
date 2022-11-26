@@ -100,7 +100,7 @@ export const SummonerInfo = () => {
           </Span>
           {summonerChallengesData?.totalPoints?.percentile && (
             <Span align="left" size="s">
-              (better than {100 - (summonerChallengesData?.totalPoints?.percentile) * 100}% of {SERVER_VALUES[server]})
+              (better than {Math.round((1 - summonerChallengesData?.totalPoints?.percentile) * 10000) / 100}% of {SERVER_VALUES[server]})
             </Span>
           )}
         </FlexCol>

@@ -1,4 +1,4 @@
-import { useCallback, useMemo } from "react";
+import { useMemo } from "react";
 import { useParams } from "react-router-dom";
 import { useReactTable, createColumnHelper, getCoreRowModel, getSortedRowModel } from "@tanstack/react-table";
 import { CustomLink } from "components/atoms/CustomLink/CustomLink";
@@ -13,7 +13,7 @@ export const useTable = (data) => {
 
     const { server } = useParams();
 
-    const kda = useCallback((row) => Math.round(((row.kills + row.assists) / (row.deaths || 1)) * 100) / 100, []);
+    const kda = (row) => Math.round(((row.kills + row.assists) / (row.deaths || 1)) * 100) / 100;
 
     const defaultColumns = useMemo(() => [
         columnHelper.accessor(row => row, {
@@ -92,7 +92,7 @@ export const useTable = (data) => {
             header: "Items",
             id: "items"
         }),
-    ], [server, kda]);
+    ], [server]);
 
     const memoData = useMemo(() => data, [data]);
 

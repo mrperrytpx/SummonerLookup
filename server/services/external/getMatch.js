@@ -4,6 +4,12 @@ const { redisClient } = require("../../utils/redisClient");
 
 const getMatch = async (region, game) => {
 
+    const cachedGame = await redisClient.get(game);
+    if (cachedGame) {
+        const parsedGame = JSON.parse(cachedGame);
+        return parsedGame;
+    }
+
     const gameUrl = `https://${region}.api.riotgames.com/lol/match/v5/matches/${game}?api_key=${process.env.RIOT_API}`;
     const gameResponse = await fetch(gameUrl);
 
@@ -15,7 +21,6 @@ const getMatch = async (region, game) => {
     const gameData = await gameResponse.json();
 
     const gameVersion = gameData.info.gameVersion.split(".").slice(0, 2);
-
     if (+gameVersion[0] < 11) throw new Error("Game too old");
     if (+gameVersion[0] === 11 && +gameVersion[1] < 4) throw new Error("Game too old");
 

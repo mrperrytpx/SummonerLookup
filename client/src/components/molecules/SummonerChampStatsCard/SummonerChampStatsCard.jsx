@@ -4,7 +4,8 @@ import { StyledSummonerChampStatsCard } from "./SummonerChampStatsCard.styled";
 import { Container } from "components/atoms/Container/Container";
 import { CustomLink } from "components/atoms/CustomLink/CustomLink";
 import { Dropdown } from "components/atoms/Dropdown/Dropdown";
-import { FlexColCenter, FlexRowSpaceBetween } from "components/atoms/FlexBoxes/FlexBoxes.styled";
+import { IconButtonLink } from "components/atoms/IconButtonLink/IconButtonLink";
+import { FlexColCenter, FlexRowSpaceBetween, FlexRowStart } from "components/atoms/FlexBoxes/FlexBoxes.styled";
 import { LoadingIndicator } from "components/atoms/LoadingIndicator/LoadingIndicator";
 import { Span } from "components/atoms/Span/Span";
 import { IndividualChampStatsCard } from "../IndividualChampStatsCard/IndividualChampStatsCard";
@@ -33,7 +34,11 @@ export const SummonerChampStatsCard = () => {
   return (
     <StyledSummonerChampStatsCard>
       <FlexRowSpaceBetween>
-        <CustomLink underline="true" to="stats">See all stats</CustomLink>
+        <FlexRowStart gap="0.5rem">
+          <CustomLink underline="true" to="stats">See all stats</CustomLink>
+          -
+          <IconButtonLink server={server} summonerName={summonerName} icon="u.gg" />
+        </FlexRowStart>
         <Dropdown
           handleClick={handleClick}
           from="right"
@@ -52,7 +57,7 @@ export const SummonerChampStatsCard = () => {
         )}
         {championRankedStatsData?.[stats].length
           ? championRankedStatsData?.[stats].slice(0, 5).map((champion, i) => <IndividualChampStatsCard data-order={i} key={i} champion={champion} />)
-          : !isLoading ? <Span align="center">No {options.find(x => x.stateValue === stats).text} stats</Span> : null
+          : !isLoading ? <Container><Span align="center">No {options.find(x => x.stateValue === stats).text} stats</Span></Container> : null
         }
       </FlexColCenter>
     </StyledSummonerChampStatsCard>
