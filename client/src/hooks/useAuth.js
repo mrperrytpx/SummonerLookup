@@ -4,7 +4,7 @@ import { queryClient } from "contexts/AppProviders";
 
 const useGetFreshTokensQuery = (setAccessToken, shouldRefetch, setShouldRefetch) => {
     async function getFreshTokens() {
-        const response = await fetch("/api/auth/refresh_token", {
+        const response = await fetch("https://slup-server-production.up.railway.app/api/auth/refresh_token", {
             method: "POST",
             credentials: "include",
             headers: { "Content-Type": "application/json" },
