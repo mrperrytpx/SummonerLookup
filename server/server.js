@@ -22,17 +22,17 @@ app.use(cookieParser(process.env.COOKIE_SIGNATURE));
 app.use(express.json());
 app.use(cors({ origin: process.env.WEBSITE_URL, credentials: true }));
 
-// app.use((req, _res, next) => {
-//     console.log(req.url);
-//     next();
-// });
+app.use((req, _res, next) => {
+    console.log(req.url);
+    next();
+});
 
-// API
+// API;
 app.use("/api", api);
 
 app.use(express.static(path.join(__dirname, 'build')));
 
-app.get('/*', function (req, res) {
+app.get('/*', function (_req, res) {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
