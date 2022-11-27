@@ -35,7 +35,6 @@ const login = async (req, res) => {
 	// Update the user's document with a refresh token
 	// Send the refresh token as a cookie, and access token as a response
 	if (rememberMe) {
-		console.log("remembering");
 		await updateUserRefreshToken(user._id, refreshToken);
 		sendRefreshToken(res, refreshToken);
 	}

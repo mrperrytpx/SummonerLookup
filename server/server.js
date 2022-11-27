@@ -8,6 +8,7 @@ const api = require("./api");
 const { defaultErrorHandler, errorHandler } = require("./handlers/");
 const connectToMongoAtlas = require("./utils/connectToMongoAtlas");
 const { redisSetup } = require("./utils/redisClient");
+const swaggerDocs = require("./utils/swagger");
 
 // Initialize express
 const app = express();
@@ -18,6 +19,8 @@ redisSetup();
 app.get("/", (_req, res) => {
     res.sendStatus(200);
 });
+
+swaggerDocs(app, process.env.PORT);
 
 // Middlewares
 app.use(helmet());

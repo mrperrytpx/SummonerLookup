@@ -1,6 +1,16 @@
 const { sign } = require("jsonwebtoken");
 const signingOptions = require("./signingOptions");
 
+/**
+	 * @openapi
+	 * components:
+	 *   securitySchemas:
+	 *     cookieAuth:
+	 *       in: cookie
+	 *       type: string
+	 *       name: "slup"
+	 *       default: "slup=[string]"
+	 */
 const createAccessToken = (userId, username) => {
 	// Sign (create) a JWT access token with the user._id, signed with the access_secret .env
 	const payload = { _id: userId };
@@ -27,11 +37,29 @@ const createRefreshToken = (userId, username) => {
 
 const sendAccessToken = (res, token, rememberMe) => {
 	// Send the access token as a response
-	res.json({ accessToken: token, rememberMe });
+	const payload = {
+		accessToken: token
+	};
+	if (rememberMe) {
+		payload.rememberMe = rememberMe;
+	}
+	res.json(payload);
 };
 
 const sendRefreshToken = (res, token) => {
 	// send the refresh token as a cookie
+
+	/**
+	 * @openapi
+	 * components:
+	 *   securitySchemas:
+	 *     cookieAuth:
+	 *       in: cookie
+	 *       type: string
+	 *       name: "slup"
+	 *       default: "slup=[string]"
+	 */
+
 	res.cookie("slup", token, {
 		secure: true,
 		httpOnly: true,

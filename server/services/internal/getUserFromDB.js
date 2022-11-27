@@ -2,7 +2,8 @@
 const User = require("../../models/User");
 
 const getUserFromDB = async (identifier) => {
-    return await User.findOne(identifier);
+    const user = await User.findOne(identifier);
+    return user;
 };
 
 module.exports = getUserFromDB;

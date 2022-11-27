@@ -8,5 +8,4 @@ router.use("/auth", authRouter);
 router.use("/user", userRouter);
 router.use("/summoner", summonerRouter);
 
-
 module.exports = router;

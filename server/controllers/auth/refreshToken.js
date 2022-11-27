@@ -12,8 +12,6 @@ const refreshToken = async (req, res) => {
 	// get the token from the cookie
 	const cookieToken = req.signedCookies.slup;
 
-	console.log("recieved cookie: ", cookieToken);
-
 	// If we don't have a token in our request, set the access token to nothing
 	if (!cookieToken) return res.json({ accesstoken: '' });
 
@@ -41,12 +39,11 @@ const refreshToken = async (req, res) => {
 	const accessToken = createAccessToken(user._id, payload.sub);
 	const refreshToken = createRefreshToken(user._id, payload.sub);
 
-	// Update users refresh token in the DB with a new refresh token 
 	await updateUserRefreshToken(user._id, refreshToken);
+
 	// Send both tokens to the front-end
 	sendRefreshToken(res, refreshToken);
 	sendAccessToken(res, accessToken, null);
-
 };
 
 module.exports = refreshToken;

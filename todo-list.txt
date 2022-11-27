@@ -1,5 +1,4 @@
 optimiziraj sliek
-try catch za queries
 swagger
 cursor pointer za search
 homepage background
