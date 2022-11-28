@@ -9,5 +9,5 @@ export {
     Me,
     Summoner,
     SignIn,
-    SignUp
+    SignUp,
 };
