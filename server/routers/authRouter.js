@@ -29,6 +29,8 @@ const { asyncHandler } = require("../handlers");
    *        description: Bad Request
    *      404:
    *        description: Not found
+   *      429:
+   *        description: Too many requests
    */
 router.post("/login", rateLimiter, asyncHandler(authController.loginRoute));
 /**
@@ -53,6 +55,8 @@ router.post("/login", rateLimiter, asyncHandler(authController.loginRoute));
  *        description: Not found
  *      409:
  *        description: Conflict
+ *      429:
+ *        description: Too many requests
  */
 router.post("/register", rateLimiter, asyncHandler(authController.registerRoute));
 /**
@@ -74,11 +78,13 @@ router.post("/register", rateLimiter, asyncHandler(authController.registerRoute)
  *          $ref: "#/components/securitySchemas/cookieAuth"
  *    responses:
  *      200:
-*        description: Tokens refreshed
-*        content:
-*          application/json: 
-*            schema: 
-*              $ref: "#/components/securitySchemas/cookieAuth"
+ *        description: Tokens refreshed
+ *        content:
+ *          application/json: 
+ *          schema: 
+ *            $ref: "#/components/securitySchemas/cookieAuth"
+ *      429:
+ *        description: Too many requests
  */
 router.post("/refresh_token", rateLimiter, asyncHandler(authController.refreshTokenRoute));
 
@@ -102,6 +108,8 @@ router.post("/refresh_token", rateLimiter, asyncHandler(authController.refreshTo
  *        description: Logout successful
  *      403:
  *        description: Forbidden
+ *      429:
+ *        description: Too many requests
  */
 router.post("/logout", rateLimiter, authMiddleware, asyncHandler(authController.logoutRoute));
 

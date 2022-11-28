@@ -10,3 +10,30 @@ const userProfile = async (req, res) => {
 };
 
 module.exports = userProfile;
+
+/**
+ * @openapi
+ * components:
+ *  schemas:
+ *    FollowingObject:
+ *      allOf:
+ *      - $ref: "#/components/schemas/SummonerResponse"
+ *      - type: object
+ *        properties:
+ *          _id:
+ *            type: string
+ *          followedAt:
+ *            type: string
+ *            format: date-time
+ */
+
+/**
+ * @openapi
+ * components:
+ *  schemas:
+ *    FollowingResponse:
+ *      type: array
+ *      items: 
+ *        type: object
+ *        $ref: "#/components/schemas/FollowingObject"
+ */

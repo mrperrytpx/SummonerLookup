@@ -33,7 +33,6 @@ const getSummonerChampionStats = async (server, summonerName) => {
                     totalMatches
                     tripleKills
                     wins
-                    lpAvg
                     __typename
                   }
                   exodiaUuid

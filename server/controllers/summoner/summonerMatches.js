@@ -21,8 +21,6 @@ const summonerMatches = async (req, res) => {
     // Filter out rejects
     const matchesData = matchResponses.filter(match => match.status === "fulfilled");
 
-    console.log("Matches data: ", matchesData[0].value.info);
-
     res.json({ matchesData, hasNextPage: hasNextPage && matchesData >= matchResponses });
 };
 
