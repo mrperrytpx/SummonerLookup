@@ -1,12 +1,8 @@
-import { useQueryClient } from "react-query";
 import { StyledSummonerCard } from "./SummonerCard.styled";
 import { IconWithLevel } from "../../atoms/IconWithLevel/IconWithLevel";
 import { SummonerInfo } from "../../molecules/SummonerInfo/SummonerInfo";
 
 export const SummonerCard = ({ summonerData, summonerChallengesData }) => {
-
-  const queryClient = useQueryClient();
-  const version = queryClient.getQueryData(["version"]);
 
   return (
     <StyledSummonerCard>
