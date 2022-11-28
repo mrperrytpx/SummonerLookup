@@ -12,13 +12,14 @@ export const MatchItems = ({ items, initialWidth, gap }) => {
       {items.map((item, i) => (
         item
           ? <ImageContainer
+            key={i}
             data-item
             width={`${initialWidth}px`}
-            key={i}
             src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/item/${item}.png`}
             alt="Item"
           />
           : <div
+            key={i}
             data-item
             data-empty
           />

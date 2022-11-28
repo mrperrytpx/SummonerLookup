@@ -13,16 +13,21 @@ export const ChampionSetup = ({ hasLevel, match, width, position }) => {
   const runes = queryClient.getQueryData(["runes"]);
   const champions = queryClient.getQueryData(["champions"]);
 
+  // ids needed for https://ddragon.leagueoflegends.com/cdn/12.18.1/data/en_US/runesReforged.json
   const keystoneRuneId = match?.perks.styles[0].selections[0].perk;
   const primaryRuneTreeId = match?.perks.styles[0].style;
   const secondaryRuneTreeId = match?.perks.styles[1].style;
 
+  // rune data
   const primaryTree = runes.find(tree => tree.id === primaryRuneTreeId);
+  const primaryRuneData = primaryTree.slots[0].runes.find(rune => rune.id === keystoneRuneId);
+  const primaryTreeNames = primaryRuneData.icon.split("/").map(x => x.toLowerCase());
+
   const secondaryTree = runes.find(tree => tree.id === secondaryRuneTreeId);
+  const secondaryTreeKeystoneName = secondaryTree?.icon.split("/")[2].toLowerCase();
 
   const firstSummonerSpell = summonerSpells.find(spell => spell.id === match.summoner1Id)?.iconPath.split("/lol-game-data/assets/").pop().toLowerCase();
   const secondSummonerSpell = summonerSpells.find(spell => spell.id === match.summoner2Id)?.iconPath.split("/lol-game-data/assets/").pop().toLowerCase();
-
   const noSummonerSpell = "/lol-game-data/assets/DATA/Spells/Icons2D/Summoner_Empty.png".split("/lol-game-data/assets/").pop().toLowerCase();
 
   return (
@@ -47,7 +52,8 @@ export const ChampionSetup = ({ hasLevel, match, width, position }) => {
           border="black"
           background
           width={`${width / 2}px` || "20px"}
-          src={`https://ddragon.leagueoflegends.com/cdn/img/${primaryTree.slots[0].runes.find(rune => rune.id === keystoneRuneId).icon}`}
+          // https://raw.communitydragon.org/latest/game/assets/perks/styles/domination/electrocute/electrocute.png
+          src={`https://raw.communitydragon.org/latest/game/assets/perks/styles/${primaryTreeNames[2]}/${primaryTreeNames[3]}/${primaryTreeNames[4]}`}
           alt="Keystone rune"
           data-setup
         />
@@ -55,7 +61,8 @@ export const ChampionSetup = ({ hasLevel, match, width, position }) => {
           border="black"
           background
           width={`${width / 2}px` || "20px"}
-          src={`https://ddragon.leagueoflegends.com/cdn/img/${secondaryTree.icon}`}
+          // https://raw.communitydragon.org/latest/game/assets/perks/styles/7203_whimsy.png
+          src={`https://raw.communitydragon.org/latest/game/assets/perks/styles/${secondaryTreeKeystoneName}`}
           alt="Secondary rune tree"
           data-setup
         />

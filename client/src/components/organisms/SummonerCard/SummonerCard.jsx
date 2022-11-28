@@ -13,7 +13,8 @@ export const SummonerCard = ({ summonerData, summonerChallengesData }) => {
       <IconWithLevel
         border
         radius="10px"
-        src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/profileicon/${summonerData?.profileIconId}.png`}
+        // https://raw.communitydragon.org/latest/game/assets/ux/summonericons/profileicon5336.png
+        src={`https://raw.communitydragon.org/latest/game/assets/ux/summonericons/profileicon${summonerData?.profileIconId}.png`}
         level={summonerData?.summonerLevel}
         width="140px"
         alt="Account icon"

@@ -1,13 +1,13 @@
 import { useRef, useState } from "react";
 import { StyledSummonerMatchCard } from "./SummonerMatchCard.styled";
-import { FlexColCenter, FlexColSpaceBetween } from "components/atoms/FlexBoxes/FlexBoxes.styled";
+import { FlexColCenter } from "components/atoms/FlexBoxes/FlexBoxes.styled";
 import { Span } from "components/atoms/Span/Span";
 import { ChampionSetup } from "../ChampionSetup/ChampionSetup";
 import { MatchItems } from "../MatchItems/MatchItems";
-import { MatchDetails } from "../MatchDetails/MatchDetails";
 import { ErrorBoundary } from "utils/ErrorBoundry";
 import { useIntersectionObserver } from "hooks/useIntersectionObserver";
 import { QUEUE_TYPES } from "consts/queueTypes";
+import { DetailsContainer } from "../MatchDetails/DetailsContainer";
 
 export const SummonerMatchCard = ({ match }) => {
 
@@ -35,7 +35,7 @@ export const SummonerMatchCard = ({ match }) => {
             <Span size="s">
               {match.win ? "Victory" : "Defeat"}
               {" - "}
-              {match?.info?.gameEndTimestamp
+              {match?.gameEndTimestamp
                 ? `${parseInt(match.gameDuration / 60)}m ${match.gameDuration % 60}s`
                 : `${parseInt(match.gameDuration / 60000)}m ${match.gameDuration % 60000 % 60}s`
               }
@@ -55,7 +55,7 @@ export const SummonerMatchCard = ({ match }) => {
         </div>
         {isExpanded &&
           (<ErrorBoundary>
-            <MatchDetails matchId={`${match.platformId}_${match.gameId}`} />
+            <DetailsContainer matchId={`${match.platformId}_${match.gameId}`} />
           </ErrorBoundary>
           )}
       </StyledSummonerMatchCard >

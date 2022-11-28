@@ -15,7 +15,7 @@ const GlobalStyles = createGlobalStyle`
 
     html, body {
         font-family: "Poppins", sans-serif;
-        font-weight: 400;
+        font-weight: 500;
     }
 
     body {

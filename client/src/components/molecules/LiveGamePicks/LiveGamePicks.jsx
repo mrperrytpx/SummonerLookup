@@ -16,16 +16,16 @@ export const LiveGamePicks = ({ picks, direction }) => {
   const champions = queryClient.getQueryData(["champions"]);
   const runes = queryClient.getQueryData(["runes"]);
 
+  // gets correct tree (array is len 5)
   const getTree = (runeId) => runes.find(rune => rune.id === runeId);
 
-  const getAllRunes = (array) => {
+  const getAllRunesFromSecondayTree = (array) => {
     let returnArray = [];
     for (let key of array) {
       returnArray = [...returnArray, ...key.runes];
     }
     return returnArray;
   };
-  // getTree(pick.perks.perkStyle).slots[0].runes.find(rune => rune.id === pick.perks.perkIds[0]).icon
 
   return (
     <StyledLiveGamePicks isPlayer={summonerName} direction={direction}>
@@ -38,28 +38,48 @@ export const LiveGamePicks = ({ picks, direction }) => {
           <CustomLink fontSize=".8rem" to={`/${server.toLowerCase()}/${pick.summonerName}`} size="s">&nbsp;{pick.summonerName}</CustomLink>
           <FlexRow>
             <FlexRowCenter>
-              {pick.perks.perkIds.slice(0, 4).map((perkId, i) => (
-                <ImageContainer
-                  data-rune
-                  key={i}
-                  border
-                  width="32px"
-                  src={`https://ddragon.leagueoflegends.com/cdn/img/${getTree(pick.perks.perkStyle).slots[i].runes.find(rune => rune.id === perkId).icon}`}
-                />
-              ))}
+              {pick.perks.perkIds.slice(0, 4).map((perkId, i) => {
+                const keystoneTree = getTree(pick.perks.perkStyle).slots[i].runes.find(rune => rune.id === perkId);
+                const names = keystoneTree.icon.split("/").map(x => x.toLowerCase());
+                // triump edgecase, doens't have triumph/triump.png
+                return (
+                  <ImageContainer
+                    data-rune
+                    key={i}
+                    border
+                    width="32px"
+                    // https://raw.communitydragon.org/latest/game/assets/perks/styles/domination/electrocute/electrocute.png
+                    src={names.length === 5
+                      ? `https://raw.communitydragon.org/latest/game/assets/perks/styles/${names[2]}/${names[3]}/${names[4]}`
+                      : `https://raw.communitydragon.org/latest/game/assets/perks/styles/${names[2]}/${names[3]}`
+                    }
+                  />
+                );
+              })}
             </FlexRowCenter>
             <FlexRowCenter data-mobile>
               {pick.perks.perkIds.slice(4, 6).map((perkId, i) => {
-                const allTreeRunes = getAllRunes(getTree(pick.perks.perkSubStyle).slots);
-                return <ImageContainer
-                  data-rune
-                  key={i}
-                  border
-                  width="32px"
-                  src={`https://ddragon.leagueoflegends.com/cdn/img/${allTreeRunes.find(rune => rune.id === perkId).icon}`}
-                />;
+                // gives all runes found in pick.perks.substyle.slots for the secondary tree
+                const allTreeRunes = getAllRunesFromSecondayTree(getTree(pick.perks.perkSubStyle).slots);
+                const singleRune = allTreeRunes.find(rune => rune.id === perkId);
+                const names = singleRune.icon.split("/").map(x => x.toLowerCase());
+                // triump edgecase, doens't have triumph/triump.png
+                return (
+                  <ImageContainer
+                    data-rune
+                    key={i}
+                    border
+                    width="32px"
+                    // https://raw.communitydragon.org/latest/game/assets/perks/styles/domination/electrocute/electrocute.png
+                    src={names.length === 5
+                      ? `https://raw.communitydragon.org/latest/game/assets/perks/styles/${names[2]}/${names[3]}/${names[4]}`
+                      : `https://raw.communitydragon.org/latest/game/assets/perks/styles/${names[2]}/${names[3]}`
+                    }
+                  />
+                );
               })}
             </FlexRowCenter>
+
           </FlexRow>
         </div>
       ))}

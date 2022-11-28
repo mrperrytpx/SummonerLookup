@@ -15,5 +15,13 @@ export const StyledChallengeCard = styled.div`
 
     ${({ isVisible }) => !isVisible && `
         visibility: hidden;
+
+        img {
+            display: none;
+        }
     `}
+
+    img[alt="Challenge badge"] {
+        place-self: start;
+    }
 `;
