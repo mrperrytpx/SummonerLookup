@@ -1,10 +1,9 @@
 import { useQuery } from "react-query";
-import { API_URL } from "consts/apiUrl";
 
 export const useGetSummonerSingleMatchQuery = (id) => {
 
     const getMatch = async ({ signal }) => {
-        const response = await fetch(`${API_URL}/api/summoner/match_details/${id}`, {
+        const response = await fetch(`${process.env.REACT_APP_NOT_SECRET_CODE}/api/summoner/match_details/${id}`, {
             signal
         });
 

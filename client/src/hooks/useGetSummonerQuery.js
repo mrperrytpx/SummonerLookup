@@ -1,8 +1,7 @@
-import { API_URL } from "consts/apiUrl";
 import { useQuery } from "react-query";
 
 const getSummoner = async (server, summonerName) => {
-    const response = await fetch(`${API_URL}/api/summoner/search_summoner/${server}/${summonerName.toLowerCase()}`);
+    const response = await fetch(`${process.env.REACT_APP_NOT_SECRET_CODE}/api/summoner/search_summoner/${server}/${summonerName.toLowerCase()}`);
 
     if (!response.ok) throw new Error("Something went wrogn... Try reloading the page");
 

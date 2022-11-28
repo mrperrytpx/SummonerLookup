@@ -1,10 +1,9 @@
-import { API_URL } from "consts/apiUrl";
 import { useQuery } from "react-query";
 
 export const useGetSummonerRankedChampStatsQuery = (server, summonerName) => {
 
     const getChampRankedStats = async ({ signal }) => {
-        const response = await fetch(`${API_URL}/api/summoner/champion_stats/${server}/${summonerName}`, {
+        const response = await fetch(`${process.env.REACT_APP_NOT_SECRET_CODE}/api/summoner/champion_stats/${server}/${summonerName}`, {
             signal
         });
 

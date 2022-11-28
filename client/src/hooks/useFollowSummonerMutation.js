@@ -1,4 +1,3 @@
-import { API_URL } from "consts/apiUrl";
 import { useMutation, useQueryClient } from "react-query";
 import { useAuth } from "./useAuth";
 
@@ -8,7 +7,7 @@ export const useFollowSummonerMutation = () => {
     const queryClient = useQueryClient();
 
     const followSummoner = async ({ payload }) => {
-        const response = await fetch(`${API_URL}/api/summoner/follow_summoner`, {
+        const response = await fetch(`${process.env.REACT_APP_NOT_SECRET_CODE}/api/summoner/follow_summoner`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

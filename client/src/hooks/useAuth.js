@@ -1,11 +1,10 @@
 import { useContext, useState, createContext } from "react";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { queryClient } from "contexts/AppProviders";
-import { API_URL } from "consts/apiUrl";
 
 const useGetFreshTokensQuery = (setAccessToken, shouldRefetch, setShouldRefetch) => {
     async function getFreshTokens() {
-        const response = await fetch(`${API_URL}/api/auth/refresh_token`, {
+        const response = await fetch(`${process.env.REACT_APP_NOT_SECRET_CODE}/api/auth/refresh_token`, {
             method: "POST",
             credentials: "include",
             headers: { "Content-Type": "application/json" },
@@ -35,6 +34,7 @@ const useGetFreshTokensQuery = (setAccessToken, shouldRefetch, setShouldRefetch)
         onError: () => {
             setAccessToken(null);
         },
+        enabled: !!shouldRefetch,
         refetchIntervalInBackground: true,
         refetchInterval: 1440000 // 24 minutes, 6 minutes less than the lifespan of the accessToken
     });
@@ -45,7 +45,7 @@ const useGetFreshTokensQuery = (setAccessToken, shouldRefetch, setShouldRefetch)
 const useSignInMutation = (setAccessToken, setShouldRefetch) => {
     const signIn = async ({ email, password, rememberMe }) => {
         const info = { email, password, rememberMe };
-        const response = await fetch(`${API_URL}/api/auth/login`, {
+        const response = await fetch(`${process.env.REACT_APP_NOT_SECRET_CODE}/api/auth/login`, {
             method: "POST",
             credentials: "include",
             headers: { "Content-Type": "application/json" },
@@ -78,7 +78,7 @@ const useSignInMutation = (setAccessToken, setShouldRefetch) => {
 const useSignUpMutation = () => {
     const signUp = async ({ email, password }) => {
         const info = { email, password };
-        const response = await fetch(`${API_URL}/api/auth/register`, {
+        const response = await fetch(`${process.env.REACT_APP_NOT_SECRET_CODE}/api/auth/register`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(info),
@@ -100,7 +100,7 @@ const useSignUpMutation = () => {
 
 const useSignOutMutation = (setAccessToken, queryClient) => {
     const signOut = async ({ accessToken }) => {
-        const response = await fetch(`${API_URL}/api/auth/logout`, {
+        const response = await fetch(`${process.env.REACT_APP_NOT_SECRET_CODE}/api/auth/logout`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -122,7 +122,7 @@ const useSignOutMutation = (setAccessToken, queryClient) => {
 
 const useDeleteUserMutation = () => {
     const deleteUser = async ({ accessToken }) => {
-        const response = await fetch(`${API_URL}/api/user/delete_account`, {
+        const response = await fetch(`${process.env.REACT_APP_NOT_SECRET_CODE}/api/user/delete_account`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",

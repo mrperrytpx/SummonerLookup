@@ -1,10 +1,9 @@
-import { API_URL } from "consts/apiUrl";
 import { useQuery } from "react-query";
 
 export const useGetSummonerChallengesQuery = (server, summonerName, puuid) => {
 
     const getSummonerChallenges = async ({ signal }) => {
-        const response = await fetch(`${API_URL}/api/summoner/challenges/${server}/${puuid}`, {
+        const response = await fetch(`${process.env.REACT_APP_NOT_SECRET_CODE}/api/summoner/challenges/${server}/${puuid}`, {
             signal
         });
 
