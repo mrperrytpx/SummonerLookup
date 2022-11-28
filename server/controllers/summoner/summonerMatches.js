@@ -21,7 +21,29 @@ const summonerMatches = async (req, res) => {
     // Filter out rejects
     const matchesData = matchResponses.filter(match => match.status === "fulfilled");
 
+    console.log("Matches data: ", matchesData[0].value.info);
+
     res.json({ matchesData, hasNextPage: hasNextPage && matchesData >= matchResponses });
 };
 
 module.exports = summonerMatches;
+
+/**
+ * @openapi
+ *components:
+ *  schemas:
+ *    MatchesResponse:
+ *      type: array
+ *      items:
+ *        type: object
+ *        properties:
+ *          status:
+ *            type: string
+ *          value:
+ *            type: object
+ *            properties:
+ *              metadata:
+ *                type: object
+ *              info:
+ *                type: object
+ */

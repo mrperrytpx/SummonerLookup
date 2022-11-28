@@ -1,4 +1,2 @@
-optimiziraj sliek
-swagger
 cursor pointer za search
 homepage background

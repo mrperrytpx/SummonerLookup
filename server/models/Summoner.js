@@ -1,3 +1,26 @@
+
+/**
+ * @openapi
+ * components:
+ *  schemas:
+ *    SummonerResponse:
+ *      type: object
+ *      properties:
+ *        server:
+ *          type: string
+ *        region:
+ *          type: string
+ *        puuid:
+ *          type: string
+ *        summonerId:
+ *          type: string
+ *        summonerName:
+ *          type: string
+ *        summonerLevel:
+ *          type: number
+ *        profileIconId:
+ *          type: number
+ */
 const Summoner = {
     region: { // Player's region
         type: String,

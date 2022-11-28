@@ -95,7 +95,8 @@ router.post("/refresh_token", rateLimiter, asyncHandler(authController.refreshTo
  *      - name: authorization
  *        in: header
  *        required: true
- *        type: string
+ *        schema:
+ *          $ref: "#/components/securitySchemas/bearerAuth"
  *    responses:
  *      200:
  *        description: Logout successful
