@@ -6,8 +6,6 @@ const summonerRankedStats = async (req, res) => {
 
     const rankedStanding = await getSummonerRankedStats(server, summonerId);
 
-    console.log(rankedStanding);
-
     res.json(rankedStanding);
 };
 

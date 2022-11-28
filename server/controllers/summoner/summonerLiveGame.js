@@ -6,8 +6,6 @@ const summonerLiveGame = async (req, res) => {
 
 	const liveGameData = await getSummonerLiveGame(server, summonerId);
 
-	console.log(liveGameData);
-
 	if (!liveGameData) {
 		res.sendStatus(404);
 		return;

@@ -18,8 +18,14 @@ const summonerMatches = async (req, res) => {
 
         return getMatch(region, game);
     }));
+
     // Filter out rejects
-    const matchesData = matchResponses.filter(match => match.status === "fulfilled");
+    const matchesData = matchResponses
+        .filter(match => match.status === "fulfilled")
+        .map(match => {
+            const summonerOnlyMatchData = match.value?.info?.participants.find(participant => participant.puuid === puuid);
+            return { ...match.value.info, participants: summonerOnlyMatchData };
+        });
 
     res.json({ matchesData, hasNextPage: hasNextPage && matchesData >= matchResponses });
 };

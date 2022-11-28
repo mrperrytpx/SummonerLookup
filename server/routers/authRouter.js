@@ -5,6 +5,7 @@ const authMiddleware = require("../middlewares/authMiddleware");
 const rateLimiter = require("../middlewares/rateLimiter");
 const { asyncHandler } = require("../handlers");
 
+router.post("/login", rateLimiter, asyncHandler(authController.loginRoute));
 /**
    * @openapi
    * '/api/auth/login':
@@ -32,7 +33,8 @@ const { asyncHandler } = require("../handlers");
    *      429:
    *        description: Too many requests
    */
-router.post("/login", rateLimiter, asyncHandler(authController.loginRoute));
+
+router.post("/register", rateLimiter, asyncHandler(authController.registerRoute));
 /**
  * @openapi
  * '/api/auth/register':
@@ -58,7 +60,8 @@ router.post("/login", rateLimiter, asyncHandler(authController.loginRoute));
  *      429:
  *        description: Too many requests
  */
-router.post("/register", rateLimiter, asyncHandler(authController.registerRoute));
+
+router.post("/refresh_token", rateLimiter, asyncHandler(authController.refreshTokenRoute));
 /**
  * @openapi
  * '/api/auth/refresh_token':
@@ -86,8 +89,8 @@ router.post("/register", rateLimiter, asyncHandler(authController.registerRoute)
  *      429:
  *        description: Too many requests
  */
-router.post("/refresh_token", rateLimiter, asyncHandler(authController.refreshTokenRoute));
 
+router.post("/logout", rateLimiter, authMiddleware, asyncHandler(authController.logoutRoute));
 /**
  * @openapi
  * '/api/auth/logout':
@@ -111,6 +114,5 @@ router.post("/refresh_token", rateLimiter, asyncHandler(authController.refreshTo
  *      429:
  *        description: Too many requests
  */
-router.post("/logout", rateLimiter, authMiddleware, asyncHandler(authController.logoutRoute));
 
 module.exports = router;

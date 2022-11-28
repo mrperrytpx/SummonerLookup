@@ -20,7 +20,7 @@ export const StyledImageContainer = styled(FlexRowCenter)`
     `}
 
     ${({ border }) => border && `
-        border : 1px solid ${border};
+        border: 1px solid ${border};
     `}
 
     ${({ radius }) => radius && `

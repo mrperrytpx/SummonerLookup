@@ -13,19 +13,14 @@ export const MatchItems = ({ items, initialWidth, gap }) => {
         item
           ? <ImageContainer
             data-item
-            border="black"
             width={`${initialWidth}px`}
             key={i}
             src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/item/${item}.png`}
             alt="Item"
           />
-          : <ImageContainer
+          : <div
             data-item
-            border="black"
-            width={`${initialWidth}px`}
-            key={i}
-            src={`https://raw.communitydragon.org/latest/game/assets/ux/summonericons/profileicon29.png`}
-            alt="Item"
+            data-empty
           />
       ))}
     </StyledMatchItems>

@@ -8,15 +8,19 @@ import { GameBans } from "../GameBans/GameBans";
 import { useGetSummonerQuery } from "hooks/useGetSummonerQuery";
 import { useTable } from "./useTable";
 import { theme } from "misc/theme";
+import { useGetSummonerSingleMatchQuery } from "hooks/useGetSummonerSingleMatchQuery";
+import { Container } from "components/atoms/Container/Container";
+import { LoadingIndicator } from "components/atoms/LoadingIndicator/LoadingIndicator";
 
-export const MatchDetails = ({ match }) => {
+export const MatchDetails = ({ matchId }) => {
 
   const { width } = useScreenSize();
   const { server, summonerName } = useParams();
+  const { data: matchData, isLoading } = useGetSummonerSingleMatchQuery(matchId);
   const { data: summonerData } = useGetSummonerQuery(server, summonerName);
 
-  const blueTeam = useMemo(() => match.info.participants.slice(0, 5), [match]);
-  const redTeam = useMemo(() => match.info.participants.slice(5), [match]);
+  const blueTeam = useMemo(() => matchData?.info.participants.slice(0, 5), [matchData]);
+  const redTeam = useMemo(() => matchData?.info.participants.slice(5), [matchData]);
 
   const blueTable = useTable(blueTeam);
   const redTable = useTable(redTeam);
@@ -37,6 +41,12 @@ export const MatchDetails = ({ match }) => {
     tables[1].getColumn("cs").toggleVisibility(breakThree);
   }, [width, tables]);
 
+  if (isLoading) return (
+    <Container>
+      <LoadingIndicator center={true} />
+    </Container>
+  );
+
   return (
     <FlexCol style={{
       marginBottom: "1.5rem",
@@ -46,13 +56,13 @@ export const MatchDetails = ({ match }) => {
     }}>
       {tables.map((table, i) => (
         <FlexCol key={i}>
-          {match?.info.teams[i].bans.length
+          {matchData?.info.teams[i].bans.length
             ? <GameBans
               shouldMobileAlign={true}
               size="30px"
               align="left"
               isWinner={teams[i][0].win}
-              bans={match?.info.teams[i].bans}
+              bans={matchData?.info.teams[i].bans}
             >
               BANS:
             </GameBans>

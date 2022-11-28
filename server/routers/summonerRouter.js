@@ -4,6 +4,8 @@ const summonerController = require("../controllers/summoner");
 const authMiddleware = require("../middlewares/authMiddleware");
 const rateLimiter = require("../middlewares/rateLimiter");
 const { asyncHandler } = require("../handlers");
+
+router.post("/follow_summoner", rateLimiter, authMiddleware, asyncHandler(summonerController.followSummonerRoute));
 /**
    * @openapi
    * '/api/summoner/follow_summoner':
@@ -39,46 +41,46 @@ const { asyncHandler } = require("../handlers");
    *      429:
    *        description: Too many requests
    */
-router.post("/follow_summoner", rateLimiter, authMiddleware, asyncHandler(summonerController.followSummonerRoute));
 
-/**
-   * @openapi
-   * '/api/summoner/unfollow_summoner':
-   *  patch:
-   *    tags:
-   *      - Summoner
-   *    summary: Remove a summoner object to the list of following in DB
-   *    parameters:
-   *      - name: authorization
-   *        in: header
-   *        required: true
-   *        schema:
-   *          $ref: "#/components/securitySchemas/bearerAuth"
-   *    requestBody: 
-   *      required: true
-   *      content:
-   *        application/json: 
-   *          schema: 
-   *            type: object
-   *            required: true
-   *            description: Summoner Id
-   *            properties:
-   *              id:
-   *                type: string
-   *    responses:
-   *      204:
-   *        description: Summoner successfully followed
-   *      400:
-   *        description: Bad Request
-   *      409:
-   *        description: Conflict
-   *      404:
-   *        description: Not found
-   *      429:
-   *        description: Too many requests
-   */
 router.patch("/unfollow_summoner", rateLimiter, authMiddleware, asyncHandler(summonerController.unfollowSummonerRoute));
+/**
+  * @openapi
+  * '/api/summoner/unfollow_summoner':
+  *  patch:
+  *    tags:
+  *      - Summoner
+  *    summary: Remove a summoner object to the list of following in DB
+  *    parameters:
+  *      - name: authorization
+  *        in: header
+  *        required: true
+  *        schema:
+  *          $ref: "#/components/securitySchemas/bearerAuth"
+  *    requestBody: 
+  *      required: true
+  *      content:
+  *        application/json: 
+  *          schema: 
+  *            type: object
+  *            required: true
+  *            description: Summoner Id
+  *            properties:
+  *              id:
+  *                type: string
+  *    responses:
+  *      204:
+  *        description: Summoner successfully followed
+  *      400:
+  *        description: Bad Request
+  *      409:
+  *        description: Conflict
+  *      404:
+  *        description: Not found
+  *      429:
+  *        description: Too many requests
+ */
 
+router.get("/search_summoner/:server/:summonerName/", asyncHandler(summonerController.searchSummonerRoute));
 /**
    * @openapi
    * /api/summoner/search_summoner/{server}/{summonerName}:
@@ -109,8 +111,8 @@ router.patch("/unfollow_summoner", rateLimiter, authMiddleware, asyncHandler(sum
    *      429:
    *        description: Too many requests
    */
-router.get("/search_summoner/:server/:summonerName/", asyncHandler(summonerController.searchSummonerRoute));
 
+router.get("/live_game/:server/:summonerId/", asyncHandler(summonerController.summonerLiveGameRoute));
 /**
    * @openapi
    * /api/summoner/live_game/{server}/{id}:
@@ -141,8 +143,8 @@ router.get("/search_summoner/:server/:summonerName/", asyncHandler(summonerContr
    *      429:
    *        description: Too many requests
    */
-router.get("/live_game/:server/:summonerId/", asyncHandler(summonerController.summonerLiveGameRoute));
 
+router.get("/matches/:server/:puuid/:page", asyncHandler(summonerController.summonerMatchesRoute));
 /**
    * @openapi
    * /api/summoner/matches/{server}/{puuid}/{page}:
@@ -181,8 +183,8 @@ router.get("/live_game/:server/:summonerId/", asyncHandler(summonerController.su
    *      429:
    *        description: Too many requests
    */
-router.get("/matches/:server/:puuid/:page", asyncHandler(summonerController.summonerMatchesRoute));
 
+router.get("/match_details/:matchId", asyncHandler(summonerController.summonerMatchDetailsRoute));
 /**
    * @openapi
    * /api/summoner/match_details/{matchId}:
@@ -211,8 +213,8 @@ router.get("/matches/:server/:puuid/:page", asyncHandler(summonerController.summ
    *      429:
    *        description: Too many requests
    */
-router.get("/match_details/:matchId", asyncHandler(summonerController.summonerMatchDetailsRoute));
 
+router.get("/challenges/:server/:puuid", asyncHandler(summonerController.summonerChallenges));
 /**
    * @openapi
    * /api/summoner/challenges/{server}/{puuid}:
@@ -243,8 +245,8 @@ router.get("/match_details/:matchId", asyncHandler(summonerController.summonerMa
    *      429:
    *        description: Too many requests
    */
-router.get("/challenges/:server/:puuid", asyncHandler(summonerController.summonerChallenges));
 
+router.get("/champion_stats/:server/:summonerName", asyncHandler(summonerController.summonerChampionStatsRoute));
 /**
    * @openapi
    * /api/summoner/champion_stats/{server}/{summonerName}:
@@ -274,9 +276,9 @@ router.get("/challenges/:server/:puuid", asyncHandler(summonerController.summone
    *        description: Not found
    *      429:
    *        description: Too many requests
-   */
-router.get("/champion_stats/:server/:summonerName", asyncHandler(summonerController.summonerChampionStatsRoute));
+ */
 
+router.get("/ranked_stats/:server/:summonerId", asyncHandler(summonerController.summonerRankedStatsRoute));
 /**
    * @openapi
    * /api/summoner/ranked_stats/{server}/{summonerid}:
@@ -307,6 +309,5 @@ router.get("/champion_stats/:server/:summonerName", asyncHandler(summonerControl
    *      429:
    *        description: Too many requests
    */
-router.get("/ranked_stats/:server/:summonerId", asyncHandler(summonerController.summonerRankedStatsRoute));
 
 module.exports = router;

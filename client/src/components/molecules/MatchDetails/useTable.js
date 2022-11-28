@@ -19,15 +19,14 @@ export const useTable = (data) => {
         columnHelper.accessor(row => row, {
             cell: (props) => {
                 const row = props.getValue();
-
                 return (
                     <FlexRowStart data-champ>
-                        <ChampionSetup position="start" summonerMatchData={row} width={40} />
+                        <ChampionSetup position="start" match={row} width={40} />
                         <CustomLink
                             to={`/${server}/${row.summonerName}`}
                             align="left"
                         >
-                            &nbsp;&nbsp;{row.summonerName}
+                            {row.summonerName}
                         </CustomLink>
                     </FlexRowStart>
                 );
@@ -43,7 +42,7 @@ export const useTable = (data) => {
                     <FlexColCenter>
                         <Span size="sm" align="center">{kda(row)}</Span>
                         <Span size="s" align="center">
-                            ({(row.kills)}, <Span size="s" color="#ff6961">{row.deaths}</Span>, {row.assists})
+                            {(row.kills)}, <Span size="s" color="#ff6961">{row.deaths}</Span>, {row.assists}
                         </Span>
                     </FlexColCenter>
                 );

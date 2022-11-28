@@ -43,7 +43,7 @@ export const StyledMatchDetails = styled.table`
 
     /* last header */
     th:last-child, th:last-child > div {
-        width: 180px;
+        width: 195px;
     }
     
     th > div {
@@ -63,6 +63,9 @@ export const StyledMatchDetails = styled.table`
     tr {
         outline: thin solid ${({ theme }) => theme.backgroundColors.tertiary};
         background-color: ${({ theme, isWinner }) => isWinner ? theme.matchResult.win : theme.matchResult.loss};
+        a {
+            margin-left: 0.25rem;
+        }
     }
 
 
@@ -94,7 +97,7 @@ export const StyledMatchDetails = styled.table`
     @media only screen and (max-width: 500px) {
         /* last header */
         th:last-child, th:last-child > div {
-            width: 100px;
+            width: 80px;
         }
         
         [data-itemgrid] {
@@ -113,13 +116,16 @@ export const StyledMatchDetails = styled.table`
         }
     }
 
-    @media only screen and (max-width: 615px) {
+    @media only screen and (max-width: 650px) {
         /* first header */
         th:first-child, th:first-child > div {
-            width: 80px;
+            width: 100px;
         }
 
         [data-champ] {
+            display: flex;
+            justify-content: start;
+            align-items: start;
             gap: 0.1rem;
             flex-direction: column;
             a {
@@ -135,6 +141,9 @@ export const StyledMatchDetails = styled.table`
     }
 
     @media only screen and (max-width: 320px) {
+        th:first-child, th:first-child > div {
+            width: 80px;
+        }
         /* champion icon */
         [data-icon] {
             min-width: 30px;

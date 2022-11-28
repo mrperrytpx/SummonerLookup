@@ -23,6 +23,9 @@ export const StyledSummonerMatchCard = styled(FlexCol)`
 
         /* items */
         & > :last-child {
+            gap: 0.1rem;
+            border: 1px solid black;
+            background-color: black;
             align-self: center;
             justify-self: center;
         }
@@ -36,7 +39,7 @@ export const StyledSummonerMatchCard = styled(FlexCol)`
                 "b d";
 
             /* queue type */
-            & > div:nth-child(1) {
+            & > :nth-child(1) {
                 grid-area: a;
                 span:not(:first-child){
                     display: none;
@@ -44,13 +47,13 @@ export const StyledSummonerMatchCard = styled(FlexCol)`
             }
 
             /* champion and setup */
-            & > div:nth-child(2) {
+            & > :nth-child(2) {
                 grid-area: b;
                 place-self: end start;
             }
 
             /* spans above items */
-            & > div:nth-child(3) {
+            & > :nth-child(3) {
                 flex-direction: row;
                 gap: 1.5rem;
                 grid-area: c;
@@ -58,7 +61,7 @@ export const StyledSummonerMatchCard = styled(FlexCol)`
             }
 
             /* items */
-            & > div:last-child {
+            & > :last-child {
                 grid-area: d;
                 place-self: end;
             }
@@ -77,9 +80,13 @@ export const StyledSummonerMatchCard = styled(FlexCol)`
             /* items */
             & > :last-child {
                 grid-template-columns: repeat(7, 25px);
-                div {
+                [data-item] {
                     width: 100%;
                     aspect-ratio: 1 / 1;
+                }
+                [data-empty] {
+                    width: 100%;
+                    place-self: center;
                 }
             }
 
@@ -110,9 +117,12 @@ export const StyledSummonerMatchCard = styled(FlexCol)`
             /* items */
             & > :last-child {
                 grid-template-columns: repeat(7, 20px);
-                div {
+                [data-item] {
                     width: 100%;
                     aspect-ratio: 1 / 1;
+                }
+                [data-empty] {
+                    width: calc(100% - 1px);
                 }
             }
 
@@ -146,6 +156,31 @@ export const StyledSummonerMatchCard = styled(FlexCol)`
                 place-self: end start;
                 grid-template-rows: repeat(2, minmax(20px, 1fr));
                 grid-template-columns: repeat(2, minmax(20px, 1fr));
+            }
+        }
+
+        @media only screen and (max-width: 300px) {
+            & > :nth-child(3) {
+                grid-area: a;
+                gap: 0.2rem;
+            } 
+
+            & > :last-child {
+                grid-area: d;
+                grid-column: 3 / 2;
+                grid-row: 3;
+                place-self: end;
+            }
+
+            [data-itemgrid] {
+                grid-template-columns: repeat(4, 18px);
+                grid-template-rows: repeat(2, 18px);
+                place-content: center;
+
+                div:nth-child(7) {
+                    grid-column: 5 / 4;
+                    grid-row: 1 / 2;
+                }
             }
         }
     }

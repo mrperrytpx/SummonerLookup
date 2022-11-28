@@ -1,13 +1,11 @@
 import { useRef, useState } from "react";
-import { useParams } from "react-router-dom";
 import { StyledSummonerMatchCard } from "./SummonerMatchCard.styled";
-import { FlexColCenter } from "components/atoms/FlexBoxes/FlexBoxes.styled";
+import { FlexColCenter, FlexColSpaceBetween } from "components/atoms/FlexBoxes/FlexBoxes.styled";
 import { Span } from "components/atoms/Span/Span";
-import { MatchDetails } from "../MatchDetails/MatchDetails";
 import { ChampionSetup } from "../ChampionSetup/ChampionSetup";
 import { MatchItems } from "../MatchItems/MatchItems";
+import { MatchDetails } from "../MatchDetails/MatchDetails";
 import { ErrorBoundary } from "utils/ErrorBoundry";
-import { useGetSummonerQuery } from "hooks/useGetSummonerQuery";
 import { useIntersectionObserver } from "hooks/useIntersectionObserver";
 import { QUEUE_TYPES } from "consts/queueTypes";
 
@@ -15,55 +13,49 @@ export const SummonerMatchCard = ({ match }) => {
 
   const [isExpanded, setIsExpanded] = useState(false);
 
-  const { server, summonerName } = useParams();
-  const { data: summonerData } = useGetSummonerQuery(server, summonerName);
-
   const matchRef = useRef(null);
   const isOnScreen = useIntersectionObserver(matchRef, { rootMargin: "500px" });
 
-  const summonerIndex = match?.metadata?.participants?.indexOf(summonerData.puuid);
-  const summonerMatchData = match?.info?.participants[summonerIndex];
-
   const itemsArray = [
-    summonerMatchData.item0,
-    summonerMatchData.item1,
-    summonerMatchData.item2,
-    summonerMatchData.item3,
-    summonerMatchData.item4,
-    summonerMatchData.item5,
-    summonerMatchData.item6,
+    match.participants.item0,
+    match.participants.item1,
+    match.participants.item2,
+    match.participants.item3,
+    match.participants.item4,
+    match.participants.item5,
+    match.participants.item6,
   ];
 
   return (
     <ErrorBoundary>
-      <StyledSummonerMatchCard isVisible={isOnScreen} isWin={summonerMatchData.win}>
+      <StyledSummonerMatchCard isVisible={isOnScreen} isWin={match.participants.win}>
         <div ref={matchRef} onClick={() => setIsExpanded(!isExpanded)}>
           <FlexColCenter gap="0.25rem">
-            <Span size="m">{QUEUE_TYPES[match?.info?.queueId]}</Span>
+            <Span size="m">{QUEUE_TYPES[match?.queueId]}</Span>
             <Span size="s">
-              {summonerMatchData.win ? "Victory" : "Defeat"}
+              {match.win ? "Victory" : "Defeat"}
               {" - "}
               {match?.info?.gameEndTimestamp
-                ? `${parseInt(match.info.gameDuration / 60)}m ${match.info.gameDuration % 60}s`
-                : `${parseInt(match.info.gameDuration / 60000)}m ${match.info.gameDuration % 60000 % 60}s`
+                ? `${parseInt(match.gameDuration / 60)}m ${match.gameDuration % 60}s`
+                : `${parseInt(match.gameDuration / 60000)}m ${match.gameDuration % 60000 % 60}s`
               }
             </Span>
-            <Span size="s">{(new Date(match?.info?.gameEndTimestamp ? match?.info?.gameEndTimestamp : match?.info?.gameStartTimestamp + match?.info?.gameDuration)).toDateString()}</Span>
+            <Span size="s">{(new Date(match?.gameEndTimestamp ? match?.gameEndTimestamp : match?.gameStartTimestamp + match?.gameDuration)).toDateString()}</Span>
           </FlexColCenter>
 
-          <ChampionSetup hasLevel={true} position="center" summonerMatchData={summonerMatchData} width={60} />
+          <ChampionSetup hasLevel={true} position="center" match={match.participants} width={60} />
 
-          <FlexColCenter>
-            <Span width="auto" align="center" size="s">{summonerMatchData.kills} / {summonerMatchData.deaths} / {summonerMatchData.assists}</Span>
-            <Span width="auto" align="center" size="s">{summonerMatchData.totalMinionsKilled} CS ({Math.round(summonerMatchData.totalMinionsKilled / match.info.gameDuration * 600) / 10})</Span>
-            <Span width="auto" align="center" size="s">{summonerMatchData.visionScore} VS</Span>
+          <FlexColCenter gap="0.25rem">
+            <Span width="auto" align="center" size="s">({match.participants.kills}/{match.participants.deaths}/{match.participants.assists})</Span>
+            <Span width="auto" align="center" size="s">{match.participants.totalMinionsKilled} CS({Math.round(match.participants.totalMinionsKilled / match.gameDuration * 600) / 10})</Span>
+            <Span width="auto" align="center" size="s">{match.participants.visionScore} VS</Span>
           </FlexColCenter>
 
           <MatchItems items={itemsArray} initialWidth={35} />
         </div>
         {isExpanded &&
           (<ErrorBoundary>
-            <MatchDetails match={match} />
+            <MatchDetails matchId={`${match.platformId}_${match.gameId}`} />
           </ErrorBoundary>
           )}
       </StyledSummonerMatchCard >
