@@ -56,4 +56,11 @@ export const StyledDropdown = styled(FlexColCenter)`
             }
         }
     }
+
+    @media only screen and (max-width: 380px) {
+        & > span:first-child {
+            min-width: 0;
+            font-size: 0.75rem;
+        }
+    }
 `;

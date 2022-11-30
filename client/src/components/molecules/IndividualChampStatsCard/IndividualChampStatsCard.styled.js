@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const StyledIndividualChampStatsCard = styled.div`
     display: grid;
-    grid-template-columns: 2fr 1fr 78px;
+    grid-template-columns: 2fr 1fr 85px;
     padding: 0.5rem 0;
     width: 100%;
     
@@ -32,14 +32,19 @@ export const StyledIndividualChampStatsCard = styled.div`
     }
 
     @media only screen and (max-width: 400px) {
-        grid-template-columns: 1fr 2fr 2fr;
-
-        & > :first-child  span {
-            display: none;
-        }
+        grid-template-columns: 2fr 1fr 90px;
 
         & > div:nth-child(2) {
-        place-self: center end;
+            place-self: center end;
+        }
     }
+
+    @media only screen and (max-width: 340px) {
+        grid-template-columns: 1fr 1fr 90px;
+
+        
+        & > :first-child span {
+            display: none;
+        }
     }
 `; 

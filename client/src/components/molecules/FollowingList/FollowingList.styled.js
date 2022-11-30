@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const StyledFollowingList = styled.div`
-    padding: 3rem 1rem 1rem 1rem;
+    padding: 1rem;
+    padding-left: 0;
 
     @media only screen and (max-width: ${({ theme }) => theme.resolutions.mobile}) {
         display: flex;

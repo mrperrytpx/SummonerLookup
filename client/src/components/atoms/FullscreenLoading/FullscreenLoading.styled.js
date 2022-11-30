@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { FlexColCenter } from "../FlexBoxes/FlexBoxes.styled";
+import { spin } from "styled/keyframes";
 
 export const StyledFullscreenLoading = styled(FlexColCenter)`
     min-width: 100vw;
@@ -7,13 +8,6 @@ export const StyledFullscreenLoading = styled(FlexColCenter)`
     background-color: ${({ theme }) => theme.backgroundColors.primary};
 
     & > svg {
-        animation: spin 10s linear infinite;
+        animation: ${spin} 10s linear infinite;
     }
-
-    @keyframes spin {
-        100% {
-            transform: rotate(360deg);
-        }
-    }
-
 `;

@@ -10,8 +10,8 @@ export const SummonerInput = forwardRef(({ setSummonerName, summonerName, server
       <InputField
         ref={ref}
         placeholder="Search a summoner..."
-        setSummonerName={setSummonerName}
-        summonerName={summonerName}
+        setState={setSummonerName}
+        state={summonerName}
         maxLength="16"
       />
       <IconButtonLink

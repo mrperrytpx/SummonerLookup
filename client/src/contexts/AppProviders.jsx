@@ -1,6 +1,6 @@
 import { AuthContextProvider } from "../hooks/useAuth";
 import { ThemeProvider } from "styled-components";
-import { theme } from "../misc/theme";
+import { theme } from "../styled/theme";
 
 import { QueryClient, QueryClientProvider, QueryCache } from "react-query";
 

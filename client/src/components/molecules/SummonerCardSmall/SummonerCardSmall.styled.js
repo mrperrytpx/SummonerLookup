@@ -6,15 +6,17 @@ export const StyledSummonerCardSmall = styled(Link)`
     display: inline-block;
     padding: 1rem;
 
-    border: 1px solid white;
-    border-radius: 10px;
-    box-shadow: 0 0 2px 0px white inset, 0 0 2px 0px white;
+    border-radius: 5px;
     color: ${({ theme }) => theme.textColors.light};
+    background-color: ${({ theme }) => theme.backgroundColors.secondary};
     text-decoration: none;
     user-select: none;
     
     &:hover {
-        border: 1px solid ${({ theme }) => theme.backgroundColors.quaternary};
-        color: ${({ theme }) => theme.backgroundColors.quaternary};
+        box-shadow: 
+            0 0 2px 0px ${({ theme }) => theme.backgroundColors.quaternary} inset, 
+            0 0 2px 0px ${({ theme }) => theme.backgroundColors.quaternary};
+        outline: 1px solid ${({ theme }) => theme.backgroundColors.quaternary};
+        color: ${({ theme }) => theme.backgroundColors.active};
     }
 `;

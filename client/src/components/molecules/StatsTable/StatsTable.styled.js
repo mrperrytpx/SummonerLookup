@@ -59,7 +59,6 @@ export const StyledStatsTable = styled.table`
     tbody {        
         background-color: ${({ theme }) => theme.backgroundColors.secondary};
         border-radius: 20px;
-        border: 1px solid white;
         width: 100%;
     }
 

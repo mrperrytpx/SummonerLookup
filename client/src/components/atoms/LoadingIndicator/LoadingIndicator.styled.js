@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { FlexColCenter } from "../FlexBoxes/FlexBoxes.styled";
+import { spin } from "styled/keyframes";
 
 export const StyledLoadingIndicator = styled(FlexColCenter)`
     position: relative;
@@ -25,15 +26,6 @@ export const StyledLoadingIndicator = styled(FlexColCenter)`
         height: 50%;
         border: 3px double ${({ theme }) => theme.backgroundColors.quaternary};
         border-top: 3px solid ${({ theme }) => theme.backgroundColors.active};
-        animation: spin 2.5s linear infinite;
-    }
-
-    @keyframes spin {
-        0% {
-            transform: rotate(0deg);
-        }
-        100% {
-            transform: rotate(360deg);
-        }
+        animation: ${spin} 2.5s linear infinite;
     }
 `;

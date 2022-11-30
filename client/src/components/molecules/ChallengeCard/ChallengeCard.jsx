@@ -16,19 +16,21 @@ export const ChallengeCard = ({ challenge }) => {
   const challengeData = leagueChallengesData.find(chal => chal.id === challenge.challengeId);
 
   const challengeRef = useRef(null);
-  const isVisible = useIntersectionObserver(challengeRef, { rootMargin: "500px" });
+  const isVisible = useIntersectionObserver(challengeRef, { rootMargin: "200px" });
 
   return (
     <StyledChallengeCard isVisible={isVisible} ref={challengeRef} tier={challenge?.level}>
       <FlexRow gap="0.5rem">
-        <ImageContainer
-          src={`https://ddragon.leagueoflegends.com/cdn/img/challenges-images/${challenge?.challengeId}-${challenge?.level === "NONE" ? "IRON" : challenge?.level}.png`}
-          alt="Challenge badge"
-          width="46px"
-          opacity={challenge?.level === "NONE" ? "0.4" : "1"}
-          radius="50%"
-          min="46px"
-        />
+        {isVisible && (
+          <ImageContainer
+            data-challenge-badge
+            src={`https://ddragon.leagueoflegends.com/cdn/img/challenges-images/${challenge?.challengeId}-${challenge?.level === "NONE" ? "IRON" : challenge?.level}.png`}
+            alt="Challenge badge"
+            width="46px"
+            radius="50%"
+            min="46px"
+          />
+        )}
         <FlexCol data-info gap="0.25rem">
           <div>
             <Span width="auto" size="m"><b>{challengeData.name + " "}</b></Span>

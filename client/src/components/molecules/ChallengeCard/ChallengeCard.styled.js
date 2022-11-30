@@ -14,10 +14,13 @@ export const StyledChallengeCard = styled.div`
     }
 
     ${({ isVisible }) => !isVisible && `
-        visibility: hidden;
+
+        [data-challenge-badge] {
+            visibility: hidden;
+        }
 
         img {
-            display: none;
+            visibility: hidden;
         }
     `}
 

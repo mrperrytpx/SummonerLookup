@@ -1,6 +1,7 @@
-import { Link } from "react-router-dom";
-import { backgroundColor } from "../../../misc/backgroundColor";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
+import { backgroundColor } from "../../../styled/backgroundColor";
+import { jump } from "styled/keyframes";
 
 export const StyledLinkButton = styled(Link)`
     background-color: ${({ theme, variant }) => backgroundColor(theme, variant)};
@@ -22,4 +23,8 @@ export const StyledLinkButton = styled(Link)`
     font-weight: 600;
 
     cursor: pointer;
+    
+    &:hover {
+        animation: ${jump} 0.1s linear;
+    }
 `;

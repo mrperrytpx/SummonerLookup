@@ -1,5 +1,3 @@
-cursor pointer za search
 homepage background
-match card add gold on smaller
 1 row 4, 1 row 3
 figure out not downloading all challenge images

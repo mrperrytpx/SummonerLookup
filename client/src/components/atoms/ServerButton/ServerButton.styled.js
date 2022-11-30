@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { jump } from "styled/keyframes";
 
 export const StyledServerButton = styled.div`
     display: inline-block;
@@ -21,10 +22,14 @@ export const StyledServerButton = styled.div`
         transition: background-color 50ms ease-in, color 50ms ease-in;
         font-weight: 500;
         border-radius: 3px;
+
+        &:hover {
+            animation: ${jump} .1s ease-out;
+        }
     }
 
     input {
         display: none;
 
-    }
+    };
 `;

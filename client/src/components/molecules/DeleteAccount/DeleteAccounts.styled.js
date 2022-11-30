@@ -8,11 +8,13 @@ export const StyledDeleteAccount = styled.div`
         font-size: 1.1rem;
         margin-bottom: 1rem;
         padding-top: 1rem;
+        font-weight: 400;
 
         code {
             background-color: ${({ theme }) => theme.backgroundColors.active};
             color: ${({ theme }) => theme.textColors.dark};
-            padding: 0.2rem;
+            padding: 0.2rem 0.4rem;
+            font-weight: bold;
         }
     }
 
@@ -23,6 +25,8 @@ export const StyledDeleteAccount = styled.div`
 
         input {
             margin-right: 1.5rem;
+            width: 300px;
+            max-width: min(400px, 100%)
         }
     }
 

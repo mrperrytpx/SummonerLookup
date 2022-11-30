@@ -1,7 +1,7 @@
 import { Suspense, useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 
-import GlobalStyles from "./misc/globalStyles";
+import GlobalStyles from "./styled/globalStyles";
 import ProtectedRoute from "./utils/ProtectedRoute";
 
 import { WithNav } from "./components/templates/WithNav";

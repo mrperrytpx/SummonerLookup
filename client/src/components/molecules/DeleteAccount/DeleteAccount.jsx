@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { StyledDeleteAccount } from "./DeleteAccounts.styled";
-import { GenericInput } from "../../atoms/GenericInput/GenericInput";
 import { Button } from "../../atoms/Button/Button";
 import { useAuth } from "../../../hooks/useAuth";
+import { InputField } from "components/atoms/InputField/InputField";
 
 export const DeleteAccount = () => {
 
@@ -24,7 +24,12 @@ export const DeleteAccount = () => {
     <StyledDeleteAccount>
       <p>Type <code>delete</code> if you wish to delete Your account</p>
       <form onSubmit={(e) => handleDelete(e)}>
-        <GenericInput placeholder="type 'delete'" input={input} setInput={setInput} />
+        <InputField
+          fontSize="1rem"
+          placeholder="type 'delete'"
+          state={input}
+          setState={setInput}
+        />
         <Button disabled={disableButton} type="submit" variant="danger">DELETE</Button>
       </form>
     </StyledDeleteAccount>

@@ -2,7 +2,7 @@ import { Container } from "components/atoms/Container/Container";
 import { FlexCol } from "components/atoms/FlexBoxes/FlexBoxes.styled";
 import { LoadingIndicator } from "components/atoms/LoadingIndicator/LoadingIndicator";
 import { useGetSummonerSingleMatchQuery } from "hooks/useGetSummonerSingleMatchQuery";
-import { theme } from "misc/theme";
+import { theme } from "styled/theme";
 import { MatchDetails } from "./MatchDetails";
 
 export const DetailsContainer = ({ matchId }) => {

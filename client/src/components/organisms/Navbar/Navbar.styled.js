@@ -5,7 +5,6 @@ export const StyledNavbar = styled(FlexRowSpaceBetween).attrs({ as: "nav" })`
     width: 100%;
     min-height: 80px;
     padding: 0 1rem;
-    margin: auto auto 1rem auto;
     gap: 1rem;
 
     border-bottom: 1px solid ${({ theme }) => theme.backgroundColors.quaternary};

@@ -18,7 +18,7 @@ export const MatchDetails = ({ team, bans }) => {
 
   useEffect(function responiveTable() {
     const breakOne = width > 550;
-    const breakTwo = width > 425;
+    const breakTwo = width > 400;
     const breakThree = width > 335;
 
     table.getColumn("dmg_done").toggleVisibility(breakOne);

@@ -17,14 +17,14 @@ export const Summoner = () => {
   useGetSummonerRankedStatsQuery(server, summonerData?.summonerId);
 
   if (isSummonerLoading || isSummonerChallengesLoading) return (
-    <Container bg={false} height="500px">
+    <Container bg={false} height="300px">
       <LoadingIndicator center={true} />
     </Container>
   );
 
   if (isError) return (
     <StyledSummoner>
-      <Container height="300px" bg={true}>
+      <Container height="300px">
         <ErrorText size="clamp(1rem, 2vw, 1.8rem)" center={true}>
           Couldn't find summoner "{summonerName}".
         </ErrorText >

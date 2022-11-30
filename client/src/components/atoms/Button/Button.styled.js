@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import { backgroundColor } from "../../../misc/backgroundColor";
+import { backgroundColor } from "../../../styled/backgroundColor";
+import { jump } from "styled/keyframes";
 
 export const StyledButton = styled.button`
     background-color: ${({ theme, variant }) => backgroundColor(theme, variant)};
@@ -24,5 +25,9 @@ export const StyledButton = styled.button`
     &:disabled {
         cursor: initial;
         opacity: 0.15;
+    }
+
+    &:hover {
+        animation: ${jump} 0.1s linear;
     }
 `;

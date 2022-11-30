@@ -111,7 +111,7 @@ export const StyledSummonerMatchCard = styled(FlexCol)`
         }
 
         
-        @media only screen and (max-width: 380px) {
+        @media only screen and (max-width: 400px) {
             grid-template-rows: 1rem 20px 20px;
 
             /* items */
@@ -159,7 +159,7 @@ export const StyledSummonerMatchCard = styled(FlexCol)`
             }
         }
 
-        @media only screen and (max-width: 300px) {
+        @media only screen and (max-width: 310px) {
             & > :nth-child(3) {
                 grid-area: a;
                 gap: 0.2rem;
