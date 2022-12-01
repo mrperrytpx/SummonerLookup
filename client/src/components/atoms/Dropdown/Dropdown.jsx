@@ -23,16 +23,33 @@ export const Dropdown = ({ from, options, state, values = null, handleClick }) =
     });
   }, [setIsActive, ref]);
 
+  const handleMenuToggle = (e) => {
+    if (e.code === "Space" || e.code === "Enter") {
+      setIsActive(!isActive);
+      return;
+    }
+    return;
+  };
+
+  const handleCategoryPick = (e, value) => {
+    if (e.code === "Space" || e.code === "Enter") {
+      handleClick(value);
+      setIsActive(false);
+      return;
+    }
+    return;
+  };
+
   return (
     <StyledDropdown ref={ref} from={from}>
-      <span tabIndex="0" onClick={() => setIsActive(!isActive)}>{values ? values[state] : state}</span>
+      <span tabIndex="0" onKeyDown={(e) => handleMenuToggle(e)} onClick={() => setIsActive(!isActive)}>{values ? values[state] : state}</span>
       {isActive && (
         <div>
           {options.map((option, i) => (
-            <span tabIndex="0" onClick={() => {
-              handleClick(option.stateValue);
-              setIsActive(false);
-            }}
+            <span
+              tabIndex="0"
+              onClick={(e) => handleCategoryPick(e, option.stateValue)}
+              onKeyDown={(e) => handleCategoryPick(e, option.stateValue)}
               key={i}
             >
               {option.text}

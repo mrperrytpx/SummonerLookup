@@ -56,6 +56,7 @@ export const SummonerMatches = () => {
             onClick={() => fetchNextPage()}
             type="button"
             wide
+            fontSize="0.9rem"
           >
             {isFetchingNextPage
               ? 'Loading more...'

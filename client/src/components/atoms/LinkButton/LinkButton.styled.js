@@ -24,7 +24,7 @@ export const StyledLinkButton = styled(Link)`
 
     cursor: pointer;
     
-    &:hover {
+    &:hover, &:focus {
         animation: ${jump} 0.1s linear;
     }
 `;

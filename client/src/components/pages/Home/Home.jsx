@@ -4,7 +4,7 @@ import { CompactSearchSummoner } from "../../organisms/CompactSearchSummoner/Com
 import { Footer } from "../../organisms/Footer/Footer";
 import { SearchSummoner } from "../../organisms/SearchSummoner/SearchSummoner";
 import { useScreenSize } from "../../../hooks/useScreenSize";
-import { BackgroundImage } from "components/atoms/BackgroundImage/BackgroundImage";
+import { Background } from "components/atoms/Background/Background";
 import { FlexColCenter } from "components/atoms/FlexBoxes/FlexBoxes.styled";
 
 export const Home = () => {
@@ -17,7 +17,7 @@ export const Home = () => {
 
         {width >= 710
           ? <>
-            <BackgroundImage />
+            <Background />
             <SearchSummoner />
           </>
           : <FlexColCenter gap="1rem" style={{ width: "100%", marginTop: "5rem" }}>

@@ -1,3 +1,0 @@
-homepage background
-1 row 4, 1 row 3
-figure out not downloading all challenge images

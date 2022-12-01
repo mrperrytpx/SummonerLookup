@@ -173,14 +173,19 @@ export const StyledSummonerMatchCard = styled(FlexCol)`
             }
 
             [data-itemgrid] {
+                background-color: #00000000;
+                border: none;
                 grid-template-columns: repeat(4, 18px);
-                grid-template-rows: repeat(2, 18px);
                 place-content: center;
 
                 div:nth-child(7) {
                     grid-column: 5 / 4;
                     grid-row: 1 / 2;
                 }
+            }
+
+            [data-item] {
+                outline: 1px solid black;
             }
         }
     }

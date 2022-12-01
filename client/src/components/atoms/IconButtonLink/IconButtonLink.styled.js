@@ -13,7 +13,7 @@ export const StyledIconButtonLink = styled(Link)`
     opacity: ${({ disabled }) => disabled ? '0.25' : '1'};
     pointer-events: ${({ disabled }) => disabled ? 'none' : ''};
 
-    &:hover {
+    &:hover, &:focus {
         animation: ${jump} 0.1s linear;
     }
 `;

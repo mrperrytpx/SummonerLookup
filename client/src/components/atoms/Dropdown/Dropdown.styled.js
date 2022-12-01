@@ -50,7 +50,7 @@ export const StyledDropdown = styled(FlexColCenter)`
             text-align: left;
             cursor: pointer;
 
-            &:hover {
+            &:hover, &:focus {
                 background-color: ${({ theme }) => theme.backgroundColors.tertiary};
                 color: ${({ theme }) => theme.textColors.light};
             }

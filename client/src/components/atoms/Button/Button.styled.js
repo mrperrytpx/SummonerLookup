@@ -17,7 +17,7 @@ export const StyledButton = styled.button`
     white-space: pre;
     text-align: center;
     vertical-align: middle;
-    font-size: 1.1rem;
+    font-size: ${({ fontSize }) => fontSize ? fontSize : "1.1rem"};
     font-weight: 600;
 
     cursor: pointer;
@@ -27,7 +27,7 @@ export const StyledButton = styled.button`
         opacity: 0.15;
     }
 
-    &:hover {
+    &:hover, &:focus {
         animation: ${jump} 0.1s linear;
     }
 `;

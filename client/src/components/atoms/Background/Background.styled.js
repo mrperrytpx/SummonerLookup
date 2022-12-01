@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledBackgroundImage = styled.div`
+export const StyledBackground = styled.div`
     position: absolute;
     overflow: hidden;
     inset: 0;

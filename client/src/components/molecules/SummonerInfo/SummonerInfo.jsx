@@ -30,17 +30,11 @@ export const SummonerInfo = () => {
   const unfollowSummoner = useUnfollowSummonerMutation();
   const followSummoner = useFollowSummonerMutation();
 
+  console.log(summonerData);
+
   const handleFollow = async (e) => {
     e.preventDefault();
-    const payload = {
-      summonerName: summonerData?.summonerName,
-      region: summonerData?.region,
-      server: summonerData?.server,
-      puuid: summonerData?.puuid,
-      summonerId: summonerData?.summonerId,
-      profileIconId: summonerData?.profileIconId,
-      summonerLevel: summonerData?.summonerLevel
-    };
+    const payload = { ...summonerData };
     await followSummoner.mutateAsync({ payload });
     queryClient.invalidateQueries(["me"]);
   };

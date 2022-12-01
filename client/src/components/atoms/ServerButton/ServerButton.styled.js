@@ -23,7 +23,7 @@ export const StyledServerButton = styled.div`
         font-weight: 500;
         border-radius: 3px;
 
-        &:hover {
+        &:hover, &:focus {
             animation: ${jump} .1s ease-out;
         }
     }

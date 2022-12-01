@@ -12,7 +12,7 @@ export const StyledSummonerCardSmall = styled(Link)`
     text-decoration: none;
     user-select: none;
     
-    &:hover {
+    &:hover, &:focus {
         box-shadow: 
             0 0 2px 0px ${({ theme }) => theme.backgroundColors.quaternary} inset, 
             0 0 2px 0px ${({ theme }) => theme.backgroundColors.quaternary};

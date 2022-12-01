@@ -26,7 +26,7 @@ export const StyledCustomLink = styled(Link)`
                 border-bottom: ${border};
         `}
 
-        &:hover {
+        &:hover, &:focus {
                 color: ${({ theme }) => theme.backgroundColors.quaternary};
         }
 `;

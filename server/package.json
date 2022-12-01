@@ -1,5 +1,5 @@
 {
-  "name": "To-be-named",
+  "name": "slup-server",
   "version": "1.0.0",
   "description": "SummonerLookup server",
   "main": "server.js",
