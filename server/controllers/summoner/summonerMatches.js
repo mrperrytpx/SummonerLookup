@@ -9,13 +9,11 @@ const summonerMatches = async (req, res) => {
     const [matchIds, hasNextPage] = await getSummonerMatches(region, puuid, page);
     // Fetch each match
     const matchResponses = await Promise.allSettled(matchIds.map(async (game) => {
-
         const cachedGame = await redisClient.get(game);
         if (cachedGame) {
             const parsedGame = JSON.parse(cachedGame);
             return parsedGame;
         }
-
         return getMatch(region, game);
     }));
 
@@ -38,16 +36,14 @@ module.exports = summonerMatches;
  *  schemas:
  *    MatchesResponse:
  *      type: array
+ *      minItems: 5
  *      items:
  *        type: object
  *        properties:
- *          status:
- *            type: string
- *          value:
- *            type: object
- *            properties:
- *              metadata:
- *                type: object
- *              info:
- *                type: object
+ *          type: object
+ *          properties:
+ *            metadata:
+ *              type: object
+ *            info:
+ *              type: object
  */

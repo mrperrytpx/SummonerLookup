@@ -9,7 +9,7 @@ export const useUnfollowSummonerMutation = () => {
     const unfollowSummoner = async ({ id }) => {
         const controller = new AbortController();
         const response = await fetch(`${process.env.REACT_APP_NOT_SECRET_CODE}/api/summoner/unfollow_summoner`, {
-            method: "PATCH",
+            method: "DELETE",
             signal: controller.signal,
             headers: {
                 "Content-Type": "application/json",

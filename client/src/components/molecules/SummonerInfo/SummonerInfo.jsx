@@ -30,8 +30,6 @@ export const SummonerInfo = () => {
   const unfollowSummoner = useUnfollowSummonerMutation();
   const followSummoner = useFollowSummonerMutation();
 
-  console.log(summonerData);
-
   const handleFollow = async (e) => {
     e.preventDefault();
     const payload = { ...summonerData };

@@ -48,7 +48,10 @@ export const Dropdown = ({ from, options, state, values = null, handleClick }) =
           {options.map((option, i) => (
             <span
               tabIndex="0"
-              onClick={(e) => handleCategoryPick(e, option.stateValue)}
+              onClick={(e) => {
+                handleClick(option.stateValue);
+                setIsActive(false);
+              }}
               onKeyDown={(e) => handleCategoryPick(e, option.stateValue)}
               key={i}
             >

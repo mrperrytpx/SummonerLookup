@@ -12,7 +12,7 @@ router.post("/follow_summoner", rateLimiter, authMiddleware, asyncHandler(summon
    *  post:
    *    tags:
    *      - Summoner
-   *    summary: Add a summoner object to the list of following in DB
+   *    summary: Add a summoner object to the following array
    *    parameters:
    *      - name: authorization
    *        in: header
@@ -42,14 +42,14 @@ router.post("/follow_summoner", rateLimiter, authMiddleware, asyncHandler(summon
    *        description: Too many requests
    */
 
-router.patch("/unfollow_summoner", rateLimiter, authMiddleware, asyncHandler(summonerController.unfollowSummonerRoute));
+router.delete("/unfollow_summoner", rateLimiter, authMiddleware, asyncHandler(summonerController.unfollowSummonerRoute));
 /**
   * @openapi
   * '/api/summoner/unfollow_summoner':
-  *  patch:
+  *  delete:
   *    tags:
   *      - Summoner
-  *    summary: Remove a summoner object to the list of following in DB
+  *    summary: Remove a Summoner object from the following array
   *    parameters:
   *      - name: authorization
   *        in: header
