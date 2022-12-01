@@ -39,7 +39,7 @@ router.delete("/delete_account", rateLimiter, authMiddleware, asyncHandler(userC
  * @openapi
  * '/api/user/me':
  *  delete:
- *    summary: User account's following data
+ *    summary: Delete account
  *    security:
  *      - bearerAuth: []
  *    tags:
