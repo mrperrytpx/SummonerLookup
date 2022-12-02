@@ -1,12 +1,11 @@
 import styled from "styled-components";
-import { FlexColCenter } from "../FlexBoxes/FlexBoxes.styled";
+import { FlexColStart } from "../FlexBoxes/FlexBoxes.styled";
 
-export const StyledContainer = styled(FlexColCenter)`
+export const StyledContainer = styled(FlexColStart)`
   width: 100%;
-  height: ${({ height }) => height || "auto"};
+  min-height: ${({ height }) => height || "auto"};
   padding: 1.5rem;
-  margin: auto;
-
+  margin: 0 auto;
   border-radius: 10px;
   background-color: ${({ theme, bg }) => bg && theme.backgroundColors.secondary};
 `;

@@ -18,13 +18,13 @@ export const SummonerLiveGame = () => {
 
 
   if (isLoading) return (
-    <Container>
-      <LoadingIndicator />
+    <Container height="min(300px, 60vh)">
+      <LoadingIndicator center={true} />
     </Container>
   );
 
   if (!liveGameData) return (
-    <Container>
+    <Container height="min(300px, 60vh)">
       <ErrorText size="clamp(1rem, 3vw, 1.5rem)" center={true}>"{summonerData.summonerName}" is currently not in a game.</ErrorText>
       <ErrorText size="clamp(.8rem, 3vw, 1.2rem)" center={true}>If the game just started, try refreshing the page.</ErrorText>
     </Container>

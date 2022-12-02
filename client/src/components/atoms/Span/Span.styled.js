@@ -40,6 +40,7 @@ export const StyledSpan = styled.span`
     color: ${({ theme, color }) => color ? color : theme.textColors.light};
     font-size: ${({ size }) => spanSize(size)};
     text-transform: ${({ capsed }) => capsed ? "uppercase" : "none"};
+    vertical-align: center;
     text-align: ${({ align }) => align};
     border-bottom: ${({ underline }) => underline ? "1px solid white" : ""};
     ${({ pointer }) => pointer && `

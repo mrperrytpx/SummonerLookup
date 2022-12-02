@@ -16,6 +16,7 @@ export const StyledSummonerChallenges = styled.div`
         gap: 1rem;
         padding: .5rem;
         width: 100%;
+        z-index: 2;
     }
 
     & > div {
@@ -24,9 +25,8 @@ export const StyledSummonerChallenges = styled.div`
         align-items: center;
         gap: 0.5rem;
         padding: .5rem 0;
+        margin-bottom: 3rem;
     }
-
-    margin-bottom: 10rem;
 
     @media only screen and (max-width: 800px) {
         grid-template-columns: 1fr;

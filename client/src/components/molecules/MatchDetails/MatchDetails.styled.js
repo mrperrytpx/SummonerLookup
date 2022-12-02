@@ -75,46 +75,6 @@ export const StyledMatchDetails = styled.table`
         font-size: .82rem;
     }
 
-    @media only screen and (max-width: 600px) {
-        span {
-            font-size: 0.65rem;
-        }
-
-        td {
-            font-size: 0.65rem;
-
-        }
-    }
-
-    @media only screen and (max-width: 575px) {
-        /*  first header */
-        th:first-child, th:first-child > div {
-            width: 150px;
-        }
-    }
-
-    @media only screen and (max-width: 500px) {
-        /* last header */
-        th:last-child, th:last-child > div {
-            width: 80px;
-        }
-        
-        [data-itemgrid] {
-            grid-template-columns: repeat(4, 25px);
-            grid-template-rows: repeat(2, 25px);
-            place-content: center;
-
-            div:nth-child(7) {
-                grid-column: 5 / 4;
-                grid-row: 1 / 2;
-            }
-        }
-
-        [data-item] {
-            width: 25px;
-        }
-    }
-
     @media only screen and (max-width: 650px) {
         /* first header */
         th:first-child, th:first-child > div {
@@ -136,6 +96,44 @@ export const StyledMatchDetails = styled.table`
         [data-data-champsetup] {
             place-self: start;
             padding-left: 0.25rem;
+        }
+    }
+
+    @media only screen and (max-width: 600px) {
+        span {
+            font-size: 0.65rem;
+        }
+
+        td {
+            font-size: 0.65rem;
+
+        }
+    }
+
+    @media only screen and (max-width: 500px) {
+        /* last header */
+        th:last-child, th:last-child > div {
+            width: 80px;
+        }
+        
+        [data-itemgrid] {
+            background-color: #00000000;
+            border: none;
+            grid-template-columns: repeat(4, 25px);
+            grid-template-rows: repeat(2, 25px);
+            place-content: center;
+            gap: 1px;
+
+            div:nth-child(7) {
+                grid-column: 5 / 4;
+                grid-row: 1 / 2;
+            }
+        }
+
+        [data-item] {
+            outline: 1px solid black;
+            background-color: black;
+            width: 25px;
         }
     }
 

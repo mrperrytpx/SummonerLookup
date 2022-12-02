@@ -17,8 +17,8 @@ export const Summoner = () => {
   useGetSummonerRankedStatsQuery(server, summonerData?.summonerId);
 
   if (isSummonerLoading || isSummonerChallengesLoading) return (
-    <Container bg={false} height="300px">
-      <LoadingIndicator center={true} />
+    <Container bg={false} height="90vh">
+      <LoadingIndicator margin="5rem 0 0 0" center={true} />
     </Container>
   );
 

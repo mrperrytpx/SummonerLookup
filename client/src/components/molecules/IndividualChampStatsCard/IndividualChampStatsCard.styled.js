@@ -46,5 +46,9 @@ export const StyledIndividualChampStatsCard = styled.div`
         & > :first-child span {
             display: none;
         }
+
+        & span {
+            font-size: .65rem;
+        }
     }
 `; 

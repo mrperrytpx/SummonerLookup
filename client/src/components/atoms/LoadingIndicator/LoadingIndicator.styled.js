@@ -7,7 +7,11 @@ export const StyledLoadingIndicator = styled(FlexColCenter)`
     width: 45px;
     height: 45px;
     ${({ center }) => center && `
-        margin: auto;
+        margin: 0 auto;
+    `}
+
+    ${({ margin }) => margin && `
+        margin: ${margin};
     `}
 
     & :first-child {
@@ -17,8 +21,8 @@ export const StyledLoadingIndicator = styled(FlexColCenter)`
         border: 5px double ${({ theme }) => theme.backgroundColors.quaternary};
         border-radius: 50%;
         border-top: 5px solid ${({ theme }) => theme.backgroundColors.active};
-        animation: spin 2s ease-in-out infinite;
-        animation-delay: -200ms;
+        animation: ${spin} 2s ease-in-out infinite;
+        animation-delay: -1000ms;
     }
 
     & :last-child {

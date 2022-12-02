@@ -25,8 +25,10 @@ export const StyledSummonerInfo = styled(FlexColSpaceBetween)`
             flex-direction: column;
             gap: 0;
 
+
             & > div {
                 flex-direction: column;
+                gap: 0;
             }
         }
 

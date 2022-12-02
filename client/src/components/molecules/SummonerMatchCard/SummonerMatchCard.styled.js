@@ -65,6 +65,10 @@ export const StyledSummonerMatchCard = styled(FlexCol)`
                 grid-area: d;
                 place-self: end;
             }
+
+            [data-champsetup] {
+                background-color: black;
+            }
         }
 
         @media only screen and (max-width: 450px) {

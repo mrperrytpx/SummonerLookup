@@ -1,9 +1,9 @@
 import { StyledLoadingIndicator } from "./LoadingIndicator.styled";
 
-export const LoadingIndicator = () => {
+export const LoadingIndicator = ({ ...rest }) => {
 
   return (
-    <StyledLoadingIndicator>
+    <StyledLoadingIndicator {...rest}>
       <div />
       <div />
     </StyledLoadingIndicator>

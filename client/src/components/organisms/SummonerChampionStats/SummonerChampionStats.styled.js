@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const StyledSummonerChampionStats = styled.div`
     color: white;
     width: 100%;
-    margin-bottom: 7rem;
+    margin-bottom: 3rem;
 
     .border {
         margin-top: 1rem;

@@ -75,12 +75,10 @@ export const SummonerInfo = () => {
         <Span align="left" size="xxl">{summonerData?.summonerName}</Span>
         {summonerChallengesData?.preferences?.title?.length > 2
           ?
-          <>
-            <FlexRow gap="0.5rem">
-              <Span size="xxl" align="left">-</Span>
-              <Span size="xxl" align="left"><em>{summonerTitle()}</em></Span>
-            </FlexRow>
-          </>
+          <FlexRowStart gap="0.5rem">
+            <Span size="xs" align="left">-</Span>
+            <Span size="xl" align="left"><em>{summonerTitle()}</em></Span>
+          </FlexRowStart>
           : null
         }
       </FlexRow>

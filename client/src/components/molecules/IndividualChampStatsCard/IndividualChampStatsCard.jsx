@@ -29,7 +29,9 @@ export const IndividualChampStatsCard = ({ champion }) => {
 
       <FlexColCenter flex="1">
         <Span align="center" size="s">{kda} KDA</Span>
-        <Span align="center" size="s">{averageKills} {averageDeaths} {averageAssists}</Span>
+        <Span size="s" align="center">
+          {averageKills}, <Span size="s" color="#ff6961">{averageDeaths}</Span>, {averageAssists}
+        </Span>
       </FlexColCenter>
 
       <FlexColCenter>
