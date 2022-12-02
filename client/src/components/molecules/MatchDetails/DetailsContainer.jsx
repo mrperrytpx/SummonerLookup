@@ -21,8 +21,10 @@ export const DetailsContainer = ({ matchId }) => {
   return (
     <FlexCol style={{
       marginBottom: "1.5rem",
-      borderBottom: `10px solid ${theme.backgroundColors.tertiary}`,
-      borderTop: `10px solid ${theme.backgroundColors.tertiary}`,
+      borderBottom: `10px solid 
+        ${blueTeam[0].win ? theme.matchResult.loss : theme.matchResult.win}`,
+      borderTop: `10px solid 
+        ${blueTeam[0].win ? theme.matchResult.win : theme.matchResult.loss}`,
       borderRadius: "10px"
     }}>
       <MatchDetails team={blueTeam} bans={matchDetailsData?.info.teams[0].bans} />
