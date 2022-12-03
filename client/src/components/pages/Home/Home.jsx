@@ -1,7 +1,6 @@
 import { StyledHome } from "./Home.styled";
 import { ReactComponent as SquareLogo } from "../../../assets/square_logo_no_text.svg";
 import { CompactSearchSummoner } from "../../organisms/CompactSearchSummoner/CompactSearchSummoner";
-import { Footer } from "../../organisms/Footer/Footer";
 import { SearchSummoner } from "../../organisms/SearchSummoner/SearchSummoner";
 import { useScreenSize } from "../../../hooks/useScreenSize";
 import { Background } from "components/atoms/Background/Background";
