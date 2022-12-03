@@ -20,7 +20,7 @@ export const WithNav = ({ setIsNavOpen, isNavOpen, handleNavOpen }) => {
         isNavOpen={isNavOpen}
         handleNavOpen={handleNavOpen} />
       <Outlet />
-      {width >= 650 && <Footer />}
+      {width >= 750 && <Footer />}
     </>
   );
 };

@@ -12,21 +12,17 @@ export const Home = () => {
   const { width } = useScreenSize();
 
   return (
-    <>
-      <StyledHome center={width >= 710 ? true : false}>
-
-        {width >= 710
-          ? <>
-            <Background />
-            <SearchSummoner />
-          </>
-          : <FlexColCenter gap="1rem" style={{ width: "100%", marginTop: "5rem" }}>
-            <SquareLogo fill="white" width="200" />
-            <CompactSearchSummoner />
-          </FlexColCenter>
-        }
-      </StyledHome>
-      {width >= 750 ? <Footer /> : null}
-    </>
+    <StyledHome center={width >= 710 ? true : false}>
+      {width >= 710
+        ? <>
+          <Background />
+          <SearchSummoner />
+        </>
+        : <FlexColCenter gap="1rem" style={{ width: "100%", marginTop: "5rem" }}>
+          <SquareLogo fill="white" width="200" />
+          <CompactSearchSummoner />
+        </FlexColCenter>
+      }
+    </StyledHome>
   );
 };
