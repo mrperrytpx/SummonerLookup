@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { FlexCol } from "components/atoms/FlexBoxes/FlexBoxes.styled";
-import { Span } from "components/atoms/Span/Span";
 import { ErrorText } from "components/atoms/ErrorText/ErrorText";
 import { Container } from "components/atoms/Container/Container";
 
