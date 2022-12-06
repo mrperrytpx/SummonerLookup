@@ -95,7 +95,7 @@ export const StyledSummonerMatchCard = styled(FlexCol)`
             }
 
             /*  champion icon */
-            & > :nth-child(2) > :first-child{
+            [data-icon]{
                 width: 50px;
                 aspect-ratio: 1 / 1;
             }
@@ -144,7 +144,7 @@ export const StyledSummonerMatchCard = styled(FlexCol)`
             }
 
             /*  champion icon */
-            & > :nth-child(2) > :first-child{
+            [data-icon] {
                 width: 40px;
                 aspect-ratio: 1 / 1;
             }

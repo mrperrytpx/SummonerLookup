@@ -23,6 +23,10 @@ export const StyledImageContainer = styled(FlexRowCenter)`
         border: 1px solid ${border};
     `}
 
+    ${({ outline }) => outline && `
+        outline : 1px solid ${outline};
+    `}
+
     ${({ radius }) => radius && `
         border-radius: ${radius};
     `}

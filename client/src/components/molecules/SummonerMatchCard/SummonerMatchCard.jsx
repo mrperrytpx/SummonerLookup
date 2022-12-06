@@ -43,7 +43,9 @@ export const SummonerMatchCard = ({ match }) => {
             <Span size="s">{(new Date(match?.gameEndTimestamp ? match?.gameEndTimestamp : match?.gameStartTimestamp + match?.gameDuration)).toDateString()}</Span>
           </FlexColCenter>
 
-          <ChampionSetup hasLevel={true} position="center" match={match.participants} width={60} />
+          <FlexColCenter>
+            <ChampionSetup hasLevel={true} position="center" match={match.participants} width={60} />
+          </FlexColCenter>
 
           <FlexColCenter gap="0.25rem">
             <Span width="auto" align="center" size="s">({match.participants.kills}/{match.participants.deaths}/{match.participants.assists})</Span>

@@ -93,10 +93,11 @@ export const StyledMatchDetails = styled.table`
         }
 
         /* grid with champion icon, runes and summoner spells */
-        [data-data-champsetup] {
+        [data-champsetup] {
             place-self: start;
-            padding-left: 0.25rem;
+            margin-left: 0.1rem;
         }
+        
     }
 
     @media only screen and (max-width: 600px) {

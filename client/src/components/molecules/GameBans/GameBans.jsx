@@ -16,8 +16,8 @@ export const GameBans = ({ bans, align, size, children, ...rest }) => {
         <ImageContainer
           data-banned-champ
           key={i}
-          border="black"
           width={size || "40px"}
+          outline="black"
           src={champions.get(`${ban.championId}`).link(version)}
           alt={`Champion ban ${i + 1}`}
         />

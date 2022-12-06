@@ -67,6 +67,7 @@ export const ChampionSetup = ({ hasLevel, match, width, position }) => {
           data-setup
         />
         <ImageContainer
+          background
           border="black"
           width={`${width / 2}px` || "20px"}
           src={`https://raw.communitydragon.org/latest/game/${firstSummonerSpell || noSummonerSpell}`}
@@ -74,6 +75,7 @@ export const ChampionSetup = ({ hasLevel, match, width, position }) => {
           data-setup
         />
         <ImageContainer
+          background
           border="black"
           width={`${width / 2}px` || "20px"}
           src={`https://raw.communitydragon.org/latest/game/${secondSummonerSpell || noSummonerSpell}`}

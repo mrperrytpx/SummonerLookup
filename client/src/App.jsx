@@ -1,4 +1,4 @@
-import { Suspense, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 
 import GlobalStyles from "./styled/globalStyles";
@@ -22,8 +22,7 @@ import { useGetFollowingQuery } from "./hooks/useGetFollowingQuery";
 import { useGetLeagueChallengesQuery } from "./hooks/useGetLeagueChallengesQuery";
 
 import { FullscreenLoading } from "./components/atoms/FullscreenLoading/FullscreenLoading";
-import { LoadingIndicator } from "components/atoms/LoadingIndicator/LoadingIndicator";
-import { Container } from "components/atoms/Container/Container";
+import { PageErrorBoundary } from "utils/PageErrorBoundary";
 
 const App = () => {
 	const [isNavOpen, setIsNavOpen] = useState(false);
@@ -53,7 +52,11 @@ const App = () => {
 				<Route element={<WithNav setIsNavOpen={setIsNavOpen} isNavOpen={isNavOpen} handleNavOpen={handleNavOpen} />}>
 					<Route path="/" element={<Home />} />
 
-					<Route path="/:server/:summonerName" element={<Summoner />}>
+					<Route path="/:server/:summonerName" element={
+						<PageErrorBoundary>
+							<Summoner />
+						</PageErrorBoundary>
+					}>
 						<Route index element={<SummonerOverview />} />
 						<Route path="stats" element={<SummonerChampionStats />} />
 						<Route path="live-game" element={<SummonerLiveGame />} />
@@ -61,37 +64,17 @@ const App = () => {
 					</Route>
 					<Route element={<ProtectedRoute redirectPath="/signin" isAllowed={!!accessToken} />}>
 						<Route path="/me" element={
-							<Suspense fallback={
-								<Container>
-									<LoadingIndicator center={true} />
-								</Container>
-							}>
+							<PageErrorBoundary>
 								<Me />
-							</Suspense>
+							</PageErrorBoundary>
 						} />
 					</Route>
 				</Route>
 				<Route element={<WithoutNav />}>
 					<Route element={<ProtectedRoute redirectPath="/" isAllowed={!accessToken} />}>
-						<Route path="/signin" element={
-							<Suspense fallback={
-								<Container>
-									<LoadingIndicator center={true} />
-								</Container>
-							}>
-								<SignIn />
-							</Suspense>
-						} />
+						<Route path="/signin" element={<SignIn />} />
 
-						<Route path="/signup" element={
-							<Suspense fallback={
-								<Container>
-									<LoadingIndicator center={true} />
-								</Container>
-							}>
-								<SignUp />
-							</Suspense>
-						} />
+						<Route path="/signup" element={<SignUp />} />
 					</Route>
 				</Route>
 			</Routes>
