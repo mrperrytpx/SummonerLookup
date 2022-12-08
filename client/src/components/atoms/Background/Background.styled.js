@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import img from "assets/background.webp";
 
 export const StyledBackground = styled.div`
     position: absolute;
@@ -17,7 +18,7 @@ export const StyledBackground = styled.div`
     ${({ format }) => format === "image" && `
         &::before {
             content: "";
-            background-image: url('https://raw.communitydragon.org/latest/game/assets/characters/jhin/skins/skin05/jhinloadscreen_5.png');
+            background-image: url(${img});
             background-size: cover;
             background-repeat: no-repeat;
             position: absolute;
