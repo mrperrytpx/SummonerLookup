@@ -7,7 +7,7 @@ export const StyledMobileMenu = styled(FlexColStart)`
     min-height: 100vh;
     width: 100vw;
     margin-top: 80px;
-    gap: 3rem;
+    gap: 2rem;
     opacity: 1;
     border: ${({ theme }) => theme.backgroundColors.active};
     background-color: ${({ theme }) => theme.backgroundColors.primary};

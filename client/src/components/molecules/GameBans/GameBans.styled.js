@@ -8,6 +8,7 @@ export const StyledGameBans = styled(FlexRowStart)`
     background-color: ${({ theme }) => theme.backgroundColors.secondary};
     color: white;
     padding-left: .75rem;
+    border-bottom: 1px solid white;
 
     ${({ align }) => align && `
         justify-content: ${align};

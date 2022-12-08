@@ -24,5 +24,5 @@ export const StyledExpandingMenu = styled.div`
         color: white;
     }
 
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
 `;

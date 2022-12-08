@@ -10,6 +10,7 @@ export const StyledSummonerLiveGame = styled(FlexCol)`
     [data-team] {
         width: min(500px, 98%);
         background-color: ${({ theme }) => theme.backgroundColors.secondary};
+        border-radius: 0 0 10px 10px;
     }
 
     @media only screen and (max-width: 775px) {

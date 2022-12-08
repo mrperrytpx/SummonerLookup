@@ -11,7 +11,7 @@ export const GameBans = ({ bans, align, size, children, ...rest }) => {
 
   return (
     <StyledGameBans {...rest} align={align}>
-      <Span width="auto" size="s" align="left">{children}</Span>
+      {bans.length ? <Span width="auto" size="s" align="left">{children}</Span> : null}
       {bans.map((ban, i) => (
         <ImageContainer
           data-banned-champ

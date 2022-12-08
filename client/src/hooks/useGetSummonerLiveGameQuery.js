@@ -16,7 +16,7 @@ export const useGetSummonerLiveGameQuery = (server, summonerId) => {
 
     return useQuery(["live-game", server, summonerId], getSummonerLiveGame, {
         staleTime: 10000,
-        retry: 1,
+        retry: 0,
         enabled: !!server && !!summonerId,
     });
 };
