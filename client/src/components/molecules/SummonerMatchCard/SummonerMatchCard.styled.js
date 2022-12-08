@@ -82,7 +82,7 @@ export const StyledSummonerMatchCard = styled(FlexCol)`
 
             /* queue type */
             & > :first-child {
-                span {
+                span:first-child {
                     font-size: 0.9rem;
                 }
             }
@@ -149,7 +149,7 @@ export const StyledSummonerMatchCard = styled(FlexCol)`
                 font-size: 0.75rem;
 
                 &:last-child {
-                    font-size: 0.7rem;
+                    font-size: 0.6rem;
                 }
             }
 
