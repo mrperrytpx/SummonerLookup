@@ -41,8 +41,14 @@ export const StyledSummonerMatchCard = styled(FlexCol)`
             /* queue type */
             & > :nth-child(1) {
                 grid-area: a;
-                span:not(:first-child){
+                flex-direction: row;
+                justify-content: space-between;
+                span:nth-child(2) {
                     display: none;
+                }
+
+                span:last-child {
+                    text-align: right;
                 }
             }
 
@@ -141,6 +147,10 @@ export const StyledSummonerMatchCard = styled(FlexCol)`
             /* queue type */
             & > :nth-child(1) span {
                 font-size: 0.75rem;
+
+                &:last-child {
+                    font-size: 0.7rem;
+                }
             }
 
             /*  champion icon */
@@ -174,6 +184,12 @@ export const StyledSummonerMatchCard = styled(FlexCol)`
                 grid-column: 3 / 2;
                 grid-row: 3;
                 place-self: end;
+            }
+
+            & > :nth-child(1) {
+                span:last-child {
+                    display: none;
+                }
             }
 
             [data-itemgrid] {

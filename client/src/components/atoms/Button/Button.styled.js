@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import { backgroundColor } from "../../../styled/backgroundColor";
 import { jump } from "styled/keyframes";
+import { FlexRowCenter } from "../FlexBoxes/FlexBoxes.styled";
 
-export const StyledButton = styled.button`
+export const StyledButton = styled(FlexRowCenter).attrs({ as: "button" })`
     background-color: ${({ theme, variant }) => backgroundColor(theme, variant)};
     
     ${({ minwidth }) => minwidth && `

@@ -4,8 +4,8 @@ import { spin } from "styled/keyframes";
 
 export const StyledLoadingIndicator = styled(FlexColCenter)`
     position: relative;
-    width: 45px;
-    height: 45px;
+    width: ${({ size }) => size || "45px"};
+    height: ${({ size }) => size || "45px"};
     ${({ center }) => center && `
         margin: 0 auto;
     `}
@@ -18,9 +18,9 @@ export const StyledLoadingIndicator = styled(FlexColCenter)`
         position: absolute;
         width: 100%;
         height: 100%;
-        border: 5px double ${({ theme }) => theme.backgroundColors.quaternary};
+        border: 5px double ${({ theme, variant }) => variant ? variant : theme.backgroundColors.quaternary};
         border-radius: 50%;
-        border-top: 5px solid ${({ theme }) => theme.backgroundColors.active};
+        border-top: 5px solid ${({ theme, variant }) => variant ? variant : theme.backgroundColors.active};
         animation: ${spin} 2s ease-in-out infinite;
         animation-delay: -1000ms;
     }
@@ -28,8 +28,8 @@ export const StyledLoadingIndicator = styled(FlexColCenter)`
     & :last-child {
         width: 50%;
         height: 50%;
-        border: 3px double ${({ theme }) => theme.backgroundColors.quaternary};
-        border-top: 3px solid ${({ theme }) => theme.backgroundColors.active};
+        border: 3px double ${({ theme, variant }) => variant ? variant : theme.backgroundColors.quaternary};
+        border-top: 3px solid ${({ theme, variant }) => variant ? variant : theme.backgroundColors.active};
         animation: ${spin} 2.5s linear infinite;
     }
 `;

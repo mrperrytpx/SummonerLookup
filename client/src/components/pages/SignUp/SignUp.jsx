@@ -75,8 +75,6 @@ export const SignUp = () => {
           />
           {errors?.repeatPassword?.message && <ErrorText>• {errors?.repeatPassword?.message}</ErrorText>}
 
-
-
           {signUp?.error && <ErrorText center={true}>{signUp?.error?.message}</ErrorText>}
           <Button width="100%" type="submit" variant="quaternary">
             {signUp.isLoading ? "Signing up..." : "SIGN UP"}

@@ -4,6 +4,7 @@ import { StyledDeleteAccount } from "./DeleteAccounts.styled";
 import { Button } from "../../atoms/Button/Button";
 import { useAuth } from "../../../hooks/useAuth";
 import { InputField } from "components/atoms/InputField/InputField";
+import { LoadingIndicator } from "components/atoms/LoadingIndicator/LoadingIndicator";
 
 export const DeleteAccount = () => {
 
@@ -30,7 +31,9 @@ export const DeleteAccount = () => {
           state={input}
           setState={setInput}
         />
-        <Button disabled={disableButton} type="submit" variant="danger">DELETE</Button>
+        <Button minwidth="100px" disabled={disableButton} type="submit" variant="danger">
+          {deleteUser.isLoading ? <LoadingIndicator variant="white" size="28px" /> : "DELETE"}
+        </Button>
       </form>
     </StyledDeleteAccount>
   );

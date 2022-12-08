@@ -11,6 +11,7 @@ import { CompactSearchSummoner } from "../CompactSearchSummoner/CompactSearchSum
 import { MobileMenu } from "../MobileMenu/MobileMenu";
 import { useScreenSize } from "hooks/useScreenSize";
 import { useAuth } from "../../../hooks/useAuth";
+import { LoadingIndicator } from "components/atoms/LoadingIndicator/LoadingIndicator";
 
 export const Navbar = ({ isNavOpen, handleNavOpen, setIsNavOpen }) => {
 
@@ -47,7 +48,9 @@ export const Navbar = ({ isNavOpen, handleNavOpen, setIsNavOpen }) => {
               : <LinkButton minwidth="100px" state={{ from: location.pathname }} variant="quaternary" to="/signin">Sign in</LinkButton>
             }
             {accessToken
-              ? <Button onClick={(e) => handleLogout(e)} variant="danger">Sign Out</Button>
+              ? <Button minwidth="120px" onClick={(e) => handleLogout(e)} variant="danger">
+                {signOut.isLoading ? <LoadingIndicator size="28px" variant="white" /> : "Sign Out"}
+              </Button>
               : <LinkButton minwidth="100px" state={{ from: location.pathname }} variant="quaternary" to="/signup">Sign up</LinkButton>
             }
           </LinkButtonCluster>

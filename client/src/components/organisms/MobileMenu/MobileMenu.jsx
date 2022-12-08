@@ -9,6 +9,7 @@ import { useAuth } from "../../../hooks/useAuth";
 import { ReactComponent as TextLogo } from "../../../assets/text_logo_no_square.svg";
 import { ReactComponent as SquareLogo } from "../../../assets/square_logo_no_text.svg";
 import { useScreenSize } from "hooks/useScreenSize";
+import { LoadingIndicator } from "components/atoms/LoadingIndicator/LoadingIndicator";
 
 export const MobileMenu = ({ setIsNavOpen }) => {
 
@@ -34,7 +35,9 @@ export const MobileMenu = ({ setIsNavOpen }) => {
           : <LinkButton minwidth="120px" variant="quaternary" to="/signin">Sign in</LinkButton>
         }
         {accessToken
-          ? <Button minwidth="120px" onClick={(e) => handleLogout(e)} variant="danger">Sign Out</Button>
+          ? <Button minwidth="120px" onClick={(e) => handleLogout(e)} variant="danger">
+            {signOut.isLoading ? <LoadingIndicator size="28px" variant="white" /> : "Sign Out"}
+          </Button>
           : <LinkButton minwidth="120px" variant="quaternary" to="/signup">Sign up</LinkButton>
         }
       </LinkButtonCluster>

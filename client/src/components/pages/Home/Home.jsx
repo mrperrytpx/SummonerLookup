@@ -14,13 +14,17 @@ export const Home = () => {
     <StyledHome center={width >= 710 ? true : false}>
       {width >= 710
         ? <>
-          <Background />
+          <Background format="video" />
           <SearchSummoner />
         </>
-        : <FlexColCenter gap="1rem" style={{ width: "100%", marginTop: "5rem" }}>
-          <SquareLogo fill="white" width="200" />
-          <CompactSearchSummoner />
-        </FlexColCenter>
+        :
+        <>
+          <Background format="image" />
+          <FlexColCenter gap="1rem" style={{ width: "100%", marginTop: "5rem" }}>
+            <SquareLogo fill="white" width="200" />
+            <CompactSearchSummoner />
+          </FlexColCenter>
+        </>
       }
     </StyledHome>
   );
