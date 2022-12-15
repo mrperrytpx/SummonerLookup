@@ -81,14 +81,13 @@ router.post("/refresh_token", rateLimiter, asyncHandler(authController.refreshTo
  *          $ref: "#/components/securitySchemas/cookieAuth"
  *    responses:
  *      200:
- *        description: Tokens refreshed
+ *        description: Tokens refreshed successfully
  *        content:
- *          application/json: 
- *          schema: 
+ *          application/json:
  *            $ref: "#/components/securitySchemas/cookieAuth"
  *      429:
  *        description: Too many requests
- */
+*/
 
 router.post("/logout", rateLimiter, authMiddleware, asyncHandler(authController.logoutRoute));
 /**
