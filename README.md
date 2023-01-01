@@ -8,8 +8,8 @@ Web app that lets you look up specific players who play League of Legends and se
 
 You are able to make an account and 'follow' any of the players so you don't have to remember their names; if you find someone interesting but you might forget their name.
 
-![Summoner Overview](/readme/overview.png "Overview of a profile").
-![Summoner Stats](/readme/stats.png "Champion stats in ranked queues").
+![Summoner Overview](/readme/overview.png "Overview of a profile" =200x200)
+![Summoner Stats](/readme/stats.png "Champion stats in ranked queues" =200x200)
 
 Essentially, it's a lesser version of any of the popular websites such as u.gg or op.gg
 
