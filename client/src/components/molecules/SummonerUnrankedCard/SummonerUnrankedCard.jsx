@@ -11,7 +11,7 @@ export const SummonerUnrankedCard = () => {
       <FlexRowSpaceBetween>
         <FlexRow gap="1rem">
           <ImageContainer
-            src="https://static.u.gg/assets/lol/ranks/2d/unranked.svg"
+            src={`${process.env.REACT_APP_NOT_SECRET_CODE}/static/unranked.webp`}
             alt="Ranked tier"
             width="65px"
           />

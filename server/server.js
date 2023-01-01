@@ -9,6 +9,8 @@ const { defaultErrorHandler, errorHandler } = require("./handlers/");
 const connectToMongoAtlas = require("./utils/connectToMongoAtlas");
 const { redisSetup } = require("./utils/redisClient");
 const swaggerDocs = require("./utils/swagger");
+const rateLimiter = require("./middlewares/rateLimiter");
+const path = require("path");
 
 // Initialize express
 const app = express();
@@ -33,7 +35,7 @@ app.use((req, _res, next) => {
     next();
 });
 
-// API;
+app.use('/static', express.static(__dirname + '/public'));
 app.use("/api", api);
 
 app.use(defaultErrorHandler);
