@@ -1,6 +1,6 @@
 # Summoner Lookup
 
-## Summoner Lookup is a web app used to look up match history, stats, live games and challenges of League of Legends players, made with React
+## Summoner Lookup is a web app used to look up League of Legends players, made with React
 
 ### [Client](https://summonerlookup-production-fe40.up.railway.app) ------ [Server Swagger docs](https://slup-server-production.up.railway.app/docs)
 
