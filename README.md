@@ -13,7 +13,6 @@ You are able to make an account and 'follow' any of the players so you don't hav
 <img src="readme/profile.png" width="500">
 
 Essentially, it's a lesser version of any of the popular websites such as u.gg or op.gg
-___
 ## Client
 
 Client side was created using [Create-React-App](https://reactjs.org/docs/create-a-new-react-app.html) as the starting point of the project. Folder structure for components is using the [Atomic Design](https://danilowoz.com/blog/atomic-design-with-react) methodology - smallest components are Atoms, Atoms make bigger components; Molecules, Molecules and Atoms make Organisms and all of them together make Pages. For styling, I went with styled-components because it looked more interesting at the time, compared to just SASS or some other library.
@@ -47,19 +46,17 @@ Libraries used:
 * [dotenv](https://github.com/motdotla/dotenv) - zero-dependency module that loads environment variables from a .env file into process.env.
 * [helmet](https://github.com/helmetjs/helmet) - express middleware that helps to secure the app by setting various HTTP headers
 * [cookie-parser](https://github.com/expressjs/cookie-parser) - parse Cookie header and populate req.cookies with an object keyed by the cookie names.
-___
-
 ## Introspection
 
-##### What was your motivation?
+#### What was your motivation?
 
 My motivaiton was further improvement as a self-taught software developer. 
 
-##### Why did you build this project?
+#### Why did you build this project?
 
 I built this project to teach myself the fundamentals of React development and to teach myself how to host a project online instead of it just sitting my PC or in a private Github repository for no one else to see.
 
-##### What did you learn?
+#### What did you learn?
 
 I learned how to work with multiple APIs at the same time, how JWT authentication/authorization flow works. I learned about optimistic updates with TanStack React Query so the web app feels snappier.
 
