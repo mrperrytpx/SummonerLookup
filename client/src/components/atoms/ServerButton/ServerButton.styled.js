@@ -5,6 +5,8 @@ export const StyledServerButton = styled.div`
     display: inline-block;
     text-align: center;
     margin-right: .5rem;
+    margin-bottom: .5rem;
+    min-width: 50px;
 
     label {
         cursor: pointer;
@@ -13,7 +15,7 @@ export const StyledServerButton = styled.div`
         align-items: center;
         justify-content: center;
         min-width: 3rem;
-        padding: 5px 8px;
+        padding: 4px 0;
         font-size: .9em;
         color: ${({ server, checkedRadioButton, theme }) => server === checkedRadioButton ? theme.textColors.dark : theme.textColors.light};
 

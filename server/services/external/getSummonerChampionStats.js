@@ -61,6 +61,3 @@ const getSummonerChampionStats = async (server, summonerName) => {
 };
 
 module.exports = getSummonerChampionStats;
-
-
-

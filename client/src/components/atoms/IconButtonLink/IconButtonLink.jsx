@@ -2,13 +2,16 @@ import { FaSearch, FaGithub, FaLinkedin } from "react-icons/fa";
 import { StyledIconButtonLink } from "./IconButtonLink.styled";
 import { StyledIconButtonAnchor } from "./IconButtonAchor.styled";
 import { ReactComponent as UggLogo } from "assets/ugg.svg";
+import { useLocation } from "react-router-dom";
 
 export const IconButtonLink = ({ size, icon, server, summonerName }) => {
+
+  const location = useLocation();
 
   switch (icon) {
     case "search": {
       return (
-        <StyledIconButtonLink disabled={summonerName ? false : true} to={`/${server}/${summonerName}/`}>
+        <StyledIconButtonLink disabled={summonerName ? false : true} to={summonerName ? `/${server}/${summonerName}/` : location.pathname}>
           <FaSearch size="30" fill="#283655" />
         </StyledIconButtonLink>
       );

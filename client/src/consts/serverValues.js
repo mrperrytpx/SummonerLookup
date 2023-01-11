@@ -10,4 +10,9 @@ export const SERVER_VALUES = {
     "oc1": "OCE",
     "jp1": "JP",
     "kr": "KR",
+    "ph2": "PH",
+    "sg2": "SG",
+    "th2": "TH",
+    "tw2": "TW",
+    "vn2": "VN"
 };
