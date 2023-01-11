@@ -1,6 +1,6 @@
 # Summoner Lookup
 
-## Summoner Lookup is a web app used to look up match history, stats, live games and challenges of League of Legends players, made with React
+## Summoner Lookup is a web app used to look up League of Legends players, made with React
 
 ### [Client](https://summonerlookup-production-fe40.up.railway.app) ------ [Server Swagger docs](https://slup-server-production.up.railway.app/docs)
 
@@ -48,15 +48,15 @@ Libraries used:
 * [cookie-parser](https://github.com/expressjs/cookie-parser) - parse Cookie header and populate req.cookies with an object keyed by the cookie names.
 ## Introspection
 
-#### What was your motivation?
+#### `What was your motivation?`
 
 My motivaiton was further improvement as a self-taught software developer. 
 
-#### Why did you build this project?
+#### `Why did you build this project?`
 
 I built this project to teach myself the fundamentals of React development and to teach myself how to host a project online instead of it just sitting my PC or in a private Github repository for no one else to see.
 
-#### What did you learn?
+#### `What did you learn?`
 
 I learned how to work with multiple APIs at the same time, how JWT authentication/authorization flow works. I learned about optimistic updates with TanStack React Query so the web app feels snappier.
 
