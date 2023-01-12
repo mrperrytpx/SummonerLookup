@@ -88,11 +88,16 @@ export const SummonerInfo = () => {
           <Span align="center" size="s">
             {summonerChallengesData?.totalPoints?.current} out of {summonerChallengesData?.totalPoints?.max} challenge points earned
           </Span>
-          {summonerChallengesData?.totalPoints?.hasOwnProperty("percentile") && (
+          {summonerChallengesData?.totalPoints?.hasOwnProperty("position") ? (
+            <Span align="left" size="s">
+              Rank #{summonerChallengesData?.totalPoints?.position} {SERVER_VALUES[server]}
+            </Span>
+          ) : summonerChallengesData?.totalPoints?.hasOwnProperty("percentile") ? (
             <Span align="left" size="s">
               (better than {Math.round((1 - summonerChallengesData?.totalPoints?.percentile) * 10000) / 100}% of {SERVER_VALUES[server]})
             </Span>
-          )}
+          ) : null}
+
         </FlexCol>
 
         <FlexRowStart gap="0.5rem">
