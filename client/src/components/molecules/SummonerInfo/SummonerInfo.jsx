@@ -88,7 +88,7 @@ export const SummonerInfo = () => {
           <Span align="center" size="s">
             {summonerChallengesData?.totalPoints?.current} out of {summonerChallengesData?.totalPoints?.max} challenge points earned
           </Span>
-          {summonerChallengesData?.totalPoints?.percentile && (
+          {summonerChallengesData?.totalPoints?.hasOwnProperty("percentile") && (
             <Span align="left" size="s">
               (better than {Math.round((1 - summonerChallengesData?.totalPoints?.percentile) * 10000) / 100}% of {SERVER_VALUES[server]})
             </Span>
