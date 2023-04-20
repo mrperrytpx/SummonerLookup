@@ -9,7 +9,6 @@ export const StyledDropdown = styled(FlexColCenter)`
   background-color: ${({ theme }) => theme.backgroundColors.active};
   border-radius: 5px;
   z-index: 2;
-  overflow-y: auto;
 
   span {
     display: flex;
