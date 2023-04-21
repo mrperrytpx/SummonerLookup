@@ -7,25 +7,24 @@ import { Background } from "components/atoms/Background/Background";
 import { FlexColCenter } from "components/atoms/FlexBoxes/FlexBoxes.styled";
 
 export const Home = () => {
-
   const { width } = useScreenSize();
 
   return (
     <StyledHome center={width >= 710 ? true : false}>
-      {width >= 710
-        ? <>
+      {width >= 710 ? (
+        <>
           <Background format="video" />
           <SearchSummoner />
         </>
-        :
+      ) : (
         <>
           <Background format="image" />
-          <FlexColCenter gap="1rem" style={{ width: "100%", marginTop: "5rem" }}>
-            <SquareLogo fill="white" width="200" />
+          <FlexColCenter gap="1rem" style={{ width: "100%", marginTop: "1rem" }}>
             <CompactSearchSummoner />
+            <SquareLogo fill="white" width="200" />
           </FlexColCenter>
         </>
-      }
+      )}
     </StyledHome>
   );
 };
