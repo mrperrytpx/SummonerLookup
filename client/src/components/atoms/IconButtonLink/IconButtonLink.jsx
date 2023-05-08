@@ -5,13 +5,15 @@ import { ReactComponent as UggLogo } from "assets/ugg.svg";
 import { useLocation } from "react-router-dom";
 
 export const IconButtonLink = ({ size, icon, server, summonerName }) => {
-
   const location = useLocation();
 
   switch (icon) {
     case "search": {
       return (
-        <StyledIconButtonLink disabled={summonerName ? false : true} to={summonerName ? `/${server}/${summonerName}/` : location.pathname}>
+        <StyledIconButtonLink
+          disabled={summonerName ? false : true}
+          to={summonerName ? `/${server}/${summonerName}/` : location.pathname}
+        >
           <FaSearch size="30" fill="#283655" />
         </StyledIconButtonLink>
       );
@@ -19,7 +21,11 @@ export const IconButtonLink = ({ size, icon, server, summonerName }) => {
 
     case "github": {
       return (
-        <StyledIconButtonAnchor rel="noopener noreferrer" href="https://github.com/mrperrytpx/SummonerLookup" target="_blank">
+        <StyledIconButtonAnchor
+          rel="noopener noreferrer"
+          href="https://github.com/mrperrytpx/SummonerLookup"
+          target="_blank"
+        >
           <FaGithub size={size ? size : "30"} fill="white" />
         </StyledIconButtonAnchor>
       );
@@ -27,7 +33,11 @@ export const IconButtonLink = ({ size, icon, server, summonerName }) => {
 
     case "linkedin": {
       return (
-        <StyledIconButtonAnchor rel="noopener noreferrer" href="https://www.linkedin.com/" target="_black">
+        <StyledIconButtonAnchor
+          rel="noopener noreferrer"
+          href="https://www.linkedin.com/in/tomislav-%C5%A1iprak-83abb1275/"
+          target="_black"
+        >
           <FaLinkedin size={size ? size : "30"} fill="white" />
         </StyledIconButtonAnchor>
       );
@@ -35,7 +45,11 @@ export const IconButtonLink = ({ size, icon, server, summonerName }) => {
 
     case "u.gg": {
       return (
-        <StyledIconButtonAnchor rel="noopener noreferrer" href={`https://u.gg/lol/profile/${server}/${summonerName}/overview`} target="_black">
+        <StyledIconButtonAnchor
+          rel="noopener noreferrer"
+          href={`https://u.gg/lol/profile/${server}/${summonerName}/overview`}
+          target="_black"
+        >
           <UggLogo size={size ? size : "30"} />
         </StyledIconButtonAnchor>
       );
