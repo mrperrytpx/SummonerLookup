@@ -50,7 +50,7 @@ Libraries used:
 
 #### `What was your motivation?`
 
-My motivaiton was further improvement as a self-taught software developer. 
+My motivation was further improvement as a self-taught software developer. 
 
 #### `Why did you build this project?`
 
