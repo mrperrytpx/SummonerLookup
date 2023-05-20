@@ -41,9 +41,9 @@ export const Home = () => {
               <LinkButton
                 minwidth="120px"
                 variant="secondary"
-                to="/euw1/WhoDoUThinkIAm"
+                to="/euw1/eraxhog"
               >
-                WhoDoUThinkIAm
+                Eraxhog
               </LinkButton>
             </FlexRowSpaceBetween>
           </FlexCol>
