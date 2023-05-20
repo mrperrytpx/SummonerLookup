@@ -78,7 +78,7 @@ export const Home = () => {
                 variant="secondary"
                 to="/euw1/eraxhog"
               >
-                WhoDoUThinkIAm
+                Eraxhog
               </LinkButton>
             </FlexCol>
           </FlexColCenter>
