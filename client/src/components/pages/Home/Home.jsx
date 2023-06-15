@@ -22,28 +22,14 @@ export const Home = () => {
           <Background format="video" />
           <SearchSummoner />
           <FlexCol gap="1rem">
-            <Span align="center">Example Summoners:</Span>
+            <Span align="center">Example Summoner:</Span>
             <FlexRowSpaceBetween flow="wrap" gap="1rem">
-              <LinkButton
-                minwidth="120px"
-                variant="secondary"
-                to="/kr/hide%20on%20bush"
-              >
-                hide on bush
-              </LinkButton>
               <LinkButton
                 minwidth="120px"
                 variant="secondary"
                 to="/eun1/perryx"
               >
                 Perryx
-              </LinkButton>
-              <LinkButton
-                minwidth="120px"
-                variant="secondary"
-                to="/euw1/eraxhog"
-              >
-                Eraxhog
               </LinkButton>
             </FlexRowSpaceBetween>
           </FlexCol>
