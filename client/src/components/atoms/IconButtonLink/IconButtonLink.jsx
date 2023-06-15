@@ -35,7 +35,7 @@ export const IconButtonLink = ({ size, icon, server, summonerName }) => {
       return (
         <StyledIconButtonAnchor
           rel="noopener noreferrer"
-          href="https://www.linkedin.com/in/tomislav-%C5%A1iprak"
+          href="https://www.linkedin.com/in/tomislav-siprak"
           target="_black"
         >
           <FaLinkedin size={size ? size : "30"} fill="white" />
