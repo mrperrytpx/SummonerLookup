@@ -28,11 +28,6 @@ const summonerChampionStats = async (req, res) => {
 
   let statsData = await getSummonerChampionStats(server, summonerName);
 
-  console.log(
-    "xd",
-    statsData.data.fetchPlayerStatistics[0].basicChampionPerformances
-  );
-
   const statsMap = new Map();
   statsData.data.fetchPlayerStatistics[0].basicChampionPerformances.forEach(
     (champ) => statsMap.set(champ.championId, { ...champ })

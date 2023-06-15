@@ -7,9 +7,9 @@ import { Background } from "components/atoms/Background/Background";
 import {
   FlexColCenter,
   FlexRowSpaceBetween,
+  FlexCol,
 } from "components/atoms/FlexBoxes/FlexBoxes.styled";
 import { LinkButton } from "components/atoms/LinkButton/LinkButton";
-import { FlexCol } from "components/atoms/FlexBoxes/FlexBoxes.styled";
 import { Span } from "components/atoms/Span/Span";
 
 export const Home = () => {
@@ -21,7 +21,7 @@ export const Home = () => {
         <>
           <Background format="video" />
           <SearchSummoner />
-          <FlexCol gap="1rem">
+          <FlexColCenter gap="1rem">
             <Span align="center">Example Summoner:</Span>
             <FlexRowSpaceBetween flow="wrap" gap="1rem">
               <LinkButton
@@ -32,7 +32,7 @@ export const Home = () => {
                 Perryx
               </LinkButton>
             </FlexRowSpaceBetween>
-          </FlexCol>
+          </FlexColCenter>
         </>
       ) : (
         <>
@@ -44,27 +44,13 @@ export const Home = () => {
             <CompactSearchSummoner />
             <SquareLogo fill="white" width="200" />
             <FlexCol gap="1rem">
-              <Span align="center">Example Summoners:</Span>
-              <LinkButton
-                minwidth="120px"
-                variant="secondary"
-                to="/kr/hide%20on%20bush"
-              >
-                hide on bush
-              </LinkButton>
+              <Span align="center">Example Summoner:</Span>
               <LinkButton
                 minwidth="120px"
                 variant="secondary"
                 to="/eun1/perryx"
               >
                 Perryx
-              </LinkButton>
-              <LinkButton
-                minwidth="120px"
-                variant="secondary"
-                to="/euw1/eraxhog"
-              >
-                Eraxhog
               </LinkButton>
             </FlexCol>
           </FlexColCenter>
