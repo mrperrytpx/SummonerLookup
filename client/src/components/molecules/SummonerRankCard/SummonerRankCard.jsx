@@ -22,7 +22,7 @@ export const SummonerRankCard = ({ ranked, isLoading }) => {
       <FlexRowSpaceBetween>
         <FlexRow gap="1rem">
           <ImageContainer
-            src={`${process.env.REACT_APP_NOT_SECRET_CODE}/static/${ranked.tier?.toLowerCase()}.webp`}
+            src={`${process.env.REACT_APP_NOT_SECRET_CODE}/static/${ranked.tier?.toLowerCase() ?? "unranked"}.webp`}
             alt="Ranked tier"
             width="65px"
           />

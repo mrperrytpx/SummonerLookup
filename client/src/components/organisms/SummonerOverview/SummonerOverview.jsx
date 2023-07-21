@@ -28,7 +28,7 @@ export const SummonerOverview = () => {
       <FlexCol flex="1">
         <FlexCol data-stats="true">
           {summonerRankedData?.length
-            ? [...summonerRankedData]?.sort(sortQueues).map(ranked => <SummonerRankCard isLoading={isLoading} key={ranked?.leagueId} ranked={ranked} />)
+            ? [...summonerRankedData]?.sort(sortQueues).map(ranked => <SummonerRankCard isLoading={isLoading} key={ranked?.queueType} ranked={ranked} />)
             : <SummonerUnrankedCard />
           }
         </FlexCol>

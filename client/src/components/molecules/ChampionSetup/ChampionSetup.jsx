@@ -12,6 +12,62 @@ export const ChampionSetup = ({ hasLevel, match, width, position }) => {
   const summonerSpells = queryClient.getQueryData(["summoner-spells"]);
   const runes = queryClient.getQueryData(["runes"]);
   const champions = queryClient.getQueryData(["champions"]);
+  
+  if (match.individualPosition === "Invalid") return (
+    <StyledChampionSetup position={position} data-champsetup>
+      {!hasLevel
+        ? <ImageContainer
+          data-icon="true"
+          src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${champions.get(`${match.championId}`).id}.png`}
+          alt="champion"
+          width={`${width}px` || "40px"}
+        />
+        : <IconWithLevel
+          level={match?.champLevel || "?"}
+          data-icon
+          src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${champions.get(`${match.championId}`).id}.png`}
+          alt="champion"
+          width={`${width}px` || "40px"}
+        />
+      }
+      <GridBox data-setupgrid rows={`repeat(2, minmax(${width / 2}px, 1fr))`} cols={`repeat(2, minmax(${width / 2}px, 1fr))`}>
+        <ImageContainer
+          border="black"
+          background
+          width={`${width / 2}px` || "20px"}
+          // https://raw.communitydragon.org/latest/game/assets/perks/styles/domination/electrocute/electrocute.png
+          src="https://raw.communitydragon.org/latest/game/assets/spells/icons2d/summoner_empty.png"
+          alt="Augmentation 1"
+          data-setup
+        />
+        <ImageContainer
+          border="black"
+          background
+          width={`${width / 2}px` || "20px"}
+          // https://raw.communitydragon.org/latest/game/assets/perks/styles/7203_whimsy.png
+          src="https://raw.communitydragon.org/latest/game/assets/spells/icons2d/summoner_empty.png"
+          alt="Augmentation 2"
+          data-setup
+        />
+        <ImageContainer
+          background
+          border="black"
+          width={`${width / 2}px` || "20px"}
+          src="https://raw.communitydragon.org/latest/game/assets/spells/icons2d/summoner_empty.png"
+          alt="Augmentation 3"
+          data-setup
+        />
+        <ImageContainer
+          background
+          border="black"
+          width={`${width / 2}px` || "20px"}
+          src="https://raw.communitydragon.org/latest/game/assets/spells/icons2d/summoner_empty.png"
+          alt="Augmentation 4"
+          data-setup
+        />
+      </GridBox>
+    </StyledChampionSetup>
+  )
 
   // ids needed for https://ddragon.leagueoflegends.com/cdn/12.18.1/data/en_US/runesReforged.json
   const keystoneRuneId = match?.perks.styles[0].selections[0].perk;
