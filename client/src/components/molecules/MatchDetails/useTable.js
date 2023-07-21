@@ -34,6 +34,7 @@ export const useTable = (data) => {
                                 position="start"
                                 match={row}
                                 width={40}
+                                hasLevel={true}
                             />
                             <CustomLink
                                 to={`/${server}/${row.summonerName}`}

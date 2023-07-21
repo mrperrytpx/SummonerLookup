@@ -80,8 +80,29 @@ export const ChampionSetup = ({ hasLevel, match, width, position }) => {
 
     // ids needed for https://ddragon.leagueoflegends.com/cdn/12.18.1/data/en_US/runesReforged.json
     const keystoneRuneId = match?.perks.styles[0].selections[0].perk;
-    const primaryRuneTreeId = match?.perks.styles[0].style;
-    const secondaryRuneTreeId = match?.perks.styles[1].style;
+    let primaryRuneTreeId = match?.perks.styles[0].style;
+
+    if (!primaryRuneTreeId) {
+        primaryRuneTreeId = +(
+            match?.perks.styles[0].selections[0].perk
+                .toString()
+                .split("")
+                .slice(0, 2)
+                .join("") + "00"
+        );
+    }
+
+    let secondaryRuneTreeId = match?.perks.styles[1].style;
+
+    if (!secondaryRuneTreeId) {
+        secondaryRuneTreeId = +(
+            match?.perks.styles[1].selections[0].perk
+                .toString()
+                .split("")
+                .slice(0, 2)
+                .join("") + "00"
+        );
+    }
 
     // rune data
     const primaryTree = runes.find((tree) => tree.id === primaryRuneTreeId);
