@@ -64,6 +64,7 @@ export const SummonerMatchCard = ({ match }) => {
                         <ChampionSetup
                             hasLevel={true}
                             position="center"
+                            gameMode={match.gameMode}
                             match={match.participants}
                             width={60}
                         />
