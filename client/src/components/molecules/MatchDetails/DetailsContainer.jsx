@@ -50,6 +50,7 @@ export const DetailsContainer = ({ matchId }) => {
             >
                 {teams.map((team) => (
                     <MatchDetails
+                        mode="CHERRY"
                         key={team.participants[0].championId}
                         team={team.participants}
                         bans={team.bans}
