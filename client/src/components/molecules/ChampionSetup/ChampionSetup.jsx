@@ -13,10 +13,6 @@ export const ChampionSetup = ({ hasLevel, match, width, position }) => {
     const champions = queryClient.getQueryData(["champions"]);
     const arena = queryClient.getQueryData(["arena"]);
 
-    console.log("arena", arena);
-
-    console.log("match", match);
-
     if (!match.perks.statPerks.defense)
         return (
             <StyledChampionSetup position={position} data-champsetup>
