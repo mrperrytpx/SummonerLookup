@@ -23,63 +23,113 @@ import { useGetLeagueChallengesQuery } from "./hooks/useGetLeagueChallengesQuery
 
 import { FullscreenLoading } from "./components/atoms/FullscreenLoading/FullscreenLoading";
 import { PageErrorBoundary } from "utils/PageErrorBoundary";
+import { useGetArenaAugmentsQuery } from "hooks/useGetArenaAugmentsQuery";
 
 const App = () => {
-	const [isNavOpen, setIsNavOpen] = useState(false);
+    const [isNavOpen, setIsNavOpen] = useState(false);
 
-	const { width } = useScreenSize();
-	const { accessToken, tokenLoading } = useAuth();
+    const { width } = useScreenSize();
+    const { accessToken, tokenLoading } = useAuth();
 
-	const { isLoading: challengesLoading } = useGetLeagueChallengesQuery();
-	const { isLoading: championsLoading } = useGetLeagueChampions();
-	// const { isLoading: itemsLoading } = useGetLeagueItemsQuery();
-	const { isLoading: runesLoading } = useGetLeagueRunesQuery();
-	const { isLoading: summonerSpellsLoading } = useGetLeagueSummonerSpellsQuery();
-	useGetFollowingQuery();
+    const { isLoading: challengesLoading } = useGetLeagueChallengesQuery();
+    const { isLoading: championsLoading } = useGetLeagueChampions();
+    // const { isLoading: itemsLoading } = useGetLeagueItemsQuery();
+    const { isLoading: runesLoading } = useGetLeagueRunesQuery();
+    const { isLoading: summonerSpellsLoading } =
+        useGetLeagueSummonerSpellsQuery();
+    useGetFollowingQuery();
+    useGetArenaAugmentsQuery();
 
-	const handleNavOpen = () => setIsNavOpen(prev => !prev);
+    const handleNavOpen = () => setIsNavOpen((prev) => !prev);
 
-	useEffect(function closeNav() {
-		if (width >= 750 && isNavOpen) setIsNavOpen(false);
-	}, [width, isNavOpen, setIsNavOpen]);
+    useEffect(
+        function closeNav() {
+            if (width >= 750 && isNavOpen) setIsNavOpen(false);
+        },
+        [width, isNavOpen, setIsNavOpen]
+    );
 
-	if (tokenLoading || challengesLoading || championsLoading || runesLoading || summonerSpellsLoading) return <FullscreenLoading />;
+    if (
+        tokenLoading ||
+        challengesLoading ||
+        championsLoading ||
+        runesLoading ||
+        summonerSpellsLoading
+    )
+        return <FullscreenLoading />;
 
-	return (
-		<div className="App">
-			<GlobalStyles isNavOpen={isNavOpen} />
-			<Routes>
-				<Route element={<WithNav setIsNavOpen={setIsNavOpen} isNavOpen={isNavOpen} handleNavOpen={handleNavOpen} />}>
-					<Route path="/" element={<Home />} />
+    return (
+        <div className="App">
+            <GlobalStyles isNavOpen={isNavOpen} />
+            <Routes>
+                <Route
+                    element={
+                        <WithNav
+                            setIsNavOpen={setIsNavOpen}
+                            isNavOpen={isNavOpen}
+                            handleNavOpen={handleNavOpen}
+                        />
+                    }
+                >
+                    <Route path="/" element={<Home />} />
 
-					<Route path="/:server/:summonerName" element={
-						<PageErrorBoundary>
-							<Summoner />
-						</PageErrorBoundary>
-					}>
-						<Route index element={<SummonerOverview />} />
-						<Route path="stats" element={<SummonerChampionStats />} />
-						<Route path="live-game" element={<SummonerLiveGame />} />
-						<Route path="challenges" element={<SummonerChallenges />} />
-					</Route>
-					<Route element={<ProtectedRoute redirectPath="/signin" isAllowed={!!accessToken} />}>
-						<Route path="/me" element={
-							<PageErrorBoundary>
-								<Me />
-							</PageErrorBoundary>
-						} />
-					</Route>
-				</Route>
-				<Route element={<WithoutNav />}>
-					<Route element={<ProtectedRoute redirectPath="/" isAllowed={!accessToken} />}>
-						<Route path="/signin" element={<SignIn />} />
+                    <Route
+                        path="/:server/:summonerName"
+                        element={
+                            <PageErrorBoundary>
+                                <Summoner />
+                            </PageErrorBoundary>
+                        }
+                    >
+                        <Route index element={<SummonerOverview />} />
+                        <Route
+                            path="stats"
+                            element={<SummonerChampionStats />}
+                        />
+                        <Route
+                            path="live-game"
+                            element={<SummonerLiveGame />}
+                        />
+                        <Route
+                            path="challenges"
+                            element={<SummonerChallenges />}
+                        />
+                    </Route>
+                    <Route
+                        element={
+                            <ProtectedRoute
+                                redirectPath="/signin"
+                                isAllowed={!!accessToken}
+                            />
+                        }
+                    >
+                        <Route
+                            path="/me"
+                            element={
+                                <PageErrorBoundary>
+                                    <Me />
+                                </PageErrorBoundary>
+                            }
+                        />
+                    </Route>
+                </Route>
+                <Route element={<WithoutNav />}>
+                    <Route
+                        element={
+                            <ProtectedRoute
+                                redirectPath="/"
+                                isAllowed={!accessToken}
+                            />
+                        }
+                    >
+                        <Route path="/signin" element={<SignIn />} />
 
-						<Route path="/signup" element={<SignUp />} />
-					</Route>
-				</Route>
-			</Routes>
-		</div>
-	);
+                        <Route path="/signup" element={<SignUp />} />
+                    </Route>
+                </Route>
+            </Routes>
+        </div>
+    );
 };
 
 export default App;
