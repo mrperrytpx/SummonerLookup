@@ -1,5 +1,5 @@
 // NPM Packages
-require('dotenv').config();
+require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
@@ -35,7 +35,7 @@ app.use((req, _res, next) => {
     next();
 });
 
-app.use('/static', express.static(__dirname + '/public'));
+app.use("/static", express.static(__dirname + "/public"));
 app.use("/api", api);
 
 app.use(defaultErrorHandler);
