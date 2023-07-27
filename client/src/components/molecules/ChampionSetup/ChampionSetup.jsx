@@ -13,6 +13,15 @@ export const ChampionSetup = ({ hasLevel, match, width, position }) => {
     const champions = queryClient.getQueryData(["champions"]);
     const arena = queryClient.getQueryData(["arena"]);
 
+    const augmentImage = (id) => {
+        const augmentData = arena.augments.find((augment) => augment.id === id);
+        return augmentData
+            ? `https://raw.communitydragon.org/latest/game/${augmentData.iconSmall.toLowerCase()}`
+            : "https://raw.communitydragon.org/latest/game/assets/spells/icons2d/summoner_empty.png";
+    };
+
+    console.log("arena", arena);
+
     if (!match.perks.statPerks.defense)
         return (
             <StyledChampionSetup position={position} data-champsetup>
@@ -50,13 +59,7 @@ export const ChampionSetup = ({ hasLevel, match, width, position }) => {
 
                         // https://raw.communitydragon.org/latest/game/assets/ux/cherry/augments/icons/acceleratingsorcery_small.2v2_mode_fighters.png
                         // src="https://raw.communitydragon.org/latest/game/assets/perks/styles/domination/electrocute/electrocute.png"
-                        src={
-                            arena[match.playerAugment1]
-                                ? `https://raw.communitydragon.org/latest/game/assets/ux/cherry/augments/icons/${arena[
-                                      match.playerAugment1
-                                  ].iconSmall.toLowerCase()}`
-                                : "https://raw.communitydragon.org/latest/game/assets/spells/icons2d/summoner_empty.png"
-                        }
+                        src={augmentImage(match.playerAugment1)}
                         alt="Augmentation 1"
                         data-setup
                     />
@@ -65,13 +68,7 @@ export const ChampionSetup = ({ hasLevel, match, width, position }) => {
                         background
                         width={`${width / 2}px` || "20px"}
                         // https://raw.communitydragon.org/latest/game/assets/perks/styles/7203_whimsy.png
-                        src={
-                            arena[match.playerAugment2]
-                                ? `https://raw.communitydragon.org/latest/game/assets/ux/cherry/augments/icons/${arena[
-                                      match.playerAugment2
-                                  ].iconSmall.toLowerCase()}`
-                                : "https://raw.communitydragon.org/latest/game/assets/spells/icons2d/summoner_empty.png"
-                        }
+                        src={augmentImage(match.playerAugment2)}
                         alt="Augmentation 2"
                         data-setup
                     />
@@ -79,13 +76,7 @@ export const ChampionSetup = ({ hasLevel, match, width, position }) => {
                         background
                         border="black"
                         width={`${width / 2}px` || "20px"}
-                        src={
-                            arena[match.playerAugment3]
-                                ? `https://raw.communitydragon.org/latest/game/assets/ux/cherry/augments/icons/${arena[
-                                      match.playerAugment3
-                                  ].iconSmall.toLowerCase()}`
-                                : "https://raw.communitydragon.org/latest/game/assets/spells/icons2d/summoner_empty.png"
-                        }
+                        src={augmentImage(match.playerAugment3)}
                         alt="Augmentation 3"
                         data-setup
                     />
@@ -93,13 +84,7 @@ export const ChampionSetup = ({ hasLevel, match, width, position }) => {
                         background
                         border="black"
                         width={`${width / 2}px` || "20px"}
-                        src={
-                            arena[match.playerAugment4]
-                                ? `https://raw.communitydragon.org/latest/game/assets/ux/cherry/augments/icons/${arena[
-                                      match.playerAugment4
-                                  ].iconSmall.toLowerCase()}`
-                                : "https://raw.communitydragon.org/latest/game/assets/spells/icons2d/summoner_empty.png"
-                        }
+                        src={augmentImage(match.playerAugment4)}
                         alt="Augmentation 4"
                         data-setup
                     />

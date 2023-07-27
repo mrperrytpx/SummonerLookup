@@ -3,7 +3,7 @@ import { useQuery } from "react-query";
 export const useGetArenaAugmentsQuery = () => {
     const getArena = async ({ signal }) => {
         const response = await fetch(
-            `${process.env.REACT_APP_NOT_SECRET_CODE}/static/arena.json`,
+            `https://raw.communitydragon.org/latest/cdragon/arena/en_us.json`,
             {
                 signal,
             }
