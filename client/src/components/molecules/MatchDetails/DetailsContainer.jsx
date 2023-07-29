@@ -73,6 +73,7 @@ export const DetailsContainer = ({ matchId }) => {
         ${blueTeam[0].win ? theme.matchResult.win : theme.matchResult.loss}`,
                 borderRadius: "10px",
             }}
+            gap=".5rem"
         >
             <MatchDetails
                 team={blueTeam}
