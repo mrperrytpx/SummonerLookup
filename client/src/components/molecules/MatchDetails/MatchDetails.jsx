@@ -40,7 +40,8 @@ export const MatchDetails = ({ team, bans, mode }) => {
     return (
         <FlexCol
             style={{
-                marginBottom: team[0].placement !== 4 ? ".5rem" : "",
+                marginBottom:
+                    mode === "CHERRY" && team[0].placement !== 4 ? ".5rem" : "",
             }}
         >
             <FlexCol>
