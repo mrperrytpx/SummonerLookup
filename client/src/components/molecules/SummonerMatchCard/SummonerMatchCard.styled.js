@@ -4,19 +4,26 @@ import styled from "styled-components";
 export const StyledSummonerMatchCard = styled(FlexCol)`
     /* match card */
     & > div:first-child {
-        border: 1px solid ${({ theme, isWin }) => isWin ? theme.matchResult.win : theme.matchResult.loss};
+        border: 1px solid
+            ${({ theme, isWin }) =>
+                isWin ? theme.matchResult.win : theme.matchResult.loss};
         border-radius: 8px;
 
-        box-shadow: 0px 1px 1px ${({ theme, isWin }) => isWin ? theme.matchResult.win : theme.matchResult.loss};
-        background-color: ${({ isWin, theme }) => isWin ? theme.matchResult.win : theme.matchResult.loss};
+        box-shadow: 0px 1px 1px
+            ${({ theme, isWin }) =>
+                isWin ? theme.matchResult.win : theme.matchResult.loss};
+        background-color: ${({ isWin, theme }) =>
+            isWin ? theme.matchResult.win : theme.matchResult.loss};
         display: grid;
         grid-template-columns: 120px minmax(120px, 200px) 100px 1fr;
         grid-template-rows: 78px;
         gap: 0.1rem;
         margin-bottom: 0.25rem;
-        padding: .5rem;
+        padding: 0.5rem;
 
-        ${({ isVisible }) => !isVisible && `
+        ${({ isVisible }) =>
+            !isVisible &&
+            `
             visibility: hidden;
         `};
         cursor: pointer;
@@ -33,7 +40,7 @@ export const StyledSummonerMatchCard = styled(FlexCol)`
         @media only screen and (max-width: 700px) {
             grid-template-columns: 1fr 2fr;
             grid-template-rows: 1rem 20px 40px;
-            grid-template-areas: 
+            grid-template-areas:
                 "a a"
                 "b c"
                 "b d";
@@ -101,13 +108,13 @@ export const StyledSummonerMatchCard = styled(FlexCol)`
             }
 
             /*  champion icon */
-            [data-icon]{
+            [data-icon] {
                 width: 50px;
                 aspect-ratio: 1 / 1;
             }
 
             /* rune/summoner spell icon (setup) */
-            div[data-setup]{
+            div[data-setup] {
                 width: 25px;
                 aspect-ratio: 1 / 1;
             }
@@ -120,7 +127,6 @@ export const StyledSummonerMatchCard = styled(FlexCol)`
             }
         }
 
-        
         @media only screen and (max-width: 400px) {
             grid-template-rows: 1rem 20px 20px;
 
@@ -137,10 +143,10 @@ export const StyledSummonerMatchCard = styled(FlexCol)`
             }
 
             /* spans above items */
-            & > :nth-child(3) span {
-                font-size: 0.65rem;
-                &:last-child {
-                    display: none;
+            & > :nth-child(3) {
+                gap: 0.5rem;
+                span {
+                    font-size: 0.65rem;
                 }
             }
 
@@ -160,7 +166,7 @@ export const StyledSummonerMatchCard = styled(FlexCol)`
             }
 
             /* rune/summoner spell icon (setup) */
-            div[data-setup]{
+            div[data-setup] {
                 width: 20px;
                 aspect-ratio: 1 / 1;
             }
@@ -177,7 +183,12 @@ export const StyledSummonerMatchCard = styled(FlexCol)`
             & > :nth-child(3) {
                 grid-area: a;
                 gap: 0.2rem;
-            } 
+                span {
+                    &:last-child {
+                        display: none;
+                    }
+                }
+            }
 
             & > :last-child {
                 grid-area: d;
@@ -209,4 +220,4 @@ export const StyledSummonerMatchCard = styled(FlexCol)`
             }
         }
     }
- `;
+`;
