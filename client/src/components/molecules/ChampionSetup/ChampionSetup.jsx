@@ -17,7 +17,7 @@ export const ChampionSetup = ({ hasLevel, match, width, position }) => {
         const augmentData = arena.augments.find((augment) => augment.id === id);
         return augmentData
             ? `https://raw.communitydragon.org/latest/game/${augmentData.iconSmall.toLowerCase()}`
-            : "https://raw.communitydragon.org/latest/game/assets/spells/icons2d/summoner_empty.png";
+            : "https://raw.communitydragon.org/latest/game/data/spells/icons2d/summoner_empty.png";
     };
 
     console.log("arena", arena);
