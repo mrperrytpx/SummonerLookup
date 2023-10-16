@@ -6,26 +6,26 @@
 
 Web app that lets you look up specific players who play League of Legends and see their match history, champion stats in ranked queues, if they're in an ongoing game and their completed challenges. 
 
-<img src="readme/overview.png" width="500">
+<img src="readme/overview.png" alt="Summoner's overview page. Some match details are extended" width="500">
 
 You are able to make an account and 'follow' any of the players so you don't have to remember their names; if you find someone interesting but you might forget their name, for example.
 
-<img src="readme/profile.png" width="500">
+<img src="readme/profile.png" alt="User's profile page." width="500">
 
-Essentially, it's a lesser version of any of the popular websites such as u.gg or op.gg
+Essentially, it's a lesser version of any of the popular websites such as [u.gg](u.gg) or [op.gg](op.gg).
 ## Client
 
 Client side was created using [Create-React-App](https://reactjs.org/docs/create-a-new-react-app.html) as the starting point of the project. Folder structure for components is using the [Atomic Design](https://danilowoz.com/blog/atomic-design-with-react) methodology - smallest components are Atoms, Atoms make bigger components; Molecules, Molecules and Atoms make Organisms and all of them together make Pages. For styling, I went with styled-components because it looked more interesting at the time, compared to just SASS or some other library.
 
 Libraries used:
 * React
-* [React-Router-Dom](https://reactrouter.com/en/main) - lightweight, fully-featured routing library for React
-* [TanStack Query](https://tanstack.com/query/v4) - framework agnostic asynchronous state management library
-* [TanStack Table](https://tanstack.com/table/v8) - headless UI for building powerful tables & datagrids
-* [styled-components](https://styled-components.com/) - CSS-in-JS styling library
-* [React-Hook-Form](https://react-hook-form.com/) - performant, flexible and extensible forms with easy-to-use validation
-* [Yup](https://github.com/jquense/yup) - schema builder for runtime value parsing and validation, paired with React-Hook-Form
-* [React-Icons](https://react-icons.github.io/react-icons) - a "one-stop-shop" for all of the popular icons
+* [React-Router-Dom](https://reactrouter.com/en/main) - lightweight, fully-featured routing library for React.
+* [TanStack Query](https://tanstack.com/query/v4) - framework agnostic asynchronous state management library.
+* [TanStack Table](https://tanstack.com/table/v8) - headless UI for building powerful tables & datagrids.
+* [styled-components](https://styled-components.com/) - CSS-in-JS styling library.
+* [React-Hook-Form](https://react-hook-form.com/) - performant, flexible and extensible forms with easy-to-use validation.
+* [Yup](https://github.com/jquense/yup) - schema builder for runtime value parsing and validation, paired with React-Hook-Form.
+* [React-Icons](https://react-icons.github.io/react-icons) - a "one-stop-shop" for all of the popular icons.
 
 ## Server
 
@@ -44,7 +44,7 @@ Libraries used:
 * [jsonwebtoken](https://github.com/auth0/node-jsonwebtoken) - library used for signing and verifying JWTs.
 * [@hapi/joi](https://github.com/hapijs/joi) - schema description language and data validator for JavaScript.
 * [dotenv](https://github.com/motdotla/dotenv) - zero-dependency module that loads environment variables from a .env file into process.env.
-* [helmet](https://github.com/helmetjs/helmet) - express middleware that helps to secure the app by setting various HTTP headers
+* [helmet](https://github.com/helmetjs/helmet) - express middleware that helps to secure the app by setting various HTTP headers.
 * [cookie-parser](https://github.com/expressjs/cookie-parser) - parse Cookie header and populate req.cookies with an object keyed by the cookie names.
 ## Introspection
 
