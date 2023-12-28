@@ -1,23 +1,15 @@
 const { getMatch } = require("../../services/external");
-const leagueRegion = require("../../utils/leagueRegion");
-const { redisClient } = require("../../utils/redisClient");
+const { leagueRegion } = require("../../utils/leagueRegion");
 
 const summonerMatchDetails = async (req, res) => {
+    const { matchId } = req.params;
 
-	const { matchId } = req.params;
+    const server = matchId.split("_")[0].toLowerCase();
+    const region = leagueRegion(server);
 
-	const cachedGame = await redisClient.get(matchId);
-	if (cachedGame) {
-		const parsedGame = JSON.parse(cachedGame);
-		return res.status(200).json(parsedGame);
-	}
+    const matchData = await getMatch(region, matchId);
 
-	const server = matchId.split("_")[0].toLowerCase();
-	const region = leagueRegion(server);
-
-	const matchData = await getMatch(region, matchId);
-
-	res.status(200).json(matchData);
+    res.status(200).json(matchData);
 };
 
 module.exports = summonerMatchDetails;

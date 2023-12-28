@@ -7,16 +7,12 @@ const helmet = require("helmet");
 const api = require("./api");
 const { defaultErrorHandler, errorHandler } = require("./handlers/");
 const connectToMongoAtlas = require("./utils/connectToMongoAtlas");
-const { redisSetup } = require("./utils/redisClient");
 const swaggerDocs = require("./utils/swagger");
-const rateLimiter = require("./middlewares/rateLimiter");
-const path = require("path");
 
 // Initialize express
 const app = express();
 
 connectToMongoAtlas();
-redisSetup();
 
 app.get("/", (_req, res) => {
     res.sendStatus(200);

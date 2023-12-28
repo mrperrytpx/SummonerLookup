@@ -20,8 +20,6 @@ export const ChampionSetup = ({ hasLevel, match, width, position }) => {
             : "https://raw.communitydragon.org/latest/game/data/spells/icons2d/summoner_empty.png";
     };
 
-    console.log("arena", arena);
-
     if (!match.perks.statPerks.defense)
         return (
             <StyledChampionSetup position={position} data-champsetup>
