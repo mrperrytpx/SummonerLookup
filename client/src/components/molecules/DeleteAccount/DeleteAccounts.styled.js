@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const StyledDeleteAccount = styled.div`
-    padding: 1rem;
     color: white;
 
     p {
@@ -24,9 +23,9 @@ export const StyledDeleteAccount = styled.div`
         justify-content: start;
 
         input {
-            margin-right: 1.5rem;
+            margin-right: 0.5rem;
             width: 300px;
-            max-width: min(400px, 100%)
+            max-width: min(400px, 100%);
         }
     }
 
@@ -40,7 +39,7 @@ export const StyledDeleteAccount = styled.div`
             }
 
             button {
-                width: 100%
+                width: 100%;
             }
         }
     }

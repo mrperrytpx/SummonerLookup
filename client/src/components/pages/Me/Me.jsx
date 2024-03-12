@@ -7,21 +7,22 @@ import { SummonerCardSmall } from "../../molecules/SummonerCardSmall/SummonerCar
 import { useGetFollowingQuery } from "../../../hooks/useGetFollowingQuery";
 
 export const Me = () => {
+    const { data: following, isLoading } = useGetFollowingQuery();
 
-  const { data: following, isLoading } = useGetFollowingQuery();
-
-  return (
-    <StyledMe>
-      <ExpandingMenu expanded={true} label="Following">
-        <FollowingList>
-          {isLoading
-            ? <LoadingIndicator />
-            : following.map(summoner => <SummonerCardSmall summoner={summoner} key={summoner.puuid} />)}
-        </FollowingList>
-      </ExpandingMenu>
-      <ExpandingMenu label="Account">
-        <DeleteAccount />
-      </ExpandingMenu>
-    </StyledMe>
-  );
+    return (
+        <StyledMe>
+            <ExpandingMenu expanded={true} label="Following">
+                <FollowingList>
+                    {isLoading ? (
+                        <LoadingIndicator />
+                    ) : (
+                        following.map((summoner) => <SummonerCardSmall summoner={summoner} key={summoner.puuid} />)
+                    )}
+                </FollowingList>
+            </ExpandingMenu>
+            <ExpandingMenu expanded={true} label="Account">
+                <DeleteAccount />
+            </ExpandingMenu>
+        </StyledMe>
+    );
 };

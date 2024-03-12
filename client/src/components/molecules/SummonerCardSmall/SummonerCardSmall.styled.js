@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 export const StyledSummonerCardSmall = styled(Link)`
-    margin: 0.4rem;
     display: inline-block;
     padding: 1rem;
 
@@ -11,10 +10,10 @@ export const StyledSummonerCardSmall = styled(Link)`
     background-color: ${({ theme }) => theme.backgroundColors.secondary};
     text-decoration: none;
     user-select: none;
-    
-    &:hover, &:focus {
-        box-shadow: 
-            0 0 2px 0px ${({ theme }) => theme.backgroundColors.quaternary} inset, 
+
+    &:hover,
+    &:focus {
+        box-shadow: 0 0 2px 0px ${({ theme }) => theme.backgroundColors.quaternary} inset,
             0 0 2px 0px ${({ theme }) => theme.backgroundColors.quaternary};
         outline: 1px solid ${({ theme }) => theme.backgroundColors.quaternary};
         color: ${({ theme }) => theme.backgroundColors.active};

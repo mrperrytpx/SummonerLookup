@@ -7,5 +7,6 @@ export const StyledInputField = styled.input`
     height: 100%;
     background-color: #eeeeee;
     border: none;
-    font-size: ${({ fontSize }) => fontSize ? fontSize : "1.2rem"}
+    border-radius: 5px;
+    font-size: ${({ fontSize }) => (fontSize ? fontSize : "1.2rem")};
 `;

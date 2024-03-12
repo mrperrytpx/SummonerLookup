@@ -15,14 +15,14 @@ export const StyledExpandingMenu = styled.div`
         svg {
             padding: 0.1rem;
             margin-right: 0.2em;
-            rotate: ${({ isExpanded }) => isExpanded ? "90deg" : "0deg"};
+            rotate: ${({ isExpanded }) => (isExpanded ? "90deg" : "0deg")};
             transition: rotate 0.1s linear;
         }
     }
-    
+
     p {
         color: white;
     }
 
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
 `;
