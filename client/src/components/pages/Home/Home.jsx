@@ -17,7 +17,7 @@ export const Home = () => {
             {width < 710 && <div />}
             {width >= 710 ? <SearchSummoner /> : <CompactSearchSummoner />}
             {width < 710 && <SquareLogo width="200" fill="white" />}
-            <FlexColCenter gap="1rem">
+            <FlexColCenter style={{ marginBottom: "2rem" }} gap="1rem">
                 <Span align="center">Example Summoner:</Span>
                 <LinkButton minwidth="120px" variant="secondary" to="/eun1/perryx">
                     Perryx

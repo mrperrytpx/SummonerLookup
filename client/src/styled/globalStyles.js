@@ -24,7 +24,9 @@ const GlobalStyles = createGlobalStyle`
         color: ${({ theme }) => theme.textColors.light};
         height: 100%;
         overflow-x: hidden;
-        ${({ isNavOpen }) => isNavOpen && `
+        ${({ isNavOpen }) =>
+            isNavOpen &&
+            `
             overflow-y: hidden;
             touch-action: none;
         `}

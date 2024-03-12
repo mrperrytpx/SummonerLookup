@@ -15,6 +15,8 @@ export const Me = () => {
                 <FollowingList>
                     {isLoading ? (
                         <LoadingIndicator />
+                    ) : !following.length ? (
+                        <p>You're not following anyone!</p>
                     ) : (
                         following.map((summoner) => <SummonerCardSmall summoner={summoner} key={summoner.puuid} />)
                     )}

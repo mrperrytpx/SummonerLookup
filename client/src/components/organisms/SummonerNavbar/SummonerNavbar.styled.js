@@ -11,8 +11,8 @@ export const StyledSummonerNavbar = styled(FlexRowStart)`
         width: 5px;
         background-color: red;
     }
-    margin: 1rem 0;
-    
+    margin: 0.5rem 0;
+
     a:hover {
         color: ${({ theme }) => theme.backgroundColors.quaternary};
     }
@@ -35,6 +35,5 @@ export const StyledSummonerNavbar = styled(FlexRowStart)`
         }
         ::-webkit-scrollbar-track-piece {
         }
-
     }
 `;

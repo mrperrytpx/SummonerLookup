@@ -8,7 +8,7 @@ export const StyledSummonerOverview = styled(FlexRow)`
 
     [data-stats] {
         gap: 0.5rem;
-        margin-bottom: 1rem;
+        margin-bottom: 0.5rem;
     }
 
     @media only screen and (max-width: 1000px) {
