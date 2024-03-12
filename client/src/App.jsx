@@ -33,7 +33,6 @@ const App = () => {
 
     const { isLoading: challengesLoading } = useGetLeagueChallengesQuery();
     const { isLoading: championsLoading } = useGetLeagueChampions();
-    // const { isLoading: itemsLoading } = useGetLeagueItemsQuery();
     const { isLoading: runesLoading } = useGetLeagueRunesQuery();
     const { isLoading: summonerSpellsLoading } =
         useGetLeagueSummonerSpellsQuery();
@@ -59,7 +58,7 @@ const App = () => {
         return <FullscreenLoading />;
 
     return (
-        <div className="App">
+        <>
             <GlobalStyles isNavOpen={isNavOpen} />
             <Routes>
                 <Route
@@ -128,7 +127,7 @@ const App = () => {
                     </Route>
                 </Route>
             </Routes>
-        </div>
+        </>
     );
 };
 
