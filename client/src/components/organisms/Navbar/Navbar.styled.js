@@ -9,7 +9,7 @@ export const StyledNavbar = styled(FlexRow).attrs({ as: "nav" })`
     #wrapper {
         width: 100%;
         max-width: 120rem;
-        padding: 0 0.5rem;
+        padding: 0 1rem;
         margin: 0 auto;
 
         @media only screen and (max-width: ${({ theme }) => theme.resolutions.mobile}) {

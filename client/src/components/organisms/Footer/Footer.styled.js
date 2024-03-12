@@ -1,10 +1,20 @@
 import styled from "styled-components";
-import { FlexRowCenter } from "../../atoms/FlexBoxes/FlexBoxes.styled";
 
-export const StyledFooter = styled(FlexRowCenter).attrs({ as: "footer" })`
+export const StyledFooter = styled.footer`
     background-color: ${({ theme }) => theme.backgroundColors.primary};
     border-top: 1px solid ${({ theme }) => theme.backgroundColors.quaternary};
-    padding: 2rem 5rem 2rem 4rem;
+
+    width: 100%;
+    #footer-wrapper {
+        max-width: 120rem;
+        width: 100%;
+        margin: 0 auto;
+
+        div:last-child {
+            place-self: baseline;
+            padding: 2rem 1rem;
+        }
+    }
 
     @media only screen and (max-width: ${({ theme }) => theme.resolutions.tablet}) {
         flex-direction: column;
