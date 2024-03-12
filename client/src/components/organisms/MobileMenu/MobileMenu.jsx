@@ -12,40 +12,50 @@ import { useScreenSize } from "hooks/useScreenSize";
 import { LoadingIndicator } from "components/atoms/LoadingIndicator/LoadingIndicator";
 
 export const MobileMenu = ({ setIsNavOpen }) => {
+    const { signOut, accessToken } = useAuth();
+    const { width } = useScreenSize();
 
-  const { signOut, accessToken } = useAuth();
-  const { width } = useScreenSize();
+    const handleLogout = async (e) => {
+        e.preventDefault();
+        await signOut.mutateAsync({ accessToken });
+        setIsNavOpen(false);
+    };
 
-  const handleLogout = async (e) => {
-    e.preventDefault();
-    await signOut.mutateAsync({ accessToken });
-    setIsNavOpen(false);
-  };
-
-  return (
-    <StyledMobileMenu>
-      {width <= 449 && (
-        <SvgLink to="/">
-          {width <= 320 ? <SquareLogo width="80" style={{ marginTop: "2rem" }} fill="white" /> : <TextLogo style={{ marginTop: "2rem" }} fill="white" />}
-        </SvgLink>
-      )}
-      <LinkButtonCluster width={width} variant="mobile">
-        {accessToken
-          ? <LinkButton minwidth="120px" variant="quaternary" to="/me">Profile</LinkButton>
-          : <LinkButton minwidth="120px" variant="quaternary" to="/signin">Sign in</LinkButton>
-        }
-        {accessToken
-          ? <Button minwidth="120px" onClick={(e) => handleLogout(e)} variant="danger">
-            {signOut.isLoading ? <LoadingIndicator size="28px" variant="white" /> : "Sign Out"}
-          </Button>
-          : <LinkButton minwidth="120px" variant="quaternary" to="/signup">Sign up</LinkButton>
-        }
-      </LinkButtonCluster>
-      <LinkButtonCluster>
-        <IconButtonLink size="46" icon="github" />
-        <IconButtonLink size="46" icon="linkedin" />
-      </LinkButtonCluster>
-      <Disclaimer />
-    </StyledMobileMenu>
-  );
+    return (
+        <StyledMobileMenu>
+            {width <= 449 && (
+                <SvgLink to="/">
+                    {width <= 320 ? (
+                        <SquareLogo width="80" style={{ marginTop: "2rem" }} fill="white" />
+                    ) : (
+                        <TextLogo style={{ marginTop: "2rem" }} fill="white" />
+                    )}
+                </SvgLink>
+            )}
+            <LinkButtonCluster width={width} variant="mobile">
+                {accessToken ? (
+                    <LinkButton minwidth="120px" variant="quaternary" to="/me">
+                        Profile
+                    </LinkButton>
+                ) : (
+                    <LinkButton minwidth="120px" variant="quaternary" to="/signin">
+                        Sign in
+                    </LinkButton>
+                )}
+                {accessToken ? (
+                    <Button minwidth="120px" onClick={(e) => handleLogout(e)} variant="danger">
+                        {signOut.isLoading ? <LoadingIndicator size="28px" variant="white" /> : "Sign Out"}
+                    </Button>
+                ) : (
+                    <LinkButton minwidth="120px" variant="quaternary" to="/signup">
+                        Sign up
+                    </LinkButton>
+                )}
+            </LinkButtonCluster>
+            <LinkButtonCluster>
+                <IconButtonLink size="46" icon="github" />
+            </LinkButtonCluster>
+            <Disclaimer />
+        </StyledMobileMenu>
+    );
 };

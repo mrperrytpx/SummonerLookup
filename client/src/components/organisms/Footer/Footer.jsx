@@ -11,7 +11,6 @@ export const Footer = () => {
                 <Disclaimer />
                 <LinkButtonCluster>
                     <IconButtonLink icon="github" />
-                    <IconButtonLink icon="linkedin" />
                 </LinkButtonCluster>
             </FlexRowCenter>
         </StyledFooter>

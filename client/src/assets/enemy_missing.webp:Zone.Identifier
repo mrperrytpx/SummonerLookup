@@ -1,0 +1,4 @@
+[ZoneTransfer]
+ZoneId=3
+ReferrerUrl=https://cloudconvert.com/
+HostUrl=https://eu-central.storage.cloudconvert.com/tasks/d917cb35-7f8b-4e18-a563-a73228afec77/enemy_missing.webp?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=cloudconvert-production%2F20240312%2Ffra%2Fs3%2Faws4_request&X-Amz-Date=20240312T152600Z&X-Amz-Expires=86400&X-Amz-Signature=9594c2c4a0f0ec444c7221b8ad80364215f576f0dde0c0a5f790deb2610102c8&X-Amz-SignedHeaders=host&response-content-disposition=attachment%3B%20filename%3D%22enemy_missing.webp%22&response-content-type=image%2Fwebp&x-id=GetObject
