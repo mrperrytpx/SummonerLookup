@@ -15,7 +15,8 @@ export const StyledFormLabelInput = styled(FlexCol)`
         padding: 0.7rem 0.8rem;
         font-size: 1.1rem;
         background-color: #eeeeee;
-        border: ${({ errors, theme }) => (errors ? `3px solid ${theme.backgroundColors.danger}` : "none")};
+        border-radius: 5px;
+        border: ${({ errors, theme }) => (errors ? `2px solid ${theme.backgroundColors.danger}` : "none")};
     }
 
     label {
