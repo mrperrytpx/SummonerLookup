@@ -5,7 +5,7 @@ export const StyledStatsTable = styled.table`
     width: 100%;
     border-collapse: separate;
     border-spacing: 0;
-    
+
     thead {
         background-color: ${({ theme }) => theme.backgroundColors.tertiary};
     }
@@ -33,30 +33,31 @@ export const StyledStatsTable = styled.table`
         }
 
         /* sorted column header */
-        &[data-sorted="asc"], &[data-sorted="desc"] {
+        &[data-sorted="asc"],
+        &[data-sorted="desc"] {
             opacity: 1;
         }
 
         /* header border when sorted */
         &[data-sorted="asc"] > div {
             border-top: 3px solid ${({ theme }) => theme.backgroundColors.active};
-            color: white
+            color: white;
         }
         &[data-sorted="desc"] > div {
             border-bottom: 3px solid ${({ theme }) => theme.backgroundColors.active};
             color: white;
         }
     }
-    
+
     th > div {
-        padding: .5rem;
+        padding: 0.5rem;
         display: flex;
         justify-content: center;
         align-items: center;
         height: 54px;
     }
 
-    tbody {        
+    tbody {
         background-color: ${({ theme }) => theme.backgroundColors.secondary};
         border-radius: 20px;
         width: 100%;
@@ -78,14 +79,15 @@ export const StyledStatsTable = styled.table`
     }
 
     td {
-        padding: .5rem .25rem;
+        padding: 0.5rem 0.25rem;
         text-align: center;
         font-weight: 500;
-        font-size: .82rem;
+        font-size: 0.82rem;
     }
 
     /* sorted cells */
-    td[data-sorted="asc"], td[data-sorted="desc"] {
+    td[data-sorted="asc"],
+    td[data-sorted="desc"] {
         background-color: ${({ theme }) => theme.backgroundColors.tertiary};
     }
 
@@ -95,9 +97,9 @@ export const StyledStatsTable = styled.table`
             display: none;
             padding: 0;
         }
-        
+
         /* champion icon */
-        [data-icon="true"] {    
+        [data-icon="true"] {
             min-width: 30px;
             width: 30px;
         }
@@ -108,7 +110,6 @@ export const StyledStatsTable = styled.table`
 
         td {
             font-size: 0.65rem;
-
         }
     }
 `;

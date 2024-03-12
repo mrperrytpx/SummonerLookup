@@ -10,8 +10,10 @@ export const StyledSummonerMatches = styled(FlexCol)`
     border-radius: 1rem;
 
     & > div:first-of-type {
-        margin-top: .5rem;
-        ${({ noMatches }) => noMatches && `
+        margin-top: 0.5rem;
+        ${({ noMatches }) =>
+            noMatches &&
+            `
             min-height: 150px;
         `}
     }

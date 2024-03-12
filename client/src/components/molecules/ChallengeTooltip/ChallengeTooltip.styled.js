@@ -8,7 +8,7 @@ export const StyledChallengeTooltip = styled(FlexCol)`
     left: 20px;
     min-width: 200px;
     border-radius: 5px;
-    padding: .25rem .5rem;
+    padding: 0.25rem 0.5rem;
     z-index: 2;
     background-color: ${({ theme }) => theme.backgroundColors.secondary};
     border: 4px solid ${({ rank, theme }) => theme.category[rank]};

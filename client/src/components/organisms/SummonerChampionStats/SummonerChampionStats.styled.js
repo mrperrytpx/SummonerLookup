@@ -12,7 +12,7 @@ export const StyledSummonerChampionStats = styled.div`
     }
 
     /*  u.gg credit */
-    & > :first-child > div:Last-child {
+    & > :first-child > div:last-child {
         margin-right: 0.5rem;
     }
 `;

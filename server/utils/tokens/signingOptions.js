@@ -8,7 +8,7 @@ const signingOptions = (username, exp) => {
         audience: aud,
         subject: sub,
         expiresIn: exp,
-        algorithm: 'RS256'
+        algorithm: "RS256",
     };
     return signOptions;
 };

@@ -22,7 +22,6 @@ export const FlexRowStart = styled(FlexRow)`
     justify-content: flex-start;
     align-items: center;
     flex-flow: ${({ flow }) => flow};
-
 `;
 
 export const FlexRowEnd = styled(FlexRow)`
@@ -31,7 +30,6 @@ export const FlexRowEnd = styled(FlexRow)`
     justify-content: flex-end;
     align-items: center;
     flex-flow: ${({ flow }) => flow};
-
 `;
 
 export const FlexRowSpaceAround = styled(FlexRow)`
@@ -40,7 +38,6 @@ export const FlexRowSpaceAround = styled(FlexRow)`
     justify-content: space-around;
     align-items: center;
     flex-flow: ${({ flow }) => flow};
-
 `;
 
 export const FlexRowSpaceBetween = styled(FlexRow)`
@@ -49,7 +46,6 @@ export const FlexRowSpaceBetween = styled(FlexRow)`
     justify-content: space-between;
     align-items: center;
     flex-flow: ${({ flow }) => flow};
-
 `;
 export const FlexRowSpaceEvenly = styled(FlexRow)`
     flex: ${({ flex }) => flex};
@@ -57,7 +53,6 @@ export const FlexRowSpaceEvenly = styled(FlexRow)`
     justify-content: space-evenly;
     align-items: center;
     flex-flow: ${({ flow }) => flow};
-
 `;
 // -----------------------------------------------------------------------
 
@@ -67,7 +62,6 @@ export const FlexCol = styled.div`
     flex-direction: column;
     gap: ${({ gap }) => gap};
     flex-flow: ${({ flow }) => flow};
-
 `;
 
 export const FlexColCenter = styled(FlexCol)`
@@ -76,7 +70,6 @@ export const FlexColCenter = styled(FlexCol)`
     align-items: center;
     justify-content: center;
     flex-flow: ${({ flow }) => flow};
-
 `;
 
 export const FlexColStart = styled(FlexCol)`
@@ -85,7 +78,6 @@ export const FlexColStart = styled(FlexCol)`
     justify-content: flex-start;
     align-items: center;
     flex-flow: ${({ flow }) => flow};
-
 `;
 
 export const FlexColEnd = styled(FlexCol)`
@@ -94,7 +86,6 @@ export const FlexColEnd = styled(FlexCol)`
     justify-content: flex-end;
     align-items: center;
     flex-flow: ${({ flow }) => flow};
-
 `;
 
 export const FlexColSpaceAround = styled(FlexCol)`
@@ -103,15 +94,14 @@ export const FlexColSpaceAround = styled(FlexCol)`
     justify-content: space-around;
     align-items: center;
     flex-flow: ${({ flow }) => flow};
-
 `;
 
 export const FlexColSpaceBetween = styled(FlexCol)`
-    flex: ${({ flex }) => flex};    gap: ${({ gap }) => gap};
+    flex: ${({ flex }) => flex};
+    gap: ${({ gap }) => gap};
     justify-content: space-between;
     align-items: center;
     flex-flow: ${({ flow }) => flow};
-
 `;
 export const FlexColSpaceEvenly = styled(FlexCol)`
     flex: ${({ flex }) => flex};
@@ -119,5 +109,4 @@ export const FlexColSpaceEvenly = styled(FlexCol)`
     justify-content: space-evenly;
     align-items: center;
     flex-flow: ${({ flow }) => flow};
-
 `;

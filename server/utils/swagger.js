@@ -16,14 +16,14 @@ const options = {
                     type: "http",
                     scheme: "bearer",
                     bearerFormat: "JWT",
-                    example: "Bearer <accessToken>"
+                    example: "Bearer <accessToken>",
                 },
                 cookieAuth: {
                     type: "string",
                     in: "cookie",
                     name: "slup",
-                    example: "slup=s%3A<refreshToken>"
-                }
+                    example: "slup=s%3A<refreshToken>",
+                },
             },
         },
         security: [
@@ -33,7 +33,12 @@ const options = {
             },
         ],
     },
-    apis: ["./routers/*.js", "./validations/*.js", "./models/*.js", "./controllers/**/*.js"],
+    apis: [
+        "./routers/*.js",
+        "./validations/*.js",
+        "./models/*.js",
+        "./controllers/**/*.js",
+    ],
 };
 
 const swaggerSpec = swaggerJsdoc(options);

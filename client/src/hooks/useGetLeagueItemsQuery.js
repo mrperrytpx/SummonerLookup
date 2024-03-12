@@ -5,12 +5,9 @@ export const useGetLeagueItemsQuery = () => {
     const { data: version } = useGetLeagueVersion();
 
     const fetchLeagueItems = async ({ signal }) => {
-        const response = await fetch(
-            `https://ddragon.leagueoflegends.com/cdn/${version}/data/en_US/item.json`,
-            {
-                signal,
-            }
-        );
+        const response = await fetch(`https://ddragon.leagueoflegends.com/cdn/${version}/data/en_US/item.json`, {
+            signal,
+        });
 
         if (signal.aborted) return;
 

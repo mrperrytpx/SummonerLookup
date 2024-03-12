@@ -14,11 +14,7 @@ export const WithNav = ({ setIsNavOpen, isNavOpen, handleNavOpen }) => {
 
     return (
         <>
-            <Navbar
-                setIsNavOpen={setIsNavOpen}
-                isNavOpen={isNavOpen}
-                handleNavOpen={handleNavOpen}
-            />
+            <Navbar setIsNavOpen={setIsNavOpen} isNavOpen={isNavOpen} handleNavOpen={handleNavOpen} />
             <Outlet />
             {width >= 750 && <Footer />}
         </>

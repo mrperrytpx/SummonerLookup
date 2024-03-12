@@ -5,7 +5,7 @@ export const StyledIndividualChampStatsCard = styled.div`
     grid-template-columns: 2fr 1fr 85px;
     padding: 0.5rem 0;
     width: 100%;
-    
+
     border-top: 1px solid ${({ theme }) => theme.backgroundColors.tertiary};
 
     & > div:nth-child(2) {
@@ -42,13 +42,12 @@ export const StyledIndividualChampStatsCard = styled.div`
     @media only screen and (max-width: 340px) {
         grid-template-columns: 1fr 1fr 90px;
 
-        
         & > :first-child span {
             display: none;
         }
 
         & span {
-            font-size: .65rem;
+            font-size: 0.65rem;
         }
     }
-`; 
+`;

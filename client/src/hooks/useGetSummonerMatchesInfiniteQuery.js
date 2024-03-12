@@ -1,9 +1,10 @@
 import { useInfiniteQuery } from "react-query";
 
 export const useGetSummonerMatchesInfiniteQuery = (server, puuid) => {
-
     const getSummonerMatches = async ({ pageParam = 1 }) => {
-        const response = await fetch(`${process.env.REACT_APP_NOT_SECRET_CODE}/api/summoner/matches/${server}/${puuid}/${pageParam}`);
+        const response = await fetch(
+            `${process.env.REACT_APP_NOT_SECRET_CODE}/api/summoner/matches/${server}/${puuid}/${pageParam}`
+        );
 
         if (!response.ok) throw new Error("Something went wrong... try reloading the poge");
 
@@ -21,7 +22,6 @@ export const useGetSummonerMatchesInfiniteQuery = (server, puuid) => {
                 return undefined;
             }
         },
-        retry: 1
+        retry: 1,
     });
-
 };

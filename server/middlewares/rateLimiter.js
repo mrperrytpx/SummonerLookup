@@ -9,8 +9,11 @@ const rateLimiter = rateLimit({
     handler: (_request, response, _next, options) => {
         return response
             .status(options.statusCode)
-            .json({ message: "Woah... Slow down there, buckaroo. Too many requests." });
-    }
+            .json({
+                message:
+                    "Woah... Slow down there, buckaroo. Too many requests.",
+            });
+    },
 });
 
 module.exports = rateLimiter;

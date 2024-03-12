@@ -10,7 +10,6 @@ const summonerChallenges = async (req, res) => {
 
 module.exports = summonerChallenges;
 
-
 /**
  * @openapi
  * components:
@@ -43,7 +42,7 @@ module.exports = summonerChallenges;
  *           properties:
  *             <CATEGORY_NAME>:
  *               type: object
- *               $ref: "#/components/schemas/ChallengeCategory"  
+ *               $ref: "#/components/schemas/ChallengeCategory"
  *         challenges:
  *           type: array
  *           items:

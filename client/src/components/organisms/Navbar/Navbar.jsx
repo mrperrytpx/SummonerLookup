@@ -40,9 +40,7 @@ export const Navbar = ({ isNavOpen, handleNavOpen, setIsNavOpen }) => {
                     </SvgLink>
                 ) : null}
 
-                {location.pathname !== "/" && !isNavOpen && (
-                    <CompactSearchSummoner />
-                )}
+                {location.pathname !== "/" && !isNavOpen && <CompactSearchSummoner />}
                 {width >= 750 ? (
                     <LinkButtonCluster>
                         {accessToken ? (
@@ -67,19 +65,8 @@ export const Navbar = ({ isNavOpen, handleNavOpen, setIsNavOpen }) => {
                             </LinkButton>
                         )}
                         {accessToken ? (
-                            <Button
-                                minwidth="120px"
-                                onClick={(e) => handleLogout(e)}
-                                variant="danger"
-                            >
-                                {signOut.isLoading ? (
-                                    <LoadingIndicator
-                                        size="28px"
-                                        variant="white"
-                                    />
-                                ) : (
-                                    "Sign Out"
-                                )}
+                            <Button minwidth="120px" onClick={(e) => handleLogout(e)} variant="danger">
+                                {signOut.isLoading ? <LoadingIndicator size="28px" variant="white" /> : "Sign Out"}
                             </Button>
                         ) : (
                             <LinkButton
@@ -93,19 +80,9 @@ export const Navbar = ({ isNavOpen, handleNavOpen, setIsNavOpen }) => {
                         )}
                     </LinkButtonCluster>
                 ) : !isNavOpen ? (
-                    <ImMenu3
-                        style={{ minWidth: "48px" }}
-                        fill="white"
-                        size="48"
-                        onClick={handleNavOpen}
-                    />
+                    <ImMenu3 style={{ minWidth: "48px" }} fill="white" size="48" onClick={handleNavOpen} />
                 ) : (
-                    <ImMenu4
-                        style={{ minWidth: "48px" }}
-                        fill="white"
-                        size="48"
-                        onClick={handleNavOpen}
-                    />
+                    <ImMenu4 style={{ minWidth: "48px" }} fill="white" size="48" onClick={handleNavOpen} />
                 )}
                 {isNavOpen && <MobileMenu setIsNavOpen={setIsNavOpen} />}
             </FlexRowSpaceBetween>

@@ -2,12 +2,11 @@ import { useQuery } from "react-query";
 import { useGetLeagueVersion } from "./useGetLeagueVersion";
 
 export const useGetLeagueChallengesQuery = () => {
-
     const { data: version } = useGetLeagueVersion();
 
     const getChallenges = async ({ signal }) => {
         const response = await fetch(`https://ddragon.leagueoflegends.com/cdn/${version}/data/en_US/challenges.json`, {
-            signal
+            signal,
         });
 
         if (!response.ok) throw new Error("Something went wrong. Try reloading the page");
@@ -18,6 +17,6 @@ export const useGetLeagueChallengesQuery = () => {
 
     return useQuery(["challenges"], getChallenges, {
         staleTime: 3000000,
-        enabled: !!version
+        enabled: !!version,
     });
 };

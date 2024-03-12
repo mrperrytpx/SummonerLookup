@@ -31,16 +31,10 @@ export class PageErrorBoundary extends React.Component {
             return (
                 <StyledErrorContainer>
                     <Container>
-                        <ErrorText
-                            size="clamp(1.2rem, 3vw, 2rem)"
-                            center={true}
-                        >
+                        <ErrorText size="clamp(1.2rem, 3vw, 2rem)" center={true}>
                             There uhh... Seems to be an issue 💀
                         </ErrorText>
-                        <ErrorText
-                            size="clamp(.8rem, 3vw, 1.6rem)"
-                            center={true}
-                        >
+                        <ErrorText size="clamp(.8rem, 3vw, 1.6rem)" center={true}>
                             Try reloading the page
                         </ErrorText>
                     </Container>

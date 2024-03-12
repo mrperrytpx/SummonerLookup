@@ -2,7 +2,6 @@ import { useMutation, useQueryClient } from "react-query";
 import { useAuth } from "./useAuth";
 
 export const useUnfollowSummonerMutation = () => {
-
     const { accessToken } = useAuth();
     const queryClient = useQueryClient();
 
@@ -15,7 +14,7 @@ export const useUnfollowSummonerMutation = () => {
                 "Content-Type": "application/json",
                 authorization: `Bearer ${accessToken}`,
             },
-            body: JSON.stringify({ id })
+            body: JSON.stringify({ id }),
         });
 
         if (controller.signal.aborted) return;
@@ -28,13 +27,11 @@ export const useUnfollowSummonerMutation = () => {
         onMutate: async ({ id }) => {
             await queryClient.cancelQueries(["me"]);
             const previousFollowing = queryClient.getQueryData(["me"]);
-            queryClient.setQueryData(
-                ["me"],
-                (old) => old.filter((summ) => summ.summonerId !== id));
+            queryClient.setQueryData(["me"], (old) => old.filter((summ) => summ.summonerId !== id));
             return { previousFollowing };
         },
         onError: (_err, _player, context) => {
             queryClient.setQueryData(["me"], context.previousFollowing);
-        }
+        },
     });
 };

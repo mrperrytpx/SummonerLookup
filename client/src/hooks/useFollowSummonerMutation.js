@@ -2,7 +2,6 @@ import { useMutation, useQueryClient } from "react-query";
 import { useAuth } from "./useAuth";
 
 export const useFollowSummonerMutation = () => {
-
     const { accessToken } = useAuth();
     const queryClient = useQueryClient();
 
@@ -13,7 +12,7 @@ export const useFollowSummonerMutation = () => {
                 "Content-Type": "application/json",
                 authorization: `Bearer ${accessToken}`,
             },
-            body: JSON.stringify(payload)
+            body: JSON.stringify(payload),
         });
 
         if (!response.ok) throw new Error("Something went wrong. Try again!");
@@ -24,13 +23,11 @@ export const useFollowSummonerMutation = () => {
         onMutate: async ({ payload }) => {
             await queryClient.cancelQueries(["me"]);
             const previousFollowing = queryClient.getQueryData(["me"]);
-            queryClient.setQueryData(
-                ["me"],
-                (old) => [...old, payload]);
+            queryClient.setQueryData(["me"], (old) => [...old, payload]);
             return { previousFollowing };
         },
         onError: (_err, _player, context) => {
             queryClient.setQueryData(["me"], context.previousFollowing);
-        }
+        },
     });
 };

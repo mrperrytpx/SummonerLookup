@@ -5,9 +5,12 @@ export const useGetLeagueRunesQuery = () => {
     const { data: version } = useGetLeagueVersion();
 
     const fetchLeagueRunes = async ({ signal }) => {
-        const response = await fetch(`https://ddragon.leagueoflegends.com/cdn/${version}/data/en_US/runesReforged.json`, {
-            signal
-        });
+        const response = await fetch(
+            `https://ddragon.leagueoflegends.com/cdn/${version}/data/en_US/runesReforged.json`,
+            {
+                signal,
+            }
+        );
 
         if (signal.aborted) return;
 

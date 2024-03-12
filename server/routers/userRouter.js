@@ -5,7 +5,12 @@ const authMiddleware = require("../middlewares/authMiddleware");
 const rateLimiter = require("../middlewares/rateLimiter");
 const { asyncHandler } = require("../handlers");
 
-router.get("/me", rateLimiter, authMiddleware, asyncHandler(userController.userProfileRoute));
+router.get(
+    "/me",
+    rateLimiter,
+    authMiddleware,
+    asyncHandler(userController.userProfileRoute)
+);
 /**
  * @openapi
  * '/api/user/me':
@@ -34,7 +39,12 @@ router.get("/me", rateLimiter, authMiddleware, asyncHandler(userController.userP
  *        description: Too many requests
  */
 
-router.delete("/delete_account", rateLimiter, authMiddleware, asyncHandler(userController.deleteAccountRoute));
+router.delete(
+    "/delete_account",
+    rateLimiter,
+    authMiddleware,
+    asyncHandler(userController.deleteAccountRoute)
+);
 /**
  * @openapi
  * '/api/user/me':

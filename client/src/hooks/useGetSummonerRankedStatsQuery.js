@@ -11,8 +11,7 @@ export const useGetSummonerRankedStatsQuery = (server, summonerId) => {
 
         if (signal.aborted) return;
 
-        if (!response.ok)
-            throw new Error("Something went wrong... try reloading the poge");
+        if (!response.ok) throw new Error("Something went wrong... try reloading the poge");
 
         const data = await response.json();
         return data;

@@ -3,8 +3,10 @@ import styled from "styled-components";
 
 export const StyledChampionSetup = styled(FlexRow)`
     background-color: black;
-    ${({ position }) => position && `
+    ${({ position }) =>
+        position &&
+        `
         justify-content: ${position};
         align-items: ${position};
-    `} 
+    `}
 `;

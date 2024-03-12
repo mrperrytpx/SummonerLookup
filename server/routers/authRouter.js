@@ -7,34 +7,38 @@ const { asyncHandler } = require("../handlers");
 
 router.post("/login", rateLimiter, asyncHandler(authController.loginRoute));
 /**
-   * @openapi
-   * '/api/auth/login':
-   *  post:
-   *    tags:
-   *      - Auth
-   *    summary: User login route
-   *    requestBody: 
-   *      required: true
-   *      content:
-   *        application/json: 
-   *          schema: 
-   *            $ref: "#/components/schemas/LoginInput" 
-   *    responses:
-   *      200:
-   *        description: Login successful
-   *        content:
-   *          application/json: 
-   *            schema: 
-   *              $ref: "#/components/schemas/LoginResponse"
-   *      400:
-   *        description: Bad Request
-   *      404:
-   *        description: Not found
-   *      429:
-   *        description: Too many requests
-   */
+ * @openapi
+ * '/api/auth/login':
+ *  post:
+ *    tags:
+ *      - Auth
+ *    summary: User login route
+ *    requestBody:
+ *      required: true
+ *      content:
+ *        application/json:
+ *          schema:
+ *            $ref: "#/components/schemas/LoginInput"
+ *    responses:
+ *      200:
+ *        description: Login successful
+ *        content:
+ *          application/json:
+ *            schema:
+ *              $ref: "#/components/schemas/LoginResponse"
+ *      400:
+ *        description: Bad Request
+ *      404:
+ *        description: Not found
+ *      429:
+ *        description: Too many requests
+ */
 
-router.post("/register", rateLimiter, asyncHandler(authController.registerRoute));
+router.post(
+    "/register",
+    rateLimiter,
+    asyncHandler(authController.registerRoute)
+);
 /**
  * @openapi
  * '/api/auth/register':
@@ -42,12 +46,12 @@ router.post("/register", rateLimiter, asyncHandler(authController.registerRoute)
  *    tags:
  *      - Auth
  *    summary: User register route
- *    requestBody: 
+ *    requestBody:
  *      required: true
  *      content:
- *        application/json: 
- *          schema: 
- *            $ref: "#/components/schemas/RegisterInput" 
+ *        application/json:
+ *          schema:
+ *            $ref: "#/components/schemas/RegisterInput"
  *    responses:
  *      201:
  *        description: Register successful
@@ -61,7 +65,11 @@ router.post("/register", rateLimiter, asyncHandler(authController.registerRoute)
  *        description: Too many requests
  */
 
-router.post("/refresh_token", rateLimiter, asyncHandler(authController.refreshTokenRoute));
+router.post(
+    "/refresh_token",
+    rateLimiter,
+    asyncHandler(authController.refreshTokenRoute)
+);
 /**
  * @openapi
  * '/api/auth/refresh_token':
@@ -77,7 +85,7 @@ router.post("/refresh_token", rateLimiter, asyncHandler(authController.refreshTo
  *        in: header
  *        required: true
  *        type: string
- *        schema: 
+ *        schema:
  *          $ref: "#/components/securitySchemas/cookieAuth"
  *    responses:
  *      200:
@@ -87,9 +95,14 @@ router.post("/refresh_token", rateLimiter, asyncHandler(authController.refreshTo
  *            $ref: "#/components/securitySchemas/cookieAuth"
  *      429:
  *        description: Too many requests
-*/
+ */
 
-router.post("/logout", rateLimiter, authMiddleware, asyncHandler(authController.logoutRoute));
+router.post(
+    "/logout",
+    rateLimiter,
+    authMiddleware,
+    asyncHandler(authController.logoutRoute)
+);
 /**
  * @openapi
  * '/api/auth/logout':

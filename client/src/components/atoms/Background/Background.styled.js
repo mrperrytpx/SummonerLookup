@@ -15,7 +15,9 @@ export const StyledBackground = styled.div`
         object-fit: cover;
     }
 
-    ${({ format }) => format === "image" && `
+    ${({ format }) =>
+        format === "image" &&
+        `
         &::before {
             content: "";
             background-image: url(${img});

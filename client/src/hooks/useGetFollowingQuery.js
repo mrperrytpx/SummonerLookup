@@ -7,8 +7,8 @@ const getFollowing = async (accessToken, signal) => {
         signal,
         headers: {
             "Content-Type": "application/json",
-            authorization: `Bearer ${accessToken}`
-        }
+            authorization: `Bearer ${accessToken}`,
+        },
     });
 
     if (signal.aborted) return;
@@ -26,9 +26,8 @@ const getFollowing = async (accessToken, signal) => {
 };
 
 export const useGetFollowingQuery = () => {
-
     const { accessToken } = useAuth();
     return useQuery(["me"], ({ signal }) => getFollowing(accessToken, signal), {
-        enabled: !!accessToken
+        enabled: !!accessToken,
     });
 };

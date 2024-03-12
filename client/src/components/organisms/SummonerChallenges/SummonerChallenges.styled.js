@@ -12,9 +12,9 @@ export const StyledSummonerChallenges = styled.div`
         top: 0;
         max-height: 0;
         display: flex;
-        flex-direction:column;
+        flex-direction: column;
         gap: 1rem;
-        padding: .5rem;
+        padding: 0.5rem;
         width: 100%;
         z-index: 2;
     }
@@ -24,7 +24,7 @@ export const StyledSummonerChallenges = styled.div`
         flex-direction: column;
         align-items: center;
         gap: 0.5rem;
-        padding: .5rem 0;
+        padding: 0.5rem 0;
         margin-bottom: 3rem;
     }
 

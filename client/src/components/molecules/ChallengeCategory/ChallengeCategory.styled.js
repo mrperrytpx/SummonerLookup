@@ -8,7 +8,9 @@ export const StyledChallengeCategory = styled(FlexColCenter)`
     gap: 0.1rem;
     background-color: ${({ theme }) => theme.backgroundColors.secondary};
     border-radius: 4px;
-    ${({ isActive, theme }) => isActive && `
+    ${({ isActive, theme }) =>
+        isActive &&
+        `
         outline: 3px solid ${theme.backgroundColors.active};
     `}
 
@@ -21,7 +23,7 @@ export const StyledChallengeCategory = styled(FlexColCenter)`
             width: ${({ points, maxPoints }) => (points / maxPoints) * 100}%;
             height: 8px;
             border-radius: 0 5px 5px 0;
-            background-color:${({ theme }) => theme.backgroundColors.active};
+            background-color: ${({ theme }) => theme.backgroundColors.active};
         }
     }
 `;

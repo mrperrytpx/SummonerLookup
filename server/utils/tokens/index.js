@@ -1,7 +1,8 @@
-const { createAccessToken,
+const {
+    createAccessToken,
     createRefreshToken,
     sendAccessToken,
-    sendRefreshToken
+    sendRefreshToken,
 } = require("./tokens");
 
 module.exports = {
@@ -10,5 +11,5 @@ module.exports = {
     sendAccessToken,
     sendRefreshToken,
     verifyOptions: require("./verifyOptions"),
-    signingOptions: require("./signingOptions")
+    signingOptions: require("./signingOptions"),
 };

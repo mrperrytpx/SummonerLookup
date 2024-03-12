@@ -13,9 +13,7 @@ export const MatchItems = ({ items, initialWidth, gap, gameVersion }) => {
                         key={i}
                         data-item
                         width={`${initialWidth}px`}
-                        src={`https://ddragon.leagueoflegends.com/cdn/${
-                            gameVersion || version
-                        }/img/item/${item}.png`}
+                        src={`https://ddragon.leagueoflegends.com/cdn/${gameVersion || version}/img/item/${item}.png`}
                         alt="Item"
                     />
                 ) : (

@@ -1,7 +1,6 @@
 const { getSummonerRankedStats } = require("../../services/external");
 
 const summonerRankedStats = async (req, res) => {
-
     const { server, summonerId } = req.params;
 
     const rankedStanding = await getSummonerRankedStats(server, summonerId);
@@ -65,5 +64,5 @@ module.exports = summonerRankedStats;
  *       type: array
  *       items:
  *         type: object
- *         $ref: "#/components/schemas/RankedQueueStats" 
+ *         $ref: "#/components/schemas/RankedQueueStats"
  */

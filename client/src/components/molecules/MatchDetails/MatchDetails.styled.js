@@ -17,7 +17,8 @@ export const StyledMatchDetails = styled.table`
 
     /* row which highlights the profile's champion in a given game  */
     [data-profile="true"] {
-        background-color: ${({ theme, isWinner }) => isWinner ? theme.matchResult.winBorder : theme.matchResult.lossBorder};
+        background-color: ${({ theme, isWinner }) =>
+            isWinner ? theme.matchResult.winBorder : theme.matchResult.lossBorder};
     }
 
     th {
@@ -37,23 +38,25 @@ export const StyledMatchDetails = styled.table`
     }
 
     /* first header */
-    th:first-child, th:first-child > div {
+    th:first-child,
+    th:first-child > div {
         width: 190px;
     }
 
     /* last header */
-    th:last-child, th:last-child > div {
+    th:last-child,
+    th:last-child > div {
         width: 195px;
     }
-    
+
     th > div {
-        padding: .5rem;
+        padding: 0.5rem;
         display: flex;
         justify-content: center;
         align-items: center;
     }
 
-    tbody {        
+    tbody {
         background-color: ${({ theme }) => theme.backgroundColors.secondary};
         border-radius: 20px;
         width: 100%;
@@ -61,23 +64,23 @@ export const StyledMatchDetails = styled.table`
 
     tr {
         outline: thin solid ${({ theme }) => theme.backgroundColors.tertiary};
-        background-color: ${({ theme, isWinner }) => isWinner ? theme.matchResult.win : theme.matchResult.loss};
+        background-color: ${({ theme, isWinner }) => (isWinner ? theme.matchResult.win : theme.matchResult.loss)};
         a {
             margin-left: 0.25rem;
         }
     }
 
-
     td {
-        padding: .1rem .05rem;
+        padding: 0.1rem 0.05rem;
         text-align: center;
         font-weight: 500;
-        font-size: .82rem;
+        font-size: 0.82rem;
     }
 
     @media only screen and (max-width: 650px) {
         /* first header */
-        th:first-child, th:first-child > div {
+        th:first-child,
+        th:first-child > div {
             width: 100px;
         }
 
@@ -97,7 +100,6 @@ export const StyledMatchDetails = styled.table`
             place-self: start;
             margin-left: 0.1rem;
         }
-        
     }
 
     @media only screen and (max-width: 600px) {
@@ -107,16 +109,16 @@ export const StyledMatchDetails = styled.table`
 
         td {
             font-size: 0.65rem;
-
         }
     }
 
     @media only screen and (max-width: 500px) {
         /* last header */
-        th:last-child, th:last-child > div {
+        th:last-child,
+        th:last-child > div {
             width: 80px;
         }
-        
+
         [data-itemgrid] {
             background-color: #00000000;
             border: none;
@@ -139,7 +141,8 @@ export const StyledMatchDetails = styled.table`
     }
 
     @media only screen and (max-width: 320px) {
-        th:first-child, th:first-child > div {
+        th:first-child,
+        th:first-child > div {
             width: 80px;
         }
         /* champion icon */

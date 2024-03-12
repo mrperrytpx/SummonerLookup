@@ -96,11 +96,7 @@ export const ChampionSetup = ({ hasLevel, match, width, position }) => {
 
     if (!primaryRuneTreeId) {
         primaryRuneTreeId = +(
-            match?.perks.styles[0].selections[0].perk
-                .toString()
-                .split("")
-                .slice(0, 2)
-                .join("") + "00"
+            match?.perks.styles[0].selections[0].perk.toString().split("").slice(0, 2).join("") + "00"
         );
     }
 
@@ -108,27 +104,17 @@ export const ChampionSetup = ({ hasLevel, match, width, position }) => {
 
     if (!secondaryRuneTreeId) {
         secondaryRuneTreeId = +(
-            match?.perks.styles[1].selections[0].perk
-                .toString()
-                .split("")
-                .slice(0, 2)
-                .join("") + "00"
+            match?.perks.styles[1].selections[0].perk.toString().split("").slice(0, 2).join("") + "00"
         );
     }
 
     // rune data
     const primaryTree = runes.find((tree) => tree.id === primaryRuneTreeId);
-    const primaryRuneData = primaryTree.slots[0].runes.find(
-        (rune) => rune.id === keystoneRuneId
-    );
-    const primaryTreeNames = primaryRuneData.icon
-        .split("/")
-        .map((x) => x.toLowerCase());
+    const primaryRuneData = primaryTree.slots[0].runes.find((rune) => rune.id === keystoneRuneId);
+    const primaryTreeNames = primaryRuneData.icon.split("/").map((x) => x.toLowerCase());
 
     const secondaryTree = runes.find((tree) => tree.id === secondaryRuneTreeId);
-    const secondaryTreeKeystoneName = secondaryTree?.icon
-        .split("/")[2]
-        .toLowerCase();
+    const secondaryTreeKeystoneName = secondaryTree?.icon.split("/")[2].toLowerCase();
 
     const firstSummonerSpell = summonerSpells
         .find((spell) => spell.id === match.summoner1Id)
@@ -140,11 +126,10 @@ export const ChampionSetup = ({ hasLevel, match, width, position }) => {
         ?.iconPath.split("/lol-game-data/assets/")
         .pop()
         .toLowerCase();
-    const noSummonerSpell =
-        "/lol-game-data/assets/DATA/Spells/Icons2D/Summoner_Empty.png"
-            .split("/lol-game-data/assets/")
-            .pop()
-            .toLowerCase();
+    const noSummonerSpell = "/lol-game-data/assets/DATA/Spells/Icons2D/Summoner_Empty.png"
+        .split("/lol-game-data/assets/")
+        .pop()
+        .toLowerCase();
 
     return (
         <StyledChampionSetup position={position} data-champsetup>
@@ -195,9 +180,7 @@ export const ChampionSetup = ({ hasLevel, match, width, position }) => {
                     background
                     border="black"
                     width={`${width / 2}px` || "20px"}
-                    src={`https://raw.communitydragon.org/latest/game/${
-                        firstSummonerSpell || noSummonerSpell
-                    }`}
+                    src={`https://raw.communitydragon.org/latest/game/${firstSummonerSpell || noSummonerSpell}`}
                     alt="Summoner Spell 1"
                     data-setup
                 />
@@ -205,9 +188,7 @@ export const ChampionSetup = ({ hasLevel, match, width, position }) => {
                     background
                     border="black"
                     width={`${width / 2}px` || "20px"}
-                    src={`https://raw.communitydragon.org/latest/game/${
-                        secondSummonerSpell || noSummonerSpell
-                    }`}
+                    src={`https://raw.communitydragon.org/latest/game/${secondSummonerSpell || noSummonerSpell}`}
                     alt="Summoner Spell 2"
                     data-setup
                 />

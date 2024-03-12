@@ -33,17 +33,21 @@ const spanSize = (size) => {
 };
 
 export const StyledSpan = styled.span`
-    width: ${({ width }) => width ? width : "100%"};
-    ${({ padding }) => padding && `
+    width: ${({ width }) => (width ? width : "100%")};
+    ${({ padding }) =>
+        padding &&
+        `
         padding: ${padding};
     `}
-    color: ${({ theme, color }) => color ? color : theme.textColors.light};
+    color: ${({ theme, color }) => (color ? color : theme.textColors.light)};
     font-size: ${({ size }) => spanSize(size)};
-    text-transform: ${({ capsed }) => capsed ? "uppercase" : "none"};
+    text-transform: ${({ capsed }) => (capsed ? "uppercase" : "none")};
     vertical-align: center;
     text-align: ${({ align }) => align};
-    border-bottom: ${({ underline }) => underline ? "1px solid white" : ""};
-    ${({ pointer }) => pointer && `
+    border-bottom: ${({ underline }) => (underline ? "1px solid white" : "")};
+    ${({ pointer }) =>
+        pointer &&
+        `
         cursor: pointer;
     `}
 `;

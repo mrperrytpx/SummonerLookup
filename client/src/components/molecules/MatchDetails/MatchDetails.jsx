@@ -2,11 +2,7 @@ import { useEffect } from "react";
 import { flexRender } from "@tanstack/react-table";
 import { useParams } from "react-router-dom";
 import { StyledMatchDetails } from "./MatchDetails.styled";
-import {
-    FlexCol,
-    FlexRowCenter,
-    FlexRowStart,
-} from "components/atoms/FlexBoxes/FlexBoxes.styled";
+import { FlexCol, FlexRowCenter, FlexRowStart } from "components/atoms/FlexBoxes/FlexBoxes.styled";
 import { useScreenSize } from "hooks/useScreenSize";
 import { GameBans } from "../GameBans/GameBans";
 import { useGetSummonerQuery } from "hooks/useGetSummonerQuery";
@@ -40,12 +36,7 @@ export const MatchDetails = ({ team, bans, mode }) => {
     return (
         <FlexCol
             style={{
-                marginBottom:
-                    mode === "CHERRY"
-                        ? team[0].placement !== 4
-                            ? ".25rem"
-                            : ""
-                        : "",
+                marginBottom: mode === "CHERRY" ? (team[0].placement !== 4 ? ".25rem" : "") : "",
             }}
         >
             <FlexCol>
@@ -56,10 +47,7 @@ export const MatchDetails = ({ team, bans, mode }) => {
                     }}
                 >
                     {mode === "CHERRY" ? (
-                        <FlexRowStart
-                            gap={"0.25rem"}
-                            style={{ minWidth: "110px" }}
-                        >
+                        <FlexRowStart gap={"0.25rem"} style={{ minWidth: "110px" }}>
                             <Span size="s" width="auto">
                                 {POSITIONS[team[0].placement - 1]}
                             </Span>
@@ -67,14 +55,10 @@ export const MatchDetails = ({ team, bans, mode }) => {
                                 width={"30px"}
                                 min="30px"
                                 src={`${process.env.REACT_APP_NOT_SECRET_CODE}/static/arena-${team[0].playerSubteamId}.webp`}
-                                alt={`Team ${
-                                    arenaTeamNames[team[0].playerSubteamId]
-                                }`}
+                                alt={`Team ${arenaTeamNames[team[0].playerSubteamId]}`}
                             />
                             <Span size="s" width="auto">
-                                {arenaTeamNames[
-                                    team[0].playerSubteamId
-                                ].toUpperCase()}
+                                {arenaTeamNames[team[0].playerSubteamId].toUpperCase()}
                             </Span>
                         </FlexRowStart>
                     ) : null}
@@ -98,13 +82,7 @@ export const MatchDetails = ({ team, bans, mode }) => {
                                 {headerGroup.headers.map((header) => (
                                     <th key={header.id}>
                                         {header.isPlaceholder ? null : (
-                                            <div>
-                                                {flexRender(
-                                                    header.column.columnDef
-                                                        .header,
-                                                    header.getContext()
-                                                )}
-                                            </div>
+                                            <div>{flexRender(header.column.columnDef.header, header.getContext())}</div>
                                         )}
                                     </th>
                                 ))}
@@ -113,20 +91,11 @@ export const MatchDetails = ({ team, bans, mode }) => {
                     </thead>
                     <tbody>
                         {table.getRowModel().rows.map((row) => (
-                            <tr
-                                data-profile={
-                                    row.original.summonerName ===
-                                    summonerData.summonerName
-                                }
-                                key={row.id}
-                            >
+                            <tr data-profile={row.original.summonerName === summonerData.summonerName} key={row.id}>
                                 {row.getVisibleCells().map((cell) => {
                                     return (
                                         <td key={cell.id}>
-                                            {flexRender(
-                                                cell.column.columnDef.cell,
-                                                cell.getContext()
-                                            )}
+                                            {flexRender(cell.column.columnDef.cell, cell.getContext())}
                                         </td>
                                     );
                                 })}

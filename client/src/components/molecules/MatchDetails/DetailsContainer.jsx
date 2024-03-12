@@ -6,8 +6,7 @@ import { theme } from "styled/theme";
 import { MatchDetails } from "./MatchDetails";
 
 export const DetailsContainer = ({ matchId }) => {
-    const { data: matchDetailsData, isLoading } =
-        useGetSummonerSingleMatchQuery(matchId);
+    const { data: matchDetailsData, isLoading } = useGetSummonerSingleMatchQuery(matchId);
 
     if (isLoading)
         return (
@@ -21,17 +20,12 @@ export const DetailsContainer = ({ matchId }) => {
 
         for (let i = 0; i < matchDetailsData.info.participants.length; i += 2) {
             teams.push({
-                participants: matchDetailsData.info.participants.slice(
-                    i,
-                    i + 2
-                ),
+                participants: matchDetailsData.info.participants.slice(i, i + 2),
                 bans: matchDetailsData.info.teams[0].bans.slice(i, i + 2),
             });
         }
 
-        teams = teams.sort(
-            (a, b) => a.participants[0].placement - b.participants[0].placement
-        );
+        teams = teams.sort((a, b) => a.participants[0].placement - b.participants[0].placement);
 
         return (
             <FlexCol
@@ -40,11 +34,7 @@ export const DetailsContainer = ({ matchId }) => {
                     borderBottom: `10px solid
             ${teams[0].win ? theme.matchResult.win : theme.matchResult.loss}`,
                     borderTop: `10px solid
-            ${
-                teams[teams.length - 1].win
-                    ? theme.matchResult.loss
-                    : theme.matchResult.win
-            }`,
+            ${teams[teams.length - 1].win ? theme.matchResult.loss : theme.matchResult.win}`,
                     borderRadius: "10px",
                 }}
             >
@@ -75,14 +65,8 @@ export const DetailsContainer = ({ matchId }) => {
             }}
             gap=".5rem"
         >
-            <MatchDetails
-                team={blueTeam}
-                bans={matchDetailsData?.info.teams[0].bans}
-            />
-            <MatchDetails
-                team={redTeam}
-                bans={matchDetailsData?.info.teams[1].bans}
-            />
+            <MatchDetails team={blueTeam} bans={matchDetailsData?.info.teams[0].bans} />
+            <MatchDetails team={redTeam} bans={matchDetailsData?.info.teams[1].bans} />
         </FlexCol>
     );
 };

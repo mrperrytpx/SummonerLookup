@@ -1,11 +1,13 @@
 import { useQuery } from "react-query";
 
 export const useGetSummonerChallengesQuery = (server, summonerName, puuid) => {
-
     const getSummonerChallenges = async ({ signal }) => {
-        const response = await fetch(`${process.env.REACT_APP_NOT_SECRET_CODE}/api/summoner/challenges/${server}/${puuid}`, {
-            signal
-        });
+        const response = await fetch(
+            `${process.env.REACT_APP_NOT_SECRET_CODE}/api/summoner/challenges/${server}/${puuid}`,
+            {
+                signal,
+            }
+        );
 
         if (response.status >= 500) throw new Error("Something went wrong...");
 
@@ -17,6 +19,6 @@ export const useGetSummonerChallengesQuery = (server, summonerName, puuid) => {
 
     return useQuery(["challenges", server, summonerName.toLowerCase(), puuid], getSummonerChallenges, {
         enabled: !!puuid,
-        staleTime: 300000
+        staleTime: 300000,
     });
 };

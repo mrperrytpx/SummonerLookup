@@ -1,0 +1,3 @@
+[ ] swap na Vite
+[ ] fixat bugove koji dodju od tog
+[ ] JSDoc zabava mozda
