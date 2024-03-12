@@ -11,27 +11,21 @@ export const StyledLiveGamePicks = styled(FlexCol)`
     & > div {
         display: grid;
         grid-template-columns: 40px minmax(100px, max-content) 1fr;
-        padding: .5rem;
+        padding: 0.5rem;
         gap: 0.2rem;
         width: 100%;
-
-        & :last-child {
-            justify-content: space-around;
-        }
     }
 
     @media only screen and (max-width: 440px) {
-
         & > div {
-        grid-template-columns: 30px 80px 1fr;
-
+            grid-template-columns: 30px 1fr 1fr;
         }
 
         [data-mobile] {
             justify-content: flex-end;
         }
 
-        a {
+        span {
             font-size: 0.7rem;
         }
 
@@ -43,5 +37,4 @@ export const StyledLiveGamePicks = styled(FlexCol)`
             width: 20px;
         }
     }
-
 `;

@@ -1,16 +1,8 @@
 import { useMemo } from "react";
 import { useParams } from "react-router-dom";
-import {
-    useReactTable,
-    createColumnHelper,
-    getCoreRowModel,
-    getSortedRowModel,
-} from "@tanstack/react-table";
+import { useReactTable, createColumnHelper, getCoreRowModel, getSortedRowModel } from "@tanstack/react-table";
 import { CustomLink } from "components/atoms/CustomLink/CustomLink";
-import {
-    FlexColCenter,
-    FlexRowStart,
-} from "components/atoms/FlexBoxes/FlexBoxes.styled";
+import { FlexColCenter, FlexRowStart } from "components/atoms/FlexBoxes/FlexBoxes.styled";
 import { Span } from "components/atoms/Span/Span";
 import { ChampionSetup } from "../ChampionSetup/ChampionSetup";
 import { MatchItems } from "../MatchItems/MatchItems";
@@ -20,8 +12,7 @@ const columnHelper = createColumnHelper();
 export const useTable = (data) => {
     const { server } = useParams();
 
-    const kda = (row) =>
-        Math.round(((row.kills + row.assists) / (row.deaths || 1)) * 100) / 100;
+    const kda = (row) => Math.round(((row.kills + row.assists) / (row.deaths || 1)) * 100) / 100;
 
     const defaultColumns = useMemo(
         () => [
@@ -30,17 +21,9 @@ export const useTable = (data) => {
                     const row = props.getValue();
                     return (
                         <FlexRowStart data-champ>
-                            <ChampionSetup
-                                position="start"
-                                match={row}
-                                width={40}
-                                hasLevel={true}
-                            />
-                            <CustomLink
-                                to={`/${server}/${row.summonerName}`}
-                                align="left"
-                            >
-                                {row.summonerName}
+                            <ChampionSetup position="start" match={row} width={40} hasLevel={true} />
+                            <CustomLink to={`/${server}/${row.summonerName}-${row.riotIdTagline}`} align="left">
+                                {row.summonerName}#{row.riotIdTagline}
                             </CustomLink>
                         </FlexRowStart>
                     );
@@ -83,11 +66,7 @@ export const useTable = (data) => {
             columnHelper.accessor((row) => row, {
                 cell: (props) => {
                     const row = props.getValue();
-                    return (
-                        <FlexColCenter>
-                            {row.totalDamageDealtToChampions}
-                        </FlexColCenter>
-                    );
+                    return <FlexColCenter>{row.totalDamageDealtToChampions}</FlexColCenter>;
                 },
                 header: "Dmg",
                 id: "dmg_done",
@@ -95,15 +74,7 @@ export const useTable = (data) => {
             columnHelper.accessor((row) => row, {
                 cell: (props) => {
                     const row = props.getValue();
-                    const itemsArray = [
-                        row.item0,
-                        row.item1,
-                        row.item2,
-                        row.item3,
-                        row.item4,
-                        row.item5,
-                        row.item6,
-                    ];
+                    const itemsArray = [row.item0, row.item1, row.item2, row.item3, row.item4, row.item5, row.item6];
                     return <MatchItems items={itemsArray} initialWidth={26} />;
                 },
                 header: "Items",

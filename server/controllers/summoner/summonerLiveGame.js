@@ -1,18 +1,16 @@
 const { getSummonerLiveGame } = require("../../services/external/");
 
 const summonerLiveGame = async (req, res) => {
+    const { server, puuid } = req.params;
 
-	const { server, summonerId } = req.params;
+    const liveGameData = await getSummonerLiveGame(server, puuid);
 
-	const liveGameData = await getSummonerLiveGame(server, summonerId);
+    if (!liveGameData) {
+        res.sendStatus(404);
+        return;
+    }
 
-	if (!liveGameData) {
-		res.sendStatus(404);
-		return;
-	}
-
-	res.status(200).json(liveGameData);
-
+    res.status(200).json(liveGameData);
 };
 
 module.exports = summonerLiveGame;
@@ -43,7 +41,7 @@ module.exports = summonerLiveGame;
  *            properties:
  *              teamId:
  *                type: number
- *              spell1Id: 
+ *              spell1Id:
  *                type: number
  *              spell2Id:
  *                type: number
@@ -65,7 +63,7 @@ module.exports = summonerLiveGame;
  *                    type: array
  *                    minItems: 9
  *                    maxItems: 9
- *                    items: 
+ *                    items:
  *                      type: number
  *                  perkStyle:
  *                    type: number

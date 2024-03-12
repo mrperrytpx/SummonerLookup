@@ -126,7 +126,7 @@ router.get(
  */
 
 router.get(
-    "/live_game/:server/:summonerId/",
+    "/live_game/:server/:puuid/",
     asyncHandler(summonerController.summonerLiveGameRoute)
 );
 /**
@@ -142,7 +142,7 @@ router.get(
  *        required: true
  *        type: string
  *        description: Server string
- *      - name: summonerId
+ *      - name: puuid
  *        in: path
  *        required: true
  *        type: string
@@ -272,12 +272,12 @@ router.get(
  */
 
 router.get(
-    "/champion_stats/:server/:summonerName/:puuid",
+    "/champion_stats/:server/:summonerName/:tagLine",
     asyncHandler(summonerController.summonerChampionStatsRoute)
 );
 /**
  * @openapi
- * /api/summoner/champion_stats/{server}/{summonerName}:
+ * /api/summoner/champion_stats/{server}/{summonerName}/{tagLine}:
  *  get:
  *    tags:
  *      - Summoner
@@ -293,6 +293,11 @@ router.get(
  *        required: true
  *        type: string
  *        description: Summoner name
+ *      - name: tagLine
+ *        in: path
+ *        required: true
+ *        type: string
+ *        description: Summoner's chosen tag line
  *    responses:
  *      200:
  *        description: Success

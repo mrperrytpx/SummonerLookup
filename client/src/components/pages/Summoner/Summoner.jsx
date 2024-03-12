@@ -12,19 +12,14 @@ import { bodyHeight } from "consts/cssVals";
 
 export const Summoner = () => {
     const { server, summonerName } = useParams();
-    const {
-        data: summonerData,
-        isLoading: isSummonerLoading,
-        isError,
-    } = useGetSummonerQuery(server, summonerName);
-    const {
-        data: summonerChallengesData,
-        isLoading: isSummonerChallengesLoading,
-    } = useGetSummonerChallengesQuery(
+    const { data: summonerData, isLoading: isSummonerLoading, isError } = useGetSummonerQuery(server, summonerName);
+    const { data: summonerChallengesData, isLoading: isSummonerChallengesLoading } = useGetSummonerChallengesQuery(
         server,
         summonerName,
         summonerData?.puuid
     );
+
+    const [gameName, tagLine] = summonerName.split("-");
     useGetSummonerRankedStatsQuery(server, summonerData?.summonerId);
 
     if (isSummonerLoading || isSummonerChallengesLoading)
@@ -39,21 +34,25 @@ export const Summoner = () => {
             <StyledSummoner>
                 <Container height="300px">
                     <ErrorText size="clamp(1rem, 2vw, 1.8rem)" center={true}>
-                        Couldn't find summoner "{summonerName}".
+                        Couldn't find summoner "{gameName}
+                        {tagLine !== "undefined" && `#${tagLine}`}".
                     </ErrorText>
-                    <ErrorText size="clamp(1rem, 2vw, 1.5rem)" center={true}>
-                        Maybe they're on another server?
-                    </ErrorText>
+                    {tagLine === "undefined" ? (
+                        <ErrorText size="clamp(1rem, 2vw, 1.5rem)" center={true}>
+                            Make sure to include their tag line!
+                        </ErrorText>
+                    ) : (
+                        <ErrorText size="clamp(1rem, 2vw, 1.5rem)" center={true}>
+                            Maybe they're on another server?
+                        </ErrorText>
+                    )}
                 </Container>
             </StyledSummoner>
         );
 
     return (
         <StyledSummoner>
-            <SummonerCard
-                summonerData={summonerData}
-                summonerChallengesData={summonerChallengesData}
-            />
+            <SummonerCard summonerData={summonerData} summonerChallengesData={summonerChallengesData} />
             <SummonerNavbar />
             <Outlet />
         </StyledSummoner>

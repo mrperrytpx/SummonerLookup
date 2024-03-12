@@ -6,51 +6,51 @@ import { SummonerInput } from "../../molecules/SummonerInput/SummonerInput";
 import { SERVER_VALUES } from "consts/serverValues";
 
 export const CompactSearchSummoner = () => {
+    const [summonerName, setSummonerName] = useState("");
+    const [dropdownValue, setDropdownValue] = useState(localStorage.getItem("server") || "eun1");
+    const navigate = useNavigate();
+    const inputRef = useRef(null);
 
-  const [summonerName, setSummonerName] = useState("");
-  const [dropdownValue, setDropdownValue] = useState(localStorage.getItem("server") || "eun1");
-  const navigate = useNavigate();
-  const inputRef = useRef(null);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!dropdownValue || !summonerName) {
-      alert("no");
-      return;
-    }
-    setSummonerName(() => "");
-    inputRef.current.blur();
-    navigate(`/${dropdownValue}/${summonerName}`);
-  };
-
-  const handleClick = (value) => {
-    localStorage.setItem("server", value);
-    setDropdownValue(value);
-  };
-
-  const options = Object.keys(SERVER_VALUES).map(server => {
-    return {
-      stateValue: `${server}`,
-      text: SERVER_VALUES[server]
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (!dropdownValue || !summonerName) {
+            alert("no");
+            return;
+        }
+        setSummonerName(() => "");
+        const [gameName, tagLine] = summonerName.split("#");
+        inputRef.current.blur();
+        navigate(`/${dropdownValue}/${gameName}-${tagLine}`);
     };
-  });
 
-  return (
-    <StyledCompactSearchSummoner as="form" onSubmit={(e) => handleSubmit(e)}>
-      <Dropdown
-        values={SERVER_VALUES}
-        from="left"
-        options={options}
-        state={dropdownValue}
-        setState={setDropdownValue}
-        handleClick={handleClick}
-      />
-      <SummonerInput
-        ref={inputRef}
-        setSummonerName={setSummonerName}
-        summonerName={summonerName}
-        server={dropdownValue}
-      />
-    </StyledCompactSearchSummoner>
-  );
+    const handleClick = (value) => {
+        localStorage.setItem("server", value);
+        setDropdownValue(value);
+    };
+
+    const options = Object.keys(SERVER_VALUES).map((server) => {
+        return {
+            stateValue: `${server}`,
+            text: SERVER_VALUES[server],
+        };
+    });
+
+    return (
+        <StyledCompactSearchSummoner as="form" onSubmit={(e) => handleSubmit(e)}>
+            <Dropdown
+                values={SERVER_VALUES}
+                from="left"
+                options={options}
+                state={dropdownValue}
+                setState={setDropdownValue}
+                handleClick={handleClick}
+            />
+            <SummonerInput
+                ref={inputRef}
+                setSummonerName={setSummonerName}
+                summonerName={summonerName}
+                server={dropdownValue}
+            />
+        </StyledCompactSearchSummoner>
+    );
 };

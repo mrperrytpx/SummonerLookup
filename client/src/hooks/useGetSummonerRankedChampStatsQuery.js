@@ -5,9 +5,8 @@ export const useGetSummonerRankedChampStatsQuery = (server, summonerName) => {
     const { data: summonerData } = useGetSummonerQuery(server, summonerName);
 
     const getChampRankedStats = async ({ signal }) => {
-        console.log("get rank stats");
         const response = await fetch(
-            `${process.env.REACT_APP_NOT_SECRET_CODE}/api/summoner/champion_stats/${server}/${summonerName}/${summonerData?.puuid}`,
+            `${process.env.REACT_APP_NOT_SECRET_CODE}/api/summoner/champion_stats/${server}/${summonerData.name}/${summonerData?.tagLine}`,
             {
                 signal,
             }
@@ -15,24 +14,14 @@ export const useGetSummonerRankedChampStatsQuery = (server, summonerName) => {
 
         if (signal.aborted) return;
 
-        if (!response.ok)
-            throw new Error("Something went wrong... try reloading the poge");
+        if (!response.ok) throw new Error("Something went wrong... try reloading the poge");
 
         const data = await response.json();
         return data;
     };
 
-    return useQuery(
-        [
-            "champion-stats",
-            server,
-            summonerName.toLowerCase(),
-            summonerData?.puuid,
-        ],
-        getChampRankedStats,
-        {
-            enabled: !!server && !!summonerName && !!summonerData.puuid,
-            staleTime: 300000,
-        }
-    );
+    return useQuery(["champion-stats", server, summonerName.toLowerCase(), summonerData?.puuid], getChampRankedStats, {
+        enabled: !!server && !!summonerName && !!summonerData.puuid,
+        staleTime: 300000,
+    });
 };

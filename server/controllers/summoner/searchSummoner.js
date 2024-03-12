@@ -6,15 +6,10 @@ const searchSummoner = async (req, res) => {
     const region = leagueRegion(server);
 
     const accountData = await getSummonerAccountData(server, summonerName);
-    // Set the necessary account data into the payload
-    let payload = {
-        server: server,
+    const payload = {
+        ...accountData,
         region: region,
-        puuid: accountData.puuid,
-        summonerId: accountData.id,
-        summonerName: accountData.name,
-        summonerLevel: accountData.summonerLevel,
-        profileIconId: accountData.profileIconId,
+        server,
     };
 
     res.json(payload);

@@ -17,7 +17,6 @@ export const StyledGameBans = styled(FlexRowStart)`
     `}
 
     @media only screen and (max-width: 900px) {
-        justify-content: center;
         ${({ align, shouldMobileAlign }) =>
             shouldMobileAlign &&
             `

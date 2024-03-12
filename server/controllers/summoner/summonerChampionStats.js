@@ -24,9 +24,13 @@ function sumObjects(...objects) {
 }
 
 const summonerChampionStats = async (req, res) => {
-    const { server, summonerName, puuid } = req.params;
+    const { server, summonerName, tagLine } = req.params;
 
-    let statsData = await getSummonerChampionStats(server, summonerName, puuid);
+    let statsData = await getSummonerChampionStats(
+        server,
+        summonerName,
+        tagLine
+    );
 
     const statsMap = new Map();
     statsData.data.fetchPlayerStatistics[0].basicChampionPerformances.forEach(
