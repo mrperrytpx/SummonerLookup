@@ -12,55 +12,105 @@ import { MobileMenu } from "../MobileMenu/MobileMenu";
 import { useScreenSize } from "hooks/useScreenSize";
 import { useAuth } from "../../../hooks/useAuth";
 import { LoadingIndicator } from "components/atoms/LoadingIndicator/LoadingIndicator";
+import { FlexRowSpaceBetween } from "components/atoms/FlexBoxes/FlexBoxes.styled";
 
 export const Navbar = ({ isNavOpen, handleNavOpen, setIsNavOpen }) => {
+    const location = useLocation();
 
-  const location = useLocation();
+    const { width } = useScreenSize();
+    const { signOut, accessToken } = useAuth();
 
-  const { width } = useScreenSize();
-  const { tokenLoading, signOut, accessToken } = useAuth();
+    const handleLogout = async (e) => {
+        e.preventDefault();
+        await signOut.mutateAsync({ accessToken });
+    };
 
-  const handleLogout = async (e) => {
-    e.preventDefault();
-    await signOut.mutateAsync({ accessToken });
-  };
+    return (
+        <StyledNavbar isNavOpen={isNavOpen}>
+            <FlexRowSpaceBetween gap="1rem" id="wrapper">
+                {width >= 450 ? (
+                    <SvgLink to="/">
+                        {location.pathname === "/" ? (
+                            <TextLogo fill="white" />
+                        ) : width >= 1100 ? (
+                            <TextLogo fill="white" />
+                        ) : (
+                            <SquareLogo fill="white" width="60" />
+                        )}
+                    </SvgLink>
+                ) : null}
 
-  return (
-    <StyledNavbar isNavOpen={isNavOpen}>
-      {width >= 450
-        // rendering different logos depending on width
-        ? <SvgLink to="/">
-          {location.pathname === "/"
-            ? <TextLogo fill="white" />
-            : width >= 1100
-              ? <TextLogo fill="white" />
-              : <SquareLogo fill="white" width="60" />
-          }
-        </SvgLink>
-        : null
-      }
-      {location.pathname !== "/" && !isNavOpen ? <CompactSearchSummoner /> : null}
-      {tokenLoading ? <p style={{ color: "white" }}>Loading</p> :
-        width >= 750
-          ? <LinkButtonCluster>
-            {accessToken
-              ? !location.pathname.includes("/me") ? <LinkButton minwidth="100px" state={{ from: location.pathname }} variant="quaternary" to="/me">Profile</LinkButton> : null
-              : <LinkButton minwidth="100px" state={{ from: location.pathname }} variant="quaternary" to="/signin">Sign in</LinkButton>
-            }
-            {accessToken
-              ? <Button minwidth="120px" onClick={(e) => handleLogout(e)} variant="danger">
-                {signOut.isLoading ? <LoadingIndicator size="28px" variant="white" /> : "Sign Out"}
-              </Button>
-              : <LinkButton minwidth="100px" state={{ from: location.pathname }} variant="quaternary" to="/signup">Sign up</LinkButton>
-            }
-          </LinkButtonCluster>
-          : !isNavOpen
-            ? <ImMenu3 style={{ minWidth: "48px" }} fill="white" size="48" onClick={handleNavOpen}></ImMenu3>
-            : <ImMenu4 style={{ minWidth: "48px" }} fill="white" size="48" onClick={handleNavOpen}></ImMenu4>
-      }
-      {isNavOpen && <MobileMenu setIsNavOpen={setIsNavOpen} />}
-    </StyledNavbar>
-  );
+                {location.pathname !== "/" && !isNavOpen && (
+                    <CompactSearchSummoner />
+                )}
+                {width >= 750 ? (
+                    <LinkButtonCluster>
+                        {accessToken ? (
+                            !location.pathname.includes("/me") && (
+                                <LinkButton
+                                    minwidth="100px"
+                                    state={{ from: location.pathname }}
+                                    variant="quaternary"
+                                    to="/me"
+                                >
+                                    Profile
+                                </LinkButton>
+                            )
+                        ) : (
+                            <LinkButton
+                                minwidth="100px"
+                                state={{ from: location.pathname }}
+                                variant="quaternary"
+                                to="/signin"
+                            >
+                                Sign in
+                            </LinkButton>
+                        )}
+                        {accessToken ? (
+                            <Button
+                                minwidth="120px"
+                                onClick={(e) => handleLogout(e)}
+                                variant="danger"
+                            >
+                                {signOut.isLoading ? (
+                                    <LoadingIndicator
+                                        size="28px"
+                                        variant="white"
+                                    />
+                                ) : (
+                                    "Sign Out"
+                                )}
+                            </Button>
+                        ) : (
+                            <LinkButton
+                                minwidth="100px"
+                                state={{ from: location.pathname }}
+                                variant="quaternary"
+                                to="/signup"
+                            >
+                                Sign up
+                            </LinkButton>
+                        )}
+                    </LinkButtonCluster>
+                ) : !isNavOpen ? (
+                    <ImMenu3
+                        style={{ minWidth: "48px" }}
+                        fill="white"
+                        size="48"
+                        onClick={handleNavOpen}
+                    />
+                ) : (
+                    <ImMenu4
+                        style={{ minWidth: "48px" }}
+                        fill="white"
+                        size="48"
+                        onClick={handleNavOpen}
+                    />
+                )}
+                {isNavOpen && <MobileMenu setIsNavOpen={setIsNavOpen} />}
+            </FlexRowSpaceBetween>
+        </StyledNavbar>
+    );
 };
 
 // if width is >= 750
