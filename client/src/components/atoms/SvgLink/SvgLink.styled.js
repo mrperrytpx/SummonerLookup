@@ -9,7 +9,8 @@ export const StyledSvgLink = styled(Link)`
     padding: 0;
     margin: 0;
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
         animation: ${jump} 0.1s linear;
     }
 `;

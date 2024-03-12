@@ -9,7 +9,9 @@ export const StyledLinkButton = styled(Link)`
 
     display: inline-block;
     height: 100%;
-    ${({ minwidth }) => minwidth && `
+    ${({ minwidth }) =>
+        minwidth &&
+        `
         min-width: ${minwidth};
     `}
     padding: .5em;
@@ -23,8 +25,9 @@ export const StyledLinkButton = styled(Link)`
     font-weight: 600;
 
     cursor: pointer;
-    
-    &:hover, &:focus {
+
+    &:hover,
+    &:focus {
         animation: ${jump} 0.1s linear;
     }
 `;

@@ -5,30 +5,35 @@ import { FlexRowCenter } from "../FlexBoxes/FlexBoxes.styled";
 
 export const StyledButton = styled(FlexRowCenter).attrs({ as: "button" })`
     background-color: ${({ theme, variant }) => backgroundColor(theme, variant)};
-    
-    ${({ minwidth }) => minwidth && `
+
+    ${({ minwidth }) =>
+        minwidth &&
+        `
         min-width: ${minwidth};
     `}
     width: ${({ width }) => width || "auto"};
     padding: ${({ padding }) => padding || ".5em 1em"};
     border: none;
     border-radius: 5px;
-    
-    color: ${({ theme, variant }) => variant === "danger" || variant === "tertiary" || variant === "quaternary" ? theme.textColors.light : theme.textColors.dark};
-    white-space: pre;
+
+    color: ${({ theme, variant }) =>
+        variant === "danger" || variant === "tertiary" || variant === "quaternary"
+            ? theme.textColors.light
+            : theme.textColors.dark};
     text-align: center;
-    vertical-align: middle;
-    font-size: ${({ fontSize }) => fontSize ? fontSize : "1.1rem"};
+    font-size: ${({ fontSize }) => (fontSize ? fontSize : "1.1rem")};
     font-weight: 600;
 
     cursor: pointer;
 
+    &:hover,
+    &:focus {
+        animation: ${jump} 0.1s linear;
+    }
+
     &:disabled {
         cursor: initial;
         opacity: 0.15;
-    }
-
-    &:hover, &:focus {
-        animation: ${jump} 0.1s linear;
+        animation: none;
     }
 `;

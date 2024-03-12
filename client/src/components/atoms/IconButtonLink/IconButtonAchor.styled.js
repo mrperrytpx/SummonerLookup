@@ -7,7 +7,8 @@ export const StyledIconButtonAnchor = styled.a`
     justify-content: center;
     cursor: pointer;
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
         animation: ${jump} 0.1s linear;
     }
 `;
