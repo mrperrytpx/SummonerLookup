@@ -8,6 +8,7 @@ export const StyledSvgLink = styled(Link)`
     justify-content: center;
     padding: 0;
     margin: 0;
+    user-select: none;
 
     &:hover,
     &:focus {

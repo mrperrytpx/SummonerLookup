@@ -24,6 +24,8 @@ export const StyledButton = styled(FlexRowCenter).attrs({ as: "button" })`
     font-size: ${({ fontSize }) => (fontSize ? fontSize : "1.1rem")};
     font-weight: 600;
 
+    user-select: none;
+
     cursor: pointer;
 
     &:hover,

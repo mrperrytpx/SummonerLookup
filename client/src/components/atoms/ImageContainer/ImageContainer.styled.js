@@ -2,16 +2,20 @@ import styled from "styled-components";
 import { FlexRowCenter } from "../FlexBoxes/FlexBoxes.styled";
 
 export const StyledImageContainer = styled(FlexRowCenter)`
-    background-color: ${({ theme, background }) => background ? theme.backgroundColors.primary : "transparent"};
-    width: ${({ width }) => width ? width : "auto"};
+    background-color: ${({ theme, background }) => (background ? theme.backgroundColors.primary : "transparent")};
+    width: ${({ width }) => (width ? width : "auto")};
     aspect-ratio: 1 / 1;
     position: relative;
+
+    user-select: none;
 
     &:hover > div[data-tooltip] {
         visibility: visible;
     }
 
-    ${({ min }) => min && `
+    ${({ min }) =>
+        min &&
+        `
         min-width: ${min};
 
         img {
@@ -19,15 +23,21 @@ export const StyledImageContainer = styled(FlexRowCenter)`
         }
     `}
 
-    ${({ border }) => border && `
+    ${({ border }) =>
+        border &&
+        `
         border: 1px solid ${border};
     `}
 
-    ${({ outline }) => outline && `
+    ${({ outline }) =>
+        outline &&
+        `
         outline : 1px solid ${outline};
     `}
 
-    ${({ radius }) => radius && `
+    ${({ radius }) =>
+        radius &&
+        `
         border-radius: ${radius};
     `}
 
@@ -37,7 +47,9 @@ export const StyledImageContainer = styled(FlexRowCenter)`
             font-size: 0.2rem;
         }
 
-        ${({ opacity }) => opacity && `
+        ${({ opacity }) =>
+            opacity &&
+            `
             opacity: ${opacity};
         `}
     }

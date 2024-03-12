@@ -10,8 +10,11 @@ export const StyledNavActiveLink = styled(NavLink)`
     display: block;
     font-weight: 600;
     text-transform: uppercase;
+    user-select: none;
 
-    ${({ active, theme }) => active && `
+    ${({ active, theme }) =>
+        active &&
+        `
         &:after {
             content:"";
             display: block;

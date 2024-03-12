@@ -23,5 +23,5 @@ export const StyledPromoGameStatus = styled.div`
     height: 20px;
     border-radius: 50%;
     background-color: ${({ theme, promo }) => promoBackground(theme, promo)};
+    user-select: none;
 `;
-

@@ -7,6 +7,7 @@ export const StyledServerButton = styled.div`
     margin-right: 0.5rem;
     margin-bottom: 0.5rem;
     min-width: 50px;
+    user-select: none;
 
     label {
         cursor: pointer;
